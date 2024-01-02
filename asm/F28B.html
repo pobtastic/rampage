@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at F28B</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="F10E.html">F10E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#f28b">Map</a></td>
+<td class="next">
+Next: <a href="F2CA.html">F2CA</a>
+</td>
+</tr>
+</table>
+<div class="description">F28B: Routine at F28B</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="DE77.html">DE77</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="f28b"></span>F28B</td>
+<td class="instruction">LD A,($D212)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f28e"></span>F28E</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f28f"></span>F28F</td>
+<td class="instruction">LD A,($D3F5)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f292"></span>F292</td>
+<td class="instruction">CP B</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f293"></span>F293</td>
+<td class="instruction">RET Z</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f294"></span>F294</td>
+<td class="instruction">CALL <a href="DA28.html">$DA28</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f297"></span>F297</td>
+<td class="instruction">CP $80</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f299"></span>F299</td>
+<td class="instruction">RET NC</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f29a"></span>F29A</td>
+<td class="instruction">LD HL,$D292</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="f29d"></span>F29D</td>
+<td class="instruction">INC HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f29e"></span>F29E</td>
+<td class="instruction">INC HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f29f"></span>F29F</td>
+<td class="instruction">INC HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f2a0"></span>F2A0</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f2a1"></span>F2A1</td>
+<td class="instruction">AND A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f2a2"></span>F2A2</td>
+<td class="instruction">JR NZ,<a href="F28B.html#f29d">$F29D</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f2a4"></span>F2A4</td>
+<td class="instruction">CALL <a href="DA28.html">$DA28</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f2a7"></span>F2A7</td>
+<td class="instruction">AND $01</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f2a9"></span>F2A9</td>
+<td class="instruction">JR Z,<a href="F28B.html#f2b2">$F2B2</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f2ab"></span>F2AB</td>
+<td class="instruction">LD (HL),$40</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f2ad"></span>F2AD</td>
+<td class="instruction">INC HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f2ae"></span>F2AE</td>
+<td class="instruction">LD (HL),$FC</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f2b0"></span>F2B0</td>
+<td class="instruction">JR <a href="F28B.html#f2b7">$F2B7</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="f2b2"></span>F2B2</td>
+<td class="instruction">LD (HL),$80</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f2b4"></span>F2B4</td>
+<td class="instruction">INC HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f2b5"></span>F2B5</td>
+<td class="instruction">LD (HL),$24</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="f2b7"></span>F2B7</td>
+<td class="instruction">INC HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f2b8"></span>F2B8</td>
+<td class="instruction">LD (HL),$03</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f2ba"></span>F2BA</td>
+<td class="instruction">CALL <a href="DA28.html">$DA28</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f2bd"></span>F2BD</td>
+<td class="instruction">AND $03</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f2bf"></span>F2BF</td>
+<td class="instruction">JR Z,<a href="F28B.html#f2c2">$F2C2</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f2c1"></span>F2C1</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="f2c2"></span>F2C2</td>
+<td class="instruction">LD A,($D3F5)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f2c5"></span>F2C5</td>
+<td class="instruction">INC A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f2c6"></span>F2C6</td>
+<td class="instruction">LD ($D3F5),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f2c9"></span>F2C9</td>
+<td class="instruction">RET</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="F10E.html">F10E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#f28b">Map</a></td>
+<td class="next">
+Next: <a href="F2CA.html">F2CA</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/F28B.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

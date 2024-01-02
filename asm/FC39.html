@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at FC39</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="FC1A.html">FC1A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#fc39">Map</a></td>
+<td class="next">
+Next: <a href="FCB6.html">FCB6</a>
+</td>
+</tr>
+</table>
+<div class="description">FC39: Routine at FC39</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="DE77.html">DE77</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="fc39"></span>FC39</td>
+<td class="instruction">LD A,($D401)</td>
+<td class="comment-1" rowspan="3">Return if *<a href="D3FA.html#d401">D401</a> is equal to FE.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc3c"></span>FC3C</td>
+<td class="instruction">CP $FE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc3e"></span>FC3E</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc3f"></span>FC3F</td>
+<td class="instruction">CP $FF</td>
+<td class="comment-1" rowspan="2">Jump to <a href="FC39.html#fc72">FC72</a> if *<a href="D3FA.html#d401">D401</a> is equal to FF.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc41"></span>FC41</td>
+<td class="instruction">JR Z,<a href="FC39.html#fc72">$FC72</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc43"></span>FC43</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc44"></span>FC44</td>
+<td class="instruction">LD ($D401),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> back to *<a href="D3FA.html#d401">D401</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc47"></span>FC47</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1">Return if <span class="register">A</span> is not zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc48"></span>FC48</td>
+<td class="instruction">LD A,$FF</td>
+<td class="comment-1" rowspan="2">Write FF to *<a href="D3FA.html#d401">D401</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc4a"></span>FC4A</td>
+<td class="instruction">LD ($D401),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc4d"></span>FC4D</td>
+<td class="instruction">CALL <a href="DA28.html">$DA28</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DA28.html">DA28</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc50"></span>FC50</td>
+<td class="instruction">AND %00000011</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-1.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc52"></span>FC52</td>
+<td class="instruction">LD ($D402),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3FA.html#d402">D402</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc55"></span>FC55</td>
+<td class="instruction">CALL <a href="DA28.html">$DA28</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DA28.html">DA28</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc58"></span>FC58</td>
+<td class="instruction">AND %00000001</td>
+<td class="comment-1" rowspan="1">Keep only bit 0.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc5a"></span>FC5A</td>
+<td class="instruction">JR NZ,<a href="FC39.html#fc68">$FC68</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="FC39.html#fc68">FC68</a> if the result is not zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc5c"></span>FC5C</td>
+<td class="instruction">LD A,$14</td>
+<td class="comment-1" rowspan="2">Write 14 to *<a href="D3FA.html#d404">D404</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc5e"></span>FC5E</td>
+<td class="instruction">LD ($D404),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc61"></span>FC61</td>
+<td class="instruction">LD A,$FA</td>
+<td class="comment-1" rowspan="2">Write FA to *<a href="D3FA.html#d403">D403</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc63"></span>FC63</td>
+<td class="instruction">LD ($D403),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc66"></span>FC66</td>
+<td class="instruction">JR <a href="FC39.html#fc72">$FC72</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="FC39.html#fc72">FC72</a>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="fc68"></span>FC68</td>
+<td class="instruction">LD A,$94</td>
+<td class="comment-1" rowspan="2">Write 94 to *<a href="D3FA.html#d404">D404</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc6a"></span>FC6A</td>
+<td class="instruction">LD ($D404),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc6d"></span>FC6D</td>
+<td class="instruction">LD A,$20</td>
+<td class="comment-1" rowspan="2">Write 20 to *<a href="D3FA.html#d403">D403</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc6f"></span>FC6F</td>
+<td class="instruction">LD ($D403),A</td>
+</tr>
+<tr>
+<td class="address-2"><span id="fc72"></span>FC72</td>
+<td class="instruction">LD A,($D404)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D3FA.html#d404">D404</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc75"></span>FC75</td>
+<td class="instruction">CP $80</td>
+<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 80.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc77"></span>FC77</td>
+<td class="instruction">JR NC,<a href="FC39.html#fc97">$FC97</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="FC39.html#fc97">FC97</a> if {} is higher.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc79"></span>FC79</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc7a"></span>FC7A</td>
+<td class="instruction">LD A,($D403)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D3FA.html#d403">D403</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc7d"></span>FC7D</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="fc7e"></span>FC7E</td>
+<td class="instruction">LD ($D403),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3FA.html#d403">D403</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc81"></span>FC81</td>
+<td class="instruction">CP $20</td>
+<td class="comment-1" rowspan="2">Jump to <a href="FC39.html#fca7">FCA7</a> if <span class="register">A</span> is equal to 20.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc83"></span>FC83</td>
+<td class="instruction">JR Z,<a href="FC39.html#fca7">$FCA7</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc85"></span>FC85</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc86"></span>FC86</td>
+<td class="instruction">LD A,($D402)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D3FA.html#d402">D402</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc89"></span>FC89</td>
+<td class="instruction">CP $03</td>
+<td class="comment-1" rowspan="2">Return if <span class="register">A</span> is equal to 03.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc8b"></span>FC8B</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc8c"></span>FC8C</td>
+<td class="instruction">ADD A,A</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc8d"></span>FC8D</td>
+<td class="instruction">ADD A,$3B</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=3B.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc8f"></span>FC8F</td>
+<td class="instruction">CALL <a href="D6C9.html">$D6C9</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D6C9.html">D6C9</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc92"></span>FC92</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Reset the bits from <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc93"></span>FC93</td>
+<td class="instruction">LD ($D247),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D247.html">D247</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc96"></span>FC96</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="fc97"></span>FC97</td>
+<td class="instruction">AND %01111111</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-6.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc99"></span>FC99</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc9a"></span>FC9A</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Write 01 to *<a href="D247.html">D247</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc9c"></span>FC9C</td>
+<td class="instruction">LD ($D247),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fc9f"></span>FC9F</td>
+<td class="instruction">LD A,($D403)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D3FA.html#d403">D403</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fca2"></span>FCA2</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fca3"></span>FCA3</td>
+<td class="instruction">CP $FA</td>
+<td class="comment-1" rowspan="2">Jump to <a href="FC39.html#fc7e">FC7E</a> if <span class="register">A</span> is not equal to FA.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fca5"></span>FCA5</td>
+<td class="instruction">JR NZ,<a href="FC39.html#fc7e">$FC7E</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="fca7"></span>FCA7</td>
+<td class="instruction">CALL <a href="DA28.html">$DA28</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DA28.html">DA28</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fcaa"></span>FCAA</td>
+<td class="instruction">AND %00001111</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-3.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fcac"></span>FCAC</td>
+<td class="instruction">ADD A,$08</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=08.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fcae"></span>FCAE</td>
+<td class="instruction">LD ($D401),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3FA.html#d401">D401</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fcb1"></span>FCB1</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1">Reset the bits from <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fcb2"></span>FCB2</td>
+<td class="instruction">LD ($D247),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D247.html">D247</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fcb5"></span>FCB5</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="FC1A.html">FC1A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#fc39">Map</a></td>
+<td class="next">
+Next: <a href="FCB6.html">FCB6</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/FC39.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

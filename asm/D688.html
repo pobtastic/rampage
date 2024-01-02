@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at D688</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="D604.html">D604</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#d688">Map</a></td>
+<td class="next">
+Next: <a href="D6C9.html">D6C9</a>
+</td>
+</tr>
+</table>
+<div class="description">D688: Fast Copy To The Screen Buffer</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="D604.html">ScreenBuffer_Update</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Blit</td>
+<td class="address-2"><span id="d688"></span>D688</td>
+<td class="instruction">LDI</td>
+<td class="comment-1" rowspan="32">Copy one line to the screen buffer.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d68a"></span>D68A</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d68c"></span>D68C</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d68e"></span>D68E</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d690"></span>D690</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d692"></span>D692</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d694"></span>D694</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d696"></span>D696</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d698"></span>D698</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d69a"></span>D69A</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d69c"></span>D69C</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d69e"></span>D69E</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d6a0"></span>D6A0</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d6a2"></span>D6A2</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d6a4"></span>D6A4</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d6a6"></span>D6A6</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d6a8"></span>D6A8</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d6aa"></span>D6AA</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d6ac"></span>D6AC</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d6ae"></span>D6AE</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d6b0"></span>D6B0</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d6b2"></span>D6B2</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d6b4"></span>D6B4</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d6b6"></span>D6B6</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d6b8"></span>D6B8</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d6ba"></span>D6BA</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d6bc"></span>D6BC</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d6be"></span>D6BE</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d6c0"></span>D6C0</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d6c2"></span>D6C2</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d6c4"></span>D6C4</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d6c6"></span>D6C6</td>
+<td class="instruction">LDI</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d6c8"></span>D6C8</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="D604.html">D604</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#d688">Map</a></td>
+<td class="next">
+Next: <a href="D6C9.html">D6C9</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/D688.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

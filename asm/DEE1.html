@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at DEE1</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="DEC6.html">DEC6</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#dee1">Map</a></td>
+<td class="next">
+Next: <a href="DF1F.html">DF1F</a>
+</td>
+</tr>
+</table>
+<div class="description">DEE1: Initialise New Game</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="DE19.html">DE19</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">InitialiseNewGame</td>
+<td class="address-2"><span id="dee1"></span>DEE1</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=00.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="dee2"></span>DEE2</td>
+<td class="instruction">LD IY,$CFD2</td>
+<td class="comment-1" rowspan="1"><span class="register">IY</span>=<a href="CFD2.html">George_State</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="dee6"></span>DEE6</td>
+<td class="instruction">CALL <a href="DF1F.html">SetMonsterStates</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DF1F.html">SetMonsterStates</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="dee9"></span>DEE9</td>
+<td class="instruction">LD (IY+$03),$01</td>
+<td class="comment-1" rowspan="1">Write 01 to *<span class="register">IY</span>+03.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="deed"></span>DEED</td>
+<td class="instruction">LD (IY+$09),$15</td>
+<td class="comment-1" rowspan="1">Write 15 to *<span class="register">IY</span>+09.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="def1"></span>DEF1</td>
+<td class="instruction">LD IY,$D001</td>
+<td class="comment-1" rowspan="1"><span class="register">IY</span>=<a href="D001.html">Lizzy_State</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="def5"></span>DEF5</td>
+<td class="instruction">CALL <a href="DF1F.html">SetMonsterStates</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DF1F.html">SetMonsterStates</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="def8"></span>DEF8</td>
+<td class="instruction">LD (IY+$09),$FD</td>
+<td class="comment-1" rowspan="1">Write FD to *<span class="register">IY</span>+09.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="defc"></span>DEFC</td>
+<td class="instruction">LD IY,$D030</td>
+<td class="comment-1" rowspan="1"><span class="register">IY</span>=<a href="D030.html">Ralph_State</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="df00"></span>DF00</td>
+<td class="instruction">CALL <a href="DF1F.html">SetMonsterStates</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DF1F.html">SetMonsterStates</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="df03"></span>DF03</td>
+<td class="instruction">LD (IY+$09),$08</td>
+<td class="comment-1" rowspan="1">Write 08 to *<span class="register">IY</span>+09.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="df07"></span>DF07</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="2">Write 01 to *<a href="DF44.html">DF44</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="df09"></span>DF09</td>
+<td class="instruction">LD ($DF44),A</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="df0c"></span>
+<div class="comments">
+<div class="paragraph">
+Set all monster scores to "000000".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="df0c"></span>DF0C</td>
+<td class="instruction">LD HL,$D066</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D05F.html#d066">Messaging_GeorgeScore</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="df0f"></span>DF0F</td>
+<td class="instruction">CALL <a href="DF39.html">ResetScore</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DF39.html">ResetScore</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="df12"></span>DF12</td>
+<td class="instruction">LD HL,$D074</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D06D.html#d074">Messaging_LizzyScore</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="df15"></span>DF15</td>
+<td class="instruction">CALL <a href="DF39.html">ResetScore</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DF39.html">ResetScore</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="df18"></span>DF18</td>
+<td class="instruction">LD HL,$D082</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D07B.html#d082">Messaging_RalphScore</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="df1b"></span>DF1B</td>
+<td class="instruction">CALL <a href="DF39.html">ResetScore</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DF39.html">ResetScore</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="df1e"></span>DF1E</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="DEC6.html">DEC6</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#dee1">Map</a></td>
+<td class="next">
+Next: <a href="DF1F.html">DF1F</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/DEE1.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

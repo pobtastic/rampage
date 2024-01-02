@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at DA3D</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="DA28.html">DA28</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#da3d">Map</a></td>
+<td class="next">
+Next: <a href="DBE5.html">DBE5</a>
+</td>
+</tr>
+</table>
+<div class="description">DA3D: Routine at DA3D</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="F2CA.html">Handler_Energy</a> and <a href="F450.html">F450</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="da3d"></span>DA3D</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da3e"></span>DA3E</td>
+<td class="instruction">ADD A,A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da3f"></span>DA3F</td>
+<td class="instruction">ADD A,D</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da40"></span>DA40</td>
+<td class="instruction">ADD A,B</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da41"></span>DA41</td>
+<td class="instruction">ADD A,$5F</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da43"></span>DA43</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da44"></span>DA44</td>
+<td class="instruction">LD A,E</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da45"></span>DA45</td>
+<td class="instruction">LD E,C</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da46"></span>DA46</td>
+<td class="instruction">LD (DE),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da47"></span>DA47</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da48"></span>DA48</td>
+<td class="instruction">LD A,$68</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da4a"></span>DA4A</td>
+<td class="instruction">ADD A,B</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da4b"></span>DA4B</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da4c"></span>DA4C</td>
+<td class="instruction">LD A,$FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da4e"></span>DA4E</td>
+<td class="instruction">LD (DE),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da4f"></span>DA4F</td>
+<td class="instruction">POP DE</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da50"></span>DA50</td>
+<td class="instruction">RET</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="da51"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="E576.html">E576</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="da51"></span>DA51</td>
+<td class="instruction">LD A,($D24D)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da54"></span>DA54</td>
+<td class="instruction">INC A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da55"></span>DA55</td>
+<td class="instruction">LD ($D24D),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da58"></span>DA58</td>
+<td class="instruction">RET</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="da59"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="E576.html">E576</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="da59"></span>DA59</td>
+<td class="instruction">LD A,($D24E)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da5c"></span>DA5C</td>
+<td class="instruction">INC A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da5d"></span>DA5D</td>
+<td class="instruction">LD ($D24E),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da60"></span>DA60</td>
+<td class="instruction">RET</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="da61"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="E576.html">E576</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="da61"></span>DA61</td>
+<td class="instruction">LD A,($D24D)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da64"></span>DA64</td>
+<td class="instruction">DEC A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da65"></span>DA65</td>
+<td class="instruction">LD ($D24D),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da68"></span>DA68</td>
+<td class="instruction">RET</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="da69"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="E576.html">E576</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="da69"></span>DA69</td>
+<td class="instruction">LD A,($D24E)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da6c"></span>DA6C</td>
+<td class="instruction">DEC A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da6d"></span>DA6D</td>
+<td class="instruction">LD ($D24E),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da70"></span>DA70</td>
+<td class="instruction">RET</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="da71"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="DF90.html">DF90</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="da71"></span>DA71</td>
+<td class="instruction">LD ($D213),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da74"></span>DA74</td>
+<td class="instruction">LD (IX+$00),$01</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da78"></span>DA78</td>
+<td class="instruction">LD (IX+$07),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da7b"></span>DA7B</td>
+<td class="instruction">LD (IX+$08),D</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da7e"></span>DA7E</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da7f"></span>DA7F</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da80"></span>DA80</td>
+<td class="instruction">LD E,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da82"></span>DA82</td>
+<td class="instruction">CALL <a href="DA3D.html#da3d">$DA3D</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da85"></span>DA85</td>
+<td class="instruction">LD (IX+$03),E</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da88"></span>DA88</td>
+<td class="instruction">LD (IX+$04),D</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da8b"></span>DA8B</td>
+<td class="instruction">POP DE</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da8c"></span>DA8C</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da8d"></span>DA8D</td>
+<td class="instruction">AND $1F</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da8f"></span>DA8F</td>
+<td class="instruction">LD (IX+$01),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da92"></span>DA92</td>
+<td class="instruction">LD HL,$CB29</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="da95"></span>DA95</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da96"></span>DA96</td>
+<td class="instruction">INC HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da97"></span>DA97</td>
+<td class="instruction">CP $FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da99"></span>DA99</td>
+<td class="instruction">JR NZ,<a href="DA3D.html#da95">$DA95</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da9b"></span>DA9B</td>
+<td class="instruction">DEC E</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da9c"></span>DA9C</td>
+<td class="instruction">JR NZ,<a href="DA3D.html#da95">$DA95</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="da9e"></span>DA9E</td>
+<td class="instruction">LD ($DB52),HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="daa1"></span>DAA1</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="daa2"></span>DAA2</td>
+<td class="instruction">AND $C0</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="daa4"></span>DAA4</td>
+<td class="instruction">RLCA</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="daa5"></span>DAA5</td>
+<td class="instruction">RLCA</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="daa6"></span>DAA6</td>
+<td class="instruction">CP $00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="daa8"></span>DAA8</td>
+<td class="instruction">JR NZ,<a href="DA3D.html#dab1">$DAB1</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="daaa"></span>DAAA</td>
+<td class="instruction">LD HL,$C99E</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="daad"></span>DAAD</td>
+<td class="instruction">LD E,$06</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="daaf"></span>DAAF</td>
+<td class="instruction">JR <a href="DA3D.html#dac1">$DAC1</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="dab1"></span>DAB1</td>
+<td class="instruction">CP $01</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dab3"></span>DAB3</td>
+<td class="instruction">JR NZ,<a href="DA3D.html#dabc">$DABC</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dab5"></span>DAB5</td>
+<td class="instruction">LD HL,$C9F9</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dab8"></span>DAB8</td>
+<td class="instruction">LD E,$07</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="daba"></span>DABA</td>
+<td class="instruction">JR <a href="DA3D.html#dac1">$DAC1</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="dabc"></span>DABC</td>
+<td class="instruction">LD HL,$CA57</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dabf"></span>DABF</td>
+<td class="instruction">LD E,$08</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="dac1"></span>DAC1</td>
+<td class="instruction">LD A,(IX+$01)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dac4"></span>DAC4</td>
+<td class="instruction">ADD A,E</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dac5"></span>DAC5</td>
+<td class="instruction">DEC A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dac6"></span>DAC6</td>
+<td class="instruction">LD (IX+$02),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dac9"></span>DAC9</td>
+<td class="instruction">LD (IX+$06),E</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dacc"></span>DACC</td>
+<td class="instruction">DEC E</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dacd"></span>DACD</td>
+<td class="instruction">DEC E</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="dace"></span>DACE</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dacf"></span>DACF</td>
+<td class="instruction">LD HL,($DB52)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dad2"></span>DAD2</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dad3"></span>DAD3</td>
+<td class="instruction">CP $FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dad5"></span>DAD5</td>
+<td class="instruction">JP Z,<a href="DA3D.html#db2b">$DB2B</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dad8"></span>DAD8</td>
+<td class="instruction">POP HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dad9"></span>DAD9</td>
+<td class="instruction">INC (IX+$05)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dadc"></span>DADC</td>
+<td class="instruction">AND $3F</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dade"></span>DADE</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dadf"></span>DADF</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dae0"></span>DAE0</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dae1"></span>DAE1</td>
+<td class="instruction">LD D,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="dae3"></span>DAE3</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dae4"></span>DAE4</td>
+<td class="instruction">DEC A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dae5"></span>DAE5</td>
+<td class="instruction">JR NZ,<a href="DA3D.html#dae3">$DAE3</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dae7"></span>DAE7</td>
+<td class="instruction">POP DE</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dae8"></span>DAE8</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dae9"></span>DAE9</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="daea"></span>DAEA</td>
+<td class="instruction">CP $0E</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="daec"></span>DAEC</td>
+<td class="instruction">JR NC,<a href="DA3D.html#daf7">$DAF7</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="daee"></span>DAEE</td>
+<td class="instruction">CP $09</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="daf0"></span>DAF0</td>
+<td class="instruction">JR C,<a href="DA3D.html#daf7">$DAF7</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="daf2"></span>DAF2</td>
+<td class="instruction">CALL <a href="DA3D.html#db43">$DB43</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="daf5"></span>DAF5</td>
+<td class="instruction">JR <a href="DA3D.html#dafc">$DAFC</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="daf7"></span>DAF7</td>
+<td class="instruction">LD A,$11</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="daf9"></span>DAF9</td>
+<td class="instruction">CALL <a href="DA3D.html#db43">$DB43</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="dafc"></span>DAFC</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dafd"></span>DAFD</td>
+<td class="instruction">CALL <a href="DA3D.html#db43">$DB43</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db00"></span>DB00</td>
+<td class="instruction">INC HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db01"></span>DB01</td>
+<td class="instruction">DEC E</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db02"></span>DB02</td>
+<td class="instruction">JR NZ,<a href="DA3D.html#dafc">$DAFC</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db04"></span>DB04</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db05"></span>DB05</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db06"></span>DB06</td>
+<td class="instruction">CP $0E</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db08"></span>DB08</td>
+<td class="instruction">JR NC,<a href="DA3D.html#db13">$DB13</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db0a"></span>DB0A</td>
+<td class="instruction">CP $09</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db0c"></span>DB0C</td>
+<td class="instruction">JR C,<a href="DA3D.html#db13">$DB13</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db0e"></span>DB0E</td>
+<td class="instruction">CALL <a href="DA3D.html#db43">$DB43</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db11"></span>DB11</td>
+<td class="instruction">JR <a href="DA3D.html#db18">$DB18</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="db13"></span>DB13</td>
+<td class="instruction">LD A,$14</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db15"></span>DB15</td>
+<td class="instruction">CALL <a href="DA3D.html#db43">$DB43</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="db18"></span>DB18</td>
+<td class="instruction">POP BC</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db19"></span>DB19</td>
+<td class="instruction">LD HL,$0020</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db1c"></span>DB1C</td>
+<td class="instruction">ADD HL,BC</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db1d"></span>DB1D</td>
+<td class="instruction">LD B,H</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db1e"></span>DB1E</td>
+<td class="instruction">LD C,L</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db1f"></span>DB1F</td>
+<td class="instruction">POP DE</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db20"></span>DB20</td>
+<td class="instruction">LD HL,($DB52)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db23"></span>DB23</td>
+<td class="instruction">INC HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db24"></span>DB24</td>
+<td class="instruction">LD ($DB52),HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db27"></span>DB27</td>
+<td class="instruction">POP HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db28"></span>DB28</td>
+<td class="instruction">JP <a href="DA3D.html#dace">$DACE</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="db2b"></span>DB2B</td>
+<td class="instruction">POP HL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db2c"></span>DB2C</td>
+<td class="instruction">LD A,(IX+$05)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db2f"></span>DB2F</td>
+<td class="instruction">INC A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db30"></span>DB30</td>
+<td class="instruction">LD (IX+$0A),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db33"></span>DB33</td>
+<td class="instruction">LD (IX+$0B),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db36"></span>DB36</td>
+<td class="instruction">ADD A,A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db37"></span>DB37</td>
+<td class="instruction">ADD A,A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db38"></span>DB38</td>
+<td class="instruction">ADD A,$0A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db3a"></span>DB3A</td>
+<td class="instruction">LD (IX+$0C),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db3d"></span>DB3D</td>
+<td class="instruction">LD A,$02</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db3f"></span>DB3F</td>
+<td class="instruction">LD (IX+$0D),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db42"></span>DB42</td>
+<td class="instruction">RET</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="db43"></span>DB43</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db44"></span>DB44</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db45"></span>DB45</td>
+<td class="instruction">LD A,($D213)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db48"></span>DB48</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db49"></span>DB49</td>
+<td class="instruction">CALL <a href="DA3D.html#da3d">$DA3D</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db4c"></span>DB4C</td>
+<td class="instruction">INC (IX+$09)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db4f"></span>DB4F</td>
+<td class="instruction">INC BC</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db50"></span>DB50</td>
+<td class="instruction">POP DE</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db51"></span>DB51</td>
+<td class="instruction">RET</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db52"></span>DB52</td>
+<td class="instruction">NOP</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db53"></span>DB53</td>
+<td class="instruction">NOP</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="db54"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routines at <a href="E576.html">E576</a> and <a href="EF86.html">EF86</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="db54"></span>DB54</td>
+<td class="instruction">LD IX,($D253)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db58"></span>DB58</td>
+<td class="instruction">LD A,($D24D)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db5b"></span>DB5B</td>
+<td class="instruction">LD (IX+$01),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db5e"></span>DB5E</td>
+<td class="instruction">LD (IX+$02),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db61"></span>DB61</td>
+<td class="instruction">LD (IX+$0D),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db64"></span>DB64</td>
+<td class="instruction">LD (IX+$17),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db67"></span>DB67</td>
+<td class="instruction">LD A,($D24E)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db6a"></span>DB6A</td>
+<td class="instruction">LD (IX+$03),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db6d"></span>DB6D</td>
+<td class="instruction">LD (IX+$0B),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db70"></span>DB70</td>
+<td class="instruction">LD (IX+$0C),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db73"></span>DB73</td>
+<td class="instruction">LD (IX+$15),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db76"></span>DB76</td>
+<td class="instruction">LD (IX+$16),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db79"></span>DB79</td>
+<td class="instruction">LD DE,($D253)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db7d"></span>DB7D</td>
+<td class="instruction">RET</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="db7e"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="E25D.html">E25D</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="db7e"></span>DB7E</td>
+<td class="instruction">XOR A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db7f"></span>DB7F</td>
+<td class="instruction">LD ($D214),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db82"></span>DB82</td>
+<td class="instruction">CALL <a href="DA28.html">$DA28</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db85"></span>DB85</td>
+<td class="instruction">AND $03</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="db87"></span>DB87</td>
+<td class="instruction">CALL <a href="DA3D.html#dbb4">$DBB4</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="db8a"></span>DB8A</td>
+<td class="instruction">CP $C8</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db8c"></span>DB8C</td>
+<td class="instruction">JR C,<a href="DA3D.html#db96">$DB96</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db8e"></span>DB8E</td>
+<td class="instruction">LD A,$80</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db90"></span>DB90</td>
+<td class="instruction">LD ($D214),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db93"></span>DB93</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db94"></span>DB94</td>
+<td class="instruction">JR <a href="DA3D.html#db87">$DB87</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="db96"></span>DB96</td>
+<td class="instruction">LD A,($D214)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db99"></span>DB99</td>
+<td class="instruction">OR B</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db9a"></span>DB9A</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db9b"></span>DB9B</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db9c"></span>DB9C</td>
+<td class="instruction">INC A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db9d"></span>DB9D</td>
+<td class="instruction">INC A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db9e"></span>DB9E</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="db9f"></span>DB9F</td>
+<td class="instruction">CP $64</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dba1"></span>DBA1</td>
+<td class="instruction">JR C,<a href="DA3D.html#dba5">$DBA5</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dba3"></span>DBA3</td>
+<td class="instruction">LD B,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="dba5"></span>DBA5</td>
+<td class="instruction">INC DE</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dba6"></span>DBA6</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dba7"></span>DBA7</td>
+<td class="instruction">INC A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dba8"></span>DBA8</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dba9"></span>DBA9</td>
+<td class="instruction">CP $64</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dbab"></span>DBAB</td>
+<td class="instruction">JR C,<a href="DA3D.html#dbaf">$DBAF</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dbad"></span>DBAD</td>
+<td class="instruction">LD C,$00</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="dbaf"></span>DBAF</td>
+<td class="instruction">XOR A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dbb0"></span>DBB0</td>
+<td class="instruction">LD ($D214),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dbb3"></span>DBB3</td>
+<td class="instruction">RET</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="dbb4"></span>DBB4</td>
+<td class="instruction">INC A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dbb5"></span>DBB5</td>
+<td class="instruction">CP $04</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dbb7"></span>DBB7</td>
+<td class="instruction">JR NZ,<a href="DA3D.html#dbbb">$DBBB</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dbb9"></span>DBB9</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="dbbb"></span>DBBB</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dbbc"></span>DBBC</td>
+<td class="instruction">CP $01</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dbbe"></span>DBBE</td>
+<td class="instruction">JR NZ,<a href="DA3D.html#dbc7">$DBC7</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dbc0"></span>DBC0</td>
+<td class="instruction">LD A,($CFD2)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dbc3"></span>DBC3</td>
+<td class="instruction">LD DE,$CFDB</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dbc6"></span>DBC6</td>
+<td class="instruction">RET</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="dbc7"></span>DBC7</td>
+<td class="instruction">CP $02</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dbc9"></span>DBC9</td>
+<td class="instruction">JR NZ,<a href="DA3D.html#dbd2">$DBD2</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dbcb"></span>DBCB</td>
+<td class="instruction">LD A,($D001)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dbce"></span>DBCE</td>
+<td class="instruction">LD DE,$D00A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dbd1"></span>DBD1</td>
+<td class="instruction">RET</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="dbd2"></span>DBD2</td>
+<td class="instruction">LD A,($D030)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dbd5"></span>DBD5</td>
+<td class="instruction">LD DE,$D039</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dbd8"></span>DBD8</td>
+<td class="instruction">RET</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="dbd9"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="E25D.html">E25D</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="dbd9"></span>DBD9</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dbda"></span>DBDA</td>
+<td class="instruction">XOR A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dbdb"></span>DBDB</td>
+<td class="instruction">LD ($D214),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dbde"></span>DBDE</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dbdf"></span>DBDF</td>
+<td class="instruction">CALL <a href="DA3D.html#dbbb">$DBBB</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="dbe2"></span>DBE2</td>
+<td class="instruction">JP <a href="DA3D.html#db8a">$DB8A</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="DA28.html">DA28</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#da3d">Map</a></td>
+<td class="next">
+Next: <a href="DBE5.html">DBE5</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/DA3D.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

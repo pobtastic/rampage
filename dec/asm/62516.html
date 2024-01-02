@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at 62516</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="62447.html">62447</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#62516">Map</a></td>
+<td class="next">
+Next: <a href="62544.html">62544</a>
+</td>
+</tr>
+</table>
+<div class="description">62516: Routine at F434</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="56951.html">56951</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="62516"></span>62516</td>
+<td class="instruction">LD HL,53816</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="53816.html">53816</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="62519"></span>62519</td>
+<td class="instruction">LD A,3</td>
+<td class="comment-1" rowspan="2">Write 3 to *<a href="57156.html#57157">57157</a>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="62521"></span>62521</td>
+<td class="instruction">LD (57157),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="62524"></span>62524</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="2">Stash <span class="register">AF</span> and <span class="register">HL</span> on the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="62525"></span>62525</td>
+<td class="instruction">PUSH HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="62526"></span>62526</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="3">If *<span class="register">HL</span> is not at the terminator jump to <a href="62544.html">62544</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="62527"></span>62527</td>
+<td class="instruction">CP 255</td>
+</tr>
+<tr>
+<td class="address-1"><span id="62529"></span>62529</td>
+<td class="instruction">CALL NZ,<a href="62544.html">62544</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="62532"></span>62532</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="2">Restore <span class="register">HL</span> and <span class="register">AF</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="62533"></span>62533</td>
+<td class="instruction">POP AF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="62534"></span>62534</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-1" rowspan="6">Decrease <span class="register">HL</span> by six.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="62535"></span>62535</td>
+<td class="instruction">DEC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="62536"></span>62536</td>
+<td class="instruction">DEC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="62537"></span>62537</td>
+<td class="instruction">DEC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="62538"></span>62538</td>
+<td class="instruction">DEC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="62539"></span>62539</td>
+<td class="instruction">DEC HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="62540"></span>62540</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="62541"></span>62541</td>
+<td class="instruction">JR NZ,<a href="62516.html#62521">62521</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="62516.html#62521">62521</a> until <span class="register">A</span> is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="62543"></span>62543</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="62447.html">62447</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#62516">Map</a></td>
+<td class="next">
+Next: <a href="62544.html">62544</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/62516.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

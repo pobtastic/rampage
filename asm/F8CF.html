@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at F8CF</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="F8BE.html">F8BE</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#f8cf">Map</a></td>
+<td class="next">
+Next: <a href="F916.html">F916</a>
+</td>
+</tr>
+</table>
+<div class="description">F8CF: Routine at F8CF</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="DE19.html">DE19</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="f8cf"></span>F8CF</td>
+<td class="instruction">LD A,$FE</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f8d1"></span>F8D1</td>
+<td class="instruction">CALL <a href="F8CF.html#f910">$F910</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f8d4"></span>F8D4</td>
+<td class="instruction">CP $01</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f8d6"></span>F8D6</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f8d7"></span>F8D7</td>
+<td class="instruction">CALL <a href="F8CF.html#f90e">$F90E</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f8da"></span>F8DA</td>
+<td class="instruction">CP $04</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f8dc"></span>F8DC</td>
+<td class="instruction">JR Z,<a href="F8CF.html#f8f3">$F8F3</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f8de"></span>F8DE</td>
+<td class="instruction">CP $01</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f8e0"></span>F8E0</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="f8e1"></span>F8E1</td>
+<td class="instruction">LD A,$FE</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f8e3"></span>F8E3</td>
+<td class="instruction">CALL <a href="F8CF.html#f910">$F910</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f8e6"></span>F8E6</td>
+<td class="instruction">CP $01</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f8e8"></span>F8E8</td>
+<td class="instruction">LD B,$06</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f8ea"></span>F8EA</td>
+<td class="instruction">JR NZ,<a href="F8CF.html#f902">$F902</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f8ec"></span>F8EC</td>
+<td class="instruction">CALL <a href="F8CF.html#f90e">$F90E</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f8ef"></span>F8EF</td>
+<td class="instruction">CP $04</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f8f1"></span>F8F1</td>
+<td class="instruction">JR NZ,<a href="F8CF.html#f8fc">$F8FC</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="f8f3"></span>F8F3</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f8f5"></span>F8F5</td>
+<td class="instruction">LD ($D3FD),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="f8f8"></span>F8F8</td>
+<td class="instruction">XOR A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f8f9"></span>F8F9</td>
+<td class="instruction">OUT ($FE),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f8fb"></span>F8FB</td>
+<td class="instruction">RET</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="f8fc"></span>F8FC</td>
+<td class="instruction">CP $02</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f8fe"></span>F8FE</td>
+<td class="instruction">JR Z,<a href="F8CF.html#f8f8">$F8F8</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f900"></span>F900</td>
+<td class="instruction">LD B,$06</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="f902"></span>F902</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f903"></span>F903</td>
+<td class="instruction">OUT ($FE),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f905"></span>F905</td>
+<td class="instruction">OUT ($FE),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f907"></span>F907</td>
+<td class="instruction">DJNZ <a href="F8CF.html#f902">$F902</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f909"></span>F909</td>
+<td class="instruction">CALL <a href="F8CF.html#f90e">$F90E</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f90c"></span>F90C</td>
+<td class="instruction">JR <a href="F8CF.html#f8e1">$F8E1</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="f90e"></span>F90E</td>
+<td class="instruction">LD A,$F7</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="f910"></span>F910</td>
+<td class="instruction">IN A,($FE)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f912"></span>F912</td>
+<td class="instruction">CPL</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f913"></span>F913</td>
+<td class="instruction">AND $0F</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f915"></span>F915</td>
+<td class="instruction">RET</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="F8BE.html">F8BE</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#f8cf">Map</a></td>
+<td class="next">
+Next: <a href="F916.html">F916</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/F8CF.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

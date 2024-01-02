@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at 55848</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="55286.html">55286</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#55848">Map</a></td>
+<td class="next">
+Next: <a href="55869.html">55869</a>
+</td>
+</tr>
+</table>
+<div class="description">55848: Routine at DA28</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="55869.html">55869</a>, <a href="56293.html">56293</a>, <a href="56481.html">56481</a>, <a href="57625.html">57625</a>, <a href="57949.html">57949</a>, <a href="58742.html">58742</a>, <a href="62091.html">62091</a>, <a href="62544.html">62544</a>, <a href="64569.html">64569</a>, <a href="64694.html">64694</a>, <a href="64868.html">64868</a>, <a href="64926.html">Handler_DisplayTickerNews</a> and <a href="64964.html">Sounds_Telecast</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="55848"></span>55848</td>
+<td class="instruction">LD DE,(53786)</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=*<a href="53786.html">53786</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55852"></span>55852</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55853"></span>55853</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="3">If <span class="register">D</span> is 40 then jump to <a href="55848.html#55864">55864</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55854"></span>55854</td>
+<td class="instruction">CP 40</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55856"></span>55856</td>
+<td class="instruction">JR Z,<a href="55848.html#55864">55864</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="55858"></span>55858</td>
+<td class="instruction">LD (53786),DE</td>
+<td class="comment-1" rowspan="1">Write <span class="register">DE</span> back to *<a href="53786.html">53786</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55862"></span>55862</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55863"></span>55863</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="55864"></span>55864</td>
+<td class="instruction">LD D,0</td>
+<td class="comment-1" rowspan="1"><span class="register">D</span>=0.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55866"></span>55866</td>
+<td class="instruction">JP <a href="55848.html#55858">55858</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="55848.html#55858">55858</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="55286.html">55286</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#55848">Map</a></td>
+<td class="next">
+Next: <a href="55869.html">55869</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/55848.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

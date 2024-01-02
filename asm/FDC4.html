@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at FDC4</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="FD9E.html">FD9E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#fdc4">Map</a></td>
+<td class="next">
+Next: <a href="FDDE.html">FDDE</a>
+</td>
+</tr>
+</table>
+<div class="description">FDC4: Sounds: Annoying Telecast Beeping</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="FD64.html">FD64</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Sounds_Telecast</td>
+<td class="address-2"><span id="fdc4"></span>FDC4</td>
+<td class="instruction">LD B,$0A</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=0A (counter).</td>
+</tr>
+<tr>
+<td class="asm-label">Sounds_Telecast_Loop</td>
+<td class="address-2"><span id="fdc6"></span>FDC6</td>
+<td class="instruction">CALL <a href="DA28.html">$DA28</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DA28.html">DA28</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fdc9"></span>FDC9</td>
+<td class="instruction">AND %00000001</td>
+<td class="comment-1" rowspan="1">Keep only bit 0.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fdcb"></span>FDCB</td>
+<td class="instruction">LD A,$07</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=07.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fdcd"></span>FDCD</td>
+<td class="instruction">JR Z,<a href="FDC4.html#fdd1">Sounds_Telecast_0</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fdcf"></span>FDCF</td>
+<td class="instruction">LD A,$03</td>
+<td class="comment-1" rowspan="2">Write 03 to <a href="FF00.html#ff8d">FF8D</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Sounds_Telecast_0</td>
+<td class="address-2"><span id="fdd1"></span>FDD1</td>
+<td class="instruction">LD ($FF8D),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fdd4"></span>FDD4</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">BC</span> on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fdd5"></span>FDD5</td>
+<td class="instruction">CALL <a href="FF00.html">$FF00</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FF00.html">FF00</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fdd8"></span>FDD8</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fdd9"></span>FDD9</td>
+<td class="instruction">HALT</td>
+<td class="comment-1" rowspan="2">CPU halt (twice).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fdda"></span>FDDA</td>
+<td class="instruction">HALT</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fddb"></span>FDDB</td>
+<td class="instruction">DJNZ <a href="FDC4.html#fdc6">Sounds_Telecast_Loop</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="FDC4.html#fdc6">Sounds_Telecast_Loop</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fddd"></span>FDDD</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="FD9E.html">FD9E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#fdc4">Map</a></td>
+<td class="next">
+Next: <a href="FDDE.html">FDDE</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/FDC4.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

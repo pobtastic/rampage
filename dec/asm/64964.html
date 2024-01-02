@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at 64964</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="64926.html">64926</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#64964">Map</a></td>
+<td class="next">
+Next: <a href="64990.html">64990</a>
+</td>
+</tr>
+</table>
+<div class="description">64964: Sounds: Annoying Telecast Beeping</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="64868.html">64868</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Sounds_Telecast</td>
+<td class="address-2"><span id="64964"></span>64964</td>
+<td class="instruction">LD B,10</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=10 (counter).</td>
+</tr>
+<tr>
+<td class="asm-label">Sounds_Telecast_Loop</td>
+<td class="address-2"><span id="64966"></span>64966</td>
+<td class="instruction">CALL <a href="55848.html">55848</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55848.html">55848</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64969"></span>64969</td>
+<td class="instruction">AND %00000001</td>
+<td class="comment-1" rowspan="1">Keep only bit 0.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64971"></span>64971</td>
+<td class="instruction">LD A,7</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=7.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64973"></span>64973</td>
+<td class="instruction">JR Z,<a href="64964.html#64977">Sounds_Telecast_0</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64975"></span>64975</td>
+<td class="instruction">LD A,3</td>
+<td class="comment-1" rowspan="2">Write 3 to <a href="65280.html#65421">65421</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Sounds_Telecast_0</td>
+<td class="address-2"><span id="64977"></span>64977</td>
+<td class="instruction">LD (65421),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64980"></span>64980</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">BC</span> on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64981"></span>64981</td>
+<td class="instruction">CALL <a href="65280.html">65280</a></td>
+<td class="comment-1" rowspan="1">Call <a href="65280.html">65280</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64984"></span>64984</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64985"></span>64985</td>
+<td class="instruction">HALT</td>
+<td class="comment-1" rowspan="2">CPU halt (twice).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64986"></span>64986</td>
+<td class="instruction">HALT</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64987"></span>64987</td>
+<td class="instruction">DJNZ <a href="64964.html#64966">Sounds_Telecast_Loop</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="64964.html#64966">Sounds_Telecast_Loop</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64989"></span>64989</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="64926.html">64926</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#64964">Map</a></td>
+<td class="next">
+Next: <a href="64990.html">64990</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/64964.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

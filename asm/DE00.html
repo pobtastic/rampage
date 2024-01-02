@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at DE00</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="DD89.html">DD89</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#de00">Map</a></td>
+<td class="next">
+Next: <a href="DE19.html">DE19</a>
+</td>
+</tr>
+</table>
+<div class="description">DE00: Game Entry Point</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+<img alt="splash-screen" src="../images/scr/splash-screen.png" />
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">GameEntryPoint</td>
+<td class="address-2"><span id="de00"></span>DE00</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Write 00 to <a href="https://skoolkid.github.io/rom/asm/5C48.html">BORDCR</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de01"></span>DE01</td>
+<td class="instruction">LD ($5C48),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de04"></span>DE04</td>
+<td class="instruction">OUT ($FE),A</td>
+<td class="comment-1" rowspan="1">Set the border colour to BLACK.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de06"></span>DE06</td>
+<td class="instruction">LD HL,$6B00</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="6B00.html">ShadowScreenBuffer</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de09"></span>DE09</td>
+<td class="instruction">LD DE,$4000</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="4000.html">4000</a> (screen buffer).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de0c"></span>DE0C</td>
+<td class="instruction">LD BC,$1B00</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=1B00.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de0f"></span>DE0F</td>
+<td class="instruction">LDIR</td>
+<td class="comment-1" rowspan="1">Copy the splash screen to the screen buffer.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="de11"></span>
+<div class="comments">
+<div class="paragraph">
+Show this for an extended period of time.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de11"></span>DE11</td>
+<td class="instruction">LD A,$0A</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=0A.</td>
+</tr>
+<tr>
+<td class="asm-label">GameEntryPoint_PauseLoop</td>
+<td class="address-2"><span id="de13"></span>DE13</td>
+<td class="instruction">CALL <a href="FBEC.html">ShortPause</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FBEC.html">ShortPause</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de16"></span>DE16</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de17"></span>DE17</td>
+<td class="instruction">JR NZ,<a href="DE00.html#de13">GameEntryPoint_PauseLoop</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="DE00.html#de13">GameEntryPoint_PauseLoop</a> until <span class="register">A</span> is zero.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="comments">
+<div class="paragraph">
+Continue on to <a href="DE19.html">DE19</a>.
+</div>
+</div>
+</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="DD89.html">DD89</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#de00">Map</a></td>
+<td class="next">
+Next: <a href="DE19.html">DE19</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/DE00.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at 64926</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="64902.html">64902</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#64926">Map</a></td>
+<td class="next">
+Next: <a href="64964.html">64964</a>
+</td>
+</tr>
+</table>
+<div class="description">64926: Handler: Display Ticker News</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="64868.html">64868</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_DisplayTickerNews</td>
+<td class="address-2"><span id="64926"></span>64926</td>
+<td class="instruction">CALL <a href="55848.html">55848</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55848.html">55848</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64929"></span>64929</td>
+<td class="instruction">AND %00000111</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-2.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64931"></span>64931</td>
+<td class="instruction">ADD A,A</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>*=2.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64932"></span>64932</td>
+<td class="instruction">LD H,0</td>
+<td class="comment-1" rowspan="2">Create an offset in <span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64934"></span>64934</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64935"></span>64935</td>
+<td class="instruction">LD DE,65231</td>
+<td class="comment-1" rowspan="2"><span class="register">HL</span>+=<a href="65231.html">Table_TickerNews</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64938"></span>64938</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64939"></span>64939</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="4">Grab the ticker news messaging address.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64940"></span>64940</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64941"></span>64941</td>
+<td class="instruction">LD H,(HL)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64942"></span>64942</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="64943"></span>
+<div class="comments">
+<div class="paragraph">
+Print the three lines of the ticker news data to the screen.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64943"></span>64943</td>
+<td class="instruction">LD BC,4615</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=4615 (screen co-ordinates).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64946"></span>64946</td>
+<td class="instruction">CALL <a href="64347.html">PrintString</a></td>
+<td class="comment-1" rowspan="1">Call <a href="64347.html">PrintString</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64949"></span>64949</td>
+<td class="instruction">LD BC,5127</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=5127 (screen co-ordinates).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64952"></span>64952</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Move onto the start of the next message.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64953"></span>64953</td>
+<td class="instruction">CALL <a href="64347.html">PrintString</a></td>
+<td class="comment-1" rowspan="1">Call <a href="64347.html">PrintString</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64956"></span>64956</td>
+<td class="instruction">LD BC,5639</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=5639 (screen co-ordinates).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64959"></span>64959</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Move onto the start of the next message.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64960"></span>64960</td>
+<td class="instruction">CALL <a href="64347.html">PrintString</a></td>
+<td class="comment-1" rowspan="1">Call <a href="64347.html">PrintString</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64963"></span>64963</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="64902.html">64902</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#64926">Map</a></td>
+<td class="next">
+Next: <a href="64964.html">64964</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/64926.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

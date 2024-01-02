@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at F981</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="F916.html">F916</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#f981">Map</a></td>
+<td class="next">
+Next: <a href="F9BF.html">F9BF</a>
+</td>
+</tr>
+</table>
+<div class="description">F981: Routine at F981</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="F916.html">F916</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="f981"></span>F981</td>
+<td class="instruction">LD HL,$D089</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D089.html">Messaging_Credits</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="f984"></span>F984</td>
+<td class="instruction">LD BC,$0F00</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="f987"></span>F987</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f988"></span>F988</td>
+<td class="instruction">CALL <a href="FB5B.html">PrintString</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f98b"></span>F98B</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f98c"></span>F98C</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f98d"></span>F98D</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f98e"></span>F98E</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f98f"></span>F98F</td>
+<td class="instruction">CP $17</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f991"></span>F991</td>
+<td class="instruction">JR NZ,<a href="F981.html#f987">$F987</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f993"></span>F993</td>
+<td class="instruction">LD HL,$D110</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D110.html">Messaging_SelectMenu</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="f996"></span>F996</td>
+<td class="instruction">LD BC,$0501</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f999"></span>F999</td>
+<td class="instruction">CALL <a href="FB5B.html">PrintString</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f99c"></span>F99C</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f99d"></span>F99D</td>
+<td class="instruction">LD BC,$0605</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f9a0"></span>F9A0</td>
+<td class="instruction">CALL <a href="FB5B.html">PrintString</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f9a3"></span>F9A3</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f9a4"></span>F9A4</td>
+<td class="instruction">LD BC,$0901</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f9a7"></span>F9A7</td>
+<td class="instruction">CALL <a href="FB5B.html">PrintString</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f9aa"></span>F9AA</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f9ab"></span>F9AB</td>
+<td class="instruction">LD BC,$0A05</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f9ae"></span>F9AE</td>
+<td class="instruction">CALL <a href="FB5B.html">PrintString</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f9b1"></span>F9B1</td>
+<td class="instruction">LD BC,$0B05</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f9b4"></span>F9B4</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f9b5"></span>F9B5</td>
+<td class="instruction">CALL <a href="FB5B.html">PrintString</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f9b8"></span>F9B8</td>
+<td class="instruction">CALL <a href="D604.html">ScreenBuffer_Update</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f9bb"></span>F9BB</td>
+<td class="instruction">CALL <a href="D5F8.html">AttributeBuffer_Update</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="f9be"></span>F9BE</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="F916.html">F916</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#f981">Map</a></td>
+<td class="next">
+Next: <a href="F9BF.html">F9BF</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/F981.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

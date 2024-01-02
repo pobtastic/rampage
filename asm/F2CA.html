@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at F2CA</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="F28B.html">F28B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#f2ca">Map</a></td>
+<td class="next">
+Next: <a href="F31C.html">F31C</a>
+</td>
+</tr>
+</table>
+<div class="description">F2CA: Handler: Energy</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="DE77.html">DE77</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_Energy</td>
+<td class="address-2"><span id="f2ca"></span>F2CA</td>
+<td class="instruction">LD HL,$5F20</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="4000.html#5f20">5F20</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2cd"></span>F2CD</td>
+<td class="instruction">LD DE,$6820</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="6100.html#6820">6820</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2d0"></span>F2D0</td>
+<td class="instruction">LD B,$20</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=20.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2d2"></span>F2D2</td>
+<td class="instruction">LD C,$00</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=00.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2d4"></span>F2D4</td>
+<td class="instruction">LD A,$FF</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=FF.</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_Energy_0</td>
+<td class="address-2"><span id="f2d6"></span>F2D6</td>
+<td class="instruction">LD (HL),C</td>
+<td class="comment-1" rowspan="1">Write <span class="register">C</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2d7"></span>F2D7</td>
+<td class="instruction">LD (DE),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2d8"></span>F2D8</td>
+<td class="instruction">INC L</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">L</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2d9"></span>F2D9</td>
+<td class="instruction">INC E</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">E</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2da"></span>F2DA</td>
+<td class="instruction">DJNZ <a href="F2CA.html#f2d6">Handler_Energy_0</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="F2CA.html#f2d6">Handler_Energy_0</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2dc"></span>F2DC</td>
+<td class="instruction">LD C,$22</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=22.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2de"></span>F2DE</td>
+<td class="instruction">LD H,$6A</td>
+<td class="comment-1" rowspan="1"><span class="register">H</span>=6A.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2e0"></span>F2E0</td>
+<td class="instruction">LD A,($CFDE)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="CFD2.html#cfde">George_Energy</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2e3"></span>F2E3</td>
+<td class="instruction">CALL <a href="F2CA.html#f2fb">Handler_Energy_1</a></td>
+<td class="comment-1" rowspan="1">Call <a href="F2CA.html#f2fb">Handler_Energy_1</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2e6"></span>F2E6</td>
+<td class="instruction">LD C,$2C</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=2C.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2e8"></span>F2E8</td>
+<td class="instruction">LD H,$6C</td>
+<td class="comment-1" rowspan="1"><span class="register">H</span>=6C.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2ea"></span>F2EA</td>
+<td class="instruction">LD A,($D00D)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D001.html#d00d">Lizzy_Energy</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2ed"></span>F2ED</td>
+<td class="instruction">CALL <a href="F2CA.html#f2fb">Handler_Energy_1</a></td>
+<td class="comment-1" rowspan="1">Call <a href="F2CA.html#f2fb">Handler_Energy_1</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2f0"></span>F2F0</td>
+<td class="instruction">LD C,$36</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=36.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2f2"></span>F2F2</td>
+<td class="instruction">LD H,$6F</td>
+<td class="comment-1" rowspan="1"><span class="register">H</span>=6F.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2f4"></span>F2F4</td>
+<td class="instruction">LD A,($D03C)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D030.html#d03c">Ralph_Energy</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2f7"></span>F2F7</td>
+<td class="instruction">CALL <a href="F2CA.html#f2fb">Handler_Energy_1</a></td>
+<td class="comment-1" rowspan="1">Call <a href="F2CA.html#f2fb">Handler_Energy_1</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2fa"></span>F2FA</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_Energy_1</td>
+<td class="address-2"><span id="f2fb"></span>F2FB</td>
+<td class="instruction">LD B,$00</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=00.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2fd"></span>F2FD</td>
+<td class="instruction">LD D,B</td>
+<td class="comment-1" rowspan="1"><span class="register">D</span>=<span class="register">B</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2fe"></span>F2FE</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="2">Return if <span class="register">A</span> is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f2ff"></span>F2FF</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f300"></span>F300</td>
+<td class="instruction">SUB $08</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>-=08.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f302"></span>F302</td>
+<td class="instruction">JR C,<a href="F2CA.html#f30e">Handler_Energy_2</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="F2CA.html#f30e">Handler_Energy_2</a> if {} is lower.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f304"></span>F304</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f305"></span>F305</td>
+<td class="instruction">LD E,$34</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=34.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f307"></span>F307</td>
+<td class="instruction">CALL <a href="DA3D.html">$DA3D</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DA3D.html">DA3D</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f30a"></span>F30A</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f30b"></span>F30B</td>
+<td class="instruction">INC C</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f30c"></span>F30C</td>
+<td class="instruction">JR <a href="F2CA.html#f2fb">Handler_Energy_1</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="F2CA.html#f2fb">Handler_Energy_1</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_Energy_2</td>
+<td class="address-2"><span id="f30e"></span>F30E</td>
+<td class="instruction">ADD A,$08</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=08.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f310"></span>F310</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f311"></span>F311</td>
+<td class="instruction">LD A,$08</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=08.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f313"></span>F313</td>
+<td class="instruction">SUB E</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>-=<span class="register">E</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f314"></span>F314</td>
+<td class="instruction">ADD A,$35</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=35.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f316"></span>F316</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f317"></span>F317</td>
+<td class="instruction">CALL <a href="DA3D.html">$DA3D</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DA3D.html">DA3D</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f31a"></span>F31A</td>
+<td class="instruction">INC C</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f31b"></span>F31B</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="F28B.html">F28B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#f2ca">Map</a></td>
+<td class="next">
+Next: <a href="F31C.html">F31C</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/F2CA.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

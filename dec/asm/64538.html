@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at 64538</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="64498.html">64498</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#64538">Map</a></td>
+<td class="next">
+Next: <a href="64569.html">64569</a>
+</td>
+</tr>
+</table>
+<div class="description">64538: Routine at FC1A</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="56951.html">56951</a> and <a href="63766.html">63766</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="64538"></span>64538</td>
+<td class="instruction">LD A,(54270)</td>
+<td class="comment-1" rowspan="3">Return if *<a href="54266.html#54270">54270</a> is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="64541"></span>64541</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="64542"></span>64542</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="address-1"><span id="64543"></span>64543</td>
+<td class="instruction">LD BC,5382</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=5382.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="64546"></span>64546</td>
+<td class="instruction">CP 1</td>
+<td class="comment-1" rowspan="2">Jump to <a href="64538.html#64552">64552</a> if *<a href="54266.html#54270">54270</a> is 1.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="64548"></span>64548</td>
+<td class="instruction">JR Z,<a href="64538.html#64552">64552</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="64550"></span>64550</td>
+<td class="instruction">LD C,22</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=22.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="64552"></span>64552</td>
+<td class="instruction">LD A,127</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=127.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="64554"></span>64554</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">BC</span> on the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="64555"></span>64555</td>
+<td class="instruction">CALL <a href="54985.html">54985</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54985.html">54985</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="64558"></span>64558</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="64559"></span>64559</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="3"><span class="register">C</span>+=4.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="64560"></span>64560</td>
+<td class="instruction">ADD A,4</td>
+</tr>
+<tr>
+<td class="address-1"><span id="64562"></span>64562</td>
+<td class="instruction">LD C,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="64563"></span>64563</td>
+<td class="instruction">LD A,127</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=127.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="64565"></span>64565</td>
+<td class="instruction">CALL <a href="55286.html">55286</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55286.html">55286</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="64568"></span>64568</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="64498.html">64498</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#64538">Map</a></td>
+<td class="next">
+Next: <a href="64569.html">64569</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/64538.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at 56684</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="56481.html">56481</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#56684">Map</a></td>
+<td class="next">
+Next: <a href="56713.html">56713</a>
+</td>
+</tr>
+</table>
+<div class="description">56684: Routine at DD6C</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="58742.html">58742</a>, <a href="62544.html">62544</a>, <a href="63135.html">63135</a> and <a href="63381.html">63381</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56684"></span>56684</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56685"></span>56685</td>
+<td class="instruction">LD A,(IY+0)</td>
+<td class="comment-1" rowspan="3">Return if *<span class="register">IY</span>+0 is higher than 33.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56688"></span>56688</td>
+<td class="instruction">CP 33</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56690"></span>56690</td>
+<td class="instruction">RET NC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56691"></span>56691</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56692"></span>56692</td>
+<td class="instruction">DEC (IY+12)</td>
+<td class="comment-1" rowspan="1">Decrease *<span class="register">IY</span>+12 by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56695"></span>56695</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56696"></span>56696</td>
+<td class="instruction">JR NZ,<a href="56684.html#56692">56692</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="56684.html#56692">56692</a> until <span class="register">A</span> is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56698"></span>56698</td>
+<td class="instruction">LD A,(IY+12)</td>
+<td class="comment-1" rowspan="3">Return if *<span class="register">IY</span>+12 is lower than 200.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56701"></span>56701</td>
+<td class="instruction">CP 200</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56703"></span>56703</td>
+<td class="instruction">RET C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56704"></span>56704</td>
+<td class="instruction">LD (IY+12),0</td>
+<td class="comment-1" rowspan="1">Write 0 to *<span class="register">IY</span>+12.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56708"></span>56708</td>
+<td class="instruction">LD (IY+0),33</td>
+<td class="comment-1" rowspan="1">Write 33 to *<span class="register">IY</span>+0.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56712"></span>56712</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="56481.html">56481</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#56684">Map</a></td>
+<td class="next">
+Next: <a href="56713.html">56713</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/56684.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

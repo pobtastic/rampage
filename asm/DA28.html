@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at DA28</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="D7F6.html">D7F6</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#da28">Map</a></td>
+<td class="next">
+Next: <a href="DA3D.html">DA3D</a>
+</td>
+</tr>
+</table>
+<div class="description">DA28: Routine at DA28</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="DA3D.html">DA3D</a>, <a href="DBE5.html">DBE5</a>, <a href="DCA1.html">DCA1</a>, <a href="E119.html">E119</a>, <a href="E25D.html">E25D</a>, <a href="E576.html">E576</a>, <a href="F28B.html">F28B</a>, <a href="F450.html">F450</a>, <a href="FC39.html">FC39</a>, <a href="FCB6.html">FCB6</a>, <a href="FD64.html">FD64</a>, <a href="FD9E.html">Handler_DisplayTickerNews</a> and <a href="FDC4.html">Sounds_Telecast</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="da28"></span>DA28</td>
+<td class="instruction">LD DE,($D21A)</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=*<a href="D21A.html">D21A</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="da2c"></span>DA2C</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="da2d"></span>DA2D</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="3">If <span class="register">D</span> is 28 then jump to <a href="DA28.html#da38">DA38</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="da2e"></span>DA2E</td>
+<td class="instruction">CP $28</td>
+</tr>
+<tr>
+<td class="address-1"><span id="da30"></span>DA30</td>
+<td class="instruction">JR Z,<a href="DA28.html#da38">$DA38</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="da32"></span>DA32</td>
+<td class="instruction">LD ($D21A),DE</td>
+<td class="comment-1" rowspan="1">Write <span class="register">DE</span> back to *<a href="D21A.html">D21A</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="da36"></span>DA36</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="da37"></span>DA37</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="da38"></span>DA38</td>
+<td class="instruction">LD D,$00</td>
+<td class="comment-1" rowspan="1"><span class="register">D</span>=00.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="da3a"></span>DA3A</td>
+<td class="instruction">JP <a href="DA28.html#da32">$DA32</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="DA28.html#da32">DA32</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="D7F6.html">D7F6</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#da28">Map</a></td>
+<td class="next">
+Next: <a href="DA3D.html">DA3D</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/DA28.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at 56857</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="56832.html">56832</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#56857">Map</a></td>
+<td class="next">
+Next: <a href="56951.html">56951</a>
+</td>
+</tr>
+</table>
+<div class="description">56857: Routine at DE19</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-2"><span id="56857"></span>56857</td>
+<td class="instruction">CALL <a href="63766.html">63766</a></td>
+<td class="comment-1" rowspan="1">Call <a href="63766.html">63766</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56860"></span>56860</td>
+<td class="instruction">CALL <a href="64811.html">64811</a></td>
+<td class="comment-1" rowspan="1">Call <a href="64811.html">64811</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56863"></span>56863</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Set the border colour to BLACK.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56864"></span>56864</td>
+<td class="instruction">OUT (254),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56866"></span>56866</td>
+<td class="instruction">CALL <a href="57158.html">57158</a></td>
+<td class="comment-1" rowspan="1">Call <a href="57158.html">57158</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56869"></span>56869</td>
+<td class="instruction">CALL <a href="57057.html">InitialiseNewGame</a></td>
+<td class="comment-1" rowspan="1">Call <a href="57057.html">InitialiseNewGame</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-2"><span id="56872"></span>56872</td>
+<td class="instruction">CALL <a href="57030.html">57030</a></td>
+<td class="comment-1" rowspan="1">Call <a href="57030.html">57030</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56875"></span>56875</td>
+<td class="instruction">LD A,(57156)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="57156.html">57156</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56878"></span>56878</td>
+<td class="instruction">CALL <a href="57232.html">57232</a></td>
+<td class="comment-1" rowspan="1">Call <a href="57232.html">57232</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56881"></span>
+<div class="comments">
+<div class="paragraph">
+Main game loop
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">MainLoop</td>
+<td class="address-2"><span id="56881"></span>56881</td>
+<td class="instruction">CALL <a href="63695.html">63695</a></td>
+<td class="comment-1" rowspan="1">Call <a href="63695.html">63695</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56884"></span>56884</td>
+<td class="instruction">LD A,(54269)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="56857.html">56857</a> if *<a href="54266.html#54269">54269</a> is not zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56887"></span>56887</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56888"></span>56888</td>
+<td class="instruction">JR NZ,<a href="56857.html#56857">56857</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56890"></span>56890</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Write 0 to <a href="https://skoolkid.github.io/rom/asm/5C78.html">FRAMES</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56891"></span>56891</td>
+<td class="instruction">LD (23672),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56894"></span>56894</td>
+<td class="instruction">LD A,(53202)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="56857.html#56915">56915</a> if *<a href="53202.html">George_State</a> is not equal to 255 (in-play).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56897"></span>56897</td>
+<td class="instruction">CP 255</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56899"></span>56899</td>
+<td class="instruction">JR NZ,<a href="56857.html#56915">56915</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56901"></span>56901</td>
+<td class="instruction">LD A,(53249)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="56857.html#56915">56915</a> if *<a href="53249.html">Lizzy_State</a> is not equal to 255 (in-play).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56904"></span>56904</td>
+<td class="instruction">CP 255</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56906"></span>56906</td>
+<td class="instruction">JR NZ,<a href="56857.html#56915">56915</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56908"></span>56908</td>
+<td class="instruction">LD A,(53296)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="56857.html">56857</a> if *<a href="53296.html">Ralph_State</a> is equal to 255 (in-play).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56911"></span>56911</td>
+<td class="instruction">CP 255</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56913"></span>56913</td>
+<td class="instruction">JR Z,<a href="56857.html#56857">56857</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-2"><span id="56915"></span>56915</td>
+<td class="instruction">LD A,(54259)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="56951.html">56951</a> if *<a href="54259.html">54259</a> is not zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56918"></span>56918</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56919"></span>56919</td>
+<td class="instruction">JR NZ,<a href="56951.html">56951</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56921"></span>56921</td>
+<td class="instruction">LD A,(53782)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53782.html">53782</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56924"></span>56924</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56925"></span>56925</td>
+<td class="instruction">LD (53782),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53782.html">53782</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56928"></span>56928</td>
+<td class="instruction">JR NZ,<a href="56951.html">56951</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="56951.html">56951</a> if <span class="register">A</span> is not zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56930"></span>56930</td>
+<td class="instruction">LD A,(57156)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="57156.html">57156</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56933"></span>56933</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56934"></span>56934</td>
+<td class="instruction">CP 41</td>
+<td class="comment-1" rowspan="2">Jump to <a href="56857.html#56940">56940</a> if <span class="register">A</span> is not equal to 41.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56936"></span>56936</td>
+<td class="instruction">JR NZ,<a href="56857.html#56940">56940</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56938"></span>56938</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="2">Write 1 to *<a href="57156.html">57156</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-2"><span id="56940"></span>56940</td>
+<td class="instruction">LD (57156),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56943"></span>56943</td>
+<td class="instruction">CALL <a href="64811.html">64811</a></td>
+<td class="comment-1" rowspan="1">Call <a href="64811.html">64811</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56946"></span>56946</td>
+<td class="instruction">CALL <a href="57158.html">57158</a></td>
+<td class="comment-1" rowspan="1">Call <a href="57158.html">57158</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56949"></span>56949</td>
+<td class="instruction">JR <a href="56857.html#56872">56872</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="56857.html#56872">56872</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="56832.html">56832</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#56857">Map</a></td>
+<td class="next">
+Next: <a href="56951.html">56951</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/56857.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

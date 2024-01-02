@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at 54788</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="54776.html">54776</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#54788">Map</a></td>
+<td class="next">
+Next: <a href="54920.html">54920</a>
+</td>
+</tr>
+</table>
+<div class="description">54788: Update Screen Buffer</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="56951.html">56951</a>, <a href="63766.html">63766</a>, <a href="63873.html">63873</a>, <a href="63935.html">63935</a>, <a href="64208.html">64208</a> and <a href="64868.html">64868</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">ScreenBuffer_Update</td>
+<td class="address-2"><span id="54788"></span>54788</td>
+<td class="instruction">LD HL,27392</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="27392.html">ShadowScreenBuffer</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54791"></span>54791</td>
+<td class="instruction">LD DE,16384</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="16384.html">16384</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54794"></span>54794</td>
+<td class="instruction">CALL <a href="54788.html#54812">CopyShadowBufferToScreen</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54788.html#54812">CopyShadowBufferToScreen</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54797"></span>54797</td>
+<td class="instruction">LD HL,29440</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="27392.html#29440">29440</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54800"></span>54800</td>
+<td class="instruction">LD DE,18432</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="16384.html#18432">18432</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54803"></span>54803</td>
+<td class="instruction">CALL <a href="54788.html#54812">CopyShadowBufferToScreen</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54788.html#54812">CopyShadowBufferToScreen</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54806"></span>54806</td>
+<td class="instruction">LD HL,31488</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="27392.html#31488">31488</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54809"></span>54809</td>
+<td class="instruction">LD DE,20480</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="16384.html#20480">20480</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">CopyShadowBufferToScreen</td>
+<td class="address-2"><span id="54812"></span>54812</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54813"></span>54813</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">D</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54814"></span>54814</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Exchange <span class="register">AF</span> with the shadow <span class="register">AF</span> register.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54815"></span>54815</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">L</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54816"></span>54816</td>
+<td class="instruction">CALL <a href="54920.html">Blit</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54920.html">Blit</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54819"></span>54819</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54820"></span>54820</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54821"></span>54821</td>
+<td class="instruction">INC D</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">D</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54822"></span>54822</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">H</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54823"></span>54823</td>
+<td class="instruction">CALL <a href="54920.html">Blit</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54920.html">Blit</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54826"></span>54826</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54827"></span>54827</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54828"></span>54828</td>
+<td class="instruction">INC D</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">D</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54829"></span>54829</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">H</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54830"></span>54830</td>
+<td class="instruction">CALL <a href="54920.html">Blit</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54920.html">Blit</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54833"></span>54833</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54834"></span>54834</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54835"></span>54835</td>
+<td class="instruction">INC D</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">D</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54836"></span>54836</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">H</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54837"></span>54837</td>
+<td class="instruction">CALL <a href="54920.html">Blit</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54920.html">Blit</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54840"></span>54840</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54841"></span>54841</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54842"></span>54842</td>
+<td class="instruction">INC D</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">D</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54843"></span>54843</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">H</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54844"></span>54844</td>
+<td class="instruction">CALL <a href="54920.html">Blit</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54920.html">Blit</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54847"></span>54847</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54848"></span>54848</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54849"></span>54849</td>
+<td class="instruction">INC D</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">D</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54850"></span>54850</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">H</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54851"></span>54851</td>
+<td class="instruction">CALL <a href="54920.html">Blit</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54920.html">Blit</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54854"></span>54854</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54855"></span>54855</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54856"></span>54856</td>
+<td class="instruction">INC D</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">D</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54857"></span>54857</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">H</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54858"></span>54858</td>
+<td class="instruction">CALL <a href="54920.html">Blit</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54920.html">Blit</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54861"></span>54861</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54862"></span>54862</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54863"></span>54863</td>
+<td class="instruction">INC D</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">D</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54864"></span>54864</td>
+<td class="instruction">INC H</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">H</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54865"></span>54865</td>
+<td class="instruction">CALL <a href="54920.html">Blit</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54920.html">Blit</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54868"></span>54868</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Switch <span class="register">AF</span> back with the normal <span class="register">AF</span> register.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54869"></span>54869</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-1" rowspan="1"><span class="register">D</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54870"></span>54870</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54871"></span>54871</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="3"><span class="register">L</span>+=32.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54872"></span>54872</td>
+<td class="instruction">ADD A,32</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54874"></span>54874</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54875"></span>54875</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54876"></span>54876</td>
+<td class="instruction">CP 224</td>
+<td class="comment-1" rowspan="2">Jump to <a href="54788.html#54812">CopyShadowBufferToScreen</a> if <span class="register">A</span> is not 224.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54878"></span>54878</td>
+<td class="instruction">JP NZ,<a href="54788.html#54812">CopyShadowBufferToScreen</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54881"></span>54881</td>
+<td class="instruction">CALL <a href="54920.html">Blit</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54920.html">Blit</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54884"></span>54884</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54885"></span>54885</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54886"></span>54886</td>
+<td class="instruction">CALL <a href="54920.html">Blit</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54920.html">Blit</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54889"></span>54889</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54890"></span>54890</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54891"></span>54891</td>
+<td class="instruction">CALL <a href="54920.html">Blit</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54920.html">Blit</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54894"></span>54894</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54895"></span>54895</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54896"></span>54896</td>
+<td class="instruction">CALL <a href="54920.html">Blit</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54920.html">Blit</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54899"></span>54899</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54900"></span>54900</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54901"></span>54901</td>
+<td class="instruction">CALL <a href="54920.html">Blit</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54920.html">Blit</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54904"></span>54904</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54905"></span>54905</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54906"></span>54906</td>
+<td class="instruction">CALL <a href="54920.html">Blit</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54920.html">Blit</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54909"></span>54909</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54910"></span>54910</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54911"></span>54911</td>
+<td class="instruction">CALL <a href="54920.html">Blit</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54920.html">Blit</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54914"></span>54914</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54915"></span>54915</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54916"></span>54916</td>
+<td class="instruction">CALL <a href="54920.html">Blit</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54920.html">Blit</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="54919"></span>54919</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="54776.html">54776</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#54788">Map</a></td>
+<td class="next">
+Next: <a href="54920.html">54920</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/54788.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

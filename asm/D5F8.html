@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at D5F8</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="D5E6.html">D5E6</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#d5f8">Map</a></td>
+<td class="next">
+Next: <a href="D604.html">D604</a>
+</td>
+</tr>
+</table>
+<div class="description">D5F8: Update Attribute Buffer</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="DE77.html">DE77</a>, <a href="F916.html">F916</a>, <a href="F981.html">F981</a>, <a href="F9BF.html">F9BF</a>, <a href="FAD0.html">FAD0</a> and <a href="FD64.html">FD64</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">AttributeBuffer_Update</td>
+<td class="address-2"><span id="d5f8"></span>D5F8</td>
+<td class="instruction">LD HL,$8300</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="6B00.html#8300">ShadowAttributeBuffer</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d5fb"></span>D5FB</td>
+<td class="instruction">LD DE,$5800</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="4000.html#5800">AttributeBuffer</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d5fe"></span>D5FE</td>
+<td class="instruction">LD BC,$0300</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0300.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d601"></span>D601</td>
+<td class="instruction">LDIR</td>
+<td class="comment-1" rowspan="1">Copy attribute shadow buffer to screen attribute buffer.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d603"></span>D603</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="D5E6.html">D5E6</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#d5f8">Map</a></td>
+<td class="next">
+Next: <a href="D604.html">D604</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/D5F8.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

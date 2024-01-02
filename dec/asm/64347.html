@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at 64347</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="64208.html">64208</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#64347">Map</a></td>
+<td class="next">
+Next: <a href="64398.html">64398</a>
+</td>
+</tr>
+</table>
+<div class="description">64347: Print String</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="63270.html">63270</a>, <a href="63873.html">63873</a>, <a href="63935.html">63935</a>, <a href="64208.html">64208</a>, <a href="64398.html">64398</a> and <a href="64926.html">Handler_DisplayTickerNews</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">BC</td>
+<td class="register-desc">Screen co-ordinate</td>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Pointer to string data</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="asm-label">PrintString</td>
+<td class="address-2"><span id="64347"></span>64347</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1">Fetch the character.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64348"></span>64348</td>
+<td class="instruction">AND %01111111</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-6.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64350"></span>64350</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64351"></span>64351</td>
+<td class="instruction">SUB 32</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64353"></span>64353</td>
+<td class="instruction">LD H,0</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64355"></span>64355</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64356"></span>64356</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64357"></span>64357</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64358"></span>64358</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64359"></span>64359</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64360"></span>64360</td>
+<td class="instruction">ADD A,61</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64362"></span>64362</td>
+<td class="instruction">LD H,A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64363"></span>64363</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64364"></span>64364</td>
+<td class="instruction">AND 248</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64366"></span>64366</td>
+<td class="instruction">ADD A,107</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64368"></span>64368</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64369"></span>64369</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64370"></span>64370</td>
+<td class="instruction">AND 7</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64372"></span>64372</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64373"></span>64373</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64374"></span>64374</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64375"></span>64375</td>
+<td class="instruction">ADD A,C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64376"></span>64376</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64377"></span>64377</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64378"></span>64378</td>
+<td class="instruction">LD B,8</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label">PrintString_0</td>
+<td class="address-2"><span id="64380"></span>64380</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64381"></span>64381</td>
+<td class="instruction">SRL A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64383"></span>64383</td>
+<td class="instruction">OR (HL)</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64384"></span>64384</td>
+<td class="instruction">LD (DE),A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64385"></span>64385</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64386"></span>64386</td>
+<td class="instruction">INC D</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64387"></span>64387</td>
+<td class="instruction">DJNZ <a href="64347.html#64380">PrintString_0</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64389"></span>64389</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64390"></span>64390</td>
+<td class="instruction">INC C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64391"></span>64391</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64392"></span>64392</td>
+<td class="instruction">BIT 7,(HL)</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64394"></span>64394</td>
+<td class="instruction">RET NZ</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64395"></span>64395</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="64396"></span>64396</td>
+<td class="instruction">JR <a href="64347.html#64347">PrintString</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="64208.html">64208</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#64347">Map</a></td>
+<td class="next">
+Next: <a href="64398.html">64398</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/64347.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

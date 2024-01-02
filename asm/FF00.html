@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at FF00</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="FEDF.html">FEDF</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#ff00">Map</a></td>
+<td class="next">
+</td>
+</tr>
+</table>
+<div class="description">FF00: Routine at FF00</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="DE77.html">DE77</a> and <a href="FDC4.html">Sounds_Telecast</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-2"><span id="ff00"></span>FF00</td>
+<td class="instruction">LD A,($FF8D)</td>
+<td class="comment-1" rowspan="3">Return if *<a href="FF00.html#ff8d">FF8D</a> is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff03"></span>FF03</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff04"></span>FF04</td>
+<td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff05"></span>FF05</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff06"></span>FF06</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Write 00 to *<a href="FF00.html#ff8d">FF8D</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff07"></span>FF07</td>
+<td class="instruction">LD ($FF8D),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff0a"></span>FF0A</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">L</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff0b"></span>FF0B</td>
+<td class="instruction">CP $08</td>
+<td class="comment-1" rowspan="2">Jump to <a href="FF00.html#ff6b">FF6B</a> if <span class="register">A</span> is equal to 08.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff0d"></span>FF0D</td>
+<td class="instruction">JR Z,<a href="FF00.html#ff6b">$FF6B</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff0f"></span>FF0F</td>
+<td class="instruction">CP $09</td>
+<td class="comment-1" rowspan="2">Jump to <a href="FF00.html#ff72">FF72</a> if <span class="register">A</span> is equal to 09.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff11"></span>FF11</td>
+<td class="instruction">JR Z,<a href="FF00.html#ff72">$FF72</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff13"></span>FF13</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff14"></span>FF14</td>
+<td class="instruction">ADD A,A</td>
+<td class="comment-1" rowspan="3"><span class="register">A</span>*=08.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff15"></span>FF15</td>
+<td class="instruction">ADD A,A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff16"></span>FF16</td>
+<td class="instruction">ADD A,A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff17"></span>FF17</td>
+<td class="instruction">LD H,$00</td>
+<td class="comment-1" rowspan="1"><span class="register">H</span>=00.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff19"></span>FF19</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff1a"></span>FF1A</td>
+<td class="instruction">LD DE,$FF8E</td>
+<td class="comment-1" rowspan="2"><span class="register">HL</span>+=<a href="FF00.html#ff8e">FF8E</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff1d"></span>FF1D</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff1e"></span>FF1E</td>
+<td class="instruction">LD DE,$FF85</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="FF00.html#ff85">FF85</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff21"></span>FF21</td>
+<td class="instruction">LD BC,$0008</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0008.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff24"></span>FF24</td>
+<td class="instruction">LDIR</td>
+<td class="comment-1" rowspan="1">LDIR.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff26"></span>FF26</td>
+<td class="instruction">LD A,($FF8C)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="FF00.html#ff2d">FF2D</a> if *<a href="FF00.html#ff8c">FF8C</a> is equal to 02.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff29"></span>FF29</td>
+<td class="instruction">CP $02</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff2b"></span>FF2B</td>
+<td class="instruction">JR Z,<a href="FF00.html#ff2d">$FF2D</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-2"><span id="ff2d"></span>FF2D</td>
+<td class="instruction">LD A,($FF8B)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="FF00.html#ff67">Sounds_SpeakerOff</a> if *<a href="FF00.html#ff8b">FF8B</a> is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff30"></span>FF30</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff31"></span>FF31</td>
+<td class="instruction">JR Z,<a href="FF00.html#ff67">Sounds_SpeakerOff</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff33"></span>FF33</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff34"></span>FF34</td>
+<td class="instruction">LD ($FF8B),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="FF00.html#ff8b">FF8B</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff37"></span>FF37</td>
+<td class="instruction">CALL <a href="FF00.html#ff55">$FF55</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FF00.html#ff55">FF55</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff3a"></span>FF3A</td>
+<td class="instruction">ADD HL,BC</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">BC</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff3b"></span>FF3B</td>
+<td class="instruction">LD ($FF85),HL</td>
+<td class="comment-1" rowspan="1">Write <span class="register">HL</span> to *<a href="FF00.html#ff85">FF85</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff3e"></span>FF3E</td>
+<td class="instruction">JR <a href="FF00.html#ff2d">$FF2D</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="FF00.html#ff2d">FF2D</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-2"><span id="ff40"></span>FF40</td>
+<td class="instruction">LD A,($FF8B)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="FF00.html#ff67">Sounds_SpeakerOff</a> if *<a href="FF00.html#ff8b">FF8B</a> is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff43"></span>FF43</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff44"></span>FF44</td>
+<td class="instruction">JR Z,<a href="FF00.html#ff67">Sounds_SpeakerOff</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff46"></span>FF46</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff47"></span>FF47</td>
+<td class="instruction">LD ($FF8B),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="FF00.html#ff8b">FF8B</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff4a"></span>FF4A</td>
+<td class="instruction">CALL <a href="FF00.html#ff55">$FF55</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FF00.html#ff55">FF55</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff4d"></span>FF4D</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">Set the bits from <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff4e"></span>FF4E</td>
+<td class="instruction">SBC HL,BC</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>-=<span class="register">BC</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff50"></span>FF50</td>
+<td class="instruction">LD ($FF85),HL</td>
+<td class="comment-1" rowspan="1">Write <span class="register">HL</span> to *<a href="FF00.html#ff85">FF85</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff53"></span>FF53</td>
+<td class="instruction">JR <a href="FF00.html#ff40">$FF40</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="FF00.html#ff40">FF40</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-2"><span id="ff55"></span>FF55</td>
+<td class="instruction">LD HL,($FF85)</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="FF00.html#ff85">FF85</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff58"></span>FF58</td>
+<td class="instruction">LD DE,($FF87)</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=*<a href="FF00.html#ff87">FF87</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff5c"></span>FF5C</td>
+<td class="instruction">CALL $03B5</td>
+<td class="comment-1" rowspan="1">Call <a href="https://skoolkit.ca/disassemblies/rom/hex/asm/03B5.html">BEEPER</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff5f"></span>FF5F</td>
+<td class="instruction">LD HL,($FF85)</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="FF00.html#ff85">FF85</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff62"></span>FF62</td>
+<td class="instruction">LD BC,($FF89)</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="FF00.html#ff89">FF89</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff66"></span>FF66</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="ff67"></span>
+<div class="comments">
+<div class="paragraph">
+Flip speaker off (unset bit 4).
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Sounds_SpeakerOff</td>
+<td class="address-2"><span id="ff67"></span>FF67</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Speaker off.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff68"></span>FF68</td>
+<td class="instruction">OUT ($FE),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff6a"></span>FF6A</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-2"><span id="ff6b"></span>FF6B</td>
+<td class="instruction">LD HL,$007D</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=007D.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff6e"></span>FF6E</td>
+<td class="instruction">LD C,$64</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=64.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff70"></span>FF70</td>
+<td class="instruction">JR <a href="FF00.html#ff77">$FF77</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="FF00.html#ff77">FF77</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-2"><span id="ff72"></span>FF72</td>
+<td class="instruction">LD HL,$00FA</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=00FA.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff75"></span>FF75</td>
+<td class="instruction">LD C,$19</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=19.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-2"><span id="ff77"></span>FF77</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff78"></span>FF78</td>
+<td class="instruction">AND %11111000</td>
+<td class="comment-1" rowspan="1">Keep only bits 3-7.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff7a"></span>FF7A</td>
+<td class="instruction">OUT ($FE),A</td>
+<td class="comment-1" rowspan="1">OUT FE</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff7c"></span>FF7C</td>
+<td class="instruction">LD B,C</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">C</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-2"><span id="ff7d"></span>FF7D</td>
+<td class="instruction">DJNZ <a href="FF00.html#ff7d">$FF7D</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="FF00.html#ff7d">FF7D</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff7f"></span>FF7F</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff80"></span>FF80</td>
+<td class="instruction">LD A,H</td>
+<td class="comment-1" rowspan="3">Jump to <a href="FF00.html#ff77">FF77</a> until <span class="register">HL</span> is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff81"></span>FF81</td>
+<td class="instruction">OR L</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff82"></span>FF82</td>
+<td class="instruction">JR NZ,<a href="FF00.html#ff77">$FF77</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff84"></span>FF84</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff85"></span>FF85</td>
+<td class="instruction">DEFW $0000</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff87"></span>FF87</td>
+<td class="instruction">DEFW $0000</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff89"></span>FF89</td>
+<td class="instruction">DEFW $0000</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff8b"></span>FF8B</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff8c"></span>FF8C</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff8d"></span>FF8D</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff8e"></span>FF8E</td>
+<td class="instruction">DEFB $F4,$01,$00,$00,$32,$00,$0A,$01</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff96"></span>FF96</td>
+<td class="instruction">DEFB $F4,$01,$00,$00,$F4,$01,$01,$02</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ff9e"></span>FF9E</td>
+<td class="instruction">DEFB $96,$00,$F4,$01,$C8,$00,$01,$02</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ffa6"></span>FFA6</td>
+<td class="instruction">DEFB $64,$00,$19,$00,$64,$00,$04,$00</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ffae"></span>FFAE</td>
+<td class="instruction">DEFB $E8,$03,$01,$00,$E8,$03,$05,$01</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ffb6"></span>FFB6</td>
+<td class="instruction">DEFB $E8,$03,$01,$00,$F4,$01,$06,$01</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ffbe"></span>FFBE</td>
+<td class="instruction">DEFB $96,$00,$2C,$01,$C8,$00,$01,$02</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ffc6"></span>FFC6</td>
+<td class="instruction">DEFB $42,$00,$00,$3C,$42,$42,$42,$42</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ffce"></span>FFCE</td>
+<td class="instruction">DEFB $3C,$00,$00,$7C,$42,$42,$7C,$40</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ffd6"></span>FFD6</td>
+<td class="instruction">DEFB $40,$00,$00,$3C,$42,$42,$52,$4A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ffde"></span>FFDE</td>
+<td class="instruction">DEFB $3C,$00,$00,$7C,$42,$42,$7C,$44</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ffe6"></span>FFE6</td>
+<td class="instruction">DEFB $42,$00,$00,$3C,$40,$3C,$02,$42</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="ffee"></span>FFEE</td>
+<td class="instruction">DEFB $3C,$00,$00,$FE,$10,$10,$10,$10</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fff6"></span>FFF6</td>
+<td class="instruction">DEFB $10,$00,$00,$42,$42,$42,$42,$42</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fffe"></span>FFFE</td>
+<td class="instruction">DEFB $3C,$00</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="FEDF.html">FEDF</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#ff00">Map</a></td>
+<td class="next">
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/FF00.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

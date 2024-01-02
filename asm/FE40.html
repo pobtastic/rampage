@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at FE40</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="FDDE.html">FDDE</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#fe40">Map</a></td>
+<td class="next">
+Next: <a href="FF00.html">FF00</a>
+</td>
+</tr>
+</table>
+<div class="description">FE40: Routine at FE40</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="fe40"></span>FE40</td>
+<td class="instruction">LD C,H</td>
+<td class="comment-1" rowspan="3"><span class="register">HL</span>=<a href="FE40.html#fe53">FE53</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe41"></span>FE41</td>
+<td class="instruction">LD B,L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe42"></span>FE42</td>
+<td class="instruction">CALL NZ,$5349</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe43"></span>FE43</td>
+<td class="instruction">LD C,C</td>
+<td class="comment-1" rowspan="3"><span class="register">BC</span>=0180.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe44"></span>FE44</td>
+<td class="instruction">LD D,E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe45"></span>FE45</td>
+<td class="instruction">JR NZ,<a href="FE40.html#fe9b">$FE9B</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe46"></span>FE46</td>
+<td class="instruction">LD D,H</td>
+<td class="comment-1" rowspan="1">Disable interrupts.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe47"></span>FE47</td>
+<td class="instruction">LD C,B</td>
+<td class="comment-1" rowspan="3"><span class="register">R</span>=00.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe48"></span>FE48</td>
+<td class="instruction">LD B,L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe49"></span>FE49</td>
+<td class="instruction">LD D,D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe4a"></span>FE4A</td>
+<td class="instruction">LD B,L</td>
+<td class="comment-1" rowspan="2"><span class="register">A</span>=<span class="register">R</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe4b"></span>FE4B</td>
+<td class="instruction">JR NZ,<a href="FE40.html#fe9b">$FE9B</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe4c"></span>FE4C</td>
+<td class="instruction">LD C,(HL)</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe4d"></span>FE4D</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe4e"></span>FE4E</td>
+<td class="instruction">JR NZ,<a href="FE40.html#fe95">$FE95</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe50"></span>FE50</td>
+<td class="instruction">LD C,(HL)</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe51"></span>FE51</td>
+<td class="instruction">CALL NZ,$4F54</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe53"></span>FE53</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe54"></span>FE54</td>
+<td class="instruction">JR NZ,<a href="FE40.html#feaa">$FEAA</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe56"></span>FE56</td>
+<td class="instruction">LD C,B</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe57"></span>FE57</td>
+<td class="instruction">LD C,C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe58"></span>FE58</td>
+<td class="instruction">LD D,E</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="fe59"></span>FE59</td>
+<td class="instruction">JR NZ,<a href="FE40.html#fead">$FEAD</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe5b"></span>FE5B</td>
+<td class="instruction">LD B,C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe5c"></span>FE5C</td>
+<td class="instruction">LD C,L</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe5d"></span>FE5D</td>
+<td class="instruction">LD D,B</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe5e"></span>FE5E</td>
+<td class="instruction">LD B,C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe5f"></span>FE5F</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe60"></span>FE60</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe61"></span>FE61</td>
+<td class="instruction">AND B</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe62"></span>FE62</td>
+<td class="instruction">LD C,D</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe63"></span>FE63</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe64"></span>FE64</td>
+<td class="instruction">LD B,D</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe65"></span>FE65</td>
+<td class="instruction">JR NZ,<a href="FE40.html#feb6">$FEB6</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe67"></span>FE67</td>
+<td class="instruction">LD D,B</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe68"></span>FE68</td>
+<td class="instruction">LD B,L</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe69"></span>FE69</td>
+<td class="instruction">LD C,(HL)</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe6a"></span>FE6A</td>
+<td class="instruction">LD C,C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe6b"></span>FE6B</td>
+<td class="instruction">LD C,(HL)</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe6c"></span>FE6C</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe6d"></span>FE6D</td>
+<td class="instruction">LD D,E</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe6e"></span>FE6E</td>
+<td class="instruction">JR NZ,<a href="FE40.html#feb9">$FEB9</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe70"></span>FE70</td>
+<td class="instruction">ADC A,$4E</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe72"></span>FE72</td>
+<td class="instruction">LD B,C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe73"></span>FE73</td>
+<td class="instruction">LD D,H</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe74"></span>FE74</td>
+<td class="instruction">LD C,C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe75"></span>FE75</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe76"></span>FE76</td>
+<td class="instruction">LD C,(HL)</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe77"></span>FE77</td>
+<td class="instruction">LD B,C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe78"></span>FE78</td>
+<td class="instruction">LD C,H</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe79"></span>FE79</td>
+<td class="instruction">JR NZ,<a href="FE40.html#fec2">$FEC2</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe7b"></span>FE7B</td>
+<td class="instruction">LD D,L</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe7c"></span>FE7C</td>
+<td class="instruction">LD B,C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe7d"></span>FE7D</td>
+<td class="instruction">LD D,D</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe7e"></span>FE7E</td>
+<td class="instruction">CALL NZ,$4DA0</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe81"></span>FE81</td>
+<td class="instruction">LD B,C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe82"></span>FE82</td>
+<td class="instruction">LD E,C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe83"></span>FE83</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe84"></span>FE84</td>
+<td class="instruction">LD D,D</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe85"></span>FE85</td>
+<td class="instruction">JR NZ,<a href="FE40.html#feda">$FEDA</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe87"></span>FE87</td>
+<td class="instruction">LD D,B</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe88"></span>FE88</td>
+<td class="instruction">LD B,L</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe89"></span>FE89</td>
+<td class="instruction">LD B,C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe8a"></span>FE8A</td>
+<td class="instruction">LD C,E</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe8b"></span>FE8B</td>
+<td class="instruction">LD D,E</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe8c"></span>FE8C</td>
+<td class="instruction">JR NZ,$FE3B</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe8e"></span>FE8E</td>
+<td class="instruction">LD D,H</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe8f"></span>FE8F</td>
+<td class="instruction">LD C,B</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe90"></span>FE90</td>
+<td class="instruction">LD C,C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe91"></span>FE91</td>
+<td class="instruction">LD D,E</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe92"></span>FE92</td>
+<td class="instruction">JR NZ,$FEE6</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe94"></span>FE94</td>
+<td class="instruction">LD B,C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="fe95"></span>FE95</td>
+<td class="instruction">LD C,L</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe96"></span>FE96</td>
+<td class="instruction">LD D,B</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe97"></span>FE97</td>
+<td class="instruction">LD B,C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe98"></span>FE98</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe99"></span>FE99</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe9a"></span>FE9A</td>
+<td class="instruction">LD C,L</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="fe9b"></span>FE9B</td>
+<td class="instruction">LD D,L</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe9c"></span>FE9C</td>
+<td class="instruction">LD D,E</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe9d"></span>FE9D</td>
+<td class="instruction">LD D,H</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fe9e"></span>FE9E</td>
+<td class="instruction">JR NZ,$FEF3</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fea0"></span>FEA0</td>
+<td class="instruction">LD D,H</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fea1"></span>FEA1</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fea2"></span>FEA2</td>
+<td class="instruction">LD D,B</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fea3"></span>FEA3</td>
+<td class="instruction">JR NZ,$FEC6</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fea5"></span>FEA5</td>
+<td class="instruction">LD HL,$43A1</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fea8"></span>FEA8</td>
+<td class="instruction">LD C,C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fea9"></span>FEA9</td>
+<td class="instruction">LD D,H</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="feaa"></span>FEAA</td>
+<td class="instruction">LD E,C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="feab"></span>FEAB</td>
+<td class="instruction">JR NZ,$FEF5</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="fead"></span>FEAD</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="feae"></span>FEAE</td>
+<td class="instruction">LD D,A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="feaf"></span>FEAF</td>
+<td class="instruction">LD C,H</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="feb0"></span>FEB0</td>
+<td class="instruction">LD C,C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="feb1"></span>FEB1</td>
+<td class="instruction">LD C,(HL)</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="feb2"></span>FEB2</td>
+<td class="instruction">RST $00</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="feb3"></span>FEB3</td>
+<td class="instruction">LD C,L</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="feb4"></span>FEB4</td>
+<td class="instruction">LD B,C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="feb5"></span>FEB5</td>
+<td class="instruction">LD B,H</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="feb6"></span>FEB6</td>
+<td class="instruction">JR NZ,<a href="FE40.html#fe59">$FE59</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="feb8"></span>FEB8</td>
+<td class="instruction">AND B</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="feb9"></span>FEB9</td>
+<td class="instruction">LD D,E</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="feba"></span>FEBA</td>
+<td class="instruction">LD B,C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="febb"></span>FEBB</td>
+<td class="instruction">LD D,L</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="febc"></span>FEBC</td>
+<td class="instruction">LD D,E</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="febd"></span>FEBD</td>
+<td class="instruction">LD B,C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="febe"></span>FEBE</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="febf"></span>FEBF</td>
+<td class="instruction">LD B,L</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fec0"></span>FEC0</td>
+<td class="instruction">JR NZ,<a href="FF00.html#ff15">$FF15</a></td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="fec2"></span>FEC2</td>
+<td class="instruction">LD B,E</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fec3"></span>FEC3</td>
+<td class="instruction">LD B,C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fec4"></span>FEC4</td>
+<td class="instruction">CALL $5845</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fec7"></span>FEC7</td>
+<td class="instruction">LD D,B</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fec8"></span>FEC8</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fec9"></span>FEC9</td>
+<td class="instruction">LD D,E</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="feca"></span>FECA</td>
+<td class="instruction">LD B,L</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fecb"></span>FECB</td>
+<td class="instruction">LD B,H</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fecc"></span>FECC</td>
+<td class="instruction">JR NZ,$FE6F</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fece"></span>FECE</td>
+<td class="instruction">AND B</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fecf"></span>FECF</td>
+<td class="instruction">SBC A,$FD</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fed1"></span>FED1</td>
+<td class="instruction">NOP</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fed2"></span>FED2</td>
+<td class="instruction">CP $20</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fed4"></span>FED4</td>
+<td class="instruction">CP $43</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fed6"></span>FED6</td>
+<td class="instruction">CP $62</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fed8"></span>FED8</td>
+<td class="instruction">CP $80</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-2"><span id="feda"></span>FEDA</td>
+<td class="instruction">CP $A7</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fedc"></span>FEDC</td>
+<td class="instruction">CP $B9</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fede"></span>FEDE</td>
+<td class="instruction">CP $00</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fee0"></span>FEE0</td>
+<td class="instruction">LD BC,$0201</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fee3"></span>FEE3</td>
+<td class="instruction">INC BC</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fee4"></span>FEE4</td>
+<td class="instruction">LD BC,$0801</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fee7"></span>FEE7</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fee8"></span>FEE8</td>
+<td class="instruction">LD BC,$0901</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="feeb"></span>FEEB</td>
+<td class="instruction">DEC B</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="feec"></span>FEEC</td>
+<td class="instruction">LD BC,$0A01</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="feef"></span>FEEF</td>
+<td class="instruction">LD B,$01</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fef1"></span>FEF1</td>
+<td class="instruction">LD BC,$070B</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fef4"></span>FEF4</td>
+<td class="instruction">LD BC,$0B01</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fef7"></span>FEF7</td>
+<td class="instruction">NOP</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fef8"></span>FEF8</td>
+<td class="instruction">LD BC,$0B01</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fefb"></span>FEFB</td>
+<td class="instruction">INC C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fefc"></span>FEFC</td>
+<td class="instruction">DEC C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fefd"></span>FEFD</td>
+<td class="instruction">DEC C</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="address-1"><span id="fefe"></span>FEFE</td>
+<td class="instruction">LD C,$FF</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="FDDE.html">FDDE</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#fe40">Map</a></td>
+<td class="next">
+Next: <a href="FF00.html">FF00</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/FE40.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

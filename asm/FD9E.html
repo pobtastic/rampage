@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at FD9E</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="FD86.html">FD86</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#fd9e">Map</a></td>
+<td class="next">
+Next: <a href="FDC4.html">FDC4</a>
+</td>
+</tr>
+</table>
+<div class="description">FD9E: Handler: Display Ticker News</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="FD64.html">FD64</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_DisplayTickerNews</td>
+<td class="address-2"><span id="fd9e"></span>FD9E</td>
+<td class="instruction">CALL <a href="DA28.html">$DA28</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DA28.html">DA28</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fda1"></span>FDA1</td>
+<td class="instruction">AND %00000111</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-2.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fda3"></span>FDA3</td>
+<td class="instruction">ADD A,A</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>*=02.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fda4"></span>FDA4</td>
+<td class="instruction">LD H,$00</td>
+<td class="comment-1" rowspan="2">Create an offset in <span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fda6"></span>FDA6</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fda7"></span>FDA7</td>
+<td class="instruction">LD DE,$FECF</td>
+<td class="comment-1" rowspan="2"><span class="register">HL</span>+=<a href="FECF.html">Table_TickerNews</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fdaa"></span>FDAA</td>
+<td class="instruction">ADD HL,DE</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fdab"></span>FDAB</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="4">Grab the ticker news messaging address.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fdac"></span>FDAC</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fdad"></span>FDAD</td>
+<td class="instruction">LD H,(HL)</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fdae"></span>FDAE</td>
+<td class="instruction">LD L,A</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="fdaf"></span>
+<div class="comments">
+<div class="paragraph">
+Print the three lines of the ticker news data to the screen.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fdaf"></span>FDAF</td>
+<td class="instruction">LD BC,$1207</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=1207 (screen co-ordinates).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fdb2"></span>FDB2</td>
+<td class="instruction">CALL <a href="FB5B.html">PrintString</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FB5B.html">PrintString</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fdb5"></span>FDB5</td>
+<td class="instruction">LD BC,$1407</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=1407 (screen co-ordinates).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fdb8"></span>FDB8</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Move onto the start of the next message.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fdb9"></span>FDB9</td>
+<td class="instruction">CALL <a href="FB5B.html">PrintString</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FB5B.html">PrintString</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fdbc"></span>FDBC</td>
+<td class="instruction">LD BC,$1607</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=1607 (screen co-ordinates).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fdbf"></span>FDBF</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Move onto the start of the next message.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fdc0"></span>FDC0</td>
+<td class="instruction">CALL <a href="FB5B.html">PrintString</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FB5B.html">PrintString</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fdc3"></span>FDC3</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="FD86.html">FD86</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#fd9e">Map</a></td>
+<td class="next">
+Next: <a href="FDC4.html">FDC4</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/FD9E.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

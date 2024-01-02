@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at DE31</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="DE19.html">DE19</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#de31">Map</a></td>
+<td class="next">
+Next: <a href="DE77.html">DE77</a>
+</td>
+</tr>
+</table>
+<div class="description">DE31: Main Loop</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="DE77.html">DE77</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">MainLoop</td>
+<td class="address-2"><span id="de31"></span>DE31</td>
+<td class="instruction">CALL <a href="F8CF.html">$F8CF</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de34"></span>DE34</td>
+<td class="instruction">LD A,($D3FD)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de37"></span>DE37</td>
+<td class="instruction">AND A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de38"></span>DE38</td>
+<td class="instruction">JR NZ,<a href="DE19.html">$DE19</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de3a"></span>DE3A</td>
+<td class="instruction">XOR A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de3b"></span>DE3B</td>
+<td class="instruction">LD ($5C78),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de3e"></span>DE3E</td>
+<td class="instruction">LD A,($CFD2)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de41"></span>DE41</td>
+<td class="instruction">CP $FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de43"></span>DE43</td>
+<td class="instruction">JR NZ,<a href="DE31.html#de53">MainLoop_0</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de45"></span>DE45</td>
+<td class="instruction">LD A,($D001)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de48"></span>DE48</td>
+<td class="instruction">CP $FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de4a"></span>DE4A</td>
+<td class="instruction">JR NZ,<a href="DE31.html#de53">MainLoop_0</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de4c"></span>DE4C</td>
+<td class="instruction">LD A,($D030)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de4f"></span>DE4F</td>
+<td class="instruction">CP $FF</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de51"></span>DE51</td>
+<td class="instruction">JR Z,<a href="DE19.html">$DE19</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label">MainLoop_0</td>
+<td class="address-2"><span id="de53"></span>DE53</td>
+<td class="instruction">LD A,($D3F3)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de56"></span>DE56</td>
+<td class="instruction">AND A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de57"></span>DE57</td>
+<td class="instruction">JR NZ,<a href="DE77.html">$DE77</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de59"></span>DE59</td>
+<td class="instruction">LD A,($D216)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de5c"></span>DE5C</td>
+<td class="instruction">DEC A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de5d"></span>DE5D</td>
+<td class="instruction">LD ($D216),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de60"></span>DE60</td>
+<td class="instruction">JR NZ,<a href="DE77.html">$DE77</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de62"></span>DE62</td>
+<td class="instruction">LD A,($DF44)</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de65"></span>DE65</td>
+<td class="instruction">INC A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de66"></span>DE66</td>
+<td class="instruction">CP $29</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de68"></span>DE68</td>
+<td class="instruction">JR NZ,<a href="DE31.html#de6c">MainLoop_1</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de6a"></span>DE6A</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label">MainLoop_1</td>
+<td class="address-2"><span id="de6c"></span>DE6C</td>
+<td class="instruction">LD ($DF44),A</td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de6f"></span>DE6F</td>
+<td class="instruction">CALL <a href="FD2B.html">$FD2B</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de72"></span>DE72</td>
+<td class="instruction">CALL <a href="DF46.html">$DF46</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="de75"></span>DE75</td>
+<td class="instruction">JR <a href="DE19.html#de28">$DE28</a></td>
+<td class="comment-0" rowspan="1"></td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="DE19.html">DE19</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#de31">Map</a></td>
+<td class="next">
+Next: <a href="DE77.html">DE77</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/DE31.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

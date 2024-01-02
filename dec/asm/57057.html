@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at 57057</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="57030.html">57030</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#57057">Map</a></td>
+<td class="next">
+Next: <a href="57119.html">57119</a>
+</td>
+</tr>
+</table>
+<div class="description">57057: Initialise New Game</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="56857.html">56857</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">InitialiseNewGame</td>
+<td class="address-2"><span id="57057"></span>57057</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=0.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="57058"></span>57058</td>
+<td class="instruction">LD IY,53202</td>
+<td class="comment-1" rowspan="1"><span class="register">IY</span>=<a href="53202.html">George_State</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="57062"></span>57062</td>
+<td class="instruction">CALL <a href="57119.html">SetMonsterStates</a></td>
+<td class="comment-1" rowspan="1">Call <a href="57119.html">SetMonsterStates</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="57065"></span>57065</td>
+<td class="instruction">LD (IY+3),1</td>
+<td class="comment-1" rowspan="1">Write 1 to *<span class="register">IY</span>+3.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="57069"></span>57069</td>
+<td class="instruction">LD (IY+9),21</td>
+<td class="comment-1" rowspan="1">Write 21 to *<span class="register">IY</span>+9.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="57073"></span>57073</td>
+<td class="instruction">LD IY,53249</td>
+<td class="comment-1" rowspan="1"><span class="register">IY</span>=<a href="53249.html">Lizzy_State</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="57077"></span>57077</td>
+<td class="instruction">CALL <a href="57119.html">SetMonsterStates</a></td>
+<td class="comment-1" rowspan="1">Call <a href="57119.html">SetMonsterStates</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="57080"></span>57080</td>
+<td class="instruction">LD (IY+9),253</td>
+<td class="comment-1" rowspan="1">Write 253 to *<span class="register">IY</span>+9.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="57084"></span>57084</td>
+<td class="instruction">LD IY,53296</td>
+<td class="comment-1" rowspan="1"><span class="register">IY</span>=<a href="53296.html">Ralph_State</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="57088"></span>57088</td>
+<td class="instruction">CALL <a href="57119.html">SetMonsterStates</a></td>
+<td class="comment-1" rowspan="1">Call <a href="57119.html">SetMonsterStates</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="57091"></span>57091</td>
+<td class="instruction">LD (IY+9),8</td>
+<td class="comment-1" rowspan="1">Write 8 to *<span class="register">IY</span>+9.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="57095"></span>57095</td>
+<td class="instruction">LD A,1</td>
+<td class="comment-1" rowspan="2">Write 1 to *<a href="57156.html">57156</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="57097"></span>57097</td>
+<td class="instruction">LD (57156),A</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="57100"></span>
+<div class="comments">
+<div class="paragraph">
+Set all monster scores to "000000".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="57100"></span>57100</td>
+<td class="instruction">LD HL,53350</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="53343.html#53350">Messaging_GeorgeScore</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="57103"></span>57103</td>
+<td class="instruction">CALL <a href="57145.html">ResetScore</a></td>
+<td class="comment-1" rowspan="1">Call <a href="57145.html">ResetScore</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="57106"></span>57106</td>
+<td class="instruction">LD HL,53364</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="53357.html#53364">Messaging_LizzyScore</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="57109"></span>57109</td>
+<td class="instruction">CALL <a href="57145.html">ResetScore</a></td>
+<td class="comment-1" rowspan="1">Call <a href="57145.html">ResetScore</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="57112"></span>57112</td>
+<td class="instruction">LD HL,53378</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="53371.html#53378">Messaging_RalphScore</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="57115"></span>57115</td>
+<td class="instruction">CALL <a href="57145.html">ResetScore</a></td>
+<td class="comment-1" rowspan="1">Call <a href="57145.html">ResetScore</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="57118"></span>57118</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="57030.html">57030</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#57057">Map</a></td>
+<td class="next">
+Next: <a href="57119.html">57119</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/57057.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>
