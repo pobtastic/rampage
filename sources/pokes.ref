@@ -1,0 +1,55 @@
+; Copyright 2023 Paul Maddern (paul@arcadegeek.co.uk)
+
+[Poke:Infinite Energy]
+<code>
+<div>POKE #R$DD74(#N$DD75),#N$BE</div>
+</code>
+
+This alters the line.
+
+<table>
+  <tbody>
+    <tr>
+      <td class="address-1">#R$DD74</td>
+      <td class="instruction">DEC (#REGiy+#N$0C)</td>
+    </tr>
+  </tbody>
+</table>
+
+To be a "ComPare" command, so energy is no longer depleted.
+
+<table>
+  <tbody>
+    <tr>
+      <td class="address-1">#R$DD74</td>
+      <td class="instruction">CP (#REGiy+#N$0C)</td>
+    </tr>
+  </tbody>
+</table>
+
+[Poke:Stops Annoying Telecast Beeps]
+<code>
+<div>POKE #R$FDDB(#N$FDDC),#N$00</div>
+</code>
+
+This alters the line.
+
+<table>
+  <tbody>
+    <tr>
+      <td class="address-1">#R$FDDB</td>
+      <td class="instruction">DJNZ #R$FDC6(#N$FDC6)</td>
+    </tr>
+  </tbody>
+</table>
+
+To point to itself (so you only hear a single "BEEP").
+
+<table>
+  <tbody>
+    <tr>
+      <td class="address-1">#R$FDDB</td>
+      <td class="instruction">DJNZ #R$FDDB</td>
+    </tr>
+  </tbody>
+</table>

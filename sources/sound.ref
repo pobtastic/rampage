@@ -1,0 +1,20 @@
+; Copyright 2023 Paul Maddern (paul@arcadegeek.co.uk)
+
+[Page:Sound]
+SectionPrefix=Audio
+
+[Audio:Telecast]
+
+#AUDIO(telecast.wav)(#INCLUDE(Telecast))
+
+[Audio:Unknown1]
+
+#AUDIO(unknown1.wav)(#INCLUDE(Unknown1))
+
+[Audio:Unknown8]
+
+#AUDIO(unknown8.wav)(#INCLUDE(Unknown8))
+
+[Audio:Unknown9]
+
+#AUDIO(unknown9.wav)(#INCLUDE(Unknown9))

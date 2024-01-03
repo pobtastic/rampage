@@ -1,0 +1,13 @@
+; tap2sna.py file for Rampage. Run
+;
+;   $ tap2sna.py @rampage.t2s
+;
+; to create a Z80 snapshot.
+
+https://zxaaa.net/DENIED/Rampage%20(1988)(Activision).tzx
+Rampage.z80
+
+--tape-name "Rampage.tzx"
+--tape-sum b028433afb35fb5fdb3ea0bbbbf7fc3a
+--start 0xDE00
+--sim-load-config accelerator=rom
