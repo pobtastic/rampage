@@ -33,7 +33,7 @@ Next: <a href="63368.html">63368</a>
 </td>
 </tr>
 </table>
-<div class="description">63270: Routine at F726</div>
+<div class="description">63270: Print Banner</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,209 +45,372 @@ Used by the routine at <a href="56951.html">56951</a>.
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63270"></span>
+<div class="comments">
+<div class="paragraph">
+Handle George.
+</div>
+<div class="paragraph">
+Monster state 255 means the player is ("Game Over").
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">PrintBanner</td>
 <td class="address-2"><span id="63270"></span>63270</td>
 <td class="instruction">LD A,(53202)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="63270.html#63282">PrintBanner_George</a> if *<a href="53202.html">George_State</a> is not equal to 255.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63273"></span>63273</td>
 <td class="instruction">CP 255</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63275"></span>63275</td>
-<td class="instruction">JR NZ,<a href="63270.html#63282">63282</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="63270.html#63282">PrintBanner_George</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63277"></span>
+<div class="comments">
+<div class="paragraph">
+George is "Game Over"...
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63277"></span>63277</td>
 <td class="instruction">LD C,34</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=34 (screen co-ordinate).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63279"></span>63279</td>
-<td class="instruction">CALL <a href="63270.html#63349">63349</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">CALL <a href="63270.html#63349">PrintBanner_GameOver</a></td>
+<td class="comment-1" rowspan="1">Call <a href="63270.html#63349">PrintBanner_GameOver</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63282"></span>
+<div class="comments">
+<div class="paragraph">
+Displays "George" and George's score.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">PrintBanner_George</td>
 <td class="address-2"><span id="63282"></span>63282</td>
 <td class="instruction">LD C,2</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=2 (screen co-ordinate).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63284"></span>63284</td>
 <td class="instruction">LD HL,53350</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="53343.html#53350">Messaging_GeorgeScore</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63287"></span>63287</td>
 <td class="instruction">LD DE,53343</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="53343.html">Messaging_George</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63290"></span>63290</td>
 <td class="instruction">LD A,(53216)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53202.html#53216">George_Banner_Counter</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63293"></span>63293</td>
-<td class="instruction">CALL <a href="63270.html#63358">63358</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">CALL <a href="63270.html#63358">PrintBanner_Flash</a></td>
+<td class="comment-1" rowspan="1">Call <a href="63270.html#63358">PrintBanner_Flash</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63296"></span>
+<div class="comments">
+<div class="paragraph">
+Handle Lizzy.
+</div>
+<div class="paragraph">
+Monster state 255 means the player is ("Game Over").
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63296"></span>63296</td>
 <td class="instruction">LD A,(53249)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="63270.html#63308">PrintBanner_Lizzy</a> if *<a href="53249.html">Lizzy_State</a> is not equal to 255.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63299"></span>63299</td>
 <td class="instruction">CP 255</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63301"></span>63301</td>
-<td class="instruction">JR NZ,<a href="63270.html#63308">63308</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="63270.html#63308">PrintBanner_Lizzy</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63303"></span>
+<div class="comments">
+<div class="paragraph">
+Lizzy is "Game Over"...
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63303"></span>63303</td>
 <td class="instruction">LD C,44</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=44 (screen co-ordinate).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63305"></span>63305</td>
-<td class="instruction">CALL <a href="63270.html#63349">63349</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">CALL <a href="63270.html#63349">PrintBanner_GameOver</a></td>
+<td class="comment-1" rowspan="1">Call <a href="63270.html#63349">PrintBanner_GameOver</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63308"></span>
+<div class="comments">
+<div class="paragraph">
+Displays "Lizzy" and Lizzy's score.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">PrintBanner_Lizzy</td>
 <td class="address-2"><span id="63308"></span>63308</td>
 <td class="instruction">LD C,12</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=12 (screen co-ordinate).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63310"></span>63310</td>
 <td class="instruction">LD HL,53364</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="53357.html#53364">Messaging_LizzyScore</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63313"></span>63313</td>
 <td class="instruction">LD DE,53357</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="53357.html">Messaging_Lizzy</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63316"></span>63316</td>
 <td class="instruction">LD A,(53263)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53249.html#53263">Lizzy_Banner_Counter</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63319"></span>63319</td>
-<td class="instruction">CALL <a href="63270.html#63358">63358</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">CALL <a href="63270.html#63358">PrintBanner_Flash</a></td>
+<td class="comment-1" rowspan="1">Call <a href="63270.html#63358">PrintBanner_Flash</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63322"></span>
+<div class="comments">
+<div class="paragraph">
+Handle Ralph.
+</div>
+<div class="paragraph">
+Monster state 255 means the player is ("Game Over").
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63322"></span>63322</td>
 <td class="instruction">LD A,(53296)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="63270.html#63334">PrintBanner_Ralph</a> if *<a href="53296.html">Ralph_State</a> is not equal to 255.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63325"></span>63325</td>
 <td class="instruction">CP 255</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63327"></span>63327</td>
-<td class="instruction">JR NZ,<a href="63270.html#63334">63334</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="63270.html#63334">PrintBanner_Ralph</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63329"></span>
+<div class="comments">
+<div class="paragraph">
+Ralph is "Game Over"...
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63329"></span>63329</td>
 <td class="instruction">LD C,54</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=54 (screen co-ordinate).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63331"></span>63331</td>
-<td class="instruction">CALL <a href="63270.html#63349">63349</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">CALL <a href="63270.html#63349">PrintBanner_GameOver</a></td>
+<td class="comment-1" rowspan="1">Call <a href="63270.html#63349">PrintBanner_GameOver</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63334"></span>
+<div class="comments">
+<div class="paragraph">
+Displays "Ralph" and Ralph's score.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">PrintBanner_Ralph</td>
 <td class="address-2"><span id="63334"></span>63334</td>
 <td class="instruction">LD C,22</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=22 (screen co-ordinate).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63336"></span>63336</td>
 <td class="instruction">LD HL,53378</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="53371.html#53378">Messaging_RalphScore</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63339"></span>63339</td>
 <td class="instruction">LD DE,53371</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="53371.html">Messaging_Ralph</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63342"></span>63342</td>
 <td class="instruction">LD A,(53310)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53296.html#53310">Ralph_Banner_Counter</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63345"></span>63345</td>
-<td class="instruction">CALL <a href="63270.html#63358">63358</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">CALL <a href="63270.html#63358">PrintBanner_Flash</a></td>
+<td class="comment-1" rowspan="1">Call <a href="63270.html#63358">PrintBanner_Flash</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63348"></span>63348</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63349"></span>
+<div class="comments">
+<div class="paragraph">
+Instead of the monsters score, display "Game Over".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">PrintBanner_GameOver</td>
 <td class="address-2"><span id="63349"></span>63349</td>
 <td class="instruction">LD HL,53647</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="53647.html">Messaging_GameOver</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63352"></span>63352</td>
 <td class="instruction">LD B,0</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=0 (screen co-ordinate).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63354"></span>63354</td>
 <td class="instruction">CALL <a href="64347.html">PrintString</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="64347.html">PrintString</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63357"></span>63357</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63358"></span>
+<div class="comments">
+<div class="paragraph">
+Not actually a "flash" but the display alternates between the players score and their name.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">PrintBanner_Flash</td>
 <td class="address-2"><span id="63358"></span>63358</td>
 <td class="instruction">LD B,0</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=0 (screen co-ordinate).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63360"></span>63360</td>
 <td class="instruction">AND A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="63270.html#63364">PrintBanner_Print</a> if <span class="register">A</span> is not zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63361"></span>63361</td>
-<td class="instruction">JR NZ,<a href="63270.html#63364">63364</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="63270.html#63364">PrintBanner_Print</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63363"></span>
+<div class="comments">
+<div class="paragraph">
+<span class="register">DE</span> holds the monsters name and <span class="register">HL</span> contains their score.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63363"></span>63363</td>
 <td class="instruction">EX DE,HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Switch the <span class="register">DE</span> and <span class="register">HL</span> registers.</td>
 </tr>
 <tr>
+<td class="asm-label">PrintBanner_Print</td>
 <td class="address-2"><span id="63364"></span>63364</td>
 <td class="instruction">CALL <a href="64347.html">PrintString</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="64347.html">PrintString</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63367"></span>63367</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">

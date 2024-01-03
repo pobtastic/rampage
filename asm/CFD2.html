@@ -45,85 +45,140 @@ Next: <a href="D001.html">D001</a>
 <td class="asm-label">George_State</td>
 <td class="address-1"><span id="cfd2"></span>CFD2</td>
 <td class="instruction">DEFB $00</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">Value</th>
+<th colspan="1" rowspan="1">Meaning</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">05</td>
+<td class="centre" colspan="1" rowspan="1">Waiting</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">FF</td>
+<td class="centre" colspan="1" rowspan="1">Game Over</td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="cfd3"></span>CFD3</td>
 <td class="instruction">DEFB $00,$00,$00,$00</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label">George_Countdown</td>
 <td class="address-1"><span id="cfd7"></span>CFD7</td>
 <td class="instruction">DEFB $19</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="cfd8"></span>CFD8</td>
 <td class="instruction">DEFB $03,$19</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label">George_X_Position</td>
 <td class="address-1"><span id="cfda"></span>CFDA</td>
 <td class="instruction">DEFB $00</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label">George_Y_Position</td>
 <td class="address-1"><span id="cfdb"></span>CFDB</td>
 <td class="instruction">DEFB $0A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="cfdc"></span>CFDC</td>
 <td class="instruction">DEFB $12,$01</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label">George_Energy</td>
 <td class="address-1"><span id="cfde"></span>CFDE</td>
 <td class="instruction">DEFB $40</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="cfdf"></span>CFDF</td>
-<td class="instruction">DEFB $00,$04</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label">George_Banner_Counter</td>
+<td class="address-1"><span id="cfe0"></span>CFE0</td>
+<td class="instruction">DEFB $04</td>
+<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="cfe1"></span>CFE1</td>
 <td class="instruction">DEFW <a href="CFD2.html#cfe3">$CFE3</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="cfe3"></span>CFE3</td>
-<td class="instruction">DEFB $01,$0A,$0A,$12,$02,$02,$01,$05</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">DEFB $01,$0A,$0A</td>
+<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
-<td class="address-1"><span id="cfeb"></span>CFEB</td>
-<td class="instruction">DEFB $00,$00,$04,$0A,$0A,$12,$02,$02</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="address-1"><span id="cfe6"></span>CFE6</td>
+<td class="instruction">DEFB $12,$02,$02</td>
+<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
-<td class="address-1"><span id="cff3"></span>CFF3</td>
-<td class="instruction">DEFB $09,$07,$00,$00,$08,$0A,$0A,$12</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="address-1"><span id="cfe9"></span>CFE9</td>
+<td class="instruction">DEFB $01,$05,$00</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="cfec"></span>CFEC</td>
+<td class="instruction">DEFB $00,$04,$0A</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="cfef"></span>CFEF</td>
+<td class="instruction">DEFB $0A,$12,$02</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="cff2"></span>CFF2</td>
+<td class="instruction">DEFB $02,$09,$07</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="cff5"></span>CFF5</td>
+<td class="instruction">DEFB $00,$00,$08</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="cff8"></span>CFF8</td>
+<td class="instruction">DEFB $0A,$0A,$12</td>
+<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="cffb"></span>CFFB</td>
-<td class="instruction">DEFB $02,$02,$07,$09,$00,$00</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">DEFB $02,$02,$07</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="cffe"></span>CFFE</td>
+<td class="instruction">DEFB $09,$00,$00</td>
+<td class="comment-1" rowspan="1"></td>
 </tr>
 </table>
 <table class="asm-navigation">

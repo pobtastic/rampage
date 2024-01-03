@@ -29,7 +29,7 @@ Prev: <a href="64398.html">64398</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#64430">Map</a></td>
 <td class="next">
-Next: <a href="64468.html">64468</a>
+Next: <a href="64456.html">64456</a>
 </td>
 </tr>
 </table>
@@ -47,142 +47,93 @@ Used by the routine at <a href="64398.html">64398</a>.
 <tr>
 <td class="address-2"><span id="64430"></span>64430</td>
 <td class="instruction">LD B,C</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">C</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="64431"></span>64431</td>
 <td class="instruction">XOR A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=0.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="64432"></span>64432</td>
 <td class="instruction">LD (HL),E</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">E</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="64433"></span>64433</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="64434"></span>64434</td>
 <td class="instruction">DJNZ <a href="64430.html#64432">64432</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="64430.html#64432">64432</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="64436"></span>64436</td>
 <td class="instruction">ADD HL,BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">BC</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="64437"></span>64437</td>
 <td class="instruction">DEC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Decrease <span class="register">HL</span> by two.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="64438"></span>64438</td>
 <td class="instruction">DEC HL</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="64439"></span>64439</td>
 <td class="instruction">LD A,E</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">E</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="64440"></span>64440</td>
-<td class="instruction">AND 7</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">AND %00000111</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-2.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="64442"></span>64442</td>
 <td class="instruction">JR Z,<a href="64430.html#64451">64451</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="64430.html#64451">64451</a> if the result is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="64444"></span>64444</td>
 <td class="instruction">INC E</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">E</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="64445"></span>64445</td>
 <td class="instruction">CP 7</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="64430.html#64451">64451</a> if <span class="register">A</span> is not equal to 7.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="64447"></span>64447</td>
 <td class="instruction">JR NZ,<a href="64430.html#64451">64451</a></td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="64449"></span>64449</td>
 <td class="instruction">LD E,66</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=66.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="64451"></span>64451</td>
 <td class="instruction">LD A,D</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="64430.html">64430</a> if <span class="register">D</span> is not equal to <span class="register">H</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="64452"></span>64452</td>
 <td class="instruction">CP H</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="64453"></span>64453</td>
 <td class="instruction">JR NZ,<a href="64430.html#64430">64430</a></td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="64455"></span>64455</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="routine-comment" colspan="5">
-<span id="64456"></span>
-<div class="comments">
-<div class="paragraph">
-This entry point is used by the routine at <a href="63766.html">63766</a>.
-</div>
-</div>
-</td>
-</tr>
-<tr>
-<td class="address-2"><span id="64456"></span>64456</td>
-<td class="instruction">LD B,255</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-2"><span id="64458"></span>64458</td>
-<td class="instruction">CALL <a href="64468.html">64468</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="64461"></span>64461</td>
-<td class="instruction">JR Z,<a href="64430.html#64464">64464</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="64463"></span>64463</td>
-<td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-2"><span id="64464"></span>64464</td>
-<td class="instruction">HALT</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="64465"></span>64465</td>
-<td class="instruction">DJNZ <a href="64430.html#64458">64458</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="64467"></span>64467</td>
-<td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -192,7 +143,7 @@ Prev: <a href="64398.html">64398</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#64430">Map</a></td>
 <td class="next">
-Next: <a href="64468.html">64468</a>
+Next: <a href="64456.html">64456</a>
 </td>
 </tr>
 </table>

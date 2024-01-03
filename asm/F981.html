@@ -33,7 +33,7 @@ Next: <a href="F9BF.html">F9BF</a>
 </td>
 </tr>
 </table>
-<div class="description">F981: Routine at F981</div>
+<div class="description">F981: Print Selection Screen</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,141 +45,247 @@ Used by the routine at <a href="F916.html">F916</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">Print_SelectionScreen</td>
 <td class="address-2"><span id="f981"></span>F981</td>
 <td class="instruction">LD HL,$D089</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D089.html">Messaging_Credits</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f984"></span>F984</td>
 <td class="instruction">LD BC,$0F00</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0F00 (screen co-ordinates).</td>
 </tr>
 <tr>
+<td class="asm-label">SelectionScreen_CreditsLoop</td>
 <td class="address-2"><span id="f987"></span>F987</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Stash <span class="register">BC</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f988"></span>F988</td>
 <td class="instruction">CALL <a href="FB5B.html">PrintString</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="FB5B.html">PrintString</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f98b"></span>F98B</td>
 <td class="instruction">POP BC</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f98c"></span>F98C</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Move onto the start of the next message.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f98d"></span>F98D</td>
 <td class="instruction">INC B</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Move down one screen row.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f98e"></span>
+<div class="comments">
+<div class="paragraph">
+Check if all lines of <a href="D089.html">Messaging_Credits</a> have been printed.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f98e"></span>F98E</td>
 <td class="instruction">LD A,B</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="F981.html#f987">SelectionScreen_CreditsLoop</a> if <span class="register">B</span> is not equal to 17.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f98f"></span>F98F</td>
 <td class="instruction">CP $17</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f991"></span>F991</td>
-<td class="instruction">JR NZ,<a href="F981.html#f987">$F987</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="F981.html#f987">SelectionScreen_CreditsLoop</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f993"></span>
+<div class="comments">
+<div class="paragraph">
+Now display <a href="D110.html">Messaging_SelectMenu</a> (which doesn't use the same mechanism as the lines aren't sequential).
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f993"></span>F993</td>
 <td class="instruction">LD HL,$D110</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D110.html">Messaging_SelectMenu</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f996"></span>
+<div class="comments">
+<div class="paragraph">
+Prints "S - START".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f996"></span>F996</td>
 <td class="instruction">LD BC,$0501</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0501 (screen co-ordinates).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f999"></span>F999</td>
 <td class="instruction">CALL <a href="FB5B.html">PrintString</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="FB5B.html">PrintString</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f99c"></span>F99C</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Move onto the start of the next message.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f99d"></span>
+<div class="comments">
+<div class="paragraph">
+Prints "GAME".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f99d"></span>F99D</td>
 <td class="instruction">LD BC,$0605</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0605 (screen co-ordinates).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f9a0"></span>F9A0</td>
 <td class="instruction">CALL <a href="FB5B.html">PrintString</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="FB5B.html">PrintString</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f9a3"></span>F9A3</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Move onto the start of the next message.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f9a4"></span>
+<div class="comments">
+<div class="paragraph">
+Prints "C - CHANGE".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f9a4"></span>F9A4</td>
 <td class="instruction">LD BC,$0901</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0901 (screen co-ordinates).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f9a7"></span>F9A7</td>
 <td class="instruction">CALL <a href="FB5B.html">PrintString</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="FB5B.html">PrintString</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f9aa"></span>F9AA</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Move onto the start of the next message.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f9ab"></span>
+<div class="comments">
+<div class="paragraph">
+Prints "GAME".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f9ab"></span>F9AB</td>
 <td class="instruction">LD BC,$0A05</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0A05 (screen co-ordinates).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f9ae"></span>F9AE</td>
 <td class="instruction">CALL <a href="FB5B.html">PrintString</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="FB5B.html">PrintString</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f9b1"></span>
+<div class="comments">
+<div class="paragraph">
+Prints "CONTROLS".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f9b1"></span>F9B1</td>
 <td class="instruction">LD BC,$0B05</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0B05 (screen co-ordinates).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f9b4"></span>F9B4</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Move onto the start of the next message.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f9b5"></span>F9B5</td>
 <td class="instruction">CALL <a href="FB5B.html">PrintString</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="FB5B.html">PrintString</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f9b8"></span>
+<div class="comments">
+<div class="paragraph">
+Output to the screen buffer.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f9b8"></span>F9B8</td>
 <td class="instruction">CALL <a href="D604.html">ScreenBuffer_Update</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="D604.html">ScreenBuffer_Update</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f9bb"></span>F9BB</td>
 <td class="instruction">CALL <a href="D5F8.html">AttributeBuffer_Update</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="D5F8.html">AttributeBuffer_Update</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f9be"></span>F9BE</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

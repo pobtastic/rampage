@@ -33,7 +33,7 @@ Next: <a href="F788.html">F788</a>
 </td>
 </tr>
 </table>
-<div class="description">F726: Routine at F726</div>
+<div class="description">F726: Print Banner</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,209 +45,372 @@ Used by the routine at <a href="DE77.html">DE77</a>.
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f726"></span>
+<div class="comments">
+<div class="paragraph">
+Handle George.
+</div>
+<div class="paragraph">
+Monster state FF means the player is ("Game Over").
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">PrintBanner</td>
 <td class="address-2"><span id="f726"></span>F726</td>
 <td class="instruction">LD A,($CFD2)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="F726.html#f732">PrintBanner_George</a> if *<a href="CFD2.html">George_State</a> is not equal to FF.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f729"></span>F729</td>
 <td class="instruction">CP $FF</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f72b"></span>F72B</td>
-<td class="instruction">JR NZ,<a href="F726.html#f732">$F732</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="F726.html#f732">PrintBanner_George</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f72d"></span>
+<div class="comments">
+<div class="paragraph">
+George is "Game Over"...
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f72d"></span>F72D</td>
 <td class="instruction">LD C,$22</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=22 (screen co-ordinate).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f72f"></span>F72F</td>
-<td class="instruction">CALL <a href="F726.html#f775">$F775</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">CALL <a href="F726.html#f775">PrintBanner_GameOver</a></td>
+<td class="comment-1" rowspan="1">Call <a href="F726.html#f775">PrintBanner_GameOver</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f732"></span>
+<div class="comments">
+<div class="paragraph">
+Displays "George" and George's score.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">PrintBanner_George</td>
 <td class="address-2"><span id="f732"></span>F732</td>
 <td class="instruction">LD C,$02</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=02 (screen co-ordinate).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f734"></span>F734</td>
 <td class="instruction">LD HL,$D066</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D05F.html#d066">Messaging_GeorgeScore</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f737"></span>F737</td>
 <td class="instruction">LD DE,$D05F</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="D05F.html">Messaging_George</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f73a"></span>F73A</td>
 <td class="instruction">LD A,($CFE0)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="CFD2.html#cfe0">George_Banner_Counter</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f73d"></span>F73D</td>
-<td class="instruction">CALL <a href="F726.html#f77e">$F77E</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">CALL <a href="F726.html#f77e">PrintBanner_Flash</a></td>
+<td class="comment-1" rowspan="1">Call <a href="F726.html#f77e">PrintBanner_Flash</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f740"></span>
+<div class="comments">
+<div class="paragraph">
+Handle Lizzy.
+</div>
+<div class="paragraph">
+Monster state FF means the player is ("Game Over").
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f740"></span>F740</td>
 <td class="instruction">LD A,($D001)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="F726.html#f74c">PrintBanner_Lizzy</a> if *<a href="D001.html">Lizzy_State</a> is not equal to FF.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f743"></span>F743</td>
 <td class="instruction">CP $FF</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f745"></span>F745</td>
-<td class="instruction">JR NZ,<a href="F726.html#f74c">$F74C</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="F726.html#f74c">PrintBanner_Lizzy</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f747"></span>
+<div class="comments">
+<div class="paragraph">
+Lizzy is "Game Over"...
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f747"></span>F747</td>
 <td class="instruction">LD C,$2C</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=2C (screen co-ordinate).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f749"></span>F749</td>
-<td class="instruction">CALL <a href="F726.html#f775">$F775</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">CALL <a href="F726.html#f775">PrintBanner_GameOver</a></td>
+<td class="comment-1" rowspan="1">Call <a href="F726.html#f775">PrintBanner_GameOver</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f74c"></span>
+<div class="comments">
+<div class="paragraph">
+Displays "Lizzy" and Lizzy's score.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">PrintBanner_Lizzy</td>
 <td class="address-2"><span id="f74c"></span>F74C</td>
 <td class="instruction">LD C,$0C</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=0C (screen co-ordinate).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f74e"></span>F74E</td>
 <td class="instruction">LD HL,$D074</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D06D.html#d074">Messaging_LizzyScore</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f751"></span>F751</td>
 <td class="instruction">LD DE,$D06D</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="D06D.html">Messaging_Lizzy</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f754"></span>F754</td>
 <td class="instruction">LD A,($D00F)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D001.html#d00f">Lizzy_Banner_Counter</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f757"></span>F757</td>
-<td class="instruction">CALL <a href="F726.html#f77e">$F77E</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">CALL <a href="F726.html#f77e">PrintBanner_Flash</a></td>
+<td class="comment-1" rowspan="1">Call <a href="F726.html#f77e">PrintBanner_Flash</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f75a"></span>
+<div class="comments">
+<div class="paragraph">
+Handle Ralph.
+</div>
+<div class="paragraph">
+Monster state FF means the player is ("Game Over").
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f75a"></span>F75A</td>
 <td class="instruction">LD A,($D030)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="F726.html#f766">PrintBanner_Ralph</a> if *<a href="D030.html">Ralph_State</a> is not equal to FF.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f75d"></span>F75D</td>
 <td class="instruction">CP $FF</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f75f"></span>F75F</td>
-<td class="instruction">JR NZ,<a href="F726.html#f766">$F766</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="F726.html#f766">PrintBanner_Ralph</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f761"></span>
+<div class="comments">
+<div class="paragraph">
+Ralph is "Game Over"...
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f761"></span>F761</td>
 <td class="instruction">LD C,$36</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=36 (screen co-ordinate).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f763"></span>F763</td>
-<td class="instruction">CALL <a href="F726.html#f775">$F775</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">CALL <a href="F726.html#f775">PrintBanner_GameOver</a></td>
+<td class="comment-1" rowspan="1">Call <a href="F726.html#f775">PrintBanner_GameOver</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f766"></span>
+<div class="comments">
+<div class="paragraph">
+Displays "Ralph" and Ralph's score.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">PrintBanner_Ralph</td>
 <td class="address-2"><span id="f766"></span>F766</td>
 <td class="instruction">LD C,$16</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=16 (screen co-ordinate).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f768"></span>F768</td>
 <td class="instruction">LD HL,$D082</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D07B.html#d082">Messaging_RalphScore</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f76b"></span>F76B</td>
 <td class="instruction">LD DE,$D07B</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="D07B.html">Messaging_Ralph</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f76e"></span>F76E</td>
 <td class="instruction">LD A,($D03E)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D030.html#d03e">Ralph_Banner_Counter</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f771"></span>F771</td>
-<td class="instruction">CALL <a href="F726.html#f77e">$F77E</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">CALL <a href="F726.html#f77e">PrintBanner_Flash</a></td>
+<td class="comment-1" rowspan="1">Call <a href="F726.html#f77e">PrintBanner_Flash</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f774"></span>F774</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f775"></span>
+<div class="comments">
+<div class="paragraph">
+Instead of the monsters score, display "Game Over".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">PrintBanner_GameOver</td>
 <td class="address-2"><span id="f775"></span>F775</td>
 <td class="instruction">LD HL,$D18F</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D18F.html">Messaging_GameOver</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f778"></span>F778</td>
 <td class="instruction">LD B,$00</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=00 (screen co-ordinate).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f77a"></span>F77A</td>
 <td class="instruction">CALL <a href="FB5B.html">PrintString</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="FB5B.html">PrintString</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f77d"></span>F77D</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f77e"></span>
+<div class="comments">
+<div class="paragraph">
+Not actually a "flash" but the display alternates between the players score and their name.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">PrintBanner_Flash</td>
 <td class="address-2"><span id="f77e"></span>F77E</td>
 <td class="instruction">LD B,$00</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=00 (screen co-ordinate).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f780"></span>F780</td>
 <td class="instruction">AND A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="F726.html#f784">PrintBanner_Print</a> if <span class="register">A</span> is not zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f781"></span>F781</td>
-<td class="instruction">JR NZ,<a href="F726.html#f784">$F784</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="F726.html#f784">PrintBanner_Print</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f783"></span>
+<div class="comments">
+<div class="paragraph">
+<span class="register">DE</span> holds the monsters name and <span class="register">HL</span> contains their score.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f783"></span>F783</td>
 <td class="instruction">EX DE,HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Switch the <span class="register">DE</span> and <span class="register">HL</span> registers.</td>
 </tr>
 <tr>
+<td class="asm-label">PrintBanner_Print</td>
 <td class="address-2"><span id="f784"></span>F784</td>
 <td class="instruction">CALL <a href="FB5B.html">PrintString</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="FB5B.html">PrintString</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f787"></span>F787</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">

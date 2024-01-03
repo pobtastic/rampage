@@ -29,7 +29,7 @@ Prev: <a href="FB8E.html">FB8E</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#fbae">Map</a></td>
 <td class="next">
-Next: <a href="FBD4.html">FBD4</a>
+Next: <a href="FBC8.html">FBC8</a>
 </td>
 </tr>
 </table>
@@ -47,142 +47,93 @@ Used by the routine at <a href="FB8E.html">FB8E</a>.
 <tr>
 <td class="address-2"><span id="fbae"></span>FBAE</td>
 <td class="instruction">LD B,C</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">C</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fbaf"></span>FBAF</td>
 <td class="instruction">XOR A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=00.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="fbb0"></span>FBB0</td>
 <td class="instruction">LD (HL),E</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">E</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fbb1"></span>FBB1</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fbb2"></span>FBB2</td>
 <td class="instruction">DJNZ <a href="FBAE.html#fbb0">$FBB0</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="FBAE.html#fbb0">FBB0</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fbb4"></span>FBB4</td>
 <td class="instruction">ADD HL,BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">BC</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fbb5"></span>FBB5</td>
 <td class="instruction">DEC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Decrease <span class="register">HL</span> by two.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fbb6"></span>FBB6</td>
 <td class="instruction">DEC HL</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="fbb7"></span>FBB7</td>
 <td class="instruction">LD A,E</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">E</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fbb8"></span>FBB8</td>
-<td class="instruction">AND $07</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">AND %00000111</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-2.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fbba"></span>FBBA</td>
 <td class="instruction">JR Z,<a href="FBAE.html#fbc3">$FBC3</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="FBAE.html#fbc3">FBC3</a> if the result is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fbbc"></span>FBBC</td>
 <td class="instruction">INC E</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">E</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fbbd"></span>FBBD</td>
 <td class="instruction">CP $07</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="FBAE.html#fbc3">FBC3</a> if <span class="register">A</span> is not equal to 07.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fbbf"></span>FBBF</td>
 <td class="instruction">JR NZ,<a href="FBAE.html#fbc3">$FBC3</a></td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="fbc1"></span>FBC1</td>
 <td class="instruction">LD E,$42</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=42.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="fbc3"></span>FBC3</td>
 <td class="instruction">LD A,D</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="FBAE.html">FBAE</a> if <span class="register">D</span> is not equal to <span class="register">H</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fbc4"></span>FBC4</td>
 <td class="instruction">CP H</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="fbc5"></span>FBC5</td>
 <td class="instruction">JR NZ,<a href="FBAE.html#fbae">$FBAE</a></td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="fbc7"></span>FBC7</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="routine-comment" colspan="5">
-<span id="fbc8"></span>
-<div class="comments">
-<div class="paragraph">
-This entry point is used by the routine at <a href="F916.html">F916</a>.
-</div>
-</div>
-</td>
-</tr>
-<tr>
-<td class="address-2"><span id="fbc8"></span>FBC8</td>
-<td class="instruction">LD B,$FF</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-2"><span id="fbca"></span>FBCA</td>
-<td class="instruction">CALL <a href="FBD4.html">$FBD4</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="fbcd"></span>FBCD</td>
-<td class="instruction">JR Z,<a href="FBAE.html#fbd0">$FBD0</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="fbcf"></span>FBCF</td>
-<td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-2"><span id="fbd0"></span>FBD0</td>
-<td class="instruction">HALT</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="fbd1"></span>FBD1</td>
-<td class="instruction">DJNZ <a href="FBAE.html#fbca">$FBCA</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="fbd3"></span>FBD3</td>
-<td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -192,7 +143,7 @@ Prev: <a href="FB8E.html">FB8E</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#fbae">Map</a></td>
 <td class="next">
-Next: <a href="FBD4.html">FBD4</a>
+Next: <a href="FBC8.html">FBC8</a>
 </td>
 </tr>
 </table>

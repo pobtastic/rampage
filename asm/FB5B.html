@@ -25,7 +25,7 @@ gtag('config', 'G-75RERFCHBG');
 <table class="asm-navigation">
 <tr>
 <td class="prev">
-Prev: <a href="FAD0.html">FAD0</a>
+Prev: <a href="FB4E.html">FB4E</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#fb5b">Map</a></td>
 <td class="next">
@@ -39,7 +39,7 @@ Next: <a href="FB8E.html">FB8E</a>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="F726.html">F726</a>, <a href="F981.html">F981</a>, <a href="F9BF.html">F9BF</a>, <a href="FAD0.html">FAD0</a>, <a href="FB8E.html">FB8E</a> and <a href="FD9E.html">Handler_DisplayTickerNews</a>.
+Used by the routines at <a href="F726.html">PrintBanner</a>, <a href="F981.html">Print_SelectionScreen</a>, <a href="F9BF.html">F9BF</a>, <a href="FB8E.html">FB8E</a> and <a href="FD9E.html">Handler_DisplayTickerNews</a>.
 </div>
 </div>
 <table class="input">
@@ -73,229 +73,221 @@ Used by the routines at <a href="F726.html">F726</a>, <a href="F981.html">F981</
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb5e"></span>FB5E</td>
 <td class="instruction">PUSH HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb5f"></span>FB5F</td>
 <td class="instruction">SUB $20</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>-=20.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb61"></span>FB61</td>
 <td class="instruction">LD H,$00</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Create an offset using <span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb63"></span>FB63</td>
 <td class="instruction">LD L,A</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb64"></span>FB64</td>
 <td class="instruction">ADD HL,HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3"><span class="register">HL</span>*=08.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb65"></span>FB65</td>
 <td class="instruction">ADD HL,HL</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb66"></span>FB66</td>
 <td class="instruction">ADD HL,HL</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb67"></span>FB67</td>
 <td class="instruction">LD A,H</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3"><span class="register">H</span>+=3D.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb68"></span>FB68</td>
 <td class="instruction">ADD A,$3D</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb6a"></span>FB6A</td>
 <td class="instruction">LD H,A</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb6b"></span>FB6B</td>
 <td class="instruction">LD A,B</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb6c"></span>FB6C</td>
-<td class="instruction">AND $F8</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">AND %11111000</td>
+<td class="comment-1" rowspan="1">Keep only bits 3-7.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb6e"></span>FB6E</td>
 <td class="instruction">ADD A,$6B</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=6B.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb70"></span>FB70</td>
 <td class="instruction">LD D,A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">D</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb71"></span>FB71</td>
 <td class="instruction">LD A,B</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb72"></span>FB72</td>
-<td class="instruction">AND $07</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">AND %00000111</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-2.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb74"></span>FB74</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">RRCA.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb75"></span>FB75</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb76"></span>FB76</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb77"></span>FB77</td>
 <td class="instruction">ADD A,C</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">C</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb78"></span>FB78</td>
 <td class="instruction">LD E,A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb79"></span>FB79</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Stash <span class="register">BC</span> on the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb7a"></span>FB7A</td>
 <td class="instruction">LD B,$08</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=08.</td>
 </tr>
 <tr>
-<td class="asm-label">PrintString_0</td>
+<td class="asm-label">PrintString_Loop</td>
 <td class="address-2"><span id="fb7c"></span>FB7C</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb7d"></span>FB7D</td>
 <td class="instruction">SRL A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Shift <span class="register">A</span> right.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb7f"></span>FB7F</td>
 <td class="instruction">OR (HL)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Set the bits from *<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb80"></span>FB80</td>
 <td class="instruction">LD (DE),A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">DE</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb81"></span>FB81</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb82"></span>FB82</td>
 <td class="instruction">INC D</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">D</span> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb83"></span>FB83</td>
-<td class="instruction">DJNZ <a href="FB5B.html#fb7c">PrintString_0</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">DJNZ <a href="FB5B.html#fb7c">PrintString_Loop</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="FB5B.html#fb7c">PrintString_Loop</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb85"></span>FB85</td>
 <td class="instruction">POP BC</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb86"></span>FB86</td>
 <td class="instruction">INC C</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb87"></span>FB87</td>
 <td class="instruction">POP HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb88"></span>FB88</td>
 <td class="instruction">BIT 7,(HL)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Return if bit 7 of *<span class="register">HL</span> is set.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb8a"></span>FB8A</td>
 <td class="instruction">RET NZ</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb8b"></span>FB8B</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb8c"></span>FB8C</td>
 <td class="instruction">JR <a href="FB5B.html#fb5b">PrintString</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="FB5B.html">PrintString</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">
 <tr>
 <td class="prev">
-Prev: <a href="FAD0.html">FAD0</a>
+Prev: <a href="FB4E.html">FB4E</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#fb5b">Map</a></td>
 <td class="next">

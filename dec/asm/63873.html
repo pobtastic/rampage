@@ -33,7 +33,7 @@ Next: <a href="63935.html">63935</a>
 </td>
 </tr>
 </table>
-<div class="description">63873: Routine at F981</div>
+<div class="description">63873: Print Selection Screen</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,141 +45,247 @@ Used by the routine at <a href="63766.html">63766</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">Print_SelectionScreen</td>
 <td class="address-2"><span id="63873"></span>63873</td>
 <td class="instruction">LD HL,53385</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="53385.html">Messaging_Credits</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63876"></span>63876</td>
 <td class="instruction">LD BC,3840</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=3840 (screen co-ordinates).</td>
 </tr>
 <tr>
+<td class="asm-label">SelectionScreen_CreditsLoop</td>
 <td class="address-2"><span id="63879"></span>63879</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Stash <span class="register">BC</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63880"></span>63880</td>
 <td class="instruction">CALL <a href="64347.html">PrintString</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="64347.html">PrintString</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63883"></span>63883</td>
 <td class="instruction">POP BC</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63884"></span>63884</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Move onto the start of the next message.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63885"></span>63885</td>
 <td class="instruction">INC B</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Move down one screen row.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63886"></span>
+<div class="comments">
+<div class="paragraph">
+Check if all lines of <a href="53385.html">Messaging_Credits</a> have been printed.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63886"></span>63886</td>
 <td class="instruction">LD A,B</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="63873.html#63879">SelectionScreen_CreditsLoop</a> if <span class="register">B</span> is not equal to 23.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63887"></span>63887</td>
 <td class="instruction">CP 23</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63889"></span>63889</td>
-<td class="instruction">JR NZ,<a href="63873.html#63879">63879</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="63873.html#63879">SelectionScreen_CreditsLoop</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63891"></span>
+<div class="comments">
+<div class="paragraph">
+Now display <a href="53520.html">Messaging_SelectMenu</a> (which doesn't use the same mechanism as the lines aren't sequential).
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63891"></span>63891</td>
 <td class="instruction">LD HL,53520</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="53520.html">Messaging_SelectMenu</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63894"></span>
+<div class="comments">
+<div class="paragraph">
+Prints "S - START".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63894"></span>63894</td>
 <td class="instruction">LD BC,1281</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=1281 (screen co-ordinates).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63897"></span>63897</td>
 <td class="instruction">CALL <a href="64347.html">PrintString</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="64347.html">PrintString</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63900"></span>63900</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Move onto the start of the next message.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63901"></span>
+<div class="comments">
+<div class="paragraph">
+Prints "GAME".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63901"></span>63901</td>
 <td class="instruction">LD BC,1541</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=1541 (screen co-ordinates).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63904"></span>63904</td>
 <td class="instruction">CALL <a href="64347.html">PrintString</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="64347.html">PrintString</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63907"></span>63907</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Move onto the start of the next message.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63908"></span>
+<div class="comments">
+<div class="paragraph">
+Prints "C - CHANGE".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63908"></span>63908</td>
 <td class="instruction">LD BC,2305</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=2305 (screen co-ordinates).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63911"></span>63911</td>
 <td class="instruction">CALL <a href="64347.html">PrintString</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="64347.html">PrintString</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63914"></span>63914</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Move onto the start of the next message.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63915"></span>
+<div class="comments">
+<div class="paragraph">
+Prints "GAME".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63915"></span>63915</td>
 <td class="instruction">LD BC,2565</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=2565 (screen co-ordinates).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63918"></span>63918</td>
 <td class="instruction">CALL <a href="64347.html">PrintString</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="64347.html">PrintString</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63921"></span>
+<div class="comments">
+<div class="paragraph">
+Prints "CONTROLS".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63921"></span>63921</td>
 <td class="instruction">LD BC,2821</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=2821 (screen co-ordinates).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63924"></span>63924</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Move onto the start of the next message.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63925"></span>63925</td>
 <td class="instruction">CALL <a href="64347.html">PrintString</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="64347.html">PrintString</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63928"></span>
+<div class="comments">
+<div class="paragraph">
+Output to the screen buffer.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63928"></span>63928</td>
 <td class="instruction">CALL <a href="54788.html">ScreenBuffer_Update</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="54788.html">ScreenBuffer_Update</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63931"></span>63931</td>
 <td class="instruction">CALL <a href="54776.html">AttributeBuffer_Update</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="54776.html">AttributeBuffer_Update</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63934"></span>63934</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
