@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at FAA8</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="F9BF.html">F9BF</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#faa8">Map</a></td>
+<td class="next">
+Next: <a href="FB4E.html">FB4E</a>
+</td>
+</tr>
+</table>
+<div class="description">FAA8: Handler: User Defined Keys</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="F9BF.html">Handler_ChangeControls</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_UserDefinedKeys</td>
+<td class="address-2"><span id="faa8"></span>FAA8</td>
+<td class="instruction">CALL <a href="FB8E.html">$FB8E</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FB8E.html">FB8E</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="faab"></span>FAAB</td>
+<td class="instruction">CALL <a href="FBD4.html">Debounce</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FBD4.html">Debounce</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="faae"></span>FAAE</td>
+<td class="instruction">JR NZ,<a href="FAA8.html#faa8">Handler_UserDefinedKeys</a></td>
+<td class="comment-1" rowspan="1">Loop back to <a href="FAA8.html">Handler_UserDefinedKeys</a> until the pressed key is released.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fab0"></span>FAB0</td>
+<td class="instruction">LD HL,$FB4E</td>
+<td class="comment-1" rowspan="2">Write <a href="FB4E.html">UserDefinedKeys_Buffer</a> to *<a href="FB58.html">UserDefinedKeys_Pointer</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fab3"></span>FAB3</td>
+<td class="instruction">LD ($FB58),HL</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="fab6"></span>
+<div class="comments">
+<div class="paragraph">
+Print "SELECT THE CONTROLS FOR".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fab6"></span>FAB6</td>
+<td class="instruction">LD HL,$D0D5</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D0D5.html">Messaging_ChangeControls</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fab9"></span>FAB9</td>
+<td class="instruction">LD BC,$0403</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0403 (screen co-ordinates).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fabc"></span>FABC</td>
+<td class="instruction">CALL <a href="FB5B.html">PrintString</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FB5B.html">PrintString</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fabf"></span>FABF</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Move onto the start of the next message.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fac0"></span>FAC0</td>
+<td class="instruction">LD BC,$0602</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0602 (screen co-ordinates).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fac3"></span>FAC3</td>
+<td class="instruction">CALL <a href="FB5B.html">PrintString</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FB5B.html">PrintString</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="fac6"></span>
+<div class="comments">
+<div class="paragraph">
+Programmatically display all the <a href="D0EB.html">Messaging_Controls</a> options.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fac6"></span>FAC6</td>
+<td class="instruction">LD HL,$D0EB</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D0EB.html">Messaging_Controls</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fac9"></span>FAC9</td>
+<td class="instruction">LD BC,$0804</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0804.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="facc"></span>FACC</td>
+<td class="instruction">LD A,$05</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=05 (control counter).</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_UserDefinedKeys_PrintLoop</td>
+<td class="address-2"><span id="face"></span>FACE</td>
+<td class="instruction">PUSH AF</td>
+<td class="comment-1" rowspan="2">Stash <span class="register">AF</span> and <span class="register">BC</span> on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="facf"></span>FACF</td>
+<td class="instruction">PUSH BC</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fad0"></span>FAD0</td>
+<td class="instruction">CALL <a href="FB5B.html">PrintString</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FB5B.html">PrintString</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fad3"></span>FAD3</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="2">Restore <span class="register">BC</span> and <span class="register">AF</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fad4"></span>FAD4</td>
+<td class="instruction">POP AF</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fad5"></span>FAD5</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Move onto the start of the next message.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fad6"></span>FAD6</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="2">Increment <span class="register">B</span> by two.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fad7"></span>FAD7</td>
+<td class="instruction">INC B</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fad8"></span>FAD8</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Decrease the control counter by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fad9"></span>FAD9</td>
+<td class="instruction">JR NZ,<a href="FAA8.html#face">Handler_UserDefinedKeys_PrintLoop</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="FAA8.html#face">Handler_UserDefinedKeys_PrintLoop</a> until all controls have been printed.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="fadb"></span>
+<div class="comments">
+<div class="paragraph">
+Prints the last line manually "PUNCH" (as it's the second line of the option before it).
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fadb"></span>FADB</td>
+<td class="instruction">DEC B</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">B</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fadc"></span>FADC</td>
+<td class="instruction">CALL <a href="FB5B.html">PrintString</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FB5B.html">PrintString</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fadf"></span>FADF</td>
+<td class="instruction">LD BC,$080B</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=080B (screen co-ordinates).</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_UserDefinedKeys_0</td>
+<td class="address-2"><span id="fae2"></span>FAE2</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="2">Stash <span class="register">BC</span> and <span class="register">BC</span> on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fae3"></span>FAE3</td>
+<td class="instruction">PUSH BC</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fae4"></span>FAE4</td>
+<td class="instruction">LD HL,$D104</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D0EB.html#d104">Messaging_QuestionMark</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fae7"></span>FAE7</td>
+<td class="instruction">CALL <a href="FB5B.html">PrintString</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FB5B.html">PrintString</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="faea"></span>
+<div class="comments">
+<div class="paragraph">
+Output to the screen buffer.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="faea"></span>FAEA</td>
+<td class="instruction">CALL <a href="D604.html">ScreenBuffer_Update</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D604.html">ScreenBuffer_Update</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="faed"></span>FAED</td>
+<td class="instruction">CALL <a href="D5F8.html">AttributeBuffer_Update</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D5F8.html">AttributeBuffer_Update</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_UserDefinedKeys_1</td>
+<td class="address-2"><span id="faf0"></span>FAF0</td>
+<td class="instruction">CALL <a href="DDC0.html">ChooseControlType</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DDC0.html">ChooseControlType</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="faf3"></span>FAF3</td>
+<td class="instruction">JR NZ,<a href="FAA8.html#faf0">Handler_UserDefinedKeys_1</a></td>
+<td class="comment-1" rowspan="1">Loop back to <a href="FAA8.html#faf0">Handler_UserDefinedKeys_1</a> until an option has been selected.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="faf5"></span>FAF5</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">D</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="faf6"></span>FAF6</td>
+<td class="instruction">CP $FF</td>
+<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with FF.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="faf8"></span>FAF8</td>
+<td class="instruction">JR Z,<a href="FAA8.html#faf0">Handler_UserDefinedKeys_1</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="FAA8.html#faf0">Handler_UserDefinedKeys_1</a> if {} is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fafa"></span>FAFA</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> register with the shadow <span class="register">HL</span> register.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fafb"></span>FAFB</td>
+<td class="instruction">LD HL,$FBF2</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="FBF2.html">FBF2</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fafe"></span>FAFE</td>
+<td class="instruction">LD B,$00</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=00.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb00"></span>FB00</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb01"></span>FB01</td>
+<td class="instruction">ADD HL,BC</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">BC</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb02"></span>FB02</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb03"></span>FB03</td>
+<td class="instruction">CP $80</td>
+<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 80.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb05"></span>FB05</td>
+<td class="instruction">JR NC,<a href="FAA8.html#faf0">Handler_UserDefinedKeys_1</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="FAA8.html#faf0">Handler_UserDefinedKeys_1</a> if {} is higher.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb07"></span>FB07</td>
+<td class="instruction">OR %10000000</td>
+<td class="comment-1" rowspan="1">Set bits 7.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb09"></span>FB09</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb0a"></span>FB0A</td>
+<td class="instruction">LD HL,$D106</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D0EB.html#d106">Messaging_Space</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb0d"></span>FB0D</td>
+<td class="instruction">AND %01111111</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-6.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb0f"></span>FB0F</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb10"></span>FB10</td>
+<td class="instruction">CP $21</td>
+<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 21.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb12"></span>FB12</td>
+<td class="instruction">JR NZ,<a href="FAA8.html#fb17">Handler_UserDefinedKeys_2</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="FAA8.html#fb17">Handler_UserDefinedKeys_2</a> if {} is not zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb14"></span>FB14</td>
+<td class="instruction">LD HL,$D10E</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D108.html#d10e">D10E</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_UserDefinedKeys_2</td>
+<td class="address-2"><span id="fb17"></span>FB17</td>
+<td class="instruction">CP $27</td>
+<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 27.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb19"></span>FB19</td>
+<td class="instruction">JR NZ,<a href="FAA8.html#fb1e">Handler_UserDefinedKeys_3</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="FAA8.html#fb1e">Handler_UserDefinedKeys_3</a> if {} is not zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb1b"></span>FB1B</td>
+<td class="instruction">LD HL,$D108</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D108.html">D108</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_UserDefinedKeys_3</td>
+<td class="address-2"><span id="fb1e"></span>FB1E</td>
+<td class="instruction">CP $18</td>
+<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 18.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb20"></span>FB20</td>
+<td class="instruction">JR NZ,<a href="FAA8.html#fb25">Handler_UserDefinedKeys_4</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="FAA8.html#fb25">Handler_UserDefinedKeys_4</a> if {} is not zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb22"></span>FB22</td>
+<td class="instruction">LD HL,$D10A</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D108.html#d10a">D10A</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_UserDefinedKeys_4</td>
+<td class="address-2"><span id="fb25"></span>FB25</td>
+<td class="instruction">CP $20</td>
+<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 20.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb27"></span>FB27</td>
+<td class="instruction">JR NZ,<a href="FAA8.html#fb2c">Handler_UserDefinedKeys_5</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="FAA8.html#fb2c">Handler_UserDefinedKeys_5</a> if {} is not zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb29"></span>FB29</td>
+<td class="instruction">LD HL,$D10C</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D108.html#d10c">D10C</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_UserDefinedKeys_5</td>
+<td class="address-2"><span id="fb2c"></span>FB2C</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb2d"></span>FB2D</td>
+<td class="instruction">PUSH DE</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">DE</span> on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb2e"></span>FB2E</td>
+<td class="instruction">CALL <a href="FB5B.html">PrintString</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FB5B.html">PrintString</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb31"></span>FB31</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">DE</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb32"></span>FB32</td>
+<td class="instruction">LD HL,($FB58)</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="FB58.html">UserDefinedKeys_Pointer</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb35"></span>FB35</td>
+<td class="instruction">LD (HL),E</td>
+<td class="comment-1" rowspan="1">Write <span class="register">E</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb36"></span>FB36</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb37"></span>FB37</td>
+<td class="instruction">LD (HL),D</td>
+<td class="comment-1" rowspan="1">Write <span class="register">D</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb38"></span>FB38</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb39"></span>FB39</td>
+<td class="instruction">LD ($FB58),HL</td>
+<td class="comment-1" rowspan="1">Write <span class="register">HL</span> to *<a href="FB58.html">UserDefinedKeys_Pointer</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb3c"></span>FB3C</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb3d"></span>FB3D</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="2">Increment <span class="register">B</span> by two.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb3e"></span>FB3E</td>
+<td class="instruction">INC B</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb3f"></span>FB3F</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="3">Jump to <a href="FAA8.html#fae2">Handler_UserDefinedKeys_0</a> until <span class="register">B</span> is equal to 12.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb40"></span>FB40</td>
+<td class="instruction">CP $12</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb42"></span>FB42</td>
+<td class="instruction">JR NZ,<a href="FAA8.html#fae2">Handler_UserDefinedKeys_0</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="fb44"></span>
+<div class="comments">
+<div class="paragraph">
+Output to the screen buffer.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb44"></span>FB44</td>
+<td class="instruction">CALL <a href="D604.html">ScreenBuffer_Update</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D604.html">ScreenBuffer_Update</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb47"></span>FB47</td>
+<td class="instruction">CALL <a href="D5F8.html">AttributeBuffer_Update</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D5F8.html">AttributeBuffer_Update</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb4a"></span>FB4A</td>
+<td class="instruction">CALL <a href="FBEC.html">ShortPause</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FBEC.html">ShortPause</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="fb4d"></span>FB4D</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="F9BF.html">F9BF</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#faa8">Map</a></td>
+<td class="next">
+Next: <a href="FB4E.html">FB4E</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/FAA8.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>
