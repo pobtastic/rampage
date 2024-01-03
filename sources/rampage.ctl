@@ -29,7 +29,15 @@ L $9E00,$08,$180
 
 b $C81A
 
-b $C850
+g $C850 User Defined Keys
+@ $C850 label=UserDefinedKeys_Set1
+  $C850,$0A,$02
+@ $C85A label=UserDefinedKeys_Set2
+  $C85A,$0A,$02
+@ $C864 label=UserDefinedKeys_Set3
+  $C864,$0A,$02
+
+b $C86E
 
 b $C8BA
 
@@ -46,9 +54,19 @@ g $CFD2 Data: George
   $CFDB,$01
 @ $CFDE label=George_Energy
   $CFDE,$01
+@ $CFDF label=George_Banner_Counter
   $CFDF,$01
-@ $CFE0 label=George_Banner_Counter
-  $CFE0,$01
+@ $CFE0 label=George_Control_Type
+  $CFE0,$01 #TABLE(default,centre,centre) { =h Value | =h Meaning }
+. { #N$00 | Computer Controlled }
+. { #N$01 | Sinclair Interface 2 (port 2) }
+. { #N$02 | Sinclair Interface 2 (port 1) }
+. { #N$03 | Kempston Joystick }
+. { #N$04 | Keyboard (set 1) }
+. { #N$05 | Keyboard (set 2) }
+. { #N$06 | Keyboard (set 3 }
+. { #N$FF | Not set }
+. TABLE#
 W $CFE1,$02
   $CFE3,$1B,$03
 
@@ -63,9 +81,19 @@ g $D001 Data: Lizzy
   $D00A,$01
 @ $D00D label=Lizzy_Energy
   $D00D,$01
+@ $D00E label=Lizzy_Banner_Counter
   $D00E,$01
-@ $D00F label=Lizzy_Banner_Counter
-  $D00F,$01
+@ $D00F label=Lizzy_Control_Type
+  $D00F,$01 #TABLE(default,centre,centre) { =h Value | =h Meaning }
+. { #N$00 | Computer Controlled }
+. { #N$01 | Sinclair Interface 2 (port 2) }
+. { #N$02 | Sinclair Interface 2 (port 1) }
+. { #N$03 | Kempston Joystick }
+. { #N$04 | Keyboard (set 1) }
+. { #N$05 | Keyboard (set 2) }
+. { #N$06 | Keyboard (set 3 }
+. { #N$FF | Not set }
+. TABLE#
 W $D010,$02
 
 g $D030 Data: Ralph
@@ -79,9 +107,19 @@ g $D030 Data: Ralph
   $D039,$01
 @ $D03C label=Ralph_Energy
   $D03C,$01
+@ $D03D label=Ralph_Banner_Counter
   $D03D,$01
-@ $D03E label=Ralph_Banner_Counter
-  $D03E,$01
+@ $D03E label=Ralph_Control_Type
+  $D03E,$01 #TABLE(default,centre,centre) { =h Value | =h Meaning }
+. { #N$00 | Computer Controlled }
+. { #N$01 | Sinclair Interface 2 (port 2) }
+. { #N$02 | Sinclair Interface 2 (port 1) }
+. { #N$03 | Kempston Joystick }
+. { #N$04 | Keyboard (set 1) }
+. { #N$05 | Keyboard (set 2) }
+. { #N$06 | Keyboard (set 3 }
+. { #N$FF | Not set }
+. TABLE#
 W $D03F,$02
 
 t $D05F Messaging: George
@@ -119,14 +157,21 @@ t $D0D5 Messaging: Change Controls
 @ $D0D5 label=Messaging_ChangeControls
   $D0D5,$0A,$09:$01 "#STR(#PC)".
   $D0DF,$0C,$0B:$01 "#STR(#PC)".
+
+t $D0EB Messaging: Controls
+@ $D0EB label=Messaging_Controls
   $D0EB,$04,$03:$01 "#STR(#PC)".
   $D0EF,$05,$04:$01 "#STR(#PC)".
   $D0F4,$02,$01:$01 "#STR(#PC)".
   $D0F6,$04,$03:$01 "#STR(#PC)".
   $D0FA,$05,$04:$01 "#STR(#PC)".
   $D0FF,$05,$04:$01 "#STR(#PC)".
+@ $D104 label=Messaging_QuestionMark
   $D104,$02,$01:$01 "#STR(#PC)".
+@ $D106 label=Messaging_Space
   $D106,$02,$01:$01 "#STR(#PC)".
+
+t $D108
   $D108,$02,$01:$01 "#STR(#PC)".
   $D10A,$02,$01:$01 "#STR(#PC)".
   $D10C,$02,$01:$01 "#STR(#PC)".
@@ -140,8 +185,8 @@ t $D110 Messaging: Select Menu
   $D127,$04,$03:$01 "#STR(#PC)".
   $D12B,$08,$07:$01 "#STR(#PC)".
 
-t $D133 Messaging: Start Game
-@ $D133 label=Messaging_StartGame
+t $D133 Messaging: Choose Controls/ Character Option
+@ $D133 label=Messaging_ChooseControls
   $D133,$0C,$0B:$01 "#STR(#PC)".
   $D13F,$0E,$0D:$01 "#STR(#PC)".
   $D14D,$0E,$0D:$01 "#STR(#PC)".
@@ -211,14 +256,18 @@ b $D3F8
 b $D3FA
   $D3FA
   $D3FB
+  $D3FC
   $D3FD
   $D3FE
+  $D3FF
   $D400
   $D401
   $D402
   $D403
   $D404
   $D405
+  $D406
+  $D407
 
 c $D409
   $D409,$03 #REGbc=#N($0000,$04,$04).
@@ -680,7 +729,8 @@ c $DD89
 
 c $DD97
 
-c $DDC0
+c $DDC0 Choose Control Type
+@ $DDC0 label=ChooseControlType
   $DDC0,$03 #REGde=#N$FF2F.
   $DDC3,$03 #REGbc=#N$FEFE.
   $DDC6,$02 Read from the keyboard;
@@ -1907,11 +1957,13 @@ N $F9B8 Output to the screen buffer.
   $F9BB,$03 Call #R$D5F8.
   $F9BE,$01 Return.
 
-c $F9BF
+c $F9BF Change Controls
+@ $F9BF label=Handler_ChangeControls
   $F9BF,$03 Call #R$FBD4.
-  $F9C2,$02 Jump to #R$F9BF if #REGa is not zero.
-N $F9C4 Reset the "flash" counters for all monsters.
+  $F9C2,$02 Loop back to #R$F9BF until the pressed key is released.
+N $F9C4 Reset the control type for all monsters.
   $F9C4,$0B Write #N$FF to: #LIST { *#R$CFE0 } { *#R$D00F } { *#R$D03E } LIST#
+N $F9CF Set up a count for how many players will be using the keyboard (see #R$FA53).
   $F9CF,$05 Write #N$03 to *#R$FB5A.
 N $F9D4 George.
   $F9D4,$03 Call #R$FB8E.
@@ -1929,107 +1981,140 @@ N $F9EE Ralph.
   $F9F5,$03 #REGhl=#R$D07B.
   $F9F8,$03 Call #R$F9FC.
   $F9FB,$01 Return.
+N $F9FC Print the monster name.
+@ $F9FC label=Handler_ChangeControls_Action
   $F9FC,$03 #REGbc=#N$0804 (screen co-ordinates).
   $F9FF,$03 Call #R$FB5B.
+N $FA02 Prints "#STR($D0D5) #STR($D0DF)".
   $FA02,$03 #REGhl=#R$D0D5.
   $FA05,$03 #REGbc=#N$0303 (screen co-ordinates).
   $FA08,$03 Call #R$FB5B.
-  $FA0B,$01 Increment #REGhl by one.
+  $FA0B,$01 Move onto the start of the next message.
   $FA0C,$03 #REGbc=#N$0502 (screen co-ordinates).
   $FA0F,$03 Call #R$FB5B.
+N $FA12 Programmatically display all the #R$D133 options.
   $FA12,$03 #REGhl=#R$D133.
-  $FA15,$01 #REGa=#N$00.
-  $FA16,$01 Stash #REGaf on the stack.
+  $FA15,$01 #REGa=#N$00 (option counter).
+@ $FA16 label=Handler_ChangeControls_PrintLoop
+  $FA16,$01 Stash the option counter on the stack.
+N $FA17 The options are two lines apart and start from row #N$0B.
   $FA17,$04 #REGb=#N$0B+#REGa*#N$02.
-  $FA1B,$02 #REGc=#N$01.
+  $FA1B,$02 #REGc=#N$01 (screen co-ordinates).
   $FA1D,$03 Call #R$FB5B.
-  $FA20,$01 Increment #REGhl by one.
-  $FA21,$01 Restore #REGaf from the stack.
-  $FA22,$01 Increment #REGa by one.
-  $FA23,$04 Jump to #R$FA16 until #REGa is equal to #N$05.
+  $FA20,$01 Move onto the start of the next message.
+  $FA21,$01 Restore the option counter from the stack.
+  $FA22,$01 Increment the option counter by one.
+N $FA23 Note we only show five options "#STR($D181)" is never used.
+  $FA23,$04 Jump to #R$FA16 until the option counter is equal to #N$05.
+N $FA27 Prints the last line manually "#STR($D173)" (as it's the second line of the option before it).
   $FA27,$03 #REGbc=#N$1401 (screen co-ordinates).
   $FA2A,$03 Call #R$FB5B.
+N $FA2D Output to the screen buffer.
   $FA2D,$03 Call #R$D604.
   $FA30,$03 Call #R$D5F8.
+@ $FA33 label=Handler_ChangeControls_Input
   $FA33,$03 Call #R$DDC0.
-  $FA36,$02 Jump to #R$FA33 if #REGa is not zero.
-  $FA38,$01 #REGa=#REGd.
-  $FA39,$04 Jump to #R$FA33 if #REGa is equal to #N$FF.
-  $FA3D,$04 Jump to #R$FA53 if #REGa is equal to #N$11.
-  $FA41,$04 Jump to #R$FA78 if #REGa is equal to #N$24.
-  $FA45,$04 Jump to #R$FA7C if #REGa is equal to #N$1C.
-  $FA49,$04 Jump to #R$FA80 if #REGa is equal to #N$14.
-  $FA4D,$04 Jump to #R$FA8B if #REGa is equal to #N$0F.
+  $FA36,$02 Loop back to #R$FA33 until an option has been selected.
+N $FA38 Process the selected option.
+  $FA38,$01 #REGa=control option.
+  $FA39,$04 Jump to #R$FA33 if the control option is invalid.
+  $FA3D,$04 Jump to #R$FA53 if "K" was pressed.
+  $FA41,$04 Jump to #R$FA78 if "1" was pressed.
+  $FA45,$04 Jump to #R$FA7C if "2" was pressed.
+  $FA49,$04 Jump to #R$FA80 if "3" was pressed.
+  $FA4D,$04 Jump to #R$FA8B if "C" was pressed.
   $FA51,$02 Jump to #R$FA33.
+N $FA53 Set "Keyboard" as the control method.
+@ $FA53 label=Handler_ChangeControls_Keyboard
   $FA53,$03 Call #R$FAA8.
+N $FA56 Each set of user defined keys will have a different control method ID starting from #N$04.
   $FA56,$03 #REGa=*#R$FB5A.
   $FA59,$01 Increment #REGa by one.
   $FA5A,$03 Write #REGa to *#R$FB5A.
-  $FA5D,$03 Write #REGa to *#REGix+#N$0E.
+  $FA5D,$03 Write #REGa to *#REGix+#N$0E (monster control type).
+N $FA60 Calculate where the user defined keys will be stored.
   $FA60,$02 #REGa-=#N$04.
-  $FA62,$01 #REGa+=#REGa.
+  $FA62,$01 #REGa*=#N$02.
   $FA63,$01 #REGd=#REGa.
-  $FA64,$01 #REGa+=#REGa.
-  $FA65,$01 #REGa+=#REGa.
+  $FA64,$02 #REGa*=#N$04.
   $FA66,$01 #REGa+=#REGd.
-  $FA67,$02 #REGh=#N$00.
-  $FA69,$01 #REGl=#REGa.
-  $FA6A,$03 #REGde=#R$C850.
-  $FA6D,$01 #REGhl+=#REGde.
-  $FA6E,$01 Exchange the #REGde register with the shadow #REGhl register.
+  $FA67,$03 Create an offset using #REGhl.
+  $FA6A,$04 #REGhl+=#R$C850.
+  $FA6E,$01 Exchange the #REGde and #REGhl registers.
   $FA6F,$03 #REGhl=#R$FB4E.
   $FA72,$03 #REGbc=#N($000A,$04,$04).
-  $FA75,$02 LDIR.
+  $FA75,$02 Copy selected keys to monster config.
   $FA77,$01 Return.
+N $FA78 Set "Sinclair Interface 2" (port 1) as the control method.
+@ $FA78 label=Handler_ChangeControls_Sinclair1
   $FA78,$02 #REGd=#N$02.
   $FA7A,$02 Jump to #R$FA82.
+N $FA7C Set "Sinclair Interface 2" (port 2) as the control method.
+@ $FA7C label=Handler_ChangeControls_Sinclair2
   $FA7C,$02 #REGd=#N$01.
   $FA7E,$02 Jump to #R$FA82.
+N $FA80 Set "Kempston Joystick" as the control method.
+@ $FA80 label=Handler_ChangeControls_Kempston
   $FA80,$02 #REGd=#N$03.
+@ $FA82 label=Handler_SetControlType
   $FA82,$03 Call #R$FA95.
-  $FA85,$02 Jump to #R$FA33 if {} is zero.
-  $FA87,$03 Write #REGd to *#REGix+#N$0E.
+  $FA85,$02 Jump to #R$FA33 if the control type is already selected by another monster.
+  $FA87,$03 Write the control type to *#REGix+#N$0E (monster control type).
   $FA8A,$01 Return.
-  $FA8B,$04 Write #N$0E to *#REGix+#N$0E.
+N $FA8B Set "Computer Controlled" as the control method.
+@ $FA8B label=Handler_ChangeControls_Computer
+  $FA8B,$04 Write #N$00 to *#REGix+#N$0E (monster control type).
+@ $FA8F label=ChangeControls_Computer_Debounce
   $FA8F,$03 Call #R$FBD4.
-  $FA92,$02 Jump to #R$FA8F if {} is not zero.
+  $FA92,$02 Loop back to #R$FA8F until the pressed key is released.
   $FA94,$01 Return.
-  $FA95,$05 Return if *#R$CFE0 is equal to #REGd.
-  $FA9A,$05 Return if *#R$D00F is equal to #REGd.
-  $FA9F,$05 Return if *#R$D03E is equal to #REGd.
+N $FA95 Monsters can't use the same controllers, this is verified here.
+@ $FA95 label=Handler_CheckExistingControls
+  $FA95,$05 Return if *#R$CFE0 is equal to the currently selected control method.
+  $FA9A,$05 Return if *#R$D00F is equal to the currently selected control method.
+  $FA9F,$05 Return if *#R$D03E is equal to the currently selected control method.
+N $FAA4 Ensure ZERO flag is not set for the return.
   $FAA4,$02 #REGa=#N$01.
   $FAA6,$01 Set the bits from #REGa.
   $FAA7,$01 Return.
+
+c $FAA8 Handler: User Defined Keys
+@ $FAA8 label=Handler_UserDefinedKeys
   $FAA8,$03 Call #R$FB8E.
   $FAAB,$03 Call #R$FBD4.
-  $FAAE,$02 Jump to #R$FAA8 if {} is not zero.
+  $FAAE,$02 Loop back to #R$FAA8 until the pressed key is released.
   $FAB0,$06 Write #R$FB4E to *#R$FB58.
+N $FAB6 Print "#STR($D0D5) #STR($D0DF)".
   $FAB6,$03 #REGhl=#R$D0D5.
-  $FAB9,$03 #REGbc=#N$0403.
+  $FAB9,$03 #REGbc=#N$0403 (screen co-ordinates).
   $FABC,$03 Call #R$FB5B.
-  $FABF,$01 Increment #REGhl by one.
-  $FAC0,$03 #REGbc=#N$0602.
+  $FABF,$01 Move onto the start of the next message.
+  $FAC0,$03 #REGbc=#N$0602 (screen co-ordinates).
   $FAC3,$03 Call #R$FB5B.
+N $FAC6 Programmatically display all the #R$D0EB options.
   $FAC6,$03 #REGhl=#R$D0EB.
   $FAC9,$03 #REGbc=#N$0804.
-  $FACC,$02 #REGa=#N$05.
+  $FACC,$02 #REGa=#N$05 (control counter).
+@ $FACE label=Handler_UserDefinedKeys_PrintLoop
   $FACE,$02 Stash #REGaf and #REGbc on the stack.
   $FAD0,$03 Call #R$FB5B.
   $FAD3,$02 Restore #REGbc and #REGaf from the stack.
-  $FAD5,$01 Increment #REGhl by one.
+  $FAD5,$01 Move onto the start of the next message.
   $FAD6,$02 Increment #REGb by two.
-  $FAD8,$01 Decrease #REGa by one.
-  $FAD9,$02 Jump to #R$FACE until #REGa is zero.
+  $FAD8,$01 Decrease the control counter by one.
+  $FAD9,$02 Jump to #R$FACE until all controls have been printed.
+N $FADB Prints the last line manually "#STR($D0FF)" (as it's the second line of the option before it).
   $FADB,$01 Decrease #REGb by one.
   $FADC,$03 Call #R$FB5B.
-  $FADF,$03 #REGbc=#N$080B.
+  $FADF,$03 #REGbc=#N$080B (screen co-ordinates).
   $FAE2,$02 Stash #REGbc and #REGbc on the stack.
   $FAE4,$03 #REGhl=#R$D104.
   $FAE7,$03 Call #R$FB5B.
+N $FAEA Output to the screen buffer.
   $FAEA,$03 Call #R$D604.
   $FAED,$03 Call #R$D5F8.
   $FAF0,$03 Call #R$DDC0.
-  $FAF3,$02 Jump to #R$FAF0 if {} is not zero.
+  $FAF3,$02 Loop back to #R$FAF0 until an option has been selected.
   $FAF5,$01 #REGa=#REGd.
   $FAF6,$02 Compare #REGa with #N$FF.
   $FAF8,$02 Jump to #R$FAF0 if {} is zero.
@@ -2070,16 +2155,24 @@ N $F9EE Ralph.
   $FB39,$03 Write #REGhl to *#R$FB58.
   $FB3C,$01 Restore #REGbc from the stack.
   $FB3D,$02 Increment #REGb by two.
-  $FB3F,$01 #REGa=#REGb.
-  $FB40,$02 Compare #REGa with #N$12.
-  $FB42,$02 Jump to #R$FAE2 if {} is not zero.
+  $FB3F,$05 Jump to #R$FAE2 until #REGb is equal to #N$12.
+N $FB44 Output to the screen buffer.
   $FB44,$03 Call #R$D604.
   $FB47,$03 Call #R$D5F8.
   $FB4A,$03 Call #R$FBEC.
   $FB4D,$01 Return.
 
-b $FB4E
-  $FB4E,$0D,$01
+g $FB4E User Defined Keys Buffer
+@ $FB4E label=UserDefinedKeys_Buffer
+B $FB4E,$0A,$02
+
+g $FB58 User Defined Keys Pointer
+@ $FB58 label=UserDefinedKeys_Pointer
+W $FB58,$02
+
+g $FB5A Keyboard Control Count
+@ $FB5A label=Keyboard_Control_Count
+B $FB5A,$01
 
 c $FB5B Print String
 @ $FB5B label=PrintString
@@ -2160,7 +2253,16 @@ c $FBC8
   $FBD1,$02 Decrease counter by one and loop back to #R$FBCA until counter is zero.
   $FBD3,$01 Return.
 
-c $FBD4
+c $FBD4 Debounce
+@ $FBD4 label=Debounce
+  $FBD4,$01 #REGa=#N$00.
+  $FBD5,$02 Read from the keyboard;
+. #TABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,r2 Port Number | =h,c5 Bit }
+. { =h 0 | =h 1 | =h 2 | =h 3 | =h 4 }
+. { #N$FE | SHIFT | Z | X | C | V }
+. TABLE#
+  $FBD7,$01 Invert the bits in #REGa.
   $FBD8,$02,b$01 Keep only bits 0-4.
   $FBDA,$01 Return.
 
@@ -2247,6 +2349,55 @@ c $FC39
   $FCB5,$01 Return.
 
 c $FCB6
+  $FCB6,$06 Return if *#R$D405 is equal to #N$FE.
+  $FCBC,$04 Jump to #R$FCE7 if it is equal to #N$FF.
+  $FCC0,$01 Decrease #REGa by one.
+  $FCC1,$03 Write #REGa to *#R$D405.
+  $FCC4,$01 Return if #REGa is not zero.
+  $FCC5,$05 Write #N$FF to *#R$D405.
+  $FCCA,$03 Call #R$DA28.
+  $FCCD,$02,b$01 Keep only bit 0.
+  $FCCF,$02 Jump to #R$FCDD if the result is not zero.
+  $FCD1,$05 Write #N$13 to *#R$D407.
+  $FCD6,$05 Write #N$F0 to *#R$D406.
+  $FCDB,$02 Jump to #R$FCE7.
+  $FCDD,$05 Write #N$93 to *#R$D407.
+  $FCE2,$05 Write #N$20 to *#R$D406.
+  $FCE7,$03 #REGa=*#R$D407.
+  $FCEA,$02,b$01 Keep only bit 6.
+  $FCEC,$02 RLCA.
+  $FCEE,$01 #REGc=#REGa.
+  $FCEF,$07 Jump to #R$FD21 if *#R$D407 is higher than #N$80.
+  $FCF6,$02,b$01 Keep only bits 0-5.
+  $FCF8,$01 #REGb=#REGa.
+  $FCF9,$03 #REGa=*#R$D406.
+  $FCFC,$01 Increment #REGa by one.
+  $FCFD,$01 #REGa+=#REGc.
+  $FCFE,$03 Write #REGa to *#R$D406.
+  $FD01,$01 #REGc=#REGa.
+  $FD02,$02 #REGa=#N$79.
+  $FD04,$01 Stash #REGbc on the stack.
+  $FD05,$03 Call #R$D6C9.
+  $FD08,$01 Restore #REGbc from the stack.
+  $FD09,$02 #REGa=#N$03.
+  $FD0B,$01 Stash #REGaf on the stack.
+  $FD0C,$02 Increment #REGc by two.
+  $FD0E,$02 #REGa=#N$7B.
+  $FD10,$01 Stash #REGbc on the stack.
+  $FD11,$03 Call #R$D6C9.
+  $FD14,$02 Restore #REGbc and #REGaf from the stack.
+  $FD16,$01 Decrease #REGa by one.
+  $FD17,$02 Jump to #R$FD0B until #REGa is zero.
+  $FD19,$02 Increment #REGc by two.
+  $FD1B,$02 #REGa=#N$79.
+  $FD1D,$03 Call #R$D7F6.
+  $FD20,$01 Return.
+  $FD21,$02,b$01 Keep only bits 0-5.
+  $FD23,$01 #REGb=#REGa.
+  $FD24,$03 #REGa=*#R$D406.
+  $FD27,$01 Decrease #REGa by one.
+  $FD28,$01 #REGa-=#REGc.
+  $FD29,$02 Jump to #R$FCFE.
 
 c $FD2B
   $FD2B,$03 Call #R$FBDB.
@@ -2325,6 +2476,7 @@ N $FDAF Print the three lines of the ticker news data to the screen.
 
 c $FDC4 Sounds: Annoying Telecast Beeping
 @ $FDC4 label=Sounds_Telecast
+N $FDC4 #AUDIO(telecast.wav)(#INCLUDE(Telecast))
   $FDC4,$02 #REGb=#N$0A (counter).
 @ $FDC6 label=Sounds_Telecast_Loop
   $FDC6,$03 Call #R$DA28.

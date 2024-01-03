@@ -2515,21 +2515,37 @@ b$C81A DEFB $42,$42,$42,$42,$15,$15,$11,$12
  $C842 DEFB $16,$16,$42,$42,$1B,$42,$1C,$15
  $C84A DEFB $42,$42,$42,$1B,$15,$1C
 
-; Data block at C850
-b$C850 DEFB $FB,$01,$FB,$02,$DF,$02,$BF,$04
- $C858 DEFB $DF,$01,$FB,$01,$FB,$02,$DF,$02
- $C860 DEFB $BF,$04,$DF,$01,$FB,$01,$FB,$02
- $C868 DEFB $DF,$02,$BF,$04,$DF,$01,$00,$25
- $C870 DEFB $05,$01,$09,$09,$09,$09,$09,$19
- $C878 DEFB $19,$19,$19,$19,$19,$19,$19,$19
- $C880 DEFB $19,$19,$00,$06,$06,$02,$0A,$0A
- $C888 DEFB $0A,$0A,$0A,$1A,$1A,$1A,$1A,$1A
- $C890 DEFB $1A,$1A,$1A,$1A,$1A,$1A,$00,$04
- $C898 DEFB $06,$02,$0A,$1A,$1A,$1A,$1A,$1A
- $C8A0 DEFB $1A,$1A,$1A,$1A,$1A,$1A,$1A,$1A
- $C8A8 DEFB $1A,$00,$04,$05,$01,$09,$19,$19
- $C8B0 DEFB $19,$19,$19,$19,$19,$19,$19,$19
- $C8B8 DEFB $19,$19
+; User Defined Keys
+@label=UserDefinedKeys_Set1
+g$C850 DEFB $FB,$01
+ $C852 DEFB $FB,$02
+ $C854 DEFB $DF,$02
+ $C856 DEFB $BF,$04
+ $C858 DEFB $DF,$01
+@label=UserDefinedKeys_Set2
+ $C85A DEFB $FB,$01
+ $C85C DEFB $FB,$02
+ $C85E DEFB $DF,$02
+ $C860 DEFB $BF,$04
+ $C862 DEFB $DF,$01
+@label=UserDefinedKeys_Set3
+ $C864 DEFB $FB,$01
+ $C866 DEFB $FB,$02
+ $C868 DEFB $DF,$02
+ $C86A DEFB $BF,$04
+ $C86C DEFB $DF,$01
+
+; Data block at C86E
+b$C86E DEFB $00,$25,$05,$01,$09,$09,$09,$09
+ $C876 DEFB $09,$19,$19,$19,$19,$19,$19,$19
+ $C87E DEFB $19,$19,$19,$19,$00,$06,$06,$02
+ $C886 DEFB $0A,$0A,$0A,$0A,$0A,$1A,$1A,$1A
+ $C88E DEFB $1A,$1A,$1A,$1A,$1A,$1A,$1A,$1A
+ $C896 DEFB $00,$04,$06,$02,$0A,$1A,$1A,$1A
+ $C89E DEFB $1A,$1A,$1A,$1A,$1A,$1A,$1A,$1A
+ $C8A6 DEFB $1A,$1A,$1A,$00,$04,$05,$01,$09
+ $C8AE DEFB $19,$19,$19,$19,$19,$19,$19,$19
+ $C8B6 DEFB $19,$19,$19,$19
 
 ; Data block at C8BA
 b$C8BA DEFB $02,$03,$04,$05,$06,$06,$06,$06
@@ -2778,9 +2794,19 @@ g$CFD2 DEFB $00             ; #TABLE(default,centre,centre) { =h Value | =h
  $CFDC DEFB $12,$01
 @label=George_Energy
  $CFDE DEFB $40
- $CFDF DEFB $00
 @label=George_Banner_Counter
- $CFE0 DEFB $04
+ $CFDF DEFB $00
+@label=George_Control_Type
+ $CFE0 DEFB $04             ; #TABLE(default,centre,centre) { =h Value | =h Meaning }
+                            ; { #N$00 | Computer Controlled }
+                            ; { #N$01 | Sinclair Interface 2 (port 2) }
+                            ; { #N$02 | Sinclair Interface 2 (port 1) }
+                            ; { #N$03 | Kempston Joystick }
+                            ; { #N$04 | Keyboard (set 1) }
+                            ; { #N$05 | Keyboard (set 2) }
+                            ; { #N$06 | Keyboard (set 3 }
+                            ; { #N$FF | Not set }
+                            ; TABLE#
  $CFE1 DEFW $CFE3
  $CFE3 DEFB $01,$0A,$0A
  $CFE6 DEFB $12,$02,$02
@@ -2810,9 +2836,19 @@ g$D001 DEFB $00                             ; #TABLE(default,centre,centre) {
  $D00B DEFB $12,$01
 @label=Lizzy_Energy
  $D00D DEFB $40
- $D00E DEFB $40
 @label=Lizzy_Banner_Counter
- $D00F DEFB $00
+ $D00E DEFB $40
+@label=Lizzy_Control_Type
+ $D00F DEFB $00                             ; #TABLE(default,centre,centre) { =h Value | =h Meaning }
+                                            ; { #N$00 | Computer Controlled }
+                                            ; { #N$01 | Sinclair Interface 2 (port 2) }
+                                            ; { #N$02 | Sinclair Interface 2 (port 1) }
+                                            ; { #N$03 | Kempston Joystick }
+                                            ; { #N$04 | Keyboard (set 1) }
+                                            ; { #N$05 | Keyboard (set 2) }
+                                            ; { #N$06 | Keyboard (set 3 }
+                                            ; { #N$FF | Not set }
+                                            ; TABLE#
  $D010 DEFW $D012
  $D012 DEFB $01,$02,$02,$12,$02,$02,$41,$45
  $D01A DEFB $00,$00,$04,$02,$02,$12,$02,$02
@@ -2836,9 +2872,19 @@ g$D030 DEFB $00                             ; #TABLE(default,centre,centre) {
  $D03A DEFB $12,$01
 @label=Ralph_Energy
  $D03C DEFB $40
- $D03D DEFB $80
 @label=Ralph_Banner_Counter
- $D03E DEFB $00
+ $D03D DEFB $80
+@label=Ralph_Control_Type
+ $D03E DEFB $00                             ; #TABLE(default,centre,centre) { =h Value | =h Meaning }
+                                            ; { #N$00 | Computer Controlled }
+                                            ; { #N$01 | Sinclair Interface 2 (port 2) }
+                                            ; { #N$02 | Sinclair Interface 2 (port 1) }
+                                            ; { #N$03 | Kempston Joystick }
+                                            ; { #N$04 | Keyboard (set 1) }
+                                            ; { #N$05 | Keyboard (set 2) }
+                                            ; { #N$06 | Keyboard (set 3 }
+                                            ; { #N$FF | Not set }
+                                            ; TABLE#
  $D03F DEFW $D041
  $D041 DEFB $01,$14,$14,$12,$02,$02,$81,$85
  $D049 DEFB $00,$00,$04,$14,$14,$12,$02,$02
@@ -2880,18 +2926,25 @@ t$D0CB DEFM "RAMPAGE t","m"+$80 ; "#STR(#PC)".
 @label=Messaging_ChangeControls
 t$D0D5 DEFM "SELECT TH","E"+$80   ; "#STR(#PC)".
  $D0DF DEFM "CONTROLS FO","R"+$80 ; "#STR(#PC)".
- $D0EB DEFM "LEF","T"+$80         ; "#STR(#PC)".
- $D0EF DEFM "RIGH","T"+$80        ; "#STR(#PC)".
- $D0F4 DEFM "U","P"+$80           ; "#STR(#PC)".
- $D0F6 DEFM "DOW","N"+$80         ; "#STR(#PC)".
- $D0FA DEFM "JUMP","/"+$80        ; "#STR(#PC)".
- $D0FF DEFM "PUNC","H"+$80        ; "#STR(#PC)".
- $D104 DEFM "?"," "+$80           ; "#STR(#PC)".
- $D106 DEFM " "," "+$80           ; "#STR(#PC)".
- $D108 DEFM "C","S"+$80           ; "#STR(#PC)".
- $D10A DEFM "S","S"+$80           ; "#STR(#PC)".
- $D10C DEFM "S","P"+$80           ; "#STR(#PC)".
- $D10E DEFM "E","N"+$80           ; "#STR(#PC)".
+
+; Messaging: Controls
+@label=Messaging_Controls
+t$D0EB DEFM "LEF","T"+$80  ; "#STR(#PC)".
+ $D0EF DEFM "RIGH","T"+$80 ; "#STR(#PC)".
+ $D0F4 DEFM "U","P"+$80    ; "#STR(#PC)".
+ $D0F6 DEFM "DOW","N"+$80  ; "#STR(#PC)".
+ $D0FA DEFM "JUMP","/"+$80 ; "#STR(#PC)".
+ $D0FF DEFM "PUNC","H"+$80 ; "#STR(#PC)".
+@label=Messaging_QuestionMark
+ $D104 DEFM "?"," "+$80    ; "#STR(#PC)".
+@label=Messaging_Space
+ $D106 DEFM " "," "+$80    ; "#STR(#PC)".
+
+; Message at D108
+t$D108 DEFM "C","S"+$80 ; "#STR(#PC)".
+ $D10A DEFM "S","S"+$80 ; "#STR(#PC)".
+ $D10C DEFM "S","P"+$80 ; "#STR(#PC)".
+ $D10E DEFM "E","N"+$80 ; "#STR(#PC)".
 
 ; Messaging: Select Menu
 @label=Messaging_SelectMenu
@@ -2901,8 +2954,8 @@ t$D110 DEFM "S - STAR","T"+$80  ; "#STR(#PC)".
  $D127 DEFM "GAM","E"+$80       ; "#STR(#PC)".
  $D12B DEFM "CONTROL","S"+$80   ; "#STR(#PC)".
 
-; Messaging: Start Game
-@label=Messaging_StartGame
+; Messaging: Choose Controls/ Character Option
+@label=Messaging_ChooseControls
 t$D133 DEFM "K - KEYBOAR","D"+$80   ; "#STR(#PC)".
  $D13F DEFM "1 - SINCLAIR ","1"+$80 ; "#STR(#PC)".
  $D14D DEFM "2 - SINCLAIR ","2"+$80 ; "#STR(#PC)".
@@ -3057,15 +3110,19 @@ b$D3F8 DEFB $00,$00
 
 ; Data block at D3FA
 b$D3FA DEFB $00
- $D3FB DEFB $00,$00
+ $D3FB DEFB $00
+ $D3FC DEFB $00
  $D3FD DEFB $00
- $D3FE DEFB $00,$00
+ $D3FE DEFB $00
+ $D3FF DEFB $00
  $D400 DEFB $00
  $D401 DEFB $00
  $D402 DEFB $00
  $D403 DEFB $00
  $D404 DEFB $00
- $D405 DEFB $00,$00,$00,$00
+ $D405 DEFB $00
+ $D406 DEFB $00
+ $D407 DEFB $00,$00
 
 ; Routine at D409
 ;
@@ -3445,7 +3502,8 @@ c$D5E6 LD H,A        ; #REGh=#REGa.
 
 ; Update Attribute Buffer
 ;
-; Used by the routines at #R$DE77, #R$F916, #R$F981, #R$F9BF and #R$FD64.
+; Used by the routines at #R$DE77, #R$F916, #R$F981, #R$F9BF, #R$FAA8 and
+; #R$FD64.
 @label=AttributeBuffer_Update
 c$D5F8 LD HL,$8300   ; #REGhl=#R$8300.
  $D5FB LD DE,$5800   ; #REGde=#R$5800.
@@ -3455,7 +3513,8 @@ c$D5F8 LD HL,$8300   ; #REGhl=#R$8300.
 
 ; Update Screen Buffer
 ;
-; Used by the routines at #R$DE77, #R$F916, #R$F981, #R$F9BF and #R$FD64.
+; Used by the routines at #R$DE77, #R$F916, #R$F981, #R$F9BF, #R$FAA8 and
+; #R$FD64.
 @label=ScreenBuffer_Update
 c$D604 LD HL,$6B00   ; #REGhl=#R$6B00.
  $D607 LD DE,$4000   ; #REGde=#R$4000(#N$4000).
@@ -4834,9 +4893,10 @@ c$DD97 CP $01        ;
  $DDBC LD A,$01      ;
  $DDBE JR $DDB3      ;
 
-; Routine at DDC0
+; Choose Control Type
 ;
-; Used by the routines at #R$F916 and #R$F9BF.
+; Used by the routines at #R$F916, #R$F9BF and #R$FAA8.
+@label=ChooseControlType
 c$DDC0 LD DE,$FF2F                          ; #REGde=#N$FF2F.
  $DDC3 LD BC,$FEFE                          ; #REGbc=#N$FEFE.
 *$DDC6 IN A,(C)                             ; Read from the keyboard;
@@ -8556,16 +8616,19 @@ c$F981 LD HL,$D089   ; #REGhl=#R$D089.
  $F9BB CALL $D5F8    ; Call #R$D5F8.
  $F9BE RET           ; Return.
 
-; Routine at F9BF
+; Change Controls
 ;
 ; Used by the routine at #R$F916.
+@label=Handler_ChangeControls
 c$F9BF CALL $FBD4      ; Call #R$FBD4.
- $F9C2 JR NZ,$F9BF     ; Jump to #R$F9BF if #REGa is not zero.
-; Reset the "flash" counters for all monsters.
+ $F9C2 JR NZ,$F9BF     ; Loop back to #R$F9BF until the pressed key is
+                       ; released.
+; Reset the control type for all monsters.
  $F9C4 LD A,$FF        ; {Write #N$FF to: #LIST { *#R$CFE0 } { *#R$D00F } {
  $F9C6 LD ($CFE0),A    ; *#R$D03E } LIST#
  $F9C9 LD ($D00F),A    ;
  $F9CC LD ($D03E),A    ; }
+; Set up a count for how many players will be using the keyboard (see #R$FA53).
  $F9CF LD A,$03        ; {Write #N$03 to *#R$FB5A.
  $F9D1 LD ($FB5A),A    ; }
 ; George.
@@ -8584,196 +8647,243 @@ c$F9BF CALL $FBD4      ; Call #R$FBD4.
  $F9F5 LD HL,$D07B     ; #REGhl=#R$D07B.
  $F9F8 CALL $F9FC      ; Call #R$F9FC.
  $F9FB RET             ; Return.
+; Print the monster name.
+@label=Handler_ChangeControls_Action
 *$F9FC LD BC,$0804     ; #REGbc=#N$0804 (screen co-ordinates).
  $F9FF CALL $FB5B      ; Call #R$FB5B.
+; Prints "#STR($D0D5) #STR($D0DF)".
  $FA02 LD HL,$D0D5     ; #REGhl=#R$D0D5.
  $FA05 LD BC,$0303     ; #REGbc=#N$0303 (screen co-ordinates).
  $FA08 CALL $FB5B      ; Call #R$FB5B.
- $FA0B INC HL          ; Increment #REGhl by one.
+ $FA0B INC HL          ; Move onto the start of the next message.
  $FA0C LD BC,$0502     ; #REGbc=#N$0502 (screen co-ordinates).
  $FA0F CALL $FB5B      ; Call #R$FB5B.
+; Programmatically display all the #R$D133 options.
  $FA12 LD HL,$D133     ; #REGhl=#R$D133.
- $FA15 XOR A           ; #REGa=#N$00.
-*$FA16 PUSH AF         ; Stash #REGaf on the stack.
+ $FA15 XOR A           ; #REGa=#N$00 (option counter).
+@label=Handler_ChangeControls_PrintLoop
+*$FA16 PUSH AF         ; Stash the option counter on the stack.
+; The options are two lines apart and start from row #N$0B.
  $FA17 ADD A,A         ; {#REGb=#N$0B+#REGa*#N$02.
  $FA18 ADD A,$0B       ;
  $FA1A LD B,A          ; }
- $FA1B LD C,$01        ; #REGc=#N$01.
+ $FA1B LD C,$01        ; #REGc=#N$01 (screen co-ordinates).
  $FA1D CALL $FB5B      ; Call #R$FB5B.
- $FA20 INC HL          ; Increment #REGhl by one.
- $FA21 POP AF          ; Restore #REGaf from the stack.
- $FA22 INC A           ; Increment #REGa by one.
- $FA23 CP $05          ; {Jump to #R$FA16 until #REGa is equal to #N$05.
- $FA25 JR NZ,$FA16     ; }
+ $FA20 INC HL          ; Move onto the start of the next message.
+ $FA21 POP AF          ; Restore the option counter from the stack.
+ $FA22 INC A           ; Increment the option counter by one.
+; Note we only show five options "#STR($D181)" is never used.
+ $FA23 CP $05          ; {Jump to #R$FA16 until the option counter is equal to
+ $FA25 JR NZ,$FA16     ; #N$05.}
+; Prints the last line manually "#STR($D173)" (as it's the second line of the
+; option before it).
  $FA27 LD BC,$1401     ; #REGbc=#N$1401 (screen co-ordinates).
  $FA2A CALL $FB5B      ; Call #R$FB5B.
+; Output to the screen buffer.
  $FA2D CALL $D604      ; Call #R$D604.
  $FA30 CALL $D5F8      ; Call #R$D5F8.
+@label=Handler_ChangeControls_Input
 *$FA33 CALL $DDC0      ; Call #R$DDC0.
- $FA36 JR NZ,$FA33     ; Jump to #R$FA33 if #REGa is not zero.
- $FA38 LD A,D          ; #REGa=#REGd.
- $FA39 CP $FF          ; {Jump to #R$FA33 if #REGa is equal to #N$FF.
+ $FA36 JR NZ,$FA33     ; Loop back to #R$FA33 until an option has been
+                       ; selected.
+; Process the selected option.
+ $FA38 LD A,D          ; #REGa=control option.
+ $FA39 CP $FF          ; {Jump to #R$FA33 if the control option is invalid.
  $FA3B JR Z,$FA33      ; }
- $FA3D CP $11          ; {Jump to #R$FA53 if #REGa is equal to #N$11.
+ $FA3D CP $11          ; {Jump to #R$FA53 if "K" was pressed.
  $FA3F JR Z,$FA53      ; }
- $FA41 CP $24          ; {Jump to #R$FA78 if #REGa is equal to #N$24.
+ $FA41 CP $24          ; {Jump to #R$FA78 if "1" was pressed.
  $FA43 JR Z,$FA78      ; }
- $FA45 CP $1C          ; {Jump to #R$FA7C if #REGa is equal to #N$1C.
+ $FA45 CP $1C          ; {Jump to #R$FA7C if "2" was pressed.
  $FA47 JR Z,$FA7C      ; }
- $FA49 CP $14          ; {Jump to #R$FA80 if #REGa is equal to #N$14.
+ $FA49 CP $14          ; {Jump to #R$FA80 if "3" was pressed.
  $FA4B JR Z,$FA80      ; }
- $FA4D CP $0F          ; {Jump to #R$FA8B if #REGa is equal to #N$0F.
+ $FA4D CP $0F          ; {Jump to #R$FA8B if "C" was pressed.
  $FA4F JR Z,$FA8B      ; }
  $FA51 JR $FA33        ; Jump to #R$FA33.
+; Set "Keyboard" as the control method.
+@label=Handler_ChangeControls_Keyboard
 *$FA53 CALL $FAA8      ; Call #R$FAA8.
+; Each set of user defined keys will have a different control method ID
+; starting from #N$04.
  $FA56 LD A,($FB5A)    ; #REGa=*#R$FB5A.
  $FA59 INC A           ; Increment #REGa by one.
  $FA5A LD ($FB5A),A    ; Write #REGa to *#R$FB5A.
- $FA5D LD (IX+$0E),A   ; Write #REGa to *#REGix+#N$0E.
+ $FA5D LD (IX+$0E),A   ; Write #REGa to *#REGix+#N$0E (monster control type).
+; Calculate where the user defined keys will be stored.
  $FA60 SUB $04         ; #REGa-=#N$04.
- $FA62 ADD A,A         ; #REGa+=#REGa.
+ $FA62 ADD A,A         ; #REGa*=#N$02.
  $FA63 LD D,A          ; #REGd=#REGa.
- $FA64 ADD A,A         ; #REGa+=#REGa.
- $FA65 ADD A,A         ; #REGa+=#REGa.
+ $FA64 ADD A,A         ; {#REGa*=#N$04.
+ $FA65 ADD A,A         ; }
  $FA66 ADD A,D         ; #REGa+=#REGd.
- $FA67 LD H,$00        ; #REGh=#N$00.
- $FA69 LD L,A          ; #REGl=#REGa.
- $FA6A LD DE,$C850     ; #REGde=#R$C850.
- $FA6D ADD HL,DE       ; #REGhl+=#REGde.
- $FA6E EX DE,HL        ; Exchange the #REGde register with the shadow #REGhl
-                       ; register.
+ $FA67 LD H,$00        ; {Create an offset using #REGhl.
+ $FA69 LD L,A          ; }
+ $FA6A LD DE,$C850     ; {#REGhl+=#R$C850.
+ $FA6D ADD HL,DE       ; }
+ $FA6E EX DE,HL        ; Exchange the #REGde and #REGhl registers.
  $FA6F LD HL,$FB4E     ; #REGhl=#R$FB4E.
  $FA72 LD BC,$000A     ; #REGbc=#N($000A,$04,$04).
- $FA75 LDIR            ; LDIR.
+ $FA75 LDIR            ; Copy selected keys to monster config.
  $FA77 RET             ; Return.
+; Set "Sinclair Interface 2" (port 1) as the control method.
+@label=Handler_ChangeControls_Sinclair1
 *$FA78 LD D,$02        ; #REGd=#N$02.
  $FA7A JR $FA82        ; Jump to #R$FA82.
+; Set "Sinclair Interface 2" (port 2) as the control method.
+@label=Handler_ChangeControls_Sinclair2
 *$FA7C LD D,$01        ; #REGd=#N$01.
  $FA7E JR $FA82        ; Jump to #R$FA82.
+; Set "Kempston Joystick" as the control method.
+@label=Handler_ChangeControls_Kempston
 *$FA80 LD D,$03        ; #REGd=#N$03.
+@label=Handler_SetControlType
 *$FA82 CALL $FA95      ; Call #R$FA95.
- $FA85 JR Z,$FA33      ; Jump to #R$FA33 if {} is zero.
- $FA87 LD (IX+$0E),D   ; Write #REGd to *#REGix+#N$0E.
+ $FA85 JR Z,$FA33      ; Jump to #R$FA33 if the control type is already
+                       ; selected by another monster.
+ $FA87 LD (IX+$0E),D   ; Write the control type to *#REGix+#N$0E (monster
+                       ; control type).
  $FA8A RET             ; Return.
-*$FA8B LD (IX+$0E),$00 ; Write #N$0E to *#REGix+#N$0E.
+; Set "Computer Controlled" as the control method.
+@label=Handler_ChangeControls_Computer
+*$FA8B LD (IX+$0E),$00 ; Write #N$00 to *#REGix+#N$0E (monster control type).
+@label=ChangeControls_Computer_Debounce
 *$FA8F CALL $FBD4      ; Call #R$FBD4.
- $FA92 JR NZ,$FA8F     ; Jump to #R$FA8F if {} is not zero.
+ $FA92 JR NZ,$FA8F     ; Loop back to #R$FA8F until the pressed key is
+                       ; released.
  $FA94 RET             ; Return.
-*$FA95 LD A,($CFE0)    ; {Return if *#R$CFE0 is equal to #REGd.
- $FA98 CP D            ;
+; Monsters can't use the same controllers, this is verified here.
+@label=Handler_CheckExistingControls
+*$FA95 LD A,($CFE0)    ; {Return if *#R$CFE0 is equal to the currently selected
+ $FA98 CP D            ; control method.
  $FA99 RET Z           ; }
- $FA9A LD A,($D00F)    ; {Return if *#R$D00F is equal to #REGd.
- $FA9D CP D            ;
+ $FA9A LD A,($D00F)    ; {Return if *#R$D00F is equal to the currently selected
+ $FA9D CP D            ; control method.
  $FA9E RET Z           ; }
- $FA9F LD A,($D03E)    ; {Return if *#R$D03E is equal to #REGd.
- $FAA2 CP D            ;
+ $FA9F LD A,($D03E)    ; {Return if *#R$D03E is equal to the currently selected
+ $FAA2 CP D            ; control method.
  $FAA3 RET Z           ; }
+; Ensure ZERO flag is not set for the return.
  $FAA4 LD A,$01        ; #REGa=#N$01.
  $FAA6 OR A            ; Set the bits from #REGa.
  $FAA7 RET             ; Return.
-*$FAA8 CALL $FB8E      ; Call #R$FB8E.
- $FAAB CALL $FBD4      ; Call #R$FBD4.
- $FAAE JR NZ,$FAA8     ; Jump to #R$FAA8 if {} is not zero.
- $FAB0 LD HL,$FB4E     ; {Write #R$FB4E to *#R$FB58.
- $FAB3 LD ($FB58),HL   ; }
- $FAB6 LD HL,$D0D5     ; #REGhl=#R$D0D5.
- $FAB9 LD BC,$0403     ; #REGbc=#N$0403.
- $FABC CALL $FB5B      ; Call #R$FB5B.
- $FABF INC HL          ; Increment #REGhl by one.
- $FAC0 LD BC,$0602     ; #REGbc=#N$0602.
- $FAC3 CALL $FB5B      ; Call #R$FB5B.
- $FAC6 LD HL,$D0EB     ; #REGhl=#R$D0EB.
- $FAC9 LD BC,$0804     ; #REGbc=#N$0804.
- $FACC LD A,$05        ; #REGa=#N$05.
-*$FACE PUSH AF         ; {Stash #REGaf and #REGbc on the stack.
- $FACF PUSH BC         ; }
- $FAD0 CALL $FB5B      ; Call #R$FB5B.
- $FAD3 POP BC          ; {Restore #REGbc and #REGaf from the stack.
- $FAD4 POP AF          ; }
- $FAD5 INC HL          ; Increment #REGhl by one.
- $FAD6 INC B           ; {Increment #REGb by two.
- $FAD7 INC B           ; }
- $FAD8 DEC A           ; Decrease #REGa by one.
- $FAD9 JR NZ,$FACE     ; Jump to #R$FACE until #REGa is zero.
- $FADB DEC B           ; Decrease #REGb by one.
- $FADC CALL $FB5B      ; Call #R$FB5B.
- $FADF LD BC,$080B     ; #REGbc=#N$080B.
-*$FAE2 PUSH BC         ; {Stash #REGbc and #REGbc on the stack.
- $FAE3 PUSH BC         ; }
- $FAE4 LD HL,$D104     ; #REGhl=#R$D104.
- $FAE7 CALL $FB5B      ; Call #R$FB5B.
- $FAEA CALL $D604      ; Call #R$D604.
- $FAED CALL $D5F8      ; Call #R$D5F8.
-*$FAF0 CALL $DDC0      ; Call #R$DDC0.
- $FAF3 JR NZ,$FAF0     ; Jump to #R$FAF0 if {} is not zero.
- $FAF5 LD A,D          ; #REGa=#REGd.
- $FAF6 CP $FF          ; Compare #REGa with #N$FF.
- $FAF8 JR Z,$FAF0      ; Jump to #R$FAF0 if {} is zero.
- $FAFA EX DE,HL        ; Exchange the #REGde register with the shadow #REGhl
-                       ; register.
- $FAFB LD HL,$FBF2     ; #REGhl=#R$FBF2.
- $FAFE LD B,$00        ; #REGb=#N$00.
- $FB00 LD C,A          ; #REGc=#REGa.
- $FB01 ADD HL,BC       ; #REGhl+=#REGbc.
- $FB02 LD A,(HL)       ; #REGa=*#REGhl.
- $FB03 CP $80          ; Compare #REGa with #N$80.
- $FB05 JR NC,$FAF0     ; Jump to #R$FAF0 if {} is higher.
- $FB07 OR %10000000    ; Set bits 7.
- $FB09 LD (HL),A       ; Write #REGa to *#REGhl.
- $FB0A LD HL,$D106     ; #REGhl=#R$D106.
- $FB0D AND %01111111   ; Keep only bits 0-6.
- $FB0F LD (HL),A       ; Write #REGa to *#REGhl.
- $FB10 CP $21          ; Compare #REGa with #N$21.
- $FB12 JR NZ,$FB17     ; Jump to #R$FB17 if {} is not zero.
- $FB14 LD HL,$D10E     ; #REGhl=#R$D10E.
-*$FB17 CP $27          ; Compare #REGa with #N$27.
- $FB19 JR NZ,$FB1E     ; Jump to #R$FB1E if {} is not zero.
- $FB1B LD HL,$D108     ; #REGhl=#R$D108.
-*$FB1E CP $18          ; Compare #REGa with #N$18.
- $FB20 JR NZ,$FB25     ; Jump to #R$FB25 if {} is not zero.
- $FB22 LD HL,$D10A     ; #REGhl=#R$D10A.
-*$FB25 CP $20          ; Compare #REGa with #N$20.
- $FB27 JR NZ,$FB2C     ; Jump to #R$FB2C if {} is not zero.
- $FB29 LD HL,$D10C     ; #REGhl=#R$D10C.
-*$FB2C POP BC          ; Restore #REGbc from the stack.
- $FB2D PUSH DE         ; Stash #REGde on the stack.
- $FB2E CALL $FB5B      ; Call #R$FB5B.
- $FB31 POP DE          ; Restore #REGde from the stack.
- $FB32 LD HL,($FB58)   ; #REGhl=*#R$FB58.
- $FB35 LD (HL),E       ; Write #REGe to *#REGhl.
- $FB36 INC HL          ; Increment #REGhl by one.
- $FB37 LD (HL),D       ; Write #REGd to *#REGhl.
- $FB38 INC HL          ; Increment #REGhl by one.
- $FB39 LD ($FB58),HL   ; Write #REGhl to *#R$FB58.
- $FB3C POP BC          ; Restore #REGbc from the stack.
- $FB3D INC B           ; {Increment #REGb by two.
- $FB3E INC B           ; }
- $FB3F LD A,B          ; #REGa=#REGb.
- $FB40 CP $12          ; Compare #REGa with #N$12.
- $FB42 JR NZ,$FAE2     ; Jump to #R$FAE2 if {} is not zero.
- $FB44 CALL $D604      ; Call #R$D604.
- $FB47 CALL $D5F8      ; Call #R$D5F8.
- $FB4A CALL $FBEC      ; Call #R$FBEC.
- $FB4D RET             ; Return.
 
-; Data block at FB4E
-b$FB4E DEFB $00
- $FB4F DEFB $00
- $FB50 DEFB $00
- $FB51 DEFB $00
- $FB52 DEFB $00
- $FB53 DEFB $00
- $FB54 DEFB $00
- $FB55 DEFB $00
- $FB56 DEFB $00
- $FB57 DEFB $00
- $FB58 DEFB $00
- $FB59 DEFB $00
- $FB5A DEFB $00
+; Handler: User Defined Keys
+;
+; Used by the routine at #R$F9BF.
+@label=Handler_UserDefinedKeys
+c$FAA8 CALL $FB8E    ; Call #R$FB8E.
+ $FAAB CALL $FBD4    ; Call #R$FBD4.
+ $FAAE JR NZ,$FAA8   ; Loop back to #R$FAA8 until the pressed key is released.
+ $FAB0 LD HL,$FB4E   ; {Write #R$FB4E to *#R$FB58.
+ $FAB3 LD ($FB58),HL ; }
+; Print "#STR($D0D5) #STR($D0DF)".
+ $FAB6 LD HL,$D0D5   ; #REGhl=#R$D0D5.
+ $FAB9 LD BC,$0403   ; #REGbc=#N$0403 (screen co-ordinates).
+ $FABC CALL $FB5B    ; Call #R$FB5B.
+ $FABF INC HL        ; Move onto the start of the next message.
+ $FAC0 LD BC,$0602   ; #REGbc=#N$0602 (screen co-ordinates).
+ $FAC3 CALL $FB5B    ; Call #R$FB5B.
+; Programmatically display all the #R$D0EB options.
+ $FAC6 LD HL,$D0EB   ; #REGhl=#R$D0EB.
+ $FAC9 LD BC,$0804   ; #REGbc=#N$0804.
+ $FACC LD A,$05      ; #REGa=#N$05 (control counter).
+@label=Handler_UserDefinedKeys_PrintLoop
+*$FACE PUSH AF       ; {Stash #REGaf and #REGbc on the stack.
+ $FACF PUSH BC       ; }
+ $FAD0 CALL $FB5B    ; Call #R$FB5B.
+ $FAD3 POP BC        ; {Restore #REGbc and #REGaf from the stack.
+ $FAD4 POP AF        ; }
+ $FAD5 INC HL        ; Move onto the start of the next message.
+ $FAD6 INC B         ; {Increment #REGb by two.
+ $FAD7 INC B         ; }
+ $FAD8 DEC A         ; Decrease the control counter by one.
+ $FAD9 JR NZ,$FACE   ; Jump to #R$FACE until all controls have been printed.
+; Prints the last line manually "#STR($D0FF)" (as it's the second line of the
+; option before it).
+ $FADB DEC B         ; Decrease #REGb by one.
+ $FADC CALL $FB5B    ; Call #R$FB5B.
+ $FADF LD BC,$080B   ; #REGbc=#N$080B (screen co-ordinates).
+*$FAE2 PUSH BC       ; {Stash #REGbc and #REGbc on the stack.
+ $FAE3 PUSH BC       ; }
+ $FAE4 LD HL,$D104   ; #REGhl=#R$D104.
+ $FAE7 CALL $FB5B    ; Call #R$FB5B.
+; Output to the screen buffer.
+ $FAEA CALL $D604    ; Call #R$D604.
+ $FAED CALL $D5F8    ; Call #R$D5F8.
+*$FAF0 CALL $DDC0    ; Call #R$DDC0.
+ $FAF3 JR NZ,$FAF0   ; Loop back to #R$FAF0 until an option has been selected.
+ $FAF5 LD A,D        ; #REGa=#REGd.
+ $FAF6 CP $FF        ; Compare #REGa with #N$FF.
+ $FAF8 JR Z,$FAF0    ; Jump to #R$FAF0 if {} is zero.
+ $FAFA EX DE,HL      ; Exchange the #REGde register with the shadow #REGhl
+                     ; register.
+ $FAFB LD HL,$FBF2   ; #REGhl=#R$FBF2.
+ $FAFE LD B,$00      ; #REGb=#N$00.
+ $FB00 LD C,A        ; #REGc=#REGa.
+ $FB01 ADD HL,BC     ; #REGhl+=#REGbc.
+ $FB02 LD A,(HL)     ; #REGa=*#REGhl.
+ $FB03 CP $80        ; Compare #REGa with #N$80.
+ $FB05 JR NC,$FAF0   ; Jump to #R$FAF0 if {} is higher.
+ $FB07 OR %10000000  ; Set bits 7.
+ $FB09 LD (HL),A     ; Write #REGa to *#REGhl.
+ $FB0A LD HL,$D106   ; #REGhl=#R$D106.
+ $FB0D AND %01111111 ; Keep only bits 0-6.
+ $FB0F LD (HL),A     ; Write #REGa to *#REGhl.
+ $FB10 CP $21        ; Compare #REGa with #N$21.
+ $FB12 JR NZ,$FB17   ; Jump to #R$FB17 if {} is not zero.
+ $FB14 LD HL,$D10E   ; #REGhl=#R$D10E.
+*$FB17 CP $27        ; Compare #REGa with #N$27.
+ $FB19 JR NZ,$FB1E   ; Jump to #R$FB1E if {} is not zero.
+ $FB1B LD HL,$D108   ; #REGhl=#R$D108.
+*$FB1E CP $18        ; Compare #REGa with #N$18.
+ $FB20 JR NZ,$FB25   ; Jump to #R$FB25 if {} is not zero.
+ $FB22 LD HL,$D10A   ; #REGhl=#R$D10A.
+*$FB25 CP $20        ; Compare #REGa with #N$20.
+ $FB27 JR NZ,$FB2C   ; Jump to #R$FB2C if {} is not zero.
+ $FB29 LD HL,$D10C   ; #REGhl=#R$D10C.
+*$FB2C POP BC        ; Restore #REGbc from the stack.
+ $FB2D PUSH DE       ; Stash #REGde on the stack.
+ $FB2E CALL $FB5B    ; Call #R$FB5B.
+ $FB31 POP DE        ; Restore #REGde from the stack.
+ $FB32 LD HL,($FB58) ; #REGhl=*#R$FB58.
+ $FB35 LD (HL),E     ; Write #REGe to *#REGhl.
+ $FB36 INC HL        ; Increment #REGhl by one.
+ $FB37 LD (HL),D     ; Write #REGd to *#REGhl.
+ $FB38 INC HL        ; Increment #REGhl by one.
+ $FB39 LD ($FB58),HL ; Write #REGhl to *#R$FB58.
+ $FB3C POP BC        ; Restore #REGbc from the stack.
+ $FB3D INC B         ; {Increment #REGb by two.
+ $FB3E INC B         ; }
+ $FB3F LD A,B        ; {Jump to #R$FAE2 until #REGb is equal to #N$12.
+ $FB40 CP $12        ;
+ $FB42 JR NZ,$FAE2   ; }
+; Output to the screen buffer.
+ $FB44 CALL $D604    ; Call #R$D604.
+ $FB47 CALL $D5F8    ; Call #R$D5F8.
+ $FB4A CALL $FBEC    ; Call #R$FBEC.
+ $FB4D RET           ; Return.
+
+; User Defined Keys Buffer
+@label=UserDefinedKeys_Buffer
+g$FB4E DEFB $00,$00
+ $FB50 DEFB $00,$00
+ $FB52 DEFB $00,$00
+ $FB54 DEFB $00,$00
+ $FB56 DEFB $00,$00
+
+; User Defined Keys Pointer
+@label=UserDefinedKeys_Pointer
+g$FB58 DEFW $0000
+
+; Keyboard Control Count
+@label=Keyboard_Control_Count
+g$FB5A DEFB $00
 
 ; Print String
 ;
-; Used by the routines at #R$F726, #R$F981, #R$F9BF, #R$FB8E and #R$FD9E.
+; Used by the routines at #R$F726, #R$F981, #R$F9BF, #R$FAA8, #R$FB8E and
+; #R$FD9E.
 ;
 ; BC Screen co-ordinate
 ; HL Pointer to string data
@@ -8822,7 +8932,7 @@ c$FB5B LD A,(HL)     ; Fetch the character.
 
 ; Routine at FB8E
 ;
-; Used by the routines at #R$F916 and #R$F9BF.
+; Used by the routines at #R$F916, #R$F9BF and #R$FAA8.
 c$FB8E LD C,$11      ; #REGc=#N$11.
  $FB90 LD HL,$6B00   ; #REGhl=#R$6B00.
  $FB93 LD D,$83      ; #REGd=#N$83.
@@ -8874,12 +8984,18 @@ c$FBC8 LD B,$FF      ; #REGb=#N$FF.
                      ; counter is zero.
  $FBD3 RET           ; Return.
 
-; Routine at FBD4
+; Debounce
 ;
-; Used by the routines at #R$F9BF and #R$FBC8.
-c$FBD4 XOR A         ;
- $FBD5 IN A,($FE)    ;
- $FBD7 CPL           ;
+; Used by the routines at #R$F9BF, #R$FAA8 and #R$FBC8.
+@label=Debounce
+c$FBD4 XOR A         ; #REGa=#N$00.
+ $FBD5 IN A,($FE)    ; Read from the keyboard;
+                     ; #TABLE(default,centre,centre,centre,centre,centre,centre)
+                     ; { =h,r2 Port Number | =h,c5 Bit }
+                     ; { =h 0 | =h 1 | =h 2 | =h 3 | =h 4 }
+                     ; { #N$FE | SHIFT | Z | X | C | V }
+                     ; TABLE#
+ $FBD7 CPL           ; Invert the bits in #REGa.
  $FBD8 AND %00011111 ; Keep only bits 0-4.
  $FBDA RET           ; Return.
 
@@ -8896,7 +9012,7 @@ c$FBDB CALL $D5D8    ; Call #R$D5D8.
 
 ; Short Pause
 ;
-; Used by the routines at #R$DE00 and #R$F9BF.
+; Used by the routines at #R$DE00 and #R$FAA8.
 @label=ShortPause
 c$FBEC LD B,$4B      ; #REGb=#N$4B (counter).
 @label=ShortPause_Loop
@@ -8999,69 +9115,69 @@ c$FC39 LD A,($D401)  ; {Return if *#R$D401 is equal to #N$FE.
 ; Routine at FCB6
 ;
 ; Used by the routine at #R$DE77.
-c$FCB6 LD A,($D405)  ;
+c$FCB6 LD A,($D405)  ; {Return if *#R$D405 is equal to #N$FE.
  $FCB9 CP $FE        ;
- $FCBB RET Z         ;
- $FCBC CP $FF        ;
- $FCBE JR Z,$FCE7    ;
- $FCC0 DEC A         ;
- $FCC1 LD ($D405),A  ;
- $FCC4 RET NZ        ;
- $FCC5 LD A,$FF      ;
- $FCC7 LD ($D405),A  ;
- $FCCA CALL $DA28    ;
- $FCCD AND $01       ;
- $FCCF JR NZ,$FCDD   ;
- $FCD1 LD A,$13      ;
- $FCD3 LD ($D407),A  ;
- $FCD6 LD A,$F0      ;
- $FCD8 LD ($D406),A  ;
- $FCDB JR $FCE7      ;
-*$FCDD LD A,$93      ;
- $FCDF LD ($D407),A  ;
- $FCE2 LD A,$20      ;
- $FCE4 LD ($D406),A  ;
-*$FCE7 LD A,($D407)  ;
- $FCEA AND $40       ;
- $FCEC RLCA          ;
- $FCED RLCA          ;
- $FCEE LD C,A        ;
- $FCEF LD A,($D407)  ;
+ $FCBB RET Z         ; }
+ $FCBC CP $FF        ; {Jump to #R$FCE7 if it is equal to #N$FF.
+ $FCBE JR Z,$FCE7    ; }
+ $FCC0 DEC A         ; Decrease #REGa by one.
+ $FCC1 LD ($D405),A  ; Write #REGa to *#R$D405.
+ $FCC4 RET NZ        ; Return if #REGa is not zero.
+ $FCC5 LD A,$FF      ; {Write #N$FF to *#R$D405.
+ $FCC7 LD ($D405),A  ; }
+ $FCCA CALL $DA28    ; Call #R$DA28.
+ $FCCD AND %00000001 ; Keep only bit 0.
+ $FCCF JR NZ,$FCDD   ; Jump to #R$FCDD if the result is not zero.
+ $FCD1 LD A,$13      ; {Write #N$13 to *#R$D407.
+ $FCD3 LD ($D407),A  ; }
+ $FCD6 LD A,$F0      ; {Write #N$F0 to *#R$D406.
+ $FCD8 LD ($D406),A  ; }
+ $FCDB JR $FCE7      ; Jump to #R$FCE7.
+*$FCDD LD A,$93      ; {Write #N$93 to *#R$D407.
+ $FCDF LD ($D407),A  ; }
+ $FCE2 LD A,$20      ; {Write #N$20 to *#R$D406.
+ $FCE4 LD ($D406),A  ; }
+*$FCE7 LD A,($D407)  ; #REGa=*#R$D407.
+ $FCEA AND %01000000 ; Keep only bit 6.
+ $FCEC RLCA          ; {RLCA.
+ $FCED RLCA          ; }
+ $FCEE LD C,A        ; #REGc=#REGa.
+ $FCEF LD A,($D407)  ; {Jump to #R$FD21 if *#R$D407 is higher than #N$80.
  $FCF2 CP $80        ;
- $FCF4 JR NC,$FD21   ;
- $FCF6 AND $3F       ;
- $FCF8 LD B,A        ;
- $FCF9 LD A,($D406)  ;
- $FCFC INC A         ;
- $FCFD ADD A,C       ;
-*$FCFE LD ($D406),A  ;
- $FD01 LD C,A        ;
- $FD02 LD A,$79      ;
- $FD04 PUSH BC       ;
- $FD05 CALL $D6C9    ;
- $FD08 POP BC        ;
- $FD09 LD A,$03      ;
-*$FD0B PUSH AF       ;
- $FD0C INC C         ;
- $FD0D INC C         ;
- $FD0E LD A,$7B      ;
- $FD10 PUSH BC       ;
- $FD11 CALL $D6C9    ;
- $FD14 POP BC        ;
- $FD15 POP AF        ;
- $FD16 DEC A         ;
- $FD17 JR NZ,$FD0B   ;
- $FD19 INC C         ;
- $FD1A INC C         ;
- $FD1B LD A,$79      ;
- $FD1D CALL $D7F6    ;
- $FD20 RET           ;
-*$FD21 AND $3F       ;
- $FD23 LD B,A        ;
- $FD24 LD A,($D406)  ;
- $FD27 DEC A         ;
- $FD28 SUB C         ;
- $FD29 JR $FCFE      ;
+ $FCF4 JR NC,$FD21   ; }
+ $FCF6 AND %00111111 ; Keep only bits 0-5.
+ $FCF8 LD B,A        ; #REGb=#REGa.
+ $FCF9 LD A,($D406)  ; #REGa=*#R$D406.
+ $FCFC INC A         ; Increment #REGa by one.
+ $FCFD ADD A,C       ; #REGa+=#REGc.
+*$FCFE LD ($D406),A  ; Write #REGa to *#R$D406.
+ $FD01 LD C,A        ; #REGc=#REGa.
+ $FD02 LD A,$79      ; #REGa=#N$79.
+ $FD04 PUSH BC       ; Stash #REGbc on the stack.
+ $FD05 CALL $D6C9    ; Call #R$D6C9.
+ $FD08 POP BC        ; Restore #REGbc from the stack.
+ $FD09 LD A,$03      ; #REGa=#N$03.
+*$FD0B PUSH AF       ; Stash #REGaf on the stack.
+ $FD0C INC C         ; {Increment #REGc by two.
+ $FD0D INC C         ; }
+ $FD0E LD A,$7B      ; #REGa=#N$7B.
+ $FD10 PUSH BC       ; Stash #REGbc on the stack.
+ $FD11 CALL $D6C9    ; Call #R$D6C9.
+ $FD14 POP BC        ; {Restore #REGbc and #REGaf from the stack.
+ $FD15 POP AF        ; }
+ $FD16 DEC A         ; Decrease #REGa by one.
+ $FD17 JR NZ,$FD0B   ; Jump to #R$FD0B until #REGa is zero.
+ $FD19 INC C         ; {Increment #REGc by two.
+ $FD1A INC C         ; }
+ $FD1B LD A,$79      ; #REGa=#N$79.
+ $FD1D CALL $D7F6    ; Call #R$D7F6.
+ $FD20 RET           ; Return.
+*$FD21 AND %00111111 ; Keep only bits 0-5.
+ $FD23 LD B,A        ; #REGb=#REGa.
+ $FD24 LD A,($D406)  ; #REGa=*#R$D406.
+ $FD27 DEC A         ; Decrease #REGa by one.
+ $FD28 SUB C         ; #REGa-=#REGc.
+ $FD29 JR $FCFE      ; Jump to #R$FCFE.
 
 ; Routine at FD2B
 ;
@@ -9163,6 +9279,10 @@ c$FD9E CALL $DA28    ; Call #R$DA28.
 ; Sounds: Annoying Telecast Beeping
 ;
 ; Used by the routine at #R$FD64.
+;
+; .
+;
+; #AUDIO(telecast.wav)(#INCLUDE(Telecast))
 @label=Sounds_Telecast
 c$FDC4 LD B,$0A      ; #REGb=#N$0A (counter).
 @label=Sounds_Telecast_Loop
