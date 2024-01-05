@@ -47,7 +47,7 @@ Used by the routine at <a href="DE77.html">DE77</a>.
 <tr>
 <td class="address-2"><span id="fc39"></span>FC39</td>
 <td class="instruction">LD A,($D401)</td>
-<td class="comment-1" rowspan="3">Return if *<a href="D3FA.html#d401">D401</a> is equal to FE.</td>
+<td class="comment-1" rowspan="3">Return if *<a href="D3FE.html#d401">D401</a> is equal to FE.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fc3c"></span>FC3C</td>
@@ -60,7 +60,7 @@ Used by the routine at <a href="DE77.html">DE77</a>.
 <tr>
 <td class="address-1"><span id="fc3f"></span>FC3F</td>
 <td class="instruction">CP $FF</td>
-<td class="comment-1" rowspan="2">Jump to <a href="FC39.html#fc72">FC72</a> if *<a href="D3FA.html#d401">D401</a> is equal to FF.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="FC39.html#fc72">FC72</a> if *<a href="D3FE.html#d401">D401</a> is equal to FF.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fc41"></span>FC41</td>
@@ -74,7 +74,7 @@ Used by the routine at <a href="DE77.html">DE77</a>.
 <tr>
 <td class="address-1"><span id="fc44"></span>FC44</td>
 <td class="instruction">LD ($D401),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> back to *<a href="D3FA.html#d401">D401</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> back to *<a href="D3FE.html#d401">D401</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fc47"></span>FC47</td>
@@ -84,7 +84,7 @@ Used by the routine at <a href="DE77.html">DE77</a>.
 <tr>
 <td class="address-1"><span id="fc48"></span>FC48</td>
 <td class="instruction">LD A,$FF</td>
-<td class="comment-1" rowspan="2">Write FF to *<a href="D3FA.html#d401">D401</a>.</td>
+<td class="comment-1" rowspan="2">Write FF to *<a href="D3FE.html#d401">D401</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fc4a"></span>FC4A</td>
@@ -92,8 +92,8 @@ Used by the routine at <a href="DE77.html">DE77</a>.
 </tr>
 <tr>
 <td class="address-1"><span id="fc4d"></span>FC4D</td>
-<td class="instruction">CALL <a href="DA28.html">$DA28</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DA28.html">DA28</a>.</td>
+<td class="instruction">CALL <a href="DA28.html">RandomNumber</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DA28.html">RandomNumber</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fc50"></span>FC50</td>
@@ -103,12 +103,12 @@ Used by the routine at <a href="DE77.html">DE77</a>.
 <tr>
 <td class="address-1"><span id="fc52"></span>FC52</td>
 <td class="instruction">LD ($D402),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3FA.html#d402">D402</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3FE.html#d402">D402</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fc55"></span>FC55</td>
-<td class="instruction">CALL <a href="DA28.html">$DA28</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DA28.html">DA28</a>.</td>
+<td class="instruction">CALL <a href="DA28.html">RandomNumber</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DA28.html">RandomNumber</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fc58"></span>FC58</td>
@@ -123,7 +123,7 @@ Used by the routine at <a href="DE77.html">DE77</a>.
 <tr>
 <td class="address-1"><span id="fc5c"></span>FC5C</td>
 <td class="instruction">LD A,$14</td>
-<td class="comment-1" rowspan="2">Write 14 to *<a href="D3FA.html#d404">D404</a>.</td>
+<td class="comment-1" rowspan="2">Write 14 to *<a href="D3FE.html#d404">D404</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fc5e"></span>FC5E</td>
@@ -132,7 +132,7 @@ Used by the routine at <a href="DE77.html">DE77</a>.
 <tr>
 <td class="address-1"><span id="fc61"></span>FC61</td>
 <td class="instruction">LD A,$FA</td>
-<td class="comment-1" rowspan="2">Write FA to *<a href="D3FA.html#d403">D403</a>.</td>
+<td class="comment-1" rowspan="2">Write FA to *<a href="D3FE.html#d403">D403</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fc63"></span>FC63</td>
@@ -146,7 +146,7 @@ Used by the routine at <a href="DE77.html">DE77</a>.
 <tr>
 <td class="address-2"><span id="fc68"></span>FC68</td>
 <td class="instruction">LD A,$94</td>
-<td class="comment-1" rowspan="2">Write 94 to *<a href="D3FA.html#d404">D404</a>.</td>
+<td class="comment-1" rowspan="2">Write 94 to *<a href="D3FE.html#d404">D404</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fc6a"></span>FC6A</td>
@@ -155,7 +155,7 @@ Used by the routine at <a href="DE77.html">DE77</a>.
 <tr>
 <td class="address-1"><span id="fc6d"></span>FC6D</td>
 <td class="instruction">LD A,$20</td>
-<td class="comment-1" rowspan="2">Write 20 to *<a href="D3FA.html#d403">D403</a>.</td>
+<td class="comment-1" rowspan="2">Write 20 to *<a href="D3FE.html#d403">D403</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fc6f"></span>FC6F</td>
@@ -164,7 +164,7 @@ Used by the routine at <a href="DE77.html">DE77</a>.
 <tr>
 <td class="address-2"><span id="fc72"></span>FC72</td>
 <td class="instruction">LD A,($D404)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D3FA.html#d404">D404</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D3FE.html#d404">D404</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fc75"></span>FC75</td>
@@ -184,7 +184,7 @@ Used by the routine at <a href="DE77.html">DE77</a>.
 <tr>
 <td class="address-1"><span id="fc7a"></span>FC7A</td>
 <td class="instruction">LD A,($D403)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D3FA.html#d403">D403</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D3FE.html#d403">D403</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fc7d"></span>FC7D</td>
@@ -194,7 +194,7 @@ Used by the routine at <a href="DE77.html">DE77</a>.
 <tr>
 <td class="address-2"><span id="fc7e"></span>FC7E</td>
 <td class="instruction">LD ($D403),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3FA.html#d403">D403</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3FE.html#d403">D403</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fc81"></span>FC81</td>
@@ -213,7 +213,7 @@ Used by the routine at <a href="DE77.html">DE77</a>.
 <tr>
 <td class="address-1"><span id="fc86"></span>FC86</td>
 <td class="instruction">LD A,($D402)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D3FA.html#d402">D402</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D3FE.html#d402">D402</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fc89"></span>FC89</td>
@@ -276,7 +276,7 @@ Used by the routine at <a href="DE77.html">DE77</a>.
 <tr>
 <td class="address-1"><span id="fc9f"></span>FC9F</td>
 <td class="instruction">LD A,($D403)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D3FA.html#d403">D403</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D3FE.html#d403">D403</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fca2"></span>FCA2</td>
@@ -294,8 +294,8 @@ Used by the routine at <a href="DE77.html">DE77</a>.
 </tr>
 <tr>
 <td class="address-2"><span id="fca7"></span>FCA7</td>
-<td class="instruction">CALL <a href="DA28.html">$DA28</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DA28.html">DA28</a>.</td>
+<td class="instruction">CALL <a href="DA28.html">RandomNumber</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DA28.html">RandomNumber</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fcaa"></span>FCAA</td>
@@ -310,7 +310,7 @@ Used by the routine at <a href="DE77.html">DE77</a>.
 <tr>
 <td class="address-1"><span id="fcae"></span>FCAE</td>
 <td class="instruction">LD ($D401),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3FA.html#d401">D401</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3FE.html#d401">D401</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="fcb1"></span>FCB1</td>
@@ -341,7 +341,7 @@ Next: <a href="FCB6.html">FCB6</a>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="asm/FC39.html">Switch to decimal</a>.</div>

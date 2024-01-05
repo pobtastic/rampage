@@ -33,78 +33,91 @@ Next: <a href="64902.html">64902</a>
 </td>
 </tr>
 </table>
-<div class="description">64868: Routine at FD64</div>
+<div class="description">64868: Handler: Ticker News</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="64811.html">64811</a> and <a href="64902.html">64902</a>.
+Used by the routines at <a href="64811.html">64811</a> and <a href="64902.html">ShiftUpTickerNews</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Handler_TickerNews</td>
 <td class="address-2"><span id="64868"></span>64868</td>
 <td class="instruction">CALL <a href="64836.html">Print_Ticker</a></td>
 <td class="comment-1" rowspan="1">Call <a href="64836.html">Print_Ticker</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64871"></span>64871</td>
 <td class="instruction">LD HL,27136</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=27136.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="24832.html#27136">27136</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64874"></span>64874</td>
 <td class="instruction">LD DE,27137</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=27137.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64877"></span>64877</td>
 <td class="instruction">LD BC,255</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=255.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0255.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64880"></span>64880</td>
 <td class="instruction">LD (HL),C</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">C</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64881"></span>64881</td>
 <td class="instruction">LDIR</td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64883"></span>64883</td>
 <td class="instruction">CALL <a href="54281.html">54281</a></td>
 <td class="comment-1" rowspan="1">Call <a href="54281.html">54281</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64886"></span>64886</td>
-<td class="instruction">CALL <a href="64926.html">Handler_DisplayTickerNews</a></td>
-<td class="comment-1" rowspan="1">Call <a href="64926.html">Handler_DisplayTickerNews</a>.</td>
+<td class="instruction">CALL <a href="64926.html">Print_TickerNewsCopy</a></td>
+<td class="comment-1" rowspan="1">Call <a href="64926.html">Print_TickerNewsCopy</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64889"></span>64889</td>
 <td class="instruction">CALL <a href="54788.html">ScreenBuffer_Update</a></td>
 <td class="comment-1" rowspan="1">Call <a href="54788.html">ScreenBuffer_Update</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64892"></span>64892</td>
 <td class="instruction">CALL <a href="54776.html">AttributeBuffer_Update</a></td>
 <td class="comment-1" rowspan="1">Call <a href="54776.html">AttributeBuffer_Update</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64895"></span>64895</td>
-<td class="instruction">CALL <a href="55848.html">55848</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55848.html">55848</a>.</td>
+<td class="instruction">CALL <a href="55848.html">RandomNumber</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55848.html">RandomNumber</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64898"></span>64898</td>
 <td class="instruction">CALL <a href="64964.html">Sounds_Telecast</a></td>
 <td class="comment-1" rowspan="1">Call <a href="64964.html">Sounds_Telecast</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64901"></span>64901</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
@@ -123,7 +136,7 @@ Next: <a href="64902.html">64902</a>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="asm/64868.html">Switch to hexadecimal</a>.</div>

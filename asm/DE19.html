@@ -33,7 +33,7 @@ Next: <a href="DE77.html">DE77</a>
 </td>
 </tr>
 </table>
-<div class="description">DE19: Routine at DE19</div>
+<div class="description">DE19: Game Entry Point</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,10 +42,10 @@ Next: <a href="DE77.html">DE77</a>
 </td>
 </tr>
 <tr>
-<td class="asm-label"></td>
+<td class="asm-label">GameEntryPoint</td>
 <td class="address-2"><span id="de19"></span>DE19</td>
-<td class="instruction">CALL <a href="F916.html">$F916</a></td>
-<td class="comment-1" rowspan="1">Call <a href="F916.html">F916</a>.</td>
+<td class="instruction">CALL <a href="F916.html">SelectionScreen</a></td>
+<td class="comment-1" rowspan="1">Call <a href="F916.html">SelectionScreen</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -67,8 +67,8 @@ Next: <a href="DE77.html">DE77</a>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="de22"></span>DE22</td>
-<td class="instruction">CALL <a href="DF46.html">$DF46</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DF46.html">DF46</a>.</td>
+<td class="instruction">CALL <a href="DF46.html">MonsterDefaults</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DF46.html">MonsterDefaults</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -77,7 +77,7 @@ Next: <a href="DE77.html">DE77</a>
 <td class="comment-1" rowspan="1">Call <a href="DEE1.html">InitialiseNewGame</a>.</td>
 </tr>
 <tr>
-<td class="asm-label"></td>
+<td class="asm-label">GameStartLevel</td>
 <td class="address-2"><span id="de28"></span>DE28</td>
 <td class="instruction">CALL <a href="DEC6.html">$DEC6</a></td>
 <td class="comment-1" rowspan="1">Call <a href="DEC6.html">DEC6</a>.</td>
@@ -86,7 +86,7 @@ Next: <a href="DE77.html">DE77</a>
 <td class="asm-label"></td>
 <td class="address-1"><span id="de2b"></span>DE2B</td>
 <td class="instruction">LD A,($DF44)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="DF44.html">DF44</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="DF44.html">CurrentLevel</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -99,22 +99,22 @@ Next: <a href="DE77.html">DE77</a>
 <span id="de31"></span>
 <div class="comments">
 <div class="paragraph">
-Main game loop
+Game loop.
 </div>
 </div>
 </td>
 </tr>
 <tr>
-<td class="asm-label">MainLoop</td>
+<td class="asm-label">GameLoop</td>
 <td class="address-2"><span id="de31"></span>DE31</td>
-<td class="instruction">CALL <a href="F8CF.html">$F8CF</a></td>
-<td class="comment-1" rowspan="1">Call <a href="F8CF.html">F8CF</a>.</td>
+<td class="instruction">CALL <a href="F8CF.html">Controls_PauseQuit</a></td>
+<td class="comment-1" rowspan="1">Call <a href="F8CF.html">Controls_PauseQuit</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="de34"></span>DE34</td>
 <td class="instruction">LD A,($D3FD)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="DE19.html">DE19</a> if *<a href="D3FA.html#d3fd">D3FD</a> is not zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="DE19.html">GameEntryPoint</a> if *<a href="D3FD.html">Game_State</a> is not zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -124,7 +124,7 @@ Main game loop
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="de38"></span>DE38</td>
-<td class="instruction">JR NZ,<a href="DE19.html#de19">$DE19</a></td>
+<td class="instruction">JR NZ,<a href="DE19.html#de19">GameEntryPoint</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -141,7 +141,7 @@ Main game loop
 <td class="asm-label"></td>
 <td class="address-1"><span id="de3e"></span>DE3E</td>
 <td class="instruction">LD A,($CFD2)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="DE19.html#de53">DE53</a> if *<a href="CFD2.html">George_State</a> is not equal to FF (in-play).</td>
+<td class="comment-1" rowspan="3">Jump to <a href="DE19.html#de53">GameEntryPoint_0</a> if *<a href="CFD2.html">George_State</a> is not equal to FF (in-play).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -151,13 +151,13 @@ Main game loop
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="de43"></span>DE43</td>
-<td class="instruction">JR NZ,<a href="DE19.html#de53">$DE53</a></td>
+<td class="instruction">JR NZ,<a href="DE19.html#de53">GameEntryPoint_0</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="de45"></span>DE45</td>
 <td class="instruction">LD A,($D001)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="DE19.html#de53">DE53</a> if *<a href="D001.html">Lizzy_State</a> is not equal to FF (in-play).</td>
+<td class="comment-1" rowspan="3">Jump to <a href="DE19.html#de53">GameEntryPoint_0</a> if *<a href="D001.html">Lizzy_State</a> is not equal to FF (in-play).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -167,13 +167,13 @@ Main game loop
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="de4a"></span>DE4A</td>
-<td class="instruction">JR NZ,<a href="DE19.html#de53">$DE53</a></td>
+<td class="instruction">JR NZ,<a href="DE19.html#de53">GameEntryPoint_0</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="de4c"></span>DE4C</td>
 <td class="instruction">LD A,($D030)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="DE19.html">DE19</a> if *<a href="D030.html">Ralph_State</a> is equal to FF (in-play).</td>
+<td class="comment-1" rowspan="3">Jump to <a href="DE19.html">GameEntryPoint</a> if *<a href="D030.html">Ralph_State</a> is equal to FF (in-play).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -183,10 +183,10 @@ Main game loop
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="de51"></span>DE51</td>
-<td class="instruction">JR Z,<a href="DE19.html#de19">$DE19</a></td>
+<td class="instruction">JR Z,<a href="DE19.html#de19">GameEntryPoint</a></td>
 </tr>
 <tr>
-<td class="asm-label"></td>
+<td class="asm-label">GameEntryPoint_0</td>
 <td class="address-2"><span id="de53"></span>DE53</td>
 <td class="instruction">LD A,($D3F3)</td>
 <td class="comment-1" rowspan="3">Jump to <a href="DE77.html">DE77</a> if *<a href="D3F3.html">D3F3</a> is not zero.</td>
@@ -229,7 +229,7 @@ Main game loop
 <td class="asm-label"></td>
 <td class="address-1"><span id="de62"></span>DE62</td>
 <td class="instruction">LD A,($DF44)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="DF44.html">DF44</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="DF44.html">CurrentLevel</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -241,21 +241,21 @@ Main game loop
 <td class="asm-label"></td>
 <td class="address-1"><span id="de66"></span>DE66</td>
 <td class="instruction">CP $29</td>
-<td class="comment-1" rowspan="2">Jump to <a href="DE19.html#de6c">DE6C</a> if <span class="register">A</span> is not equal to 29.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="DE19.html#de6c">GameEntryPoint_1</a> if <span class="register">A</span> is not equal to 29.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="de68"></span>DE68</td>
-<td class="instruction">JR NZ,<a href="DE19.html#de6c">$DE6C</a></td>
+<td class="instruction">JR NZ,<a href="DE19.html#de6c">GameEntryPoint_1</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="de6a"></span>DE6A</td>
 <td class="instruction">LD A,$01</td>
-<td class="comment-1" rowspan="2">Write 01 to *<a href="DF44.html">DF44</a>.</td>
+<td class="comment-1" rowspan="2">Write 01 to *<a href="DF44.html">CurrentLevel</a>.</td>
 </tr>
 <tr>
-<td class="asm-label"></td>
+<td class="asm-label">GameEntryPoint_1</td>
 <td class="address-2"><span id="de6c"></span>DE6C</td>
 <td class="instruction">LD ($DF44),A</td>
 </tr>
@@ -268,14 +268,14 @@ Main game loop
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="de72"></span>DE72</td>
-<td class="instruction">CALL <a href="DF46.html">$DF46</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DF46.html">DF46</a>.</td>
+<td class="instruction">CALL <a href="DF46.html">MonsterDefaults</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DF46.html">MonsterDefaults</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="de75"></span>DE75</td>
-<td class="instruction">JR <a href="DE19.html#de28">$DE28</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="DE19.html#de28">DE28</a>.</td>
+<td class="instruction">JR <a href="DE19.html#de28">GameStartLevel</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="DE19.html#de28">GameStartLevel</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -291,7 +291,7 @@ Next: <a href="DE77.html">DE77</a>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="asm/DE19.html">Switch to decimal</a>.</div>

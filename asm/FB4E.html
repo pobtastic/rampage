@@ -38,6 +38,9 @@ Next: <a href="FB58.html">FB58</a>
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
+<div class="paragraph">
+Used by the routines at <a href="F9BF.html">ChangeControls</a> and <a href="FAA8.html">UserDefinedKeys</a>.
+</div>
 </div>
 </td>
 </tr>
@@ -45,31 +48,52 @@ Next: <a href="FB58.html">FB58</a>
 <td class="asm-label">UserDefinedKeys_Buffer</td>
 <td class="address-1"><span id="fb4e"></span>FB4E</td>
 <td class="instruction">DEFB $00,$00</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="5">Stores in the following format: <table class="default">
+<tr>
+<th colspan="1" rowspan="1">Port</th>
+<th colspan="1" rowspan="1">Bits</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">00</td>
+<td class="centre" colspan="1" rowspan="1">00000000</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">00</td>
+<td class="centre" colspan="1" rowspan="1">00000000</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">00</td>
+<td class="centre" colspan="1" rowspan="1">00000000</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">00</td>
+<td class="centre" colspan="1" rowspan="1">00000000</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">00</td>
+<td class="centre" colspan="1" rowspan="1">00000000</td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb50"></span>FB50</td>
 <td class="instruction">DEFB $00,$00</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb52"></span>FB52</td>
 <td class="instruction">DEFB $00,$00</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb54"></span>FB54</td>
 <td class="instruction">DEFB $00,$00</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb56"></span>FB56</td>
 <td class="instruction">DEFB $00,$00</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -85,7 +109,7 @@ Next: <a href="FB58.html">FB58</a>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="asm/FB4E.html">Switch to decimal</a>.</div>

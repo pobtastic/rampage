@@ -33,34 +33,34 @@ Next: <a href="FB4E.html">FB4E</a>
 </td>
 </tr>
 </table>
-<div class="description">FAA8: Handler: User Defined Keys</div>
+<div class="description">FAA8: User Defined Keys</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routine at <a href="F9BF.html">Handler_ChangeControls</a>.
+Used by the routine at <a href="F9BF.html">ChangeControls</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
-<td class="asm-label">Handler_UserDefinedKeys</td>
+<td class="asm-label">UserDefinedKeys</td>
 <td class="address-2"><span id="faa8"></span>FAA8</td>
-<td class="instruction">CALL <a href="FB8E.html">$FB8E</a></td>
-<td class="comment-1" rowspan="1">Call <a href="FB8E.html">FB8E</a>.</td>
+<td class="instruction">CALL <a href="FB8E.html">CreateAdminPageTemplate</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FB8E.html">CreateAdminPageTemplate</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="faab"></span>FAAB</td>
-<td class="instruction">CALL <a href="FBD4.html">Debounce</a></td>
-<td class="comment-1" rowspan="1">Call <a href="FBD4.html">Debounce</a>.</td>
+<td class="instruction">CALL <a href="FBD4.html">GetKeypress</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FBD4.html">GetKeypress</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="faae"></span>FAAE</td>
-<td class="instruction">JR NZ,<a href="FAA8.html#faa8">Handler_UserDefinedKeys</a></td>
-<td class="comment-1" rowspan="1">Loop back to <a href="FAA8.html">Handler_UserDefinedKeys</a> until the pressed key is released.</td>
+<td class="instruction">JR NZ,<a href="FAA8.html#faa8">UserDefinedKeys</a></td>
+<td class="comment-1" rowspan="1">Loop back to <a href="FAA8.html">UserDefinedKeys</a> until the pressed key is released.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -139,7 +139,7 @@ Programmatically display all the <a href="D0EB.html">Messaging_Controls</a> opti
 <td class="asm-label"></td>
 <td class="address-1"><span id="fac9"></span>FAC9</td>
 <td class="instruction">LD BC,$0804</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=0804.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0804 (screen co-ordinates).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -148,10 +148,10 @@ Programmatically display all the <a href="D0EB.html">Messaging_Controls</a> opti
 <td class="comment-1" rowspan="1"><span class="register">A</span>=05 (control counter).</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_UserDefinedKeys_PrintLoop</td>
+<td class="asm-label">UserDefinedKeys_PrintLoop</td>
 <td class="address-2"><span id="face"></span>FACE</td>
 <td class="instruction">PUSH AF</td>
-<td class="comment-1" rowspan="2">Stash <span class="register">AF</span> and <span class="register">BC</span> on the stack.</td>
+<td class="comment-1" rowspan="2">Stash the control counter and current screen co-ordinates on the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -168,7 +168,7 @@ Programmatically display all the <a href="D0EB.html">Messaging_Controls</a> opti
 <td class="asm-label"></td>
 <td class="address-1"><span id="fad3"></span>FAD3</td>
 <td class="instruction">POP BC</td>
-<td class="comment-1" rowspan="2">Restore <span class="register">BC</span> and <span class="register">AF</span> from the stack.</td>
+<td class="comment-1" rowspan="2">Restore the current screen co-ordinates and control counter from the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -180,6 +180,16 @@ Programmatically display all the <a href="D0EB.html">Messaging_Controls</a> opti
 <td class="address-1"><span id="fad5"></span>FAD5</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Move onto the start of the next message.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="fad6"></span>
+<div class="comments">
+<div class="paragraph">
+The options are two lines apart.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -201,8 +211,8 @@ Programmatically display all the <a href="D0EB.html">Messaging_Controls</a> opti
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fad9"></span>FAD9</td>
-<td class="instruction">JR NZ,<a href="FAA8.html#face">Handler_UserDefinedKeys_PrintLoop</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="FAA8.html#face">Handler_UserDefinedKeys_PrintLoop</a> until all controls have been printed.</td>
+<td class="instruction">JR NZ,<a href="FAA8.html#face">UserDefinedKeys_PrintLoop</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="FAA8.html#face">UserDefinedKeys_PrintLoop</a> until all controls have been printed.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -227,16 +237,26 @@ Prints the last line manually "PUNCH" (as it's the second line of the option bef
 <td class="comment-1" rowspan="1">Call <a href="FB5B.html">PrintString</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="fadf"></span>
+<div class="comments">
+<div class="paragraph">
+Set up displaying the "?" indicator to request the user defined keypress.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fadf"></span>FADF</td>
 <td class="instruction">LD BC,$080B</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=080B (screen co-ordinates).</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_UserDefinedKeys_0</td>
+<td class="asm-label">UserDefinedKeys_Request</td>
 <td class="address-2"><span id="fae2"></span>FAE2</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-1" rowspan="2">Stash <span class="register">BC</span> and <span class="register">BC</span> on the stack.</td>
+<td class="comment-1" rowspan="2">Stash <span class="register">BC</span> on the stack twice.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -278,7 +298,7 @@ Output to the screen buffer.
 <td class="comment-1" rowspan="1">Call <a href="D5F8.html">AttributeBuffer_Update</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_UserDefinedKeys_1</td>
+<td class="asm-label">UserDefinedKeys_Input</td>
 <td class="address-2"><span id="faf0"></span>FAF0</td>
 <td class="instruction">CALL <a href="DDC0.html">ChooseControlType</a></td>
 <td class="comment-1" rowspan="1">Call <a href="DDC0.html">ChooseControlType</a>.</td>
@@ -286,50 +306,48 @@ Output to the screen buffer.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="faf3"></span>FAF3</td>
-<td class="instruction">JR NZ,<a href="FAA8.html#faf0">Handler_UserDefinedKeys_1</a></td>
-<td class="comment-1" rowspan="1">Loop back to <a href="FAA8.html#faf0">Handler_UserDefinedKeys_1</a> until an option has been selected.</td>
+<td class="instruction">JR NZ,<a href="FAA8.html#faf0">UserDefinedKeys_Input</a></td>
+<td class="comment-1" rowspan="1">Loop back to <a href="FAA8.html#faf0">UserDefinedKeys_Input</a> until an option has been selected.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="faf5"></span>FAF5</td>
 <td class="instruction">LD A,D</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">D</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=keypress.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="faf6"></span>FAF6</td>
 <td class="instruction">CP $FF</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with FF.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="FAA8.html#faf0">UserDefinedKeys_Input</a> if the keypress is invalid.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="faf8"></span>FAF8</td>
-<td class="instruction">JR Z,<a href="FAA8.html#faf0">Handler_UserDefinedKeys_1</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="FAA8.html#faf0">Handler_UserDefinedKeys_1</a> if {} is zero.</td>
+<td class="instruction">JR Z,<a href="FAA8.html#faf0">UserDefinedKeys_Input</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fafa"></span>FAFA</td>
 <td class="instruction">EX DE,HL</td>
-<td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> register with the shadow <span class="register">HL</span> register.</td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> and <span class="register">HL</span> registers.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fafb"></span>FAFB</td>
 <td class="instruction">LD HL,$FBF2</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="FBF2.html">FBF2</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="FBF2.html">Table_ASCII</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fafe"></span>FAFE</td>
 <td class="instruction">LD B,$00</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=00.</td>
+<td class="comment-1" rowspan="2">Create an offset using <span class="register">BC</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb00"></span>FB00</td>
 <td class="instruction">LD C,A</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -347,19 +365,28 @@ Output to the screen buffer.
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb03"></span>FB03</td>
 <td class="instruction">CP $80</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 80.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="FAA8.html#faf0">UserDefinedKeys_Input</a> if <span class="register">A</span> is higher than 80.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb05"></span>FB05</td>
-<td class="instruction">JR NC,<a href="FAA8.html#faf0">Handler_UserDefinedKeys_1</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="FAA8.html#faf0">Handler_UserDefinedKeys_1</a> if {} is higher.</td>
+<td class="instruction">JR NC,<a href="FAA8.html#faf0">UserDefinedKeys_Input</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="fb07"></span>
+<div class="comments">
+<div class="paragraph">
+Set a print terminator.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb07"></span>FB07</td>
 <td class="instruction">OR %10000000</td>
-<td class="comment-1" rowspan="1">Set bits 7.</td>
+<td class="comment-1" rowspan="1">Set bit 7.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -371,7 +398,17 @@ Output to the screen buffer.
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb0a"></span>FB0A</td>
 <td class="instruction">LD HL,$D106</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D0EB.html#d106">Messaging_Space</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D0EB.html#d106">Messaging_Buffer</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="fb0d"></span>
+<div class="comments">
+<div class="paragraph">
+Remove the print terminator and write to the buffer.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -386,79 +423,95 @@ Output to the screen buffer.
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="fb10"></span>
+<div class="comments">
+<div class="paragraph">
+If "special keys" (e.g. Caps Shift/ Symbol Shift/ Enter/ Space) are selected, provide a means to show that these have been selected.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb10"></span>FB10</td>
 <td class="instruction">CP $21</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 21.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="FAA8.html#fb17">UserDefinedKeys_CheckIfCapsShift</a> if <span class="register">A</span> is not equal to 21.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb12"></span>FB12</td>
-<td class="instruction">JR NZ,<a href="FAA8.html#fb17">Handler_UserDefinedKeys_2</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="FAA8.html#fb17">Handler_UserDefinedKeys_2</a> if {} is not zero.</td>
+<td class="instruction">JR NZ,<a href="FAA8.html#fb17">UserDefinedKeys_CheckIfCapsShift</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb14"></span>FB14</td>
 <td class="instruction">LD HL,$D10E</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D108.html#d10e">D10E</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D108.html#d10e">Messaging_Enter</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_UserDefinedKeys_2</td>
+<td class="asm-label">UserDefinedKeys_CheckIfCapsShift</td>
 <td class="address-2"><span id="fb17"></span>FB17</td>
 <td class="instruction">CP $27</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 27.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="FAA8.html#fb1e">UserDefinedKeys_CheckIfSymbolShift</a> if <span class="register">A</span> is not equal to 27.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb19"></span>FB19</td>
-<td class="instruction">JR NZ,<a href="FAA8.html#fb1e">Handler_UserDefinedKeys_3</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="FAA8.html#fb1e">Handler_UserDefinedKeys_3</a> if {} is not zero.</td>
+<td class="instruction">JR NZ,<a href="FAA8.html#fb1e">UserDefinedKeys_CheckIfSymbolShift</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb1b"></span>FB1B</td>
 <td class="instruction">LD HL,$D108</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D108.html">D108</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D108.html">Messaging_CapsShift</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_UserDefinedKeys_3</td>
+<td class="asm-label">UserDefinedKeys_CheckIfSymbolShift</td>
 <td class="address-2"><span id="fb1e"></span>FB1E</td>
 <td class="instruction">CP $18</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 18.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="FAA8.html#fb25">UserDefinedKeys_CheckIfSpace</a> if <span class="register">A</span> is not equal to 18.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb20"></span>FB20</td>
-<td class="instruction">JR NZ,<a href="FAA8.html#fb25">Handler_UserDefinedKeys_4</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="FAA8.html#fb25">Handler_UserDefinedKeys_4</a> if {} is not zero.</td>
+<td class="instruction">JR NZ,<a href="FAA8.html#fb25">UserDefinedKeys_CheckIfSpace</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb22"></span>FB22</td>
 <td class="instruction">LD HL,$D10A</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D108.html#d10a">D10A</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D108.html#d10a">Messaging_SymbolShift</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_UserDefinedKeys_4</td>
+<td class="asm-label">UserDefinedKeys_CheckIfSpace</td>
 <td class="address-2"><span id="fb25"></span>FB25</td>
 <td class="instruction">CP $20</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 20.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="FAA8.html#fb2c">UserDefinedKeys_PrintKey</a> if <span class="register">A</span> is not equal to 20.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb27"></span>FB27</td>
-<td class="instruction">JR NZ,<a href="FAA8.html#fb2c">Handler_UserDefinedKeys_5</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="FAA8.html#fb2c">Handler_UserDefinedKeys_5</a> if {} is not zero.</td>
+<td class="instruction">JR NZ,<a href="FAA8.html#fb2c">UserDefinedKeys_PrintKey</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb29"></span>FB29</td>
 <td class="instruction">LD HL,$D10C</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D108.html#d10c">D10C</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D108.html#d10c">Messaging_Space</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_UserDefinedKeys_5</td>
+<td class="routine-comment" colspan="5">
+<span id="fb2c"></span>
+<div class="comments">
+<div class="paragraph">
+Print the user defined key on the screen in the appropriate location.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">UserDefinedKeys_PrintKey</td>
 <td class="address-2"><span id="fb2c"></span>FB2C</td>
 <td class="instruction">POP BC</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
@@ -480,6 +533,16 @@ Output to the screen buffer.
 <td class="address-1"><span id="fb31"></span>FB31</td>
 <td class="instruction">POP DE</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">DE</span> from the stack.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="fb32"></span>
+<div class="comments">
+<div class="paragraph">
+Store the keypress port and value in the buffer.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -509,19 +572,29 @@ Output to the screen buffer.
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb38"></span>FB38</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+<td class="comment-1" rowspan="1">Move onto the next buffer location.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb39"></span>FB39</td>
 <td class="instruction">LD ($FB58),HL</td>
-<td class="comment-1" rowspan="1">Write <span class="register">HL</span> to *<a href="FB58.html">UserDefinedKeys_Pointer</a>.</td>
+<td class="comment-1" rowspan="1">Update the stored buffer at *<a href="FB58.html">UserDefinedKeys_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb3c"></span>FB3C</td>
 <td class="instruction">POP BC</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="fb3d"></span>
+<div class="comments">
+<div class="paragraph">
+Move down two lines onto the next option.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -535,10 +608,20 @@ Output to the screen buffer.
 <td class="instruction">INC B</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="fb3f"></span>
+<div class="comments">
+<div class="paragraph">
+Check if we've reached the end?
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb3f"></span>FB3F</td>
 <td class="instruction">LD A,B</td>
-<td class="comment-1" rowspan="3">Jump to <a href="FAA8.html#fae2">Handler_UserDefinedKeys_0</a> until <span class="register">B</span> is equal to 12.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="FAA8.html#fae2">UserDefinedKeys_Request</a> until <span class="register">B</span> is equal to 12.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -548,7 +631,7 @@ Output to the screen buffer.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fb42"></span>FB42</td>
-<td class="instruction">JR NZ,<a href="FAA8.html#fae2">Handler_UserDefinedKeys_0</a></td>
+<td class="instruction">JR NZ,<a href="FAA8.html#fae2">UserDefinedKeys_Request</a></td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -598,7 +681,7 @@ Next: <a href="FB4E.html">FB4E</a>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="asm/FAA8.html">Switch to decimal</a>.</div>

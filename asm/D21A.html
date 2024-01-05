@@ -33,20 +33,25 @@ Next: <a href="D220.html">D220</a>
 </td>
 </tr>
 </table>
-<div class="description">D21A: Game status buffer entry at D21A</div>
+<div class="description">D21A: Game Clock</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
+<div class="paragraph">
+Counts up while the game plays, used as a random number generator (as it's never reset).
+</div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Game_Clock</td>
 <td class="address-1"><span id="d21a"></span>D21A</td>
 <td class="instruction">DEFW $0000</td>
 <td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d21c"></span>D21C</td>
 <td class="instruction">DEFB $00,$00,$00,$00</td>
 <td class="comment-0" rowspan="1"></td>
@@ -65,7 +70,7 @@ Next: <a href="D220.html">D220</a>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="asm/D21A.html">Switch to decimal</a>.</div>

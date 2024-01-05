@@ -35,6 +35,12 @@ gtag('config', 'G-75RERFCHBG');
 <td class="map-g-desc">
 <div class="map-entry-title-11"><a class="map-entry-title" href="../asm/51280.html">User Defined Keys</a></div>
 <div class="map-entry-desc">
+<div class="paragraph">
+Note although there are 3 "sets" - it doesn't always follow that the monster IDs correlate with the set IDs.
+</div>
+<div class="paragraph">
+For instance; if George and Lizzy are computer controlled and Ralph uses the keyboard - he will use set 1. The sets are assigned sequentially to being assigned to a player.
+</div>
 </div>
 </td>
 </tr>
@@ -78,8 +84,11 @@ gtag('config', 'G-75RERFCHBG');
 <td class="map-g"><span id="53786"></span><a href="../asm/53786.html">53786</a></td>
 <td class="map-length">6</td>
 <td class="map-g-desc">
-<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/53786.html">Game status buffer entry at D21A</a></div>
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/53786.html">Game Clock</a></div>
 <div class="map-entry-desc">
+<div class="paragraph">
+Counts up while the game plays, used as a random number generator (as it's never reset).
+</div>
 </div>
 </td>
 </tr>
@@ -166,9 +175,36 @@ gtag('config', 'G-75RERFCHBG');
 </tr>
 <tr>
 <td class="map-g"><span id="53831"></span><a href="../asm/53831.html">53831</a></td>
-<td class="map-length">14</td>
+<td class="map-length">6</td>
 <td class="map-g-desc">
 <div class="map-entry-title-11"><a class="map-entry-title" href="../asm/53831.html">Game status buffer entry at D247</a></div>
+<div class="map-entry-desc">
+</div>
+</td>
+</tr>
+<tr>
+<td class="map-g"><span id="53837"></span><a href="../asm/53837.html">53837</a></td>
+<td class="map-length">1</td>
+<td class="map-g-desc">
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/53837.html">Game status buffer entry at D24D</a></div>
+<div class="map-entry-desc">
+</div>
+</td>
+</tr>
+<tr>
+<td class="map-g"><span id="53838"></span><a href="../asm/53838.html">53838</a></td>
+<td class="map-length">5</td>
+<td class="map-g-desc">
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/53838.html">Game status buffer entry at D24E</a></div>
+<div class="map-entry-desc">
+</div>
+</td>
+</tr>
+<tr>
+<td class="map-g"><span id="53843"></span><a href="../asm/53843.html">53843</a></td>
+<td class="map-length">2</td>
+<td class="map-g-desc">
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/53843.html">Game status buffer entry at D253</a></div>
 <div class="map-entry-desc">
 </div>
 </td>
@@ -183,11 +219,48 @@ gtag('config', 'G-75RERFCHBG');
 </td>
 </tr>
 <tr>
+<td class="map-g"><span id="54269"></span><a href="../asm/54269.html">54269</a></td>
+<td class="map-length">1</td>
+<td class="map-g-desc">
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/54269.html">Game State</a></div>
+<div class="map-entry-desc">
+<div class="paragraph">
+<table class="default">
+<tr>
+<th colspan="1" rowspan="1">Value</th>
+<th colspan="1" rowspan="1">Meaning</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">0</td>
+<td class="centre" colspan="1" rowspan="1">In-Play</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">1</td>
+<td class="centre" colspan="1" rowspan="1">Game Over</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="map-g"><span id="57156"></span><a href="../asm/57156.html">57156</a></td>
+<td class="map-length">1</td>
+<td class="map-g-desc">
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/57156.html">Game: Current Level</a></div>
+<div class="map-entry-desc">
+</div>
+</td>
+</tr>
+<tr>
 <td class="map-g"><span id="64334"></span><a href="../asm/64334.html">64334</a></td>
 <td class="map-length">10</td>
 <td class="map-g-desc">
 <div class="map-entry-title-11"><a class="map-entry-title" href="../asm/64334.html">User Defined Keys Buffer</a></div>
 <div class="map-entry-desc">
+<div class="paragraph">
+Used by the routines at <a href="../asm/63935.html">ChangeControls</a> and <a href="../asm/64168.html">UserDefinedKeys</a>.
+</div>
 </div>
 </td>
 </tr>
@@ -212,7 +285,7 @@ gtag('config', 'G-75RERFCHBG');
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="buffers/gbuffer.html">Switch to hexadecimal</a>.</div>

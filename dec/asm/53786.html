@@ -33,20 +33,25 @@ Next: <a href="53792.html">53792</a>
 </td>
 </tr>
 </table>
-<div class="description">53786: Game status buffer entry at D21A</div>
+<div class="description">53786: Game Clock</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
+<div class="paragraph">
+Counts up while the game plays, used as a random number generator (as it's never reset).
+</div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Game_Clock</td>
 <td class="address-1"><span id="53786"></span>53786</td>
 <td class="instruction">DEFW 0</td>
 <td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="53788"></span>53788</td>
 <td class="instruction">DEFB 0,0,0,0</td>
 <td class="comment-0" rowspan="1"></td>
@@ -65,7 +70,7 @@ Next: <a href="53792.html">53792</a>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="asm/53786.html">Switch to hexadecimal</a>.</div>

@@ -33,280 +33,386 @@ Next: <a href="F981.html">F981</a>
 </td>
 </tr>
 </table>
-<div class="description">F916: Routine at F916</div>
+<div class="description">F916: Selection Screen</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routine at <a href="DE19.html">DE19</a>.
+Used by the routine at <a href="DE19.html">GameEntryPoint</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">SelectionScreen</td>
 <td class="address-2"><span id="f916"></span>F916</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="2">Set border colour to BLACK.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f917"></span>F917</td>
 <td class="instruction">OUT ($FE),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f919"></span>F919</td>
 <td class="instruction">CALL <a href="FBDB.html">$FBDB</a></td>
 <td class="comment-1" rowspan="1">Call <a href="FBDB.html">FBDB</a>.</td>
 </tr>
 <tr>
-<td class="address-1"><span id="f91c"></span>F91C</td>
-<td class="instruction">LD A,$02</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=02.</td>
+<td class="routine-comment" colspan="5">
+<span id="f91c"></span>
+<div class="comments">
+<div class="paragraph">
+The admin screens show the right-hand side of level 2.
+</div>
+</div>
+</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f91c"></span>F91C</td>
+<td class="instruction">LD A,$02</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=level 02.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f91e"></span>F91E</td>
 <td class="instruction">CALL <a href="DF90.html">$DF90</a></td>
 <td class="comment-1" rowspan="1">Call <a href="DF90.html">DF90</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f921"></span>F921</td>
 <td class="instruction">CALL <a href="D409.html">$D409</a></td>
 <td class="comment-1" rowspan="1">Call <a href="D409.html">D409</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f924"></span>F924</td>
-<td class="instruction">CALL <a href="FB8E.html">$FB8E</a></td>
-<td class="comment-1" rowspan="1">Call <a href="FB8E.html">FB8E</a>.</td>
+<td class="instruction">CALL <a href="FB8E.html">CreateAdminPageTemplate</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FB8E.html">CreateAdminPageTemplate</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f927"></span>F927</td>
 <td class="instruction">CALL <a href="F981.html">Print_SelectionScreen</a></td>
 <td class="comment-1" rowspan="1">Call <a href="F981.html">Print_SelectionScreen</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f92a"></span>
+<div class="comments">
+<div class="paragraph">
+The selection page displays for a period of time, and then the game cycles through playareas.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f92a"></span>F92A</td>
 <td class="instruction">LD B,$FF</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=FF.</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=FF (counter).</td>
 </tr>
 <tr>
+<td class="asm-label">SelectionScreen_0</td>
 <td class="address-2"><span id="f92c"></span>F92C</td>
 <td class="instruction">HALT</td>
-<td class="comment-1" rowspan="1">CPU halt.</td>
+<td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f92d"></span>F92D</td>
 <td class="instruction">PUSH BC</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">BC</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f92e"></span>F92E</td>
 <td class="instruction">CALL <a href="DDC0.html">ChooseControlType</a></td>
 <td class="comment-1" rowspan="1">Call <a href="DDC0.html">ChooseControlType</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f931"></span>F931</td>
 <td class="instruction">POP BC</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f932"></span>F932</td>
-<td class="instruction">JR NZ,<a href="F916.html#f954">$F954</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="F916.html#f954">SelectionScreen_1</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="F916.html#f954">SelectionScreen_1</a> if {} is not zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f934"></span>F934</td>
 <td class="instruction">LD A,D</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="F916.html#f954">SelectionScreen_1</a> if <span class="register">D</span> is equal to FF.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f935"></span>F935</td>
 <td class="instruction">CP $FF</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f937"></span>F937</td>
-<td class="instruction">JR Z,<a href="F916.html#f954">$F954</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR Z,<a href="F916.html#f954">SelectionScreen_1</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f939"></span>F939</td>
 <td class="instruction">CP $1E</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Return if <span class="register">A</span> is equal to 1E.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f93b"></span>F93B</td>
 <td class="instruction">RET Z</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f93c"></span>F93C</td>
 <td class="instruction">CP $0F</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="F916.html#f92c">SelectionScreen_0</a> if <span class="register">A</span> is not equal to 0F.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f93e"></span>F93E</td>
-<td class="instruction">JR NZ,<a href="F916.html#f92c">$F92C</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="F916.html#f92c">SelectionScreen_0</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f940"></span>
+<div class="comments">
+<div class="paragraph">
+Removes the print termination bit from the entire table at <a href="FBF2.html">Table_ASCII</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f940"></span>F940</td>
 <td class="instruction">LD HL,$FBF2</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="FBF2.html">Table_ASCII</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f943"></span>F943</td>
 <td class="instruction">LD B,$28</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=28 (length).</td>
 </tr>
 <tr>
+<td class="asm-label">StripPrintTerminationBit_Loop</td>
 <td class="address-2"><span id="f945"></span>F945</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f946"></span>F946</td>
 <td class="instruction">AND %01111111</td>
 <td class="comment-1" rowspan="1">Keep only bits 0-6.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f948"></span>F948</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f949"></span>F949</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f94a"></span>F94A</td>
-<td class="instruction">DJNZ <a href="F916.html#f945">$F945</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">DJNZ <a href="F916.html#f945">StripPrintTerminationBit_Loop</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="F916.html#f945">StripPrintTerminationBit_Loop</a> until counter is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f94c"></span>F94C</td>
-<td class="instruction">CALL <a href="FB8E.html">$FB8E</a></td>
-<td class="comment-1" rowspan="1">Call <a href="FB8E.html">FB8E</a>.</td>
+<td class="instruction">CALL <a href="FB8E.html">CreateAdminPageTemplate</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FB8E.html">CreateAdminPageTemplate</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f94f"></span>F94F</td>
-<td class="instruction">CALL <a href="F9BF.html">Handler_ChangeControls</a></td>
-<td class="comment-1" rowspan="1">Call <a href="F9BF.html">Handler_ChangeControls</a>.</td>
+<td class="instruction">CALL <a href="F9BF.html">ChangeControls</a></td>
+<td class="comment-1" rowspan="1">Call <a href="F9BF.html">ChangeControls</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f952"></span>F952</td>
-<td class="instruction">JR <a href="F916.html#f916">$F916</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="F916.html">F916</a>.</td>
+<td class="instruction">JR <a href="F916.html#f916">SelectionScreen</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="F916.html">SelectionScreen</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">SelectionScreen_1</td>
 <td class="address-2"><span id="f954"></span>F954</td>
-<td class="instruction">DJNZ <a href="F916.html#f92c">$F92C</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">DJNZ <a href="F916.html#f92c">SelectionScreen_0</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="F916.html#f92c">SelectionScreen_0</a> until counter is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f956"></span>F956</td>
-<td class="instruction">CALL <a href="FBC8.html">$FBC8</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">CALL <a href="FBC8.html">PressAnyKey_Pause</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FBC8.html">PressAnyKey_Pause</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f959"></span>F959</td>
-<td class="instruction">JR NZ,<a href="F916.html#f916">$F916</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="F916.html#f916">SelectionScreen</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="F916.html">SelectionScreen</a> if {} is not zero.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f95b"></span>
+<div class="comments">
+<div class="paragraph">
+This loops over some level playareas until a key is pressed or we reach level 0B.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f95b"></span>F95B</td>
 <td class="instruction">LD B,$01</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=level 01.</td>
 </tr>
 <tr>
+<td class="asm-label">DisplayLevels_Loop</td>
 <td class="address-2"><span id="f95d"></span>F95D</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Stash the current level on the stack twice.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f95e"></span>F95E</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f95f"></span>F95F</td>
 <td class="instruction">CALL <a href="FBDB.html">$FBDB</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="FBDB.html">FBDB</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f962"></span>F962</td>
 <td class="instruction">POP BC</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore current level from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f963"></span>F963</td>
 <td class="instruction">LD A,B</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=current level to display.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f964"></span>F964</td>
 <td class="instruction">CALL <a href="DF90.html">$DF90</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="DF90.html">DF90</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f967"></span>F967</td>
 <td class="instruction">CALL <a href="D409.html">$D409</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="D409.html">D409</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f96a"></span>F96A</td>
 <td class="instruction">CALL <a href="FC1A.html">$FC1A</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="FC1A.html">FC1A</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f96d"></span>F96D</td>
 <td class="instruction">CALL <a href="D604.html">ScreenBuffer_Update</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="D604.html">ScreenBuffer_Update</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f970"></span>F970</td>
 <td class="instruction">CALL <a href="D5F8.html">AttributeBuffer_Update</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="D5F8.html">AttributeBuffer_Update</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f973"></span>F973</td>
-<td class="instruction">CALL <a href="FBC8.html">$FBC8</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">CALL <a href="FBC8.html">PressAnyKey_Pause</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FBC8.html">PressAnyKey_Pause</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f976"></span>F976</td>
 <td class="instruction">POP BC</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore current level from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f977"></span>F977</td>
-<td class="instruction">JR NZ,<a href="F916.html#f916">$F916</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="F916.html#f916">SelectionScreen</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="F916.html">SelectionScreen</a> if any key has been pressed.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f979"></span>F979</td>
 <td class="instruction">INC B</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment current level by one.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f97a"></span>
+<div class="comments">
+<div class="paragraph">
+Only display levels 00-0A.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f97a"></span>F97A</td>
 <td class="instruction">LD A,B</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Loop back to <a href="F916.html#f95d">DisplayLevels_Loop</a> until <span class="register">B</span> is equal to 0B.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f97b"></span>F97B</td>
 <td class="instruction">CP $0B</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f97d"></span>F97D</td>
-<td class="instruction">JR NZ,<a href="F916.html#f95d">$F95D</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="F916.html#f95d">DisplayLevels_Loop</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f97f"></span>
+<div class="comments">
+<div class="paragraph">
+Display the selection screen options.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f97f"></span>F97F</td>
-<td class="instruction">JR <a href="F916.html#f916">$F916</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR <a href="F916.html#f916">SelectionScreen</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="F916.html">SelectionScreen</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -322,7 +428,7 @@ Next: <a href="F981.html">F981</a>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="asm/F916.html">Switch to decimal</a>.</div>

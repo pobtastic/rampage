@@ -25,7 +25,7 @@ gtag('config', 'G-75RERFCHBG');
 <table class="asm-navigation">
 <tr>
 <td class="prev">
-Prev: <a href="54266.html">54266</a>
+Prev: <a href="54270.html">54270</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#54281">Map</a></td>
 <td class="next">
@@ -39,7 +39,7 @@ Next: <a href="54744.html">54744</a>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="56951.html">56951</a>, <a href="63766.html">63766</a> and <a href="64868.html">64868</a>.
+Used by the routines at <a href="56951.html">56951</a>, <a href="63766.html">SelectionScreen</a> and <a href="64868.html">Handler_TickerNews</a>.
 </div>
 </div>
 </td>
@@ -52,17 +52,18 @@ Used by the routines at <a href="56951.html">56951</a>, <a href="63766.html">637
 <tr>
 <td class="address-1"><span id="54284"></span>54284</td>
 <td class="instruction">LD A,107</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=107.</td>
+<td class="comment-1" rowspan="3">Write 107 to: <ul class="">
+<li>*<a href="54281.html#54388">54389</a></li>
+<li>*<a href="54281.html#54453">54454</a></li>
+</ul></td>
 </tr>
 <tr>
 <td class="address-1"><span id="54286"></span>54286</td>
 <td class="instruction">LD (54389),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54281.html#54388">54389</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="54289"></span>54289</td>
 <td class="instruction">LD (54454),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54281.html#54453">54454</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="54292"></span>54292</td>
@@ -72,17 +73,18 @@ Used by the routines at <a href="56951.html">56951</a>, <a href="63766.html">637
 <tr>
 <td class="address-1"><span id="54295"></span>54295</td>
 <td class="instruction">LD A,115</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=115.</td>
+<td class="comment-1" rowspan="3">Write 115 to: <ul class="">
+<li>*<a href="54281.html#54388">54389</a></li>
+<li>*<a href="54281.html#54453">54454</a></li>
+</ul></td>
 </tr>
 <tr>
 <td class="address-1"><span id="54297"></span>54297</td>
 <td class="instruction">LD (54389),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54281.html#54388">54389</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="54300"></span>54300</td>
 <td class="instruction">LD (54454),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54281.html#54453">54454</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="54303"></span>54303</td>
@@ -92,17 +94,18 @@ Used by the routines at <a href="56951.html">56951</a>, <a href="63766.html">637
 <tr>
 <td class="address-1"><span id="54306"></span>54306</td>
 <td class="instruction">LD A,123</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=123.</td>
+<td class="comment-1" rowspan="3">Write 123 to: <ul class="">
+<li>*<a href="54281.html#54388">54389</a></li>
+<li>*<a href="54281.html#54453">54454</a></li>
+</ul></td>
 </tr>
 <tr>
 <td class="address-1"><span id="54308"></span>54308</td>
 <td class="instruction">LD (54389),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54281.html#54388">54389</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="54311"></span>54311</td>
 <td class="instruction">LD (54454),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54281.html#54453">54454</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="54314"></span>54314</td>
@@ -297,22 +300,19 @@ Used by the routines at <a href="56951.html">56951</a>, <a href="63766.html">637
 <tr>
 <td class="address-1"><span id="54376"></span>54376</td>
 <td class="instruction">ADD HL,HL</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="4"><span class="register">HL</span>*=8+<span class="register">DE</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="54377"></span>54377</td>
 <td class="instruction">ADD HL,HL</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="54378"></span>54378</td>
 <td class="instruction">ADD HL,HL</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="54379"></span>54379</td>
 <td class="instruction">ADD HL,DE</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">DE</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="54380"></span>54380</td>
@@ -602,7 +602,7 @@ Used by the routines at <a href="56951.html">56951</a>, <a href="63766.html">637
 <tr>
 <td class="address-1"><span id="54451"></span>54451</td>
 <td class="instruction">EXX</td>
-<td class="comment-1" rowspan="1">Switch to the shadow registers.</td>
+<td class="comment-1" rowspan="1">Switch back to the normal registers.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="54452"></span>54452</td>
@@ -942,12 +942,11 @@ Used by the routines at <a href="56951.html">56951</a>, <a href="63766.html">637
 <tr>
 <td class="address-1"><span id="54530"></span>54530</td>
 <td class="instruction">LD A,(53792)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53792.html">53792</a>.</td>
+<td class="comment-1" rowspan="2"><span class="register">C</span>=*<a href="53792.html">53792</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="54533"></span>54533</td>
 <td class="instruction">LD C,A</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="54534"></span>54534</td>
@@ -962,7 +961,7 @@ Used by the routines at <a href="56951.html">56951</a>, <a href="63766.html">637
 <tr>
 <td class="address-1"><span id="54536"></span>54536</td>
 <td class="instruction">EXX</td>
-<td class="comment-1" rowspan="1">Switch to the shadow registers.</td>
+<td class="comment-1" rowspan="1">Switch back to the normal registers.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="54537"></span>54537</td>
@@ -1234,17 +1233,15 @@ This entry point is used by the routine at <a href="57232.html">57232</a>.
 <tr>
 <td class="address-1"><span id="54613"></span>54613</td>
 <td class="instruction">LD A,L</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">L</span>.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="54281.html#54559">54559</a> if <span class="register">L</span> is not equal to 96.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="54614"></span>54614</td>
 <td class="instruction">CP 96</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 96.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="54616"></span>54616</td>
 <td class="instruction">JR NZ,<a href="54281.html#54559">54559</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="54281.html#54559">54559</a> if {} is not zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="54618"></span>54618</td>
@@ -1532,7 +1529,7 @@ This entry point is used by the routine at <a href="57232.html">57232</a>.
 <tr>
 <td class="address-2"><span id="54693"></span>54693</td>
 <td class="instruction">LD (54270),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54266.html#54270">54270</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54270.html">54270</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="54696"></span>54696</td>
@@ -1717,7 +1714,7 @@ This entry point is used by the routine at <a href="57232.html">57232</a>.
 <table class="asm-navigation">
 <tr>
 <td class="prev">
-Prev: <a href="54266.html">54266</a>
+Prev: <a href="54270.html">54270</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#54281">Map</a></td>
 <td class="next">
@@ -1727,7 +1724,7 @@ Next: <a href="54744.html">54744</a>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="asm/54281.html">Switch to hexadecimal</a>.</div>

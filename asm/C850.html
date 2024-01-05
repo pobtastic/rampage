@@ -38,6 +38,12 @@ Next: <a href="C86E.html">C86E</a>
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
+<div class="paragraph">
+Note although there are 3 "sets" - it doesn't always follow that the monster IDs correlate with the set IDs.
+</div>
+<div class="paragraph">
+For instance; if George and Lizzy are computer controlled and Ralph uses the keyboard - he will use set 1. The sets are assigned sequentially to being assigned to a player.
+</div>
 </div>
 </td>
 </tr>
@@ -45,91 +51,154 @@ Next: <a href="C86E.html">C86E</a>
 <td class="asm-label">UserDefinedKeys_Set1</td>
 <td class="address-1"><span id="c850"></span>C850</td>
 <td class="instruction">DEFB $FB,$01</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="5">Stores in the following format: <table class="default">
+<tr>
+<th colspan="1" rowspan="1">Port</th>
+<th colspan="1" rowspan="1">Bits</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">FB</td>
+<td class="centre" colspan="1" rowspan="1">00000001</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">FB</td>
+<td class="centre" colspan="1" rowspan="1">00000010</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">DF</td>
+<td class="centre" colspan="1" rowspan="1">00000010</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">BF</td>
+<td class="centre" colspan="1" rowspan="1">00000100</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">DF</td>
+<td class="centre" colspan="1" rowspan="1">00000001</td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="c852"></span>C852</td>
 <td class="instruction">DEFB $FB,$02</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="c854"></span>C854</td>
 <td class="instruction">DEFB $DF,$02</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="c856"></span>C856</td>
 <td class="instruction">DEFB $BF,$04</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="c858"></span>C858</td>
 <td class="instruction">DEFB $DF,$01</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label">UserDefinedKeys_Set2</td>
 <td class="address-1"><span id="c85a"></span>C85A</td>
 <td class="instruction">DEFB $FB,$01</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="5">Stores in the following format: <table class="default">
+<tr>
+<th colspan="1" rowspan="1">Port</th>
+<th colspan="1" rowspan="1">Bits</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">FB</td>
+<td class="centre" colspan="1" rowspan="1">00000001</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">FB</td>
+<td class="centre" colspan="1" rowspan="1">00000010</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">DF</td>
+<td class="centre" colspan="1" rowspan="1">00000010</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">BF</td>
+<td class="centre" colspan="1" rowspan="1">00000100</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">DF</td>
+<td class="centre" colspan="1" rowspan="1">00000001</td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="c85c"></span>C85C</td>
 <td class="instruction">DEFB $FB,$02</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="c85e"></span>C85E</td>
 <td class="instruction">DEFB $DF,$02</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="c860"></span>C860</td>
 <td class="instruction">DEFB $BF,$04</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="c862"></span>C862</td>
 <td class="instruction">DEFB $DF,$01</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label">UserDefinedKeys_Set3</td>
 <td class="address-1"><span id="c864"></span>C864</td>
 <td class="instruction">DEFB $FB,$01</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="5">Stores in the following format: <table class="default">
+<tr>
+<th colspan="1" rowspan="1">Port</th>
+<th colspan="1" rowspan="1">Bits</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">FB</td>
+<td class="centre" colspan="1" rowspan="1">00000001</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">FB</td>
+<td class="centre" colspan="1" rowspan="1">00000010</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">DF</td>
+<td class="centre" colspan="1" rowspan="1">00000010</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">BF</td>
+<td class="centre" colspan="1" rowspan="1">00000100</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">DF</td>
+<td class="centre" colspan="1" rowspan="1">00000001</td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="c866"></span>C866</td>
 <td class="instruction">DEFB $FB,$02</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="c868"></span>C868</td>
 <td class="instruction">DEFB $DF,$02</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="c86a"></span>C86A</td>
 <td class="instruction">DEFB $BF,$04</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="c86c"></span>C86C</td>
 <td class="instruction">DEFB $DF,$01</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -145,7 +214,7 @@ Next: <a href="C86E.html">C86E</a>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="asm/C850.html">Switch to decimal</a>.</div>

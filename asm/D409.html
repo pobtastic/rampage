@@ -25,7 +25,7 @@ gtag('config', 'G-75RERFCHBG');
 <table class="asm-navigation">
 <tr>
 <td class="prev">
-Prev: <a href="D3FA.html">D3FA</a>
+Prev: <a href="D3FE.html">D3FE</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#d409">Map</a></td>
 <td class="next">
@@ -39,7 +39,7 @@ Next: <a href="D5D8.html">D5D8</a>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="DE77.html">DE77</a>, <a href="F916.html">F916</a> and <a href="FD64.html">FD64</a>.
+Used by the routines at <a href="DE77.html">DE77</a>, <a href="F916.html">SelectionScreen</a> and <a href="FD64.html">Handler_TickerNews</a>.
 </div>
 </div>
 </td>
@@ -52,17 +52,18 @@ Used by the routines at <a href="DE77.html">DE77</a>, <a href="F916.html">F916</
 <tr>
 <td class="address-1"><span id="d40c"></span>D40C</td>
 <td class="instruction">LD A,$6B</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=6B.</td>
+<td class="comment-1" rowspan="3">Write 6B to: <ul class="">
+<li>*<a href="D409.html#d474">D475</a></li>
+<li>*<a href="D409.html#d4b5">D4B6</a></li>
+</ul></td>
 </tr>
 <tr>
 <td class="address-1"><span id="d40e"></span>D40E</td>
 <td class="instruction">LD ($D475),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D409.html#d474">D475</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d411"></span>D411</td>
 <td class="instruction">LD ($D4B6),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D409.html#d4b5">D4B6</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d414"></span>D414</td>
@@ -72,17 +73,18 @@ Used by the routines at <a href="DE77.html">DE77</a>, <a href="F916.html">F916</
 <tr>
 <td class="address-1"><span id="d417"></span>D417</td>
 <td class="instruction">LD A,$73</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=73.</td>
+<td class="comment-1" rowspan="3">Write 73 to: <ul class="">
+<li>*<a href="D409.html#d474">D475</a></li>
+<li>*<a href="D409.html#d4b5">D4B6</a></li>
+</ul></td>
 </tr>
 <tr>
 <td class="address-1"><span id="d419"></span>D419</td>
 <td class="instruction">LD ($D475),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D409.html#d474">D475</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d41c"></span>D41C</td>
 <td class="instruction">LD ($D4B6),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D409.html#d4b5">D4B6</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d41f"></span>D41F</td>
@@ -92,17 +94,18 @@ Used by the routines at <a href="DE77.html">DE77</a>, <a href="F916.html">F916</
 <tr>
 <td class="address-1"><span id="d422"></span>D422</td>
 <td class="instruction">LD A,$7B</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=7B.</td>
+<td class="comment-1" rowspan="3">Write 7B to: <ul class="">
+<li>*<a href="D409.html#d474">D475</a></li>
+<li>*<a href="D409.html#d4b5">D4B6</a></li>
+</ul></td>
 </tr>
 <tr>
 <td class="address-1"><span id="d424"></span>D424</td>
 <td class="instruction">LD ($D475),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D409.html#d474">D475</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d427"></span>D427</td>
 <td class="instruction">LD ($D4B6),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D409.html#d4b5">D4B6</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="d42a"></span>D42A</td>
@@ -297,22 +300,19 @@ Used by the routines at <a href="DE77.html">DE77</a>, <a href="F916.html">F916</
 <tr>
 <td class="address-1"><span id="d468"></span>D468</td>
 <td class="instruction">ADD HL,HL</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="4"><span class="register">HL</span>*=08+<span class="register">DE</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d469"></span>D469</td>
 <td class="instruction">ADD HL,HL</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d46a"></span>D46A</td>
 <td class="instruction">ADD HL,HL</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d46b"></span>D46B</td>
 <td class="instruction">ADD HL,DE</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">DE</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d46c"></span>D46C</td>
@@ -602,7 +602,7 @@ Used by the routines at <a href="DE77.html">DE77</a>, <a href="F916.html">F916</
 <tr>
 <td class="address-1"><span id="d4b3"></span>D4B3</td>
 <td class="instruction">EXX</td>
-<td class="comment-1" rowspan="1">Switch to the shadow registers.</td>
+<td class="comment-1" rowspan="1">Switch back to the normal registers.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d4b4"></span>D4B4</td>
@@ -942,12 +942,11 @@ Used by the routines at <a href="DE77.html">DE77</a>, <a href="F916.html">F916</
 <tr>
 <td class="address-1"><span id="d502"></span>D502</td>
 <td class="instruction">LD A,($D220)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D220.html">D220</a>.</td>
+<td class="comment-1" rowspan="2"><span class="register">C</span>=*<a href="D220.html">D220</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d505"></span>D505</td>
 <td class="instruction">LD C,A</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d506"></span>D506</td>
@@ -962,7 +961,7 @@ Used by the routines at <a href="DE77.html">DE77</a>, <a href="F916.html">F916</
 <tr>
 <td class="address-1"><span id="d508"></span>D508</td>
 <td class="instruction">EXX</td>
-<td class="comment-1" rowspan="1">Switch to the shadow registers.</td>
+<td class="comment-1" rowspan="1">Switch back to the normal registers.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="d509"></span>D509</td>
@@ -1234,17 +1233,15 @@ This entry point is used by the routine at <a href="DF90.html">DF90</a>.
 <tr>
 <td class="address-1"><span id="d555"></span>D555</td>
 <td class="instruction">LD A,L</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">L</span>.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="D409.html#d51f">D51F</a> if <span class="register">L</span> is not equal to 60.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d556"></span>D556</td>
 <td class="instruction">CP $60</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 60.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d558"></span>D558</td>
 <td class="instruction">JR NZ,<a href="D409.html#d51f">$D51F</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="D409.html#d51f">D51F</a> if {} is not zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d55a"></span>D55A</td>
@@ -1532,7 +1529,7 @@ This entry point is used by the routine at <a href="DF90.html">DF90</a>.
 <tr>
 <td class="address-2"><span id="d5a5"></span>D5A5</td>
 <td class="instruction">LD ($D3FE),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3FA.html#d3fe">D3FE</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3FE.html">D3FE</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d5a8"></span>D5A8</td>
@@ -1717,7 +1714,7 @@ This entry point is used by the routine at <a href="DF90.html">DF90</a>.
 <table class="asm-navigation">
 <tr>
 <td class="prev">
-Prev: <a href="D3FA.html">D3FA</a>
+Prev: <a href="D3FE.html">D3FE</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#d409">Map</a></td>
 <td class="next">
@@ -1727,7 +1724,7 @@ Next: <a href="D5D8.html">D5D8</a>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="asm/D409.html">Switch to decimal</a>.</div>

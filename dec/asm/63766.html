@@ -33,280 +33,386 @@ Next: <a href="63873.html">63873</a>
 </td>
 </tr>
 </table>
-<div class="description">63766: Routine at F916</div>
+<div class="description">63766: Selection Screen</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routine at <a href="56857.html">56857</a>.
+Used by the routine at <a href="56857.html">GameEntryPoint</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">SelectionScreen</td>
 <td class="address-2"><span id="63766"></span>63766</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="2">Set border colour to BLACK.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63767"></span>63767</td>
 <td class="instruction">OUT (254),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63769"></span>63769</td>
 <td class="instruction">CALL <a href="64475.html">64475</a></td>
 <td class="comment-1" rowspan="1">Call <a href="64475.html">64475</a>.</td>
 </tr>
 <tr>
-<td class="address-1"><span id="63772"></span>63772</td>
-<td class="instruction">LD A,2</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=2.</td>
+<td class="routine-comment" colspan="5">
+<span id="63772"></span>
+<div class="comments">
+<div class="paragraph">
+The admin screens show the right-hand side of level 2.
+</div>
+</div>
+</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="63772"></span>63772</td>
+<td class="instruction">LD A,2</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=level 2.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63774"></span>63774</td>
 <td class="instruction">CALL <a href="57232.html">57232</a></td>
 <td class="comment-1" rowspan="1">Call <a href="57232.html">57232</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63777"></span>63777</td>
 <td class="instruction">CALL <a href="54281.html">54281</a></td>
 <td class="comment-1" rowspan="1">Call <a href="54281.html">54281</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63780"></span>63780</td>
-<td class="instruction">CALL <a href="64398.html">64398</a></td>
-<td class="comment-1" rowspan="1">Call <a href="64398.html">64398</a>.</td>
+<td class="instruction">CALL <a href="64398.html">CreateAdminPageTemplate</a></td>
+<td class="comment-1" rowspan="1">Call <a href="64398.html">CreateAdminPageTemplate</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63783"></span>63783</td>
 <td class="instruction">CALL <a href="63873.html">Print_SelectionScreen</a></td>
 <td class="comment-1" rowspan="1">Call <a href="63873.html">Print_SelectionScreen</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63786"></span>
+<div class="comments">
+<div class="paragraph">
+The selection page displays for a period of time, and then the game cycles through playareas.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63786"></span>63786</td>
 <td class="instruction">LD B,255</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=255.</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=255 (counter).</td>
 </tr>
 <tr>
+<td class="asm-label">SelectionScreen_0</td>
 <td class="address-2"><span id="63788"></span>63788</td>
 <td class="instruction">HALT</td>
-<td class="comment-1" rowspan="1">CPU halt.</td>
+<td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63789"></span>63789</td>
 <td class="instruction">PUSH BC</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">BC</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63790"></span>63790</td>
 <td class="instruction">CALL <a href="56768.html">ChooseControlType</a></td>
 <td class="comment-1" rowspan="1">Call <a href="56768.html">ChooseControlType</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63793"></span>63793</td>
 <td class="instruction">POP BC</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63794"></span>63794</td>
-<td class="instruction">JR NZ,<a href="63766.html#63828">63828</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="63766.html#63828">SelectionScreen_1</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="63766.html#63828">SelectionScreen_1</a> if {} is not zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63796"></span>63796</td>
 <td class="instruction">LD A,D</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="63766.html#63828">SelectionScreen_1</a> if <span class="register">D</span> is equal to 255.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63797"></span>63797</td>
 <td class="instruction">CP 255</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63799"></span>63799</td>
-<td class="instruction">JR Z,<a href="63766.html#63828">63828</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR Z,<a href="63766.html#63828">SelectionScreen_1</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63801"></span>63801</td>
 <td class="instruction">CP 30</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Return if <span class="register">A</span> is equal to 30.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63803"></span>63803</td>
 <td class="instruction">RET Z</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63804"></span>63804</td>
 <td class="instruction">CP 15</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="63766.html#63788">SelectionScreen_0</a> if <span class="register">A</span> is not equal to 15.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63806"></span>63806</td>
-<td class="instruction">JR NZ,<a href="63766.html#63788">63788</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="63766.html#63788">SelectionScreen_0</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63808"></span>
+<div class="comments">
+<div class="paragraph">
+Removes the print termination bit from the entire table at <a href="64498.html">Table_ASCII</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63808"></span>63808</td>
 <td class="instruction">LD HL,64498</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="64498.html">Table_ASCII</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63811"></span>63811</td>
 <td class="instruction">LD B,40</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=40 (length).</td>
 </tr>
 <tr>
+<td class="asm-label">StripPrintTerminationBit_Loop</td>
 <td class="address-2"><span id="63813"></span>63813</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63814"></span>63814</td>
 <td class="instruction">AND %01111111</td>
 <td class="comment-1" rowspan="1">Keep only bits 0-6.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63816"></span>63816</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63817"></span>63817</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63818"></span>63818</td>
-<td class="instruction">DJNZ <a href="63766.html#63813">63813</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">DJNZ <a href="63766.html#63813">StripPrintTerminationBit_Loop</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="63766.html#63813">StripPrintTerminationBit_Loop</a> until counter is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63820"></span>63820</td>
-<td class="instruction">CALL <a href="64398.html">64398</a></td>
-<td class="comment-1" rowspan="1">Call <a href="64398.html">64398</a>.</td>
+<td class="instruction">CALL <a href="64398.html">CreateAdminPageTemplate</a></td>
+<td class="comment-1" rowspan="1">Call <a href="64398.html">CreateAdminPageTemplate</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63823"></span>63823</td>
-<td class="instruction">CALL <a href="63935.html">Handler_ChangeControls</a></td>
-<td class="comment-1" rowspan="1">Call <a href="63935.html">Handler_ChangeControls</a>.</td>
+<td class="instruction">CALL <a href="63935.html">ChangeControls</a></td>
+<td class="comment-1" rowspan="1">Call <a href="63935.html">ChangeControls</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63826"></span>63826</td>
-<td class="instruction">JR <a href="63766.html#63766">63766</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="63766.html">63766</a>.</td>
+<td class="instruction">JR <a href="63766.html#63766">SelectionScreen</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="63766.html">SelectionScreen</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">SelectionScreen_1</td>
 <td class="address-2"><span id="63828"></span>63828</td>
-<td class="instruction">DJNZ <a href="63766.html#63788">63788</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">DJNZ <a href="63766.html#63788">SelectionScreen_0</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="63766.html#63788">SelectionScreen_0</a> until counter is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63830"></span>63830</td>
-<td class="instruction">CALL <a href="64456.html">64456</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">CALL <a href="64456.html">PressAnyKey_Pause</a></td>
+<td class="comment-1" rowspan="1">Call <a href="64456.html">PressAnyKey_Pause</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63833"></span>63833</td>
-<td class="instruction">JR NZ,<a href="63766.html#63766">63766</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="63766.html#63766">SelectionScreen</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="63766.html">SelectionScreen</a> if {} is not zero.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63835"></span>
+<div class="comments">
+<div class="paragraph">
+This loops over some level playareas until a key is pressed or we reach level 11.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63835"></span>63835</td>
 <td class="instruction">LD B,1</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=level 1.</td>
 </tr>
 <tr>
+<td class="asm-label">DisplayLevels_Loop</td>
 <td class="address-2"><span id="63837"></span>63837</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Stash the current level on the stack twice.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63838"></span>63838</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63839"></span>63839</td>
 <td class="instruction">CALL <a href="64475.html">64475</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="64475.html">64475</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63842"></span>63842</td>
 <td class="instruction">POP BC</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore current level from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63843"></span>63843</td>
 <td class="instruction">LD A,B</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=current level to display.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63844"></span>63844</td>
 <td class="instruction">CALL <a href="57232.html">57232</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="57232.html">57232</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63847"></span>63847</td>
 <td class="instruction">CALL <a href="54281.html">54281</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="54281.html">54281</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63850"></span>63850</td>
 <td class="instruction">CALL <a href="64538.html">64538</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="64538.html">64538</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63853"></span>63853</td>
 <td class="instruction">CALL <a href="54788.html">ScreenBuffer_Update</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="54788.html">ScreenBuffer_Update</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63856"></span>63856</td>
 <td class="instruction">CALL <a href="54776.html">AttributeBuffer_Update</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="54776.html">AttributeBuffer_Update</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63859"></span>63859</td>
-<td class="instruction">CALL <a href="64456.html">64456</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">CALL <a href="64456.html">PressAnyKey_Pause</a></td>
+<td class="comment-1" rowspan="1">Call <a href="64456.html">PressAnyKey_Pause</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63862"></span>63862</td>
 <td class="instruction">POP BC</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore current level from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63863"></span>63863</td>
-<td class="instruction">JR NZ,<a href="63766.html#63766">63766</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="63766.html#63766">SelectionScreen</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="63766.html">SelectionScreen</a> if any key has been pressed.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63865"></span>63865</td>
 <td class="instruction">INC B</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment current level by one.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63866"></span>
+<div class="comments">
+<div class="paragraph">
+Only display levels 0-10.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63866"></span>63866</td>
 <td class="instruction">LD A,B</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Loop back to <a href="63766.html#63837">DisplayLevels_Loop</a> until <span class="register">B</span> is equal to 11.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63867"></span>63867</td>
 <td class="instruction">CP 11</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63869"></span>63869</td>
-<td class="instruction">JR NZ,<a href="63766.html#63837">63837</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="63766.html#63837">DisplayLevels_Loop</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63871"></span>
+<div class="comments">
+<div class="paragraph">
+Display the selection screen options.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63871"></span>63871</td>
-<td class="instruction">JR <a href="63766.html#63766">63766</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR <a href="63766.html#63766">SelectionScreen</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="63766.html">SelectionScreen</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -322,7 +428,7 @@ Next: <a href="63873.html">63873</a>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="asm/63766.html">Switch to hexadecimal</a>.</div>

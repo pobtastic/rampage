@@ -33,48 +33,95 @@ Next: <a href="FBD4.html">FBD4</a>
 </td>
 </tr>
 </table>
-<div class="description">FBC8: Routine at FBC8</div>
+<div class="description">FBC8: Press Any Key/ Pause</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routine at <a href="F916.html">F916</a>.
+Used by the routine at <a href="F916.html">SelectionScreen</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="fbc8"></span>
+<div class="comments">
+<div class="paragraph">
+This routine will return on a keypress, or if the counter reaches FF.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">PressAnyKey_Pause</td>
 <td class="address-2"><span id="fbc8"></span>FBC8</td>
 <td class="instruction">LD B,$FF</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=FF.</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=FF (counter).</td>
 </tr>
 <tr>
+<td class="asm-label">PressAnyKey_Loop</td>
 <td class="address-2"><span id="fbca"></span>FBCA</td>
-<td class="instruction">CALL <a href="FBD4.html">Debounce</a></td>
-<td class="comment-1" rowspan="1">Call <a href="FBD4.html">Debounce</a>.</td>
+<td class="instruction">CALL <a href="FBD4.html">GetKeypress</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FBD4.html">GetKeypress</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbcd"></span>FBCD</td>
-<td class="instruction">JR Z,<a href="FBC8.html#fbd0">$FBD0</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="FBC8.html#fbd0">FBD0</a> if <span class="register">A</span> is zero.</td>
+<td class="instruction">JR Z,<a href="FBC8.html#fbd0">Pause_Loop</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="FBC8.html#fbd0">Pause_Loop</a> if no key has been pressed.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="fbcf"></span>
+<div class="comments">
+<div class="paragraph">
+A keypress has occurred so return.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbcf"></span>FBCF</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="fbd0"></span>
+<div class="comments">
+<div class="paragraph">
+There's not been a keypress, so issue a HALT and loop back round.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Pause_Loop</td>
 <td class="address-2"><span id="fbd0"></span>FBD0</td>
 <td class="instruction">HALT</td>
 <td class="comment-1" rowspan="1">Halt operation (suspend CPU until the next interrupt).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbd1"></span>FBD1</td>
-<td class="instruction">DJNZ <a href="FBC8.html#fbca">$FBCA</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="FBC8.html#fbca">FBCA</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="FBC8.html#fbca">PressAnyKey_Loop</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="FBC8.html#fbca">PressAnyKey_Loop</a> until counter is zero.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="fbd3"></span>
+<div class="comments">
+<div class="paragraph">
+The pause counter has expired so just return.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbd3"></span>FBD3</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
@@ -93,7 +140,7 @@ Next: <a href="FBD4.html">FBD4</a>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="asm/FBC8.html">Switch to decimal</a>.</div>

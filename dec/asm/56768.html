@@ -39,7 +39,7 @@ Next: <a href="56832.html">56832</a>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="63766.html">63766</a>, <a href="63935.html">Handler_ChangeControls</a> and <a href="64168.html">Handler_UserDefinedKeys</a>.
+Used by the routines at <a href="63766.html">SelectionScreen</a>, <a href="63935.html">ChangeControls</a> and <a href="64168.html">UserDefinedKeys</a>.
 </div>
 </div>
 </td>
@@ -57,30 +57,10 @@ Used by the routines at <a href="63766.html">63766</a>, <a href="63935.html">Han
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=65278.</td>
 </tr>
 <tr>
-<td class="asm-label">ChooseControlType_0</td>
+<td class="asm-label">ReadKeyboard_Loop</td>
 <td class="address-2"><span id="56774"></span>56774</td>
 <td class="instruction">IN A,(C)</td>
-<td class="comment-1" rowspan="1">Read from the keyboard; <table class="default">
-<tr>
-<th colspan="1" rowspan="2">Port Number</th>
-<th colspan="5" rowspan="1">Bit</th>
-</tr>
-<tr>
-<th colspan="1" rowspan="1">0</th>
-<th colspan="1" rowspan="1">1</th>
-<th colspan="1" rowspan="1">2</th>
-<th colspan="1" rowspan="1">3</th>
-<th colspan="1" rowspan="1">4</th>
-</tr>
-<tr>
-<td class="centre" colspan="1" rowspan="1">254</td>
-<td class="centre" colspan="1" rowspan="1">SHIFT</td>
-<td class="centre" colspan="1" rowspan="1">Z</td>
-<td class="centre" colspan="1" rowspan="1">X</td>
-<td class="centre" colspan="1" rowspan="1">C</td>
-<td class="centre" colspan="1" rowspan="1">V</td>
-</tr>
-</table></td>
+<td class="comment-1" rowspan="1">Read from the keyboard.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -97,8 +77,8 @@ Used by the routines at <a href="63766.html">63766</a>, <a href="63935.html">Han
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56779"></span>56779</td>
-<td class="instruction">JR Z,<a href="56768.html#56794">ChooseControlType_2</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="56768.html#56794">ChooseControlType_2</a> if {} is zero.</td>
+<td class="instruction">JR Z,<a href="56768.html#56794">ChooseControlType_1</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="56768.html#56794">ChooseControlType_1</a> if there's no match.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -110,7 +90,7 @@ Used by the routines at <a href="63766.html">63766</a>, <a href="63935.html">Han
 <td class="asm-label"></td>
 <td class="address-1"><span id="56782"></span>56782</td>
 <td class="instruction">RET NZ</td>
-<td class="comment-1" rowspan="1">Return if {} is not zero.</td>
+<td class="comment-1" rowspan="1">Return if <span class="register">D</span> is not zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -125,7 +105,7 @@ Used by the routines at <a href="63766.html">63766</a>, <a href="63935.html">Han
 <td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">E</span>.</td>
 </tr>
 <tr>
-<td class="asm-label">ChooseControlType_1</td>
+<td class="asm-label">ChooseControlType_0</td>
 <td class="address-2"><span id="56785"></span>56785</td>
 <td class="instruction">SUB 8</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>-=8.</td>
@@ -139,8 +119,8 @@ Used by the routines at <a href="63766.html">63766</a>, <a href="63935.html">Han
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56789"></span>56789</td>
-<td class="instruction">JR NC,<a href="56768.html#56785">ChooseControlType_1</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="56768.html#56785">ChooseControlType_1</a> if {} is higher.</td>
+<td class="instruction">JR NC,<a href="56768.html#56785">ChooseControlType_0</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="56768.html#56785">ChooseControlType_0</a> if {} is higher.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -161,7 +141,7 @@ Used by the routines at <a href="63766.html">63766</a>, <a href="63935.html">Han
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">B</span>.</td>
 </tr>
 <tr>
-<td class="asm-label">ChooseControlType_2</td>
+<td class="asm-label">ChooseControlType_1</td>
 <td class="address-2"><span id="56794"></span>56794</td>
 <td class="instruction">DEC E</td>
 <td class="comment-1" rowspan="1">Decrease <span class="register">E</span> by one.</td>
@@ -175,8 +155,8 @@ Used by the routines at <a href="63766.html">63766</a>, <a href="63935.html">Han
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56797"></span>56797</td>
-<td class="instruction">JR C,<a href="56768.html#56774">ChooseControlType_0</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="56768.html#56774">ChooseControlType_0</a> if {} is lower.</td>
+<td class="instruction">JR C,<a href="56768.html#56774">ReadKeyboard_Loop</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="56768.html#56774">ReadKeyboard_Loop</a> if {} is lower.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -292,7 +272,7 @@ Next: <a href="56832.html">56832</a>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="asm/56768.html">Switch to hexadecimal</a>.</div>

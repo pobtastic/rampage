@@ -33,58 +33,67 @@ Next: <a href="64430.html">64430</a>
 </td>
 </tr>
 </table>
-<div class="description">64398: Routine at FB8E</div>
+<div class="description">64398: Create Admin Page Template</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="63766.html">63766</a>, <a href="63935.html">Handler_ChangeControls</a> and <a href="64168.html">Handler_UserDefinedKeys</a>.
+Used by the routines at <a href="63766.html">SelectionScreen</a>, <a href="63935.html">ChangeControls</a> and <a href="64168.html">UserDefinedKeys</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">CreateAdminPageTemplate</td>
 <td class="address-2"><span id="64398"></span>64398</td>
 <td class="instruction">LD C,17</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=17.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64400"></span>64400</td>
 <td class="instruction">LD HL,27392</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="27392.html">ShadowScreenBuffer</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64403"></span>64403</td>
 <td class="instruction">LD D,131</td>
 <td class="comment-1" rowspan="1"><span class="register">D</span>=131.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64405"></span>64405</td>
 <td class="instruction">LD E,0</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64407"></span>64407</td>
 <td class="instruction">CALL <a href="64430.html">64430</a></td>
 <td class="comment-1" rowspan="1">Call <a href="64430.html">64430</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64410"></span>64410</td>
 <td class="instruction">LD HL,33536</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="27392.html#33536">ShadowAttributeBuffer</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64413"></span>64413</td>
 <td class="instruction">LD D,134</td>
 <td class="comment-1" rowspan="1"><span class="register">D</span>=134.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64415"></span>64415</td>
 <td class="instruction">LD E,70</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=70.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64417"></span>64417</td>
 <td class="instruction">CALL <a href="64430.html">64430</a></td>
 <td class="comment-1" rowspan="1">Call <a href="64430.html">64430</a>.</td>
@@ -100,21 +109,25 @@ Prints "Rampage tm".
 </td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64420"></span>64420</td>
 <td class="instruction">LD HL,53451</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="53451.html">Messaging_Rampage</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64423"></span>64423</td>
 <td class="instruction">LD BC,259</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=259 (screen co-ordinates).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64426"></span>64426</td>
 <td class="instruction">CALL <a href="64347.html">PrintString</a></td>
 <td class="comment-1" rowspan="1">Call <a href="64347.html">PrintString</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64429"></span>64429</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
@@ -133,7 +146,7 @@ Next: <a href="64430.html">64430</a>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="asm/64398.html">Switch to hexadecimal</a>.</div>

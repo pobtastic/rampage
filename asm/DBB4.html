@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at DBB4</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="DB7E.html">DB7E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#dbb4">Map</a></td>
+<td class="next">
+Next: <a href="DBD9.html">DBD9</a>
+</td>
+</tr>
+</table>
+<div class="description">DBB4: Character Picker</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="DB7E.html">DB7E</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Number between 0-3</td>
+</tr>
+</table>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Monster state</td>
+</tr>
+<tr>
+<td class="register">B</td>
+<td class="register-desc">Monster number</td>
+</tr>
+<tr>
+<td class="register">DE</td>
+<td class="register-desc">Pointer to Monster X Position</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="dbb4"></span>
+<div class="comments">
+<div class="paragraph">
+The monster IDs are the following: <table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Monster</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">01</td>
+<td class="centre" colspan="1" rowspan="1">George</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">02</td>
+<td class="centre" colspan="1" rowspan="1">Lizzy</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">03</td>
+<td class="centre" colspan="1" rowspan="1">Ralph</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">CharacterPicker</td>
+<td class="address-2"><span id="dbb4"></span>DBB4</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">Make the number 1-4 instead of 0-3.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="dbb5"></span>DBB5</td>
+<td class="instruction">CP $04</td>
+<td class="comment-1" rowspan="2">Jump to <a href="DBB4.html#dbbb">GetCharacter</a> if <span class="register">A</span> is not equal to 04.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="dbb7"></span>DBB7</td>
+<td class="instruction">JR NZ,<a href="DBB4.html#dbbb">GetCharacter</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="dbb9"></span>
+<div class="comments">
+<div class="paragraph">
+There aren't four monsters so make 04 into 01. This means George has 50% chance of being chosen, Lizzy and Ralph are 25% each.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="dbb9"></span>DBB9</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=01.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="dbbb"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="DBD9.html">DBD9</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">GetCharacter</td>
+<td class="address-2"><span id="dbbb"></span>DBBB</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="dbbc"></span>
+<div class="comments">
+<div class="paragraph">
+Test if it's George.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">CharacterPicker_George</td>
+<td class="address-1"><span id="dbbc"></span>DBBC</td>
+<td class="instruction">CP $01</td>
+<td class="comment-1" rowspan="2">Jump to <a href="DBB4.html#dbc7">CharacterPicker_Lizzy</a> if <span class="register">A</span> is not equal to 01.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="dbbe"></span>DBBE</td>
+<td class="instruction">JR NZ,<a href="DBB4.html#dbc7">CharacterPicker_Lizzy</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="dbc0"></span>DBC0</td>
+<td class="instruction">LD A,($CFD2)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="CFD2.html">George_State</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="dbc3"></span>DBC3</td>
+<td class="instruction">LD DE,$CFDB</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="CFD2.html#cfdb">George_X_Position</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="dbc6"></span>DBC6</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="dbc7"></span>
+<div class="comments">
+<div class="paragraph">
+Test if it's Lizzy.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">CharacterPicker_Lizzy</td>
+<td class="address-2"><span id="dbc7"></span>DBC7</td>
+<td class="instruction">CP $02</td>
+<td class="comment-1" rowspan="2">Jump to <a href="DBB4.html#dbd2">CharacterPicker_Ralph</a> if <span class="register">A</span> is not equal to 02.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="dbc9"></span>DBC9</td>
+<td class="instruction">JR NZ,<a href="DBB4.html#dbd2">CharacterPicker_Ralph</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="dbcb"></span>DBCB</td>
+<td class="instruction">LD A,($D001)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D001.html">Lizzy_State</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="dbce"></span>DBCE</td>
+<td class="instruction">LD DE,$D00A</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="D001.html#d00a">Lizzy_X_Position</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="dbd1"></span>DBD1</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="dbd2"></span>
+<div class="comments">
+<div class="paragraph">
+If it's neither of the above then it can only be Ralph.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">CharacterPicker_Ralph</td>
+<td class="address-2"><span id="dbd2"></span>DBD2</td>
+<td class="instruction">LD A,($D030)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D030.html">Ralph_State</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="dbd5"></span>DBD5</td>
+<td class="instruction">LD DE,$D039</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="D030.html#d039">Ralph_X_Position</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="dbd8"></span>DBD8</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="DB7E.html">DB7E</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#dbb4">Map</a></td>
+<td class="next">
+Next: <a href="DBD9.html">DBD9</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/DBB4.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

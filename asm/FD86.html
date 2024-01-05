@@ -33,7 +33,7 @@ Next: <a href="FD9E.html">FD9E</a>
 </td>
 </tr>
 </table>
-<div class="description">FD86: Routine at FD86</div>
+<div class="description">FD86: Shift Up Ticker News</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,49 +45,68 @@ Used by the routine at <a href="FD2B.html">FD2B</a>.
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="fd86"></span>
+<div class="comments">
+<div class="paragraph">
+This creates the ticker "scrolling" effect, where the initial news moves to the middle, and then the bottom two news stories move to the top.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">ShiftUpTickerNews</td>
 <td class="address-2"><span id="fd86"></span>FD86</td>
 <td class="instruction">LD HL,$7300</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="6B00.html#7300">7300</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fd89"></span>FD89</td>
 <td class="instruction">LD DE,$6B00</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="6B00.html">ShadowScreenBuffer</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fd8c"></span>FD8C</td>
 <td class="instruction">LD BC,$1000</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=1000.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fd8f"></span>FD8F</td>
 <td class="instruction">LDIR</td>
-<td class="comment-1" rowspan="1">Copy.</td>
+<td class="comment-1" rowspan="1">Copy the bottom two-thirds of the shadow screen buffer "up" to the top of the buffer.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fd91"></span>FD91</td>
 <td class="instruction">LD HL,$8400</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="6B00.html#8400">8400</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fd94"></span>FD94</td>
 <td class="instruction">LD DE,$8300</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="6B00.html#8300">ShadowAttributeBuffer</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fd97"></span>FD97</td>
 <td class="instruction">LD BC,$0200</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=0200.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fd9a"></span>FD9A</td>
 <td class="instruction">LDIR</td>
-<td class="comment-1" rowspan="1">Copy.</td>
+<td class="comment-1" rowspan="1">Copy the bottom two-thirds of the shadow attribute buffer "up" to the top of the buffer.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fd9c"></span>FD9C</td>
-<td class="instruction">JR <a href="FD64.html">$FD64</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="FD64.html">FD64</a>.</td>
+<td class="instruction">JR <a href="FD64.html">Handler_TickerNews</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="FD64.html">Handler_TickerNews</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -103,7 +122,7 @@ Next: <a href="FD9E.html">FD9E</a>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="asm/FD86.html">Switch to decimal</a>.</div>

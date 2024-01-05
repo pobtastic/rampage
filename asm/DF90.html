@@ -39,7 +39,7 @@ Next: <a href="E119.html">E119</a>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="DE19.html">DE19</a> and <a href="F916.html">F916</a>.
+Used by the routines at <a href="DE19.html">GameEntryPoint</a> and <a href="F916.html">SelectionScreen</a>.
 </div>
 </div>
 </td>
@@ -67,12 +67,11 @@ Used by the routines at <a href="DE19.html">DE19</a> and <a href="F916.html">F91
 <tr>
 <td class="address-1"><span id="df96"></span>DF96</td>
 <td class="instruction">CP $FF</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with FF.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="DF90.html#df94">DF94</a> if <span class="register">A</span> is not equal to FF.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="df98"></span>DF98</td>
 <td class="instruction">JR NZ,<a href="DF90.html#df94">$DF94</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="DF90.html#df94">DF94</a> if {} is not zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="df9a"></span>DF9A</td>
@@ -82,7 +81,7 @@ Used by the routines at <a href="DE19.html">DE19</a> and <a href="F916.html">F91
 <tr>
 <td class="address-1"><span id="df9b"></span>DF9B</td>
 <td class="instruction">JR NZ,<a href="DF90.html#df94">$DF94</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="DF90.html#df94">DF94</a> if {} is not zero.</td>
+<td class="comment-1" rowspan="1">Jump to <a href="DF90.html#df94">DF94</a> until <span class="register">E</span> is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="df9d"></span>DF9D</td>
@@ -167,7 +166,7 @@ Used by the routines at <a href="DE19.html">DE19</a> and <a href="F916.html">F91
 <tr>
 <td class="address-1"><span id="dfb2"></span>DFB2</td>
 <td class="instruction">LD ($D400),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3FA.html#d400">D400</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3FE.html#d400">D400</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="dfb5"></span>DFB5</td>
@@ -182,17 +181,18 @@ Used by the routines at <a href="DE19.html">DE19</a> and <a href="F916.html">F91
 <tr>
 <td class="address-1"><span id="dfb9"></span>DFB9</td>
 <td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="1">Reset the bits from <span class="register">A</span>.</td>
+<td class="comment-1" rowspan="3">Write 00 to: <ul class="">
+<li>*<a href="D220.html">D220</a></li>
+<li>*<a href="D222.html">D222</a></li>
+</ul></td>
 </tr>
 <tr>
 <td class="address-1"><span id="dfba"></span>DFBA</td>
 <td class="instruction">LD ($D220),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D220.html">D220</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="dfbd"></span>DFBD</td>
 <td class="instruction">LD ($D222),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D222.html">D222</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="dfc0"></span>DFC0</td>
@@ -495,8 +495,8 @@ Used by the routines at <a href="DE19.html">DE19</a> and <a href="F916.html">F91
 </tr>
 <tr>
 <td class="address-1"><span id="e01b"></span>E01B</td>
-<td class="instruction">CALL <a href="DA3D.html#da71">$DA71</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DA3D.html#da71">DA71</a>.</td>
+<td class="instruction">CALL <a href="DA71.html">$DA71</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DA71.html">DA71</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e01e"></span>E01E</td>
@@ -625,7 +625,7 @@ Used by the routines at <a href="DE19.html">DE19</a> and <a href="F916.html">F91
 <tr>
 <td class="address-1"><span id="e049"></span>E049</td>
 <td class="instruction">JP NZ,<a href="DF90.html#dfc7">$DFC7</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="DF90.html#dfc7">DFC7</a> if {} is not zero.</td>
+<td class="comment-1" rowspan="1">Jump to <a href="DF90.html#dfc7">DFC7</a> until <span class="register">A</span> is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e04c"></span>E04C</td>
@@ -690,52 +690,47 @@ Used by the routines at <a href="DE19.html">DE19</a> and <a href="F916.html">F91
 <tr>
 <td class="address-1"><span id="e05e"></span>E05E</td>
 <td class="instruction">LD A,$FE</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=FE.</td>
+<td class="comment-1" rowspan="2">Write FE to *<a href="D3FE.html#d405">D405</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e060"></span>E060</td>
 <td class="instruction">LD ($D405),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3FA.html#d405">D405</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e063"></span>E063</td>
 <td class="instruction">LD A,($D400)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D3FA.html#d400">D400</a>.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="DF90.html#e099">E099</a> if *<a href="D3FE.html#d400">D400</a> is equal to 02.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e066"></span>E066</td>
 <td class="instruction">CP $02</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 02.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e068"></span>E068</td>
 <td class="instruction">JR Z,<a href="DF90.html#e099">$E099</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="DF90.html#e099">E099</a> if {} is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e06a"></span>E06A</td>
 <td class="instruction">CP $05</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 05.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="DF90.html#e09e">E09E</a> if <span class="register">A</span> is equal to 05.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e06c"></span>E06C</td>
 <td class="instruction">JR Z,<a href="DF90.html#e09e">$E09E</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="DF90.html#e09e">E09E</a> if {} is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e06e"></span>E06E</td>
 <td class="instruction">LD A,$18</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=18.</td>
+<td class="comment-1" rowspan="2">Write 18 to *<a href="D3FE.html#d401">D401</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e070"></span>E070</td>
 <td class="instruction">LD ($D401),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3FA.html#d401">D401</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="e073"></span>E073</td>
 <td class="instruction">LD A,($DF44)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="DF44.html">DF44</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="DF44.html">CurrentLevel</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e076"></span>E076</td>
@@ -765,12 +760,11 @@ Used by the routines at <a href="DE19.html">DE19</a> and <a href="F916.html">F91
 <tr>
 <td class="address-1"><span id="e07d"></span>E07D</td>
 <td class="instruction">CP $07</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 07.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="DF90.html#e083">E083</a> if <span class="register">A</span> is lower than 07.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e07f"></span>E07F</td>
 <td class="instruction">JR C,<a href="DF90.html#e083">$E083</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="DF90.html#e083">E083</a> if {} is lower.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e081"></span>E081</td>
@@ -785,7 +779,7 @@ Used by the routines at <a href="DE19.html">DE19</a> and <a href="F916.html">F91
 <tr>
 <td class="address-1"><span id="e086"></span>E086</td>
 <td class="instruction">LD A,($DF44)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="DF44.html">DF44</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="DF44.html">CurrentLevel</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e089"></span>E089</td>
@@ -810,22 +804,20 @@ Used by the routines at <a href="DE19.html">DE19</a> and <a href="F916.html">F91
 <tr>
 <td class="address-1"><span id="e08f"></span>E08F</td>
 <td class="instruction">CP $11</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 11.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="DF90.html#e095">E095</a> if <span class="register">A</span> is lower than 11.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e091"></span>E091</td>
 <td class="instruction">JR C,<a href="DF90.html#e095">$E095</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="DF90.html#e095">E095</a> if {} is lower.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e093"></span>E093</td>
 <td class="instruction">LD A,$10</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=10.</td>
+<td class="comment-1" rowspan="2">Write 10 to *<a href="D211.html">D211</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="e095"></span>E095</td>
 <td class="instruction">LD ($D211),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D211.html">D211</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e098"></span>E098</td>
@@ -835,22 +827,20 @@ Used by the routines at <a href="DE19.html">DE19</a> and <a href="F916.html">F91
 <tr>
 <td class="address-2"><span id="e099"></span>E099</td>
 <td class="instruction">LD A,$20</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=20.</td>
+<td class="comment-1" rowspan="2">Write 20 to *<a href="D3FE.html#d405">D405</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e09b"></span>E09B</td>
 <td class="instruction">LD ($D405),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3FA.html#d405">D405</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="e09e"></span>E09E</td>
 <td class="instruction">LD A,$FE</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=FE.</td>
+<td class="comment-1" rowspan="2">Write FE to *<a href="D3FE.html#d401">D401</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e0a0"></span>E0A0</td>
 <td class="instruction">LD ($D401),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3FA.html#d401">D401</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e0a3"></span>E0A3</td>
@@ -915,12 +905,11 @@ This entry point is used by the routines at <a href="E25D.html">E25D</a> and <a 
 <tr>
 <td class="address-1"><span id="e0d0"></span>E0D0</td>
 <td class="instruction">CP $20</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 20.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="DF90.html#e10a">E10A</a> if <span class="register">A</span> is higher than 20.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e0d2"></span>E0D2</td>
 <td class="instruction">JR NC,<a href="DF90.html#e10a">$E10A</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="DF90.html#e10a">E10A</a> if {} is higher.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e0d4"></span>E0D4</td>
@@ -930,12 +919,11 @@ This entry point is used by the routines at <a href="E25D.html">E25D</a> and <a 
 <tr>
 <td class="address-1"><span id="e0d5"></span>E0D5</td>
 <td class="instruction">CP $18</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 18.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="DF90.html#e10a">E10A</a> if <span class="register">A</span> is higher than 18.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e0d7"></span>E0D7</td>
 <td class="instruction">JR NC,<a href="DF90.html#e10a">$E10A</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="DF90.html#e10a">E10A</a> if {} is higher.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e0d9"></span>E0D9</td>
@@ -995,17 +983,15 @@ This entry point is used by the routines at <a href="E25D.html">E25D</a> and <a 
 <tr>
 <td class="address-1"><span id="e0e7"></span>E0E7</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="DF90.html#e0fe">E0FE</a> if *<span class="register">HL</span> is not zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e0e8"></span>E0E8</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="1">Set flags.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e0e9"></span>E0E9</td>
 <td class="instruction">JR NZ,<a href="DF90.html#e0fe">$E0FE</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="DF90.html#e0fe">E0FE</a> if {} is not zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e0eb"></span>E0EB</td>
@@ -1023,17 +1009,15 @@ This entry point is used by the routines at <a href="E25D.html">E25D</a> and <a 
 <tr>
 <td class="address-1"><span id="e0ee"></span>E0EE</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="DF90.html#e0fe">E0FE</a> if *<span class="register">HL</span> is not zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e0ef"></span>E0EF</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="1">Set flags.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e0f0"></span>E0F0</td>
 <td class="instruction">JR NZ,<a href="DF90.html#e0fe">$E0FE</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="DF90.html#e0fe">E0FE</a> if {} is not zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e0f2"></span>E0F2</td>
@@ -1043,12 +1027,11 @@ This entry point is used by the routines at <a href="E25D.html">E25D</a> and <a 
 <tr>
 <td class="address-1"><span id="e0f3"></span>E0F3</td>
 <td class="instruction">CP $3D</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 3D.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="DF90.html#e113">E113</a> if <span class="register">A</span> is not equal to 3D.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e0f5"></span>E0F5</td>
 <td class="instruction">JR NZ,<a href="DF90.html#e113">$E113</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="DF90.html#e113">E113</a> if {} is not zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e0f7"></span>E0F7</td>
@@ -1066,27 +1049,24 @@ This entry point is used by the routines at <a href="E25D.html">E25D</a> and <a 
 <tr>
 <td class="address-1"><span id="e0fa"></span>E0FA</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="DF90.html#e114">E114</a> if *<span class="register">HL</span> is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e0fb"></span>E0FB</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="1">Set flags.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e0fc"></span>E0FC</td>
 <td class="instruction">JR Z,<a href="DF90.html#e114">$E114</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="DF90.html#e114">E114</a> if {} is zero.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="e0fe"></span>E0FE</td>
 <td class="instruction">CP D</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with <span class="register">D</span>.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="DF90.html#e114">E114</a> if <span class="register">A</span> is lower than <span class="register">D</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e0ff"></span>E0FF</td>
 <td class="instruction">JR C,<a href="DF90.html#e114">$E114</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="DF90.html#e114">E114</a> if {} is lower.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e101"></span>E101</td>
@@ -1096,12 +1076,11 @@ This entry point is used by the routines at <a href="E25D.html">E25D</a> and <a 
 <tr>
 <td class="address-1"><span id="e102"></span>E102</td>
 <td class="instruction">CP E</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with <span class="register">E</span>.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="DF90.html#e114">E114</a> if <span class="register">A</span> is higher than <span class="register">E</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e103"></span>E103</td>
 <td class="instruction">JR NC,<a href="DF90.html#e114">$E114</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="DF90.html#e114">E114</a> if {} is higher.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e105"></span>E105</td>
@@ -1126,17 +1105,15 @@ This entry point is used by the routines at <a href="E25D.html">E25D</a> and <a 
 <tr>
 <td class="address-1"><span id="e10b"></span>E10B</td>
 <td class="instruction">LD A,($D3FB)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D3FA.html#d3fb">D3FB</a>.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EF86.html">EF86</a> if *<a href="D3FA.html#d3fb">D3FB</a> is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e10e"></span>E10E</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="1">Set flags.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e10f"></span>E10F</td>
 <td class="instruction">JP Z,<a href="EF86.html">$EF86</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="EF86.html">EF86</a> if {} is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e112"></span>E112</td>
@@ -1146,17 +1123,16 @@ This entry point is used by the routines at <a href="E25D.html">E25D</a> and <a 
 <tr>
 <td class="address-2"><span id="e113"></span>E113</td>
 <td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="1">Reset the bits from <span class="register">A</span>.</td>
+<td class="comment-1" rowspan="2">Write 00 to *<a href="D215.html">D215</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="e114"></span>E114</td>
 <td class="instruction">LD ($D215),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D215.html">D215</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e117"></span>E117</td>
 <td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="1">Reset the bits from <span class="register">A</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=00.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e118"></span>E118</td>
@@ -1177,7 +1153,7 @@ Next: <a href="E119.html">E119</a>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="asm/DF90.html">Switch to decimal</a>.</div>

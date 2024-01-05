@@ -33,22 +33,22 @@ Next: <a href="FDC4.html">FDC4</a>
 </td>
 </tr>
 </table>
-<div class="description">FD9E: Handler: Display Ticker News</div>
+<div class="description">FD9E: Print Ticker News Copy</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routine at <a href="FD64.html">FD64</a>.
+Used by the routine at <a href="FD64.html">Handler_TickerNews</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
-<td class="asm-label">Handler_DisplayTickerNews</td>
+<td class="asm-label">Print_TickerNewsCopy</td>
 <td class="address-2"><span id="fd9e"></span>FD9E</td>
-<td class="instruction">CALL <a href="DA28.html">$DA28</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DA28.html">DA28</a>.</td>
+<td class="instruction">CALL <a href="DA28.html">RandomNumber</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DA28.html">RandomNumber</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -183,7 +183,7 @@ Next: <a href="FDC4.html">FDC4</a>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="asm/FD9E.html">Switch to decimal</a>.</div>

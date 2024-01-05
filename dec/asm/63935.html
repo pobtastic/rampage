@@ -39,22 +39,22 @@ Next: <a href="64168.html">64168</a>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routine at <a href="63766.html">63766</a>.
+Used by the routine at <a href="63766.html">SelectionScreen</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
-<td class="asm-label">Handler_ChangeControls</td>
+<td class="asm-label">ChangeControls</td>
 <td class="address-2"><span id="63935"></span>63935</td>
-<td class="instruction">CALL <a href="64468.html">Debounce</a></td>
-<td class="comment-1" rowspan="1">Call <a href="64468.html">Debounce</a>.</td>
+<td class="instruction">CALL <a href="64468.html">GetKeypress</a></td>
+<td class="comment-1" rowspan="1">Call <a href="64468.html">GetKeypress</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63938"></span>63938</td>
-<td class="instruction">JR NZ,<a href="63935.html#63935">Handler_ChangeControls</a></td>
-<td class="comment-1" rowspan="1">Loop back to <a href="63935.html">Handler_ChangeControls</a> until the pressed key is released.</td>
+<td class="instruction">JR NZ,<a href="63935.html#63935">ChangeControls</a></td>
+<td class="comment-1" rowspan="1">Loop back to <a href="63935.html">ChangeControls</a> until a key is pressed.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -96,7 +96,7 @@ Reset the control type for all monsters.
 <span id="63951"></span>
 <div class="comments">
 <div class="paragraph">
-Set up a count for how many players will be using the keyboard (see <a href="63935.html#64083">Handler_ChangeControls_Keyboard</a>).
+Set up a count for how many players will be using the keyboard (see <a href="63935.html#64083">ChangeControls_Keyboard</a>).
 </div>
 </div>
 </td>
@@ -125,8 +125,8 @@ George.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63956"></span>63956</td>
-<td class="instruction">CALL <a href="64398.html">64398</a></td>
-<td class="comment-1" rowspan="1">Call <a href="64398.html">64398</a>.</td>
+<td class="instruction">CALL <a href="64398.html">CreateAdminPageTemplate</a></td>
+<td class="comment-1" rowspan="1">Call <a href="64398.html">CreateAdminPageTemplate</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -143,8 +143,8 @@ George.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63966"></span>63966</td>
-<td class="instruction">CALL <a href="63935.html#63996">Handler_ChangeControls_Action</a></td>
-<td class="comment-1" rowspan="1">Call <a href="63935.html#63996">Handler_ChangeControls_Action</a>.</td>
+<td class="instruction">CALL <a href="63935.html#63996">ChangeControls_Action</a></td>
+<td class="comment-1" rowspan="1">Call <a href="63935.html#63996">ChangeControls_Action</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -159,8 +159,8 @@ Lizzy.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63969"></span>63969</td>
-<td class="instruction">CALL <a href="64398.html">64398</a></td>
-<td class="comment-1" rowspan="1">Call <a href="64398.html">64398</a>.</td>
+<td class="instruction">CALL <a href="64398.html">CreateAdminPageTemplate</a></td>
+<td class="comment-1" rowspan="1">Call <a href="64398.html">CreateAdminPageTemplate</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -177,8 +177,8 @@ Lizzy.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63979"></span>63979</td>
-<td class="instruction">CALL <a href="63935.html#63996">Handler_ChangeControls_Action</a></td>
-<td class="comment-1" rowspan="1">Call <a href="63935.html#63996">Handler_ChangeControls_Action</a>.</td>
+<td class="instruction">CALL <a href="63935.html#63996">ChangeControls_Action</a></td>
+<td class="comment-1" rowspan="1">Call <a href="63935.html#63996">ChangeControls_Action</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -193,8 +193,8 @@ Ralph.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63982"></span>63982</td>
-<td class="instruction">CALL <a href="64398.html">64398</a></td>
-<td class="comment-1" rowspan="1">Call <a href="64398.html">64398</a>.</td>
+<td class="instruction">CALL <a href="64398.html">CreateAdminPageTemplate</a></td>
+<td class="comment-1" rowspan="1">Call <a href="64398.html">CreateAdminPageTemplate</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -211,8 +211,8 @@ Ralph.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63992"></span>63992</td>
-<td class="instruction">CALL <a href="63935.html#63996">Handler_ChangeControls_Action</a></td>
-<td class="comment-1" rowspan="1">Call <a href="63935.html#63996">Handler_ChangeControls_Action</a>.</td>
+<td class="instruction">CALL <a href="63935.html#63996">ChangeControls_Action</a></td>
+<td class="comment-1" rowspan="1">Call <a href="63935.html#63996">ChangeControls_Action</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -231,7 +231,7 @@ Print the monster name.
 </td>
 </tr>
 <tr>
-<td class="asm-label">Handler_ChangeControls_Action</td>
+<td class="asm-label">ChangeControls_Action</td>
 <td class="address-2"><span id="63996"></span>63996</td>
 <td class="instruction">LD BC,2052</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=2052 (screen co-ordinates).</td>
@@ -311,7 +311,7 @@ Programmatically display all the <a href="53555.html">Messaging_ChooseControls</
 <td class="comment-1" rowspan="1"><span class="register">A</span>=0 (option counter).</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_ChangeControls_PrintLoop</td>
+<td class="asm-label">ChangeControls_PrintLoop</td>
 <td class="address-2"><span id="64022"></span>64022</td>
 <td class="instruction">PUSH AF</td>
 <td class="comment-1" rowspan="1">Stash the option counter on the stack.</td>
@@ -386,12 +386,12 @@ Note we only show five options "N - NO MONSTER" is never used.
 <td class="asm-label"></td>
 <td class="address-1"><span id="64035"></span>64035</td>
 <td class="instruction">CP 5</td>
-<td class="comment-1" rowspan="2">Jump to <a href="63935.html#64022">Handler_ChangeControls_PrintLoop</a> until the option counter is equal to 5.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="63935.html#64022">ChangeControls_PrintLoop</a> until the option counter is equal to 5.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64037"></span>64037</td>
-<td class="instruction">JR NZ,<a href="63935.html#64022">Handler_ChangeControls_PrintLoop</a></td>
+<td class="instruction">JR NZ,<a href="63935.html#64022">ChangeControls_PrintLoop</a></td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -438,7 +438,7 @@ Output to the screen buffer.
 <td class="comment-1" rowspan="1">Call <a href="54776.html">AttributeBuffer_Update</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_ChangeControls_Input</td>
+<td class="asm-label">ChangeControls_Input</td>
 <td class="address-2"><span id="64051"></span>64051</td>
 <td class="instruction">CALL <a href="56768.html">ChooseControlType</a></td>
 <td class="comment-1" rowspan="1">Call <a href="56768.html">ChooseControlType</a>.</td>
@@ -446,8 +446,8 @@ Output to the screen buffer.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64054"></span>64054</td>
-<td class="instruction">JR NZ,<a href="63935.html#64051">Handler_ChangeControls_Input</a></td>
-<td class="comment-1" rowspan="1">Loop back to <a href="63935.html#64051">Handler_ChangeControls_Input</a> until an option has been selected.</td>
+<td class="instruction">JR NZ,<a href="63935.html#64051">ChangeControls_Input</a></td>
+<td class="comment-1" rowspan="1">Loop back to <a href="63935.html#64051">ChangeControls_Input</a> until an option has been selected.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -469,73 +469,73 @@ Process the selected option.
 <td class="asm-label"></td>
 <td class="address-1"><span id="64057"></span>64057</td>
 <td class="instruction">CP 255</td>
-<td class="comment-1" rowspan="2">Jump to <a href="63935.html#64051">Handler_ChangeControls_Input</a> if the control option is invalid.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="63935.html#64051">ChangeControls_Input</a> if the control option is invalid.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64059"></span>64059</td>
-<td class="instruction">JR Z,<a href="63935.html#64051">Handler_ChangeControls_Input</a></td>
+<td class="instruction">JR Z,<a href="63935.html#64051">ChangeControls_Input</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64061"></span>64061</td>
 <td class="instruction">CP 17</td>
-<td class="comment-1" rowspan="2">Jump to <a href="63935.html#64083">Handler_ChangeControls_Keyboard</a> if "K" was pressed.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="63935.html#64083">ChangeControls_Keyboard</a> if "K" was pressed.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64063"></span>64063</td>
-<td class="instruction">JR Z,<a href="63935.html#64083">Handler_ChangeControls_Keyboard</a></td>
+<td class="instruction">JR Z,<a href="63935.html#64083">ChangeControls_Keyboard</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64065"></span>64065</td>
 <td class="instruction">CP 36</td>
-<td class="comment-1" rowspan="2">Jump to <a href="63935.html#64120">Handler_ChangeControls_Sinclair1</a> if "1" was pressed.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="63935.html#64120">ChangeControls_Sinclair1</a> if "1" was pressed.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64067"></span>64067</td>
-<td class="instruction">JR Z,<a href="63935.html#64120">Handler_ChangeControls_Sinclair1</a></td>
+<td class="instruction">JR Z,<a href="63935.html#64120">ChangeControls_Sinclair1</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64069"></span>64069</td>
 <td class="instruction">CP 28</td>
-<td class="comment-1" rowspan="2">Jump to <a href="63935.html#64124">Handler_ChangeControls_Sinclair2</a> if "2" was pressed.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="63935.html#64124">ChangeControls_Sinclair2</a> if "2" was pressed.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64071"></span>64071</td>
-<td class="instruction">JR Z,<a href="63935.html#64124">Handler_ChangeControls_Sinclair2</a></td>
+<td class="instruction">JR Z,<a href="63935.html#64124">ChangeControls_Sinclair2</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64073"></span>64073</td>
 <td class="instruction">CP 20</td>
-<td class="comment-1" rowspan="2">Jump to <a href="63935.html#64128">Handler_ChangeControls_Kempston</a> if "3" was pressed.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="63935.html#64128">ChangeControls_Kempston</a> if "3" was pressed.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64075"></span>64075</td>
-<td class="instruction">JR Z,<a href="63935.html#64128">Handler_ChangeControls_Kempston</a></td>
+<td class="instruction">JR Z,<a href="63935.html#64128">ChangeControls_Kempston</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64077"></span>64077</td>
 <td class="instruction">CP 15</td>
-<td class="comment-1" rowspan="2">Jump to <a href="63935.html#64139">Handler_ChangeControls_Computer</a> if "C" was pressed.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="63935.html#64139">ChangeControls_Computer</a> if "C" was pressed.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64079"></span>64079</td>
-<td class="instruction">JR Z,<a href="63935.html#64139">Handler_ChangeControls_Computer</a></td>
+<td class="instruction">JR Z,<a href="63935.html#64139">ChangeControls_Computer</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64081"></span>64081</td>
-<td class="instruction">JR <a href="63935.html#64051">Handler_ChangeControls_Input</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="63935.html#64051">Handler_ChangeControls_Input</a>.</td>
+<td class="instruction">JR <a href="63935.html#64051">ChangeControls_Input</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="63935.html#64051">ChangeControls_Input</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -548,10 +548,10 @@ Set "Keyboard" as the control method.
 </td>
 </tr>
 <tr>
-<td class="asm-label">Handler_ChangeControls_Keyboard</td>
+<td class="asm-label">ChangeControls_Keyboard</td>
 <td class="address-2"><span id="64083"></span>64083</td>
-<td class="instruction">CALL <a href="64168.html">Handler_UserDefinedKeys</a></td>
-<td class="comment-1" rowspan="1">Call <a href="64168.html">Handler_UserDefinedKeys</a>.</td>
+<td class="instruction">CALL <a href="64168.html">UserDefinedKeys</a></td>
+<td class="comment-1" rowspan="1">Call <a href="64168.html">UserDefinedKeys</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -695,7 +695,7 @@ Set "Sinclair Interface 2" (port 1) as the control method.
 </td>
 </tr>
 <tr>
-<td class="asm-label">Handler_ChangeControls_Sinclair1</td>
+<td class="asm-label">ChangeControls_Sinclair1</td>
 <td class="address-2"><span id="64120"></span>64120</td>
 <td class="instruction">LD D,2</td>
 <td class="comment-1" rowspan="1"><span class="register">D</span>=2.</td>
@@ -703,8 +703,8 @@ Set "Sinclair Interface 2" (port 1) as the control method.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64122"></span>64122</td>
-<td class="instruction">JR <a href="63935.html#64130">Handler_SetControlType</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="63935.html#64130">Handler_SetControlType</a>.</td>
+<td class="instruction">JR <a href="63935.html#64130">SetControlType</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="63935.html#64130">SetControlType</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -717,7 +717,7 @@ Set "Sinclair Interface 2" (port 2) as the control method.
 </td>
 </tr>
 <tr>
-<td class="asm-label">Handler_ChangeControls_Sinclair2</td>
+<td class="asm-label">ChangeControls_Sinclair2</td>
 <td class="address-2"><span id="64124"></span>64124</td>
 <td class="instruction">LD D,1</td>
 <td class="comment-1" rowspan="1"><span class="register">D</span>=1.</td>
@@ -725,8 +725,8 @@ Set "Sinclair Interface 2" (port 2) as the control method.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64126"></span>64126</td>
-<td class="instruction">JR <a href="63935.html#64130">Handler_SetControlType</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="63935.html#64130">Handler_SetControlType</a>.</td>
+<td class="instruction">JR <a href="63935.html#64130">SetControlType</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="63935.html#64130">SetControlType</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -739,22 +739,22 @@ Set "Kempston Joystick" as the control method.
 </td>
 </tr>
 <tr>
-<td class="asm-label">Handler_ChangeControls_Kempston</td>
+<td class="asm-label">ChangeControls_Kempston</td>
 <td class="address-2"><span id="64128"></span>64128</td>
 <td class="instruction">LD D,3</td>
 <td class="comment-1" rowspan="1"><span class="register">D</span>=3.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_SetControlType</td>
+<td class="asm-label">SetControlType</td>
 <td class="address-2"><span id="64130"></span>64130</td>
-<td class="instruction">CALL <a href="63935.html#64149">Handler_CheckExistingControls</a></td>
-<td class="comment-1" rowspan="1">Call <a href="63935.html#64149">Handler_CheckExistingControls</a>.</td>
+<td class="instruction">CALL <a href="63935.html#64149">CheckExistingControls</a></td>
+<td class="comment-1" rowspan="1">Call <a href="63935.html#64149">CheckExistingControls</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64133"></span>64133</td>
-<td class="instruction">JR Z,<a href="63935.html#64051">Handler_ChangeControls_Input</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="63935.html#64051">Handler_ChangeControls_Input</a> if the control type is already selected by another monster.</td>
+<td class="instruction">JR Z,<a href="63935.html#64051">ChangeControls_Input</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="63935.html#64051">ChangeControls_Input</a> if the control type is already selected by another monster.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -779,22 +779,22 @@ Set "Computer Controlled" as the control method.
 </td>
 </tr>
 <tr>
-<td class="asm-label">Handler_ChangeControls_Computer</td>
+<td class="asm-label">ChangeControls_Computer</td>
 <td class="address-2"><span id="64139"></span>64139</td>
 <td class="instruction">LD (IX+14),0</td>
 <td class="comment-1" rowspan="1">Write 0 to *<span class="register">IX</span>+14 (monster control type).</td>
 </tr>
 <tr>
-<td class="asm-label">ChangeControls_Computer_Debounce</td>
+<td class="asm-label">ChangeControls_Computer_KeyPress</td>
 <td class="address-2"><span id="64143"></span>64143</td>
-<td class="instruction">CALL <a href="64468.html">Debounce</a></td>
-<td class="comment-1" rowspan="1">Call <a href="64468.html">Debounce</a>.</td>
+<td class="instruction">CALL <a href="64468.html">GetKeypress</a></td>
+<td class="comment-1" rowspan="1">Call <a href="64468.html">GetKeypress</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64146"></span>64146</td>
-<td class="instruction">JR NZ,<a href="63935.html#64143">ChangeControls_Computer_Debounce</a></td>
-<td class="comment-1" rowspan="1">Loop back to <a href="63935.html#64143">ChangeControls_Computer_Debounce</a> until the pressed key is released.</td>
+<td class="instruction">JR NZ,<a href="63935.html#64143">ChangeControls_Computer_KeyPress</a></td>
+<td class="comment-1" rowspan="1">Loop back to <a href="63935.html#64143">ChangeControls_Computer_KeyPress</a> until a key has been pressed.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -813,7 +813,7 @@ Monsters can't use the same controllers, this is verified here.
 </td>
 </tr>
 <tr>
-<td class="asm-label">Handler_CheckExistingControls</td>
+<td class="asm-label">CheckExistingControls</td>
 <td class="address-2"><span id="64149"></span>64149</td>
 <td class="instruction">LD A,(53216)</td>
 <td class="comment-1" rowspan="3">Return if *<a href="53202.html#53216">George_Control_Type</a> is equal to the currently selected control method.</td>
@@ -902,7 +902,7 @@ Next: <a href="64168.html">64168</a>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.</div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="asm/63935.html">Switch to hexadecimal</a>.</div>
