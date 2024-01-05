@@ -14,7 +14,7 @@ GameDir=rampage
 [Game]
 Game=Rampage
 Logo=#SCR$01,$00,$00,$20,$0E,$4000,$5800(/images/logo)
-Copyright=&copy; 1986 Activision &copy; 2023 ArcadeGeek LTD.
+Copyright=&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.
 Repository=https://github.com/pobtastic/rampage/
 LinkInternalOperands=1
 AddressAnchor={address#IF({base}==16)(:04x)}

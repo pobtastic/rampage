@@ -1,7 +1,14 @@
-; Copyright 2023 Paul Maddern (paul@arcadegeek.co.uk)
+; Copyright 2024 Paul Maddern (paul@arcadegeek.co.uk)
 
 [Page:Changelog]
 SectionType=BulletPoints
+
+[Changelog:20240104]
+-
+
+- Written up the pause/ quit game controls.
+- Written up the selection screen.
+- Random number generator.
 
 [Changelog:20231229]
 -

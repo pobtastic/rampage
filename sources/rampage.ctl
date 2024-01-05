@@ -1,4 +1,4 @@
-; Copyright Activision 1986, 2023 ArcadeGeek LTD.
+; Copyright Activision 1986, 2024 ArcadeGeek LTD.
 ; NOTE: Disassembly is Work-In-Progress.
 ; Label naming is loosely based on Action_ActionName_SubAction e.g. Print_HighScore_Loop.
 
@@ -30,16 +30,31 @@ L $9E00,$08,$180
 b $C81A
 
 g $C850 User Defined Keys
+D $C850 Note although there are 3 "sets" - it doesn't always follow that the monster IDs correlate with the set IDs.
+D $C850 For instance; if George and Lizzy are computer controlled and Ralph uses the keyboard - he will use set 1.
+.       The sets are assigned sequentially to being assigned to a player.
 @ $C850 label=UserDefinedKeys_Set1
-  $C850,$0A,$02
 @ $C85A label=UserDefinedKeys_Set2
-  $C85A,$0A,$02
 @ $C864 label=UserDefinedKeys_Set3
-  $C864,$0A,$02
+  $C850,$0A,$02 Stores in the following format:
+. #TABLE(default,centre,centre)
+. { =h Port | =h Bits } #FOR$00,$04(n,{ #N(#PEEK(#PC+n*$02)) | #EVAL(#PEEK(#PC+$01+n*$02),$02,$08) }, )
+. TABLE#
+L $C850,$0A,$03
 
 b $C86E
 
 b $C8BA
+  $C8BA,$08 #UDG(#PC)
+L $C8BA,$08,$A5
+
+b $C99E
+
+b $C9F9
+
+b $CA57
+
+b $CB29
 
 b $CDE2
 
@@ -48,10 +63,10 @@ g $CFD2 Data: George
   $CFD2,$01 #TABLE(default,centre,centre) { =h Value | =h Meaning } { #N$05 | Waiting } { #N$FF | Game Over } TABLE#
 @ $CFD7 label=George_Countdown
   $CFD7,$01
-@ $CFDA label=George_X_Position
-  $CFDA,$01
-@ $CFDB label=George_Y_Position
+@ $CFDB label=George_X_Position
   $CFDB,$01
+@ $CFDC label=George_Y_Position
+  $CFDC,$01
 @ $CFDE label=George_Energy
   $CFDE,$01
 @ $CFDF label=George_Banner_Counter
@@ -75,10 +90,10 @@ g $D001 Data: Lizzy
   $D001,$01 #TABLE(default,centre,centre) { =h Value | =h Meaning } { #N$05 | Waiting } { #N$FF | Game Over } TABLE#
 @ $D006 label=Lizzy_Countdown
   $D006,$01
-@ $D009 label=Lizzy_X_Position
-  $D009,$01
-@ $D00A label=Lizzy_Y_Position
+@ $D00A label=Lizzy_X_Position
   $D00A,$01
+@ $D00B label=Lizzy_Y_Position
+  $D00B,$01
 @ $D00D label=Lizzy_Energy
   $D00D,$01
 @ $D00E label=Lizzy_Banner_Counter
@@ -101,10 +116,10 @@ g $D030 Data: Ralph
   $D030,$01 #TABLE(default,centre,centre) { =h Value | =h Meaning } { #N$05 | Waiting } { #N$FF | Game Over } TABLE#
 @ $D035 label=Ralph_Countdown
   $D035,$01
-@ $D038 label=Ralph_X_Position
-  $D038,$01
-@ $D039 label=Ralph_Y_Position
+@ $D039 label=Ralph_X_Position
   $D039,$01
+@ $D03A label=Ralph_Y_Position
+  $D03A,$01
 @ $D03C label=Ralph_Energy
   $D03C,$01
 @ $D03D label=Ralph_Banner_Counter
@@ -168,13 +183,17 @@ t $D0EB Messaging: Controls
   $D0FF,$05,$04:$01 "#STR(#PC)".
 @ $D104 label=Messaging_QuestionMark
   $D104,$02,$01:$01 "#STR(#PC)".
-@ $D106 label=Messaging_Space
+@ $D106 label=Messaging_Buffer
   $D106,$02,$01:$01 "#STR(#PC)".
 
-t $D108
+t $D108 Messaging: Special Keys
+@ $D108 label=Messaging_CapsShift
   $D108,$02,$01:$01 "#STR(#PC)".
+@ $D10A label=Messaging_SymbolShift
   $D10A,$02,$01:$01 "#STR(#PC)".
+@ $D10C label=Messaging_Space
   $D10C,$02,$01:$01 "#STR(#PC)".
+@ $D10E label=Messaging_Enter
   $D10E,$02,$01:$01 "#STR(#PC)".
 
 t $D110 Messaging: Select Menu
@@ -208,13 +227,19 @@ b $D211
 
 b $D212
 
+b $D213
+
+b $D214
+
 b $D215
 
 b $D216
 
 g $D218
 
-g $D21A
+g $D21A Game Clock
+@ $D21A label=Game_Clock
+D $D21A Counts up while the game plays, used as a random number generator (as it's never reset).
 W $D21A,$02
 
 g $D220
@@ -239,6 +264,12 @@ g $D243
 
 g $D247
 
+g $D24D
+
+g $D24E
+
+g $D253
+
 g $D255
 
 b $D2BC
@@ -257,8 +288,17 @@ b $D3FA
   $D3FA
   $D3FB
   $D3FC
-  $D3FD
-  $D3FE
+
+g $D3FD Game State
+@ $D3FD label=Game_State
+D $D3FD #TABLE(default,centre,centre)
+. { =h Value | =h Meaning }
+. { #N$00 | In-Play }
+. { #N$01 | Game Over }
+. TABLE#
+B $D3FD,$01
+
+b $D3FE
   $D3FF
   $D400
   $D401
@@ -271,17 +311,11 @@ b $D3FA
 
 c $D409
   $D409,$03 #REGbc=#N($0000,$04,$04).
-  $D40C,$02 #REGa=#N$6B.
-  $D40E,$03 Write #REGa to *#R$D474(#N$D475).
-  $D411,$03 Write #REGa to *#R$D4B5(#N$D4B6).
+  $D40C,$08 Write #N$6B to: #LIST { *#R$D474(#N$D475) } { *#R$D4B5(#N$D4B6) } LIST#
   $D414,$03 Call #R$D42A.
-  $D417,$02 #REGa=#N$73.
-  $D419,$03 Write #REGa to *#R$D474(#N$D475).
-  $D41C,$03 Write #REGa to *#R$D4B5(#N$D4B6).
+  $D417,$08 Write #N$73 to: #LIST { *#R$D474(#N$D475) } { *#R$D4B5(#N$D4B6) } LIST#
   $D41F,$03 Call #R$D42A.
-  $D422,$02 #REGa=#N$7B.
-  $D424,$03 Write #REGa to *#R$D474(#N$D475).
-  $D427,$03 Write #REGa to *#R$D4B5(#N$D4B6).
+  $D422,$08 Write #N$7B to: #LIST { *#R$D474(#N$D475) } { *#R$D4B5(#N$D4B6) } LIST#
   $D42A,$02 #REGa=#N$89.
   $D42C,$01 Exchange the #REGaf register with the shadow #REGaf register.
   $D42D,$01 #REGa=#REGb.
@@ -308,10 +342,7 @@ c $D409
   $D463,$03 Write #REGa to *#R$D222.
   $D466,$01 #REGh=#REGd.
   $D467,$01 #REGl=#REGe.
-  $D468,$01 #REGhl+=#REGhl.
-  $D469,$01 #REGhl+=#REGhl.
-  $D46A,$01 #REGhl+=#REGhl.
-  $D46B,$01 #REGhl+=#REGde.
+  $D468,$04 #REGhl*=#N$08+#REGde.
   $D46C,$02 Compare #REGa with #N$80.
   $D46E,$03 Jump to #R$D49A if {} is higher.
   $D471,$03 Call #R$D4E8.
@@ -369,7 +400,7 @@ c $D409
   $D4B0,$01 #REGhl+=#REGbc.
   $D4B1,$01 Increment #REGl by one.
   $D4B2,$01 Stash #REGhl on the stack.
-  $D4B3,$01 Switch to the shadow registers.
+  $D4B3,$01 Switch back to the normal registers.
   $D4B4,$01 Restore #REGbc from the stack.
   $D4B5,$02 #REGd=#N$00.
   $D4B7,$01 #REGa=*#REGbc.
@@ -437,11 +468,10 @@ c $D409
   $D4FC,$02 #REGb=#N$00.
   $D4FE,$03 #REGhl=#R$D31F.
   $D501,$01 #REGhl+=#REGbc.
-  $D502,$03 #REGa=*#R$D220.
-  $D505,$01 #REGc=#REGa.
+  $D502,$04 #REGc=*#R$D220.
   $D506,$01 #REGhl+=#REGbc.
   $D507,$01 #REGa=*#REGhl.
-  $D508,$01 Switch to the shadow registers.
+  $D508,$01 Switch back to the normal registers.
   $D509,$01 Write #REGa to *#REGde.
   $D50A,$01 Increment #REGhl by one.
   $D50B,$01 Return.
@@ -491,9 +521,7 @@ c $D409
   $D550,$02 Restore #REGde and #REGhl from the stack.
   $D552,$01 Increment #REGhl by one.
   $D553,$02 Increment #REGde by two.
-  $D555,$01 #REGa=#REGl.
-  $D556,$02 Compare #REGa with #N$60.
-  $D558,$02 Jump to #R$D51F if {} is not zero.
+  $D555,$05 Jump to #R$D51F if #REGl is not equal to #N$60.
   $D55A,$01 Return.
   $D55B,$03 #REGhl=#R$C7C0.
   $D55E,$02 #REGd=#N$00.
@@ -697,17 +725,262 @@ c $D6C9
 
 c $D7F6
 
-c $DA28
+c $DA28 Random Number
+@ $DA28 label=RandomNumber
+R $DA28 A Random number
   $DA28,$04 #REGde=*#R$D21A.
   $DA2C,$01 Increment #REGde by one.
+N $DA2D The max value is #N$2800 so test the higher order byte to check if this limit has been hit.
   $DA2D,$05 If #REGd is #N$28 then jump to #R$DA38.
+N $DA32 Update the "clock" value.
+@ $DA32 label=WriteSeed
   $DA32,$04 Write #REGde back to *#R$D21A.
+N $DA36 The "random number" is actually a byte from the Spectrum ROM. The "clock" is used as a pointer to return a value
+.       from between memory locations #N($0000,$04,$04)-#N$27FF.
   $DA36,$01 #REGa=*#REGde.
   $DA37,$01 Return.
+N $DA38 Reset the "clock" back to #N($0000,$04,$04).
+@ $DA38 label=ResetSeed
   $DA38,$02 #REGd=#N$00.
   $DA3A,$03 Jump to #R$DA32.
 
 c $DA3D
+  $DA3D,$01 #REGa=#REGd.
+  $DA3E,$01 #REGa+=#REGa.
+  $DA3F,$01 #REGa+=#REGd.
+  $DA40,$01 #REGa+=#REGb.
+  $DA41,$02 #REGa+=#N$5F.
+  $DA43,$01 #REGd=#REGa.
+  $DA44,$01 #REGa=#REGe.
+  $DA45,$01 #REGe=#REGc.
+  $DA46,$01 Write #REGa to *#REGde.
+  $DA47,$01 Stash #REGde on the stack.
+  $DA48,$04 #REGd=#N$68+#REGb.
+  $DA4C,$03 Write #N$FF to *#REGde.
+  $DA4F,$01 Restore #REGde from the stack.
+  $DA50,$01 Return.
+
+c $DA51
+  $DA51,$03 #REGa=*#R$D24D.
+  $DA54,$01 Increment #REGa by one.
+  $DA55,$03 Write #REGa to *#R$D24D.
+  $DA58,$01 Return.
+
+c $DA59
+  $DA59,$03 #REGa=*#R$D24E.
+  $DA5C,$01 Increment #REGa by one.
+  $DA5D,$03 Write #REGa to *#R$D24E.
+  $DA60,$01 Return.
+
+c $DA61
+  $DA61,$03 #REGa=*#R$D24D.
+  $DA64,$01 Decrease #REGa by one.
+  $DA65,$03 Write #REGa to *#R$D24D.
+  $DA68,$01 Return.
+
+c $DA69
+  $DA69,$03 #REGa=*#R$D24E.
+  $DA6C,$01 Decrease #REGa by one.
+  $DA6D,$03 Write #REGa to *#R$D24E.
+  $DA70,$01 Return.
+
+c $DA71
+  $DA71,$03 Write #REGa to *#R$D213.
+  $DA74,$04 Write #N$01 to *#REGix+#N$00.
+  $DA78,$03 Write #REGa to *#REGix+#N$07.
+  $DA7B,$03 Write #REGd to *#REGix+#N$08.
+  $DA7E,$01 Stash #REGde on the stack.
+  $DA7F,$01 #REGd=#REGa.
+  $DA80,$02 #REGe=#N$00.
+  $DA82,$03 Call #R$DA3D.
+  $DA85,$03 Write #REGe to *#REGix+#N$03.
+  $DA88,$03 Write #REGd to *#REGix+#N$04.
+  $DA8B,$01 Restore #REGde from the stack.
+  $DA8C,$01 #REGa=#REGc.
+  $DA8D,$02,b$01 Keep only bits 0-4.
+  $DA8F,$03 Write #REGa to *#REGix+#N$01.
+  $DA92,$03 #REGhl=#R$CB29.
+  $DA95,$01 #REGa=*#REGhl.
+  $DA96,$01 Increment #REGhl by one.
+  $DA97,$04 Jump to #R$DA95 if #REGa is not equal to #N$FF.
+  $DA9B,$01 Decrease #REGe by one.
+  $DA9C,$02 Jump to #R$DA95 until #REGe is zero.
+  $DA9E,$03 Write #REGhl to *#R$DB52.
+  $DAA1,$01 #REGa=*#REGhl.
+  $DAA2,$02,b$01 Keep only bits 6-7.
+  $DAA4,$01 RLCA.
+  $DAA5,$01 RLCA.
+  $DAA6,$04 Jump to #R$DAB1 if #REGa is not equal to #N$00.
+  $DAAA,$03 #REGhl=#R$C99E.
+  $DAAD,$02 #REGe=#N$06.
+  $DAAF,$02 Jump to #R$DAC1.
+  $DAB1,$04 Jump to #R$DABC if #REGa is not equal to #N$01.
+  $DAB5,$03 #REGhl=#R$C9F9.
+  $DAB8,$02 #REGe=#N$07.
+  $DABA,$02 Jump to #R$DAC1.
+  $DABC,$03 #REGhl=#R$CA57.
+  $DABF,$02 #REGe=#N$08.
+  $DAC1,$03 #REGa=*#REGix+#N$01.
+  $DAC4,$01 #REGa+=#REGe.
+  $DAC5,$01 Decrease #REGa by one.
+  $DAC6,$03 Write #REGa to *#REGix+#N$02.
+  $DAC9,$03 Write #REGe to *#REGix+#N$06.
+  $DACC,$02 Decrease #REGe by two.
+  $DACE,$01 Stash #REGhl on the stack.
+  $DACF,$03 #REGhl=*#R$DB52.
+  $DAD2,$01 #REGa=*#REGhl.
+  $DAD3,$05 Jump to #R$DB2B if #REGa is equal to #N$FF.
+  $DAD8,$01 Restore #REGhl from the stack.
+  $DAD9,$03 Increment *#REGix+#N$05 by one.
+  $DADC,$02,b$01 Keep only bits 0-5.
+  $DADE,$03 Stash #REGhl and #REGde (twice) on the stack.
+  $DAE1,$02 #REGd=#N$00.
+  $DAE3,$01 #REGhl+=#REGde.
+  $DAE4,$01 Decrease #REGa by one.
+  $DAE5,$02 Jump to #R$DAE3 until #REGa is zero.
+  $DAE7,$01 Restore #REGde from the stack.
+  $DAE8,$01 Stash #REGbc on the stack.
+  $DAE9,$01 #REGa=*#REGhl.
+  $DAEA,$04 Jump to #R$DAF7 if #REGa is higher than #N$0E.
+  $DAEE,$04 Jump to #R$DAF7 if #REGa is lower than #N$09.
+  $DAF2,$03 Call #R$DB43.
+  $DAF5,$02 Jump to #R$DAFC.
+  $DAF7,$02 #REGa=#N$11.
+  $DAF9,$03 Call #R$DB43.
+  $DAFC,$01 #REGa=*#REGhl.
+  $DAFD,$03 Call #R$DB43.
+  $DB00,$01 Increment #REGhl by one.
+  $DB01,$01 Decrease #REGe by one.
+  $DB02,$02 Jump to #R$DAFC until #REGe is zero.
+  $DB04,$01 Decrease #REGhl by one.
+  $DB05,$01 #REGa=*#REGhl.
+  $DB06,$04 Jump to #R$DB13 if #REGa is higher than #N$0E.
+  $DB0A,$04 Jump to #R$DB13 if #REGa is lower than #N$09.
+  $DB0E,$03 Call #R$DB43.
+  $DB11,$02 Jump to #R$DB18.
+  $DB13,$02 #REGa=#N$14.
+  $DB15,$03 Call #R$DB43.
+  $DB18,$01 Restore #REGbc from the stack.
+  $DB19,$03 #REGhl=#N($0020,$04,$04).
+  $DB1C,$01 #REGhl+=#REGbc.
+  $DB1D,$01 #REGb=#REGh.
+  $DB1E,$01 #REGc=#REGl.
+  $DB1F,$01 Restore #REGde from the stack.
+  $DB20,$03 #REGhl=*#R$DB52.
+  $DB23,$01 Increment #REGhl by one.
+  $DB24,$03 Write #REGhl to *#R$DB52.
+  $DB27,$01 Restore #REGhl from the stack.
+  $DB28,$03 Jump to #R$DACE.
+  $DB2B,$01 Restore #REGhl from the stack.
+  $DB2C,$03 #REGa=*#REGix+#N$05.
+  $DB2F,$01 Increment #REGa by one.
+  $DB30,$03 Write #REGa to *#REGix+#N$0A.
+  $DB33,$03 Write #REGa to *#REGix+#N$0B.
+  $DB36,$01 #REGa+=#REGa.
+  $DB37,$01 #REGa+=#REGa.
+  $DB38,$02 #REGa+=#N$0A.
+  $DB3A,$03 Write #REGa to *#REGix+#N$0C.
+  $DB3D,$02 #REGa=#N$02.
+  $DB3F,$03 Write #REGa to *#REGix+#N$0D.
+  $DB42,$01 Return.
+  $DB43,$01 Stash #REGde on the stack.
+  $DB44,$01 #REGe=#REGa.
+  $DB45,$03 #REGa=*#R$D213.
+  $DB48,$01 #REGd=#REGa.
+  $DB49,$03 Call #R$DA3D.
+  $DB4C,$03 Increment *#REGix+#N$09 by one.
+  $DB4F,$01 Increment #REGbc by one.
+  $DB50,$01 Restore #REGde from the stack.
+  $DB51,$01 Return.
+W $DB52,$02
+  $DB54,$04 #REGix=#R$D253.
+  $DB58,$03 #REGa=*#R$D24D.
+  $DB5B,$03 Write #REGa to *#REGix+#N$01.
+  $DB5E,$03 Write #REGa to *#REGix+#N$02.
+  $DB61,$03 Write #REGa to *#REGix+#N$0D.
+  $DB64,$03 Write #REGa to *#REGix+#N$17.
+  $DB67,$03 #REGa=*#R$D24E.
+  $DB6A,$03 Write #REGa to *#REGix+#N$03.
+  $DB6D,$03 Write #REGa to *#REGix+#N$0B.
+  $DB70,$03 Write #REGa to *#REGix+#N$0C.
+  $DB73,$03 Write #REGa to *#REGix+#N$15.
+  $DB76,$03 Write #REGa to *#REGix+#N$16.
+  $DB79,$04 #REGde=*#R$D253.
+  $DB7D,$01 Return.
+
+c $DB7E
+  $DB7E,$04 Write #N$00 to *#R$D214.
+M $DB82,$05 Get a random number between 0-3.
+  $DB85,$02,b$01
+  $DB87,$03 Call #R$DBB4.
+  $DB8A,$04 Jump to #R$DB96 if #REGa is lower than #N$C8.
+  $DB8E,$05 Write #N$80 to *#R$D214.
+  $DB93,$01 #REGa=#REGb.
+  $DB94,$02 Jump to #R$DB87.
+  $DB96,$03 #REGa=*#R$D214.
+  $DB99,$01 Set the bits from #REGb.
+  $DB9A,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $DB9B,$01 #REGa=*#REGde.
+  $DB9C,$02 Increment #REGa by two.
+  $DB9E,$01 #REGb=#REGa.
+  $DB9F,$04 Jump to #R$DBA5 if #REGa is lower than #N$64.
+  $DBA3,$02 #REGb=#N$00.
+  $DBA5,$01 Increment #REGde by one.
+  $DBA6,$01 #REGa=*#REGde.
+  $DBA7,$01 Increment #REGa by one.
+  $DBA8,$01 #REGc=#REGa.
+  $DBA9,$04 Jump to #R$DBAF if #REGa is lower than #N$64.
+  $DBAD,$02 #REGc=#N$00.
+  $DBAF,$04 Write #N$00 to *#R$D214.
+  $DBB3,$01 Return.
+
+c $DBB4 Character Picker
+@ $DBB4 label=CharacterPicker
+R $DBB4 A Number between 0-3
+R $DBB4 O:A Monster state
+R $DBB4 O:B Monster number
+R $DBB4 O:DE Pointer to Monster X Position
+N $DBB4 The monster IDs are the following: #TABLE(default,centre,centre)
+. { =h ID | =h Monster }
+. { #N$01 | George }
+. { #N$02 | Lizzy }
+. { #N$03 | Ralph }
+. TABLE#
+  $DBB4,$01 Make the number 1-4 instead of 0-3.
+  $DBB5,$04 Jump to #R$DBBB if #REGa is not equal to #N$04.
+N $DBB9 There aren't four monsters so make #N$04 into #N$01. This means George has 50% chance of being chosen, Lizzy and
+.       Ralph are 25% each.
+  $DBB9,$02 #REGa=#N$01.
+@ $DBBB label=GetCharacter
+  $DBBB,$01 #REGb=#REGa.
+N $DBBC Test if it's George.
+@ $DBBC label=CharacterPicker_George
+  $DBBC,$04 Jump to #R$DBC7 if #REGa is not equal to #N$01.
+  $DBC0,$03 #REGa=*#R$CFD2.
+  $DBC3,$03 #REGde=#R$CFDB.
+  $DBC6,$01 Return.
+N $DBC7 Test if it's Lizzy.
+@ $DBC7 label=CharacterPicker_Lizzy
+  $DBC7,$04 Jump to #R$DBD2 if #REGa is not equal to #N$02.
+  $DBCB,$03 #REGa=*#R$D001.
+  $DBCE,$03 #REGde=#R$D00A.
+  $DBD1,$01 Return.
+N $DBD2 If it's neither of the above then it can only be Ralph.
+@ $DBD2 label=CharacterPicker_Ralph
+  $DBD2,$03 #REGa=*#R$D030.
+  $DBD5,$03 #REGde=#R$D039.
+  $DBD8,$01 Return.
+
+c $DBD9
+R $DBD9 A Monster ID
+R $DBD9 O:A Monster state
+R $DBD9 O:B Monster number
+R $DBD9 O:DE Pointer to Monster X Position
+  $DBD9,$01 Stash the monster ID temporarily.
+  $DBDA,$04 Write #N$00 to *#R$D214.
+  $DBDE,$01 Restore the monster ID back to #REGa.
+  $DBDF,$03 Call #R$DBBB.
+  $DBE2,$03 Jump to #R$DB8A.
 
 c $DBE5
 
@@ -733,17 +1006,13 @@ c $DDC0 Choose Control Type
 @ $DDC0 label=ChooseControlType
   $DDC0,$03 #REGde=#N$FF2F.
   $DDC3,$03 #REGbc=#N$FEFE.
-  $DDC6,$02 Read from the keyboard;
-. #TABLE(default,centre,centre,centre,centre,centre,centre)
-. { =h,r2 Port Number | =h,c5 Bit }
-. { =h 0 | =h 1 | =h 2 | =h 3 | =h 4 }
-. { #N$FE | SHIFT | Z | X | C | V }
-. TABLE#
+@ $DDC6 label=ReadKeyboard_Loop
+  $DDC6,$02 Read from the keyboard.
   $DDC8,$01 Invert the bits in #REGa.
   $DDC9,$02,b$01 Keep only bits 0-4.
-  $DDCB,$02 Jump to #R$DDDA if {} is zero.
+  $DDCB,$02 Jump to #R$DDDA if there's no match.
   $DDCD,$01 Increment #REGd by one.
-  $DDCE,$01 Return if {} is not zero.
+  $DDCE,$01 Return if #REGd is not zero.
   $DDCF,$01 #REGh=#REGa.
   $DDD0,$01 #REGa=#REGe.
   $DDD1,$02 #REGa-=#N$08.
@@ -771,9 +1040,10 @@ c $DDC0 Choose Control Type
 B $DDF2
 
 > $DE00 @org
-c $DE00 Game Entry Point
+c $DE00 Entry Point
+D $DE00 When the game has loaded #R$6B00 contains this copyright splash.
 D $DE00 #SIM(start=$DE06,stop=$DE11) #UDGTABLE { #SCR$02(splash-screen) } UDGTABLE#
-@ $DE00 label=GameEntryPoint
+@ $DE00 label=EntryPoint
 E $DE00 Continue on to #R$DE19.
   $DE00,$04 #HTML(Write #N$00 to <a href="https://skoolkid.github.io/rom/asm/5C48.html">BORDCR</a>.)
   $DE04,$02 Set the border colour to BLACK.
@@ -788,17 +1058,19 @@ N $DE11 Show this for an extended period of time.
   $DE16,$01 Decrease #REGa by one.
   $DE17,$02 Jump to #R$DE13 until #REGa is zero.
 
-c $DE19
+c $DE19 Game Entry Point
+@ $DE19 label=GameEntryPoint
   $DE19,$03 Call #R$F916.
   $DE1C,$03 Call #R$FD2B.
   $DE1F,$03 Set the border colour to BLACK.
   $DE22,$03 Call #R$DF46.
   $DE25,$03 Call #R$DEE1.
+@ $DE28 label=GameStartLevel
   $DE28,$03 Call #R$DEC6.
   $DE2B,$03 #REGa=*#R$DF44.
   $DE2E,$03 Call #R$DF90.
-N $DE31 Main game loop
-@ $DE31 label=MainLoop
+N $DE31 Game loop.
+@ $DE31 label=GameLoop
   $DE31,$03 Call #R$F8CF.
   $DE34,$06 Jump to #R$DE19 if *#R$D3FD is not zero.
   $DE3A,$04 #HTML(Write #N$00 to <a href="https://skoolkid.github.io/rom/asm/5C78.html">FRAMES</a>.)
@@ -900,23 +1172,26 @@ R $DF39 HL Pointer to monsters score
   $DF41,$02 Copy the "0" to the following five memory locations.
   $DF43,$01 Return.
 
-b $DF44
-  $DF44
-  $DF45
+g $DF44 Game: Current Level
+@ $DF44 label=CurrentLevel
+  $DF44,$01
 
-c $DF46
+b $DF45
+
+c $DF46 Set Monster Defaults
+@ $DF46 label=MonsterDefaults
   $DF46,$04 #REGiy=#R$CFD2.
   $DF4A,$03 Call #R$DF68.
-  $DF4D,$04 Write #N$01 to *#REGiy+#N$09.
+  $DF4D,$04 Write #N$01 to #R$CFDB (*#REGiy+#N$09).
   $DF51,$04 #REGiy=#R$D001.
   $DF55,$03 Call #R$DF68.
-  $DF58,$04 Write #N$0D to *#REGiy+#N$09.
+  $DF58,$04 Write #N$0D to #R$D00A (*#REGiy+#N$09).
   $DF5C,$04 #REGiy=#R$D030.
   $DF60,$03 Call #R$DF68.
-  $DF63,$04 Write #N$19 to *#REGiy+#N$09.
+  $DF63,$04 Write #N$19 to #R$D039 (*#REGiy+#N$09).
   $DF67,$01 Return.
-
-  $DF68,$06 Return if *#REGiy=#N$00 is #N$FF.
+@ $DF68 label=SetMonsterDefaults
+  $DF68,$06 Return if the monster state (#REGiy+#N$00) is "No Monster".
   $DF6E,$07 Write #N$00 to: #LIST { #REGiy+#N$00 } { #REGiy+#N$02 } LIST#
   $DF75,$04 Write #N$01 to #REGiy+#N$03.
   $DF79,$03 Write #N$00 to #REGiy+#N$04.
@@ -932,10 +1207,9 @@ c $DF90
   $DF91,$03 #REGhl=#R$CDE2.
   $DF94,$01 #REGa=*#REGhl.
   $DF95,$01 Increment #REGhl by one.
-  $DF96,$02 Compare #REGa with #N$FF.
-  $DF98,$02 Jump to #R$DF94 if {} is not zero.
+  $DF96,$04 Jump to #R$DF94 if #REGa is not equal to #N$FF.
   $DF9A,$01 Decrease #REGe by one.
-  $DF9B,$02 Jump to #R$DF94 if {} is not zero.
+  $DF9B,$02 Jump to #R$DF94 until #REGe is zero.
   $DF9D,$01 #REGa=*#REGhl.
   $DF9E,$01 Stash #REGhl on the stack.
   $DF9F,$03 Call #R$D50C.
@@ -955,9 +1229,7 @@ c $DF90
   $DFB2,$03 Write #REGa to *#R$D400.
   $DFB5,$03 Call #R$D593.
   $DFB8,$01 Restore #REGhl from the stack.
-  $DFB9,$01 Reset the bits from #REGa.
-  $DFBA,$03 Write #REGa to *#R$D220.
-  $DFBD,$03 Write #REGa to *#R$D222.
+  $DFB9,$07 Write #N$00 to: #LIST { *#R$D220 } { *#R$D222 } LIST#
   $DFC0,$01 #REGa=*#REGhl.
   $DFC1,$02,b$01 Keep only bits 0-2.
   $DFC3,$03 Write #REGa to *#R$D3F3.
@@ -1042,7 +1314,7 @@ c $DF90
   $E044,$02 Decrease counter by one and loop back to #R$E036 until counter is zero.
   $E046,$02 Restore #REGhl and #REGaf from the stack.
   $E048,$01 Decrease #REGa by one.
-  $E049,$03 Jump to #R$DFC7 if {} is not zero.
+  $E049,$03 Jump to #R$DFC7 until #REGa is zero.
   $E04C,$03 #REGhl=#R$D31F.
   $E04F,$03 #REGde=#R$D35F.
   $E052,$02 #REGb=#N$20.
@@ -1055,23 +1327,17 @@ c $DF90
   $E05A,$01 Increment #REGhl by one.
   $E05B,$01 Increment #REGde by one.
   $E05C,$02 Decrease counter by one and loop back to #R$E054 until counter is zero.
-  $E05E,$02 #REGa=#N$FE.
-  $E060,$03 Write #REGa to *#R$D405.
-  $E063,$03 #REGa=*#R$D400.
-  $E066,$02 Compare #REGa with #N$02.
-  $E068,$02 Jump to #R$E099 if {} is zero.
-  $E06A,$02 Compare #REGa with #N$05.
-  $E06C,$02 Jump to #R$E09E if {} is zero.
-  $E06E,$02 #REGa=#N$18.
-  $E070,$03 Write #REGa to *#R$D401.
+  $E05E,$05 Write #N$FE to *#R$D405.
+  $E063,$07 Jump to #R$E099 if *#R$D400 is equal to #N$02.
+  $E06A,$04 Jump to #R$E09E if #REGa is equal to #N$05.
+  $E06E,$05 Write #N$18 to *#R$D401.
   $E073,$03 #REGa=*#R$DF44.
   $E076,$01 RRCA.
   $E077,$01 RRCA.
   $E078,$01 RRCA.
   $E079,$02,b$01 Keep only bits 0-2.
   $E07B,$02 #REGa+=#N$02.
-  $E07D,$02 Compare #REGa with #N$07.
-  $E07F,$02 Jump to #R$E083 if {} is lower.
+  $E07D,$04 Jump to #R$E083 if #REGa is lower than #N$07.
   $E081,$02 #REGa=#N$06.
   $E083,$03 Write #REGa to *#R$D212.
   $E086,$03 #REGa=*#R$DF44.
@@ -1079,23 +1345,17 @@ c $DF90
   $E08A,$01 RRCA.
   $E08B,$02,b$01 Keep only bits 0-3.
   $E08D,$02 #REGa+=#N$06.
-  $E08F,$02 Compare #REGa with #N$11.
-  $E091,$02 Jump to #R$E095 if {} is lower.
-  $E093,$02 #REGa=#N$10.
-  $E095,$03 Write #REGa to *#R$D211.
+  $E08F,$04 Jump to #R$E095 if #REGa is lower than #N$11.
+  $E093,$05 Write #N$10 to *#R$D211.
   $E098,$01 Return.
-  $E099,$02 #REGa=#N$20.
-  $E09B,$03 Write #REGa to *#R$D405.
-  $E09E,$02 #REGa=#N$FE.
-  $E0A0,$03 Write #REGa to *#R$D401.
+  $E099,$05 Write #N$20 to *#R$D405.
+  $E09E,$05 Write #N$FE to *#R$D401.
   $E0A3,$02 Jump to #R$E073.
 B $E0A5
   $E0CF,$01 #REGa=#REGc.
-  $E0D0,$02 Compare #REGa with #N$20.
-  $E0D2,$02 Jump to #R$E10A if {} is higher.
+  $E0D0,$04 Jump to #R$E10A if #REGa is higher than #N$20.
   $E0D4,$01 #REGa=#REGb.
-  $E0D5,$02 Compare #REGa with #N$18.
-  $E0D7,$02 Jump to #R$E10A if {} is higher.
+  $E0D5,$04 Jump to #R$E10A if #REGa is higher than #N$18.
   $E0D9,$01 RRCA.
   $E0DA,$01 RRCA.
   $E0DB,$01 RRCA.
@@ -1107,36 +1367,24 @@ B $E0A5
   $E0E3,$02,b$01 Keep only bits 5-7.
   $E0E5,$01 #REGa+=#REGc.
   $E0E6,$01 #REGl=#REGa.
-  $E0E7,$01 #REGa=*#REGhl.
-  $E0E8,$01 Set flags.
-  $E0E9,$02 Jump to #R$E0FE if {} is not zero.
+  $E0E7,$04 Jump to #R$E0FE if *#REGhl is not zero.
   $E0EB,$03 Decrease #REGh by three.
-  $E0EE,$01 #REGa=*#REGhl.
-  $E0EF,$01 Set flags.
-  $E0F0,$02 Jump to #R$E0FE if {} is not zero.
+  $E0EE,$04 Jump to #R$E0FE if *#REGhl is not zero.
   $E0F2,$01 #REGa=#REGd.
-  $E0F3,$02 Compare #REGa with #N$3D.
-  $E0F5,$02 Jump to #R$E113 if {} is not zero.
+  $E0F3,$04 Jump to #R$E113 if #REGa is not equal to #N$3D.
   $E0F7,$03 Decrease #REGh by three.
-  $E0FA,$01 #REGa=*#REGhl.
-  $E0FB,$01 Set flags.
-  $E0FC,$02 Jump to #R$E114 if {} is zero.
-  $E0FE,$01 Compare #REGa with #REGd.
-  $E0FF,$02 Jump to #R$E114 if {} is lower.
+  $E0FA,$04 Jump to #R$E114 if *#REGhl is zero.
+  $E0FE,$03 Jump to #R$E114 if #REGa is lower than #REGd.
   $E101,$01 Increment #REGe by one.
-  $E102,$01 Compare #REGa with #REGe.
-  $E103,$02 Jump to #R$E114 if {} is higher.
+  $E102,$03 Jump to #R$E114 if #REGa is higher than #REGe.
   $E105,$03 Write #REGa to *#R$D215.
   $E108,$01 Set the bits from #REGa.
   $E109,$01 Return.
   $E10A,$01 Restore #REGhl from the stack.
-  $E10B,$03 #REGa=*#R$D3FB.
-  $E10E,$01 Set flags.
-  $E10F,$03 Jump to #R$EF86 if {} is zero.
+  $E10B,$07 Jump to #R$EF86 if *#R$D3FB is zero.
   $E112,$01 Stash #REGhl on the stack.
-  $E113,$01 Reset the bits from #REGa.
-  $E114,$03 Write #REGa to *#R$D215.
-  $E117,$01 Reset the bits from #REGa.
+  $E113,$04 Write #N$00 to *#R$D215.
+  $E117,$01 #REGa=#N$00.
   $E118,$01 Return.
 
 c $E119
@@ -1149,8 +1397,7 @@ c $E25D
   $E266,$01 Stash #REGbc on the stack.
   $E267,$01 #REGa=*#REGhl.
   $E268,$01 Increment #REGhl by one.
-  $E269,$01 Set flags.
-  $E26A,$03 Jump to #R$E54D if {} is zero.
+  $E269,$04 Jump to #R$E54D if #REGa is zero.
   $E26D,$01 Exchange the #REGaf register with the shadow #REGaf register.
   $E26E,$01 Stash #REGhl on the stack.
   $E26F,$01 Increment #REGhl by one.
@@ -1896,28 +2143,125 @@ c $F8BE
   $F8CA,$04 Write #N$00 to #R$D218.
   $F8CE,$01 Return.
 
-c $F8CF
+c $F8CF Controls: Pause/ Quit Game
+@ $F8CF label=Controls_PauseQuit
+N $F8CF In-game Holding down "SHIFT" and pressing 1, 2 or 3 has the following effect:
+. #TABLE(default,centre,centre,centre)
+. { =h Key 1 | =h Key 2 | Action }
+. { "SHIFT" | "1" | Pause }
+. { "SHIFT" | "2" | Resume }
+. { "SHIFT" | "3" | Quite }
+. TABLE#
+  $F8CF,$02 #TABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,r2 Port Number | =h,c5 Bit }
+. { =h 0 | =h 1 | =h 2 | =h 3 | =h 4 }
+. { #N$FE | SHIFT | Z | X | C | V }
+. TABLE#
+  $F8D1,$03 Call #R$F910.
+  $F8D4,$03 Return if "SHIFT" is not being pressed.
+N $F8D7 "SHIFT" is being held down here. Test for the number keys.
+  $F8D7,$03 Call #R$F90E.
+  $F8DA,$04 Jump to #R$F8F3 if "3" is being pressed.
+  $F8DE,$03 Return if "1" is not being pressed.
+N $F8E1 If "1" is being pressed - this is where the "in-game pause" loop begins.
+@ $F8E1 label=PauseGame_Loop
+  $F8E1,$02 #TABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,r2 Port Number | =h,c5 Bit }
+. { =h 0 | =h 1 | =h 2 | =h 3 | =h 4 }
+. { #N$FE | SHIFT | Z | X | C | V }
+. TABLE#
+  $F8E3,$03 Call #R$F910.
+  $F8E6,$02 Test for "SHIFT"...
+  $F8E8,$02 #REGb=#N$06.
+  $F8EA,$02 Jump to #R$F902 if "SHIFT" is not being pressed.
+  $F8EC,$03 Call #R$F90E.
+  $F8EF,$04 Jump to #R$F8FC if "3" (quit) is not being pressed.
+N $F8F3 Action quitting the game.
+@ $F8F3 label=QuitGame
+  $F8F3,$05 Write #N$01 to *#R$D3FD.
+N $F8F8 To resume the game we just reset the border colour and RETurn from the pause loop.
+@ $F8F8 label=ResumeGame
+  $F8F8,$03 Set the border to BLACK.
+  $F8FB,$01 Return.
+N $F8FC The game is in the pause loop so test if we want to resume.
+@ $F8FC label=TestFor_ResumeGame
+  $F8FC,$04 Jump to #R$F8F8 if "2" is being pressed.
+  $F900,$02 #REGb=#N$06.
+N $F902 Creates a nice border pattern.
+@ $F902 label=GamePaused
+  $F902,$01 #REGa=#REGb.
+  $F903,$04 #HTML(Change border <em>very quickly</em> to create a rainbow effect.)
+  $F907,$02 Decrease counter by one and loop back to #R$F902 until counter is zero.
+  $F909,$03 Call #R$F90E.
+  $F90C,$02 Loop back to #R$F8E1.
+N $F90E Testing for the number keys.
+@ $F90E label=ReadKeyboard_1234
+  $F90E,$02 #TABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,r2 Port Number | =h,c5 Bit }
+. { =h 0 | =h 1 | =h 2 | =h 3 | =h 4 }
+. { #N$F7 | 1 | 2 | 3 | 4 | 5 }
+. TABLE#
+@ $F910 label=ReadKeyboard
+  $F910,$02 Read from the keyboard.
+  $F912,$01 Invert the bits in #REGa.
+  $F913,$02,b$01 Keep only bits 0-3.
+  $F915,$01 Return.
 
-c $F916
+c $F916 Selection Screen
+@ $F916 label=SelectionScreen
   $F916,$03 Set border colour to BLACK.
   $F919,$03 Call #R$FBDB.
-  $F91C,$02 #REGa=#N$02.
+N $F91C The admin screens show the right-hand side of level 2.
+  $F91C,$02 #REGa=level #N$02.
   $F91E,$03 Call #R$DF90.
   $F921,$03 Call #R$D409.
   $F924,$03 Call #R$FB8E.
   $F927,$03 Call #R$F981.
-  $F92A,$02 #REGb=#N$FF.
-  $F92C,$01 CPU halt.
+N $F92A The selection page displays for a period of time, and then the game cycles through playareas.
+  $F92A,$02 #REGb=#N$FF (counter).
+  $F92C,$01 Halt operation (suspend CPU until the next interrupt).
   $F92D,$01 Stash #REGbc on the stack.
   $F92E,$03 Call #R$DDC0.
   $F931,$01 Restore #REGbc from the stack.
-  $F932,$02
-
+  $F932,$02 Jump to #R$F954 if {} is not zero.
+  $F934,$05 Jump to #R$F954 if #REGd is equal to #N$FF.
+  $F939,$03 Return if #REGa is equal to #N$1E.
+  $F93C,$04 Jump to #R$F92C if #REGa is not equal to #N$0F.
+N $F940 Removes the print termination bit from the entire table at #R$FBF2.
+  $F940,$03 #REGhl=#R$FBF2.
+  $F943,$02 #REGb=#N$28 (length).
+@ $F945 label=StripPrintTerminationBit_Loop
+  $F945,$01 #REGa=*#REGhl.
   $F946,$02,b$01 Keep only bits 0-6.
-
+  $F948,$01 Write #REGa to *#REGhl.
+  $F949,$01 Increment #REGhl by one.
+  $F94A,$02 Decrease counter by one and loop back to #R$F945 until counter is zero.
   $F94C,$03 Call #R$FB8E.
   $F94F,$03 Call #R$F9BF.
   $F952,$02 Jump to #R$F916.
+  $F954,$02 Decrease counter by one and loop back to #R$F92C until counter is zero.
+  $F956,$03 Call #R$FBC8.
+  $F959,$02 Jump to #R$F916 if {} is not zero.
+N $F95B This loops over some level playareas until a key is pressed or we reach level #N$0B.
+  $F95B,$02 #REGb=level #N$01.
+@ $F95D label=DisplayLevels_Loop
+  $F95D,$02 Stash the current level on the stack twice.
+  $F95F,$03 Call #R$FBDB.
+  $F962,$01 Restore current level from the stack.
+  $F963,$01 #REGa=current level to display.
+  $F964,$03 Call #R$DF90.
+  $F967,$03 Call #R$D409.
+  $F96A,$03 Call #R$FC1A.
+  $F96D,$03 Call #R$D604.
+  $F970,$03 Call #R$D5F8.
+  $F973,$03 Call #R$FBC8.
+  $F976,$01 Restore current level from the stack.
+  $F977,$02 Jump to #R$F916 if any key has been pressed.
+  $F979,$01 Increment current level by one.
+N $F97A Only display levels #N$00-#N$0A.
+  $F97A,$05 Loop back to #R$F95D until #REGb is equal to #N$0B.
+N $F97F Display the selection screen options.
+  $F97F,$02 Jump to #R$F916.
 
 c $F981 Print Selection Screen
 @ $F981 label=Print_SelectionScreen
@@ -1958,9 +2302,9 @@ N $F9B8 Output to the screen buffer.
   $F9BE,$01 Return.
 
 c $F9BF Change Controls
-@ $F9BF label=Handler_ChangeControls
+@ $F9BF label=ChangeControls
   $F9BF,$03 Call #R$FBD4.
-  $F9C2,$02 Loop back to #R$F9BF until the pressed key is released.
+  $F9C2,$02 Loop back to #R$F9BF until a key is pressed.
 N $F9C4 Reset the control type for all monsters.
   $F9C4,$0B Write #N$FF to: #LIST { *#R$CFE0 } { *#R$D00F } { *#R$D03E } LIST#
 N $F9CF Set up a count for how many players will be using the keyboard (see #R$FA53).
@@ -1982,7 +2326,7 @@ N $F9EE Ralph.
   $F9F8,$03 Call #R$F9FC.
   $F9FB,$01 Return.
 N $F9FC Print the monster name.
-@ $F9FC label=Handler_ChangeControls_Action
+@ $F9FC label=ChangeControls_Action
   $F9FC,$03 #REGbc=#N$0804 (screen co-ordinates).
   $F9FF,$03 Call #R$FB5B.
 N $FA02 Prints "#STR($D0D5) #STR($D0DF)".
@@ -1995,7 +2339,7 @@ N $FA02 Prints "#STR($D0D5) #STR($D0DF)".
 N $FA12 Programmatically display all the #R$D133 options.
   $FA12,$03 #REGhl=#R$D133.
   $FA15,$01 #REGa=#N$00 (option counter).
-@ $FA16 label=Handler_ChangeControls_PrintLoop
+@ $FA16 label=ChangeControls_PrintLoop
   $FA16,$01 Stash the option counter on the stack.
 N $FA17 The options are two lines apart and start from row #N$0B.
   $FA17,$04 #REGb=#N$0B+#REGa*#N$02.
@@ -2012,7 +2356,7 @@ N $FA27 Prints the last line manually "#STR($D173)" (as it's the second line of 
 N $FA2D Output to the screen buffer.
   $FA2D,$03 Call #R$D604.
   $FA30,$03 Call #R$D5F8.
-@ $FA33 label=Handler_ChangeControls_Input
+@ $FA33 label=ChangeControls_Input
   $FA33,$03 Call #R$DDC0.
   $FA36,$02 Loop back to #R$FA33 until an option has been selected.
 N $FA38 Process the selected option.
@@ -2025,7 +2369,7 @@ N $FA38 Process the selected option.
   $FA4D,$04 Jump to #R$FA8B if "C" was pressed.
   $FA51,$02 Jump to #R$FA33.
 N $FA53 Set "Keyboard" as the control method.
-@ $FA53 label=Handler_ChangeControls_Keyboard
+@ $FA53 label=ChangeControls_Keyboard
   $FA53,$03 Call #R$FAA8.
 N $FA56 Each set of user defined keys will have a different control method ID starting from #N$04.
   $FA56,$03 #REGa=*#R$FB5A.
@@ -2046,30 +2390,30 @@ N $FA60 Calculate where the user defined keys will be stored.
   $FA75,$02 Copy selected keys to monster config.
   $FA77,$01 Return.
 N $FA78 Set "Sinclair Interface 2" (port 1) as the control method.
-@ $FA78 label=Handler_ChangeControls_Sinclair1
+@ $FA78 label=ChangeControls_Sinclair1
   $FA78,$02 #REGd=#N$02.
   $FA7A,$02 Jump to #R$FA82.
 N $FA7C Set "Sinclair Interface 2" (port 2) as the control method.
-@ $FA7C label=Handler_ChangeControls_Sinclair2
+@ $FA7C label=ChangeControls_Sinclair2
   $FA7C,$02 #REGd=#N$01.
   $FA7E,$02 Jump to #R$FA82.
 N $FA80 Set "Kempston Joystick" as the control method.
-@ $FA80 label=Handler_ChangeControls_Kempston
+@ $FA80 label=ChangeControls_Kempston
   $FA80,$02 #REGd=#N$03.
-@ $FA82 label=Handler_SetControlType
+@ $FA82 label=SetControlType
   $FA82,$03 Call #R$FA95.
   $FA85,$02 Jump to #R$FA33 if the control type is already selected by another monster.
   $FA87,$03 Write the control type to *#REGix+#N$0E (monster control type).
   $FA8A,$01 Return.
 N $FA8B Set "Computer Controlled" as the control method.
-@ $FA8B label=Handler_ChangeControls_Computer
+@ $FA8B label=ChangeControls_Computer
   $FA8B,$04 Write #N$00 to *#REGix+#N$0E (monster control type).
-@ $FA8F label=ChangeControls_Computer_Debounce
+@ $FA8F label=ChangeControls_Computer_KeyPress
   $FA8F,$03 Call #R$FBD4.
-  $FA92,$02 Loop back to #R$FA8F until the pressed key is released.
+  $FA92,$02 Loop back to #R$FA8F until a key has been pressed.
   $FA94,$01 Return.
 N $FA95 Monsters can't use the same controllers, this is verified here.
-@ $FA95 label=Handler_CheckExistingControls
+@ $FA95 label=CheckExistingControls
   $FA95,$05 Return if *#R$CFE0 is equal to the currently selected control method.
   $FA9A,$05 Return if *#R$D00F is equal to the currently selected control method.
   $FA9F,$05 Return if *#R$D03E is equal to the currently selected control method.
@@ -2078,8 +2422,8 @@ N $FAA4 Ensure ZERO flag is not set for the return.
   $FAA6,$01 Set the bits from #REGa.
   $FAA7,$01 Return.
 
-c $FAA8 Handler: User Defined Keys
-@ $FAA8 label=Handler_UserDefinedKeys
+c $FAA8 User Defined Keys
+@ $FAA8 label=UserDefinedKeys
   $FAA8,$03 Call #R$FB8E.
   $FAAB,$03 Call #R$FBD4.
   $FAAE,$02 Loop back to #R$FAA8 until the pressed key is released.
@@ -2093,68 +2437,77 @@ N $FAB6 Print "#STR($D0D5) #STR($D0DF)".
   $FAC3,$03 Call #R$FB5B.
 N $FAC6 Programmatically display all the #R$D0EB options.
   $FAC6,$03 #REGhl=#R$D0EB.
-  $FAC9,$03 #REGbc=#N$0804.
+  $FAC9,$03 #REGbc=#N$0804 (screen co-ordinates).
   $FACC,$02 #REGa=#N$05 (control counter).
-@ $FACE label=Handler_UserDefinedKeys_PrintLoop
-  $FACE,$02 Stash #REGaf and #REGbc on the stack.
+@ $FACE label=UserDefinedKeys_PrintLoop
+  $FACE,$02 Stash the control counter and current screen co-ordinates on the stack.
   $FAD0,$03 Call #R$FB5B.
-  $FAD3,$02 Restore #REGbc and #REGaf from the stack.
+  $FAD3,$02 Restore the current screen co-ordinates and control counter from the stack.
   $FAD5,$01 Move onto the start of the next message.
+N $FAD6 The options are two lines apart.
   $FAD6,$02 Increment #REGb by two.
   $FAD8,$01 Decrease the control counter by one.
   $FAD9,$02 Jump to #R$FACE until all controls have been printed.
 N $FADB Prints the last line manually "#STR($D0FF)" (as it's the second line of the option before it).
   $FADB,$01 Decrease #REGb by one.
   $FADC,$03 Call #R$FB5B.
+N $FADF Set up displaying the "?" indicator to request the user defined keypress.
   $FADF,$03 #REGbc=#N$080B (screen co-ordinates).
-  $FAE2,$02 Stash #REGbc and #REGbc on the stack.
+@ $FAE2 label=UserDefinedKeys_Request
+  $FAE2,$02 Stash #REGbc on the stack twice.
   $FAE4,$03 #REGhl=#R$D104.
   $FAE7,$03 Call #R$FB5B.
 N $FAEA Output to the screen buffer.
   $FAEA,$03 Call #R$D604.
   $FAED,$03 Call #R$D5F8.
+@ $FAF0 label=UserDefinedKeys_Input
   $FAF0,$03 Call #R$DDC0.
   $FAF3,$02 Loop back to #R$FAF0 until an option has been selected.
-  $FAF5,$01 #REGa=#REGd.
-  $FAF6,$02 Compare #REGa with #N$FF.
-  $FAF8,$02 Jump to #R$FAF0 if {} is zero.
-  $FAFA,$01 Exchange the #REGde register with the shadow #REGhl register.
+  $FAF5,$01 #REGa=keypress.
+  $FAF6,$04 Jump to #R$FAF0 if the keypress is invalid.
+  $FAFA,$01 Exchange the #REGde and #REGhl registers.
   $FAFB,$03 #REGhl=#R$FBF2.
-  $FAFE,$02 #REGb=#N$00.
-  $FB00,$01 #REGc=#REGa.
+  $FAFE,$03 Create an offset using #REGbc.
   $FB01,$01 #REGhl+=#REGbc.
   $FB02,$01 #REGa=*#REGhl.
-  $FB03,$02 Compare #REGa with #N$80.
-  $FB05,$02 Jump to #R$FAF0 if {} is higher.
-  $FB07,$02,b$01 Set bits 7.
+  $FB03,$04 Jump to #R$FAF0 if #REGa is higher than #N$80.
+N $FB07 Set a print terminator.
+  $FB07,$02,b$01 Set bit 7.
   $FB09,$01 Write #REGa to *#REGhl.
   $FB0A,$03 #REGhl=#R$D106.
+N $FB0D Remove the print terminator and write to the buffer.
   $FB0D,$02,b$01 Keep only bits 0-6.
   $FB0F,$01 Write #REGa to *#REGhl.
-  $FB10,$02 Compare #REGa with #N$21.
-  $FB12,$02 Jump to #R$FB17 if {} is not zero.
+N $FB10 If "special keys" (e.g. Caps Shift/ Symbol Shift/ Enter/ Space) are selected, provide a means to show that these
+.       have been selected.
+  $FB10,$04 Jump to #R$FB17 if #REGa is not equal to #N$21.
   $FB14,$03 #REGhl=#R$D10E.
-  $FB17,$02 Compare #REGa with #N$27.
-  $FB19,$02 Jump to #R$FB1E if {} is not zero.
+@ $FB17 label=UserDefinedKeys_CheckIfCapsShift
+  $FB17,$04 Jump to #R$FB1E if #REGa is not equal to #N$27.
   $FB1B,$03 #REGhl=#R$D108.
-  $FB1E,$02 Compare #REGa with #N$18.
-  $FB20,$02 Jump to #R$FB25 if {} is not zero.
+@ $FB1E label=UserDefinedKeys_CheckIfSymbolShift
+  $FB1E,$04 Jump to #R$FB25 if #REGa is not equal to #N$18.
   $FB22,$03 #REGhl=#R$D10A.
-  $FB25,$02 Compare #REGa with #N$20.
-  $FB27,$02 Jump to #R$FB2C if {} is not zero.
+@ $FB25 label=UserDefinedKeys_CheckIfSpace
+  $FB25,$04 Jump to #R$FB2C if #REGa is not equal to #N$20.
   $FB29,$03 #REGhl=#R$D10C.
+N $FB2C Print the user defined key on the screen in the appropriate location.
+@ $FB2C label=UserDefinedKeys_PrintKey
   $FB2C,$01 Restore #REGbc from the stack.
   $FB2D,$01 Stash #REGde on the stack.
   $FB2E,$03 Call #R$FB5B.
   $FB31,$01 Restore #REGde from the stack.
+N $FB32 Store the keypress port and value in the buffer.
   $FB32,$03 #REGhl=*#R$FB58.
   $FB35,$01 Write #REGe to *#REGhl.
   $FB36,$01 Increment #REGhl by one.
   $FB37,$01 Write #REGd to *#REGhl.
-  $FB38,$01 Increment #REGhl by one.
-  $FB39,$03 Write #REGhl to *#R$FB58.
+  $FB38,$01 Move onto the next buffer location.
+  $FB39,$03 Update the stored buffer at *#R$FB58.
   $FB3C,$01 Restore #REGbc from the stack.
+N $FB3D Move down two lines onto the next option.
   $FB3D,$02 Increment #REGb by two.
+N $FB3F Check if we've reached the end?
   $FB3F,$05 Jump to #R$FAE2 until #REGb is equal to #N$12.
 N $FB44 Output to the screen buffer.
   $FB44,$03 Call #R$D604.
@@ -2164,7 +2517,11 @@ N $FB44 Output to the screen buffer.
 
 g $FB4E User Defined Keys Buffer
 @ $FB4E label=UserDefinedKeys_Buffer
-B $FB4E,$0A,$02
+D $FB4E Used by the routines at #R$F9BF and #R$FAA8.
+B $FB4E,$0A,$02 Stores in the following format:
+. #TABLE(default,centre,centre)
+. { =h Port | =h Bits } #FOR$00,$04(n,{ #N(#PEEK(#PC+n*$02)) | #EVAL(#PEEK(#PC+$01+n*$02),$02,$08) }, )
+. TABLE#
 
 g $FB58 User Defined Keys Pointer
 @ $FB58 label=UserDefinedKeys_Pointer
@@ -2211,7 +2568,8 @@ R $FB5B HL Pointer to string data
   $FB8B,$01 Increment #REGhl by one.
   $FB8C,$02 Jump to #R$FB5B.
 
-c $FB8E
+c $FB8E Create Admin Page Template
+@ $FB8E label=CreateAdminPageTemplate
   $FB8E,$02 #REGc=#N$11.
   $FB90,$03 #REGhl=#R$6B00.
   $FB93,$02 #REGd=#N$83.
@@ -2228,6 +2586,10 @@ N $FBA4 Prints "Rampage tm".
   $FBAD,$01 Return.
 
 c $FBAE
+R $FBAE C Width
+R $FBAE D Height
+R $FBAE E Value to write
+R $FBAE HL Buffer location
   $FBAE,$01 #REGb=#REGc.
   $FBAF,$01 #REGa=#N$00.
   $FBB0,$01 Write #REGe to *#REGhl.
@@ -2244,17 +2606,24 @@ c $FBAE
   $FBC3,$04 Jump to #R$FBAE if #REGd is not equal to #REGh.
   $FBC7,$01 Return.
 
-c $FBC8
-  $FBC8,$02 #REGb=#N$FF.
+c $FBC8 Press Any Key/ Pause
+@ $FBC8 label=PressAnyKey_Pause
+N $FBC8 This routine will return on a keypress, or if the counter reaches #N$FF.
+  $FBC8,$02 #REGb=#N$FF (counter).
+@ $FBCA label=PressAnyKey_Loop
   $FBCA,$03 Call #R$FBD4.
-  $FBCD,$02 Jump to #R$FBD0 if #REGa is zero.
+  $FBCD,$02 Jump to #R$FBD0 if no key has been pressed.
+N $FBCF A keypress has occurred so return.
   $FBCF,$01 Return.
+N $FBD0 There's not been a keypress, so issue a HALT and loop back round.
+@ $FBD0 label=Pause_Loop
   $FBD0,$01 Halt operation (suspend CPU until the next interrupt).
   $FBD1,$02 Decrease counter by one and loop back to #R$FBCA until counter is zero.
+N $FBD3 The pause counter has expired so just return.
   $FBD3,$01 Return.
 
-c $FBD4 Debounce
-@ $FBD4 label=Debounce
+c $FBD4 Get Keypress
+@ $FBD4 label=GetKeypress
   $FBD4,$01 #REGa=#N$00.
   $FBD5,$02 Read from the keyboard;
 . #TABLE(default,centre,centre,centre,centre,centre,centre)
@@ -2279,11 +2648,14 @@ c $FBEC Short Pause
 @ $FBEC label=ShortPause
   $FBEC,$02 #REGb=#N$4B (counter).
 @ $FBEE label=ShortPause_Loop
-  $FBEE,$01 CPU halt.
+  $FBEE,$01 Halt operation (suspend CPU until the next interrupt).
   $FBEF,$02 Decrease counter by one and loop back to #R$FBEE until counter is zero.
   $FBF1,$01 Return.
 
-b $FBF2
+b $FBF2 ASCII Table
+@ $FBF2 label=Table_ASCII
+  $FBF2,$01 "#STR(#PC,$00,$01)".
+L $FBF2,$01,$28
 
 c $FC1A
   $FC1A,$05 Return if *#R$D3FE is zero.
@@ -2429,12 +2801,13 @@ N $FD4B Check if the character is the terminator.
   $FD61,$01 Increment #REGbc by one.
   $FD62,$02 Jump to #R$FD4A.
 
-c $FD64
+c $FD64 Handler: Ticker News
+@ $FD64 label=Handler_TickerNews
   $FD64,$03 Call #R$FD44.
-  $FD67,$03 #REGhl=#N$6A00.
+  $FD67,$03 #REGhl=#R$6A00.
   $FD6A,$03 #REGde=#N$6A01.
-  $FD6D,$03 #REGbc=#N$00FF.
-  $FD70,$01
+  $FD6D,$03 #REGbc=#N($00FF,$04,$04).
+  $FD70,$01 Write #REGc to *#REGhl.
   $FD71,$02
   $FD73,$03 Call #R$D409.
   $FD76,$03 Call #R$FD9E.
@@ -2444,19 +2817,22 @@ c $FD64
   $FD82,$03 Call #R$FDC4.
   $FD85,$01 Return.
 
-c $FD86
+c $FD86 Shift Up Ticker News
+@ $FD86 label=ShiftUpTickerNews
+N $FD86 This creates the ticker "scrolling" effect, where the initial news moves to the middle, and then the bottom two
+.       news stories move to the top.
   $FD86,$03 #REGhl=#R$7300.
   $FD89,$03 #REGde=#R$6B00.
   $FD8C,$03 #REGbc=#N$1000.
-  $FD8F,$02 Copy.
+  $FD8F,$02 Copy the bottom two-thirds of the shadow screen buffer "up" to the top of the buffer.
   $FD91,$03 #REGhl=#R$8400.
   $FD94,$03 #REGde=#R$8300.
   $FD97,$03 #REGbc=#N$0200.
-  $FD9A,$02 Copy.
+  $FD9A,$02 Copy the bottom two-thirds of the shadow attribute buffer "up" to the top of the buffer.
   $FD9C,$02 Jump to #R$FD64.
 
-c $FD9E Handler: Display Ticker News
-@ $FD9E label=Handler_DisplayTickerNews
+c $FD9E Print Ticker News Copy
+@ $FD9E label=Print_TickerNewsCopy
   $FD9E,$03 Call #R$DA28.
   $FDA1,$02,b$01 Keep only bits 0-2.
   $FDA3,$01 #REGa*=#N$02.
@@ -2487,7 +2863,7 @@ N $FDC4 #AUDIO(telecast.wav)(#INCLUDE(Telecast))
   $FDD4,$01 Stash #REGbc on the stack.
   $FDD5,$03 Call #R$FF00.
   $FDD8,$01 Restore #REGbc from the stack.
-  $FDD9,$02 CPU halt (twice).
+  $FDD9,$02 Halt operation (suspend CPU until the next interrupt, and do this twice).
   $FDDB,$02 Decrease counter by one and loop back to #R$FDC6 until counter is zero.
   $FDDD,$01 Return.
 
