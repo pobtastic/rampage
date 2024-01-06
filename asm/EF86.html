@@ -25,11 +25,11 @@ gtag('config', 'G-75RERFCHBG');
 <table class="asm-navigation">
 <tr>
 <td class="prev">
-Prev: <a href="E576.html">E576</a>
+Prev: <a href="E62D.html">E62D</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#ef86">Map</a></td>
 <td class="next">
-Next: <a href="EFE0.html">EFE0</a>
+Next: <a href="EF98.html">EF98</a>
 </td>
 </tr>
 </table>
@@ -39,7 +39,7 @@ Next: <a href="EFE0.html">EFE0</a>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="DF90.html">DF90</a> and <a href="E576.html">E576</a>.
+Used by the routines at <a href="DF90.html">FindScene</a> and <a href="E62D.html">E62D</a>.
 </div>
 </div>
 </td>
@@ -47,97 +47,51 @@ Used by the routines at <a href="DF90.html">DF90</a> and <a href="E576.html">E57
 <tr>
 <td class="address-2"><span id="ef86"></span>EF86</td>
 <td class="instruction">CALL <a href="DA71.html#db54">$DB54</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="DA71.html#db54">DB54</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ef89"></span>EF89</td>
 <td class="instruction">LD A,($D24F)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D24F.html">D24F</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ef8c"></span>EF8C</td>
 <td class="instruction">CALL <a href="D7F6.html#da0f">$DA0F</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="D7F6.html#da0f">DA0F</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ef8f"></span>EF8F</td>
 <td class="instruction">CALL <a href="D7F6.html#d9c3">$D9C3</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="D7F6.html#d9c3">D9C3</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ef92"></span>EF92</td>
 <td class="instruction">RET NZ</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return if {} is not zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ef93"></span>EF93</td>
 <td class="instruction">XOR A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Write 00 to *<a href="D244.html">D244</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ef94"></span>EF94</td>
 <td class="instruction">LD ($D244),A</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="ef97"></span>EF97</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="ef98"></span>EF98</td>
-<td class="instruction">DEFB $8C,$E6,$67,$E9,$6F,$E9,$71,$E9</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="efa0"></span>EFA0</td>
-<td class="instruction">DEFB $82,$E9,$9B,$E9,$04,$EA,$18,$EA</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="efa8"></span>EFA8</td>
-<td class="instruction">DEFB $43,$EA,$9C,$EA,$F6,$EA,$8A,$EC</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="efb0"></span>EFB0</td>
-<td class="instruction">DEFB $E0,$EC,$31,$ED,$C2,$ED,$50,$EF</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="efb8"></span>EFB8</td>
-<td class="instruction">DEFB $50,$EF,$50,$EF,$50,$EF,$50,$EF</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="efc0"></span>EFC0</td>
-<td class="instruction">DEFB $50,$EF,$50,$EF,$50,$EF,$50,$EF</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="efc8"></span>EFC8</td>
-<td class="instruction">DEFB $50,$EF,$50,$EF,$70,$EE,$9B,$EE</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="efd0"></span>EFD0</td>
-<td class="instruction">DEFB $F6,$EA,$70,$EE,$8C,$E6,$8C,$E6</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="efd8"></span>EFD8</td>
-<td class="instruction">DEFB $04,$EA,$D6,$EE,$EB,$EE,$0A,$EF</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">
 <tr>
 <td class="prev">
-Prev: <a href="E576.html">E576</a>
+Prev: <a href="E62D.html">E62D</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#ef86">Map</a></td>
 <td class="next">
-Next: <a href="EFE0.html">EFE0</a>
+Next: <a href="EF98.html">EF98</a>
 </td>
 </tr>
 </table>

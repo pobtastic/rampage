@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at D50C</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="D409.html">D409</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#d50c">Map</a></td>
+<td class="next">
+Next: <a href="D55B.html">D55B</a>
+</td>
+</tr>
+</table>
+<div class="description">D50C: Routine at D50C</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="DF90.html">FindScene</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="d50c"></span>D50C</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">Set zero flag based on <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d50d"></span>D50D</td>
+<td class="instruction">SLA A</td>
+<td class="comment-1" rowspan="1">Shift <span class="register">A</span> left (with carry).</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d50f"></span>D50F</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1">Store the result in <span class="register">L</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d510"></span>D510</td>
+<td class="instruction">RLA</td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> left through the carry flag (bit 7 to the carry flag, the carry flag to bit 0).</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d511"></span>D511</td>
+<td class="instruction">AND %00000001</td>
+<td class="comment-1" rowspan="1">Keep only bit 0.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d513"></span>D513</td>
+<td class="instruction">LD H,A</td>
+<td class="comment-1" rowspan="1"><span class="register">H</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d514"></span>D514</td>
+<td class="instruction">LD DE,$C700</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="9E00.html#c700">C700</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d517"></span>D517</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d518"></span>D518</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> and <span class="register">HL</span> registers.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d519"></span>D519</td>
+<td class="instruction">LD BC,$0020</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0020.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d51c"></span>D51C</td>
+<td class="instruction">LD HL,$6140</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="6100.html#6140">6140</a>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="d51f"></span>D51F</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="2">Stash <span class="register">HL</span> and <span class="register">DE</span> on the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d520"></span>D520</td>
+<td class="instruction">PUSH DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d521"></span>D521</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d522"></span>D522</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d523"></span>D523</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d524"></span>D524</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">Set the bits from <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="d525"></span>D525</td>
+<td class="instruction">LD (HL),$01</td>
+<td class="comment-1" rowspan="1">Write 01 to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d527"></span>D527</td>
+<td class="instruction">SBC HL,BC</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>-=<span class="register">BC</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d529"></span>D529</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d52a"></span>D52A</td>
+<td class="instruction">JR NZ,<a href="D50C.html#d525">$D525</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="D50C.html#d525">D525</a> until <span class="register">A</span> is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d52c"></span>D52C</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="D50C.html#d550">D550</a> if *<span class="register">DE</span> is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d52d"></span>D52D</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d52e"></span>D52E</td>
+<td class="instruction">JR Z,<a href="D50C.html#d550">$D550</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="d530"></span>D530</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d531"></span>D531</td>
+<td class="instruction">LD HL,$C800</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="9E00.html#c800">C800</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d534"></span>D534</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="d535"></span>D535</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d536"></span>D536</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d537"></span>D537</td>
+<td class="instruction">CP $80</td>
+<td class="comment-1" rowspan="2">Jump to <a href="D50C.html#d535">D535</a> if <span class="register">A</span> is lower than 80.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d539"></span>D539</td>
+<td class="instruction">JP C,<a href="D50C.html#d535">$D535</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="d53c"></span>D53C</td>
+<td class="instruction">DEC E</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">E</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d53d"></span>D53D</td>
+<td class="instruction">JP NZ,<a href="D50C.html#d535">$D535</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="D50C.html#d535">D535</a> until <span class="register">E</span> is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d540"></span>D540</td>
+<td class="instruction">EX DE,HL</td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> and <span class="register">HL</span> registers.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d541"></span>D541</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="d542"></span>D542</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d543"></span>D543</td>
+<td class="instruction">AND %01111111</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-6.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d545"></span>D545</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d546"></span>D546</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d547"></span>D547</td>
+<td class="instruction">BIT 7,A</td>
+<td class="comment-1" rowspan="1">Test bit 7 of <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d549"></span>D549</td>
+<td class="instruction">JR NZ,<a href="D50C.html#d550">$D550</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="D50C.html#d550">D550</a> if {} is not zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d54b"></span>D54B</td>
+<td class="instruction">SBC HL,BC</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>-=<span class="register">BC</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d54d"></span>D54D</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d54e"></span>D54E</td>
+<td class="instruction">JR <a href="D50C.html#d542">$D542</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="D50C.html#d542">D542</a>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="d550"></span>D550</td>
+<td class="instruction">POP DE</td>
+<td class="comment-1" rowspan="2">Restore <span class="register">DE</span> and <span class="register">HL</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d551"></span>D551</td>
+<td class="instruction">POP HL</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d552"></span>D552</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d553"></span>D553</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="2">Increment <span class="register">DE</span> by two.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d554"></span>D554</td>
+<td class="instruction">INC DE</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d555"></span>D555</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="3">Jump to <a href="D50C.html#d51f">D51F</a> if <span class="register">L</span> is not equal to 60.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d556"></span>D556</td>
+<td class="instruction">CP $60</td>
+</tr>
+<tr>
+<td class="address-1"><span id="d558"></span>D558</td>
+<td class="instruction">JR NZ,<a href="D50C.html#d51f">$D51F</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="d55a"></span>D55A</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="D409.html">D409</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#d50c">Map</a></td>
+<td class="next">
+Next: <a href="D55B.html">D55B</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/D50C.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

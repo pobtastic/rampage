@@ -42,143 +42,218 @@ Next: <a href="57625.html">57625</a>
 Used by the routines at <a href="56857.html">GameEntryPoint</a> and <a href="63766.html">SelectionScreen</a>.
 </div>
 </div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Level</td>
+</tr>
+</table>
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="57232"></span>
+<div class="comments">
+<div class="paragraph">
+In order to find the scene data for the requested level, the code "counts" the number of terminator bytes found.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">FindScene</td>
 <td class="address-2"><span id="57232"></span>57232</td>
 <td class="instruction">LD E,A</td>
-<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=level.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57233"></span>57233</td>
 <td class="instruction">LD HL,52706</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="52706.html">52706</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="52706.html">Scene_Data</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">FindScene_Loop</td>
 <td class="address-2"><span id="57236"></span>57236</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=byte of scene data.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57237"></span>57237</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+<td class="comment-1" rowspan="1">Increment scene data pointer by one.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="57238"></span>
+<div class="comments">
+<div class="paragraph">
+Check for a terminator byte.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57238"></span>57238</td>
 <td class="instruction">CP 255</td>
-<td class="comment-1" rowspan="2">Jump to <a href="57232.html#57236">57236</a> if <span class="register">A</span> is not equal to 255.</td>
+<td class="comment-1" rowspan="2">Loop back to <a href="57232.html#57236">FindScene_Loop</a> until <span class="register">A</span> is equal to 255.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57240"></span>57240</td>
-<td class="instruction">JR NZ,<a href="57232.html#57236">57236</a></td>
+<td class="instruction">JR NZ,<a href="57232.html#57236">FindScene_Loop</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="57242"></span>
+<div class="comments">
+<div class="paragraph">
+Only continue when the "level" has been decreased to zero. This is when the appropriate scene data has been found.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57242"></span>57242</td>
 <td class="instruction">DEC E</td>
-<td class="comment-1" rowspan="1">Decrease <span class="register">E</span> by one.</td>
+<td class="comment-1" rowspan="1">Decrease level by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57243"></span>57243</td>
-<td class="instruction">JR NZ,<a href="57232.html#57236">57236</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="57232.html#57236">57236</a> until <span class="register">E</span> is zero.</td>
+<td class="instruction">JR NZ,<a href="57232.html#57236">FindScene_Loop</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="57232.html#57236">FindScene_Loop</a> until <span class="register">E</span> is zero.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="57245"></span>
+<div class="comments">
+<div class="paragraph">
+Process the scene data.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57245"></span>57245</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=byte of scene data.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57246"></span>57246</td>
 <td class="instruction">PUSH HL</td>
-<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
+<td class="comment-1" rowspan="1">Stash the scene data pointer on the stack temporarily.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57247"></span>57247</td>
-<td class="instruction">CALL <a href="54281.html#54540">54540</a></td>
-<td class="comment-1" rowspan="1">Call <a href="54281.html#54540">54540</a>.</td>
+<td class="instruction">CALL <a href="54540.html">54540</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54540.html">54540</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57250"></span>57250</td>
 <td class="instruction">POP HL</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+<td class="comment-1" rowspan="1">Restore the scene data pointer from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57251"></span>57251</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+<td class="comment-1" rowspan="1">Increment the scene data pointer by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57252"></span>57252</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57253"></span>57253</td>
 <td class="instruction">PUSH HL</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57254"></span>57254</td>
-<td class="instruction">CALL <a href="54281.html#54619">54619</a></td>
-<td class="comment-1" rowspan="1">Call <a href="54281.html#54619">54619</a>.</td>
+<td class="instruction">CALL <a href="54619.html">54619</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54619.html">54619</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57257"></span>57257</td>
 <td class="instruction">POP HL</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57258"></span>57258</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57259"></span>57259</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57260"></span>57260</td>
 <td class="instruction">AND %01111000</td>
 <td class="comment-1" rowspan="1">Keep only bits 3-6.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57262"></span>57262</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1">RRCA.</td>
+<td class="comment-1" rowspan="3">Rotate <span class="register">A</span> right three positions (bits 3 to 6 are now in positions 0 to 3).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57263"></span>57263</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1">RRCA.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57264"></span>57264</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1">RRCA.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57265"></span>57265</td>
 <td class="instruction">PUSH HL</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57266"></span>57266</td>
 <td class="instruction">LD (54272),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54270.html#54272">54272</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57269"></span>57269</td>
-<td class="instruction">CALL <a href="54281.html#54675">54675</a></td>
-<td class="comment-1" rowspan="1">Call <a href="54281.html#54675">54675</a>.</td>
+<td class="instruction">CALL <a href="54675.html">54675</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54675.html">54675</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57272"></span>57272</td>
 <td class="instruction">POP HL</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57273"></span>57273</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="3">Write 0 to: <ul class="">
@@ -187,667 +262,799 @@ Used by the routines at <a href="56857.html">GameEntryPoint</a> and <a href="637
 </ul></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57274"></span>57274</td>
 <td class="instruction">LD (53792),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57277"></span>57277</td>
 <td class="instruction">LD (53794),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57280"></span>57280</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57281"></span>57281</td>
 <td class="instruction">AND %00000111</td>
 <td class="comment-1" rowspan="1">Keep only bits 0-2.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57283"></span>57283</td>
 <td class="instruction">LD (54259),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54259.html">54259</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57286"></span>57286</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label">FindScene_0</td>
 <td class="address-2"><span id="57287"></span>57287</td>
 <td class="instruction">PUSH AF</td>
 <td class="comment-1" rowspan="2">Stash <span class="register">AF</span> and <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57288"></span>57288</td>
 <td class="instruction">PUSH HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57289"></span>57289</td>
 <td class="instruction">LD HL,54175</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="54175.html">54175</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57292"></span>57292</td>
 <td class="instruction">LD A,(53792)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53792.html">53792</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57295"></span>57295</td>
 <td class="instruction">LD D,0</td>
 <td class="comment-1" rowspan="1"><span class="register">D</span>=0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57297"></span>57297</td>
 <td class="instruction">LD E,A</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57298"></span>57298</td>
 <td class="instruction">ADD HL,DE</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57299"></span>57299</td>
 <td class="instruction">PUSH HL</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57300"></span>57300</td>
 <td class="instruction">POP IX</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">IX</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57302"></span>57302</td>
 <td class="instruction">ADD A,14</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>+=14.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57304"></span>57304</td>
 <td class="instruction">LD (53792),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53792.html">53792</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57307"></span>57307</td>
 <td class="instruction">LD A,(53794)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53794.html">53794</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57310"></span>57310</td>
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57311"></span>57311</td>
 <td class="instruction">LD (53794),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53794.html">53794</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57314"></span>57314</td>
 <td class="instruction">POP HL</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57315"></span>57315</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57316"></span>57316</td>
 <td class="instruction">AND %01111111</td>
 <td class="comment-1" rowspan="1">Keep only bits 0-6.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57318"></span>57318</td>
 <td class="instruction">LD E,A</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57319"></span>57319</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57320"></span>57320</td>
 <td class="instruction">AND %10000000</td>
 <td class="comment-1" rowspan="1">Keep only bit 7.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57322"></span>57322</td>
 <td class="instruction">RLCA</td>
-<td class="comment-1" rowspan="1">RLCA.</td>
+<td class="comment-1" rowspan="1">Move bit 7 to bit 0, and also set/ unset the carry flag.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57323"></span>57323</td>
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57324"></span>57324</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57325"></span>57325</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57326"></span>57326</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57327"></span>57327</td>
 <td class="instruction">AND %11100000</td>
 <td class="comment-1" rowspan="1">Keep only bits 5-7.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57329"></span>57329</td>
 <td class="instruction">RLCA</td>
-<td class="comment-1" rowspan="1">RLCA.</td>
+<td class="comment-1" rowspan="3">Rotate <span class="register">A</span> left three positions (bits 5 to 7 are now in positions 2 to 4).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57330"></span>57330</td>
 <td class="instruction">RLCA</td>
-<td class="comment-1" rowspan="1">RLCA.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57331"></span>57331</td>
 <td class="instruction">RLCA</td>
-<td class="comment-1" rowspan="1">RLCA.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57332"></span>57332</td>
 <td class="instruction">LD B,0</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57334"></span>57334</td>
 <td class="instruction">LD C,A</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57335"></span>57335</td>
 <td class="instruction">PUSH HL</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57336"></span>57336</td>
 <td class="instruction">LD HL,57509</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="57232.html#57509">57509</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57339"></span>57339</td>
 <td class="instruction">ADD HL,BC</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57340"></span>57340</td>
 <td class="instruction">LD D,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">D</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57341"></span>57341</td>
 <td class="instruction">POP HL</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57342"></span>57342</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57343"></span>57343</td>
 <td class="instruction">AND %00011111</td>
 <td class="comment-1" rowspan="1">Keep only bits 0-4.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57345"></span>57345</td>
 <td class="instruction">LD C,A</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57346"></span>57346</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57347"></span>57347</td>
 <td class="instruction">PUSH HL</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57348"></span>57348</td>
 <td class="instruction">LD HL,128</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=0128.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57351"></span>57351</td>
 <td class="instruction">ADD HL,BC</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57352"></span>57352</td>
 <td class="instruction">LD C,8</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=8.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57354"></span>57354</td>
 <td class="instruction">LD A,E</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">E</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57355"></span>57355</td>
 <td class="instruction">DEC A</td>
 <td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label">FindScene_1</td>
 <td class="address-2"><span id="57356"></span>57356</td>
 <td class="instruction">DEC C</td>
 <td class="comment-1" rowspan="1">Decrease <span class="register">C</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57357"></span>57357</td>
 <td class="instruction">SUB 6</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>-=6.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57359"></span>57359</td>
-<td class="instruction">JR NC,<a href="57232.html#57356">57356</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="57232.html#57356">57356</a> if {} is higher.</td>
+<td class="instruction">JR NC,<a href="57232.html#57356">FindScene_1</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="57232.html#57356">FindScene_1</a> if there's no carry (i.e. <span class="register">A</span> was higher than 6).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57361"></span>57361</td>
 <td class="instruction">RRC C</td>
-<td class="comment-1" rowspan="1">Rotate <span class="register">C</span> right (with carry).</td>
+<td class="comment-1" rowspan="3">Rotate <span class="register">C</span> right three positions.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57363"></span>57363</td>
 <td class="instruction">RRC C</td>
-<td class="comment-1" rowspan="1">Rotate <span class="register">C</span> right (with carry).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57365"></span>57365</td>
 <td class="instruction">RRC C</td>
-<td class="comment-1" rowspan="1">Rotate <span class="register">C</span> right (with carry).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57367"></span>57367</td>
 <td class="instruction">ADD HL,BC</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57368"></span>57368</td>
 <td class="instruction">LD B,H</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">H</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57369"></span>57369</td>
 <td class="instruction">LD C,L</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">L</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57370"></span>57370</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57371"></span>57371</td>
 <td class="instruction">CALL <a href="55921.html">55921</a></td>
 <td class="comment-1" rowspan="1">Call <a href="55921.html">55921</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57374"></span>57374</td>
 <td class="instruction">LD HL,54047</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="54047.html">54047</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57377"></span>57377</td>
 <td class="instruction">LD A,(IX+7)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">IX</span>+7.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57380"></span>57380</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1">RRCA.</td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> left one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57381"></span>57381</td>
-<td class="instruction">JR C,<a href="57232.html#57386">57386</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="57232.html#57386">57386</a> if {} is lower.</td>
+<td class="instruction">JR C,<a href="57232.html#57386">FindScene_2</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="57232.html#57386">FindScene_2</a> if the carry flag was set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57383"></span>57383</td>
 <td class="instruction">LD HL,54111</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="54047.html#54111">54111</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">FindScene_2</td>
 <td class="address-2"><span id="57386"></span>57386</td>
 <td class="instruction">LD D,0</td>
 <td class="comment-1" rowspan="1"><span class="register">D</span>=0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57388"></span>57388</td>
 <td class="instruction">LD E,(IX+1)</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=*<span class="register">IX</span>+1.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57391"></span>57391</td>
 <td class="instruction">ADD HL,DE</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57392"></span>57392</td>
 <td class="instruction">LD A,(IX+2)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">IX</span>+2.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57395"></span>57395</td>
 <td class="instruction">SUB E</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>-=<span class="register">E</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57396"></span>57396</td>
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57397"></span>57397</td>
 <td class="instruction">LD B,A</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label">FindScene_3</td>
 <td class="address-2"><span id="57398"></span>57398</td>
 <td class="instruction">LD A,(53794)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53794.html">53794</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57401"></span>57401</td>
 <td class="instruction">LD (HL),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57402"></span>57402</td>
 <td class="instruction">PUSH HL</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57403"></span>57403</td>
 <td class="instruction">LD E,32</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=32.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57405"></span>57405</td>
 <td class="instruction">ADD HL,DE</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57406"></span>57406</td>
 <td class="instruction">LD A,(IX+8)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">IX</span>+8.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57409"></span>57409</td>
 <td class="instruction">LD (HL),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57410"></span>57410</td>
 <td class="instruction">POP HL</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57411"></span>57411</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57412"></span>57412</td>
-<td class="instruction">DJNZ <a href="57232.html#57398">57398</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="57232.html#57398">57398</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="57232.html#57398">FindScene_3</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="57232.html#57398">FindScene_3</a> until counter is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57414"></span>57414</td>
 <td class="instruction">POP HL</td>
 <td class="comment-1" rowspan="2">Restore <span class="register">HL</span> and <span class="register">AF</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57415"></span>57415</td>
 <td class="instruction">POP AF</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57416"></span>57416</td>
 <td class="instruction">DEC A</td>
 <td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57417"></span>57417</td>
-<td class="instruction">JP NZ,<a href="57232.html#57287">57287</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="57232.html#57287">57287</a> until <span class="register">A</span> is zero.</td>
+<td class="instruction">JP NZ,<a href="57232.html#57287">FindScene_0</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="57232.html#57287">FindScene_0</a> until <span class="register">A</span> is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57420"></span>57420</td>
 <td class="instruction">LD HL,54047</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="54047.html">54047</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57423"></span>57423</td>
 <td class="instruction">LD DE,54111</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="54047.html#54111">54111</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57426"></span>57426</td>
 <td class="instruction">LD B,32</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=32.</td>
 </tr>
 <tr>
+<td class="asm-label">FindScene_4</td>
 <td class="address-2"><span id="57428"></span>57428</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57429"></span>57429</td>
 <td class="instruction">RLCA</td>
 <td class="comment-1" rowspan="1">RLCA.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57430"></span>57430</td>
 <td class="instruction">RLCA</td>
 <td class="comment-1" rowspan="1">RLCA.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57431"></span>57431</td>
 <td class="instruction">RLCA</td>
 <td class="comment-1" rowspan="1">RLCA.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57432"></span>57432</td>
 <td class="instruction">OR (HL)</td>
 <td class="comment-1" rowspan="1">Set the bits from *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57433"></span>57433</td>
 <td class="instruction">LD (HL),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57434"></span>57434</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57435"></span>57435</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57436"></span>57436</td>
-<td class="instruction">DJNZ <a href="57232.html#57428">57428</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="57232.html#57428">57428</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="57232.html#57428">FindScene_4</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="57232.html#57428">FindScene_4</a> until counter is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57438"></span>57438</td>
 <td class="instruction">LD A,254</td>
 <td class="comment-1" rowspan="2">Write 254 to *<a href="54270.html#54277">54277</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57440"></span>57440</td>
 <td class="instruction">LD (54277),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57443"></span>57443</td>
 <td class="instruction">LD A,(54272)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="57232.html#57497">57497</a> if *<a href="54270.html#54272">54272</a> is equal to 2.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="57232.html#57497">FindScene_8</a> if *<a href="54270.html#54272">54272</a> is equal to 2.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57446"></span>57446</td>
 <td class="instruction">CP 2</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57448"></span>57448</td>
-<td class="instruction">JR Z,<a href="57232.html#57497">57497</a></td>
+<td class="instruction">JR Z,<a href="57232.html#57497">FindScene_8</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57450"></span>57450</td>
 <td class="instruction">CP 5</td>
-<td class="comment-1" rowspan="2">Jump to <a href="57232.html#57502">57502</a> if <span class="register">A</span> is equal to 5.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="57232.html#57502">FindScene_9</a> if <span class="register">A</span> is equal to 5.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57452"></span>57452</td>
-<td class="instruction">JR Z,<a href="57232.html#57502">57502</a></td>
+<td class="instruction">JR Z,<a href="57232.html#57502">FindScene_9</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57454"></span>57454</td>
 <td class="instruction">LD A,24</td>
 <td class="comment-1" rowspan="2">Write 24 to *<a href="54270.html#54273">54273</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57456"></span>57456</td>
 <td class="instruction">LD (54273),A</td>
 </tr>
 <tr>
+<td class="asm-label">FindScene_5</td>
 <td class="address-2"><span id="57459"></span>57459</td>
 <td class="instruction">LD A,(57156)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="57156.html">CurrentLevel</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57462"></span>57462</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">RRCA.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57463"></span>57463</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">RRCA.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57464"></span>57464</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">RRCA.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57465"></span>57465</td>
 <td class="instruction">AND %00000111</td>
 <td class="comment-1" rowspan="1">Keep only bits 0-2.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57467"></span>57467</td>
 <td class="instruction">ADD A,2</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>+=2.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57469"></span>57469</td>
 <td class="instruction">CP 7</td>
-<td class="comment-1" rowspan="2">Jump to <a href="57232.html#57475">57475</a> if <span class="register">A</span> is lower than 7.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="57232.html#57475">FindScene_6</a> if <span class="register">A</span> is lower than 7.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57471"></span>57471</td>
-<td class="instruction">JR C,<a href="57232.html#57475">57475</a></td>
+<td class="instruction">JR C,<a href="57232.html#57475">FindScene_6</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57473"></span>57473</td>
 <td class="instruction">LD A,6</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=6.</td>
 </tr>
 <tr>
+<td class="asm-label">FindScene_6</td>
 <td class="address-2"><span id="57475"></span>57475</td>
 <td class="instruction">LD (53778),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53778.html">53778</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57478"></span>57478</td>
 <td class="instruction">LD A,(57156)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="57156.html">CurrentLevel</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57481"></span>57481</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">RRCA.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57482"></span>57482</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">RRCA.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57483"></span>57483</td>
 <td class="instruction">AND %00001111</td>
 <td class="comment-1" rowspan="1">Keep only bits 0-3.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57485"></span>57485</td>
 <td class="instruction">ADD A,6</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>+=6.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57487"></span>57487</td>
 <td class="instruction">CP 17</td>
-<td class="comment-1" rowspan="2">Jump to <a href="57232.html#57493">57493</a> if <span class="register">A</span> is lower than 17.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="57232.html#57493">FindScene_7</a> if <span class="register">A</span> is lower than 17.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57489"></span>57489</td>
-<td class="instruction">JR C,<a href="57232.html#57493">57493</a></td>
+<td class="instruction">JR C,<a href="57232.html#57493">FindScene_7</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57491"></span>57491</td>
 <td class="instruction">LD A,16</td>
 <td class="comment-1" rowspan="2">Write 16 to *<a href="53777.html">53777</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">FindScene_7</td>
 <td class="address-2"><span id="57493"></span>57493</td>
 <td class="instruction">LD (53777),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57496"></span>57496</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
+<td class="asm-label">FindScene_8</td>
 <td class="address-2"><span id="57497"></span>57497</td>
 <td class="instruction">LD A,32</td>
 <td class="comment-1" rowspan="2">Write 32 to *<a href="54270.html#54277">54277</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57499"></span>57499</td>
 <td class="instruction">LD (54277),A</td>
 </tr>
 <tr>
+<td class="asm-label">FindScene_9</td>
 <td class="address-2"><span id="57502"></span>57502</td>
 <td class="instruction">LD A,254</td>
 <td class="comment-1" rowspan="2">Write 254 to *<a href="54270.html#54273">54273</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57504"></span>57504</td>
 <td class="instruction">LD (54273),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57507"></span>57507</td>
-<td class="instruction">JR <a href="57232.html#57459">57459</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="57232.html#57459">57459</a>.</td>
+<td class="instruction">JR <a href="57232.html#57459">FindScene_5</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="57232.html#57459">FindScene_5</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57509"></span>57509</td>
 <td class="instruction">DEFB 80,88,96,32,112,48,120,56</td>
 <td class="comment-1" rowspan="1"></td>
@@ -857,32 +1064,37 @@ Used by the routines at <a href="56857.html">GameEntryPoint</a> and <a href="637
 <span id="57517"></span>
 <div class="comments">
 <div class="paragraph">
-This entry point is used by the routine at <a href="58742.html">58742</a>.
+This entry point is used by the routine at <a href="58925.html">58925</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">FindScene_10</td>
 <td class="address-2"><span id="57517"></span>57517</td>
 <td class="instruction">DEFB 33,77,210,121,167,250,193,224</td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57525"></span>57525</td>
 <td class="instruction">DEFB 134,79,35,120,167,250,201,224</td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57533"></span>57533</td>
 <td class="instruction">DEFB 134,71,24,14,238,128,150,47</td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57541"></span>57541</td>
 <td class="instruction">DEFB 60,79,24,238,238,128,150,47</td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57549"></span>57549</td>
 <td class="instruction">DEFB 60,71</td>
 <td class="comment-1" rowspan="1"></td>
@@ -898,243 +1110,295 @@ This entry point is used by the routines at <a href="57949.html">57949</a> and <
 </td>
 </tr>
 <tr>
+<td class="asm-label">FindScene_11</td>
 <td class="address-2"><span id="57551"></span>57551</td>
 <td class="instruction">LD A,C</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">C</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57552"></span>57552</td>
 <td class="instruction">CP 32</td>
-<td class="comment-1" rowspan="2">Jump to <a href="57232.html#57610">57610</a> if <span class="register">A</span> is higher than 32.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="57232.html#57610">FindScene_13</a> if <span class="register">A</span> is higher than 32.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57554"></span>57554</td>
-<td class="instruction">JR NC,<a href="57232.html#57610">57610</a></td>
+<td class="instruction">JR NC,<a href="57232.html#57610">FindScene_13</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57556"></span>57556</td>
 <td class="instruction">LD A,B</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57557"></span>57557</td>
 <td class="instruction">CP 24</td>
-<td class="comment-1" rowspan="2">Jump to <a href="57232.html#57610">57610</a> if <span class="register">A</span> is higher than 24.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="57232.html#57610">FindScene_13</a> if <span class="register">A</span> is higher than 24.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57559"></span>57559</td>
-<td class="instruction">JR NC,<a href="57232.html#57610">57610</a></td>
+<td class="instruction">JR NC,<a href="57232.html#57610">FindScene_13</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57561"></span>57561</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">RRCA.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57562"></span>57562</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">RRCA.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57563"></span>57563</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">RRCA.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57564"></span>57564</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57565"></span>57565</td>
 <td class="instruction">AND %00000011</td>
 <td class="comment-1" rowspan="1">Keep only bits 0-1.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57567"></span>57567</td>
 <td class="instruction">ADD A,101</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>+=101.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57569"></span>57569</td>
 <td class="instruction">LD H,A</td>
 <td class="comment-1" rowspan="1"><span class="register">H</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57570"></span>57570</td>
 <td class="instruction">LD A,L</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">L</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57571"></span>57571</td>
 <td class="instruction">AND %11100000</td>
 <td class="comment-1" rowspan="1">Keep only bits 5-7.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57573"></span>57573</td>
 <td class="instruction">ADD A,C</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">C</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57574"></span>57574</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57575"></span>57575</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="57232.html#57598">57598</a> if *<span class="register">HL</span> is not zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="57232.html#57598">FindScene_12</a> if *<span class="register">HL</span> is not zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57576"></span>57576</td>
 <td class="instruction">AND A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57577"></span>57577</td>
-<td class="instruction">JR NZ,<a href="57232.html#57598">57598</a></td>
+<td class="instruction">JR NZ,<a href="57232.html#57598">FindScene_12</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57579"></span>57579</td>
 <td class="instruction">DEC H</td>
 <td class="comment-1" rowspan="3">Decrease <span class="register">H</span> by three.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57580"></span>57580</td>
 <td class="instruction">DEC H</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57581"></span>57581</td>
 <td class="instruction">DEC H</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57582"></span>57582</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="57232.html#57598">57598</a> if *<span class="register">HL</span> is not zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="57232.html#57598">FindScene_12</a> if *<span class="register">HL</span> is not zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57583"></span>57583</td>
 <td class="instruction">AND A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57584"></span>57584</td>
-<td class="instruction">JR NZ,<a href="57232.html#57598">57598</a></td>
+<td class="instruction">JR NZ,<a href="57232.html#57598">FindScene_12</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57586"></span>57586</td>
 <td class="instruction">LD A,D</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">D</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57587"></span>57587</td>
 <td class="instruction">CP 61</td>
-<td class="comment-1" rowspan="2">Jump to <a href="57232.html#57619">57619</a> if <span class="register">A</span> is not equal to 61.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="57232.html#57619">FindScene_14</a> if <span class="register">A</span> is not equal to 61.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57589"></span>57589</td>
-<td class="instruction">JR NZ,<a href="57232.html#57619">57619</a></td>
+<td class="instruction">JR NZ,<a href="57232.html#57619">FindScene_14</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57591"></span>57591</td>
 <td class="instruction">DEC H</td>
 <td class="comment-1" rowspan="3">Decrease <span class="register">H</span> by three.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57592"></span>57592</td>
 <td class="instruction">DEC H</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57593"></span>57593</td>
 <td class="instruction">DEC H</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57594"></span>57594</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="57232.html#57620">57620</a> if *<span class="register">HL</span> is zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="57232.html#57620">FindScene_15</a> if *<span class="register">HL</span> is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57595"></span>57595</td>
 <td class="instruction">AND A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57596"></span>57596</td>
-<td class="instruction">JR Z,<a href="57232.html#57620">57620</a></td>
+<td class="instruction">JR Z,<a href="57232.html#57620">FindScene_15</a></td>
 </tr>
 <tr>
+<td class="asm-label">FindScene_12</td>
 <td class="address-2"><span id="57598"></span>57598</td>
 <td class="instruction">CP D</td>
-<td class="comment-1" rowspan="2">Jump to <a href="57232.html#57620">57620</a> if <span class="register">A</span> is lower than <span class="register">D</span>.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="57232.html#57620">FindScene_15</a> if <span class="register">A</span> is lower than <span class="register">D</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57599"></span>57599</td>
-<td class="instruction">JR C,<a href="57232.html#57620">57620</a></td>
+<td class="instruction">JR C,<a href="57232.html#57620">FindScene_15</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57601"></span>57601</td>
 <td class="instruction">INC E</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">E</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57602"></span>57602</td>
 <td class="instruction">CP E</td>
-<td class="comment-1" rowspan="2">Jump to <a href="57232.html#57620">57620</a> if <span class="register">A</span> is higher than <span class="register">E</span>.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="57232.html#57620">FindScene_15</a> if <span class="register">A</span> is higher than <span class="register">E</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57603"></span>57603</td>
-<td class="instruction">JR NC,<a href="57232.html#57620">57620</a></td>
+<td class="instruction">JR NC,<a href="57232.html#57620">FindScene_15</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57605"></span>57605</td>
 <td class="instruction">LD (53781),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53781.html">53781</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57608"></span>57608</td>
 <td class="instruction">OR A</td>
 <td class="comment-1" rowspan="1">Set the bits from <span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57609"></span>57609</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
+<td class="asm-label">FindScene_13</td>
 <td class="address-2"><span id="57610"></span>57610</td>
 <td class="instruction">POP HL</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57611"></span>57611</td>
 <td class="instruction">LD A,(54267)</td>
 <td class="comment-1" rowspan="3">Jump to <a href="61318.html">61318</a> if *<a href="54266.html#54267">54267</a> is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57614"></span>57614</td>
 <td class="instruction">AND A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57615"></span>57615</td>
 <td class="instruction">JP Z,<a href="61318.html">61318</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57618"></span>57618</td>
 <td class="instruction">PUSH HL</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label">FindScene_14</td>
 <td class="address-2"><span id="57619"></span>57619</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="2">Write 0 to *<a href="53781.html">53781</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">FindScene_15</td>
 <td class="address-2"><span id="57620"></span>57620</td>
 <td class="instruction">LD (53781),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57623"></span>57623</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="57624"></span>57624</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
