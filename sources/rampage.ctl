@@ -43,6 +43,8 @@ D $C850 For instance; if George and Lizzy are computer controlled and Ralph uses
 L $C850,$0A,$03
 
 b $C86E
+  $C896
+  $C8A9
 
 b $C8BA
   $C8BA,$08 #UDG(#PC)
@@ -141,7 +143,14 @@ D $CDE2 For usage see #R$DF90.
 
 g $CFD2 Data: George
 @ $CFD2 label=George_State
-  $CFD2,$01 #TABLE(default,centre,centre) { =h Value | =h Meaning } { #N$05 | Waiting } { #N$FF | Game Over } TABLE#
+  $CFD2,$01 #TABLE(default,centre,centre)
+. { =h Value | =h Meaning }
+. { #N$05 | Waiting }
+. { #N$1C | Falling }
+. { #N$21 | Explosion }
+. { #N$23 | Human }
+. { #N$FF | Game Over }
+. TABLE#
 @ $CFD7 label=George_Countdown
   $CFD7,$01
 @ $CFDB label=George_X_Position
@@ -168,7 +177,14 @@ W $CFE1,$02
 
 g $D001 Data: Lizzy
 @ $D001 label=Lizzy_State
-  $D001,$01 #TABLE(default,centre,centre) { =h Value | =h Meaning } { #N$05 | Waiting } { #N$FF | Game Over } TABLE#
+  $D001,$01 #TABLE(default,centre,centre)
+. { =h Value | =h Meaning }
+. { #N$05 | Waiting }
+. { #N$1C | Falling }
+. { #N$21 | Explosion }
+. { #N$23 | Human }
+. { #N$FF | Game Over }
+. TABLE#
 @ $D006 label=Lizzy_Countdown
   $D006,$01
 @ $D00A label=Lizzy_X_Position
@@ -194,7 +210,14 @@ W $D010,$02
 
 g $D030 Data: Ralph
 @ $D030 label=Ralph_State
-  $D030,$01 #TABLE(default,centre,centre) { =h Value | =h Meaning } { #N$05 | Waiting } { #N$FF | Game Over } TABLE#
+  $D030,$01 #TABLE(default,centre,centre)
+. { =h Value | =h Meaning }
+. { #N$05 | Waiting }
+. { #N$1C | Falling }
+. { #N$21 | Explosion }
+. { #N$23 | Human }
+. { #N$FF | Game Over }
+. TABLE#
 @ $D035 label=Ralph_Countdown
   $D035,$01
 @ $D039 label=Ralph_X_Position
@@ -345,11 +368,14 @@ g $D243
 
 g $D244
 
+g $D246
+
 g $D247
 
-g $D24D
+g $D248
 
-g $D24E
+g $D24D
+  $D24D,$02,$01
 
 g $D24F
 
@@ -358,9 +384,19 @@ W $D253
 
 g $D255
 
+g $D2A7
+
 b $D2BC
 
-b $D30A
+b $D2BF Table: Bullets
+@ $D2BF label=Table_Bullets
+  $D2BF,$03 ##N($01+(#PC-$D2BF)/$03).
+L $D2BF,$03,$1A
+
+b $D30D Table: Projectiles
+@ $D30D label=Table_Projectiles
+  $D30D,$03 ##N($01+(#PC-$D30D)/$03).
+L $D30D,$03,$06
 
 b $D31F
 
@@ -368,7 +404,11 @@ b $D39F
 
 b $D3F3
 
+b $D3F6
+
 b $D3F8
+
+b $D3F9
 
 b $D3FA
   $D3FA
@@ -1301,16 +1341,52 @@ c $DBE5
 
 c $DCA1
 
-c $DD6C
+c $DD38
+  $DD38,$02 #REGh=#N$00.
+  $DD3A,$01 #REGl=#REGb.
+  $DD3B,$01 #REGd=#REGh.
+  $DD3C,$01 #REGe=#REGc.
+  $DD3D,$06 #REGhl*=#N$20+#REGde.
+  $DD43,$01 #REGa=#REGh.
+  $DD44,$02 #REGa+=#N$68.
+  $DD46,$01 #REGh=#REGa.
+  $DD47,$01 #REGa=*#REGhl.
+  $DD48,$03 Return if #REGa is not equal to #N$FF.
+  $DD4B,$01 #REGa=#N$00.
+  $DD4C,$01 Return.
+
+c $DD4D
+  $DD4D,$02,b$01 Keep only bits 6-7.
+  $DD4F,$02 RLCA.
+  $DD51,$01 Increment #REGa by one.
+  $DD52,$04 Jump to #R$DD5B if #REGa is not equal to #N$01.
+  $DD56,$04 #REGiy=#R$CFD2.
+  $DD5A,$01 Return.
+  $DD5B,$04 Jump to #R$DD64 if #REGa is not equal to #N$02.
+  $DD5F,$04 #REGiy=#R$D001.
+  $DD63,$01 Return.
+  $DD64,$03 Return if #REGa is not equal to #N$03.
+  $DD67,$04 #REGiy=#R$D030.
+  $DD6B,$01 Return.
+
+c $DD6C Handler: Decrease Energy
+@ $DD6C label=Handler_DecreaseEnergy
+R $DD6C IY Monster Pointer
+R $DD6C A Damage value
   $DD6C,$01 Exchange the #REGaf register with the shadow #REGaf register.
-  $DD6D,$06 Return if *#REGiy+#N$00 is higher than #N$21.
-  $DD73,$01 Exchange the #REGaf register with the shadow #REGaf register.
-  $DD74,$03 Decrease *#REGiy+#N$0C by one.
+  $DD6D,$06 Return if the monster state (*#REGiy+#N$00) is higher than #N$21 (includes the "explosion" and "human"
+.           states). If this is the case then the monster is already "game over".
+  $DD73,$01 Exchange the shadow #REGaf register back to the normal #REGaf register.
+N $DD74 Keep decreasing the monsters energy by the number held in #REGa.
+@ $DD74 label=Handler_DecreaseEnergy_Loop
+  $DD74,$03 Decrease monster energy (*#REGiy+#N$0C) by one.
   $DD77,$01 Decrease #REGa by one.
   $DD78,$02 Jump to #R$DD74 until #REGa is zero.
+N $DD7A Is the monster still in-play?
   $DD7A,$06 Return if *#REGiy+#N$0C is lower than #N$C8.
-  $DD80,$04 Write #N$00 to *#REGiy+#N$0C.
-  $DD84,$04 Write #N$21 to *#REGiy+#N$00.
+N $DD80 If the monsters energy falls to less than #N$00 - their turn is over.
+  $DD80,$04 Reset monsters energy to #N$00 (in *#REGiy+#N$0C).
+  $DD84,$04 Write #N$21 (explosion state) to the current monster state (*#REGiy+#N$00).
   $DD88,$01 Return.
 
 c $DD89
@@ -2102,11 +2178,124 @@ c $E25D
 
 w $E556 Jump Table
 
-c $E576
+c $E576 Handler: Bullets
+@ $E576 label=Handler_Bullets
+  $E576,$02 #REGb=#N$1A (number of possible bullets).
+  $E578,$03 #REGhl=#R$D2BF.
+@ $E57B label=Handler_Bullets_Loop
+  $E57B,$01 Stash current bullet on the stack.
+  $E57C,$05 Jump to #R$E624 if this bullet is not active.
+N $E581 This bullet is active so let's process it.
+  $E581,$01 Increment #REGhl by one.
+  $E582,$01 #REGc=*#REGhl.
+  $E583,$01 Increment #REGhl by one.
+  $E584,$01 #REGb=*#REGhl.
+  $E585,$01 Stash the bullet table pointer on the stack.
+  $E586,$05 Jump to #R$E5AC if #REGa is higher than #N$80.
+  $E58B,$04 Jump to #R$E5A9 if #REGa is equal to #N$05.
+  $E58F,$04 Jump to #R$E5A5 if #REGa is equal to #N$04.
+  $E593,$04 Jump to #R$E5A2 if #REGa is equal to #N$03.
+  $E597,$04 Jump to #R$E59E if #REGa is equal to #N$02.
+  $E59B,$01 Increment #REGb by one.
+  $E59C,$02 Jump to #R$E5CD.
+  $E59E,$01 Increment #REGc by one.
+  $E59F,$01 Increment #REGb by one.
+  $E5A0,$02 Jump to #R$E5CD.
+  $E5A2,$01 Increment #REGc by one.
+  $E5A3,$02 Jump to #R$E5CD.
+  $E5A5,$01 Decrease #REGb by one.
+  $E5A6,$01 Increment #REGc by one.
+  $E5A7,$02 Jump to #R$E5CD.
+  $E5A9,$01 Decrease #REGb by one.
+  $E5AA,$02 Jump to #R$E5CD.
+  $E5AC,$02,b$01 Keep only bits 0-3.
+  $E5AE,$04 Jump to #R$E5CC if #REGa is equal to #N$05.
+  $E5B2,$04 Jump to #R$E5C8 if #REGa is equal to #N$04.
+  $E5B6,$04 Jump to #R$E5C5 if #REGa is equal to #N$03.
+  $E5BA,$04 Jump to #R$E5C1 if #REGa is equal to #N$02.
+  $E5BE,$01 Increment #REGb by one.
+  $E5BF,$02 Jump to #R$E5CD.
+  $E5C1,$01 Decrease #REGc by one.
+  $E5C2,$01 Increment #REGb by one.
+  $E5C3,$02 Jump to #R$E5CD.
+  $E5C5,$01 Decrease #REGc by one.
+  $E5C6,$02 Jump to #R$E5CD.
+  $E5C8,$01 Decrease #REGb by one.
+  $E5C9,$01 Decrease #REGc by one.
+  $E5CA,$02 Jump to #R$E5CD.
+  $E5CC,$01 Decrease #REGb by one.
+  $E5CD,$01 #REGa=#REGb.
+  $E5CE,$04 Jump to #R$E600 if #REGa is higher than #N$18.
+  $E5D2,$01 #REGa=#REGc.
+  $E5D3,$04 Jump to #R$E600 if #REGa is higher than #N$20.
+  $E5D7,$01 Stash #REGhl on the stack.
+  $E5D8,$03 Call #R$DD38.
+  $E5DB,$03 Jump to #R$E5F4 if #REGa is zero.
+  $E5DE,$04 Jump to #R$E5F4 if #REGa is higher than #N$C1.
+  $E5E2,$02,b$01 Keep only bits 0-5.
+  $E5E4,$04 Jump to #R$E5F4 if #REGa is higher than #N$32.
+N $E5E8 There's been a hit, find out which monster.
+  $E5E8,$01 #REGa=*#REGhl.
+  $E5E9,$03 Call #R$DD4D.
+N $E5EC Take off one hit point from the monsters energy.
+  $E5EC,$02 #REGa=#N$01 (damage).
+  $E5EE,$03 Call #R$DD6C.
+  $E5F1,$01 Restore #REGhl from the stack.
+  $E5F2,$02 Jump to #R$E61B.
+  $E5F4,$01 Restore #REGhl from the stack.
+  $E5F5,$01 Write #REGb to *#REGhl.
+  $E5F6,$01 Decrease #REGhl by one.
+  $E5F7,$01 Write #REGc to *#REGhl.
+  $E5F8,$02 #REGa=#N$F4.
+  $E5FA,$03 Call #R$D6C9.
+  $E5FD,$01 Restore #REGhl from the stack.
+  $E5FE,$02 Jump to #R$E626.
+  $E600,$02 Decrease #REGhl by two.
+  $E602,$02 Write #N$00 to *#REGhl.
+  $E604,$06 Jump to #R$E614 if *#R$D3F8 is not zero.
+  $E60A,$03 #REGa=*#R$D3F9.
+  $E60D,$01 Decrease #REGa by one.
+  $E60E,$03 Write #REGa to *#R$D3F9.
+  $E611,$01 Restore #REGhl from the stack.
+  $E612,$02 Jump to #R$E626.
+  $E614,$01 Decrease #REGa by one.
+  $E615,$03 Write #REGa to *#R$D3F8.
+  $E618,$01 Restore #REGhl from the stack.
+  $E619,$02 Jump to #R$E626.
+  $E61B,$02 #REGa=#N$73.
+  $E61D,$01 Stash #REGhl on the stack.
+  $E61E,$03 Call #R$D6C9.
+  $E621,$01 Restore #REGhl from the stack.
+  $E622,$02 Jump to #R$E600.
+@ $E624 label=Collision_Bullets_Next
+  $E624,$03 Increment #REGhl by three.
+  $E627,$01 Restore bullet ID from the stack.
+  $E628,$01 Decrease bullet ID by one.
+  $E629,$03 Jump to #R$E57B until all bullets have been processed.
+  $E62C,$01 Return.
 
 c $E62D
+  $EA88,$05 Write #N$09 to *#R$D244.
+  $EA8D,$04 #REGiy=#R$D244.
+N $EA91 Take off four hit points from the monsters energy.
+  $EA91,$02 #REGa=#N$04.
+  $EA93,$03 Call #R$DD6C.
+  $EA96,$05 Write #N$05 to *#R$FF8D.
+  $EA9B,$01 Return.
 
-B $EF50
+c $EF38
+  $EF38,$04 #REGbc=*#R$D24D.
+  $EF3C,$03 #REGa=*#R$D247.
+  $EF3F,$01 Rotate #REGa right one position, setting the carry flag if bit 7 was set.
+  $EF40,$02 Jump to #R$EF49 if {} is lower.
+  $EF42,$03 #REGb+=#REGh.
+  $EF45,$03 #REGc+=#REGl.
+  $EF48,$01 Return.
+  $EF49,$03 #REGb+=#REGd.
+  $EF4C,$03 #REGc+=#REGe.
+  $EF4F,$01 Return.
+
+b $EF50
 
 c $EF86
   $EF86,$03 Call #R$DB54.
@@ -2152,8 +2341,7 @@ c $EFE0
   $F027,$02 #REGc=#N$38.
   $F029,$03 #REGe=*#REGix+#N$01.
   $F02C,$03 #REGb=*#REGix+#N$06.
-  $F02F,$03 #REGhl=#R$D31F.
-  $F032,$01 #REGhl+=#REGde.
+  $F02F,$04 #REGhl=#R$D31F+#REGde.
   $F033,$01 #REGa=*#REGhl.
   $F034,$01 Merge the bits from #REGc.
   $F035,$01 Write #REGa to *#REGhl.
@@ -2173,8 +2361,7 @@ c $EFE0
   $F04E,$01 Increment #REGhl by one.
   $F04F,$01 Increment #REGde by one.
   $F050,$02 Decrease counter by one and loop back to #R$F048 until counter is zero.
-  $F052,$02 #REGa=#N$09.
-  $F054,$03 Write #REGa to *#R$FF8D.
+  $F052,$05 Write #N$09 to *#R$FF8D.
   $F057,$03 Jump to #R$F0AB.
   $F05A,$03 Decrease *#REGix+#N$0D by one.
   $F05D,$02 Jump to #R$F0AB until *#REGix+#N$0D is zero.
@@ -2350,6 +2537,68 @@ c $F31C
   $F351,$01 Return.
 
 c $F352
+  $F352,$03 Call #R$EF38.
+  $F355,$03 #REGhl=*#R$D224.
+  $F358,$01 Write #REGb to *#REGhl.
+  $F359,$01 Increment #REGhl by one.
+  $F35A,$01 Write #REGc to *#REGhl.
+  $F35B,$01 Increment #REGhl by one.
+  $F35C,$03 #REGa=*#R$D246.
+  $F35F,$01 Write #REGa to *#REGhl.
+  $F360,$01 Increment #REGhl by one.
+  $F361,$03 #REGa=*#R$D248.
+  $F364,$01 Write #REGa to *#REGhl.
+  $F365,$01 Increment #REGhl by one.
+  $F366,$03 #REGa=*#R$D244.
+  $F369,$01 Write #REGa to *#REGhl.
+  $F36A,$01 Increment #REGhl by one.
+  $F36B,$03 #REGa=*#R$D247.
+  $F36E,$01 Write #REGa to *#REGhl.
+  $F36F,$01 Increment #REGhl by one.
+  $F370,$03 Write #REGhl to *#R$D224.
+  $F373,$03 Call #R$DD38.
+  $F376,$01 #REGb=#REGa.
+  $F377,$02 #REGc=#N$00.
+  $F379,$01 #REGa=*#REGhl.
+  $F37A,$04 Jump to #R$F38B if #REGa is higher than #N$C1.
+  $F37E,$02,b$01 Keep only bits 0-5.
+  $F380,$04 Jump to #R$F38B if #REGa is higher than #N$32.
+  $F384,$01 #REGa=*#REGhl.
+  $F385,$02,b$01 Keep only bits 6-7.
+  $F387,$01 RLCA.
+  $F388,$01 RLCA.
+  $F389,$01 Increment #REGa by one.
+  $F38A,$01 #REGc=#REGa.
+  $F38B,$03 Call #R$F3AF.
+  $F38E,$01 Increment #REGhl by one.
+  $F38F,$03 Call #R$F3AF.
+  $F392,$02 #REGe=#N$1F.
+  $F394,$01 #REGhl+=#REGde.
+  $F395,$03 Call #R$F3AF.
+  $F398,$01 Increment #REGhl by one.
+  $F399,$03 Call #R$F3AF.
+  $F39C,$05 Return if *#R$D3FB is not zero.
+  $F3A1,$03 #REGhl=*#R$D226.
+  $F3A4,$01 Write #REGb to *#REGhl.
+  $F3A5,$01 Increment #REGhl by one.
+  $F3A6,$03 Write #REGhl to *#R$D226.
+  $F3A9,$05 Write #N$01 to *#R$D218.
+  $F3AE,$01 Return.
+  $F3AF,$04 Jump to #R$F3C5 if *#REGhl is zero.
+  $F3B3,$04 Jump to #R$F3C5 if #REGa is equal to #N$FF.
+  $F3B7,$02 Return if #REGa is equal to #REGb.
+  $F3B9,$04 Jump to #R$F3C5 if #REGc is zero.
+  $F3BD,$01 #REGa=*#REGhl.
+  $F3BE,$02,b$01 Keep only bits 6-7.
+  $F3C0,$01 RLCA.
+  $F3C1,$01 RLCA.
+  $F3C2,$01 Increment #REGa by one.
+  $F3C3,$02 Return if #REGa is equal to #REGc.
+  $F3C5,$01 Restore #REGde from the stack.
+  $F3C6,$02 #REGb=#N$00.
+  $F3C8,$02 Jump to #R$F39C.
+
+c $F3CA
 
 c $F3EF
 
@@ -2366,7 +2615,82 @@ c $F434
 
 c $F450
 
-c $F69F
+c $F69F Handler: Projectiles
+@ $F69F label=Handler_Projectiles
+  $F69F,$02 #REGb=#N$06 (number of possible projectiles).
+  $F6A1,$03 #REGhl=#R$D30D.
+@ $F6A4 label=Handler_Projectiles_Loop
+  $F6A4,$01 Stash current projectile on the stack.
+  $F6A5,$04 Jump to #R$F711 if this projectile is not active.
+N $F6A9 This projectile is active so let's process it.
+  $F6A9,$01 Increment #REGa by one.
+  $F6AA,$01 Write #REGa to *#REGhl.
+  $F6AB,$01 #REGe=#REGa.
+  $F6AC,$01 Increment #REGhl by one.
+  $F6AD,$01 #REGb=*#REGhl.
+  $F6AE,$01 Stash #REGhl on the stack.
+  $F6AF,$01 Increment #REGhl by one.
+  $F6B0,$01 #REGc=*#REGhl.
+  $F6B1,$04 Jump to #R$F6BA if #REGa is higher than #N$41.
+  $F6B5,$03 #REGhl=#R$C8A9.
+  $F6B8,$02 Jump to #R$F6BD.
+  $F6BA,$03 #REGhl=#R$C896.
+  $F6BD,$05 Write #N$01 to *#R$D3FF.
+  $F6C2,$01 #REGa=#REGe.
+  $F6C3,$02,b$01 Keep only bits 0-5.
+  $F6C5,$01 Decrease #REGa by one.
+  $F6C6,$03 Call #R$EB5A.
+  $F6C9,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $F6CA,$04 Jump to #R$F6CF if bit 4 of #REGa is not set.
+  $F6CE,$01 Increment #REGb by one.
+  $F6CF,$04 Write #N$00 to *#R$D3FF.
+  $F6D3,$01 Restore #REGhl from the stack.
+  $F6D4,$01 #REGa=#REGc.
+  $F6D5,$04 Jump to #R$F707 if #REGa is higher than #N$20.
+  $F6D9,$01 #REGa=#REGb.
+  $F6DA,$04 Jump to #R$F707 if #REGa is higher than #N$18.
+  $F6DE,$01 Stash #REGhl on the stack.
+  $F6DF,$03 Call #R$DD38.
+  $F6E2,$03 Jump to #R$F6FA if #REGa is zero.
+  $F6E5,$04 Jump to #R$F6FA if #REGa is higher than #N$C1.
+  $F6E9,$02,b$01 Keep only bits 0-5.
+  $F6EB,$04 Jump to #R$F6FA if #REGa is higher than #N$32.
+N $F6EF There's been a hit, find out which monster.
+  $F6EF,$01 #REGa=*#REGhl.
+  $F6F0,$03 Call #R$DD4D.
+N $F6F3 Take off two hit points from the monsters energy.
+  $F6F3,$02 #REGa=#N$02 (damage).
+  $F6F5,$03 Call #R$DD6C.
+  $F6F8,$02 Jump to #R$F719.
+  $F6FA,$01 Restore #REGhl from the stack.
+  $F6FB,$01 Write #REGb to *#REGhl.
+  $F6FC,$01 Increment #REGhl by one.
+  $F6FD,$01 Write #REGc to *#REGhl.
+  $F6FE,$01 Stash #REGhl on the stack.
+  $F6FF,$02 #REGa=#N$F6.
+  $F701,$03 Call #R$D6C9.
+  $F704,$01 Restore #REGhl from the stack.
+  $F705,$02 Jump to #R$F713.
+  $F707,$01 Decrease #REGhl by one.
+  $F708,$02 Write #N$00 to *#REGhl.
+  $F70A,$03 #REGa=*#R$D3FA.
+  $F70D,$01 Decrease #REGa by one.
+  $F70E,$03 Write #REGa to *#R$D3FA.
+@ $F711 label=Collision_Projectiles_Next
+  $F711,$03 Move onto the next projectile table data.
+  $F714,$01 Restore projectile ID from the stack.
+  $F715,$01 Decrease projectile ID by one.
+  $F716,$02 Jump to #R$F6A4 until all projectiles have been processed.
+  $F718,$01 Return.
+
+c $F719 Sounds: Projectile "Hit"
+N $F719 #AUDIO(projectile.wav)(#INCLUDE(Projectile))
+@ $F719 label=Audio_Projectiles_Hit
+  $F719,$05 Write melody #N$05 to *#R$FF8D.
+  $F71E,$02 #REGa=#N$75.
+  $F720,$03 Call #R$D6C9.
+  $F723,$01 Restore #REGhl from the stack.
+  $F724,$02 Jump to #R$F707.
 
 c $F726 Print Banner
 @ $F726 label=PrintBanner
@@ -2433,13 +2757,132 @@ c $F788
   $F791,$03 Call #R$F795.
   $F794,$01 Return.
 
-c $F795
-  $F795,$02 #REGb=#N$03.
+c $F795 Handler: Collision Monsters?
+@ $F795 label=Handler_Monsters
+  $F795,$02 #REGb=#N$03 (total number of monsters/ players).
+@ $F797 label=Handler_Monsters_Loop
+  $F797,$01 #REGa=*#REGhl.
+  $F798,$03 Jump to #R$F7DA if #REGa is zero.
+  $F79B,$04 Jump to #R$F7DE if #REGa is higher than #N$C1.
+  $F79F,$02,b$01 Keep only bits 0-5.
+  $F7A1,$04 Jump to #R$F7DE if #REGa is higher than #N$32.
+  $F7A5,$01 #REGa=#REGb.
+  $F7A6,$03 Call #R$DD52.
+  $F7A9,$04 #REGix=#REGiy.
+  $F7AD,$01 #REGa=*#REGhl.
+  $F7AE,$03 Call #R$DD4D.
+  $F7B1,$03 Jump to #R$F7DA if #REGa is equal to #REGb.
+  $F7B4,$06 Jump to #R$F7C8 if *#REGiy+#N$02 is not zero.
+  $F7BA,$03 #REGa=*#REGiy+#N$03.
+  $F7BD,$03
+  $F7C0,$02 Jump to #R$F7C8 if the result is zero.
+  $F7C2,$03 #REGa=*#REGix+#N$03.
+  $F7C5,$03 Write #REGa to *#REGiy+#N$03.
+@ $F7C8 label=Handler_Monsters_Punched
+  $F7C8,$04 Write #N$0A to *#REGiy+#N$00.
+  $F7CC,$04 Write #N$01 to *#REGiy+#N$04.
+N $F7D0 Take off two hit points from the monsters energy.
+  $F7D0,$02 #REGa=#N$02.
+  $F7D2,$03 Call #R$DD6C.
+  $F7D5,$05 Write #N$06 to *#R$FF8D.
+  $F7DA,$01 Decrease #REGhl by one.
+  $F7DB,$02 Decrease counter by one and loop back to #R$F797 until counter is zero.
+  $F7DD,$01 Return.
+  $F7DE,$01 #REGa=*#REGhl.
+  $F7DF,$02 Stash #REGhl and #REGbc on the stack.
+  $F7E1,$04 Jump to #R$F804 if #REGa is equal to #N$05.
+  $F7E5,$04 Jump to #R$F808 if #REGa is lower than #N$40.
+  $F7E9,$04 Jump to #R$F82B if #REGa is equal to #N$79.
+  $F7ED,$04 Jump to #R$F804 if #REGa is equal to #N$7B.
+  $F7F1,$04 Jump to #R$F804 if #REGa is equal to #N$7F.
+  $F7F5,$04 Jump to #R$F804 if #REGa is equal to #N$75.
+  $F7F9,$04 Jump to #R$F804 if #REGa is equal to #N$77.
+  $F7FD,$04 Jump to #R$F851 if #REGa is lower than #N$DD.
+  $F801,$03 Jump to #R$F878.
+  $F804,$02 Restore #REGbc and #REGhl from the stack.
+  $F806,$02 Jump to #R$F7DA.
+  $F808,$05 Write #N$18 to *#R$D401.
+  $F80D,$01 #REGa=#REGb.
+  $F80E,$03 #REGde=#N$0503.
+  $F811,$03 Call #R$DD97.
+  $F814,$03 #REGa=*#R$D404.
+  $F817,$02,b$01 Keep only bits 0-5.
+  $F819,$01 Increment #REGa by one.
+  $F81A,$01 #REGb=#REGa.
+  $F81B,$03 #REGa=*#R$D403.
+  $F81E,$01 #REGc=#REGa.
+  $F81F,$02 #REGa=#N$77.
+  $F821,$03 Call #R$D6C9.
+  $F824,$02 #REGa=#N$06.
+  $F826,$03 Write #REGa to *#R$FF8D.
+  $F829,$02 Jump to #R$F804.
+  $F82B,$01 #REGa=#REGb.
+  $F82C,$03 Call #R$DD52.
+  $F82F,$03 #REGa=*#R$D406.
+  $F832,$02 #REGa-=#N$04.
+  $F834,$03 Compare #REGa with *#REGiy+#N$09.
+  $F837,$03 #REGa=*#R$D407.
+  $F83A,$02 Jump to #R$F83E if {} is higher.
+  $F83C,$02,b$01 Reset bit 7.
+  $F83E,$02,b$01 Set bit 6.
+  $F840,$03 Write #REGa to *#R$D407.
+  $F843,$01 #REGa=#REGb.
+  $F844,$03 #REGde=#N$0203.
+  $F847,$03 Call #R$DD97.
+  $F84A,$05 Write #N$06 to *#R$FF8D.
+  $F84F,$02 Jump to #R$F804.
+  $F851,$01 #REGa=#REGb.
+  $F852,$03 Call #R$DD52.
+  $F855,$06 Jump to #R$F804 if *#REGiy+#N$04 is not zero.
+  $F85B,$06 Jump to #R$F804 if *#REGiy+#N$02 is zero.
+  $F861,$04 Write #N$1A to *#REGiy+#N$00.
+  $F865,$04 Write #N$04 to *#REGiy+#N$07.
+  $F869,$01 #REGa=#REGb.
+  $F86A,$02 #REGd=#N$01.
+  $F86C,$02 #REGe=#N$03.
+  $F86E,$03 Call #R$DD97.
+  $F871,$05 Write #N$06 to *#R$FF8D.
+  $F876,$02 Jump to #R$F804.
+  $F878,$01 Stash #REGaf on the stack.
+  $F879,$01 #REGa=#REGb.
+  $F87A,$02 #REGd=#N$05.
+  $F87C,$02 #REGe=#N$03.
+  $F87E,$03 Call #R$DD97.
+  $F881,$01 Restore #REGaf from the stack.
+  $F882,$02 #REGa-=#N$E6.
+  $F884,$01 #REGa+=#REGa.
+  $F885,$01 #REGa+=#REGa.
+  $F886,$02 #REGh=#N$00.
+  $F888,$01 #REGl=#REGa.
+  $F889,$03 #REGde=#R$D2A7.
+  $F88C,$01 #REGhl+=#REGde.
+  $F88D,$05 Jump to #R$F804 if *#REGhl is zero.
+  $F892,$03 #REGa=*#R$D3F6.
+  $F895,$01 Decrease #REGa by one.
+  $F896,$03 Write #REGa to *#R$D3F6.
+  $F899,$01 #REGa=*#REGhl.
+  $F89A,$02 Write #N$00 to *#REGhl.
+  $F89C,$01 Increment #REGhl by one.
+  $F89D,$01 RRCA.
+  $F89E,$02,b$01 Keep only bits 0-2.
+  $F8A0,$04 Jump to #R$F8B8 if #REGa is lower than #N$03.
+  $F8A4,$04 Jump to #R$F8B8 if #REGa is higher than #N$06.
+  $F8A8,$01 #REGb=*#REGhl.
+  $F8A9,$01 Increment #REGhl by one.
+  $F8AA,$01 #REGc=*#REGhl.
+  $F8AB,$02 #REGa=#N$77.
+  $F8AD,$03 Call #R$D6C9.
+  $F8B0,$05 Write #N$06 to *#R$FF8D.
+  $F8B5,$03 Jump to #R$F804.
+  $F8B8,$01 #REGc=*#REGhl.
+  $F8B9,$02 Increment #REGhl by two.
+  $F8BB,$01 #REGb=*#REGhl.
+  $F8BC,$02 Jump to #R$F8AB.
 
 c $F8BE
-  $F8BE,$06 Write #R$D22C to #R$D224.
-  $F8C4,$06 Write #R$D23E to #R$D226.
-  $F8CA,$04 Write #N$00 to #R$D218.
+  $F8BE,$06 Write #R$D22C to *#R$D224.
+  $F8C4,$06 Write #R$D23E to *#R$D226.
+  $F8CA,$04 Write #N$00 to *#R$D218.
   $F8CE,$01 Return.
 
 c $F8CF Controls: Pause/ Quit Game
@@ -2869,14 +3312,16 @@ R $FB5B HL Pointer to string data
 
 c $FB8E Create Admin Page Template
 @ $FB8E label=CreateAdminPageTemplate
-  $FB8E,$02 #REGc=#N$11.
+  $FB8E,$02 #REGc=#N$11 (width).
+N $FB90 Blank half the shadow screen buffer.
   $FB90,$03 #REGhl=#R$6B00.
-  $FB93,$02 #REGd=#N$83.
-  $FB95,$02 #REGe=#N$00.
+  $FB93,$02 #REGd=#N$83 (height/ where to stop - relates to the end of #R$6B00).
+  $FB95,$02 #REGe=#N$00 (value to write).
   $FB97,$03 Call #R$FBAE.
+N $FB9A Blank half the shadow attribute buffer.
   $FB9A,$03 #REGhl=#R$8300.
-  $FB9D,$02 #REGd=#N$86.
-  $FB9F,$02 #REGe=#N$46.
+  $FB9D,$02 #REGd=#N$86 (height/ where to stop - relates to the end of #R$8300).
+  $FB9F,$02 #REGe=#N$46 #COLOUR$46 (value to write).
   $FBA1,$03 Call #R$FBAE.
 N $FBA4 Prints "Rampage tm".
   $FBA4,$03 #REGhl=#R$D0CB.
@@ -2884,24 +3329,35 @@ N $FBA4 Prints "Rampage tm".
   $FBAA,$03 Call #R$FB5B.
   $FBAD,$01 Return.
 
-c $FBAE
+c $FBAE Blank Left-Half Shadow Buffers
+@ $FBAE label=BlankHalfShadowBuffers
+N $FBAE Used both to blank the left-hand side of the screen shadow buffer, and also to add the rainbow attributes for
+.       the attributes shadow buffer.
 R $FBAE C Width
-R $FBAE D Height
+R $FBAE D Height (where to stop)
 R $FBAE E Value to write
 R $FBAE HL Buffer location
-  $FBAE,$01 #REGb=#REGc.
+  $FBAE,$01 #REGb=width.
   $FBAF,$01 #REGa=#N$00.
-  $FBB0,$01 Write #REGe to *#REGhl.
-  $FBB1,$01 Increment #REGhl by one.
+@ $FBB0 label=BlankHalfOfScreen_Row
+  $FBB0,$01 Write the value pass in #REGe to the buffer.
+  $FBB1,$01 Increment the buffer pointer by one.
   $FBB2,$02 Decrease counter by one and loop back to #R$FBB0 until counter is zero.
+N $FBB4 Move down one row.
   $FBB4,$01 #REGhl+=#REGbc.
-  $FBB5,$02 Decrease #REGhl by two.
+  $FBB5,$02 Decrease #REGhl by two (because we always enter with the width being #N$11, so #N$11*#N$02=#N$22 and one row
+.           contains only #N$20 bytes).
+N $FBB7 When writing the attributes, this handles the INK rainbow colouring.
   $FBB7,$01 #REGa=#REGe.
-  $FBB8,$02,b$01 Keep only bits 0-2.
-  $FBBA,$02 Jump to #R$FBC3 if the result is zero.
-  $FBBC,$01 Increment #REGe by one.
-  $FBBD,$04 Jump to #R$FBC3 if #REGa is not equal to #N$07.
-  $FBC1,$02 #REGe=#N$42.
+  $FBB8,$02,b$01 Keep only the INK colour bits.
+  $FBBA,$02 Jump to #R$FBC3 if the result is zero (if this is the screen buffer loop and not for the attribute buffer).
+N $FBBC Cycle through the INK colours.
+  $FBBC,$01 Increment the value to write by one.
+  $FBBD,$04 Jump to #R$FBC3 if #REGa is not equal to #N$07 (#COLOUR$07).
+N $FBC1 Reset the attribute colour to write (the range is #N42-#N$47).
+  $FBC1,$02 #REGe=#N$42 (#COLOUR$42).
+N $FBC3 The height parameter isn't a "height" as such, it's where to stop e.g. the end of #R$6B00 or the end of #R$8300.
+@ $FBC3 label=BlankHalfOfScreen_CheckEnd
   $FBC3,$04 Jump to #R$FBAE if #REGd is not equal to #REGh.
   $FBC7,$01 Return.
 
@@ -3211,11 +3667,13 @@ b $FEDF Data: Ticker
 L $FEDF,$01,$20
   $FEFF,$01 Terminator.
 
-c $FF00
-  $FF00,$05 Return if *#R$FF8D is zero.
-  $FF05,$01 #REGl=#REGa.
+c $FF00 Play Sounds
+@ $FF00 label=PlaySounds
+  $FF00,$05 Return if no sound(s) are set to play (via *#R$FF8D).
+  $FF05,$01 Store the melody ID in #REGl temporarily.
+N $FF06 Reset the *#R$FF8D (so it doesn't carry on playing).
   $FF06,$04 Write #N$00 to *#R$FF8D.
-  $FF0A,$01 #REGa=#REGl.
+  $FF0A,$01 Restore the melody ID back to #REGa.
   $FF0B,$04 Jump to #R$FF6B if #REGa is equal to #N$08.
   $FF0F,$04 Jump to #R$FF72 if #REGa is equal to #N$09.
   $FF13,$01 Decrease #REGa by one.
@@ -3265,10 +3723,10 @@ N $FF67 Flip speaker off (unset bit 4).
   $FF7F,$01 Decrease #REGhl by one.
   $FF80,$04 Jump to #R$FF77 until #REGhl is zero.
   $FF84,$01 Return.
-W $FF85,$02
-W $FF87,$02
-W $FF89,$02
+@ $FF85 label=MelodyBuffer
+B $FF85,$08,$02
 B $FF8B
 B $FF8C
+@ $FF8D label=MelodyID
 B $FF8D
 B $FF8E

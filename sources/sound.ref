@@ -7,6 +7,14 @@ SectionPrefix=Audio
 
 #AUDIO(telecast.wav)(#INCLUDE(Telecast))
 
+[Audio:Projectile]
+
+#AUDIO(projectile.wav)(#INCLUDE(Projectile))
+
+[Audio:Punched]
+
+#AUDIO(punched.wav)(#INCLUDE(Punched))
+
 [Audio:Unknown1]
 
 #AUDIO(unknown1.wav)(#INCLUDE(Unknown1))

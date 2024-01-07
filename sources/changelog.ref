@@ -3,6 +3,11 @@
 [Page:Changelog]
 SectionType=BulletPoints
 
+[Changelog:20240106]
+-
+
+- The routine for blanking/ colouring the admin "template"
+
 [Changelog:20240104]
 -
 
