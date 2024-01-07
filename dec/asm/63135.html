@@ -29,11 +29,11 @@ Prev: <a href="62544.html">62544</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#63135">Map</a></td>
 <td class="next">
-Next: <a href="63270.html">63270</a>
+Next: <a href="63257.html">63257</a>
 </td>
 </tr>
 </table>
-<div class="description">63135: Routine at F69F</div>
+<div class="description">63135: Handler: Projectiles</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,399 +45,469 @@ Used by the routine at <a href="56951.html">56951</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Projectiles</td>
 <td class="address-2"><span id="63135"></span>63135</td>
 <td class="instruction">LD B,6</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=6 (number of possible projectiles).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63137"></span>63137</td>
 <td class="instruction">LD HL,54029</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="54029.html">Table_Projectiles</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Projectiles_Loop</td>
 <td class="address-2"><span id="63140"></span>63140</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Stash current projectile on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63141"></span>63141</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="63135.html#63249">Collision_Projectiles_Next</a> if this projectile is not active.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63142"></span>63142</td>
 <td class="instruction">AND A</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63143"></span>63143</td>
-<td class="instruction">JR Z,<a href="63135.html#63249">63249</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR Z,<a href="63135.html#63249">Collision_Projectiles_Next</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63145"></span>
+<div class="comments">
+<div class="paragraph">
+This projectile is active so let's process it.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63145"></span>63145</td>
 <td class="instruction">INC A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63146"></span>63146</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63147"></span>63147</td>
 <td class="instruction">LD E,A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63148"></span>63148</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63149"></span>63149</td>
 <td class="instruction">LD B,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63150"></span>63150</td>
 <td class="instruction">PUSH HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63151"></span>63151</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63152"></span>63152</td>
 <td class="instruction">LD C,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63153"></span>63153</td>
 <td class="instruction">CP 65</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="63135.html#63162">Handler_Projectiles_0</a> if <span class="register">A</span> is higher than 65.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63155"></span>63155</td>
-<td class="instruction">JR NC,<a href="63135.html#63162">63162</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NC,<a href="63135.html#63162">Handler_Projectiles_0</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63157"></span>63157</td>
 <td class="instruction">LD HL,51369</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="51310.html#51369">51369</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63160"></span>63160</td>
-<td class="instruction">JR <a href="63135.html#63165">63165</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR <a href="63135.html#63165">Handler_Projectiles_1</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="63135.html#63165">Handler_Projectiles_1</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Projectiles_0</td>
 <td class="address-2"><span id="63162"></span>63162</td>
 <td class="instruction">LD HL,51350</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="51310.html#51350">51350</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Projectiles_1</td>
 <td class="address-2"><span id="63165"></span>63165</td>
 <td class="instruction">LD A,1</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Write 1 to *<a href="54270.html#54271">54271</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63167"></span>63167</td>
 <td class="instruction">LD (54271),A</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63170"></span>63170</td>
 <td class="instruction">LD A,E</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">E</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63171"></span>63171</td>
-<td class="instruction">AND 63</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">AND %00111111</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-5.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63173"></span>63173</td>
 <td class="instruction">DEC A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63174"></span>63174</td>
 <td class="instruction">CALL <a href="58925.html#60250">60250</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="58925.html#60250">60250</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63177"></span>63177</td>
 <td class="instruction">EX AF,AF'</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63178"></span>63178</td>
 <td class="instruction">BIT 4,A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="63135.html#63183">Handler_Projectiles_2</a> if bit 4 of <span class="register">A</span> is not set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63180"></span>63180</td>
-<td class="instruction">JR Z,<a href="63135.html#63183">63183</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR Z,<a href="63135.html#63183">Handler_Projectiles_2</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63182"></span>63182</td>
 <td class="instruction">INC B</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Projectiles_2</td>
 <td class="address-2"><span id="63183"></span>63183</td>
 <td class="instruction">XOR A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Write 0 to *<a href="54270.html#54271">54271</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63184"></span>63184</td>
 <td class="instruction">LD (54271),A</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63187"></span>63187</td>
 <td class="instruction">POP HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63188"></span>63188</td>
 <td class="instruction">LD A,C</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">C</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63189"></span>63189</td>
 <td class="instruction">CP 32</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="63135.html#63239">Handler_Projectiles_4</a> if <span class="register">A</span> is higher than 32.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63191"></span>63191</td>
-<td class="instruction">JR NC,<a href="63135.html#63239">63239</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NC,<a href="63135.html#63239">Handler_Projectiles_4</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63193"></span>63193</td>
 <td class="instruction">LD A,B</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63194"></span>63194</td>
 <td class="instruction">CP 24</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="63135.html#63239">Handler_Projectiles_4</a> if <span class="register">A</span> is higher than 24.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63196"></span>63196</td>
-<td class="instruction">JR NC,<a href="63135.html#63239">63239</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NC,<a href="63135.html#63239">Handler_Projectiles_4</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63198"></span>63198</td>
 <td class="instruction">PUSH HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63199"></span>63199</td>
-<td class="instruction">CALL <a href="56481.html#56632">56632</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">CALL <a href="56632.html">56632</a></td>
+<td class="comment-1" rowspan="1">Call <a href="56632.html">56632</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63202"></span>63202</td>
 <td class="instruction">AND A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="63135.html#63226">Handler_Projectiles_3</a> if <span class="register">A</span> is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63203"></span>63203</td>
-<td class="instruction">JR Z,<a href="63135.html#63226">63226</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR Z,<a href="63135.html#63226">Handler_Projectiles_3</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63205"></span>63205</td>
 <td class="instruction">CP 193</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="63135.html#63226">Handler_Projectiles_3</a> if <span class="register">A</span> is higher than 193.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63207"></span>63207</td>
-<td class="instruction">JR NC,<a href="63135.html#63226">63226</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NC,<a href="63135.html#63226">Handler_Projectiles_3</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63209"></span>63209</td>
-<td class="instruction">AND 63</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">AND %00111111</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-5.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63211"></span>63211</td>
 <td class="instruction">CP 50</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="63135.html#63226">Handler_Projectiles_3</a> if <span class="register">A</span> is higher than 50.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63213"></span>63213</td>
-<td class="instruction">JR NC,<a href="63135.html#63226">63226</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NC,<a href="63135.html#63226">Handler_Projectiles_3</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63215"></span>
+<div class="comments">
+<div class="paragraph">
+There's been a hit, find out which monster.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63215"></span>63215</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63216"></span>63216</td>
-<td class="instruction">CALL <a href="56481.html#56653">56653</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">CALL <a href="56653.html">56653</a></td>
+<td class="comment-1" rowspan="1">Call <a href="56653.html">56653</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63219"></span>
+<div class="comments">
+<div class="paragraph">
+Take off two hit points from the monsters energy.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63219"></span>63219</td>
 <td class="instruction">LD A,2</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=2 (damage).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63221"></span>63221</td>
-<td class="instruction">CALL <a href="56684.html">56684</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">CALL <a href="56684.html">Handler_DecreaseEnergy</a></td>
+<td class="comment-1" rowspan="1">Call <a href="56684.html">Handler_DecreaseEnergy</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63224"></span>63224</td>
-<td class="instruction">JR <a href="63135.html#63257">63257</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR <a href="63257.html">Audio_Projectiles_Hit</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="63257.html">Audio_Projectiles_Hit</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Projectiles_3</td>
 <td class="address-2"><span id="63226"></span>63226</td>
 <td class="instruction">POP HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63227"></span>63227</td>
 <td class="instruction">LD (HL),B</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">B</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63228"></span>63228</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63229"></span>63229</td>
 <td class="instruction">LD (HL),C</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">C</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63230"></span>63230</td>
 <td class="instruction">PUSH HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63231"></span>63231</td>
 <td class="instruction">LD A,246</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=246.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63233"></span>63233</td>
 <td class="instruction">CALL <a href="54985.html">54985</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="54985.html">54985</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63236"></span>63236</td>
 <td class="instruction">POP HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63237"></span>63237</td>
-<td class="instruction">JR <a href="63135.html#63251">63251</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR <a href="63135.html#63251">Handler_Projectiles_5</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="63135.html#63251">Handler_Projectiles_5</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="63239"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="63257.html">Audio_Projectiles_Hit</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_Projectiles_4</td>
 <td class="address-2"><span id="63239"></span>63239</td>
 <td class="instruction">DEC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63240"></span>63240</td>
 <td class="instruction">LD (HL),0</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write 0 to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63242"></span>63242</td>
 <td class="instruction">LD A,(54266)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="54266.html">54266</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63245"></span>63245</td>
 <td class="instruction">DEC A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63246"></span>63246</td>
 <td class="instruction">LD (54266),A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54266.html">54266</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Collision_Projectiles_Next</td>
 <td class="address-2"><span id="63249"></span>63249</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Move onto the next projectile table data.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63250"></span>63250</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Projectiles_5</td>
 <td class="address-2"><span id="63251"></span>63251</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63252"></span>63252</td>
 <td class="instruction">POP BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore projectile ID from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63253"></span>63253</td>
 <td class="instruction">DEC B</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease projectile ID by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63254"></span>63254</td>
-<td class="instruction">JR NZ,<a href="63135.html#63140">63140</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="63135.html#63140">Handler_Projectiles_Loop</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="63135.html#63140">Handler_Projectiles_Loop</a> until all projectiles have been processed.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="63256"></span>63256</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-2"><span id="63257"></span>63257</td>
-<td class="instruction">LD A,5</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="63259"></span>63259</td>
-<td class="instruction">LD (65421),A</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="63262"></span>63262</td>
-<td class="instruction">LD A,117</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="63264"></span>63264</td>
-<td class="instruction">CALL <a href="54985.html">54985</a></td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="63267"></span>63267</td>
-<td class="instruction">POP HL</td>
-<td class="comment-0" rowspan="1"></td>
-</tr>
-<tr>
-<td class="address-1"><span id="63268"></span>63268</td>
-<td class="instruction">JR <a href="63135.html#63239">63239</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -447,7 +517,7 @@ Prev: <a href="62544.html">62544</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#63135">Map</a></td>
 <td class="next">
-Next: <a href="63270.html">63270</a>
+Next: <a href="63257.html">63257</a>
 </td>
 </tr>
 </table>

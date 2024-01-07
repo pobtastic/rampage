@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at 63257</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="63135.html">63135</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#63257">Map</a></td>
+<td class="next">
+Next: <a href="63270.html">63270</a>
+</td>
+</tr>
+</table>
+<div class="description">63257: Sounds: Projectile "Hit"</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="63135.html">Handler_Projectiles</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="63257"></span>
+<div class="comments">
+<div class="paragraph">
+<audio controls="" src="../../audio/projectile.wav">
+<p>Your browser doesn't support HTML5 audio. Here is a <a href="../../audio/projectile.wav">link to the audio</a> instead.</p>
+</audio>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Audio_Projectiles_Hit</td>
+<td class="address-2"><span id="63257"></span>63257</td>
+<td class="instruction">LD A,5</td>
+<td class="comment-1" rowspan="2">Write melody 5 to *<a href="65280.html#65421">MelodyID</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="63259"></span>63259</td>
+<td class="instruction">LD (65421),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="63262"></span>63262</td>
+<td class="instruction">LD A,117</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=117.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="63264"></span>63264</td>
+<td class="instruction">CALL <a href="54985.html">54985</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54985.html">54985</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="63267"></span>63267</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="63268"></span>63268</td>
+<td class="instruction">JR <a href="63135.html#63239">Handler_Projectiles_4</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="63135.html#63239">Handler_Projectiles_4</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="63135.html">63135</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#63257">Map</a></td>
+<td class="next">
+Next: <a href="63270.html">63270</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/63257.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

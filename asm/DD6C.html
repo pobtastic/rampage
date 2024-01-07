@@ -25,7 +25,7 @@ gtag('config', 'G-75RERFCHBG');
 <table class="asm-navigation">
 <tr>
 <td class="prev">
-Prev: <a href="DCA1.html">DCA1</a>
+Prev: <a href="DD4D.html">DD4D</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#dd6c">Map</a></td>
 <td class="next">
@@ -33,79 +33,136 @@ Next: <a href="DD89.html">DD89</a>
 </td>
 </tr>
 </table>
-<div class="description">DD6C: Routine at DD6C</div>
+<div class="description">DD6C: Handler: Decrease Energy</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="E576.html">E576</a>, <a href="E62D.html">E62D</a>, <a href="F450.html">F450</a>, <a href="F69F.html">F69F</a> and <a href="F795.html">F795</a>.
+Used by the routines at <a href="E576.html">Handler_Bullets</a>, <a href="E62D.html">E62D</a>, <a href="F450.html">F450</a>, <a href="F69F.html">Handler_Projectiles</a> and <a href="F795.html">Handler_Monsters</a>.
 </div>
 </div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">IY</td>
+<td class="register-desc">Monster Pointer</td>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Damage value</td>
+</tr>
+</table>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Handler_DecreaseEnergy</td>
 <td class="address-2"><span id="dd6c"></span>DD6C</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd6d"></span>DD6D</td>
 <td class="instruction">LD A,(IY+$00)</td>
-<td class="comment-1" rowspan="3">Return if *<span class="register">IY</span>+00 is higher than 21.</td>
+<td class="comment-1" rowspan="3">Return if the monster state (*<span class="register">IY</span>+00) is higher than 21 (includes the "explosion" and "human" states). If this is the case then the monster is already "game over".</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd70"></span>DD70</td>
 <td class="instruction">CP $21</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd72"></span>DD72</td>
 <td class="instruction">RET NC</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd73"></span>DD73</td>
 <td class="instruction">EX AF,AF'</td>
-<td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
+<td class="comment-1" rowspan="1">Exchange the shadow <span class="register">AF</span> register back to the normal <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="dd74"></span>
+<div class="comments">
+<div class="paragraph">
+Keep decreasing the monsters energy by the number held in <span class="register">A</span>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_DecreaseEnergy_Loop</td>
 <td class="address-2"><span id="dd74"></span>DD74</td>
 <td class="instruction">DEC (IY+$0C)</td>
-<td class="comment-1" rowspan="1">Decrease *<span class="register">IY</span>+0C by one.</td>
+<td class="comment-1" rowspan="1">Decrease monster energy (*<span class="register">IY</span>+0C) by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd77"></span>DD77</td>
 <td class="instruction">DEC A</td>
 <td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd78"></span>DD78</td>
-<td class="instruction">JR NZ,<a href="DD6C.html#dd74">$DD74</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="DD6C.html#dd74">DD74</a> until <span class="register">A</span> is zero.</td>
+<td class="instruction">JR NZ,<a href="DD6C.html#dd74">Handler_DecreaseEnergy_Loop</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="DD6C.html#dd74">Handler_DecreaseEnergy_Loop</a> until <span class="register">A</span> is zero.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="dd7a"></span>
+<div class="comments">
+<div class="paragraph">
+Is the monster still in-play?
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd7a"></span>DD7A</td>
 <td class="instruction">LD A,(IY+$0C)</td>
 <td class="comment-1" rowspan="3">Return if *<span class="register">IY</span>+0C is lower than C8.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd7d"></span>DD7D</td>
 <td class="instruction">CP $C8</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd7f"></span>DD7F</td>
 <td class="instruction">RET C</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="dd80"></span>
+<div class="comments">
+<div class="paragraph">
+If the monsters energy falls to less than 00 - their turn is over.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd80"></span>DD80</td>
 <td class="instruction">LD (IY+$0C),$00</td>
-<td class="comment-1" rowspan="1">Write 00 to *<span class="register">IY</span>+0C.</td>
+<td class="comment-1" rowspan="1">Reset monsters energy to 00 (in *<span class="register">IY</span>+0C).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd84"></span>DD84</td>
 <td class="instruction">LD (IY+$00),$21</td>
-<td class="comment-1" rowspan="1">Write 21 to *<span class="register">IY</span>+00.</td>
+<td class="comment-1" rowspan="1">Write 21 (explosion state) to the current monster state (*<span class="register">IY</span>+00).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd88"></span>DD88</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
@@ -114,7 +171,7 @@ Used by the routines at <a href="E576.html">E576</a>, <a href="E62D.html">E62D</
 <table class="asm-navigation">
 <tr>
 <td class="prev">
-Prev: <a href="DCA1.html">DCA1</a>
+Prev: <a href="DD4D.html">DD4D</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#dd6c">Map</a></td>
 <td class="next">

@@ -33,7 +33,7 @@ Next: <a href="58925.html">58925</a>
 </td>
 </tr>
 </table>
-<div class="description">58742: Routine at E576</div>
+<div class="description">58742: Handler: Bullets</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,549 +45,667 @@ Used by the routine at <a href="56951.html">56951</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Bullets</td>
 <td class="address-2"><span id="58742"></span>58742</td>
 <td class="instruction">LD B,26</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=26 (number of possible bullets).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58744"></span>58744</td>
 <td class="instruction">LD HL,53951</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="53951.html">Table_Bullets</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Bullets_Loop</td>
 <td class="address-2"><span id="58747"></span>58747</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Stash current bullet on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58748"></span>58748</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="58742.html#58916">Collision_Bullets_Next</a> if this bullet is not active.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58749"></span>58749</td>
 <td class="instruction">AND A</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58750"></span>58750</td>
-<td class="instruction">JP Z,<a href="58742.html#58916">58916</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JP Z,<a href="58742.html#58916">Collision_Bullets_Next</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="58753"></span>
+<div class="comments">
+<div class="paragraph">
+This bullet is active so let's process it.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58753"></span>58753</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58754"></span>58754</td>
 <td class="instruction">LD C,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58755"></span>58755</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58756"></span>58756</td>
 <td class="instruction">LD B,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58757"></span>58757</td>
 <td class="instruction">PUSH HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Stash the bullet table pointer on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58758"></span>58758</td>
 <td class="instruction">CP 128</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="58742.html#58796">Handler_Bullets_4</a> if <span class="register">A</span> is higher than 128.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58760"></span>58760</td>
-<td class="instruction">JP NC,<a href="58742.html#58796">58796</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JP NC,<a href="58742.html#58796">Handler_Bullets_4</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58763"></span>58763</td>
 <td class="instruction">CP 5</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="58742.html#58793">Handler_Bullets_3</a> if <span class="register">A</span> is equal to 5.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58765"></span>58765</td>
-<td class="instruction">JR Z,<a href="58742.html#58793">58793</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR Z,<a href="58742.html#58793">Handler_Bullets_3</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58767"></span>58767</td>
 <td class="instruction">CP 4</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="58742.html#58789">Handler_Bullets_2</a> if <span class="register">A</span> is equal to 4.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58769"></span>58769</td>
-<td class="instruction">JR Z,<a href="58742.html#58789">58789</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR Z,<a href="58742.html#58789">Handler_Bullets_2</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58771"></span>58771</td>
 <td class="instruction">CP 3</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="58742.html#58786">Handler_Bullets_1</a> if <span class="register">A</span> is equal to 3.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58773"></span>58773</td>
-<td class="instruction">JR Z,<a href="58742.html#58786">58786</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR Z,<a href="58742.html#58786">Handler_Bullets_1</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58775"></span>58775</td>
 <td class="instruction">CP 2</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="58742.html#58782">Handler_Bullets_0</a> if <span class="register">A</span> is equal to 2.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58777"></span>58777</td>
-<td class="instruction">JR Z,<a href="58742.html#58782">58782</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR Z,<a href="58742.html#58782">Handler_Bullets_0</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58779"></span>58779</td>
 <td class="instruction">INC B</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58780"></span>58780</td>
-<td class="instruction">JR <a href="58742.html#58829">58829</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR <a href="58742.html#58829">Handler_Bullets_9</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58742.html#58829">Handler_Bullets_9</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Bullets_0</td>
 <td class="address-2"><span id="58782"></span>58782</td>
 <td class="instruction">INC C</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58783"></span>58783</td>
 <td class="instruction">INC B</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58784"></span>58784</td>
-<td class="instruction">JR <a href="58742.html#58829">58829</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR <a href="58742.html#58829">Handler_Bullets_9</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58742.html#58829">Handler_Bullets_9</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Bullets_1</td>
 <td class="address-2"><span id="58786"></span>58786</td>
 <td class="instruction">INC C</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58787"></span>58787</td>
-<td class="instruction">JR <a href="58742.html#58829">58829</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR <a href="58742.html#58829">Handler_Bullets_9</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58742.html#58829">Handler_Bullets_9</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Bullets_2</td>
 <td class="address-2"><span id="58789"></span>58789</td>
 <td class="instruction">DEC B</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58790"></span>58790</td>
 <td class="instruction">INC C</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58791"></span>58791</td>
-<td class="instruction">JR <a href="58742.html#58829">58829</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR <a href="58742.html#58829">Handler_Bullets_9</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58742.html#58829">Handler_Bullets_9</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Bullets_3</td>
 <td class="address-2"><span id="58793"></span>58793</td>
 <td class="instruction">DEC B</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58794"></span>58794</td>
-<td class="instruction">JR <a href="58742.html#58829">58829</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR <a href="58742.html#58829">Handler_Bullets_9</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58742.html#58829">Handler_Bullets_9</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Bullets_4</td>
 <td class="address-2"><span id="58796"></span>58796</td>
-<td class="instruction">AND 15</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">AND %00001111</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-3.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58798"></span>58798</td>
 <td class="instruction">CP 5</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="58742.html#58828">Handler_Bullets_8</a> if <span class="register">A</span> is equal to 5.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58800"></span>58800</td>
-<td class="instruction">JR Z,<a href="58742.html#58828">58828</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR Z,<a href="58742.html#58828">Handler_Bullets_8</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58802"></span>58802</td>
 <td class="instruction">CP 4</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="58742.html#58824">Handler_Bullets_7</a> if <span class="register">A</span> is equal to 4.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58804"></span>58804</td>
-<td class="instruction">JR Z,<a href="58742.html#58824">58824</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR Z,<a href="58742.html#58824">Handler_Bullets_7</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58806"></span>58806</td>
 <td class="instruction">CP 3</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="58742.html#58821">Handler_Bullets_6</a> if <span class="register">A</span> is equal to 3.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58808"></span>58808</td>
-<td class="instruction">JR Z,<a href="58742.html#58821">58821</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR Z,<a href="58742.html#58821">Handler_Bullets_6</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58810"></span>58810</td>
 <td class="instruction">CP 2</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="58742.html#58817">Handler_Bullets_5</a> if <span class="register">A</span> is equal to 2.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58812"></span>58812</td>
-<td class="instruction">JR Z,<a href="58742.html#58817">58817</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR Z,<a href="58742.html#58817">Handler_Bullets_5</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58814"></span>58814</td>
 <td class="instruction">INC B</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58815"></span>58815</td>
-<td class="instruction">JR <a href="58742.html#58829">58829</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR <a href="58742.html#58829">Handler_Bullets_9</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58742.html#58829">Handler_Bullets_9</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Bullets_5</td>
 <td class="address-2"><span id="58817"></span>58817</td>
 <td class="instruction">DEC C</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">C</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58818"></span>58818</td>
 <td class="instruction">INC B</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58819"></span>58819</td>
-<td class="instruction">JR <a href="58742.html#58829">58829</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR <a href="58742.html#58829">Handler_Bullets_9</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58742.html#58829">Handler_Bullets_9</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Bullets_6</td>
 <td class="address-2"><span id="58821"></span>58821</td>
 <td class="instruction">DEC C</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">C</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58822"></span>58822</td>
-<td class="instruction">JR <a href="58742.html#58829">58829</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR <a href="58742.html#58829">Handler_Bullets_9</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58742.html#58829">Handler_Bullets_9</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Bullets_7</td>
 <td class="address-2"><span id="58824"></span>58824</td>
 <td class="instruction">DEC B</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58825"></span>58825</td>
 <td class="instruction">DEC C</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">C</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58826"></span>58826</td>
-<td class="instruction">JR <a href="58742.html#58829">58829</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR <a href="58742.html#58829">Handler_Bullets_9</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58742.html#58829">Handler_Bullets_9</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Bullets_8</td>
 <td class="address-2"><span id="58828"></span>58828</td>
 <td class="instruction">DEC B</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Bullets_9</td>
 <td class="address-2"><span id="58829"></span>58829</td>
 <td class="instruction">LD A,B</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58830"></span>58830</td>
 <td class="instruction">CP 24</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="58742.html#58880">Handler_Bullets_11</a> if <span class="register">A</span> is higher than 24.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58832"></span>58832</td>
-<td class="instruction">JR NC,<a href="58742.html#58880">58880</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NC,<a href="58742.html#58880">Handler_Bullets_11</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58834"></span>58834</td>
 <td class="instruction">LD A,C</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">C</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58835"></span>58835</td>
 <td class="instruction">CP 32</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="58742.html#58880">Handler_Bullets_11</a> if <span class="register">A</span> is higher than 32.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58837"></span>58837</td>
-<td class="instruction">JR NC,<a href="58742.html#58880">58880</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NC,<a href="58742.html#58880">Handler_Bullets_11</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58839"></span>58839</td>
 <td class="instruction">PUSH HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58840"></span>58840</td>
-<td class="instruction">CALL <a href="56481.html#56632">56632</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">CALL <a href="56632.html">56632</a></td>
+<td class="comment-1" rowspan="1">Call <a href="56632.html">56632</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58843"></span>58843</td>
 <td class="instruction">AND A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="58742.html#58868">Handler_Bullets_10</a> if <span class="register">A</span> is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58844"></span>58844</td>
-<td class="instruction">JR Z,<a href="58742.html#58868">58868</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR Z,<a href="58742.html#58868">Handler_Bullets_10</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58846"></span>58846</td>
 <td class="instruction">CP 193</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="58742.html#58868">Handler_Bullets_10</a> if <span class="register">A</span> is higher than 193.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58848"></span>58848</td>
-<td class="instruction">JR NC,<a href="58742.html#58868">58868</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NC,<a href="58742.html#58868">Handler_Bullets_10</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58850"></span>58850</td>
-<td class="instruction">AND 63</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">AND %00111111</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-5.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58852"></span>58852</td>
 <td class="instruction">CP 50</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="58742.html#58868">Handler_Bullets_10</a> if <span class="register">A</span> is higher than 50.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58854"></span>58854</td>
-<td class="instruction">JR NC,<a href="58742.html#58868">58868</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NC,<a href="58742.html#58868">Handler_Bullets_10</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="58856"></span>
+<div class="comments">
+<div class="paragraph">
+There's been a hit, find out which monster.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58856"></span>58856</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58857"></span>58857</td>
-<td class="instruction">CALL <a href="56481.html#56653">56653</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">CALL <a href="56653.html">56653</a></td>
+<td class="comment-1" rowspan="1">Call <a href="56653.html">56653</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="58860"></span>
+<div class="comments">
+<div class="paragraph">
+Take off one hit point from the monsters energy.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58860"></span>58860</td>
 <td class="instruction">LD A,1</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=1 (damage).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58862"></span>58862</td>
-<td class="instruction">CALL <a href="56684.html">56684</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">CALL <a href="56684.html">Handler_DecreaseEnergy</a></td>
+<td class="comment-1" rowspan="1">Call <a href="56684.html">Handler_DecreaseEnergy</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58865"></span>58865</td>
 <td class="instruction">POP HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58866"></span>58866</td>
-<td class="instruction">JR <a href="58742.html#58907">58907</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR <a href="58742.html#58907">Handler_Bullets_13</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58742.html#58907">Handler_Bullets_13</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Bullets_10</td>
 <td class="address-2"><span id="58868"></span>58868</td>
 <td class="instruction">POP HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58869"></span>58869</td>
 <td class="instruction">LD (HL),B</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">B</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58870"></span>58870</td>
 <td class="instruction">DEC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58871"></span>58871</td>
 <td class="instruction">LD (HL),C</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">C</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58872"></span>58872</td>
 <td class="instruction">LD A,244</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=244.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58874"></span>58874</td>
 <td class="instruction">CALL <a href="54985.html">54985</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="54985.html">54985</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58877"></span>58877</td>
 <td class="instruction">POP HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58878"></span>58878</td>
-<td class="instruction">JR <a href="58742.html#58918">58918</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR <a href="58742.html#58918">Handler_Bullets_14</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58742.html#58918">Handler_Bullets_14</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Bullets_11</td>
 <td class="address-2"><span id="58880"></span>58880</td>
 <td class="instruction">DEC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Decrease <span class="register">HL</span> by two.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58881"></span>58881</td>
 <td class="instruction">DEC HL</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58882"></span>58882</td>
 <td class="instruction">LD (HL),0</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write 0 to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58884"></span>58884</td>
 <td class="instruction">LD A,(54264)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="58742.html#58900">Handler_Bullets_12</a> if *<a href="54264.html">54264</a> is not zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58887"></span>58887</td>
 <td class="instruction">AND A</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58888"></span>58888</td>
-<td class="instruction">JR NZ,<a href="58742.html#58900">58900</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="58742.html#58900">Handler_Bullets_12</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58890"></span>58890</td>
 <td class="instruction">LD A,(54265)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="54265.html">54265</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58893"></span>58893</td>
 <td class="instruction">DEC A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58894"></span>58894</td>
 <td class="instruction">LD (54265),A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54265.html">54265</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58897"></span>58897</td>
 <td class="instruction">POP HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58898"></span>58898</td>
-<td class="instruction">JR <a href="58742.html#58918">58918</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR <a href="58742.html#58918">Handler_Bullets_14</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58742.html#58918">Handler_Bullets_14</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Bullets_12</td>
 <td class="address-2"><span id="58900"></span>58900</td>
 <td class="instruction">DEC A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58901"></span>58901</td>
 <td class="instruction">LD (54264),A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54264.html">54264</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58904"></span>58904</td>
 <td class="instruction">POP HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58905"></span>58905</td>
-<td class="instruction">JR <a href="58742.html#58918">58918</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR <a href="58742.html#58918">Handler_Bullets_14</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58742.html#58918">Handler_Bullets_14</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Bullets_13</td>
 <td class="address-2"><span id="58907"></span>58907</td>
 <td class="instruction">LD A,115</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=115.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58909"></span>58909</td>
 <td class="instruction">PUSH HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58910"></span>58910</td>
 <td class="instruction">CALL <a href="54985.html">54985</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="54985.html">54985</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58913"></span>58913</td>
 <td class="instruction">POP HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58914"></span>58914</td>
-<td class="instruction">JR <a href="58742.html#58880">58880</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR <a href="58742.html#58880">Handler_Bullets_11</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58742.html#58880">Handler_Bullets_11</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Collision_Bullets_Next</td>
 <td class="address-2"><span id="58916"></span>58916</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Increment <span class="register">HL</span> by three.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58917"></span>58917</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Bullets_14</td>
 <td class="address-2"><span id="58918"></span>58918</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58919"></span>58919</td>
 <td class="instruction">POP BC</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Restore bullet ID from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58920"></span>58920</td>
 <td class="instruction">DEC B</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease bullet ID by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58921"></span>58921</td>
-<td class="instruction">JP NZ,<a href="58742.html#58747">58747</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JP NZ,<a href="58742.html#58747">Handler_Bullets_Loop</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58742.html#58747">Handler_Bullets_Loop</a> until all bullets have been processed.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58924"></span>58924</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">

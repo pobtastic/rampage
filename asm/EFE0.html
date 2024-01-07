@@ -223,12 +223,11 @@ Used by the routine at <a href="DE77.html">DE77</a>.
 <tr>
 <td class="address-1"><span id="f02f"></span>F02F</td>
 <td class="instruction">LD HL,$D31F</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D31F.html">D31F</a>.</td>
+<td class="comment-1" rowspan="2"><span class="register">HL</span>=<a href="D31F.html">D31F</a>+<span class="register">DE</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="f032"></span>F032</td>
 <td class="instruction">ADD HL,DE</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">DE</span>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="f033"></span>F033</td>
@@ -328,12 +327,11 @@ Used by the routine at <a href="DE77.html">DE77</a>.
 <tr>
 <td class="address-2"><span id="f052"></span>F052</td>
 <td class="instruction">LD A,$09</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=09.</td>
+<td class="comment-1" rowspan="2">Write 09 to *<a href="FF00.html#ff8d">MelodyID</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="f054"></span>F054</td>
 <td class="instruction">LD ($FF8D),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="FF00.html#ff8d">FF8D</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="f057"></span>F057</td>
@@ -358,7 +356,7 @@ Used by the routine at <a href="DE77.html">DE77</a>.
 <tr>
 <td class="address-1"><span id="f061"></span>F061</td>
 <td class="instruction">LD ($FF8D),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="FF00.html#ff8d">FF8D</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="FF00.html#ff8d">MelodyID</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="f064"></span>F064</td>

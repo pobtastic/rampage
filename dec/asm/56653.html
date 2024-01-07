@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at 56653</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="56632.html">56632</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#56653">Map</a></td>
+<td class="next">
+Next: <a href="56684.html">56684</a>
+</td>
+</tr>
+</table>
+<div class="description">56653: Routine at DD4D</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="58742.html">Handler_Bullets</a>, <a href="63135.html">Handler_Projectiles</a> and <a href="63381.html">Handler_Monsters</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56653"></span>56653</td>
+<td class="instruction">AND %11000000</td>
+<td class="comment-1" rowspan="1">Keep only bits 6-7.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56655"></span>56655</td>
+<td class="instruction">RLCA</td>
+<td class="comment-1" rowspan="2">RLCA.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56656"></span>56656</td>
+<td class="instruction">RLCA</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56657"></span>56657</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56658"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routines at <a href="62544.html">62544</a> and <a href="63381.html">Handler_Monsters</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56658"></span>56658</td>
+<td class="instruction">CP 1</td>
+<td class="comment-1" rowspan="2">Jump to <a href="56653.html#56667">56667</a> if <span class="register">A</span> is not equal to 1.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56660"></span>56660</td>
+<td class="instruction">JR NZ,<a href="56653.html#56667">56667</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56662"></span>56662</td>
+<td class="instruction">LD IY,53202</td>
+<td class="comment-1" rowspan="1"><span class="register">IY</span>=<a href="53202.html">George_State</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56666"></span>56666</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56667"></span>56667</td>
+<td class="instruction">CP 2</td>
+<td class="comment-1" rowspan="2">Jump to <a href="56653.html#56676">56676</a> if <span class="register">A</span> is not equal to 2.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56669"></span>56669</td>
+<td class="instruction">JR NZ,<a href="56653.html#56676">56676</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="56671"></span>56671</td>
+<td class="instruction">LD IY,53249</td>
+<td class="comment-1" rowspan="1"><span class="register">IY</span>=<a href="53249.html">Lizzy_State</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56675"></span>56675</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="56676"></span>56676</td>
+<td class="instruction">CP 3</td>
+<td class="comment-1" rowspan="2">Return if <span class="register">A</span> is not equal to 3.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56678"></span>56678</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56679"></span>56679</td>
+<td class="instruction">LD IY,53296</td>
+<td class="comment-1" rowspan="1"><span class="register">IY</span>=<a href="53296.html">Ralph_State</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="56683"></span>56683</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="56632.html">56632</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#56653">Map</a></td>
+<td class="next">
+Next: <a href="56684.html">56684</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/56653.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

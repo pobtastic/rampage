@@ -33,7 +33,7 @@ Next: <a href="64456.html">64456</a>
 </td>
 </tr>
 </table>
-<div class="description">64430: Routine at FBAE</div>
+<div class="description">64430: Blank Left-Half Shadow Buffers</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -52,7 +52,7 @@ Used by the routine at <a href="64398.html">CreateAdminPageTemplate</a>.
 </tr>
 <tr>
 <td class="register">D</td>
-<td class="register-desc">Height</td>
+<td class="register-desc">Height (where to stop)</td>
 </tr>
 <tr>
 <td class="register">E</td>
@@ -66,92 +66,181 @@ Used by the routine at <a href="64398.html">CreateAdminPageTemplate</a>.
 </td>
 </tr>
 <tr>
-<td class="address-2"><span id="64430"></span>64430</td>
-<td class="instruction">LD B,C</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">C</span>.</td>
+<td class="routine-comment" colspan="5">
+<span id="64430"></span>
+<div class="comments">
+<div class="paragraph">
+Used both to blank the left-hand side of the screen shadow buffer, and also to add the rainbow attributes for the attributes shadow buffer.
+</div>
+</div>
+</td>
 </tr>
 <tr>
+<td class="asm-label">BlankHalfShadowBuffers</td>
+<td class="address-2"><span id="64430"></span>64430</td>
+<td class="instruction">LD B,C</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=width.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64431"></span>64431</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=0.</td>
 </tr>
 <tr>
+<td class="asm-label">BlankHalfOfScreen_Row</td>
 <td class="address-2"><span id="64432"></span>64432</td>
 <td class="instruction">LD (HL),E</td>
-<td class="comment-1" rowspan="1">Write <span class="register">E</span> to *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Write the value pass in <span class="register">E</span> to the buffer.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64433"></span>64433</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+<td class="comment-1" rowspan="1">Increment the buffer pointer by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64434"></span>64434</td>
-<td class="instruction">DJNZ <a href="64430.html#64432">64432</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="64430.html#64432">64432</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="64430.html#64432">BlankHalfOfScreen_Row</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="64430.html#64432">BlankHalfOfScreen_Row</a> until counter is zero.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="64436"></span>
+<div class="comments">
+<div class="paragraph">
+Move down one row.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64436"></span>64436</td>
 <td class="instruction">ADD HL,BC</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64437"></span>64437</td>
 <td class="instruction">DEC HL</td>
-<td class="comment-1" rowspan="2">Decrease <span class="register">HL</span> by two.</td>
+<td class="comment-1" rowspan="2">Decrease <span class="register">HL</span> by two (because we always enter with the width being 17 so 17*2=34 and one row contains only 32 bytes).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64438"></span>64438</td>
 <td class="instruction">DEC HL</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="64439"></span>
+<div class="comments">
+<div class="paragraph">
+When writing the attributes, this handles the INK rainbow colouring.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64439"></span>64439</td>
 <td class="instruction">LD A,E</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">E</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64440"></span>64440</td>
 <td class="instruction">AND %00000111</td>
-<td class="comment-1" rowspan="1">Keep only bits 0-2.</td>
+<td class="comment-1" rowspan="1">Keep only the INK colour bits.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64442"></span>64442</td>
-<td class="instruction">JR Z,<a href="64430.html#64451">64451</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="64430.html#64451">64451</a> if the result is zero.</td>
+<td class="instruction">JR Z,<a href="64430.html#64451">BlankHalfOfScreen_CheckEnd</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="64430.html#64451">BlankHalfOfScreen_CheckEnd</a> if the result is zero (if this is the screen buffer loop and not for the attribute buffer).</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="64444"></span>
+<div class="comments">
+<div class="paragraph">
+Cycle through the INK colours.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64444"></span>64444</td>
 <td class="instruction">INC E</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">E</span> by one.</td>
+<td class="comment-1" rowspan="1">Increment the value to write by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64445"></span>64445</td>
 <td class="instruction">CP 7</td>
-<td class="comment-1" rowspan="2">Jump to <a href="64430.html#64451">64451</a> if <span class="register">A</span> is not equal to 7.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="64430.html#64451">BlankHalfOfScreen_CheckEnd</a> if <span class="register">A</span> is not equal to 7 (INK:
+WHITE,
+PAPER:
+BLACK
+
+).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64447"></span>64447</td>
-<td class="instruction">JR NZ,<a href="64430.html#64451">64451</a></td>
+<td class="instruction">JR NZ,<a href="64430.html#64451">BlankHalfOfScreen_CheckEnd</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="64449"></span>
+<div class="comments">
+<div class="paragraph">
+Reset the attribute colour to write (the range is 42-71).
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64449"></span>64449</td>
 <td class="instruction">LD E,66</td>
-<td class="comment-1" rowspan="1"><span class="register">E</span>=66.</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=66 (INK:
+RED,
+PAPER:
+BLACK
+(BRIGHT)
+).</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="64451"></span>
+<div class="comments">
+<div class="paragraph">
+The height parameter isn't a "height" as such, it's where to stop e.g. the end of <a href="27392.html">ShadowScreenBuffer</a> or the end of <a href="27392.html#33536">ShadowAttributeBuffer</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">BlankHalfOfScreen_CheckEnd</td>
 <td class="address-2"><span id="64451"></span>64451</td>
 <td class="instruction">LD A,D</td>
-<td class="comment-1" rowspan="3">Jump to <a href="64430.html">64430</a> if <span class="register">D</span> is not equal to <span class="register">H</span>.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="64430.html">BlankHalfShadowBuffers</a> if <span class="register">D</span> is not equal to <span class="register">H</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64452"></span>64452</td>
 <td class="instruction">CP H</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64453"></span>64453</td>
-<td class="instruction">JR NZ,<a href="64430.html#64430">64430</a></td>
+<td class="instruction">JR NZ,<a href="64430.html#64430">BlankHalfShadowBuffers</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64455"></span>64455</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

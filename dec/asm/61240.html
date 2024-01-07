@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at 61240</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="58925.html">58925</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#61240">Map</a></td>
+<td class="next">
+Next: <a href="61264.html">61264</a>
+</td>
+</tr>
+</table>
+<div class="description">61240: Routine at EF38</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="58925.html">58925</a> and <a href="62290.html">62290</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="61240"></span>61240</td>
+<td class="instruction">LD BC,(53837)</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">53837</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61244"></span>61244</td>
+<td class="instruction">LD A,(53831)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53831.html">53831</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61247"></span>61247</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 7 was set.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61248"></span>61248</td>
+<td class="instruction">JR C,<a href="61240.html#61257">61257</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="61240.html#61257">61257</a> if {} is lower.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61250"></span>61250</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="3"><span class="register">B</span>+=<span class="register">H</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61251"></span>61251</td>
+<td class="instruction">ADD A,H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61252"></span>61252</td>
+<td class="instruction">LD B,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61253"></span>61253</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="3"><span class="register">C</span>+=<span class="register">L</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61254"></span>61254</td>
+<td class="instruction">ADD A,L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61255"></span>61255</td>
+<td class="instruction">LD C,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61256"></span>61256</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="61257"></span>61257</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="3"><span class="register">B</span>+=<span class="register">D</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61258"></span>61258</td>
+<td class="instruction">ADD A,D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61259"></span>61259</td>
+<td class="instruction">LD B,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61260"></span>61260</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="3"><span class="register">C</span>+=<span class="register">E</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61261"></span>61261</td>
+<td class="instruction">ADD A,E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61262"></span>61262</td>
+<td class="instruction">LD C,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61263"></span>61263</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="58925.html">58925</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#61240">Map</a></td>
+<td class="next">
+Next: <a href="61264.html">61264</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/61240.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

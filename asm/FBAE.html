@@ -33,7 +33,7 @@ Next: <a href="FBC8.html">FBC8</a>
 </td>
 </tr>
 </table>
-<div class="description">FBAE: Routine at FBAE</div>
+<div class="description">FBAE: Blank Left-Half Shadow Buffers</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -52,7 +52,7 @@ Used by the routine at <a href="FB8E.html">CreateAdminPageTemplate</a>.
 </tr>
 <tr>
 <td class="register">D</td>
-<td class="register-desc">Height</td>
+<td class="register-desc">Height (where to stop)</td>
 </tr>
 <tr>
 <td class="register">E</td>
@@ -66,92 +66,181 @@ Used by the routine at <a href="FB8E.html">CreateAdminPageTemplate</a>.
 </td>
 </tr>
 <tr>
-<td class="address-2"><span id="fbae"></span>FBAE</td>
-<td class="instruction">LD B,C</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">C</span>.</td>
+<td class="routine-comment" colspan="5">
+<span id="fbae"></span>
+<div class="comments">
+<div class="paragraph">
+Used both to blank the left-hand side of the screen shadow buffer, and also to add the rainbow attributes for the attributes shadow buffer.
+</div>
+</div>
+</td>
 </tr>
 <tr>
+<td class="asm-label">BlankHalfShadowBuffers</td>
+<td class="address-2"><span id="fbae"></span>FBAE</td>
+<td class="instruction">LD B,C</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=width.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbaf"></span>FBAF</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=00.</td>
 </tr>
 <tr>
+<td class="asm-label">BlankHalfOfScreen_Row</td>
 <td class="address-2"><span id="fbb0"></span>FBB0</td>
 <td class="instruction">LD (HL),E</td>
-<td class="comment-1" rowspan="1">Write <span class="register">E</span> to *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Write the value pass in <span class="register">E</span> to the buffer.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbb1"></span>FBB1</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+<td class="comment-1" rowspan="1">Increment the buffer pointer by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbb2"></span>FBB2</td>
-<td class="instruction">DJNZ <a href="FBAE.html#fbb0">$FBB0</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="FBAE.html#fbb0">FBB0</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="FBAE.html#fbb0">BlankHalfOfScreen_Row</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="FBAE.html#fbb0">BlankHalfOfScreen_Row</a> until counter is zero.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="fbb4"></span>
+<div class="comments">
+<div class="paragraph">
+Move down one row.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbb4"></span>FBB4</td>
 <td class="instruction">ADD HL,BC</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbb5"></span>FBB5</td>
 <td class="instruction">DEC HL</td>
-<td class="comment-1" rowspan="2">Decrease <span class="register">HL</span> by two.</td>
+<td class="comment-1" rowspan="2">Decrease <span class="register">HL</span> by two (because we always enter with the width being 11 so 11*02=22 and one row contains only 20 bytes).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbb6"></span>FBB6</td>
 <td class="instruction">DEC HL</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="fbb7"></span>
+<div class="comments">
+<div class="paragraph">
+When writing the attributes, this handles the INK rainbow colouring.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbb7"></span>FBB7</td>
 <td class="instruction">LD A,E</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">E</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbb8"></span>FBB8</td>
 <td class="instruction">AND %00000111</td>
-<td class="comment-1" rowspan="1">Keep only bits 0-2.</td>
+<td class="comment-1" rowspan="1">Keep only the INK colour bits.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbba"></span>FBBA</td>
-<td class="instruction">JR Z,<a href="FBAE.html#fbc3">$FBC3</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="FBAE.html#fbc3">FBC3</a> if the result is zero.</td>
+<td class="instruction">JR Z,<a href="FBAE.html#fbc3">BlankHalfOfScreen_CheckEnd</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="FBAE.html#fbc3">BlankHalfOfScreen_CheckEnd</a> if the result is zero (if this is the screen buffer loop and not for the attribute buffer).</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="fbbc"></span>
+<div class="comments">
+<div class="paragraph">
+Cycle through the INK colours.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbbc"></span>FBBC</td>
 <td class="instruction">INC E</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">E</span> by one.</td>
+<td class="comment-1" rowspan="1">Increment the value to write by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbbd"></span>FBBD</td>
 <td class="instruction">CP $07</td>
-<td class="comment-1" rowspan="2">Jump to <a href="FBAE.html#fbc3">FBC3</a> if <span class="register">A</span> is not equal to 07.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="FBAE.html#fbc3">BlankHalfOfScreen_CheckEnd</a> if <span class="register">A</span> is not equal to 07 (INK:
+WHITE,
+PAPER:
+BLACK
+
+).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbbf"></span>FBBF</td>
-<td class="instruction">JR NZ,<a href="FBAE.html#fbc3">$FBC3</a></td>
+<td class="instruction">JR NZ,<a href="FBAE.html#fbc3">BlankHalfOfScreen_CheckEnd</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="fbc1"></span>
+<div class="comments">
+<div class="paragraph">
+Reset the attribute colour to write (the range is 2A-47).
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbc1"></span>FBC1</td>
 <td class="instruction">LD E,$42</td>
-<td class="comment-1" rowspan="1"><span class="register">E</span>=42.</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=42 (INK:
+RED,
+PAPER:
+BLACK
+(BRIGHT)
+).</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="fbc3"></span>
+<div class="comments">
+<div class="paragraph">
+The height parameter isn't a "height" as such, it's where to stop e.g. the end of <a href="6B00.html">ShadowScreenBuffer</a> or the end of <a href="6B00.html#8300">ShadowAttributeBuffer</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">BlankHalfOfScreen_CheckEnd</td>
 <td class="address-2"><span id="fbc3"></span>FBC3</td>
 <td class="instruction">LD A,D</td>
-<td class="comment-1" rowspan="3">Jump to <a href="FBAE.html">FBAE</a> if <span class="register">D</span> is not equal to <span class="register">H</span>.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="FBAE.html">BlankHalfShadowBuffers</a> if <span class="register">D</span> is not equal to <span class="register">H</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbc4"></span>FBC4</td>
 <td class="instruction">CP H</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbc5"></span>FBC5</td>
-<td class="instruction">JR NZ,<a href="FBAE.html#fbae">$FBAE</a></td>
+<td class="instruction">JR NZ,<a href="FBAE.html#fbae">BlankHalfShadowBuffers</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbc7"></span>FBC7</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

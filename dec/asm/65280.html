@@ -32,7 +32,7 @@ Prev: <a href="65247.html">65247</a>
 </td>
 </tr>
 </table>
-<div class="description">65280: Routine at FF00</div>
+<div class="description">65280: Play Sounds</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -44,10 +44,10 @@ Used by the routines at <a href="56951.html">56951</a> and <a href="64964.html">
 </td>
 </tr>
 <tr>
-<td class="asm-label"></td>
+<td class="asm-label">PlaySounds</td>
 <td class="address-2"><span id="65280"></span>65280</td>
 <td class="instruction">LD A,(65421)</td>
-<td class="comment-1" rowspan="3">Return if *<a href="65280.html#65421">65421</a> is zero.</td>
+<td class="comment-1" rowspan="3">Return if no sound(s) are set to play (via *<a href="65280.html#65421">MelodyID</a>).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -63,13 +63,23 @@ Used by the routines at <a href="56951.html">56951</a> and <a href="64964.html">
 <td class="asm-label"></td>
 <td class="address-1"><span id="65285"></span>65285</td>
 <td class="instruction">LD L,A</td>
-<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+<td class="comment-1" rowspan="1">Store the melody ID in <span class="register">L</span> temporarily.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="65286"></span>
+<div class="comments">
+<div class="paragraph">
+Reset the *<a href="65280.html#65421">MelodyID</a> (so it doesn't carry on playing).
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="65286"></span>65286</td>
 <td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="2">Write 0 to *<a href="65280.html#65421">65421</a>.</td>
+<td class="comment-1" rowspan="2">Write 0 to *<a href="65280.html#65421">MelodyID</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -80,29 +90,29 @@ Used by the routines at <a href="56951.html">56951</a> and <a href="64964.html">
 <td class="asm-label"></td>
 <td class="address-1"><span id="65290"></span>65290</td>
 <td class="instruction">LD A,L</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">L</span>.</td>
+<td class="comment-1" rowspan="1">Restore the melody ID back to <span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="65291"></span>65291</td>
 <td class="instruction">CP 8</td>
-<td class="comment-1" rowspan="2">Jump to <a href="65280.html#65387">65387</a> if <span class="register">A</span> is equal to 8.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="65280.html#65387">PlaySounds_3</a> if <span class="register">A</span> is equal to 8.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="65293"></span>65293</td>
-<td class="instruction">JR Z,<a href="65280.html#65387">65387</a></td>
+<td class="instruction">JR Z,<a href="65280.html#65387">PlaySounds_3</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="65295"></span>65295</td>
 <td class="instruction">CP 9</td>
-<td class="comment-1" rowspan="2">Jump to <a href="65280.html#65394">65394</a> if <span class="register">A</span> is equal to 9.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="65280.html#65394">PlaySounds_4</a> if <span class="register">A</span> is equal to 9.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="65297"></span>65297</td>
-<td class="instruction">JR Z,<a href="65280.html#65394">65394</a></td>
+<td class="instruction">JR Z,<a href="65280.html#65394">PlaySounds_4</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -153,7 +163,7 @@ Used by the routines at <a href="56951.html">56951</a> and <a href="64964.html">
 <td class="asm-label"></td>
 <td class="address-1"><span id="65310"></span>65310</td>
 <td class="instruction">LD DE,65413</td>
-<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="65280.html#65413">65413</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="65280.html#65413">MelodyBuffer</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -171,7 +181,7 @@ Used by the routines at <a href="56951.html">56951</a> and <a href="64964.html">
 <td class="asm-label"></td>
 <td class="address-1"><span id="65318"></span>65318</td>
 <td class="instruction">LD A,(65420)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="65280.html#65325">65325</a> if *<a href="65280.html#65420">65420</a> is equal to 2.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="65280.html#65325">PlaySounds_0</a> if *<a href="65280.html#65420">65420</a> is equal to 2.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -181,10 +191,10 @@ Used by the routines at <a href="56951.html">56951</a> and <a href="64964.html">
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="65323"></span>65323</td>
-<td class="instruction">JR Z,<a href="65280.html#65325">65325</a></td>
+<td class="instruction">JR Z,<a href="65280.html#65325">PlaySounds_0</a></td>
 </tr>
 <tr>
-<td class="asm-label"></td>
+<td class="asm-label">PlaySounds_0</td>
 <td class="address-2"><span id="65325"></span>65325</td>
 <td class="instruction">LD A,(65419)</td>
 <td class="comment-1" rowspan="3">Jump to <a href="65280.html#65383">Sounds_SpeakerOff</a> if *<a href="65280.html#65419">65419</a> is zero.</td>
@@ -214,8 +224,8 @@ Used by the routines at <a href="56951.html">56951</a> and <a href="64964.html">
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="65335"></span>65335</td>
-<td class="instruction">CALL <a href="65280.html#65365">65365</a></td>
-<td class="comment-1" rowspan="1">Call <a href="65280.html#65365">65365</a>.</td>
+<td class="instruction">CALL <a href="65280.html#65365">PlaySounds_2</a></td>
+<td class="comment-1" rowspan="1">Call <a href="65280.html#65365">PlaySounds_2</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -227,16 +237,16 @@ Used by the routines at <a href="56951.html">56951</a> and <a href="64964.html">
 <td class="asm-label"></td>
 <td class="address-1"><span id="65339"></span>65339</td>
 <td class="instruction">LD (65413),HL</td>
-<td class="comment-1" rowspan="1">Write <span class="register">HL</span> to *<a href="65280.html#65413">65413</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">HL</span> to *<a href="65280.html#65413">MelodyBuffer</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="65342"></span>65342</td>
-<td class="instruction">JR <a href="65280.html#65325">65325</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="65280.html#65325">65325</a>.</td>
+<td class="instruction">JR <a href="65280.html#65325">PlaySounds_0</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="65280.html#65325">PlaySounds_0</a>.</td>
 </tr>
 <tr>
-<td class="asm-label"></td>
+<td class="asm-label">PlaySounds_1</td>
 <td class="address-2"><span id="65344"></span>65344</td>
 <td class="instruction">LD A,(65419)</td>
 <td class="comment-1" rowspan="3">Jump to <a href="65280.html#65383">Sounds_SpeakerOff</a> if *<a href="65280.html#65419">65419</a> is zero.</td>
@@ -266,8 +276,8 @@ Used by the routines at <a href="56951.html">56951</a> and <a href="64964.html">
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="65354"></span>65354</td>
-<td class="instruction">CALL <a href="65280.html#65365">65365</a></td>
-<td class="comment-1" rowspan="1">Call <a href="65280.html#65365">65365</a>.</td>
+<td class="instruction">CALL <a href="65280.html#65365">PlaySounds_2</a></td>
+<td class="comment-1" rowspan="1">Call <a href="65280.html#65365">PlaySounds_2</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -285,19 +295,19 @@ Used by the routines at <a href="56951.html">56951</a> and <a href="64964.html">
 <td class="asm-label"></td>
 <td class="address-1"><span id="65360"></span>65360</td>
 <td class="instruction">LD (65413),HL</td>
-<td class="comment-1" rowspan="1">Write <span class="register">HL</span> to *<a href="65280.html#65413">65413</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">HL</span> to *<a href="65280.html#65413">MelodyBuffer</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="65363"></span>65363</td>
-<td class="instruction">JR <a href="65280.html#65344">65344</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="65280.html#65344">65344</a>.</td>
+<td class="instruction">JR <a href="65280.html#65344">PlaySounds_1</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="65280.html#65344">PlaySounds_1</a>.</td>
 </tr>
 <tr>
-<td class="asm-label"></td>
+<td class="asm-label">PlaySounds_2</td>
 <td class="address-2"><span id="65365"></span>65365</td>
 <td class="instruction">LD HL,(65413)</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="65280.html#65413">65413</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="65280.html#65413">MelodyBuffer</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -315,7 +325,7 @@ Used by the routines at <a href="56951.html">56951</a> and <a href="64964.html">
 <td class="asm-label"></td>
 <td class="address-1"><span id="65375"></span>65375</td>
 <td class="instruction">LD HL,(65413)</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="65280.html#65413">65413</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=*<a href="65280.html#65413">MelodyBuffer</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -357,7 +367,7 @@ Flip speaker off (unset bit 4).
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
-<td class="asm-label"></td>
+<td class="asm-label">PlaySounds_3</td>
 <td class="address-2"><span id="65387"></span>65387</td>
 <td class="instruction">LD HL,125</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=0125.</td>
@@ -371,11 +381,11 @@ Flip speaker off (unset bit 4).
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="65392"></span>65392</td>
-<td class="instruction">JR <a href="65280.html#65399">65399</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="65280.html#65399">65399</a>.</td>
+<td class="instruction">JR <a href="65280.html#65399">PlaySounds_5</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="65280.html#65399">PlaySounds_5</a>.</td>
 </tr>
 <tr>
-<td class="asm-label"></td>
+<td class="asm-label">PlaySounds_4</td>
 <td class="address-2"><span id="65394"></span>65394</td>
 <td class="instruction">LD HL,250</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=0250.</td>
@@ -387,7 +397,7 @@ Flip speaker off (unset bit 4).
 <td class="comment-1" rowspan="1"><span class="register">C</span>=25.</td>
 </tr>
 <tr>
-<td class="asm-label"></td>
+<td class="asm-label">PlaySounds_5</td>
 <td class="address-2"><span id="65399"></span>65399</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
@@ -411,10 +421,10 @@ Flip speaker off (unset bit 4).
 <td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">C</span>.</td>
 </tr>
 <tr>
-<td class="asm-label"></td>
+<td class="asm-label">PlaySounds_6</td>
 <td class="address-2"><span id="65405"></span>65405</td>
-<td class="instruction">DJNZ <a href="65280.html#65405">65405</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="65280.html#65405">65405</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="65280.html#65405">PlaySounds_6</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="65280.html#65405">PlaySounds_6</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -426,7 +436,7 @@ Flip speaker off (unset bit 4).
 <td class="asm-label"></td>
 <td class="address-1"><span id="65408"></span>65408</td>
 <td class="instruction">LD A,H</td>
-<td class="comment-1" rowspan="3">Jump to <a href="65280.html#65399">65399</a> until <span class="register">HL</span> is zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="65280.html#65399">PlaySounds_5</a> until <span class="register">HL</span> is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -436,7 +446,7 @@ Flip speaker off (unset bit 4).
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="65410"></span>65410</td>
-<td class="instruction">JR NZ,<a href="65280.html#65399">65399</a></td>
+<td class="instruction">JR NZ,<a href="65280.html#65399">PlaySounds_5</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -445,21 +455,21 @@ Flip speaker off (unset bit 4).
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
-<td class="asm-label"></td>
+<td class="asm-label">MelodyBuffer</td>
 <td class="address-1"><span id="65413"></span>65413</td>
-<td class="instruction">DEFW 0</td>
+<td class="instruction">DEFB 0,0</td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="65415"></span>65415</td>
-<td class="instruction">DEFW 0</td>
+<td class="instruction">DEFB 0,0</td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="65417"></span>65417</td>
-<td class="instruction">DEFW 0</td>
+<td class="instruction">DEFB 0,0</td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
@@ -475,7 +485,7 @@ Flip speaker off (unset bit 4).
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
-<td class="asm-label"></td>
+<td class="asm-label">MelodyID</td>
 <td class="address-1"><span id="65421"></span>65421</td>
 <td class="instruction">DEFB 0</td>
 <td class="comment-1" rowspan="1"></td>

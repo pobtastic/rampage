@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at EF38</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="E62D.html">E62D</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#ef38">Map</a></td>
+<td class="next">
+Next: <a href="EF50.html">EF50</a>
+</td>
+</tr>
+</table>
+<div class="description">EF38: Routine at EF38</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="E62D.html">E62D</a> and <a href="F352.html">F352</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="ef38"></span>EF38</td>
+<td class="instruction">LD BC,($D24D)</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">D24D</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef3c"></span>EF3C</td>
+<td class="instruction">LD A,($D247)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D247.html">D247</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef3f"></span>EF3F</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 7 was set.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef40"></span>EF40</td>
+<td class="instruction">JR C,<a href="EF38.html#ef49">$EF49</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EF38.html#ef49">EF49</a> if {} is lower.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef42"></span>EF42</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="3"><span class="register">B</span>+=<span class="register">H</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef43"></span>EF43</td>
+<td class="instruction">ADD A,H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef44"></span>EF44</td>
+<td class="instruction">LD B,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef45"></span>EF45</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="3"><span class="register">C</span>+=<span class="register">L</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef46"></span>EF46</td>
+<td class="instruction">ADD A,L</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef47"></span>EF47</td>
+<td class="instruction">LD C,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef48"></span>EF48</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="ef49"></span>EF49</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="3"><span class="register">B</span>+=<span class="register">D</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef4a"></span>EF4A</td>
+<td class="instruction">ADD A,D</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef4b"></span>EF4B</td>
+<td class="instruction">LD B,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef4c"></span>EF4C</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="3"><span class="register">C</span>+=<span class="register">E</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef4d"></span>EF4D</td>
+<td class="instruction">ADD A,E</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef4e"></span>EF4E</td>
+<td class="instruction">LD C,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef4f"></span>EF4F</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="E62D.html">E62D</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#ef38">Map</a></td>
+<td class="next">
+Next: <a href="EF50.html">EF50</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/EF38.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>
