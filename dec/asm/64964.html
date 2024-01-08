@@ -66,42 +66,52 @@ Used by the routine at <a href="64868.html">Handler_TickerNews</a>.
 <td class="asm-label">Sounds_Telecast_Loop</td>
 <td class="address-2"><span id="64966"></span>64966</td>
 <td class="instruction">CALL <a href="55848.html">RandomNumber</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55848.html">RandomNumber</a>.</td>
+<td class="comment-1" rowspan="2">Get a random number which is either 0 or 1.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64969"></span>64969</td>
 <td class="instruction">AND %00000001</td>
-<td class="comment-1" rowspan="1">Keep only bit 0.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="64971"></span>
+<div class="comments">
+<div class="paragraph">
+There's a 50/50 chance of playing either melody 3 or melody 7.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64971"></span>64971</td>
 <td class="instruction">LD A,7</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=7.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=melody 7.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64973"></span>64973</td>
-<td class="instruction">JR Z,<a href="64964.html#64977">Sounds_Telecast_0</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">JR Z,<a href="64964.html#64977">Sounds_Telecast_Write</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="64964.html#64977">Sounds_Telecast_Write</a> if the random number was 0.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64975"></span>64975</td>
 <td class="instruction">LD A,3</td>
-<td class="comment-1" rowspan="2">Write 3 to <a href="65280.html#65421">MelodyID</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=melody 3.</td>
 </tr>
 <tr>
-<td class="asm-label">Sounds_Telecast_0</td>
+<td class="asm-label">Sounds_Telecast_Write</td>
 <td class="address-2"><span id="64977"></span>64977</td>
 <td class="instruction">LD (65421),A</td>
+<td class="comment-1" rowspan="1">Write melody ID to <a href="65280.html#65421">MelodyID</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64980"></span>64980</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-1" rowspan="1">Stash <span class="register">BC</span> on the stack.</td>
+<td class="comment-1" rowspan="1">Stash the note counter on the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -113,7 +123,7 @@ Used by the routine at <a href="64868.html">Handler_TickerNews</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="64984"></span>64984</td>
 <td class="instruction">POP BC</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
+<td class="comment-1" rowspan="1">Restore the note counter from the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

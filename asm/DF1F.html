@@ -48,7 +48,7 @@ Used by the routine at <a href="DEE1.html">InitialiseNewGame</a>.
 </tr>
 <tr>
 <td class="register">A</td>
-<td class="register-desc"></td>
+<td class="register-desc">Default for</td>
 </tr>
 </table>
 </td>
@@ -67,7 +67,7 @@ See: <a href="CFD2.html">George_State</a>, <a href="D001.html">Lizzy_State</a>, 
 <td class="asm-label">SetMonsterStates</td>
 <td class="address-2"><span id="df1f"></span>DF1F</td>
 <td class="instruction">LD (IY+$00),$1C</td>
-<td class="comment-1" rowspan="1">Write 1C (falling?) to <span class="register">IY</span>+00 (monster state).</td>
+<td class="comment-1" rowspan="1">Write 1C (falling) to monster state (<span class="register">IY</span>+00).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -99,13 +99,13 @@ See: <a href="CFD2.html">George_State</a>, <a href="D001.html">Lizzy_State</a>, 
 <td class="asm-label"></td>
 <td class="address-1"><span id="df30"></span>DF30</td>
 <td class="instruction">LD (IY+$0A),$FE</td>
-<td class="comment-1" rowspan="1">Write FE to <span class="register">IY</span>+0A.</td>
+<td class="comment-1" rowspan="1">Write FE to monster Y position (<span class="register">IY</span>+0A).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="df34"></span>DF34</td>
 <td class="instruction">LD (IY+$0C),$40</td>
-<td class="comment-1" rowspan="1">Write 40 to <span class="register">IY</span>+0C.</td>
+<td class="comment-1" rowspan="1">Write 40 to monster energy (<span class="register">IY</span>+0C).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
