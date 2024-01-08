@@ -4518,7 +4518,7 @@ c$D7F6 LD ($D214),A    ;
 ; Used by the routines at #R$DB7E, #R$DBE5, #R$DCA1, #R$E119, #R$E25D, #R$E62D,
 ; #R$F28B, #R$F450, #R$FC39, #R$FCB6, #R$FD64, #R$FD9E and #R$FDC4.
 ;
-; A Random number
+; O:A Random number
 @label=RandomNumber
 c$DA28 LD DE,($D21A) ; #REGde=*#R$D21A.
  $DA2C INC DE        ; Increment #REGde by one.
@@ -5322,16 +5322,20 @@ c$DEC6 CALL $FBDB    ; Call #R$FBDB.
 ; Used by the routine at #R$DE19.
 @label=InitialiseNewGame
 c$DEE1 XOR A           ; #REGa=#N$00.
+; Set up George.
  $DEE2 LD IY,$CFD2     ; #REGiy=#R$CFD2.
  $DEE6 CALL $DF1F      ; Call #R$DF1F.
  $DEE9 LD (IY+$03),$01 ; Write #N$01 to *#REGiy+#N$03.
- $DEED LD (IY+$09),$15 ; Write #N$15 to *#REGiy+#N$09.
+ $DEED LD (IY+$09),$15 ; Write #N$15 to monster X position (*#REGiy+#N$09).
+; Set up Lizzy.
  $DEF1 LD IY,$D001     ; #REGiy=#R$D001.
  $DEF5 CALL $DF1F      ; Call #R$DF1F.
- $DEF8 LD (IY+$09),$FD ; Write #N$FD to *#REGiy+#N$09.
+ $DEF8 LD (IY+$09),$FD ; Write #N$FD to monster X position (*#REGiy+#N$09).
+; Set up Ralph.
  $DEFC LD IY,$D030     ; #REGiy=#R$D030.
  $DF00 CALL $DF1F      ; Call #R$DF1F.
- $DF03 LD (IY+$09),$08 ; Write #N$08 to *#REGiy+#N$09.
+ $DF03 LD (IY+$09),$08 ; Write #N$08 to monster X position (*#REGiy+#N$09).
+; Set starting level.
  $DF07 LD A,$01        ; {Write #N$01 to *#R$DF44.
  $DF09 LD ($DF44),A    ; }
 ; Set all monster scores to "000000".
@@ -5347,18 +5351,17 @@ c$DEE1 XOR A           ; #REGa=#N$00.
 ;
 ; Used by the routine at #R$DEE1.
 ;
-; A
+; A Default for
 ;
 ; See: #R$CFD2, #R$D001, #R$D030.
 @label=SetMonsterStates
-c$DF1F LD (IY+$00),$1C ; Write #N$1C (falling?) to #REGiy+#N$00 (monster
-                       ; state).
+c$DF1F LD (IY+$00),$1C ; Write #N$1C (falling) to monster state (#REGiy+#N$00).
  $DF23 LD (IY+$02),A   ; {Write #REGa to: #LIST { #REGiy+#N$02 } { #REGiy+#N$03
  $DF26 LD (IY+$03),A   ; } { #REGiy+#N$08 } LIST#
  $DF29 LD (IY+$08),A   ; }
  $DF2C LD (IY+$04),$01 ; Write #N$01 to #REGiy+#N$04.
- $DF30 LD (IY+$0A),$FE ; Write #N$FE to #REGiy+#N$0A.
- $DF34 LD (IY+$0C),$40 ; Write #N$40 to #REGiy+#N$0C.
+ $DF30 LD (IY+$0A),$FE ; Write #N$FE to monster Y position (#REGiy+#N$0A).
+ $DF34 LD (IY+$0C),$40 ; Write #N$40 to monster energy (#REGiy+#N$0C).
  $DF38 RET             ; Return.
 
 ; Reset Score
@@ -5590,8 +5593,8 @@ c$DF90 LD E,A                               ; #REGe=level.
  $E07B ADD A,$02                            ; #REGa+=#N$02.
  $E07D CP $07                               ; {Jump to #R$E083 if #REGa is
  $E07F JR C,$E083                           ; lower than #N$07.}
- $E081 LD A,$06                             ; #REGa=#N$06.
-*$E083 LD ($D212),A                         ; Write #REGa to *#R$D212.
+ $E081 LD A,$06                             ; {Write #N$06 to *#R$D212.
+*$E083 LD ($D212),A                         ; }
  $E086 LD A,($DF44)                         ; #REGa=*#R$DF44.
  $E089 RRCA                                 ; RRCA.
  $E08A RRCA                                 ; RRCA.
@@ -9757,15 +9760,17 @@ c$FD9E CALL $DA28    ; Call #R$DA28.
 @label=Sounds_Telecast
 c$FDC4 LD B,$0A      ; #REGb=#N$0A (counter).
 @label=Sounds_Telecast_Loop
-*$FDC6 CALL $DA28    ; Call #R$DA28.
- $FDC9 AND %00000001 ; Keep only bit 0.
- $FDCB LD A,$07      ; #REGa=#N$07.
- $FDCD JR Z,$FDD1    ;
- $FDCF LD A,$03      ; {Write #N$03 to #R$FF8D.
-*$FDD1 LD ($FF8D),A  ; }
- $FDD4 PUSH BC       ; Stash #REGbc on the stack.
+*$FDC6 CALL $DA28    ; {Get a random number which is either #N$00 or #N$01.
+ $FDC9 AND %00000001 ; }
+; There's a 50/50 chance of playing either melody #N$03 or melody #N$07.
+ $FDCB LD A,$07      ; #REGa=melody #N$07.
+ $FDCD JR Z,$FDD1    ; Jump to #R$FDD1 if the random number was #N$00.
+ $FDCF LD A,$03      ; #REGa=melody #N$03.
+@label=Sounds_Telecast_Write
+*$FDD1 LD ($FF8D),A  ; Write melody ID to #R$FF8D.
+ $FDD4 PUSH BC       ; Stash the note counter on the stack.
  $FDD5 CALL $FF00    ; Call #R$FF00.
- $FDD8 POP BC        ; Restore #REGbc from the stack.
+ $FDD8 POP BC        ; Restore the note counter from the stack.
  $FDD9 HALT          ; {Halt operation (suspend CPU until the next interrupt,
  $FDDA HALT          ; and do this twice).}
  $FDDB DJNZ $FDC6    ; Decrease counter by one and loop back to #R$FDC6 until

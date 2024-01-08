@@ -1082,7 +1082,7 @@ c $D7F6
 
 c $DA28 Random Number
 @ $DA28 label=RandomNumber
-R $DA28 A Random number
+R $DA28 O:A Random number
   $DA28,$04 #REGde=*#R$D21A.
   $DA2C,$01 Increment #REGde by one.
 N $DA2D The max value is #N$2800 so test the higher order byte to check if this limit has been hit.
@@ -1523,16 +1523,20 @@ c $DEC6
 c $DEE1 Initialise New Game
 @ $DEE1 label=InitialiseNewGame
   $DEE1,$01 #REGa=#N$00.
+N $DEE2 Set up George.
   $DEE2,$04 #REGiy=#R$CFD2.
   $DEE6,$03 Call #R$DF1F.
   $DEE9,$04 Write #N$01 to *#REGiy+#N$03.
-  $DEED,$04 Write #N$15 to *#REGiy+#N$09.
+  $DEED,$04 Write #N$15 to monster X position (*#REGiy+#N$09).
+N $DEF1 Set up Lizzy.
   $DEF1,$04 #REGiy=#R$D001.
   $DEF5,$03 Call #R$DF1F.
-  $DEF8,$04 Write #N$FD to *#REGiy+#N$09.
+  $DEF8,$04 Write #N$FD to monster X position (*#REGiy+#N$09).
+N $DEFC Set up Ralph.
   $DEFC,$04 #REGiy=#R$D030.
   $DF00,$03 Call #R$DF1F.
-  $DF03,$04 Write #N$08 to *#REGiy+#N$09.
+  $DF03,$04 Write #N$08 to monster X position (*#REGiy+#N$09).
+N $DF07 Set starting level.
   $DF07,$05 Write #N$01 to *#R$DF44.
 N $DF0C Set all monster scores to "000000".
   $DF0C,$03 #REGhl=#R$D066.
@@ -1545,13 +1549,13 @@ N $DF0C Set all monster scores to "000000".
 
 c $DF1F Set Monster States
 @ $DF1F label=SetMonsterStates
-R $DF1F A
+R $DF1F A Default for
 N $DF1F See: #R$CFD2, #R$D001, #R$D030.
-  $DF1F,$04 Write #N$1C (falling?) to #REGiy+#N$00 (monster state).
+  $DF1F,$04 Write #N$1C (falling) to monster state (#REGiy+#N$00).
   $DF23,$09 Write #REGa to: #LIST { #REGiy+#N$02 } { #REGiy+#N$03 } { #REGiy+#N$08 } LIST#
   $DF2C,$04 Write #N$01 to #REGiy+#N$04.
-  $DF30,$04 Write #N$FE to #REGiy+#N$0A.
-  $DF34,$04 Write #N$40 to #REGiy+#N$0C.
+  $DF30,$04 Write #N$FE to monster Y position (#REGiy+#N$0A).
+  $DF34,$04 Write #N$40 to monster energy (#REGiy+#N$0C).
   $DF38,$01 Return.
 
 c $DF39 Reset Score
@@ -1731,8 +1735,7 @@ N $DF9D Process the scene data.
   $E079,$02,b$01 Keep only bits 0-2.
   $E07B,$02 #REGa+=#N$02.
   $E07D,$04 Jump to #R$E083 if #REGa is lower than #N$07.
-  $E081,$02 #REGa=#N$06.
-  $E083,$03 Write #REGa to *#R$D212.
+  $E081,$05 Write #N$06 to *#R$D212.
   $E086,$03 #REGa=*#R$DF44.
   $E089,$01 RRCA.
   $E08A,$01 RRCA.
@@ -3611,14 +3614,18 @@ c $FDC4 Sounds: Annoying Telecast Beeping
 N $FDC4 #AUDIO(telecast.wav)(#INCLUDE(Telecast))
   $FDC4,$02 #REGb=#N$0A (counter).
 @ $FDC6 label=Sounds_Telecast_Loop
+M $FDC6,$05 Get a random number which is either #N$00 or #N$01.
   $FDC6,$03 Call #R$DA28.
   $FDC9,$02,b$01 Keep only bit 0.
-  $FDCB,$02 #REGa=#N$07.
-  $FDCD,$02
-  $FDCF,$05 Write #N$03 to #R$FF8D.
-  $FDD4,$01 Stash #REGbc on the stack.
+N $FDCB There's a 50/50 chance of playing either melody #N$03 or melody #N$07.
+  $FDCB,$02 #REGa=melody #N$07.
+  $FDCD,$02 Jump to #R$FDD1 if the random number was #N$00.
+  $FDCF,$02 #REGa=melody #N$03.
+@ $FDD1 label=Sounds_Telecast_Write
+  $FDD1,$03 Write melody ID to #R$FF8D.
+  $FDD4,$01 Stash the note counter on the stack.
   $FDD5,$03 Call #R$FF00.
-  $FDD8,$01 Restore #REGbc from the stack.
+  $FDD8,$01 Restore the note counter from the stack.
   $FDD9,$02 Halt operation (suspend CPU until the next interrupt, and do this twice).
   $FDDB,$02 Decrease counter by one and loop back to #R$FDC6 until counter is zero.
   $FDDD,$01 Return.

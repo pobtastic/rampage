@@ -10,7 +10,7 @@ This alters the line.
 <table>
   <tbody>
     <tr>
-      <td class="address-1">#R$DD74</td>
+      <td class="address-1">#R$DD74(#N$DD74)</td>
       <td class="instruction">DEC (#REGiy+#N$0C)</td>
     </tr>
   </tbody>
@@ -21,7 +21,7 @@ To be a "ComPare" command, so energy is no longer depleted.
 <table>
   <tbody>
     <tr>
-      <td class="address-1">#R$DD74</td>
+      <td class="address-1">#R$DD74(#N$DD74)</td>
       <td class="instruction">CP (#REGiy+#N$0C)</td>
     </tr>
   </tbody>
