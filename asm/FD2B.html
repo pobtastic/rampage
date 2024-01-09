@@ -33,7 +33,7 @@ Next: <a href="FD44.html">FD44</a>
 </td>
 </tr>
 </table>
-<div class="description">FD2B: Routine at FD2B</div>
+<div class="description">FD2B: Play Telecast Intro</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,50 +45,60 @@ Used by the routine at <a href="DE19.html">GameEntryPoint</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">PlayTelecastIntro</td>
 <td class="address-2"><span id="fd2b"></span>FD2B</td>
-<td class="instruction">CALL <a href="FBDB.html">$FBDB</a></td>
-<td class="comment-1" rowspan="1">Call <a href="FBDB.html">FBDB</a>.</td>
+<td class="instruction">CALL <a href="FBDB.html">UpdateXXXXXBuffer</a></td>
+<td class="comment-1" rowspan="1">Call <a href="FBDB.html">UpdateXXXXXBuffer</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fd2e"></span>FD2E</td>
 <td class="instruction">LD A,($CFD2)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="CFD2.html">George_State</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fd31"></span>FD31</td>
 <td class="instruction">CALL <a href="FD64.html">Handler_TickerNews</a></td>
 <td class="comment-1" rowspan="1">Call <a href="FD64.html">Handler_TickerNews</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fd34"></span>FD34</td>
 <td class="instruction">LD A,($D001)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D001.html">Lizzy_State</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fd37"></span>FD37</td>
 <td class="instruction">CALL <a href="FD86.html">ShiftUpTickerNews</a></td>
 <td class="comment-1" rowspan="1">Call <a href="FD86.html">ShiftUpTickerNews</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fd3a"></span>FD3A</td>
 <td class="instruction">LD A,($D030)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D030.html">Ralph_State</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fd3d"></span>FD3D</td>
 <td class="instruction">CALL <a href="FD86.html">ShiftUpTickerNews</a></td>
 <td class="comment-1" rowspan="1">Call <a href="FD86.html">ShiftUpTickerNews</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fd40"></span>FD40</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="2">Set the border colour to BLACK.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fd41"></span>FD41</td>
 <td class="instruction">OUT ($FE),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fd43"></span>FD43</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

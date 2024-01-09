@@ -33,7 +33,7 @@ Next: <a href="64836.html">64836</a>
 </td>
 </tr>
 </table>
-<div class="description">64811: Routine at FD2B</div>
+<div class="description">64811: Play Telecast Intro</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,50 +45,60 @@ Used by the routine at <a href="56857.html">GameEntryPoint</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">PlayTelecastIntro</td>
 <td class="address-2"><span id="64811"></span>64811</td>
-<td class="instruction">CALL <a href="64475.html">64475</a></td>
-<td class="comment-1" rowspan="1">Call <a href="64475.html">64475</a>.</td>
+<td class="instruction">CALL <a href="64475.html">UpdateXXXXXBuffer</a></td>
+<td class="comment-1" rowspan="1">Call <a href="64475.html">UpdateXXXXXBuffer</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64814"></span>64814</td>
 <td class="instruction">LD A,(53202)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53202.html">George_State</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64817"></span>64817</td>
 <td class="instruction">CALL <a href="64868.html">Handler_TickerNews</a></td>
 <td class="comment-1" rowspan="1">Call <a href="64868.html">Handler_TickerNews</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64820"></span>64820</td>
 <td class="instruction">LD A,(53249)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53249.html">Lizzy_State</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64823"></span>64823</td>
 <td class="instruction">CALL <a href="64902.html">ShiftUpTickerNews</a></td>
 <td class="comment-1" rowspan="1">Call <a href="64902.html">ShiftUpTickerNews</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64826"></span>64826</td>
 <td class="instruction">LD A,(53296)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53296.html">Ralph_State</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64829"></span>64829</td>
 <td class="instruction">CALL <a href="64902.html">ShiftUpTickerNews</a></td>
 <td class="comment-1" rowspan="1">Call <a href="64902.html">ShiftUpTickerNews</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64832"></span>64832</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="2">Set the border colour to BLACK.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64833"></span>64833</td>
 <td class="instruction">OUT (254),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64835"></span>64835</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

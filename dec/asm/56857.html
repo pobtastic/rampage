@@ -50,8 +50,8 @@ Next: <a href="56951.html">56951</a>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56860"></span>56860</td>
-<td class="instruction">CALL <a href="64811.html">64811</a></td>
-<td class="comment-1" rowspan="1">Call <a href="64811.html">64811</a>.</td>
+<td class="instruction">CALL <a href="64811.html">PlayTelecastIntro</a></td>
+<td class="comment-1" rowspan="1">Call <a href="64811.html">PlayTelecastIntro</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -111,6 +111,16 @@ Game loop.
 <td class="comment-1" rowspan="1">Call <a href="63695.html">Controls_PauseQuit</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="56884"></span>
+<div class="comments">
+<div class="paragraph">
+Is the game still in-play?
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56884"></span>56884</td>
 <td class="instruction">LD A,(54269)</td>
@@ -138,10 +148,23 @@ Game loop.
 <td class="instruction">LD (23672),A</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="56894"></span>
+<div class="comments">
+<div class="paragraph">
+Check each monster state. If any are "in-play" then jump to <a href="56857.html#56915">Game_InPlay</a>. If not, we cycle back round to <a href="56857.html">GameEntryPoint</a>.
+</div>
+<div class="paragraph">
+Is George still in-play?
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56894"></span>56894</td>
 <td class="instruction">LD A,(53202)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="56857.html#56915">GameEntryPoint_0</a> if *<a href="53202.html">George_State</a> is not equal to 255 (in-play).</td>
+<td class="comment-1" rowspan="3">Jump to <a href="56857.html#56915">Game_InPlay</a> if *<a href="53202.html">George_State</a> is not equal to 255 (in-play).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -151,13 +174,23 @@ Game loop.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56899"></span>56899</td>
-<td class="instruction">JR NZ,<a href="56857.html#56915">GameEntryPoint_0</a></td>
+<td class="instruction">JR NZ,<a href="56857.html#56915">Game_InPlay</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56901"></span>
+<div class="comments">
+<div class="paragraph">
+Is Lizzy still in-play?
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56901"></span>56901</td>
 <td class="instruction">LD A,(53249)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="56857.html#56915">GameEntryPoint_0</a> if *<a href="53249.html">Lizzy_State</a> is not equal to 255 (in-play).</td>
+<td class="comment-1" rowspan="3">Jump to <a href="56857.html#56915">Game_InPlay</a> if *<a href="53249.html">Lizzy_State</a> is not equal to 255 (in-play).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -167,7 +200,17 @@ Game loop.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56906"></span>56906</td>
-<td class="instruction">JR NZ,<a href="56857.html#56915">GameEntryPoint_0</a></td>
+<td class="instruction">JR NZ,<a href="56857.html#56915">Game_InPlay</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56908"></span>
+<div class="comments">
+<div class="paragraph">
+Is Ralph still in-play?
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -186,10 +229,10 @@ Game loop.
 <td class="instruction">JR Z,<a href="56857.html#56857">GameEntryPoint</a></td>
 </tr>
 <tr>
-<td class="asm-label">GameEntryPoint_0</td>
+<td class="asm-label">Game_InPlay</td>
 <td class="address-2"><span id="56915"></span>56915</td>
 <td class="instruction">LD A,(54259)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="56951.html">56951</a> if *<a href="54259.html">54259</a> is not zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="56951.html">RunHandlers</a> if *<a href="54259.html">54259</a> is not zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -199,7 +242,7 @@ Game loop.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56919"></span>56919</td>
-<td class="instruction">JR NZ,<a href="56951.html">56951</a></td>
+<td class="instruction">JR NZ,<a href="56951.html">RunHandlers</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -222,8 +265,18 @@ Game loop.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56928"></span>56928</td>
-<td class="instruction">JR NZ,<a href="56951.html">56951</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="56951.html">56951</a> if <span class="register">A</span> is not zero.</td>
+<td class="instruction">JR NZ,<a href="56951.html">RunHandlers</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="56951.html">RunHandlers</a> if <span class="register">A</span> is not zero.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56930"></span>
+<div class="comments">
+<div class="paragraph">
+Level complete! Move onto the next level.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -235,35 +288,46 @@ Game loop.
 <td class="asm-label"></td>
 <td class="address-1"><span id="56933"></span>56933</td>
 <td class="instruction">INC A</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
+<td class="comment-1" rowspan="1">Increment level number by one.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56934"></span>
+<div class="comments">
+<div class="paragraph">
+Check to see if all levels (40 in total) have been played, if so loop back to level 1.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56934"></span>56934</td>
 <td class="instruction">CP 41</td>
-<td class="comment-1" rowspan="2">Jump to <a href="56857.html#56940">GameEntryPoint_1</a> if <span class="register">A</span> is not equal to 41.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="56857.html#56940">WriteLevelNumber</a> if <span class="register">A</span> is not equal to 41.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56936"></span>56936</td>
-<td class="instruction">JR NZ,<a href="56857.html#56940">GameEntryPoint_1</a></td>
+<td class="instruction">JR NZ,<a href="56857.html#56940">WriteLevelNumber</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56938"></span>56938</td>
 <td class="instruction">LD A,1</td>
-<td class="comment-1" rowspan="2">Write 1 to *<a href="57156.html">CurrentLevel</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=level 1.</td>
 </tr>
 <tr>
-<td class="asm-label">GameEntryPoint_1</td>
+<td class="asm-label">WriteLevelNumber</td>
 <td class="address-2"><span id="56940"></span>56940</td>
 <td class="instruction">LD (57156),A</td>
+<td class="comment-1" rowspan="1">Write level number to *<a href="57156.html">CurrentLevel</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56943"></span>56943</td>
-<td class="instruction">CALL <a href="64811.html">64811</a></td>
-<td class="comment-1" rowspan="1">Call <a href="64811.html">64811</a>.</td>
+<td class="instruction">CALL <a href="64811.html">PlayTelecastIntro</a></td>
+<td class="comment-1" rowspan="1">Call <a href="64811.html">PlayTelecastIntro</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

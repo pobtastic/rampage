@@ -33,48 +33,65 @@ Next: <a href="FBEC.html">FBEC</a>
 </td>
 </tr>
 </table>
-<div class="description">FBDB: Routine at FBDB</div>
+<div class="description">FBDB: Update XXXXX Buffer</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="DEC6.html">DEC6</a>, <a href="F916.html">SelectionScreen</a> and <a href="FD2B.html">FD2B</a>.
+Used by the routines at <a href="DEC6.html">DEC6</a>, <a href="F916.html">SelectionScreen</a> and <a href="FD2B.html">PlayTelecastIntro</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
-<td class="address-2"><span id="fbdb"></span>FBDB</td>
-<td class="instruction">CALL <a href="D5D8.html">$D5D8</a></td>
-<td class="comment-1" rowspan="1">Call <a href="D5D8.html">D5D8</a>.</td>
+<td class="routine-comment" colspan="5">
+<span id="fbdb"></span>
+<div class="comments">
+<div class="paragraph">
+Todo: Find out what this specific buffer does.
+</div>
+</div>
+</td>
 </tr>
 <tr>
+<td class="asm-label">UpdateXXXXXBuffer</td>
+<td class="address-2"><span id="fbdb"></span>FBDB</td>
+<td class="instruction">CALL <a href="D5D8.html">ClearBuffers</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D5D8.html">ClearBuffers</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbde"></span>FBDE</td>
 <td class="instruction">LD HL,$6800</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="6100.html#6800">6800</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbe1"></span>FBE1</td>
 <td class="instruction">LD DE,$6801</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=6801.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbe4"></span>FBE4</td>
 <td class="instruction">LD BC,$02FF</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=02FF.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbe7"></span>FBE7</td>
 <td class="instruction">LD (HL),$FF</td>
 <td class="comment-1" rowspan="1">Write FF to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbe9"></span>FBE9</td>
 <td class="instruction">LDIR</td>
-<td class="comment-1" rowspan="1">Copy.</td>
+<td class="comment-1" rowspan="1">Copy 02FF bytes from <span class="register">HL</span> to <span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="fbeb"></span>FBEB</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
