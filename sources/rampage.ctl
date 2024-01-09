@@ -20,11 +20,11 @@ b $6B00 Shadow Buffer
   $8300,$0300,$20 Attributes.
 
 b $8600
-D $8600 #UDGARRAY$20,step=$20;(#PC)-(#PC+$100)-$01-$100(test)
+D $8600 #UDGTABLE { #UDGARRAY$20,step=$20;(#PC)-(#PC+$100)-$01-$100(test) } UDGTABLE#
   $8600,$1800,$20 Pixels.
 
 b $9E00
-  $9E00,$08 #UDG(#PC)
+  $9E00,$08 #UDGTABLE { #UDG(#PC) } UDGTABLE#
 L $9E00,$08,$180
 
 b $C81A
@@ -47,7 +47,7 @@ b $C86E
   $C8A9
 
 b $C8BA
-  $C8BA,$08 #UDG(#PC)
+  $C8BA,$08 #UDGTABLE { #UDG(#PC) } UDGTABLE#
 L $C8BA,$08,$A5
 
 b $C99E
@@ -324,7 +324,7 @@ t $D18F Messaging: Game Over
 
 b $D198 Graphics: Ticker
 @ $D198 label=Graphics_Ticker
-  $D198,$08 #UDG(#PC)
+  $D198,$08 #UDGTABLE { #UDG(#PC) } UDGTABLE#
 L $D198,$08,$0F
 
 b $D211
@@ -733,26 +733,35 @@ c $D593
   $D5D5,$02 Decrease counter by one and loop back to #R$D5BB until counter is zero.
   $D5D7,$01 Return.
 
-c $D5D8
-  $D5D8,$02 #REGa=#N$03.
-  $D5DA,$01 Stash #REGaf on the stack.
+c $D5D8 Clear Buffers
+@ $D5D8 label=ClearBuffers
+  $D5D8,$02 #REGa=#N$03 (counter).
+@ $D5DA label=ClearBuffers_Loop
+  $D5DA,$01 Stash the counter on the stack.
   $D5DB,$03 Call #R$D5E6.
-  $D5DE,$01 Restore #REGaf from the stack.
-  $D5DF,$01 Decrease #REGa by one.
-  $D5E0,$02 Jump to #R$D5DA until #REGa is zero.
+  $D5DE,$01 Restore the counter from the stack.
+  $D5DF,$01 Decrease the counter by one.
+  $D5E0,$02 Jump to #R$D5DA until the counter is zero.
   $D5E2,$03 Call #R$D5E6.
   $D5E5,$01 Return.
-
-c $D5E6
+N $D5E6 Calculate each buffer address.
+N $D5E6 #TABLE(default,centre,centre)
+. { =h Counter | =h,c2 Registers }
+. { =h #REGa | =h #REGhl | =h #REGde }
+. { #N$03 | #R$6800 | #N$6801 }
+. { #N$02 | #R$6500 | #N$6501 }
+. { #N$01 | #R$6200 | #N$6201 }
+. { #N$00 | #R$5F00 | #N$5F01 }
+. TABLE#
+@ $D5E6 label=ClearBuffers_Action
   $D5E6,$01 #REGh=#REGa.
-  $D5E7,$01 #REGa+=#REGa.
-  $D5E8,$01 #REGa+=#REGh.
-  $D5E9,$02 #REGa+=#N$5F.
+  $D5E7,$04 #REGa*=#N$03+#N$5F.
   $D5EB,$01 #REGh=#REGa.
+N $D5EC #REGde is the same address + #N$01.
   $D5EC,$01 #REGd=#REGa.
   $D5ED,$02 #REGl=#N$00.
   $D5EF,$02 #REGe=#N$01.
-  $D5F1,$01 Write #REGl to *#REGhl.
+  $D5F1,$01 Write #N$00 (from #REGl) to *#REGhl.
   $D5F2,$03 #REGbc=#N($02FF,$04,$04).
   $D5F5,$02 Copy #N($02FF,$04,$04) bytes from #REGhl to #REGde.
   $D5F7,$01 Return.
@@ -1433,7 +1442,7 @@ B $DDF2
 > $DE00 @org
 c $DE00 Entry Point
 D $DE00 When the game has loaded #R$6B00 contains this copyright splash.
-D $DE00 #SIM(start=$DE06,stop=$DE11) #UDGTABLE { #SCR$02(splash-screen) } UDGTABLE#
+D $DE00 #PUSHS #SIM(start=$DE06,stop=$DE11) #UDGTABLE { #SCR$02(splash-screen) } UDGTABLE# #POPS
 @ $DE00 label=EntryPoint
 E $DE00 Continue on to #R$DE19.
   $DE00,$04 #HTML(Write #N$00 to <a href="https://skoolkid.github.io/rom/asm/5C48.html">BORDCR</a>.)
@@ -1463,25 +1472,36 @@ c $DE19 Game Entry Point
 N $DE31 Game loop.
 @ $DE31 label=GameLoop
   $DE31,$03 Call #R$F8CF.
+N $DE34 Is the game still in-play?
   $DE34,$06 Jump to #R$DE19 if *#R$D3FD is not zero.
   $DE3A,$04 #HTML(Write #N$00 to <a href="https://skoolkid.github.io/rom/asm/5C78.html">FRAMES</a>.)
+N $DE3E Check each monster state. If any are "in-play" then jump to #R$DE53. If not, we cycle back round to #R$DE19.
+N $DE3E Is George still in-play?
   $DE3E,$07 Jump to #R$DE53 if *#R$CFD2 is not equal to #N$FF (in-play).
+N $DE45 Is Lizzy still in-play?
   $DE45,$07 Jump to #R$DE53 if *#R$D001 is not equal to #N$FF (in-play).
+N $DE4C Is Ralph still in-play?
   $DE4C,$07 Jump to #R$DE19 if *#R$D030 is equal to #N$FF (in-play).
+@ $DE53 label=Game_InPlay
   $DE53,$06 Jump to #R$DE77 if *#R$D3F3 is not zero.
   $DE59,$03 #REGa=*#R$D216.
   $DE5C,$01 Decrease #REGa by one.
   $DE5D,$03 Write #REGa to *#R$D216.
   $DE60,$02 Jump to #R$DE77 if #REGa is not zero.
+N $DE62 Level complete! Move onto the next level.
   $DE62,$03 #REGa=*#R$DF44.
-  $DE65,$01 Increment #REGa by one.
+  $DE65,$01 Increment level number by one.
+N $DE66 Check to see if all levels (#N$28 in total) have been played, if so loop back to level #N$01.
   $DE66,$04 Jump to #R$DE6C if #REGa is not equal to #N$29.
-  $DE6A,$05 Write #N$01 to *#R$DF44.
+  $DE6A,$02 #REGa=level #N$01.
+@ $DE6C label=WriteLevelNumber
+  $DE6C,$03 Write level number to *#R$DF44.
   $DE6F,$03 Call #R$FD2B.
   $DE72,$03 Call #R$DF46.
   $DE75,$02 Jump to #R$DE28.
 
-c $DE77
+c $DE77 Run Handlers
+@ $DE77 label=RunHandlers
   $DE77,$03 Call #R$EFE0.
   $DE7A,$03 Call #R$DCA1.
   $DE7D,$03 Call #R$F28B.
@@ -1505,8 +1525,9 @@ c $DE77
   $DEB3,$03 Call #R$D5F8.
   $DEB6,$03 Call #R$F8BE.
   $DEB9,$03 Call #R$FF00.
+@ $DEBC label=WaitForFrameBuffer
   $DEBC,$03 #HTML(#REGhl=<a href="https://skoolkid.github.io/rom/asm/5C78.html">FRAMES</a>.)
-  $DEBF,$04
+  $DEBF,$04 Jump to #R$DEBC if #REGa is lower than #N$06.
   $DEC3,$03 Jump to #R$DE31.
 
 c $DEC6
@@ -3393,13 +3414,15 @@ c $FBD4 Get Keypress
   $FBD8,$02,b$01 Keep only bits 0-4.
   $FBDA,$01 Return.
 
-c $FBDB
+c $FBDB Update XXXXX Buffer
+@ $FBDB label=UpdateXXXXXBuffer
+N $FBDB Todo: Find out what this specific buffer does.
   $FBDB,$03 Call #R$D5D8.
   $FBDE,$03 #REGhl=#R$6800.
   $FBE1,$03 #REGde=#N$6801.
   $FBE4,$03 #REGbc=#N$02FF.
   $FBE7,$02 Write #N$FF to *#REGhl.
-  $FBE9,$02 Copy.
+  $FBE9,$02 Copy #N$02FF bytes from #REGhl to #REGde.
   $FBEB,$01 Return.
 
 c $FBEC Short Pause
@@ -3529,7 +3552,8 @@ c $FCB6
   $FD28,$01 #REGa-=#REGc.
   $FD29,$02 Jump to #R$FCFE.
 
-c $FD2B
+c $FD2B Play Telecast Intro
+@ $FD2B label=PlayTelecastIntro
   $FD2B,$03 Call #R$FBDB.
   $FD2E,$03 #REGa=*#R$CFD2.
   $FD31,$03 Call #R$FD64.
