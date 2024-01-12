@@ -27,6 +27,16 @@ To be a "ComPare" command, so energy is no longer depleted.
   </tbody>
 </table>
 
+Also seen this documented as:
+
+<code>
+<div>POKE #R$DD74(#N$DD73),#N$00</div>
+<div>POKE #R$DD74(#N$DD74),#N$00</div>
+<div>POKE #R$DD74(#N$DD75),#N$00</div>
+</code>
+
+Which just removes the command.
+
 [Poke:Stops Annoying Telecast Beeps]
 <code>
 <div>POKE #R$FDDB(#N$FDDC),#N$00</div>

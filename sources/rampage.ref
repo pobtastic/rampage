@@ -8,7 +8,7 @@
 
 [Config]
 Expand=#INCLUDE(Expand)
-RefFiles=bases.ref;analytics.ref;changelog.ref;data.ref;pokes.ref;sound.ref
+RefFiles=bases.ref;analytics.ref;changelog.ref;data.ref;facts.ref;pokes.ref;sound.ref
 GameDir=rampage
 
 [Game]
