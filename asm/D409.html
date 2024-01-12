@@ -50,6 +50,20 @@ Used by the routines at <a href="DE77.html">RunHandlers</a>, <a href="F916.html"
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=0000.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="d40c"></span>
+<div class="comments">
+<div class="paragraph">
+Self-modifying code. These lines populate the value for a LoaD command below. The values relate to areas of the shadow screen buffer: <ul class="">
+<li><a href="6B00.html">6B00</a></li>
+<li><a href="6B00.html#7300">7300</a></li>
+<li><a href="6B00.html#7b00">7B00</a></li>
+</ul>
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="address-1"><span id="d40c"></span>D40C</td>
 <td class="instruction">LD A,$6B</td>
 <td class="comment-1" rowspan="3">Write 6B to: <ul class="">
@@ -330,9 +344,36 @@ Used by the routines at <a href="DE77.html">RunHandlers</a>, <a href="F916.html"
 <td class="comment-1" rowspan="1">Call <a href="D409.html#d4e8">D4E8</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="d474"></span>
+<div class="comments">
+<div class="paragraph">
+The value here is self-modified at: <table class="default">
+<tr>
+<th colspan="1" rowspan="1">Location</th>
+<th colspan="1" rowspan="1">Value Set</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="D409.html#d40c">D40C</a></td>
+<td class="centre" colspan="1" rowspan="1">6B</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="D409.html#d417">D417</a></td>
+<td class="centre" colspan="1" rowspan="1">73</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="D409.html#d422">D422</a></td>
+<td class="centre" colspan="1" rowspan="1">7B</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="address-1"><span id="d474"></span>D474</td>
 <td class="instruction">LD D,$00</td>
-<td class="comment-1" rowspan="1"><span class="register">D</span>=00.</td>
+<td class="comment-1" rowspan="1"><span class="register">D</span>=00 (as above).</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d476"></span>D476</td>
@@ -552,22 +593,19 @@ Used by the routines at <a href="DE77.html">RunHandlers</a>, <a href="F916.html"
 <tr>
 <td class="address-1"><span id="d4a6"></span>D4A6</td>
 <td class="instruction">ADD A,A</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">A</span>.</td>
+<td class="comment-1" rowspan="4"><span class="register">A</span>*=08+<span class="register">C</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d4a7"></span>D4A7</td>
 <td class="instruction">ADD A,A</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d4a8"></span>D4A8</td>
 <td class="instruction">ADD A,A</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d4a9"></span>D4A9</td>
 <td class="instruction">ADD A,C</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">C</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d4aa"></span>D4AA</td>
@@ -610,9 +648,36 @@ Used by the routines at <a href="DE77.html">RunHandlers</a>, <a href="F916.html"
 <td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="d4b5"></span>
+<div class="comments">
+<div class="paragraph">
+The value here is self-modified at: <table class="default">
+<tr>
+<th colspan="1" rowspan="1">Location</th>
+<th colspan="1" rowspan="1">Value Set</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="D409.html#d40c">D40C</a></td>
+<td class="centre" colspan="1" rowspan="1">6B</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="D409.html#d417">D417</a></td>
+<td class="centre" colspan="1" rowspan="1">73</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="D409.html#d422">D422</a></td>
+<td class="centre" colspan="1" rowspan="1">7B</td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="address-1"><span id="d4b5"></span>D4B5</td>
 <td class="instruction">LD D,$00</td>
-<td class="comment-1" rowspan="1"><span class="register">D</span>=00.</td>
+<td class="comment-1" rowspan="1"><span class="register">D</span>=00 (as above).</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d4b7"></span>D4B7</td>
@@ -887,12 +952,11 @@ Used by the routines at <a href="DE77.html">RunHandlers</a>, <a href="F916.html"
 <tr>
 <td class="address-1"><span id="d4f0"></span>D4F0</td>
 <td class="instruction">LD A,($D220)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D220.html">D220</a>.</td>
+<td class="comment-1" rowspan="2"><span class="register">A</span>=*<a href="D220.html">D220</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d4f3"></span>D4F3</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="1">Set flags.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d4f4"></span>D4F4</td>
@@ -902,7 +966,7 @@ Used by the routines at <a href="DE77.html">RunHandlers</a>, <a href="F916.html"
 <tr>
 <td class="address-1"><span id="d4f5"></span>D4F5</td>
 <td class="instruction">JR Z,<a href="D409.html#d509">$D509</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="D409.html#d509">D509</a> if {} is zero.</td>
+<td class="comment-1" rowspan="1">Jump to <a href="D409.html#d509">D509</a> if *<a href="D220.html">D220</a> is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="d4f7"></span>D4F7</td>

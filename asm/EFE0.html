@@ -33,7 +33,7 @@ Next: <a href="F10E.html">F10E</a>
 </td>
 </tr>
 </table>
-<div class="description">EFE0: Routine at EFE0</div>
+<div class="description">EFE0: Handler: Buildings</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,791 +45,1021 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="efe0"></span>
+<div class="comments">
+<div class="paragraph">
+This isn't so much a counter; it's more an address offset to select each buildings data in turn.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_Buildings</td>
 <td class="address-2"><span id="efe0"></span>EFE0</td>
 <td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=00.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=00 (building data offset).</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Buildings_Loop</td>
 <td class="address-2"><span id="efe1"></span>EFE1</td>
 <td class="instruction">PUSH AF</td>
-<td class="comment-1" rowspan="1">Stash <span class="register">AF</span> on the stack.</td>
+<td class="comment-1" rowspan="1">Stash the building data offset on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="efe2"></span>EFE2</td>
 <td class="instruction">LD D,$00</td>
-<td class="comment-1" rowspan="1"><span class="register">D</span>=00.</td>
+<td class="comment-1" rowspan="2">Create an offset using <span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="efe4"></span>EFE4</td>
 <td class="instruction">LD E,A</td>
-<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="efe5"></span>EFE5</td>
 <td class="instruction">LD HL,$D39F</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D39F.html">D39F</a>.</td>
+<td class="comment-1" rowspan="4"><span class="register">IX</span>=<a href="D39F.html">Table_Buildings</a>+building data offset.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="efe8"></span>EFE8</td>
 <td class="instruction">ADD HL,DE</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="efe9"></span>EFE9</td>
 <td class="instruction">PUSH HL</td>
-<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="efea"></span>EFEA</td>
 <td class="instruction">POP IX</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">IX</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="efec"></span>EFEC</td>
 <td class="instruction">LD A,(IX+$00)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">IX</span>+00.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=building state (*<span class="register">IX</span>+00).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="efef"></span>EFEF</td>
 <td class="instruction">CP $02</td>
-<td class="comment-1" rowspan="2">Jump to <a href="EFE0.html#f005">F005</a> if <span class="register">A</span> is equal to 02.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="EFE0.html#f005">Handler_Buildings_0</a> if <span class="register">A</span> is equal to 02 (crashing).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="eff1"></span>EFF1</td>
-<td class="instruction">JR Z,<a href="EFE0.html#f005">$F005</a></td>
+<td class="instruction">JR Z,<a href="EFE0.html#f005">Handler_Buildings_0</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="eff3"></span>EFF3</td>
 <td class="instruction">CP $03</td>
-<td class="comment-1" rowspan="2">Jump to <a href="EFE0.html#f05a">F05A</a> if <span class="register">A</span> is equal to 03.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="EFE0.html#f05a">Handler_Buildings_6</a> if <span class="register">A</span> is equal to 03.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="eff5"></span>EFF5</td>
-<td class="instruction">JP Z,<a href="EFE0.html#f05a">$F05A</a></td>
+<td class="instruction">JP Z,<a href="EFE0.html#f05a">Handler_Buildings_6</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="eff8"></span>EFF8</td>
 <td class="instruction">CP $04</td>
-<td class="comment-1" rowspan="2">Jump to <a href="EFE0.html#f0ab">F0AB</a> if <span class="register">A</span> is equal to 04</td>
+<td class="comment-1" rowspan="2">Jump to <a href="EFE0.html#f0ab">Handler_Buildings_11</a> if <span class="register">A</span> is equal to 04</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="effa"></span>EFFA</td>
-<td class="instruction">JP Z,<a href="EFE0.html#f0ab">$F0AB</a></td>
+<td class="instruction">JP Z,<a href="EFE0.html#f0ab">Handler_Buildings_11</a></td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Buildings_Next</td>
 <td class="address-2"><span id="effd"></span>EFFD</td>
 <td class="instruction">POP AF</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">AF</span> from the stack.</td>
+<td class="comment-1" rowspan="1">Restore the building data offset from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="effe"></span>EFFE</td>
 <td class="instruction">ADD A,$0E</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=0E.</td>
+<td class="comment-1" rowspan="1">Move onto the next set of building data (offset+0E).</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f000"></span>
+<div class="comments">
+<div class="paragraph">
+Have we accounted for all the buildings?
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f000"></span>F000</td>
 <td class="instruction">CP $54</td>
-<td class="comment-1" rowspan="2">Jump to <a href="EFE0.html#efe1">EFE1</a> if <span class="register">A</span> is not equal to 54.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="EFE0.html#efe1">Handler_Buildings_Loop</a> until <span class="register">A</span> is equal to 54.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f002"></span>F002</td>
-<td class="instruction">JR NZ,<a href="EFE0.html#efe1">$EFE1</a></td>
+<td class="instruction">JR NZ,<a href="EFE0.html#efe1">Handler_Buildings_Loop</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f004"></span>F004</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Buildings_0</td>
 <td class="address-2"><span id="f005"></span>F005</td>
 <td class="instruction">DEC (IX+$0D)</td>
 <td class="comment-1" rowspan="1">Decrease *<span class="register">IX</span>+0D by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f008"></span>F008</td>
-<td class="instruction">JP NZ,<a href="EFE0.html#f052">$F052</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="EFE0.html#f052">F052</a> until *<span class="register">IX</span>+0D is zero.</td>
+<td class="instruction">JP NZ,<a href="EFE0.html#f052">Handler_Buildings_5</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EFE0.html#f052">Handler_Buildings_5</a> until *<span class="register">IX</span>+0D is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f00b"></span>F00B</td>
 <td class="instruction">LD (IX+$0D),$02</td>
 <td class="comment-1" rowspan="1">Write 0D to *<span class="register">IX</span>+0D.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f00f"></span>F00F</td>
 <td class="instruction">DEC (IX+$0A)</td>
 <td class="comment-1" rowspan="1">Decrease *<span class="register">IX</span>+0A by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f012"></span>F012</td>
-<td class="instruction">JR NZ,<a href="EFE0.html#f03c">$F03C</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="EFE0.html#f03c">F03C</a> until *<span class="register">IX</span>+0A is zero.</td>
+<td class="instruction">JR NZ,<a href="EFE0.html#f03c">Handler_Buildings_3</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EFE0.html#f03c">Handler_Buildings_3</a> until *<span class="register">IX</span>+0A is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f014"></span>F014</td>
 <td class="instruction">LD (IX+$00),$03</td>
-<td class="comment-1" rowspan="1">Write 03 to *<span class="register">IX</span>+00.</td>
+<td class="comment-1" rowspan="1">Write 03 to building state (*<span class="register">IX</span>+00).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f018"></span>F018</td>
 <td class="instruction">LD A,(IX+$05)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">IX</span>+05.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f01b"></span>F01B</td>
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f01c"></span>F01C</td>
 <td class="instruction">LD (IX+$0B),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">IX</span>+0B.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f01f"></span>F01F</td>
 <td class="instruction">LD C,$07</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=07.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f021"></span>F021</td>
 <td class="instruction">LD A,(IX+$07)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">IX</span>+07.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f024"></span>F024</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">RRCA.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f025"></span>F025</td>
-<td class="instruction">JR NC,<a href="EFE0.html#f029">$F029</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="EFE0.html#f029">F029</a> if {} is higher.</td>
+<td class="instruction">JR NC,<a href="EFE0.html#f029">Handler_Buildings_1</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EFE0.html#f029">Handler_Buildings_1</a> if {} is higher.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f027"></span>F027</td>
 <td class="instruction">LD C,$38</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=38.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Buildings_1</td>
 <td class="address-2"><span id="f029"></span>F029</td>
 <td class="instruction">LD E,(IX+$01)</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=*<span class="register">IX</span>+01.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f02c"></span>F02C</td>
 <td class="instruction">LD B,(IX+$06)</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">IX</span>+06.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f02f"></span>F02F</td>
 <td class="instruction">LD HL,$D31F</td>
 <td class="comment-1" rowspan="2"><span class="register">HL</span>=<a href="D31F.html">D31F</a>+<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f032"></span>F032</td>
 <td class="instruction">ADD HL,DE</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Buildings_2</td>
 <td class="address-2"><span id="f033"></span>F033</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f034"></span>F034</td>
 <td class="instruction">AND C</td>
 <td class="comment-1" rowspan="1">Merge the bits from <span class="register">C</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f035"></span>F035</td>
 <td class="instruction">LD (HL),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f036"></span>F036</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f037"></span>F037</td>
-<td class="instruction">DJNZ <a href="EFE0.html#f033">$F033</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="EFE0.html#f033">F033</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="EFE0.html#f033">Handler_Buildings_2</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="EFE0.html#f033">Handler_Buildings_2</a> until counter is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f039"></span>F039</td>
-<td class="instruction">JP <a href="EFE0.html#f0ab">$F0AB</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="EFE0.html#f0ab">F0AB</a>.</td>
+<td class="instruction">JP <a href="EFE0.html#f0ab">Handler_Buildings_11</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EFE0.html#f0ab">Handler_Buildings_11</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Buildings_3</td>
 <td class="address-2"><span id="f03c"></span>F03C</td>
 <td class="instruction">LD L,(IX+$0A)</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=*<span class="register">IX</span>+0A.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f03f"></span>F03F</td>
-<td class="instruction">CALL <a href="EFE0.html#f0ef">$F0EF</a></td>
-<td class="comment-1" rowspan="1">Call <a href="EFE0.html#f0ef">F0EF</a>.</td>
+<td class="instruction">CALL <a href="EFE0.html#f0ef">Handler_Buildings_15</a></td>
+<td class="comment-1" rowspan="1">Call <a href="EFE0.html#f0ef">Handler_Buildings_15</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f042"></span>F042</td>
 <td class="instruction">LD E,L</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">L</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f043"></span>F043</td>
 <td class="instruction">LD B,(IX+$06)</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">IX</span>+06.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f046"></span>F046</td>
 <td class="instruction">LD C,$FF</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=FF.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Buildings_4</td>
 <td class="address-2"><span id="f048"></span>F048</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f049"></span>F049</td>
 <td class="instruction">OR %10000000</td>
 <td class="comment-1" rowspan="1">Set bit 7.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f04b"></span>F04B</td>
 <td class="instruction">LD (HL),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f04c"></span>F04C</td>
 <td class="instruction">LD A,C</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">C</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f04d"></span>F04D</td>
 <td class="instruction">LD (DE),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f04e"></span>F04E</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f04f"></span>F04F</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f050"></span>F050</td>
-<td class="instruction">DJNZ <a href="EFE0.html#f048">$F048</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="EFE0.html#f048">F048</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="EFE0.html#f048">Handler_Buildings_4</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="EFE0.html#f048">Handler_Buildings_4</a> until counter is zero.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Buildings_5</td>
 <td class="address-2"><span id="f052"></span>F052</td>
 <td class="instruction">LD A,$09</td>
 <td class="comment-1" rowspan="2">Write 09 to *<a href="FF00.html#ff8d">MelodyID</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f054"></span>F054</td>
 <td class="instruction">LD ($FF8D),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f057"></span>F057</td>
-<td class="instruction">JP <a href="EFE0.html#f0ab">$F0AB</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="EFE0.html#f0ab">F0AB</a>.</td>
+<td class="instruction">JP <a href="EFE0.html#f0ab">Handler_Buildings_11</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EFE0.html#f0ab">Handler_Buildings_11</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Buildings_6</td>
 <td class="address-2"><span id="f05a"></span>F05A</td>
 <td class="instruction">DEC (IX+$0D)</td>
 <td class="comment-1" rowspan="1">Decrease *<span class="register">IX</span>+0D by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f05d"></span>F05D</td>
-<td class="instruction">JR NZ,<a href="EFE0.html#f0ab">$F0AB</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="EFE0.html#f0ab">F0AB</a> until *<span class="register">IX</span>+0D is zero.</td>
+<td class="instruction">JR NZ,<a href="EFE0.html#f0ab">Handler_Buildings_11</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EFE0.html#f0ab">Handler_Buildings_11</a> until *<span class="register">IX</span>+0D is zero.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f05f"></span>
+<div class="comments">
+<div class="paragraph">
+Plays a single building "crumbling" sound, the handler looping will keep it going until it's fallen and done.
+</div>
+<div class="paragraph">
+<audio controls="" src="../audio/building.wav">
+<p>Your browser doesn't support HTML5 audio. Here is a <a href="../audio/building.wav">link to the audio</a> instead.</p>
+</audio>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f05f"></span>F05F</td>
 <td class="instruction">LD A,$08</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=08.</td>
+<td class="comment-1" rowspan="2">Write 08 to *<a href="FF00.html#ff8d">MelodyID</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f061"></span>F061</td>
 <td class="instruction">LD ($FF8D),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="FF00.html#ff8d">MelodyID</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f064"></span>F064</td>
 <td class="instruction">LD (IX+$0D),$02</td>
 <td class="comment-1" rowspan="1">Write 02 to *<span class="register">IX</span>+0D.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f068"></span>F068</td>
 <td class="instruction">DEC (IX+$0B)</td>
 <td class="comment-1" rowspan="1">Decrease *<span class="register">IX</span>+0B by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f06b"></span>F06B</td>
-<td class="instruction">JR NZ,<a href="EFE0.html#f073">$F073</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="EFE0.html#f073">F073</a> until *<span class="register">IX</span>+0B is zero.</td>
+<td class="instruction">JR NZ,<a href="EFE0.html#f073">Handler_Buildings_7</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EFE0.html#f073">Handler_Buildings_7</a> until *<span class="register">IX</span>+0B is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f06d"></span>F06D</td>
 <td class="instruction">LD (IX+$00),$04</td>
-<td class="comment-1" rowspan="1">Write 04 to *<span class="register">IX</span>+00.</td>
+<td class="comment-1" rowspan="1">Write 04 to building state (*<span class="register">IX</span>+00).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f071"></span>F071</td>
-<td class="instruction">JR <a href="EFE0.html#f0ab">$F0AB</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="EFE0.html#f0ab">F0AB</a>.</td>
+<td class="instruction">JR <a href="EFE0.html#f0ab">Handler_Buildings_11</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EFE0.html#f0ab">Handler_Buildings_11</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Buildings_7</td>
 <td class="address-2"><span id="f073"></span>F073</td>
 <td class="instruction">LD L,(IX+$05)</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=*<span class="register">IX</span>+05.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f076"></span>F076</td>
 <td class="instruction">DEC L</td>
 <td class="comment-1" rowspan="1">Decrease <span class="register">L</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f077"></span>F077</td>
-<td class="instruction">CALL <a href="EFE0.html#f0ef">$F0EF</a></td>
-<td class="comment-1" rowspan="1">Call <a href="EFE0.html#f0ef">F0EF</a>.</td>
+<td class="instruction">CALL <a href="EFE0.html#f0ef">Handler_Buildings_15</a></td>
+<td class="comment-1" rowspan="1">Call <a href="EFE0.html#f0ef">Handler_Buildings_15</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f07a"></span>F07A</td>
 <td class="instruction">ADD A,$20</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>+=20.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f07c"></span>F07C</td>
 <td class="instruction">LD E,A</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f07d"></span>F07D</td>
 <td class="instruction">LD B,(IX+$0B)</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">IX</span>+0B.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Buildings_8</td>
 <td class="address-2"><span id="f080"></span>F080</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-1" rowspan="4">Stash <span class="register">BC</span>, <span class="register">HL</span>, <span class="register">DE</span> and <span class="register">DE</span> on the stack.</td>
+<td class="comment-1" rowspan="4">Stash <span class="register">BC</span>, <span class="register">HL</span> and <span class="register">DE</span> (twice) on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f081"></span>F081</td>
 <td class="instruction">PUSH HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f082"></span>F082</td>
 <td class="instruction">PUSH DE</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f083"></span>F083</td>
 <td class="instruction">PUSH DE</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f084"></span>F084</td>
 <td class="instruction">LD D,H</td>
 <td class="comment-1" rowspan="1"><span class="register">D</span>=<span class="register">H</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f085"></span>F085</td>
 <td class="instruction">LD E,L</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">L</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f086"></span>F086</td>
 <td class="instruction">LD BC,$0020</td>
 <td class="comment-1" rowspan="2"><span class="register">HL</span>+=0020.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f089"></span>F089</td>
 <td class="instruction">ADD HL,BC</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f08a"></span>F08A</td>
 <td class="instruction">LD B,(IX+$06)</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">IX</span>+06.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Buildings_9</td>
 <td class="address-2"><span id="f08d"></span>F08D</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f08e"></span>F08E</td>
 <td class="instruction">LD (HL),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f08f"></span>F08F</td>
 <td class="instruction">INC E</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">E</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f090"></span>F090</td>
 <td class="instruction">INC L</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">L</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f091"></span>F091</td>
-<td class="instruction">DJNZ <a href="EFE0.html#f08d">$F08D</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="EFE0.html#f08d">F08D</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="EFE0.html#f08d">Handler_Buildings_9</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="EFE0.html#f08d">Handler_Buildings_9</a> until counter is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f093"></span>F093</td>
 <td class="instruction">POP HL</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f094"></span>F094</td>
 <td class="instruction">LD B,(IX+$06)</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">IX</span>+06.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f097"></span>F097</td>
 <td class="instruction">LD C,$FF</td>
 <td class="comment-1" rowspan="2">Write FF to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Buildings_10</td>
 <td class="address-2"><span id="f099"></span>F099</td>
 <td class="instruction">LD (HL),C</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f09a"></span>F09A</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f09b"></span>F09B</td>
-<td class="instruction">DJNZ <a href="EFE0.html#f099">$F099</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="EFE0.html#f099">F099</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="EFE0.html#f099">Handler_Buildings_10</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="EFE0.html#f099">Handler_Buildings_10</a> until counter is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f09d"></span>F09D</td>
 <td class="instruction">LD BC,$0020</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=0020.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0a0"></span>F0A0</td>
 <td class="instruction">POP HL</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0a1"></span>F0A1</td>
 <td class="instruction">AND A</td>
 <td class="comment-1" rowspan="1">Set flags.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0a2"></span>F0A2</td>
 <td class="instruction">SBC HL,BC</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>-=<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0a4"></span>F0A4</td>
 <td class="instruction">EX DE,HL</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> register with the shadow <span class="register">HL</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0a5"></span>F0A5</td>
 <td class="instruction">POP HL</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0a6"></span>F0A6</td>
 <td class="instruction">SBC HL,BC</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>-=<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0a8"></span>F0A8</td>
 <td class="instruction">POP BC</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0a9"></span>F0A9</td>
-<td class="instruction">DJNZ <a href="EFE0.html#f080">$F080</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="EFE0.html#f080">F080</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="EFE0.html#f080">Handler_Buildings_8</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="EFE0.html#f080">Handler_Buildings_8</a> until counter is zero.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f0ab"></span>
+<div class="comments">
+<div class="paragraph">
+Self-modifying code.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_Buildings_11</td>
 <td class="address-2"><span id="f0ab"></span>F0AB</td>
 <td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="2">Write 00 to *<a href="EFE0.html#f0dd">F0DD</a>.</td>
+<td class="comment-1" rowspan="2">Write 00 to *<a href="EFE0.html#f0dd">Handler_Buildings_13</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0ac"></span>F0AC</td>
 <td class="instruction">LD ($F0DD),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0af"></span>F0AF</td>
 <td class="instruction">DEC (IX+$0C)</td>
 <td class="comment-1" rowspan="1">Decrease *<span class="register">IX</span>+0C by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0b2"></span>F0B2</td>
-<td class="instruction">JR NZ,<a href="EFE0.html#f0c4">$F0C4</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="EFE0.html#f0c4">F0C4</a> until *<span class="register">IX</span>+0C is zero.</td>
+<td class="instruction">JR NZ,<a href="EFE0.html#f0c4">Handler_Buildings_12</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EFE0.html#f0c4">Handler_Buildings_12</a> until *<span class="register">IX</span>+0C is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0b4"></span>F0B4</td>
 <td class="instruction">LD (IX+$00),$05</td>
-<td class="comment-1" rowspan="1">Write 00 to *<span class="register">IX</span>+00.</td>
+<td class="comment-1" rowspan="1">Write 05 to building state (*<span class="register">IX</span>+00).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0b8"></span>F0B8</td>
 <td class="instruction">LD A,($D3F3)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D3F3.html">D3F3</a>.</td>
+<td class="comment-1" rowspan="3">Decrease *<a href="D3F3.html">D3F3</a> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0bb"></span>F0BB</td>
 <td class="instruction">DEC A</td>
-<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0bc"></span>F0BC</td>
 <td class="instruction">LD ($D3F3),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3F3.html">D3F3</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f0bf"></span>
+<div class="comments">
+<div class="paragraph">
+Self-modifying code.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0bf"></span>F0BF</td>
 <td class="instruction">LD A,$AF</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=AF.</td>
+<td class="comment-1" rowspan="2">Write AF (XOR <span class="register">A</span>) to *<a href="EFE0.html#f0dd">Handler_Buildings_13</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0c1"></span>F0C1</td>
 <td class="instruction">LD ($F0DD),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="EFE0.html#f0dd">F0DD</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Buildings_12</td>
 <td class="address-2"><span id="f0c4"></span>F0C4</td>
 <td class="instruction">LD L,(IX+$05)</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=*<span class="register">IX</span>+05.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0c7"></span>F0C7</td>
 <td class="instruction">DEC L</td>
 <td class="comment-1" rowspan="1">Decrease <span class="register">L</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0c8"></span>F0C8</td>
-<td class="instruction">CALL <a href="EFE0.html#f0ef">$F0EF</a></td>
-<td class="comment-1" rowspan="1">Call <a href="EFE0.html#f0ef">F0EF</a>.</td>
+<td class="instruction">CALL <a href="EFE0.html#f0ef">Handler_Buildings_15</a></td>
+<td class="comment-1" rowspan="1">Call <a href="EFE0.html#f0ef">Handler_Buildings_15</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0cb"></span>F0CB</td>
 <td class="instruction">ADD A,$20</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>+=20.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0cd"></span>F0CD</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0ce"></span>F0CE</td>
 <td class="instruction">LD E,A</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0cf"></span>F0CF</td>
 <td class="instruction">LD B,(IX+$06)</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">IX</span>+06.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0d2"></span>F0D2</td>
 <td class="instruction">EX DE,HL</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> register with the shadow <span class="register">HL</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0d3"></span>F0D3</td>
 <td class="instruction">LD A,(IX+$0C)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">IX</span>+0C.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0d6"></span>F0D6</td>
 <td class="instruction">AND %00000001</td>
 <td class="comment-1" rowspan="1">Keep only bit 0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0d8"></span>F0D8</td>
 <td class="instruction">ADD A,A</td>
 <td class="comment-1" rowspan="3"><span class="register">A</span>*=08.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0d9"></span>F0D9</td>
 <td class="instruction">ADD A,A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0da"></span>F0DA</td>
 <td class="instruction">ADD A,A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0db"></span>F0DB</td>
 <td class="instruction">ADD A,$44</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>+=44.</td>
 </tr>
 <tr>
-<td class="address-2"><span id="f0dd"></span>F0DD</td>
-<td class="instruction">NOP</td>
-<td class="comment-1" rowspan="1">No operation?</td>
+<td class="routine-comment" colspan="5">
+<span id="f0dd"></span>
+<div class="comments">
+<div class="paragraph">
+The value here is self-modified at: <table class="default">
+<tr>
+<th colspan="1" rowspan="1">Location</th>
+<th colspan="1" rowspan="1">Value Set</th>
+<th colspan="1" rowspan="1">Code</th>
 </tr>
 <tr>
+<td class="centre" colspan="1" rowspan="1"><a href="EFE0.html#f0ab">Handler_Buildings_11</a></td>
+<td class="centre" colspan="1" rowspan="1">00</td>
+<td class="centre" colspan="1" rowspan="1"><code>NOP</code></td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="EFE0.html#f0bf">F0BF</a></td>
+<td class="centre" colspan="1" rowspan="1">AF</td>
+<td class="centre" colspan="1" rowspan="1"><code>XOR <span class="register">A</span></code></td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_Buildings_13</td>
+<td class="address-2"><span id="f0dd"></span>F0DD</td>
+<td class="instruction">NOP</td>
+<td class="comment-1" rowspan="1">No operation OR <span class="register">A</span>=00 depending on the above.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0de"></span>F0DE</td>
 <td class="instruction">LD (HL),$FF</td>
 <td class="comment-1" rowspan="1">Write FF to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0e0"></span>F0E0</td>
 <td class="instruction">LD (DE),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0e1"></span>F0E1</td>
 <td class="instruction">INC L</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">L</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0e2"></span>F0E2</td>
 <td class="instruction">INC E</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">E</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0e3"></span>F0E3</td>
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0e4"></span>F0E4</td>
 <td class="instruction">CP $4D</td>
-<td class="comment-1" rowspan="2">Jump to <a href="EFE0.html#f0ea">F0EA</a> if <span class="register">A</span> is not equal to 4D.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="EFE0.html#f0ea">Handler_Buildings_14</a> if <span class="register">A</span> is not equal to 4D.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0e6"></span>F0E6</td>
-<td class="instruction">JR NZ,<a href="EFE0.html#f0ea">$F0EA</a></td>
+<td class="instruction">JR NZ,<a href="EFE0.html#f0ea">Handler_Buildings_14</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0e8"></span>F0E8</td>
 <td class="instruction">LD A,$44</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=44.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Buildings_14</td>
 <td class="address-2"><span id="f0ea"></span>F0EA</td>
-<td class="instruction">DJNZ <a href="EFE0.html#f0dd">$F0DD</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="EFE0.html#f0dd">F0DD</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="EFE0.html#f0dd">Handler_Buildings_13</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="EFE0.html#f0dd">Handler_Buildings_13</a> until counter is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0ec"></span>F0EC</td>
-<td class="instruction">JP <a href="EFE0.html#effd">$EFFD</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="EFE0.html#effd">EFFD</a>.</td>
+<td class="instruction">JP <a href="EFE0.html#effd">Handler_Buildings_Next</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EFE0.html#effd">Handler_Buildings_Next</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Buildings_15</td>
 <td class="address-2"><span id="f0ef"></span>F0EF</td>
 <td class="instruction">LD H,$00</td>
 <td class="comment-1" rowspan="1"><span class="register">H</span>=00.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0f1"></span>F0F1</td>
 <td class="instruction">DEC L</td>
 <td class="comment-1" rowspan="1">Decrease <span class="register">L</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0f2"></span>F0F2</td>
 <td class="instruction">ADD HL,HL</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="5"><span class="register">HL</span>*=20.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0f3"></span>F0F3</td>
 <td class="instruction">ADD HL,HL</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0f4"></span>F0F4</td>
 <td class="instruction">ADD HL,HL</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0f5"></span>F0F5</td>
 <td class="instruction">ADD HL,HL</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0f6"></span>F0F6</td>
 <td class="instruction">ADD HL,HL</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0f7"></span>F0F7</td>
 <td class="instruction">LD E,(IX+$03)</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=*<span class="register">IX</span>+03.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0fa"></span>F0FA</td>
 <td class="instruction">LD D,(IX+$04)</td>
 <td class="comment-1" rowspan="1"><span class="register">D</span>=*<span class="register">IX</span>+04.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0fd"></span>F0FD</td>
 <td class="instruction">ADD HL,DE</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f0fe"></span>F0FE</td>
 <td class="instruction">LD A,(IX+$07)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">IX</span>+07.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f101"></span>F101</td>
 <td class="instruction">LD B,A</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f102"></span>F102</td>
 <td class="instruction">ADD A,A</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f103"></span>F103</td>
 <td class="instruction">ADD A,B</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">B</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f104"></span>F104</td>
 <td class="instruction">ADD A,$5F</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>+=5F.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f106"></span>F106</td>
 <td class="instruction">LD B,A</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f107"></span>F107</td>
 <td class="instruction">LD A,H</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">H</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f108"></span>F108</td>
 <td class="instruction">SUB B</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>-=<span class="register">B</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f109"></span>F109</td>
 <td class="instruction">ADD A,$68</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>+=68.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f10b"></span>F10B</td>
 <td class="instruction">LD D,A</td>
 <td class="comment-1" rowspan="1"><span class="register">D</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f10c"></span>F10C</td>
 <td class="instruction">LD A,L</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">L</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f10d"></span>F10D</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

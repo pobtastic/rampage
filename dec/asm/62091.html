@@ -47,177 +47,169 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <tr>
 <td class="address-2"><span id="62091"></span>62091</td>
 <td class="instruction">LD A,(53778)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2"><span class="register">B</span>=*<a href="53778.html">53778</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="62094"></span>62094</td>
 <td class="instruction">LD B,A</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="62095"></span>62095</td>
 <td class="instruction">LD A,(54261)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Return if *<a href="54261.html">54261</a> is equal to <span class="register">B</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="62098"></span>62098</td>
 <td class="instruction">CP B</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="62099"></span>62099</td>
 <td class="instruction">RET Z</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="62100"></span>62100</td>
 <td class="instruction">CALL <a href="55848.html">RandomNumber</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="55848.html">RandomNumber</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="62103"></span>62103</td>
 <td class="instruction">CP 128</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Return if <span class="register">A</span> is higher than 128.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="62105"></span>62105</td>
 <td class="instruction">RET NC</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="62106"></span>62106</td>
 <td class="instruction">LD HL,53906</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="53906.html">53906</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="62109"></span>62109</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Increment <span class="register">HL</span> by three.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="62110"></span>62110</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="62111"></span>62111</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="62112"></span>62112</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Jump to <a href="62091.html#62109">62109</a> if *<span class="register">HL</span> is not zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="62113"></span>62113</td>
 <td class="instruction">AND A</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="62114"></span>62114</td>
 <td class="instruction">JR NZ,<a href="62091.html#62109">62109</a></td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="62116"></span>62116</td>
 <td class="instruction">CALL <a href="55848.html">RandomNumber</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="55848.html">RandomNumber</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="62119"></span>62119</td>
-<td class="instruction">AND 1</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">AND %00000001</td>
+<td class="comment-1" rowspan="1">Keep only bits 0.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="62121"></span>62121</td>
 <td class="instruction">JR Z,<a href="62091.html#62130">62130</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="62091.html#62130">62130</a> if the result is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="62123"></span>62123</td>
 <td class="instruction">LD (HL),64</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write 64 to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="62125"></span>62125</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="62126"></span>62126</td>
 <td class="instruction">LD (HL),252</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write 252 to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="62128"></span>62128</td>
 <td class="instruction">JR <a href="62091.html#62135">62135</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="62091.html#62135">62135</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="62130"></span>62130</td>
 <td class="instruction">LD (HL),128</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write 128 to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="62132"></span>62132</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="62133"></span>62133</td>
 <td class="instruction">LD (HL),36</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write 36 to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="62135"></span>62135</td>
 <td class="instruction">INC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="62136"></span>62136</td>
 <td class="instruction">LD (HL),3</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write 3 to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="62138"></span>62138</td>
 <td class="instruction">CALL <a href="55848.html">RandomNumber</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Call <a href="55848.html">RandomNumber</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="62141"></span>62141</td>
-<td class="instruction">AND 3</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">AND %00000011</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-1.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="62143"></span>62143</td>
 <td class="instruction">JR Z,<a href="62091.html#62146">62146</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="62091.html#62146">62146</a> if the result is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="62145"></span>62145</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="62146"></span>62146</td>
 <td class="instruction">LD A,(54261)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="54261.html">54261</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="62149"></span>62149</td>
 <td class="instruction">INC A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="62150"></span>62150</td>
 <td class="instruction">LD (54261),A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54261.html">54261</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="62153"></span>62153</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">
