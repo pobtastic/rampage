@@ -64,30 +64,49 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="64700"></span>64700</td>
 <td class="instruction">CP 255</td>
-<td class="comment-1" rowspan="2">Jump to <a href="64694.html#64743">Handler_Train_1</a> if it is equal to 255.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="64694.html#64743">Handler_Train_Movement</a> if a train is already active (*<a href="54277.html">TrainState</a> is equal to 255).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64702"></span>64702</td>
-<td class="instruction">JR Z,<a href="64694.html#64743">Handler_Train_1</a></td>
+<td class="instruction">JR Z,<a href="64694.html#64743">Handler_Train_Movement</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="64704"></span>
+<div class="comments">
+<div class="paragraph">
+Else the counter is a counter, so count it down.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64704"></span>64704</td>
 <td class="instruction">DEC A</td>
-<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
+<td class="comment-1" rowspan="2">Decrease *<a href="54277.html">TrainState</a> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64705"></span>64705</td>
 <td class="instruction">LD (54277),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54277.html">TrainState</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64708"></span>64708</td>
 <td class="instruction">RET NZ</td>
-<td class="comment-1" rowspan="1">Return if <span class="register">A</span> is not zero.</td>
+<td class="comment-1" rowspan="1">Return if *<a href="54277.html">TrainState</a> is still in progress.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="64709"></span>
+<div class="comments">
+<div class="paragraph">
+Else the countdown is complete so set the counter/ state to indicate that a train has been spawned and then spawn a train!
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -101,28 +120,47 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <td class="instruction">LD (54277),A</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="64714"></span>
+<div class="comments">
+<div class="paragraph">
+Randomly bring the train in from either the left or right hand side of the play area.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64714"></span>64714</td>
 <td class="instruction">CALL <a href="55848.html">RandomNumber</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55848.html">RandomNumber</a>.</td>
+<td class="comment-1" rowspan="2">Get a random number of either zero or one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64717"></span>64717</td>
 <td class="instruction">AND %00000001</td>
-<td class="comment-1" rowspan="1">Keep only bit 0.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64719"></span>64719</td>
-<td class="instruction">JR NZ,<a href="64694.html#64733">Handler_Train_0</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="64694.html#64733">Handler_Train_0</a> if the result is not zero.</td>
+<td class="instruction">JR NZ,<a href="64694.html#64733">Handler_SpawnTrainRight</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="64694.html#64733">Handler_SpawnTrainRight</a> if the random number is one.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="64721"></span>
+<div class="comments">
+<div class="paragraph">
+Train moves from left-to-right.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64721"></span>64721</td>
 <td class="instruction">LD A,19</td>
-<td class="comment-1" rowspan="2">Write 19 to *<a href="54277.html#54279">54279</a>.</td>
+<td class="comment-1" rowspan="2">Write 19 to *<a href="54277.html#54279">TrainYPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -143,14 +181,24 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64731"></span>64731</td>
-<td class="instruction">JR <a href="64694.html#64743">Handler_Train_1</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="64694.html#64743">Handler_Train_1</a>.</td>
+<td class="instruction">JR <a href="64694.html#64743">Handler_Train_Movement</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="64694.html#64743">Handler_Train_Movement</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Train_0</td>
+<td class="routine-comment" colspan="5">
+<span id="64733"></span>
+<div class="comments">
+<div class="paragraph">
+Bit 7 signifies that this train moves from right-to-left.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_SpawnTrainRight</td>
 <td class="address-2"><span id="64733"></span>64733</td>
 <td class="instruction">LD A,147</td>
-<td class="comment-1" rowspan="2">Write 147 to *<a href="54277.html#54279">54279</a>.</td>
+<td class="comment-1" rowspan="2">Write 147 (19 + bit 7 set) to *<a href="54277.html#54279">TrainYPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -169,10 +217,10 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <td class="instruction">LD (54278),A</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Train_1</td>
+<td class="asm-label">Handler_Train_Movement</td>
 <td class="address-2"><span id="64743"></span>64743</td>
 <td class="instruction">LD A,(54279)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="54277.html#54279">54279</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="54277.html#54279">TrainYPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -201,7 +249,7 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="64751"></span>64751</td>
 <td class="instruction">LD A,(54279)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="64694.html#64801">Handler_Train_4</a> if *<a href="54277.html#54279">54279</a> is higher than 128.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="64694.html#64801">Handler_Train_2</a> if *<a href="54277.html#54279">TrainYPosition</a> is higher than 128.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -211,7 +259,7 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64756"></span>64756</td>
-<td class="instruction">JR NC,<a href="64694.html#64801">Handler_Train_4</a></td>
+<td class="instruction">JR NC,<a href="64694.html#64801">Handler_Train_2</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -244,7 +292,7 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">C</span>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Train_2</td>
+<td class="asm-label">Handler_Train_0</td>
 <td class="address-2"><span id="64766"></span>64766</td>
 <td class="instruction">LD (54278),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54277.html#54278">TrainXPosition</a>.</td>
@@ -286,7 +334,7 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <td class="comment-1" rowspan="1"><span class="register">A</span>=3.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Train_3</td>
+<td class="asm-label">Handler_Train_1</td>
 <td class="address-2"><span id="64779"></span>64779</td>
 <td class="instruction">PUSH AF</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">AF</span> on the stack.</td>
@@ -340,8 +388,8 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64791"></span>64791</td>
-<td class="instruction">JR NZ,<a href="64694.html#64779">Handler_Train_3</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="64694.html#64779">Handler_Train_3</a> until <span class="register">A</span> is zero.</td>
+<td class="instruction">JR NZ,<a href="64694.html#64779">Handler_Train_1</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="64694.html#64779">Handler_Train_1</a> until <span class="register">A</span> is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -373,7 +421,7 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Train_4</td>
+<td class="asm-label">Handler_Train_2</td>
 <td class="address-2"><span id="64801"></span>64801</td>
 <td class="instruction">AND %00111111</td>
 <td class="comment-1" rowspan="1">Keep only bits 0-5.</td>
@@ -405,8 +453,8 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64809"></span>64809</td>
-<td class="instruction">JR <a href="64694.html#64766">Handler_Train_2</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="64694.html#64766">Handler_Train_2</a>.</td>
+<td class="instruction">JR <a href="64694.html#64766">Handler_Train_0</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="64694.html#64766">Handler_Train_0</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">
