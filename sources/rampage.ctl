@@ -513,13 +513,16 @@ b $D405 Table: Train
 N $D405 See #R$FCB6.
 @ $D405 label=TrainState
   $D405,$01 #TABLE(default,centre,centre) { =h Value | =h Meaning }
+. { #N$00-#N$20 | Countdown until spawn }
 . { #N$FE | Spawning "off" }
 . { #N$FF | Train is spawned }
 . TABLE#
 @ $D406 label=TrainXPosition
   $D406,$01 Train horizontal position on the screen.
-  $D407,$01
-  $D408,$01
+@ $D407 label=TrainYPosition
+  $D407,$01 Train vertical position on the screen.
+
+b $D408
 
 c $D409
   $D409,$03 #REGbc=#N($0000,$04,$04).
@@ -4138,19 +4141,27 @@ M $FCA7,$07 Get a random number between 8-23.
 c $FCB6 Handler: Train
 @ $FCB6 label=Handler_Train
   $FCB6,$06 Return if train spawning is set to be off (*#R$D405 is equal to #N$FE).
-  $FCBC,$04 Jump to #R$FCE7 if it is equal to #N$FF.
-  $FCC0,$01 Decrease #REGa by one.
-  $FCC1,$03 Write #REGa to *#R$D405.
-  $FCC4,$01 Return if #REGa is not zero.
+  $FCBC,$04 Jump to #R$FCE7 if a train is already active (*#R$D405 is equal to #N$FF).
+N $FCC0 Else the counter is a counter, so count it down.
+  $FCC0,$04 Decrease *#R$D405 by one.
+  $FCC4,$01 Return if *#R$D405 is still in progress.
+N $FCC5 Else the countdown is complete so set the counter/ state to indicate that a train has been spawned and then
+.       spawn a train!
   $FCC5,$05 Write #N$FF to *#R$D405.
+N $FCCA Randomly bring the train in from either the left or right hand side of the play area.
   $FCCA,$03 Call #R$DA28.
   $FCCD,$02,b$01 Keep only bit 0.
-  $FCCF,$02 Jump to #R$FCDD if the result is not zero.
+M $FCCA,$05 Get a random number of either zero or one.
+  $FCCF,$02 Jump to #R$FCDD if the random number is one.
+N $FCD1 Train moves from left-to-right.
   $FCD1,$05 Write #N$13 to *#R$D407.
   $FCD6,$05 Write #N$F0 to *#R$D406.
   $FCDB,$02 Jump to #R$FCE7.
-  $FCDD,$05 Write #N$93 to *#R$D407.
+N $FCDD Bit 7 signifies that this train moves from right-to-left.
+@ $FCDD label=Handler_SpawnTrainRight
+  $FCDD,$05 Write #N$93 (#N$13 + bit 7 set) to *#R$D407.
   $FCE2,$05 Write #N$20 to *#R$D406.
+@ $FCE7 label=Handler_Train_Movement
   $FCE7,$03 #REGa=*#R$D407.
   $FCEA,$02,b$01 Keep only bit 6.
   $FCEC,$02 RLCA.
