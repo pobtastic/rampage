@@ -229,10 +229,20 @@ Is Ralph still in-play?
 <td class="instruction">JR Z,<a href="56857.html#56857">GameEntryPoint</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="56915"></span>
+<div class="comments">
+<div class="paragraph">
+The game is in-play so run the handlers until the level is completed.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label">Game_InPlay</td>
 <td class="address-2"><span id="56915"></span>56915</td>
 <td class="instruction">LD A,(54259)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="56951.html">RunHandlers</a> if *<a href="54259.html">54259</a> is not zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="56951.html">RunHandlers</a> until *<a href="54259.html">BuildingsRemainingCount</a> is zero - until all the buildings have collapsed.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -245,28 +255,37 @@ Is Ralph still in-play?
 <td class="instruction">JR NZ,<a href="56951.html">RunHandlers</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="56921"></span>
+<div class="comments">
+<div class="paragraph">
+Keep running the handlers for a short while even though all the buildings have collapsed. It would be a bit jarring if the level stopped instantly after the last building rubble cleared.s
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56921"></span>56921</td>
 <td class="instruction">LD A,(53782)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53782.html">53782</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53782.html">LevelFinishedCountdown</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56924"></span>56924</td>
 <td class="instruction">DEC A</td>
-<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
+<td class="comment-1" rowspan="2">Decrease *<a href="53782.html">LevelFinishedCountdown</a> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56925"></span>56925</td>
 <td class="instruction">LD (53782),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53782.html">53782</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56928"></span>56928</td>
 <td class="instruction">JR NZ,<a href="56951.html">RunHandlers</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="56951.html">RunHandlers</a> if <span class="register">A</span> is not zero.</td>
+<td class="comment-1" rowspan="1">Jump to <a href="56951.html">RunHandlers</a> until <span class="register">A</span> is zero.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -310,6 +329,16 @@ Check to see if all levels (40 in total) have been played, if so loop back to le
 <td class="asm-label"></td>
 <td class="address-1"><span id="56936"></span>56936</td>
 <td class="instruction">JR NZ,<a href="56857.html#56940">WriteLevelNumber</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56938"></span>
+<div class="comments">
+<div class="paragraph">
+Else cycle back to level 1 again.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

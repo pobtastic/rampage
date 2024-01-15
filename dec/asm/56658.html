@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at 56658</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="56653.html">56653</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#56658">Map</a></td>
+<td class="next">
+Next: <a href="56684.html">56684</a>
+</td>
+</tr>
+</table>
+<div class="description">56658: Sets <span class="register">IY</span> To Monster Data</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="62544.html">62544</a> and <a href="63381.html">Handler_Monsters</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Monster ID</td>
+</tr>
+</table>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">IY</td>
+<td class="register-desc">Monster data</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56658"></span>
+<div class="comments">
+<div class="paragraph">
+George:
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">SetIYMonsterData_George</td>
+<td class="address-2"><span id="56658"></span>56658</td>
+<td class="instruction">CP 1</td>
+<td class="comment-1" rowspan="2">Jump to <a href="56658.html#56667">SetIYMonsterData_Lizzy</a> if <span class="register">A</span> is not equal to 1.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56660"></span>56660</td>
+<td class="instruction">JR NZ,<a href="56658.html#56667">SetIYMonsterData_Lizzy</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56662"></span>56662</td>
+<td class="instruction">LD IY,53202</td>
+<td class="comment-1" rowspan="1"><span class="register">IY</span>=<a href="53202.html">George_State</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56666"></span>56666</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56667"></span>
+<div class="comments">
+<div class="paragraph">
+Lizzy:
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">SetIYMonsterData_Lizzy</td>
+<td class="address-2"><span id="56667"></span>56667</td>
+<td class="instruction">CP 2</td>
+<td class="comment-1" rowspan="2">Jump to <a href="56658.html#56676">SetIYMonsterData_Ralph</a> if <span class="register">A</span> is not equal to 2.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56669"></span>56669</td>
+<td class="instruction">JR NZ,<a href="56658.html#56676">SetIYMonsterData_Ralph</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56671"></span>56671</td>
+<td class="instruction">LD IY,53249</td>
+<td class="comment-1" rowspan="1"><span class="register">IY</span>=<a href="53249.html">Lizzy_State</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56675"></span>56675</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56676"></span>
+<div class="comments">
+<div class="paragraph">
+Ralph:
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">SetIYMonsterData_Ralph</td>
+<td class="address-2"><span id="56676"></span>56676</td>
+<td class="instruction">CP 3</td>
+<td class="comment-1" rowspan="2">Return if <span class="register">A</span> is not equal to 3.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56678"></span>56678</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56679"></span>56679</td>
+<td class="instruction">LD IY,53296</td>
+<td class="comment-1" rowspan="1"><span class="register">IY</span>=<a href="53296.html">Ralph_State</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56683"></span>56683</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="56653.html">56653</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#56658">Map</a></td>
+<td class="next">
+Next: <a href="56684.html">56684</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/56658.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

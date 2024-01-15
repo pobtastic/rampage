@@ -33,7 +33,7 @@ Next: <a href="F2CA.html">F2CA</a>
 </td>
 </tr>
 </table>
-<div class="description">F28B: Routine at F28B</div>
+<div class="description">F28B: Handler: Spawn Helicopters</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,168 +45,268 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">Handler_SpawnHelicopters</td>
 <td class="address-2"><span id="f28b"></span>F28B</td>
 <td class="instruction">LD A,($D212)</td>
-<td class="comment-1" rowspan="2"><span class="register">B</span>=*<a href="D212.html">D212</a>.</td>
+<td class="comment-1" rowspan="5">Return if *<a href="D3F5.html">NumberActiveHelicopters</a> is equal to *<a href="D212.html">MaxHelicopterCount</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f28e"></span>F28E</td>
 <td class="instruction">LD B,A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f28f"></span>F28F</td>
 <td class="instruction">LD A,($D3F5)</td>
-<td class="comment-1" rowspan="3">Return if *<a href="D3F5.html">D3F5</a> is equal to <span class="register">B</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f292"></span>F292</td>
 <td class="instruction">CP B</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f293"></span>F293</td>
 <td class="instruction">RET Z</td>
 </tr>
 <tr>
-<td class="address-1"><span id="f294"></span>F294</td>
-<td class="instruction">CALL <a href="DA28.html">RandomNumber</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DA28.html">RandomNumber</a>.</td>
+<td class="routine-comment" colspan="5">
+<span id="f294"></span>
+<div class="comments">
+<div class="paragraph">
+Add a hint of randomness to whether we proceed or not. Roughly 50% chance.
+</div>
+</div>
+</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f294"></span>F294</td>
+<td class="instruction">CALL <a href="DA28.html">RandomNumber</a></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=random number 00-FF.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f297"></span>F297</td>
 <td class="instruction">CP $80</td>
 <td class="comment-1" rowspan="2">Return if <span class="register">A</span> is higher than 80.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f299"></span>F299</td>
 <td class="instruction">RET NC</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f29a"></span>
+<div class="comments">
+<div class="paragraph">
+Loop to find an empty slot.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f29a"></span>F29A</td>
 <td class="instruction">LD HL,$D292</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D292.html">D292</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D292.html">D292</a> (<a href="D295.html">Table_Helicopters</a>-03).</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_SpawnHelicopters_FindSlot</td>
 <td class="address-2"><span id="f29d"></span>F29D</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="3">Increment <span class="register">HL</span> by three.</td>
+<td class="comment-1" rowspan="3">Move the table pointer to the next helicopter table data.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f29e"></span>F29E</td>
 <td class="instruction">INC HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f29f"></span>F29F</td>
 <td class="instruction">INC HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f2a0"></span>F2A0</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="F28B.html#f29d">F29D</a> if *<span class="register">HL</span> is not zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="F28B.html#f29d">Handler_SpawnHelicopters_FindSlot</a> if this helicopter is already active.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f2a1"></span>F2A1</td>
 <td class="instruction">AND A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f2a2"></span>F2A2</td>
-<td class="instruction">JR NZ,<a href="F28B.html#f29d">$F29D</a></td>
+<td class="instruction">JR NZ,<a href="F28B.html#f29d">Handler_SpawnHelicopters_FindSlot</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f2a4"></span>
+<div class="comments">
+<div class="paragraph">
+50/50 chance of jumping to <a href="F28B.html#f2b2">Handler_SpawnForegroundHelicopter</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f2a4"></span>F2A4</td>
 <td class="instruction">CALL <a href="DA28.html">RandomNumber</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DA28.html">RandomNumber</a>.</td>
+<td class="comment-1" rowspan="2">Get a random number of either zero or one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f2a7"></span>F2A7</td>
 <td class="instruction">AND %00000001</td>
-<td class="comment-1" rowspan="1">Keep only bits 0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f2a9"></span>F2A9</td>
-<td class="instruction">JR Z,<a href="F28B.html#f2b2">$F2B2</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="F28B.html#f2b2">F2B2</a> if the result is zero.</td>
+<td class="instruction">JR Z,<a href="F28B.html#f2b2">Handler_SpawnForegroundHelicopter</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="F28B.html#f2b2">Handler_SpawnForegroundHelicopter</a> if the result is zero.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f2ab"></span>
+<div class="comments">
+<div class="paragraph">
+Creates a background helicopter.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f2ab"></span>F2AB</td>
 <td class="instruction">LD (HL),$40</td>
-<td class="comment-1" rowspan="1">Write 40 to *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Write 40 (background) to helicopter state.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f2ad"></span>F2AD</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+<td class="comment-1" rowspan="1">Increment the helicopter table pointer by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f2ae"></span>F2AE</td>
 <td class="instruction">LD (HL),$FC</td>
-<td class="comment-1" rowspan="1">Write FC to *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Write FC to helicopter X position.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f2b0"></span>F2B0</td>
-<td class="instruction">JR <a href="F28B.html#f2b7">$F2B7</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="F28B.html#f2b7">F2B7</a>.</td>
+<td class="instruction">JR <a href="F28B.html#f2b7">Handler_Helicopter_SetYPos</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="F28B.html#f2b7">Handler_Helicopter_SetYPos</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f2b2"></span>
+<div class="comments">
+<div class="paragraph">
+Creates a foreground helicopter.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_SpawnForegroundHelicopter</td>
 <td class="address-2"><span id="f2b2"></span>F2B2</td>
 <td class="instruction">LD (HL),$80</td>
-<td class="comment-1" rowspan="1">Write 80 to *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Write 80 (foreground) to helicopter state.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f2b4"></span>F2B4</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+<td class="comment-1" rowspan="1">Increment the helicopter table pointer by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f2b5"></span>F2B5</td>
 <td class="instruction">LD (HL),$24</td>
-<td class="comment-1" rowspan="1">Write 24 to *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Write 24 to helicopter X position.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Helicopter_SetYPos</td>
 <td class="address-2"><span id="f2b7"></span>F2B7</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+<td class="comment-1" rowspan="1">Increment the helicopter table pointer by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f2b8"></span>F2B8</td>
 <td class="instruction">LD (HL),$03</td>
-<td class="comment-1" rowspan="1">Write 03 to *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Write 03 to helicopter Y position.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f2ba"></span>
+<div class="comments">
+<div class="paragraph">
+25% chance of jumping to <a href="F28B.html#f2c2">Helicopter_Update_Count</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f2ba"></span>F2BA</td>
 <td class="instruction">CALL <a href="DA28.html">RandomNumber</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DA28.html">RandomNumber</a>.</td>
+<td class="comment-1" rowspan="2">Get a random number between 0-3.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f2bd"></span>F2BD</td>
 <td class="instruction">AND %00000011</td>
-<td class="comment-1" rowspan="1">Keep only bits 0-1.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f2bf"></span>F2BF</td>
-<td class="instruction">JR Z,<a href="F28B.html#f2c2">$F2C2</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="F28B.html#f2c2">F2C2</a> if the result is zero.</td>
+<td class="instruction">JR Z,<a href="F28B.html#f2c2">Helicopter_Update_Count</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="F28B.html#f2c2">Helicopter_Update_Count</a> if the random number is 0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f2c1"></span>F2C1</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Write the random number to helicopter Y position.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f2c2"></span>
+<div class="comments">
+<div class="paragraph">
+Keep track of the number of active helicopters.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Helicopter_Update_Count</td>
 <td class="address-2"><span id="f2c2"></span>F2C2</td>
 <td class="instruction">LD A,($D3F5)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D3F5.html">D3F5</a>.</td>
+<td class="comment-1" rowspan="3">Increment *<a href="D3F5.html">NumberActiveHelicopters</a> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f2c5"></span>F2C5</td>
 <td class="instruction">INC A</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f2c6"></span>F2C6</td>
 <td class="instruction">LD ($D3F5),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3F5.html">D3F5</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f2c9"></span>F2C9</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

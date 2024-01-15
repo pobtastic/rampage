@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Rampage: Data at 53782</title>
+<title>Rampage: Game status buffer entry at 53782</title>
 <meta charset="utf-8" />
 <link rel="stylesheet" type="text/css" href="../skoolkit.css" />
 <link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
@@ -15,11 +15,11 @@ gtag('js', new Date());
 gtag('config', 'G-75RERFCHBG');
 </script>
 </head>
-<body class="Asm-b">
+<body class="Asm-g">
 <table class="header">
 <tr>
 <td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
-<td class="page-header">Data</td>
+<td class="page-header">Game status buffer</td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -29,21 +29,25 @@ Prev: <a href="53781.html">53781</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#53782">Map</a></td>
 <td class="next">
-Next: <a href="53784.html">53784</a>
+Next: <a href="53783.html">53783</a>
 </td>
 </tr>
 </table>
-<div class="description">53782: Data block at D216</div>
+<div class="description">53782: Level Finished Countdown</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
+<div class="paragraph">
+After all the buildings have collapsed, the game doesn't instantly end the level. This countdown is reduced and the level ends only when it reaches zero.
+</div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">LevelFinishedCountdown</td>
 <td class="address-1"><span id="53782"></span>53782</td>
-<td class="instruction">DEFB 0,0</td>
+<td class="instruction">DEFB 0</td>
 <td class="comment-0" rowspan="1"></td>
 </tr>
 </table>
@@ -54,7 +58,7 @@ Prev: <a href="53781.html">53781</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#53782">Map</a></td>
 <td class="next">
-Next: <a href="53784.html">53784</a>
+Next: <a href="53783.html">53783</a>
 </td>
 </tr>
 </table>

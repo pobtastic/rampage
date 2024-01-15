@@ -33,7 +33,7 @@ Next: <a href="64694.html">64694</a>
 </td>
 </tr>
 </table>
-<div class="description">64569: Routine at FC39</div>
+<div class="description">64569: Handler: Vehicle</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,287 +42,470 @@ Next: <a href="64694.html">64694</a>
 Used by the routine at <a href="56951.html">RunHandlers</a>.
 </div>
 </div>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">B</td>
+<td class="register-desc">Vehicle Y sprite co-ordinates (if active)</td>
+</tr>
+<tr>
+<td class="register">C</td>
+<td class="register-desc">Vehicle X sprite co-ordinates (if active)</td>
+</tr>
+</table>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Vehicle</td>
 <td class="address-2"><span id="64569"></span>64569</td>
 <td class="instruction">LD A,(54273)</td>
-<td class="comment-1" rowspan="3">Return if *<a href="54270.html#54273">54273</a> is equal to 254.</td>
+<td class="comment-1" rowspan="3">Return if vehicle spawning is set to be off (*<a href="54273.html">VehicleCounter</a> is equal to 254).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64572"></span>64572</td>
 <td class="instruction">CP 254</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64574"></span>64574</td>
 <td class="instruction">RET Z</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64575"></span>64575</td>
 <td class="instruction">CP 255</td>
-<td class="comment-1" rowspan="2">Jump to <a href="64569.html#64626">64626</a> if *<a href="54270.html#54273">54273</a> is equal to 255.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="64569.html#64626">Handler_Vehicle_Movement</a> if a vehicle is already active (*<a href="54273.html">VehicleCounter</a> is equal to 255).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64577"></span>64577</td>
-<td class="instruction">JR Z,<a href="64569.html#64626">64626</a></td>
+<td class="instruction">JR Z,<a href="64569.html#64626">Handler_Vehicle_Movement</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="64579"></span>
+<div class="comments">
+<div class="paragraph">
+Else the counter is a counter, so count it down.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64579"></span>64579</td>
 <td class="instruction">DEC A</td>
-<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
+<td class="comment-1" rowspan="2">Decrease *<a href="54273.html">VehicleCounter</a> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64580"></span>64580</td>
 <td class="instruction">LD (54273),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> back to *<a href="54270.html#54273">54273</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64583"></span>64583</td>
 <td class="instruction">RET NZ</td>
-<td class="comment-1" rowspan="1">Return if <span class="register">A</span> is not zero.</td>
+<td class="comment-1" rowspan="1">Return if *<a href="54273.html">VehicleCounter</a> is still in progress.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="64584"></span>
+<div class="comments">
+<div class="paragraph">
+Else the countdown is complete so set the counter/ state that a vehicle is spawned and spawn a random vehicle!
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64584"></span>64584</td>
 <td class="instruction">LD A,255</td>
-<td class="comment-1" rowspan="2">Write 255 to *<a href="54270.html#54273">54273</a>.</td>
+<td class="comment-1" rowspan="2">Write 255 to *<a href="54273.html">VehicleCounter</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64586"></span>64586</td>
 <td class="instruction">LD (54273),A</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="64589"></span>
+<div class="comments">
+<div class="paragraph">
+There are four vehicle types.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64589"></span>64589</td>
 <td class="instruction">CALL <a href="55848.html">RandomNumber</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55848.html">RandomNumber</a>.</td>
+<td class="comment-1" rowspan="2">Get a random number between 0-3.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64592"></span>64592</td>
 <td class="instruction">AND %00000011</td>
-<td class="comment-1" rowspan="1">Keep only bits 0-1.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64594"></span>64594</td>
 <td class="instruction">LD (54274),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54270.html#54274">54274</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54273.html#54274">VehicleType</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="64597"></span>
+<div class="comments">
+<div class="paragraph">
+Randomly bring the vehicle in from either the left or right hand side of the play area.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64597"></span>64597</td>
 <td class="instruction">CALL <a href="55848.html">RandomNumber</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55848.html">RandomNumber</a>.</td>
+<td class="comment-1" rowspan="2">Get a random number which is either zero or one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64600"></span>64600</td>
 <td class="instruction">AND %00000001</td>
-<td class="comment-1" rowspan="1">Keep only bit 0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64602"></span>64602</td>
-<td class="instruction">JR NZ,<a href="64569.html#64616">64616</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="64569.html#64616">64616</a> if the result is not zero.</td>
+<td class="instruction">JR NZ,<a href="64569.html#64616">Handler_SpawnVehicleRight</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="64569.html#64616">Handler_SpawnVehicleRight</a> if the random number is one.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="64604"></span>
+<div class="comments">
+<div class="paragraph">
+Vehicle moves from left-to-right.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64604"></span>64604</td>
 <td class="instruction">LD A,20</td>
-<td class="comment-1" rowspan="2">Write 20 to *<a href="54270.html#54276">54276</a>.</td>
+<td class="comment-1" rowspan="2">Write 20 to *<a href="54273.html#54276">VehicleYPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64606"></span>64606</td>
 <td class="instruction">LD (54276),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64609"></span>64609</td>
 <td class="instruction">LD A,250</td>
-<td class="comment-1" rowspan="2">Write 250 to *<a href="54270.html#54275">54275</a>.</td>
+<td class="comment-1" rowspan="2">Write 250 to *<a href="54273.html#54275">VehicleXPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64611"></span>64611</td>
 <td class="instruction">LD (54275),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64614"></span>64614</td>
-<td class="instruction">JR <a href="64569.html#64626">64626</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="64569.html#64626">64626</a>.</td>
+<td class="instruction">JR <a href="64569.html#64626">Handler_Vehicle_Movement</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="64569.html#64626">Handler_Vehicle_Movement</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="64616"></span>
+<div class="comments">
+<div class="paragraph">
+Bit 7 signifies that this vehicle moves from right-to-left.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_SpawnVehicleRight</td>
 <td class="address-2"><span id="64616"></span>64616</td>
 <td class="instruction">LD A,148</td>
-<td class="comment-1" rowspan="2">Write 148 to *<a href="54270.html#54276">54276</a>.</td>
+<td class="comment-1" rowspan="2">Write 148 (20 + bit 7 set) to *<a href="54273.html#54276">VehicleYPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64618"></span>64618</td>
 <td class="instruction">LD (54276),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64621"></span>64621</td>
 <td class="instruction">LD A,32</td>
-<td class="comment-1" rowspan="2">Write 32 to *<a href="54270.html#54275">54275</a>.</td>
+<td class="comment-1" rowspan="2">Write 32 to *<a href="54273.html#54275">VehicleXPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64623"></span>64623</td>
 <td class="instruction">LD (54275),A</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Vehicle_Movement</td>
 <td class="address-2"><span id="64626"></span>64626</td>
 <td class="instruction">LD A,(54276)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="54270.html#54276">54276</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="54273.html#54276">VehicleYPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64629"></span>64629</td>
 <td class="instruction">CP 128</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 128.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="64569.html#64663">Handler_MoveVehicle_RightToLeft</a> if <span class="register">A</span> is higher than 128 (if bit 7 is set).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64631"></span>64631</td>
-<td class="instruction">JR NC,<a href="64569.html#64663">64663</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="64569.html#64663">64663</a> if {} is higher.</td>
+<td class="instruction">JR NC,<a href="64569.html#64663">Handler_MoveVehicle_RightToLeft</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64633"></span>64633</td>
 <td class="instruction">LD B,A</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=vehicle Y position.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="64634"></span>
+<div class="comments">
+<div class="paragraph">
+Handles moving the vehicle from the left-to-right hand side of the play area.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64634"></span>64634</td>
 <td class="instruction">LD A,(54275)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="54270.html#54275">54275</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="54273.html#54275">VehicleXPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64637"></span>64637</td>
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Vehicle_SetXPos</td>
 <td class="address-2"><span id="64638"></span>64638</td>
 <td class="instruction">LD (54275),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54270.html#54275">54275</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54273.html#54275">VehicleXPosition</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="64641"></span>
+<div class="comments">
+<div class="paragraph">
+Check if the vehicle is off-screen.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64641"></span>64641</td>
 <td class="instruction">CP 32</td>
-<td class="comment-1" rowspan="2">Jump to <a href="64569.html#64679">64679</a> if <span class="register">A</span> is equal to 32.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="64569.html#64679">Handler_Vehicle_SetCountdown</a> if <span class="register">A</span> is equal to 32.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64643"></span>64643</td>
-<td class="instruction">JR Z,<a href="64569.html#64679">64679</a></td>
+<td class="instruction">JR Z,<a href="64569.html#64679">Handler_Vehicle_SetCountdown</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64645"></span>64645</td>
 <td class="instruction">LD C,A</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=vehicle X position.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="64646"></span>
+<div class="comments">
+<div class="paragraph">
+Has the vehicle been destroyed?
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64646"></span>64646</td>
 <td class="instruction">LD A,(54274)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="54270.html#54274">54274</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="54273.html#54274">VehicleType</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64649"></span>64649</td>
 <td class="instruction">CP 3</td>
-<td class="comment-1" rowspan="2">Return if <span class="register">A</span> is equal to 3.</td>
+<td class="comment-1" rowspan="2">Return if the vehicle has been destroyed (*<a href="54273.html#54274">VehicleType</a> is equal to 3).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64651"></span>64651</td>
 <td class="instruction">RET Z</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64652"></span>64652</td>
 <td class="instruction">ADD A,A</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">A</span>.</td>
+<td class="comment-1" rowspan="2"><span class="register">A</span>*=2+59.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64653"></span>64653</td>
 <td class="instruction">ADD A,59</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=59.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64655"></span>64655</td>
 <td class="instruction">CALL <a href="54985.html">54985</a></td>
 <td class="comment-1" rowspan="1">Call <a href="54985.html">54985</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64658"></span>64658</td>
 <td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="1">Reset the bits from <span class="register">A</span>.</td>
+<td class="comment-1" rowspan="2">Write 0 to *<a href="53831.html">Flag_VehicleOrientation</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64659"></span>64659</td>
 <td class="instruction">LD (53831),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53831.html">53831</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64662"></span>64662</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="64663"></span>
+<div class="comments">
+<div class="paragraph">
+Handles moving the vehicle from the right-to-left hand side of the play area.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_MoveVehicle_RightToLeft</td>
 <td class="address-2"><span id="64663"></span>64663</td>
 <td class="instruction">AND %01111111</td>
-<td class="comment-1" rowspan="1">Keep only bits 0-6.</td>
+<td class="comment-1" rowspan="1">Strip off the right-to-left flag.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64665"></span>64665</td>
 <td class="instruction">LD B,A</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=vehicle Y position.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64666"></span>64666</td>
 <td class="instruction">LD A,1</td>
-<td class="comment-1" rowspan="2">Write 1 to *<a href="53831.html">53831</a>.</td>
+<td class="comment-1" rowspan="2">Write 1 to *<a href="53831.html">Flag_VehicleOrientation</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64668"></span>64668</td>
 <td class="instruction">LD (53831),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64671"></span>64671</td>
 <td class="instruction">LD A,(54275)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="54270.html#54275">54275</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="54273.html#54275">VehicleXPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64674"></span>64674</td>
 <td class="instruction">DEC A</td>
 <td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="64675"></span>
+<div class="comments">
+<div class="paragraph">
+Check if the vehicle is off-screen.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64675"></span>64675</td>
 <td class="instruction">CP 250</td>
-<td class="comment-1" rowspan="2">Jump to <a href="64569.html#64638">64638</a> if <span class="register">A</span> is not equal to 250.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="64569.html#64638">Handler_Vehicle_SetXPos</a> if <span class="register">A</span> is not equal to 250.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64677"></span>64677</td>
-<td class="instruction">JR NZ,<a href="64569.html#64638">64638</a></td>
+<td class="instruction">JR NZ,<a href="64569.html#64638">Handler_Vehicle_SetXPos</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="64679"></span>
+<div class="comments">
+<div class="paragraph">
+Initialise a new countdown.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_Vehicle_SetCountdown</td>
 <td class="address-2"><span id="64679"></span>64679</td>
 <td class="instruction">CALL <a href="55848.html">RandomNumber</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55848.html">RandomNumber</a>.</td>
+<td class="comment-1" rowspan="3">Get a random number between 8-23.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64682"></span>64682</td>
 <td class="instruction">AND %00001111</td>
-<td class="comment-1" rowspan="1">Keep only bits 0-3.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64684"></span>64684</td>
 <td class="instruction">ADD A,8</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=8.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64686"></span>64686</td>
 <td class="instruction">LD (54273),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54270.html#54273">54273</a>.</td>
+<td class="comment-1" rowspan="1">Write the random number to *<a href="54273.html">VehicleCounter</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64689"></span>64689</td>
 <td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="1">Reset the bits from <span class="register">A</span>.</td>
+<td class="comment-1" rowspan="2">Write 0 to *<a href="53831.html">Flag_VehicleOrientation</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64690"></span>64690</td>
 <td class="instruction">LD (53831),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53831.html">53831</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64693"></span>64693</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

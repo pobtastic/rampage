@@ -29,7 +29,7 @@ Prev: <a href="DF46.html">DF46</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#df90">Map</a></td>
 <td class="next">
-Next: <a href="E119.html">E119</a>
+Next: <a href="E0AD.html">E0AD</a>
 </td>
 </tr>
 </table>
@@ -287,7 +287,7 @@ Process the scene data.
 <td class="asm-label"></td>
 <td class="address-1"><span id="dfc3"></span>DFC3</td>
 <td class="instruction">LD ($D3F3),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3F3.html">D3F3</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3F3.html">BuildingsRemainingCount</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -863,7 +863,7 @@ Process the scene data.
 <td class="asm-label"></td>
 <td class="address-1"><span id="e05e"></span>E05E</td>
 <td class="instruction">LD A,$FE</td>
-<td class="comment-1" rowspan="2">Write FE to *<a href="D3FE.html#d405">D405</a>.</td>
+<td class="comment-1" rowspan="2">Write FE to *<a href="D405.html">TrainState</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -901,7 +901,7 @@ Process the scene data.
 <td class="asm-label"></td>
 <td class="address-1"><span id="e06e"></span>E06E</td>
 <td class="instruction">LD A,$18</td>
-<td class="comment-1" rowspan="2">Write 18 to *<a href="D3FE.html#d401">D401</a>.</td>
+<td class="comment-1" rowspan="2">Write 18 to *<a href="D401.html">VehicleCounter</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -959,7 +959,7 @@ Process the scene data.
 <td class="asm-label"></td>
 <td class="address-1"><span id="e081"></span>E081</td>
 <td class="instruction">LD A,$06</td>
-<td class="comment-1" rowspan="2">Write 06 to *<a href="D212.html">D212</a>.</td>
+<td class="comment-1" rowspan="2">Write 06 to *<a href="D212.html">MaxHelicopterCount</a>.</td>
 </tr>
 <tr>
 <td class="asm-label">FindScene_6</td>
@@ -1028,7 +1028,7 @@ Process the scene data.
 <td class="asm-label">FindScene_8</td>
 <td class="address-2"><span id="e099"></span>E099</td>
 <td class="instruction">LD A,$20</td>
-<td class="comment-1" rowspan="2">Write 20 to *<a href="D3FE.html#d405">D405</a>.</td>
+<td class="comment-1" rowspan="2">Write 20 to *<a href="D405.html">TrainState</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1039,7 +1039,7 @@ Process the scene data.
 <td class="asm-label">FindScene_9</td>
 <td class="address-2"><span id="e09e"></span>E09E</td>
 <td class="instruction">LD A,$FE</td>
-<td class="comment-1" rowspan="2">Write FE to *<a href="D3FE.html#d401">D401</a>.</td>
+<td class="comment-1" rowspan="2">Write FE to *<a href="D401.html">VehicleCounter</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1058,350 +1058,6 @@ Process the scene data.
 <td class="instruction">DEFB $50,$58,$60,$20,$70,$30,$78,$38</td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
-<tr>
-<td class="routine-comment" colspan="5">
-<span id="e0ad"></span>
-<div class="comments">
-<div class="paragraph">
-This entry point is used by the routine at <a href="E62D.html">E62D</a>.
-</div>
-</div>
-</td>
-</tr>
-<tr>
-<td class="asm-label">FindScene_10</td>
-<td class="address-2"><span id="e0ad"></span>E0AD</td>
-<td class="instruction">DEFB $21,$4D,$D2,$79,$A7,$FA,$C1,$E0</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0b5"></span>E0B5</td>
-<td class="instruction">DEFB $86,$4F,$23,$78,$A7,$FA,$C9,$E0</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0bd"></span>E0BD</td>
-<td class="instruction">DEFB $86,$47,$18,$0E,$EE,$80,$96,$2F</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0c5"></span>E0C5</td>
-<td class="instruction">DEFB $3C,$4F,$18,$EE,$EE,$80,$96,$2F</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0cd"></span>E0CD</td>
-<td class="instruction">DEFB $3C,$47</td>
-<td class="comment-1" rowspan="1"></td>
-</tr>
-<tr>
-<td class="routine-comment" colspan="5">
-<span id="e0cf"></span>
-<div class="comments">
-<div class="paragraph">
-This entry point is used by the routines at <a href="E25D.html">E25D</a> and <a href="F450.html">F450</a>.
-</div>
-</div>
-</td>
-</tr>
-<tr>
-<td class="asm-label">FindScene_11</td>
-<td class="address-2"><span id="e0cf"></span>E0CF</td>
-<td class="instruction">LD A,C</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">C</span>.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0d0"></span>E0D0</td>
-<td class="instruction">CP $20</td>
-<td class="comment-1" rowspan="2">Jump to <a href="DF90.html#e10a">FindScene_13</a> if <span class="register">A</span> is higher than 20.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0d2"></span>E0D2</td>
-<td class="instruction">JR NC,<a href="DF90.html#e10a">FindScene_13</a></td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0d4"></span>E0D4</td>
-<td class="instruction">LD A,B</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0d5"></span>E0D5</td>
-<td class="instruction">CP $18</td>
-<td class="comment-1" rowspan="2">Jump to <a href="DF90.html#e10a">FindScene_13</a> if <span class="register">A</span> is higher than 18.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0d7"></span>E0D7</td>
-<td class="instruction">JR NC,<a href="DF90.html#e10a">FindScene_13</a></td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0d9"></span>E0D9</td>
-<td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1">RRCA.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0da"></span>E0DA</td>
-<td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1">RRCA.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0db"></span>E0DB</td>
-<td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1">RRCA.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0dc"></span>E0DC</td>
-<td class="instruction">LD L,A</td>
-<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0dd"></span>E0DD</td>
-<td class="instruction">AND %00000011</td>
-<td class="comment-1" rowspan="1">Keep only bits 0-1.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0df"></span>E0DF</td>
-<td class="instruction">ADD A,$65</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=65.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0e1"></span>E0E1</td>
-<td class="instruction">LD H,A</td>
-<td class="comment-1" rowspan="1"><span class="register">H</span>=<span class="register">A</span>.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0e2"></span>E0E2</td>
-<td class="instruction">LD A,L</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">L</span>.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0e3"></span>E0E3</td>
-<td class="instruction">AND %11100000</td>
-<td class="comment-1" rowspan="1">Keep only bits 5-7.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0e5"></span>E0E5</td>
-<td class="instruction">ADD A,C</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">C</span>.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0e6"></span>E0E6</td>
-<td class="instruction">LD L,A</td>
-<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0e7"></span>E0E7</td>
-<td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="DF90.html#e0fe">FindScene_12</a> if *<span class="register">HL</span> is not zero.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0e8"></span>E0E8</td>
-<td class="instruction">AND A</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0e9"></span>E0E9</td>
-<td class="instruction">JR NZ,<a href="DF90.html#e0fe">FindScene_12</a></td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0eb"></span>E0EB</td>
-<td class="instruction">DEC H</td>
-<td class="comment-1" rowspan="3">Decrease <span class="register">H</span> by three.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0ec"></span>E0EC</td>
-<td class="instruction">DEC H</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0ed"></span>E0ED</td>
-<td class="instruction">DEC H</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0ee"></span>E0EE</td>
-<td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="DF90.html#e0fe">FindScene_12</a> if *<span class="register">HL</span> is not zero.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0ef"></span>E0EF</td>
-<td class="instruction">AND A</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0f0"></span>E0F0</td>
-<td class="instruction">JR NZ,<a href="DF90.html#e0fe">FindScene_12</a></td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0f2"></span>E0F2</td>
-<td class="instruction">LD A,D</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">D</span>.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0f3"></span>E0F3</td>
-<td class="instruction">CP $3D</td>
-<td class="comment-1" rowspan="2">Jump to <a href="DF90.html#e113">FindScene_14</a> if <span class="register">A</span> is not equal to 3D.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0f5"></span>E0F5</td>
-<td class="instruction">JR NZ,<a href="DF90.html#e113">FindScene_14</a></td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0f7"></span>E0F7</td>
-<td class="instruction">DEC H</td>
-<td class="comment-1" rowspan="3">Decrease <span class="register">H</span> by three.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0f8"></span>E0F8</td>
-<td class="instruction">DEC H</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0f9"></span>E0F9</td>
-<td class="instruction">DEC H</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0fa"></span>E0FA</td>
-<td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="DF90.html#e114">FindScene_15</a> if *<span class="register">HL</span> is zero.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0fb"></span>E0FB</td>
-<td class="instruction">AND A</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0fc"></span>E0FC</td>
-<td class="instruction">JR Z,<a href="DF90.html#e114">FindScene_15</a></td>
-</tr>
-<tr>
-<td class="asm-label">FindScene_12</td>
-<td class="address-2"><span id="e0fe"></span>E0FE</td>
-<td class="instruction">CP D</td>
-<td class="comment-1" rowspan="2">Jump to <a href="DF90.html#e114">FindScene_15</a> if <span class="register">A</span> is lower than <span class="register">D</span>.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e0ff"></span>E0FF</td>
-<td class="instruction">JR C,<a href="DF90.html#e114">FindScene_15</a></td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e101"></span>E101</td>
-<td class="instruction">INC E</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">E</span> by one.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e102"></span>E102</td>
-<td class="instruction">CP E</td>
-<td class="comment-1" rowspan="2">Jump to <a href="DF90.html#e114">FindScene_15</a> if <span class="register">A</span> is higher than <span class="register">E</span>.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e103"></span>E103</td>
-<td class="instruction">JR NC,<a href="DF90.html#e114">FindScene_15</a></td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e105"></span>E105</td>
-<td class="instruction">LD ($D215),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D215.html">D215</a>.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e108"></span>E108</td>
-<td class="instruction">OR A</td>
-<td class="comment-1" rowspan="1">Set the bits from <span class="register">A</span>.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e109"></span>E109</td>
-<td class="instruction">RET</td>
-<td class="comment-1" rowspan="1">Return.</td>
-</tr>
-<tr>
-<td class="asm-label">FindScene_13</td>
-<td class="address-2"><span id="e10a"></span>E10A</td>
-<td class="instruction">POP HL</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e10b"></span>E10B</td>
-<td class="instruction">LD A,($D3FB)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="EF86.html">EF86</a> if *<a href="D3FA.html#d3fb">D3FB</a> is zero.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e10e"></span>E10E</td>
-<td class="instruction">AND A</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e10f"></span>E10F</td>
-<td class="instruction">JP Z,<a href="EF86.html">$EF86</a></td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e112"></span>E112</td>
-<td class="instruction">PUSH HL</td>
-<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
-</tr>
-<tr>
-<td class="asm-label">FindScene_14</td>
-<td class="address-2"><span id="e113"></span>E113</td>
-<td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="2">Write 00 to *<a href="D215.html">D215</a>.</td>
-</tr>
-<tr>
-<td class="asm-label">FindScene_15</td>
-<td class="address-2"><span id="e114"></span>E114</td>
-<td class="instruction">LD ($D215),A</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e117"></span>E117</td>
-<td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=00.</td>
-</tr>
-<tr>
-<td class="asm-label"></td>
-<td class="address-1"><span id="e118"></span>E118</td>
-<td class="instruction">RET</td>
-<td class="comment-1" rowspan="1">Return.</td>
-</tr>
 </table>
 <table class="asm-navigation">
 <tr>
@@ -1410,7 +1066,7 @@ Prev: <a href="DF46.html">DF46</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#df90">Map</a></td>
 <td class="next">
-Next: <a href="E119.html">E119</a>
+Next: <a href="E0AD.html">E0AD</a>
 </td>
 </tr>
 </table>

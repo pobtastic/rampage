@@ -72,6 +72,36 @@ For instance; if George and Lizzy are computer controlled and Ralph uses the key
 </td>
 </tr>
 <tr>
+<td class="map-g"><span id="d212"></span><a href="../asm/D212.html">D212</a></td>
+<td class="map-length">1</td>
+<td class="map-g-desc">
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D212.html">Maximum Number Helicopters</a></div>
+<div class="map-entry-desc">
+</div>
+</td>
+</tr>
+<tr>
+<td class="map-g"><span id="d216"></span><a href="../asm/D216.html">D216</a></td>
+<td class="map-length">1</td>
+<td class="map-g-desc">
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D216.html">Level Finished Countdown</a></div>
+<div class="map-entry-desc">
+<div class="paragraph">
+After all the buildings have collapsed, the game doesn't instantly end the level. This countdown is reduced and the level ends only when it reaches zero.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="map-g"><span id="d217"></span><a href="../asm/D217.html">D217</a></td>
+<td class="map-length">1</td>
+<td class="map-g-desc">
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D217.html">Game status buffer entry at D217</a></div>
+<div class="map-entry-desc">
+</div>
+</td>
+</tr>
+<tr>
 <td class="map-g"><span id="d218"></span><a href="../asm/D218.html">D218</a></td>
 <td class="map-length">2</td>
 <td class="map-g-desc">
@@ -213,16 +243,41 @@ Counts up while the game plays, used as a random number generator (as it's never
 <td class="map-g"><span id="d247"></span><a href="../asm/D247.html">D247</a></td>
 <td class="map-length">1</td>
 <td class="map-g-desc">
-<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D247.html">Game status buffer entry at D247</a></div>
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D247.html">Vehicle Orientation Flag</a></div>
 <div class="map-entry-desc">
+<div class="paragraph">
+<table class="default">
+<tr>
+<th colspan="1" rowspan="1">Value</th>
+<th colspan="1" rowspan="1">Moving</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">00</td>
+<td class="centre" colspan="1" rowspan="1">Left-to-right</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">01</td>
+<td class="centre" colspan="1" rowspan="1">Right-to-left</td>
+</tr>
+</table>
+</div>
 </div>
 </td>
 </tr>
 <tr>
 <td class="map-g"><span id="d248"></span><a href="../asm/D248.html">D248</a></td>
-<td class="map-length">5</td>
+<td class="map-length">2</td>
 <td class="map-g-desc">
 <div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D248.html">Game status buffer entry at D248</a></div>
+<div class="map-entry-desc">
+</div>
+</td>
+</tr>
+<tr>
+<td class="map-g"><span id="d24a"></span><a href="../asm/D24A.html">D24A</a></td>
+<td class="map-length">3</td>
+<td class="map-g-desc">
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D24A.html">Game status buffer entry at D24A</a></div>
 <div class="map-entry-desc">
 </div>
 </td>
@@ -274,27 +329,42 @@ Counts up while the game plays, used as a random number generator (as it's never
 </tr>
 <tr>
 <td class="map-g"><span id="d295"></span><a href="../asm/D295.html">D295</a></td>
-<td class="map-length">14</td>
+<td class="map-length">18</td>
 <td class="map-g-desc">
-<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D295.html">Game status buffer entry at D295</a></div>
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D295.html">Table: Helicopters</a></div>
 <div class="map-entry-desc">
+<div class="paragraph">
+See <a href="../asm/DBE5.html">Handler_Helicopters</a>.
 </div>
-</td>
-</tr>
-<tr>
-<td class="map-g"><span id="d2a3"></span><a href="../asm/D2A3.html">D2A3</a></td>
-<td class="map-length">4</td>
-<td class="map-g-desc">
-<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D2A3.html">Game status buffer entry at D2A3</a></div>
-<div class="map-entry-desc">
 </div>
 </td>
 </tr>
 <tr>
 <td class="map-g"><span id="d2a7"></span><a href="../asm/D2A7.html">D2A7</a></td>
-<td class="map-length">21</td>
+<td class="map-length">24</td>
 <td class="map-g-desc">
-<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D2A7.html">Game status buffer entry at D2A7</a></div>
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D2A7.html">Table: Helicopter Something</a></div>
+<div class="map-entry-desc">
+</div>
+</td>
+</tr>
+<tr>
+<td class="map-g"><span id="d3f3"></span><a href="../asm/D3F3.html">D3F3</a></td>
+<td class="map-length">1</td>
+<td class="map-g-desc">
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D3F3.html">Number Of Buildings Remaining</a></div>
+<div class="map-entry-desc">
+<div class="paragraph">
+Number of buildings remaining standing on the current level.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="map-g"><span id="d3f5"></span><a href="../asm/D3F5.html">D3F5</a></td>
+<td class="map-length">1</td>
+<td class="map-g-desc">
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D3F5.html">Active Helicopter Count</a></div>
 <div class="map-entry-desc">
 </div>
 </td>

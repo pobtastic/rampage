@@ -47,247 +47,244 @@ Used by the routine at <a href="E119.html">E119</a>.
 <tr>
 <td class="address-2"><span id="e62d"></span>E62D</td>
 <td class="instruction">LD A,($D244)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="3">Return if *<a href="D244.html">D244</a> is equal to FF.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e630"></span>E630</td>
 <td class="instruction">CP $FF</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="e632"></span>E632</td>
 <td class="instruction">RET Z</td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="e633"></span>E633</td>
 <td class="instruction">CP $20</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="E62D.html#e67c">E67C</a> if *<a href="D244.html">D244</a> is higher than 20.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e635"></span>E635</td>
 <td class="instruction">JR NC,<a href="E62D.html#e67c">$E67C</a></td>
-<td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="e637"></span>E637</td>
 <td class="instruction">LD A,($D248)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D248.html">D248</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e63a"></span>E63A</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">RRCA.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e63b"></span>E63B</td>
 <td class="instruction">JR C,<a href="E62D.html#e67c">$E67C</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">E67C</a> if {} is lower.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e63d"></span>E63D</td>
 <td class="instruction">LD A,($D246)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D246.html">D246</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e640"></span>E640</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">RRCA.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e641"></span>E641</td>
 <td class="instruction">JR NC,<a href="E62D.html#e658">$E658</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e658">E658</a> if {} is higher.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e643"></span>E643</td>
 <td class="instruction">LD DE,$80FE</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=80FE.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e646"></span>E646</td>
 <td class="instruction">LD B,$03</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=03.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e648"></span>E648</td>
 <td class="instruction">LD A,($D247)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D247.html">Flag_VehicleOrientation</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e64b"></span>E64B</td>
 <td class="instruction">LD C,A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e64c"></span>E64C</td>
 <td class="instruction">LD A,B</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e64d"></span>E64D</td>
 <td class="instruction">SUB C</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>-=<span class="register">C</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e64e"></span>E64E</td>
 <td class="instruction">SUB C</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>-=<span class="register">C</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e64f"></span>E64F</td>
 <td class="instruction">SUB C</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>-=<span class="register">C</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e650"></span>E650</td>
 <td class="instruction">LD C,A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e651"></span>E651</td>
-<td class="instruction">CALL <a href="DF90.html#e0ad">FindScene_10</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
+<td class="comment-1" rowspan="1">Call <a href="E0AD.html">E0AD</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e654"></span>E654</td>
 <td class="instruction">JR Z,<a href="E62D.html#e67c">$E67C</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">E67C</a> if {} is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e656"></span>E656</td>
 <td class="instruction">JR <a href="E62D.html#e66f">$E66F</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e66f">E66F</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="e658"></span>E658</td>
 <td class="instruction">LD A,($D24E)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D24D.html#d24e">D24E</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e65b"></span>E65B</td>
 <td class="instruction">CP $12</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 12.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e65d"></span>E65D</td>
 <td class="instruction">JR Z,<a href="E62D.html#e67c">$E67C</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">E67C</a> if {} is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e65f"></span>E65F</td>
 <td class="instruction">LD B,$05</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=05.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e661"></span>E661</td>
 <td class="instruction">LD A,($D247)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D247.html">Flag_VehicleOrientation</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e664"></span>E664</td>
 <td class="instruction">ADD A,$02</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=02.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e666"></span>E666</td>
 <td class="instruction">LD C,A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e667"></span>E667</td>
 <td class="instruction">LD DE,$090F</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=090F.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e66a"></span>E66A</td>
-<td class="instruction">CALL <a href="DF90.html#e0ad">FindScene_10</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
+<td class="comment-1" rowspan="1">Call <a href="E0AD.html">E0AD</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e66d"></span>E66D</td>
 <td class="instruction">JR NZ,<a href="E62D.html#e67c">$E67C</a></td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">E67C</a> if {} is not zero.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="e66f"></span>E66F</td>
 <td class="instruction">LD A,$06</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=06.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e671"></span>E671</td>
 <td class="instruction">LD ($D244),A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D244.html">D244</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e674"></span>E674</td>
 <td class="instruction">LD ($D24A),A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D24A.html">D24A</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e677"></span>E677</td>
 <td class="instruction">LD A,$01</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=01.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e679"></span>E679</td>
 <td class="instruction">LD ($D248),A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D248.html">D248</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="e67c"></span>E67C</td>
 <td class="instruction">LD A,($D244)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D244.html">D244</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e67f"></span>E67F</td>
 <td class="instruction">ADD A,A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e680"></span>E680</td>
 <td class="instruction">LD H,$00</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">H</span>=00.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e682"></span>E682</td>
 <td class="instruction">LD L,A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e683"></span>E683</td>
 <td class="instruction">LD DE,$EF98</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="EF98.html">EF98</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e686"></span>E686</td>
 <td class="instruction">ADD HL,DE</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">DE</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e687"></span>E687</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e688"></span>E688</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e689"></span>E689</td>
 <td class="instruction">LD H,(HL)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">H</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e68a"></span>E68A</td>
 <td class="instruction">LD L,A</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e68b"></span>E68B</td>
 <td class="instruction">JP (HL)</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Jump to the address held by *<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e68c"></span>E68C</td>
@@ -446,7 +443,7 @@ Used by the routine at <a href="E119.html">E119</a>.
 </tr>
 <tr>
 <td class="address-1"><span id="e6d6"></span>E6D6</td>
-<td class="instruction">CALL <a href="DF90.html#e0ad">FindScene_10</a></td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
@@ -486,7 +483,7 @@ Used by the routine at <a href="E119.html">E119</a>.
 </tr>
 <tr>
 <td class="address-1"><span id="e6ea"></span>E6EA</td>
-<td class="instruction">CALL <a href="DF90.html#e0ad">FindScene_10</a></td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
@@ -596,7 +593,7 @@ Used by the routine at <a href="E119.html">E119</a>.
 </tr>
 <tr>
 <td class="address-1"><span id="e71f"></span>E71F</td>
-<td class="instruction">CALL <a href="DF90.html#e0ad">FindScene_10</a></td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
@@ -631,7 +628,7 @@ Used by the routine at <a href="E119.html">E119</a>.
 </tr>
 <tr>
 <td class="address-1"><span id="e72f"></span>E72F</td>
-<td class="instruction">CALL <a href="DF90.html#e0ad">FindScene_10</a></td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
@@ -651,7 +648,7 @@ Used by the routine at <a href="E119.html">E119</a>.
 </tr>
 <tr>
 <td class="address-1"><span id="e73a"></span>E73A</td>
-<td class="instruction">CALL <a href="DF90.html#e0ad">FindScene_10</a></td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
@@ -686,7 +683,7 @@ Used by the routine at <a href="E119.html">E119</a>.
 </tr>
 <tr>
 <td class="address-1"><span id="e74c"></span>E74C</td>
-<td class="instruction">CALL <a href="DF90.html#e0ad">FindScene_10</a></td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
@@ -706,7 +703,7 @@ Used by the routine at <a href="E119.html">E119</a>.
 </tr>
 <tr>
 <td class="address-1"><span id="e757"></span>E757</td>
-<td class="instruction">CALL <a href="DF90.html#e0ad">FindScene_10</a></td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
@@ -1041,7 +1038,7 @@ Used by the routine at <a href="E119.html">E119</a>.
 </tr>
 <tr>
 <td class="address-1"><span id="e7f7"></span>E7F7</td>
-<td class="instruction">CALL <a href="DF90.html#e0ad">FindScene_10</a></td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
@@ -1066,7 +1063,7 @@ Used by the routine at <a href="E119.html">E119</a>.
 </tr>
 <tr>
 <td class="address-1"><span id="e804"></span>E804</td>
-<td class="instruction">CALL <a href="DF90.html#e0ad">FindScene_10</a></td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
@@ -1096,7 +1093,7 @@ Used by the routine at <a href="E119.html">E119</a>.
 </tr>
 <tr>
 <td class="address-1"><span id="e814"></span>E814</td>
-<td class="instruction">CALL <a href="DF90.html#e0ad">FindScene_10</a></td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
@@ -1131,7 +1128,7 @@ Used by the routine at <a href="E119.html">E119</a>.
 </tr>
 <tr>
 <td class="address-1"><span id="e825"></span>E825</td>
-<td class="instruction">CALL <a href="DF90.html#e0ad">FindScene_10</a></td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
@@ -1156,7 +1153,7 @@ Used by the routine at <a href="E119.html">E119</a>.
 </tr>
 <tr>
 <td class="address-1"><span id="e832"></span>E832</td>
-<td class="instruction">CALL <a href="DF90.html#e0ad">FindScene_10</a></td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
@@ -1191,7 +1188,7 @@ Used by the routine at <a href="E119.html">E119</a>.
 </tr>
 <tr>
 <td class="address-1"><span id="e843"></span>E843</td>
-<td class="instruction">CALL <a href="DF90.html#e0ad">FindScene_10</a></td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
@@ -1246,7 +1243,7 @@ Used by the routine at <a href="E119.html">E119</a>.
 </tr>
 <tr>
 <td class="address-1"><span id="e85c"></span>E85C</td>
-<td class="instruction">CALL <a href="DF90.html#e0ad">FindScene_10</a></td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
@@ -1346,7 +1343,7 @@ Used by the routine at <a href="E119.html">E119</a>.
 </tr>
 <tr>
 <td class="address-2"><span id="e88c"></span>E88C</td>
-<td class="instruction">CALL <a href="DF90.html#e0ad">FindScene_10</a></td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
@@ -3099,7 +3096,7 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 </tr>
 <tr>
 <td class="address-1"><span id="ebae"></span>EBAE</td>
-<td class="instruction">CALL <a href="DF90.html#e0ad">FindScene_10</a></td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
@@ -3179,7 +3176,7 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 </tr>
 <tr>
 <td class="address-1"><span id="ebd4"></span>EBD4</td>
-<td class="instruction">CALL <a href="DF90.html#e0ad">FindScene_10</a></td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
@@ -3284,7 +3281,7 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 </tr>
 <tr>
 <td class="address-1"><span id="ec00"></span>EC00</td>
-<td class="instruction">CALL <a href="DF90.html#e0ad">FindScene_10</a></td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
@@ -3364,7 +3361,7 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 </tr>
 <tr>
 <td class="address-1"><span id="ec27"></span>EC27</td>
-<td class="instruction">CALL <a href="DF90.html#e0ad">FindScene_10</a></td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>

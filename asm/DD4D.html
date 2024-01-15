@@ -29,11 +29,11 @@ Prev: <a href="DD38.html">DD38</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#dd4d">Map</a></td>
 <td class="next">
-Next: <a href="DD6C.html">DD6C</a>
+Next: <a href="DD52.html">DD52</a>
 </td>
 </tr>
 </table>
-<div class="description">DD4D: Routine at DD4D</div>
+<div class="description">DD4D: Convert To Monster Data</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,93 +42,58 @@ Next: <a href="DD6C.html">DD6C</a>
 Used by the routines at <a href="E576.html">Handler_Bullets</a>, <a href="F69F.html">Handler_Projectiles</a> and <a href="F795.html">Handler_Monsters</a>.
 </div>
 </div>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Monster ID</td>
+</tr>
+</table>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Convert_To_MonsterData</td>
 <td class="address-2"><span id="dd4d"></span>DD4D</td>
 <td class="instruction">AND %11000000</td>
 <td class="comment-1" rowspan="1">Keep only bits 6-7.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd4f"></span>DD4F</td>
 <td class="instruction">RLCA</td>
-<td class="comment-1" rowspan="2">RLCA.</td>
+<td class="comment-1" rowspan="2">Rotate <span class="register">A</span> left twice, moving bits 6-7 to bits 0-1.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd50"></span>DD50</td>
 <td class="instruction">RLCA</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="dd51"></span>
+<div class="comments">
+<div class="paragraph">
+Converts 0-2 into 1-3 for the monster ID.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd51"></span>DD51</td>
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
-<span id="dd52"></span>
 <div class="comments">
 <div class="paragraph">
-This entry point is used by the routines at <a href="F450.html">F450</a> and <a href="F795.html">Handler_Monsters</a>.
+Continue on to <a href="DD52.html">SetIYMonsterData_George</a>.
 </div>
 </div>
 </td>
-</tr>
-<tr>
-<td class="address-2"><span id="dd52"></span>DD52</td>
-<td class="instruction">CP $01</td>
-<td class="comment-1" rowspan="2">Jump to <a href="DD4D.html#dd5b">DD5B</a> if <span class="register">A</span> is not equal to 01.</td>
-</tr>
-<tr>
-<td class="address-1"><span id="dd54"></span>DD54</td>
-<td class="instruction">JR NZ,<a href="DD4D.html#dd5b">$DD5B</a></td>
-</tr>
-<tr>
-<td class="address-1"><span id="dd56"></span>DD56</td>
-<td class="instruction">LD IY,$CFD2</td>
-<td class="comment-1" rowspan="1"><span class="register">IY</span>=<a href="CFD2.html">George_State</a>.</td>
-</tr>
-<tr>
-<td class="address-1"><span id="dd5a"></span>DD5A</td>
-<td class="instruction">RET</td>
-<td class="comment-1" rowspan="1">Return.</td>
-</tr>
-<tr>
-<td class="address-2"><span id="dd5b"></span>DD5B</td>
-<td class="instruction">CP $02</td>
-<td class="comment-1" rowspan="2">Jump to <a href="DD4D.html#dd64">DD64</a> if <span class="register">A</span> is not equal to 02.</td>
-</tr>
-<tr>
-<td class="address-1"><span id="dd5d"></span>DD5D</td>
-<td class="instruction">JR NZ,<a href="DD4D.html#dd64">$DD64</a></td>
-</tr>
-<tr>
-<td class="address-1"><span id="dd5f"></span>DD5F</td>
-<td class="instruction">LD IY,$D001</td>
-<td class="comment-1" rowspan="1"><span class="register">IY</span>=<a href="D001.html">Lizzy_State</a>.</td>
-</tr>
-<tr>
-<td class="address-1"><span id="dd63"></span>DD63</td>
-<td class="instruction">RET</td>
-<td class="comment-1" rowspan="1">Return.</td>
-</tr>
-<tr>
-<td class="address-2"><span id="dd64"></span>DD64</td>
-<td class="instruction">CP $03</td>
-<td class="comment-1" rowspan="2">Return if <span class="register">A</span> is not equal to 03.</td>
-</tr>
-<tr>
-<td class="address-1"><span id="dd66"></span>DD66</td>
-<td class="instruction">RET NZ</td>
-</tr>
-<tr>
-<td class="address-1"><span id="dd67"></span>DD67</td>
-<td class="instruction">LD IY,$D030</td>
-<td class="comment-1" rowspan="1"><span class="register">IY</span>=<a href="D030.html">Ralph_State</a>.</td>
-</tr>
-<tr>
-<td class="address-1"><span id="dd6b"></span>DD6B</td>
-<td class="instruction">RET</td>
-<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -138,7 +103,7 @@ Prev: <a href="DD38.html">DD38</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#dd4d">Map</a></td>
 <td class="next">
-Next: <a href="DD6C.html">DD6C</a>
+Next: <a href="DD52.html">DD52</a>
 </td>
 </tr>
 </table>

@@ -45,6 +45,16 @@ Used by the routine at <a href="DE19.html">GameEntryPoint</a>.
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="df46"></span>
+<div class="comments">
+<div class="paragraph">
+George:
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label">MonsterDefaults</td>
 <td class="address-2"><span id="df46"></span>DF46</td>
 <td class="instruction">LD IY,$CFD2</td>
@@ -63,6 +73,16 @@ Used by the routine at <a href="DE19.html">GameEntryPoint</a>.
 <td class="comment-1" rowspan="1">Write 01 to <a href="CFD2.html#cfdb">George_X_Position</a> (*<span class="register">IY</span>+09).</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="df51"></span>
+<div class="comments">
+<div class="paragraph">
+Lizzy:
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="df51"></span>DF51</td>
 <td class="instruction">LD IY,$D001</td>
@@ -79,6 +99,16 @@ Used by the routine at <a href="DE19.html">GameEntryPoint</a>.
 <td class="address-1"><span id="df58"></span>DF58</td>
 <td class="instruction">LD (IY+$09),$0D</td>
 <td class="comment-1" rowspan="1">Write 0D to <a href="D001.html#d00a">Lizzy_X_Position</a> (*<span class="register">IY</span>+09).</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="df5c"></span>
+<div class="comments">
+<div class="paragraph">
+Ralph:
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -105,6 +135,16 @@ Used by the routine at <a href="DE19.html">GameEntryPoint</a>.
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="df68"></span>
+<div class="comments">
+<div class="paragraph">
+Sets common defaults on <span class="register">IY</span>=Monster data.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label">SetMonsterDefaults</td>
 <td class="address-2"><span id="df68"></span>DF68</td>
 <td class="instruction">LD A,(IY+$00)</td>
@@ -125,7 +165,7 @@ Used by the routine at <a href="DE19.html">GameEntryPoint</a>.
 <td class="address-1"><span id="df6e"></span>DF6E</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="3">Write 00 to: <ul class="">
-<li><span class="register">IY</span>+00</li>
+<li>State (<span class="register">IY</span>+00)</li>
 <li><span class="register">IY</span>+02</li>
 </ul></td>
 </tr>
@@ -179,7 +219,7 @@ Used by the routine at <a href="DE19.html">GameEntryPoint</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="df8b"></span>DF8B</td>
 <td class="instruction">LD (IY+$0A),$12</td>
-<td class="comment-1" rowspan="1">Write 12 to <span class="register">IY</span>+0A.</td>
+<td class="comment-1" rowspan="1">Write 12 to Y position (<span class="register">IY</span>+0A).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
