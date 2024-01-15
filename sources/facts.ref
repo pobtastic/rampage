@@ -1,7 +1,10 @@
 ; Copyright 2024 Paul Maddern (paul@arcadegeek.co.uk)
 
 [Fact:interview:Interview with Bob Pape]
-<a href="https://worldofspectrum.net/interviews/PapeBob.htm">https://worldofspectrum.net/interviews/PapeBob.htm</a>
+<a href="https://worldofspectrum.net/interviews/PapeBob.htm" rel="noopener noreferrer nofollow">https://worldofspectrum.net/interviews/PapeBob.htm</a>
 
 [Fact:book:It's Behind You]
-Bob Pape's book "It's Behind You" is available for download on his <a href="https://bizzley.42web.io/">website</a>.
+Bob Pape's book "It's Behind You" is available for download on his
+<a href="https://bizzley.42web.io/" rel="noopener noreferrer nofollow">
+website</a> and talks about developing both <strong><em>R-Type</em></strong>
+and <strong><em>Rampage</em></strong>.

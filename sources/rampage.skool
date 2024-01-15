@@ -2573,8 +2573,8 @@ b$CDE2 DEFB $FF                             ; Terminator.
  $CFB5 DEFB $39,$28,$3D,$2E,$C2,$2B,$8C,$28 ; {Scene #N$27.
  $CFBD DEFB $F3,$92,$25,$86,$76             ; }
  $CFC2 DEFB $FF                             ; Terminator.
- $CFC3 DEFB $01,$01,$0E,$2B,$43,$2B,$2D,$2B
- $CFCB DEFB $17,$B0,$C2,$B0,$8C,$B0,$D6
+ $CFC3 DEFB $01,$01,$0E,$2B,$43,$2B,$2D,$2B ; {Scene #N$28.
+ $CFCB DEFB $17,$B0,$C2,$B0,$8C,$B0,$D6     ; }
 
 ; Data: George
 @label=George_State
@@ -2805,8 +2805,9 @@ b$D198 DEFB $43,$46,$46,$46,$46,$46,$46,$46 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
 ; Data block at D211
 b$D211 DEFB $00
 
-; Data block at D212
-b$D212 DEFB $00
+; Maximum Number Helicopters
+@label=MaxHelicopterCount
+g$D212 DEFB $00
 
 ; Data block at D213
 b$D213 DEFB $00
@@ -2817,8 +2818,15 @@ b$D214 DEFB $00
 ; Data block at D215
 b$D215 DEFB $00
 
-; Data block at D216
-b$D216 DEFB $00,$00
+; Level Finished Countdown
+;
+; After all the buildings have collapsed, the game doesn't instantly end the level. This countdown is reduced and
+;       the level ends only when it reaches zero.
+@label=LevelFinishedCountdown
+g$D216 DEFB $00
+
+; Game status buffer entry at D217
+g$D217 DEFB $00
 
 ; Game status buffer entry at D218
 g$D218 DEFB $00,$00
@@ -2871,11 +2879,20 @@ g$D244 DEFB $00,$00
 ; Game status buffer entry at D246
 g$D246 DEFB $00
 
-; Game status buffer entry at D247
+; Vehicle Orientation Flag
+;
+; #TABLE(default,centre,centre) { =h Value | =h Moving }
+; { #N$00 | Left-to-right  }
+; { #N$01 | Right-to-left }
+; TABLE#
+@label=Flag_VehicleOrientation
 g$D247 DEFB $00
 
 ; Game status buffer entry at D248
-g$D248 DEFB $00,$00,$00,$00,$00
+g$D248 DEFB $00,$00
+
+; Game status buffer entry at D24A
+g$D24A DEFB $00,$00,$00
 
 ; Game status buffer entry at D24D
 g$D24D DEFB $00
@@ -2903,20 +2920,75 @@ g$D255 DEFB $00,$00,$00,$00,$00,$00,$00,$00
 ; Game status buffer entry at D292
 g$D292 DEFB $00,$00,$00
 
-; Game status buffer entry at D295
-g$D295 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D29D DEFB $00,$00,$00,$00,$00,$00
+; Table: Helicopters
+;
+; See #R$DBE5.
+;
+; .
+;
+; Helicopter ##N($01+(#PC-$D295)/$03).
+@label=Table_Helicopters
+g$D295 DEFB $00      ; State.
+ $D296 DEFB $00      ; X position.
+ $D297 DEFB $00      ; Y position.
+; Helicopter ##N($01+(#PC-$D295)/$03).
+ $D298 DEFB $00      ; State.
+ $D299 DEFB $00      ; X position.
+ $D29A DEFB $00      ; Y position.
+; Helicopter ##N($01+(#PC-$D295)/$03).
+ $D29B DEFB $00      ; State.
+ $D29C DEFB $00      ; X position.
+ $D29D DEFB $00      ; Y position.
+; Helicopter ##N($01+(#PC-$D295)/$03).
+ $D29E DEFB $00      ; State.
+ $D29F DEFB $00      ; X position.
+ $D2A0 DEFB $00      ; Y position.
+; Helicopter ##N($01+(#PC-$D295)/$03).
+ $D2A1 DEFB $00      ; State.
+ $D2A2 DEFB $00      ; X position.
+ $D2A3 DEFB $00      ; Y position.
+; Helicopter ##N($01+(#PC-$D295)/$03).
+ $D2A4 DEFB $00      ; State.
+ $D2A5 DEFB $00      ; X position.
+ $D2A6 DEFB $00      ; Y position.
 
-; Game status buffer entry at D2A3
-g$D2A3 DEFB $00,$00,$00,$00
-
-; Game status buffer entry at D2A7
-g$D2A7 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D2AF DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $D2B7 DEFB $00,$00,$00,$00,$00
-
-; Data block at D2BC
-b$D2BC DEFB $00,$00,$00
+; Table: Helicopter Something
+;
+; .
+;
+; .
+;
+; Helicopter ##N($01+(#PC-$D2A7)/$04).
+@label=Table_SomethingHelicopters
+g$D2A7 DEFB $00
+ $D2A8 DEFB $00
+ $D2A9 DEFB $00
+ $D2AA DEFB $00
+; Helicopter ##N($01+(#PC-$D2A7)/$04).
+ $D2AB DEFB $00
+ $D2AC DEFB $00
+ $D2AD DEFB $00
+ $D2AE DEFB $00
+; Helicopter ##N($01+(#PC-$D2A7)/$04).
+ $D2AF DEFB $00
+ $D2B0 DEFB $00
+ $D2B1 DEFB $00
+ $D2B2 DEFB $00
+; Helicopter ##N($01+(#PC-$D2A7)/$04).
+ $D2B3 DEFB $00
+ $D2B4 DEFB $00
+ $D2B5 DEFB $00
+ $D2B6 DEFB $00
+; Helicopter ##N($01+(#PC-$D2A7)/$04).
+ $D2B7 DEFB $00
+ $D2B8 DEFB $00
+ $D2B9 DEFB $00
+ $D2BA DEFB $00
+; Helicopter ##N($01+(#PC-$D2A7)/$04).
+ $D2BB DEFB $00
+ $D2BC DEFB $00
+ $D2BD DEFB $00
+ $D2BE DEFB $00
 
 ; Table: Bullets
 @label=Table_Bullets
@@ -2983,14 +3055,18 @@ b$D39F DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
  $D3D7 DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
  $D3E5 DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
 
-; Data block at D3F3
-b$D3F3 DEFB $00
+; Number Of Buildings Remaining
+;
+; Number of buildings remaining standing on the current level.
+@label=BuildingsRemainingCount
+g$D3F3 DEFB $00
 
 ; Data block at D3F4
 b$D3F4 DEFB $00
 
-; Data block at D3F5
-b$D3F5 DEFB $00
+; Active Helicopter Count
+@label=NumberActiveHelicopters
+g$D3F5 DEFB $00
 
 ; Data block at D3F6
 b$D3F6 DEFB $00,$00
@@ -3020,13 +3096,48 @@ g$D3FD DEFB $00
 b$D3FE DEFB $00
  $D3FF DEFB $00
  $D400 DEFB $00
- $D401 DEFB $00
- $D402 DEFB $00
- $D403 DEFB $00
- $D404 DEFB $00
- $D405 DEFB $00
- $D406 DEFB $00
- $D407 DEFB $00,$00
+
+; Table: Vehicle
+;
+; .
+;
+; .
+;
+; See #R$FC39.
+@label=VehicleCounter
+b$D401 DEFB $00      ; #TABLE(default,centre,centre) { =h Value | =h Meaning }
+                     ; { #N$00-#N$18 | Countdown until spawn }
+                     ; { #N$FE | Spawning "off" }
+                     ; { #N$FF | Vehicle is spawned }
+                     ; TABLE#
+@label=VehicleType
+ $D402 DEFB $00      ; #TABLE(default,centre,centre) { =h Value | =h Vehicle }
+                     ; { #N$00 | Tank }
+                     ; { #N$01 | Car }
+                     ; { #N$02 | Police car }
+                     ; { #N$03 | Destroyed }
+                     ; TABLE#
+@label=VehicleXPosition
+ $D403 DEFB $00      ; Vehicle horizontal position on the screen.
+@label=VehicleYPosition
+ $D404 DEFB $00      ; Vehicle vertical position on the screen.
+
+; Table: Train
+;
+; .
+;
+; .
+;
+; See #R$FCB6.
+@label=TrainState
+b$D405 DEFB $00      ; #TABLE(default,centre,centre) { =h Value | =h Meaning }
+                     ; { #N$FE | Spawning "off" }
+                     ; { #N$FF | Train is spawned }
+                     ; TABLE#
+@label=TrainXPosition
+ $D406 DEFB $00      ; Train horizontal position on the screen.
+ $D407 DEFB $00
+ $D408 DEFB $00
 
 ; Routine at D409
 ;
@@ -4584,17 +4695,19 @@ c$DBD9 LD B,A        ; Stash the monster ID temporarily.
  $DBDF CALL $DBBB    ; Call #R$DBBB.
  $DBE2 JP $DB8A      ; Jump to #R$DB8A.
 
-; Routine at DBE5
+; Handler: Helicopters
 ;
 ; Used by the routine at #R$DE77.
-c$DBE5 LD B,$06        ; #REGb=#N$06.
+@label=Handler_Helicopters
+c$DBE5 LD B,$06        ; #REGb=#N$06 (number of possible helicopters).
  $DBE7 LD IX,$D295     ; #REGix=#R$D295.
  $DBEB XOR A           ; {Write #N$00 to *#R$D247.
  $DBEC LD ($D247),A    ; }
-*$DBEF PUSH BC         ; Stash #REGbc on the stack.
- $DBF0 LD A,(IX+$00)   ; {#REGd=*#REGix+#N$00.
- $DBF3 LD D,A          ; }
- $DBF4 AND A           ; {Jump to #R$DC95 if #REGa is zero.
+@label=Handler_Helicopters_Loop
+*$DBEF PUSH BC         ; Stash current helicopter on the stack.
+ $DBF0 LD A,(IX+$00)   ; {Jump to #R$DC95 if this helicopter is not active.
+ $DBF3 LD D,A          ;
+ $DBF4 AND A           ;
  $DBF5 JP Z,$DC95      ; }
  $DBF8 LD C,(IX+$01)   ; #REGc=*#REGix+#N$01.
  $DBFB LD B,(IX+$02)   ; #REGb=*#REGix+#N$02.
@@ -4617,7 +4730,9 @@ c$DBE5 LD B,$06        ; #REGb=#N$06.
 *$DC1C LD A,($D3F6)    ; {Jump to #R$DC4D if *#R$D3F6 is equal to #N$06.
  $DC1F CP $06          ;
  $DC21 JR Z,$DC4D      ; }
- $DC23 LD HL,$D2A3     ; #REGhl=#R$D2A3.
+; Loop to find an empty slot.
+ $DC23 LD HL,$D2A3     ; #REGhl=#R$D2A3 (#R$D2A7-#N$04).
+@label=Handler_Helicopters_FindSlot
 *$DC26 INC HL          ; {Increment #REGhl by four.
  $DC27 INC HL          ;
  $DC28 INC HL          ;
@@ -4641,17 +4756,17 @@ c$DBE5 LD B,$06        ; #REGb=#N$06.
  $DC42 RLCA            ; }
  $DC43 ADD A,$04       ; #REGa+=#N$04.
  $DC45 LD (HL),A       ; Write #REGa to *#REGhl.
- $DC46 CALL $DA28      ; Call #R$DA28.
- $DC49 AND %00000011   ; Keep only bits 0-1.
+ $DC46 CALL $DA28      ; {Get a random number between 0-3.
+ $DC49 AND %00000011   ; }
  $DC4B ADD A,(HL)      ; #REGa+=*#REGhl.
  $DC4C LD (HL),A       ; Write #REGa to *#REGhl.
 *$DC4D LD (IX+$00),$00 ; Write #N$00 to *#REGix+#N$00.
- $DC51 LD A,($D3F5)    ; #REGa=*#R$D3F5.
- $DC54 DEC A           ; Decrease #REGa by one.
- $DC55 LD ($D3F5),A    ; Write #REGa to *#R$D3F5.
- $DC58 LD A,($D3F6)    ; #REGa=*#R$D3F6.
- $DC5B INC A           ; Increment #REGa by one.
- $DC5C LD ($D3F6),A    ; Write #REGa to *#R$D3F6.
+ $DC51 LD A,($D3F5)    ; {Decrease *#R$D3F5 by one.
+ $DC54 DEC A           ;
+ $DC55 LD ($D3F5),A    ; }
+ $DC58 LD A,($D3F6)    ; {Increment *#R$D3F6 by one.
+ $DC5B INC A           ;
+ $DC5C LD ($D3F6),A    ; }
  $DC5F JP $DC95        ; Jump to #R$DC95.
 *$DC62 LD A,C          ; {Jump to #R$DC7F if #REGc is equal to #N$FC.
  $DC63 CP $FC          ;
@@ -4677,12 +4792,14 @@ c$DBE5 LD B,$06        ; #REGb=#N$06.
  $DC8E CALL $D6C9      ; Call #R$D6C9.
  $DC91 XOR A           ; {Write #N$00 to *#R$D247.
  $DC92 LD ($D247),A    ; }
-*$DC95 INC IX          ; {Increment #REGix by three.
+@label=Handler_Helicopters_Next
+*$DC95 INC IX          ; {Move onto the next helicopter table data.
  $DC97 INC IX          ;
  $DC99 INC IX          ; }
- $DC9B POP BC          ; Restore #REGbc from the stack.
- $DC9C DEC B           ; Decrease #REGb by one.
- $DC9D JP NZ,$DBEF     ; Jump to #R$DBEF until #REGb is zero.
+ $DC9B POP BC          ; Restore helicopter ID from the stack.
+ $DC9C DEC B           ; Decrease helicopter ID by one.
+ $DC9D JP NZ,$DBEF     ; Jump to #R$DBEF until all helicopters have been
+                       ; processed.
  $DCA0 RET             ; Return.
 
 ; Routine at DCA1
@@ -4819,22 +4936,40 @@ c$DD38 LD H,$00      ; #REGh=#N$00.
  $DD4B XOR A         ; #REGa=#N$00.
  $DD4C RET           ; Return.
 
-; Routine at DD4D
+; Convert To Monster Data
 ;
 ; Used by the routines at #R$E576, #R$F69F and #R$F795.
+;
+; O:A Monster ID
+@label=Convert_To_MonsterData
 c$DD4D AND %11000000 ; Keep only bits 6-7.
- $DD4F RLCA          ; {RLCA.
+ $DD4F RLCA          ; {Rotate #REGa left twice, moving bits 6-7 to bits 0-1.
  $DD50 RLCA          ; }
+; Converts 0-2 into 1-3 for the monster ID.
  $DD51 INC A         ; Increment #REGa by one.
-; This entry point is used by the routines at #R$F450 and #R$F795.
-*$DD52 CP $01        ; {Jump to #R$DD5B if #REGa is not equal to #N$01.
+; Continue on to #R$DD52.
+
+; Sets #REGiy To Monster Data
+;
+; Used by the routines at #R$F450 and #R$F795.
+;
+;   A Monster ID
+; O:IY Monster data
+;
+; George:
+@label=SetIYMonsterData_George
+c$DD52 CP $01        ; {Jump to #R$DD5B if #REGa is not equal to #N$01.
  $DD54 JR NZ,$DD5B   ; }
  $DD56 LD IY,$CFD2   ; #REGiy=#R$CFD2.
  $DD5A RET           ; Return.
+; Lizzy:
+@label=SetIYMonsterData_Lizzy
 *$DD5B CP $02        ; {Jump to #R$DD64 if #REGa is not equal to #N$02.
  $DD5D JR NZ,$DD64   ; }
  $DD5F LD IY,$D001   ; #REGiy=#R$D001.
  $DD63 RET           ; Return.
+; Ralph:
+@label=SetIYMonsterData_Ralph
 *$DD64 CP $03        ; {Return if #REGa is not equal to #N$03.
  $DD66 RET NZ        ; }
  $DD67 LD IY,$D030   ; #REGiy=#R$D030.
@@ -5015,14 +5150,17 @@ c$DE19 CALL $F916    ; Call #R$F916.
  $DE4C LD A,($D030)  ; {Jump to #R$DE19 if *#R$D030 is equal to #N$FF
  $DE4F CP $FF        ; (in-play).
  $DE51 JR Z,$DE19    ; }
+; The game is in-play so run the handlers until the level is completed.
 @label=Game_InPlay
-*$DE53 LD A,($D3F3)  ; {Jump to #R$DE77 if *#R$D3F3 is not zero.
- $DE56 AND A         ;
+*$DE53 LD A,($D3F3)  ; {Jump to #R$DE77 until *#R$D3F3 is zero - until all the
+ $DE56 AND A         ; buildings have collapsed.
  $DE57 JR NZ,$DE77   ; }
+; Keep running the handlers for a short while even though all the buildings have collapsed. It would be a bit
+;       jarring if the level stopped instantly after the last building rubble cleared.s
  $DE59 LD A,($D216)  ; #REGa=*#R$D216.
- $DE5C DEC A         ; Decrease #REGa by one.
- $DE5D LD ($D216),A  ; Write #REGa to *#R$D216.
- $DE60 JR NZ,$DE77   ; Jump to #R$DE77 if #REGa is not zero.
+ $DE5C DEC A         ; {Decrease *#R$D216 by one.
+ $DE5D LD ($D216),A  ; }
+ $DE60 JR NZ,$DE77   ; Jump to #R$DE77 until #REGa is zero.
 ; Level complete! Move onto the next level.
  $DE62 LD A,($DF44)  ; #REGa=*#R$DF44.
  $DE65 INC A         ; Increment level number by one.
@@ -5030,6 +5168,7 @@ c$DE19 CALL $F916    ; Call #R$F916.
 ; to level #N$01.
  $DE66 CP $29        ; {Jump to #R$DE6C if #REGa is not equal to #N$29.
  $DE68 JR NZ,$DE6C   ; }
+; Else cycle back to level 1 again.
  $DE6A LD A,$01      ; #REGa=level #N$01.
 @label=WriteLevelNumber
 *$DE6C LD ($DF44),A  ; Write level number to *#R$DF44.
@@ -5160,23 +5299,30 @@ b$DF45 DEFB $00
 ; Set Monster Defaults
 ;
 ; Used by the routine at #R$DE19.
+;
+; .
+;
+; George:
 @label=MonsterDefaults
 c$DF46 LD IY,$CFD2     ; #REGiy=#R$CFD2.
  $DF4A CALL $DF68      ; Call #R$DF68.
  $DF4D LD (IY+$09),$01 ; Write #N$01 to #R$CFDB (*#REGiy+#N$09).
+; Lizzy:
  $DF51 LD IY,$D001     ; #REGiy=#R$D001.
  $DF55 CALL $DF68      ; Call #R$DF68.
  $DF58 LD (IY+$09),$0D ; Write #N$0D to #R$D00A (*#REGiy+#N$09).
+; Ralph:
  $DF5C LD IY,$D030     ; #REGiy=#R$D030.
  $DF60 CALL $DF68      ; Call #R$DF68.
  $DF63 LD (IY+$09),$19 ; Write #N$19 to #R$D039 (*#REGiy+#N$09).
  $DF67 RET             ; Return.
+; Sets common defaults on #REGiy=Monster data.
 @label=SetMonsterDefaults
 *$DF68 LD A,(IY+$00)   ; {Return if the monster state (#REGiy+#N$00) is "No
  $DF6B CP $FF          ; Monster".
  $DF6D RET Z           ; }
- $DF6E XOR A           ; {Write #N$00 to: #LIST { #REGiy+#N$00 } { #REGiy+#N$02
- $DF6F LD (IY+$00),A   ; } LIST#
+ $DF6E XOR A           ; {Write #N$00 to: #LIST { State (#REGiy+#N$00) } {
+ $DF6F LD (IY+$00),A   ; #REGiy+#N$02 } LIST#
  $DF72 LD (IY+$02),A   ; }
  $DF75 LD (IY+$03),$01 ; Write #N$01 to #REGiy+#N$03.
  $DF79 LD (IY+$04),A   ; Write #N$00 to #REGiy+#N$04.
@@ -5184,7 +5330,7 @@ c$DF46 LD IY,$CFD2     ; #REGiy=#R$CFD2.
  $DF80 LD (IY+$06),$03 ; Write #N$03 to #REGiy+#N$06.
  $DF84 LD (IY+$07),$19 ; Write #N$19 to #REGiy+#N$07.
  $DF88 LD (IY+$08),A   ; Write #N$00 to #REGiy+#N$08.
- $DF8B LD (IY+$0A),$12 ; Write #N$12 to #REGiy+#N$0A.
+ $DF8B LD (IY+$0A),$12 ; Write #N$12 to Y position (#REGiy+#N$0A).
  $DF8F RET             ; Return.
 
 ; Routine at DF90
@@ -5383,65 +5529,87 @@ c$DF90 LD E,A                               ; #REGe=level.
  $E0A0 LD ($D401),A                         ; }
  $E0A3 JR $E073                             ; Jump to #R$E073.
  $E0A5 DEFB $50,$58,$60,$20,$70,$30,$78,$38 ;
-; This entry point is used by the routine at #R$E62D.
-*$E0AD DEFB $21,$4D,$D2,$79,$A7,$FA,$C1,$E0 ;
- $E0B5 DEFB $86,$4F,$23,$78,$A7,$FA,$C9,$E0 ;
- $E0BD DEFB $86,$47,$18,$0E,$EE,$80,$96,$2F ;
- $E0C5 DEFB $3C,$4F,$18,$EE,$EE,$80,$96,$2F ;
- $E0CD DEFB $3C,$47                         ;
+
+; Routine at E0AD
+;
+; Used by the routine at #R$E62D.
+c$E0AD LD HL,$D24D   ; #REGhl=#R$D24D.
+ $E0B0 LD A,C        ; #REGa=#REGc.
+ $E0B1 AND A         ; {Jump to #R$E0C1 if the sign flag set.
+ $E0B2 JP M,$E0C1    ; }
+ $E0B5 ADD A,(HL)    ; #REGa+=*#REGhl.
+ $E0B6 LD C,A        ; #REGc=#REGa.
+*$E0B7 INC HL        ; Increment #REGhl by one.
+ $E0B8 LD A,B        ; #REGa=#REGb.
+ $E0B9 AND A         ; {Jump to #R$E0C9 if the sign flag set.
+ $E0BA JP M,$E0C9    ; }
+ $E0BD ADD A,(HL)    ; #REGa+=*#REGhl.
+ $E0BE LD B,A        ; #REGb=#REGa.
+ $E0BF JR $E0CF      ; Jump to #R$E0CF.
+*$E0C1 XOR %10000000 ; Reset bit 7.
+ $E0C3 SUB (HL)      ; #REGa-=*#REGhl.
+ $E0C4 CPL           ; Invert the bits in #REGa.
+ $E0C5 INC A         ; Increment #REGa by one.
+ $E0C6 LD C,A        ; #REGc=#REGa.
+ $E0C7 JR $E0B7      ; Jump to #R$E0B7.
+*$E0C9 XOR %10000000 ; Reset bit 7.
+ $E0CB SUB (HL)      ; #REGa-=*#REGhl.
+ $E0CC CPL           ; Invert the bits in #REGa.
+ $E0CD INC A         ; Increment #REGa by one.
+ $E0CE LD B,A        ; #REGb=#REGa.
 ; This entry point is used by the routines at #R$E25D and #R$F450.
-*$E0CF LD A,C                               ; #REGa=#REGc.
- $E0D0 CP $20                               ; {Jump to #R$E10A if #REGa is
- $E0D2 JR NC,$E10A                          ; higher than #N$20.}
- $E0D4 LD A,B                               ; #REGa=#REGb.
- $E0D5 CP $18                               ; {Jump to #R$E10A if #REGa is
- $E0D7 JR NC,$E10A                          ; higher than #N$18.}
- $E0D9 RRCA                                 ; RRCA.
- $E0DA RRCA                                 ; RRCA.
- $E0DB RRCA                                 ; RRCA.
- $E0DC LD L,A                               ; #REGl=#REGa.
- $E0DD AND %00000011                        ; Keep only bits 0-1.
- $E0DF ADD A,$65                            ; #REGa+=#N$65.
- $E0E1 LD H,A                               ; #REGh=#REGa.
- $E0E2 LD A,L                               ; #REGa=#REGl.
- $E0E3 AND %11100000                        ; Keep only bits 5-7.
- $E0E5 ADD A,C                              ; #REGa+=#REGc.
- $E0E6 LD L,A                               ; #REGl=#REGa.
- $E0E7 LD A,(HL)                            ; {Jump to #R$E0FE if *#REGhl is
- $E0E8 AND A                                ; not zero.
- $E0E9 JR NZ,$E0FE                          ; }
- $E0EB DEC H                                ; {Decrease #REGh by three.
- $E0EC DEC H                                ;
- $E0ED DEC H                                ; }
- $E0EE LD A,(HL)                            ; {Jump to #R$E0FE if *#REGhl is
- $E0EF AND A                                ; not zero.
- $E0F0 JR NZ,$E0FE                          ; }
- $E0F2 LD A,D                               ; #REGa=#REGd.
- $E0F3 CP $3D                               ; {Jump to #R$E113 if #REGa is not
- $E0F5 JR NZ,$E113                          ; equal to #N$3D.}
- $E0F7 DEC H                                ; {Decrease #REGh by three.
- $E0F8 DEC H                                ;
- $E0F9 DEC H                                ; }
- $E0FA LD A,(HL)                            ; {Jump to #R$E114 if *#REGhl is
- $E0FB AND A                                ; zero.
- $E0FC JR Z,$E114                           ; }
-*$E0FE CP D                                 ; {Jump to #R$E114 if #REGa is
- $E0FF JR C,$E114                           ; lower than #REGd.}
- $E101 INC E                                ; Increment #REGe by one.
- $E102 CP E                                 ; {Jump to #R$E114 if #REGa is
- $E103 JR NC,$E114                          ; higher than #REGe.}
- $E105 LD ($D215),A                         ; Write #REGa to *#R$D215.
- $E108 OR A                                 ; Set the bits from #REGa.
- $E109 RET                                  ; Return.
-*$E10A POP HL                               ; Restore #REGhl from the stack.
- $E10B LD A,($D3FB)                         ; {Jump to #R$EF86 if *#R$D3FB is
- $E10E AND A                                ; zero.
- $E10F JP Z,$EF86                           ; }
- $E112 PUSH HL                              ; Stash #REGhl on the stack.
-*$E113 XOR A                                ; {Write #N$00 to *#R$D215.
-*$E114 LD ($D215),A                         ; }
- $E117 XOR A                                ; #REGa=#N$00.
- $E118 RET                                  ; Return.
+*$E0CF LD A,C        ; #REGa=#REGc.
+ $E0D0 CP $20        ; {Jump to #R$E10A if #REGa is higher than #N$20.
+ $E0D2 JR NC,$E10A   ; }
+ $E0D4 LD A,B        ; #REGa=#REGb.
+ $E0D5 CP $18        ; {Jump to #R$E10A if #REGa is higher than #N$18.
+ $E0D7 JR NC,$E10A   ; }
+ $E0D9 RRCA          ; {RRCA.
+ $E0DA RRCA          ;
+ $E0DB RRCA          ; }
+ $E0DC LD L,A        ; #REGl=#REGa.
+ $E0DD AND %00000011 ; Keep only bits 0-1.
+ $E0DF ADD A,$65     ; #REGa+=#N$65.
+ $E0E1 LD H,A        ; #REGh=#REGa.
+ $E0E2 LD A,L        ; #REGa=#REGl.
+ $E0E3 AND %11100000 ; Keep only bits 5-7.
+ $E0E5 ADD A,C       ; #REGa+=#REGc.
+ $E0E6 LD L,A        ; #REGl=#REGa.
+ $E0E7 LD A,(HL)     ; {Jump to #R$E0FE if *#REGhl is not zero.
+ $E0E8 AND A         ;
+ $E0E9 JR NZ,$E0FE   ; }
+ $E0EB DEC H         ; {Decrease #REGh by three.
+ $E0EC DEC H         ;
+ $E0ED DEC H         ; }
+ $E0EE LD A,(HL)     ; {Jump to #R$E0FE if *#REGhl is not zero.
+ $E0EF AND A         ;
+ $E0F0 JR NZ,$E0FE   ; }
+ $E0F2 LD A,D        ; #REGa=#REGd.
+ $E0F3 CP $3D        ; {Jump to #R$E113 if #REGa is not equal to #N$3D.
+ $E0F5 JR NZ,$E113   ; }
+ $E0F7 DEC H         ; {Decrease #REGh by three.
+ $E0F8 DEC H         ;
+ $E0F9 DEC H         ; }
+ $E0FA LD A,(HL)     ; {Jump to #R$E114 if *#REGhl is zero.
+ $E0FB AND A         ;
+ $E0FC JR Z,$E114    ; }
+*$E0FE CP D          ; {Jump to #R$E114 if #REGa is lower than #REGd.
+ $E0FF JR C,$E114    ; }
+ $E101 INC E         ; Increment #REGe by one.
+ $E102 CP E          ; {Jump to #R$E114 if #REGa is higher than #REGe.
+ $E103 JR NC,$E114   ; }
+ $E105 LD ($D215),A  ; Write #REGa to *#R$D215.
+ $E108 OR A          ; Set the bits from #REGa.
+ $E109 RET           ; Return.
+*$E10A POP HL        ; Restore #REGhl from the stack.
+ $E10B LD A,($D3FB)  ; {Jump to #R$EF86 if *#R$D3FB is zero.
+ $E10E AND A         ;
+ $E10F JP Z,$EF86    ; }
+ $E112 PUSH HL       ; Stash #REGhl on the stack.
+*$E113 XOR A         ; {Write #N$00 to *#R$D215.
+*$E114 LD ($D215),A  ; }
+ $E117 XOR A         ; #REGa=#N$00.
+ $E118 RET           ; Return.
 
 ; Routine at E119
 ;
@@ -6187,55 +6355,55 @@ c$E576 LD B,$1A      ; #REGb=#N$1A (number of possible bullets).
 ; Routine at E62D
 ;
 ; Used by the routine at #R$E119.
-c$E62D LD A,($D244)  ;
+c$E62D LD A,($D244)  ; {Return if *#R$D244 is equal to #N$FF.
  $E630 CP $FF        ;
- $E632 RET Z         ;
- $E633 CP $20        ;
- $E635 JR NC,$E67C   ;
- $E637 LD A,($D248)  ;
- $E63A RRCA          ;
- $E63B JR C,$E67C    ;
- $E63D LD A,($D246)  ;
- $E640 RRCA          ;
- $E641 JR NC,$E658   ;
- $E643 LD DE,$80FE   ;
- $E646 LD B,$03      ;
- $E648 LD A,($D247)  ;
- $E64B LD C,A        ;
- $E64C LD A,B        ;
- $E64D SUB C         ;
- $E64E SUB C         ;
- $E64F SUB C         ;
- $E650 LD C,A        ;
- $E651 CALL $E0AD    ;
- $E654 JR Z,$E67C    ;
- $E656 JR $E66F      ;
-*$E658 LD A,($D24E)  ;
- $E65B CP $12        ;
- $E65D JR Z,$E67C    ;
- $E65F LD B,$05      ;
- $E661 LD A,($D247)  ;
- $E664 ADD A,$02     ;
- $E666 LD C,A        ;
- $E667 LD DE,$090F   ;
- $E66A CALL $E0AD    ;
- $E66D JR NZ,$E67C   ;
-*$E66F LD A,$06      ;
- $E671 LD ($D244),A  ;
- $E674 LD ($D24A),A  ;
- $E677 LD A,$01      ;
- $E679 LD ($D248),A  ;
-*$E67C LD A,($D244)  ;
- $E67F ADD A,A       ;
- $E680 LD H,$00      ;
- $E682 LD L,A        ;
- $E683 LD DE,$EF98   ;
- $E686 ADD HL,DE     ;
- $E687 LD A,(HL)     ;
- $E688 INC HL        ;
- $E689 LD H,(HL)     ;
- $E68A LD L,A        ;
- $E68B JP (HL)       ;
+ $E632 RET Z         ; }
+ $E633 CP $20        ; {Jump to #R$E67C if *#R$D244 is higher than #N$20.
+ $E635 JR NC,$E67C   ; }
+ $E637 LD A,($D248)  ; #REGa=*#R$D248.
+ $E63A RRCA          ; RRCA.
+ $E63B JR C,$E67C    ; Jump to #R$E67C if {} is lower.
+ $E63D LD A,($D246)  ; #REGa=*#R$D246.
+ $E640 RRCA          ; RRCA.
+ $E641 JR NC,$E658   ; Jump to #R$E658 if {} is higher.
+ $E643 LD DE,$80FE   ; #REGde=#N$80FE.
+ $E646 LD B,$03      ; #REGb=#N$03.
+ $E648 LD A,($D247)  ; #REGa=*#R$D247.
+ $E64B LD C,A        ; #REGc=#REGa.
+ $E64C LD A,B        ; #REGa=#REGb.
+ $E64D SUB C         ; #REGa-=#REGc.
+ $E64E SUB C         ; #REGa-=#REGc.
+ $E64F SUB C         ; #REGa-=#REGc.
+ $E650 LD C,A        ; #REGc=#REGa.
+ $E651 CALL $E0AD    ; Call #R$E0AD.
+ $E654 JR Z,$E67C    ; Jump to #R$E67C if {} is zero.
+ $E656 JR $E66F      ; Jump to #R$E66F.
+*$E658 LD A,($D24E)  ; #REGa=*#R$D24E.
+ $E65B CP $12        ; Compare #REGa with #N$12.
+ $E65D JR Z,$E67C    ; Jump to #R$E67C if {} is zero.
+ $E65F LD B,$05      ; #REGb=#N$05.
+ $E661 LD A,($D247)  ; #REGa=*#R$D247.
+ $E664 ADD A,$02     ; #REGa+=#N$02.
+ $E666 LD C,A        ; #REGc=#REGa.
+ $E667 LD DE,$090F   ; #REGde=#N$090F.
+ $E66A CALL $E0AD    ; Call #R$E0AD.
+ $E66D JR NZ,$E67C   ; Jump to #R$E67C if {} is not zero.
+*$E66F LD A,$06      ; #REGa=#N$06.
+ $E671 LD ($D244),A  ; Write #REGa to *#R$D244.
+ $E674 LD ($D24A),A  ; Write #REGa to *#R$D24A.
+ $E677 LD A,$01      ; #REGa=#N$01.
+ $E679 LD ($D248),A  ; Write #REGa to *#R$D248.
+*$E67C LD A,($D244)  ; #REGa=*#R$D244.
+ $E67F ADD A,A       ; #REGa+=#REGa.
+ $E680 LD H,$00      ; #REGh=#N$00.
+ $E682 LD L,A        ; #REGl=#REGa.
+ $E683 LD DE,$EF98   ; #REGde=#R$EF98.
+ $E686 ADD HL,DE     ; #REGhl+=#REGde.
+ $E687 LD A,(HL)     ; #REGa=*#REGhl.
+ $E688 INC HL        ; Increment #REGhl by one.
+ $E689 LD H,(HL)     ; #REGh=*#REGhl.
+ $E68A LD L,A        ; #REGl=#REGa.
+ $E68B JP (HL)       ; Jump to the address held by *#REGhl.
  $E68C CALL $E179    ;
  $E68F AND A         ;
  $E690 JP Z,$E950    ;
@@ -7237,7 +7405,7 @@ b$EF50 DEFB $CD,$79,$E1,$E6,$10,$20,$07,$AF
 
 ; Routine at EF86
 ;
-; Used by the routines at #R$DF90 and #R$E62D.
+; Used by the routines at #R$E0AD and #R$E62D.
 c$EF86 CALL $DB54    ; Call #R$DB54.
  $EF89 LD A,($D24F)  ; #REGa=*#R$D24F.
  $EF8C CALL $DA0F    ; Call #R$DA0F.
@@ -7451,233 +7619,247 @@ c$EFE0 XOR A           ; #REGa=#N$00 (building data offset).
  $F10C LD A,L          ; #REGa=#REGl.
  $F10D RET             ; Return.
 
-; Routine at F10E
+; Helicopter Something
 ;
 ; Used by the routine at #R$DE77.
-c$F10E LD B,$06        ;
- $F110 LD IX,$D2A7     ;
-*$F114 LD A,$07        ;
+@label=Something_Helicopter
+c$F10E LD B,$06        ; #REGb=#N$06.
+ $F110 LD IX,$D2A7     ; #REGix=#R$D2A7.
+*$F114 LD A,$07        ; {#REGa=#N$EC-#REGb.
  $F116 SUB B           ;
- $F117 ADD A,$E5       ;
- $F119 LD ($D408),A    ;
- $F11C XOR A           ;
- $F11D LD ($D247),A    ;
- $F120 PUSH BC         ;
- $F121 LD A,(IX+$00)   ;
+ $F117 ADD A,$E5       ; }
+ $F119 LD ($D408),A    ; Write #REGa to *#R$D408.
+ $F11C XOR A           ; {Write #N$00 to *#R$D247.
+ $F11D LD ($D247),A    ; }
+ $F120 PUSH BC         ; Stash #REGbc on the stack.
+ $F121 LD A,(IX+$00)   ; {Jump to #R$F27D if *#REGix+#N$00 is zero.
  $F124 OR A            ;
- $F125 JP Z,$F27D      ;
- $F128 LD A,(IX+$00)   ;
- $F12B LD C,(IX+$01)   ;
- $F12E LD E,(IX+$02)   ;
- $F131 LD B,(IX+$03)   ;
- $F134 XOR $01         ;
- $F136 LD (IX+$00),A   ;
- $F139 AND $01         ;
- $F13B LD D,A          ;
- $F13C LD A,(IX+$00)   ;
- $F13F RRCA            ;
- $F140 AND $07         ;
- $F142 CP $01          ;
- $F144 JR Z,$F161      ;
- $F146 CP $02          ;
- $F148 JR Z,$F1A0      ;
- $F14A CP $03          ;
- $F14C JP Z,$F1BE      ;
- $F14F CP $04          ;
- $F151 JP Z,$F22E      ;
- $F154 CP $05          ;
- $F156 JP Z,$F254      ;
- $F159 CP $06          ;
- $F15B JP Z,$F161      ;
- $F15E JP $F1A0        ;
-*$F161 LD A,E          ;
+ $F125 JP Z,$F27D      ; }
+ $F128 LD A,(IX+$00)   ; #REGa=*#REGix+#N$00.
+ $F12B LD C,(IX+$01)   ; #REGc=*#REGix+#N$01.
+ $F12E LD E,(IX+$02)   ; #REGe=*#REGix+#N$02.
+ $F131 LD B,(IX+$03)   ; #REGb=*#REGix+#N$03.
+ $F134 XOR %00000001   ; Reset bit 0.
+ $F136 LD (IX+$00),A   ; Write #REGa to *#REGix+#N$00.
+ $F139 AND %00000001   ; Keep only bit 0.
+ $F13B LD D,A          ; #REGd=#REGa.
+ $F13C LD A,(IX+$00)   ; #REGa=*#REGix+#N$00.
+ $F13F RRCA            ; RRCA.
+ $F140 AND %00000111   ; Keep only bits 0-2.
+ $F142 CP $01          ; {Jump to #R$F161 if #REGa is equal to #N$01.
+ $F144 JR Z,$F161      ; }
+ $F146 CP $02          ; {Jump to #R$F1A0 if #REGa is equal to #N$02.
+ $F148 JR Z,$F1A0      ; }
+ $F14A CP $03          ; {Jump to #R$F1BE if #REGa is equal to #N$03.
+ $F14C JP Z,$F1BE      ; }
+ $F14F CP $04          ; {Jump to #R$F22E if #REGa is equal to #N$04.
+ $F151 JP Z,$F22E      ; }
+ $F154 CP $05          ; {Jump to #R$F254 if #REGa is equal to #N$05.
+ $F156 JP Z,$F254      ; }
+ $F159 CP $06          ; {Jump to #R$F161 if #REGa is equal to #N$06.
+ $F15B JP Z,$F161      ; }
+ $F15E JP $F1A0        ; Jump to #R$F1A0.
+*$F161 LD A,E          ; {Jump to #R$F16A if #REGe is not equal to #REGc.
  $F162 CP C            ;
- $F163 JR NZ,$F16A     ;
- $F165 INC (IX+$02)    ;
- $F168 JR $F17A        ;
-*$F16A LD A,D          ;
- $F16B RRCA            ;
- $F16C LD A,$E8        ;
- $F16E JP NC,$F276     ;
- $F171 INC C           ;
- $F172 LD (IX+$01),C   ;
- $F175 LD A,$E6        ;
- $F177 JP $F276        ;
-*$F17A LD A,(IX+$00)   ;
- $F17D AND $7F         ;
- $F17F CP $08          ;
- $F181 JR C,$F191      ;
- $F183 LD (IX+$00),$00 ;
- $F187 LD A,($D3F6)    ;
- $F18A DEC A           ;
- $F18B LD ($D3F6),A    ;
- $F18E JP $F27D        ;
-*$F191 LD (IX+$00),$06 ;
- $F195 LD (IX+$01),B   ;
- $F198 LD (IX+$03),$01 ;
- $F19C POP BC          ;
- $F19D JP $F114        ;
-*$F1A0 LD A,$01        ;
- $F1A2 LD ($D247),A    ;
- $F1A5 LD A,E          ;
+ $F163 JR NZ,$F16A     ; }
+ $F165 INC (IX+$02)    ; Increment *#REGix+#N$02 by one.
+ $F168 JR $F17A        ; Jump to #R$F17A.
+*$F16A LD A,D          ; #REGa=#REGd.
+ $F16B RRCA            ; RRCA.
+ $F16C LD A,$E8        ; #REGa=#N$E8.
+ $F16E JP NC,$F276     ; Jump to #R$F276 if {} is higher.
+ $F171 INC C           ; Increment #REGc by one.
+ $F172 LD (IX+$01),C   ; Write #REGc to *#REGix+#N$01.
+ $F175 LD A,$E6        ; #REGa=#N$E6.
+ $F177 JP $F276        ; Jump to #R$F276.
+*$F17A LD A,(IX+$00)   ; #REGa=*#REGix+#N$00.
+ $F17D AND %01111111   ; Keep only bits 0-6.
+ $F17F CP $08          ; {Jump to #R$F191 if #REGa is lower than #N$08.
+ $F181 JR C,$F191      ; }
+ $F183 LD (IX+$00),$00 ; Write #N$00 to *#REGix+#N$00.
+ $F187 LD A,($D3F6)    ; #REGa=*#R$D3F6.
+ $F18A DEC A           ; Decrease #REGa by one.
+ $F18B LD ($D3F6),A    ; Write #REGa to *#R$D3F6.
+ $F18E JP $F27D        ; Jump to #R$F27D.
+*$F191 LD (IX+$00),$06 ; Write #N$06 to *#REGix+#N$00.
+ $F195 LD (IX+$01),B   ; Write #REGb to *#REGix+#N$01.
+ $F198 LD (IX+$03),$01 ; Write #N$01 to *#REGix+#N$03.
+ $F19C POP BC          ; Restore #REGbc from the stack.
+ $F19D JP $F114        ; Jump to #R$F114.
+*$F1A0 LD A,$01        ; {Write #N$01 to *#R$D247.
+ $F1A2 LD ($D247),A    ; }
+ $F1A5 LD A,E          ; {Jump to #R$F1AE if #REGe is not equal to #REGc.
  $F1A6 CP C            ;
- $F1A7 JR NZ,$F1AE     ;
- $F1A9 INC (IX+$02)    ;
- $F1AC JR $F17A        ;
-*$F1AE LD A,D          ;
- $F1AF RRCA            ;
- $F1B0 LD A,$E8        ;
- $F1B2 JP NC,$F276     ;
- $F1B5 DEC C           ;
- $F1B6 LD (IX+$01),C   ;
- $F1B9 LD A,$E6        ;
- $F1BB JP $F276        ;
-*$F1BE LD A,B          ;
+ $F1A7 JR NZ,$F1AE     ; }
+ $F1A9 INC (IX+$02)    ; Increment *#REGix+#N$02 by one.
+ $F1AC JR $F17A        ; Jump to #R$F17A.
+*$F1AE LD A,D          ; #REGa=#REGd.
+ $F1AF RRCA            ; RRCA.
+ $F1B0 LD A,$E8        ; #REGa=#N$E8.
+ $F1B2 JP NC,$F276     ; Jump to #R$F276 if {} is higher.
+ $F1B5 DEC C           ; Decrease #REGc by one.
+ $F1B6 LD (IX+$01),C   ; Write #REGc to *#REGix+#N$01.
+ $F1B9 LD A,$E6        ; #REGa=#N$E6.
+ $F1BB JP $F276        ; Jump to #R$F276.
+*$F1BE LD A,B          ; {Jump to #R$F1D4 if #REGb is equal to #REGc.
  $F1BF CP C            ;
- $F1C0 JR Z,$F1D4      ;
- $F1C2 LD B,C          ;
- $F1C3 LD C,E          ;
- $F1C4 LD A,D          ;
- $F1C5 RRCA            ;
- $F1C6 LD A,$EC        ;
- $F1C8 JP NC,$F276     ;
- $F1CB DEC B           ;
- $F1CC LD (IX+$01),B   ;
- $F1CF LD A,$EA        ;
- $F1D1 JP $F276        ;
-*$F1D4 LD A,E          ;
- $F1D5 CP $10          ;
- $F1D7 JR NC,$F1E9     ;
- $F1D9 LD (IX+$00),$08 ;
- $F1DD LD C,(IX+$02)   ;
- $F1E0 DEC (IX+$02)    ;
- $F1E3 INC C           ;
- $F1E4 INC C           ;
- $F1E5 LD D,$02        ;
- $F1E7 JR $F1F2        ;
-*$F1E9 LD (IX+$00),$0A ;
- $F1ED LD C,(IX+$02)   ;
- $F1F0 LD D,$82        ;
-*$F1F2 LD (IX+$03),$12 ;
- $F1F6 LD B,$04        ;
- $F1F8 CALL $F1FF      ;
- $F1FB POP BC          ;
- $F1FC JP $F114        ;
-*$F1FF LD A,($D3F9)    ;
- $F202 CP $10          ;
- $F204 RET NC          ;
- $F205 ADD A,$03       ;
- $F207 LD ($D3F9),A    ;
- $F20A LD HL,$D2BC     ;
-*$F20D INC HL          ;
+ $F1C0 JR Z,$F1D4      ; }
+ $F1C2 LD B,C          ; #REGb=#REGc.
+ $F1C3 LD C,E          ; #REGc=#REGe.
+ $F1C4 LD A,D          ; #REGa=#REGd.
+ $F1C5 RRCA            ; RRCA.
+ $F1C6 LD A,$EC        ; #REGa=#N$EC.
+ $F1C8 JP NC,$F276     ; Jump to #R$F276 if {} is higher.
+ $F1CB DEC B           ; Decrease #REGb by one.
+ $F1CC LD (IX+$01),B   ; Write #REGb to *#REGix+#N$01.
+ $F1CF LD A,$EA        ; #REGa=#N$EA.
+ $F1D1 JP $F276        ; Jump to #R$F276.
+*$F1D4 LD A,E          ; #REGa=#REGe.
+ $F1D5 CP $10          ; {Jump to #R$F1E9 if #REGa is higher than #N$10.
+ $F1D7 JR NC,$F1E9     ; }
+ $F1D9 LD (IX+$00),$08 ; Write #N$08 to *#REGix+#N$00.
+ $F1DD LD C,(IX+$02)   ; #REGc=*#REGix+#N$02.
+ $F1E0 DEC (IX+$02)    ; Decrease *#REGix+#N$02 by one.
+ $F1E3 INC C           ; {Increment #REGc by two.
+ $F1E4 INC C           ; }
+ $F1E5 LD D,$02        ; #REGd=#N$02.
+ $F1E7 JR $F1F2        ; Jump to #R$F1F2.
+*$F1E9 LD (IX+$00),$0A ; Write #N$0A to *#REGix+#N$00.
+ $F1ED LD C,(IX+$02)   ; #REGc=*#REGix+#N$02.
+ $F1F0 LD D,$82        ; #REGd=#N$82.
+*$F1F2 LD (IX+$03),$12 ; Write #N$12 to *#REGix+#N$03.
+ $F1F6 LD B,$04        ; #REGb=#N$04.
+ $F1F8 CALL $F1FF      ; Call #R$F1FF.
+ $F1FB POP BC          ; Restore #REGbc from the stack.
+ $F1FC JP $F114        ; Jump to #R$F114.
+*$F1FF LD A,($D3F9)    ; #REGa=*#R$D3F9.
+ $F202 CP $10          ; {Return if #REGa is higher than #N$10.
+ $F204 RET NC          ; }
+ $F205 ADD A,$03       ; #REGa+=#N$03.
+ $F207 LD ($D3F9),A    ; Write #REGa to *#R$D3F9.
+ $F20A LD HL,$D2BC     ; #REGhl=#R$D2BC.
+*$F20D INC HL          ; {Increment #REGhl by three.
  $F20E INC HL          ;
- $F20F INC HL          ;
- $F210 LD A,(HL)       ;
+ $F20F INC HL          ; }
+ $F210 LD A,(HL)       ; {Jump to #R$F20D if *#REGhl is not zero.
  $F211 AND A           ;
- $F212 JR NZ,$F20D     ;
- $F214 LD E,$03        ;
-*$F216 LD (HL),D       ;
- $F217 INC HL          ;
- $F218 LD (HL),C       ;
- $F219 INC HL          ;
- $F21A LD (HL),B       ;
- $F21B INC HL          ;
- $F21C INC B           ;
- $F21D INC C           ;
- $F21E LD A,D          ;
+ $F212 JR NZ,$F20D     ; }
+ $F214 LD E,$03        ; #REGe=#N$03.
+*$F216 LD (HL),D       ; Write #REGd to *#REGhl.
+ $F217 INC HL          ; Increment #REGhl by one.
+ $F218 LD (HL),C       ; Write #REGc to *#REGhl.
+ $F219 INC HL          ; Increment #REGhl by one.
+ $F21A LD (HL),B       ; Write #REGb to *#REGhl.
+ $F21B INC HL          ; Increment #REGhl by one.
+ $F21C INC B           ; Increment #REGb by one.
+ $F21D INC C           ; Increment #REGc by one.
+ $F21E LD A,D          ; {Jump to #R$F225 if #REGd is equal to #N$02.
  $F21F CP $02          ;
- $F221 JR Z,$F225      ;
- $F223 DEC C           ;
- $F224 DEC C           ;
-*$F225 DEC E           ;
- $F226 JR NZ,$F216     ;
- $F228 LD A,$02        ;
- $F22A LD ($FF8D),A    ;
- $F22D RET             ;
-*$F22E LD A,$01        ;
- $F230 LD ($D247),A    ;
- $F233 LD A,B          ;
+ $F221 JR Z,$F225      ; }
+ $F223 DEC C           ; {Decrease #REGc by two.
+ $F224 DEC C           ; }
+*$F225 DEC E           ; Decrease #REGe by one.
+ $F226 JR NZ,$F216     ; Jump to #R$F216 until #REGe is zero.
+; #AUDIO(helicopter.wav)(#INCLUDE(Helicopter))
+ $F228 LD A,$02        ; {Write #N$02 to *#R$FF8D.
+ $F22A LD ($FF8D),A    ; }
+ $F22D RET             ; Return.
+*$F22E LD A,$01        ; {Write #N$01 to *#R$D247.
+ $F230 LD ($D247),A    ; }
+ $F233 LD A,B          ; {Jump to #R$F245 if #REGb is equal to #REGc.
  $F234 CP C            ;
- $F235 JR Z,$F245      ;
- $F237 LD A,$EE        ;
- $F239 INC C           ;
- $F23A LD (IX+$01),C   ;
- $F23D INC E           ;
- $F23E LD (IX+$02),E   ;
- $F241 LD B,C          ;
- $F242 LD C,E          ;
- $F243 JR $F276        ;
-*$F245 LD (IX+$00),$0C ;
- $F249 LD (IX+$01),E   ;
- $F24C LD (IX+$02),$22 ;
- $F250 POP BC          ;
- $F251 JP $F114        ;
-*$F254 LD A,B          ;
+ $F235 JR Z,$F245      ; }
+ $F237 LD A,$EE        ; #REGa=#N$EE.
+ $F239 INC C           ; Increment #REGc by one.
+ $F23A LD (IX+$01),C   ; Write #REGc to *#REGix+#N$01.
+ $F23D INC E           ; Increment #REGe by one.
+ $F23E LD (IX+$02),E   ; Write #REGe to *#REGix+#N$02.
+ $F241 LD B,C          ; #REGb=#REGc.
+ $F242 LD C,E          ; #REGc=#REGe.
+ $F243 JR $F276        ; Jump to #R$F276.
+*$F245 LD (IX+$00),$0C ; Write #N$0C to *#REGix+#N$00.
+ $F249 LD (IX+$01),E   ; Write #REGe to *#REGix+#N$01.
+ $F24C LD (IX+$02),$22 ; Write #N$22 to *#REGix+#N$02.
+ $F250 POP BC          ; Restore #REGbc from the stack.
+ $F251 JP $F114        ; Jump to #R$F114.
+*$F254 LD A,B          ; {Jump to #R$F266 if #REGb is equal to #REGc.
  $F255 CP C            ;
- $F256 JR Z,$F266      ;
- $F258 LD A,$EE        ;
- $F25A INC C           ;
- $F25B LD (IX+$01),C   ;
- $F25E DEC E           ;
- $F25F LD (IX+$02),E   ;
- $F262 LD B,C          ;
- $F263 LD C,E          ;
- $F264 JR $F276        ;
-*$F266 LD (IX+$00),$0E ;
- $F26A DEC E           ;
- $F26B LD (IX+$01),E   ;
- $F26E LD (IX+$02),$FA ;
- $F272 POP BC          ;
- $F273 JP $F114        ;
-*$F276 CALL $D6C9      ;
- $F279 XOR A           ;
- $F27A LD ($D247),A    ;
-*$F27D INC IX          ;
+ $F256 JR Z,$F266      ; }
+ $F258 LD A,$EE        ; #REGa=#N$EE.
+ $F25A INC C           ; Increment #REGc by one.
+ $F25B LD (IX+$01),C   ; Write #REGc to *#REGix+#N$01.
+ $F25E DEC E           ; Decrease #REGe by one.
+ $F25F LD (IX+$02),E   ; Write #REGe to *#REGix+#N$02.
+ $F262 LD B,C          ; #REGb=#REGc.
+ $F263 LD C,E          ; #REGc=#REGe.
+ $F264 JR $F276        ; Jump to #R$F276.
+*$F266 LD (IX+$00),$0E ; Write #N$0E to *#REGix+#N$00.
+ $F26A DEC E           ; Decrease #REGe by one.
+ $F26B LD (IX+$01),E   ; Write #REGe to *#REGix+#N$01.
+ $F26E LD (IX+$02),$FA ; Write #N$FA to *#REGix+#N$02.
+ $F272 POP BC          ; Restore #REGbc from the stack.
+ $F273 JP $F114        ; Jump to #R$F114.
+*$F276 CALL $D6C9      ; Call #R$D6C9.
+ $F279 XOR A           ; {Write #N$00 to *#R$D247.
+ $F27A LD ($D247),A    ; }
+*$F27D INC IX          ; {Increment #REGix by four.
  $F27F INC IX          ;
  $F281 INC IX          ;
- $F283 INC IX          ;
- $F285 POP BC          ;
- $F286 DEC B           ;
- $F287 JP NZ,$F114     ;
- $F28A RET             ;
+ $F283 INC IX          ; }
+ $F285 POP BC          ; Restore #REGbc from the stack.
+ $F286 DEC B           ; Decrease #REGb by one.
+ $F287 JP NZ,$F114     ; Jump to #R$F114 until #REGb is zero.
+ $F28A RET             ; Return.
 
-; Routine at F28B
+; Handler: Spawn Helicopters
 ;
 ; Used by the routine at #R$DE77.
-c$F28B LD A,($D212)  ; {#REGb=*#R$D212.
- $F28E LD B,A        ; }
- $F28F LD A,($D3F5)  ; {Return if *#R$D3F5 is equal to #REGb.
+@label=Handler_SpawnHelicopters
+c$F28B LD A,($D212)  ; {Return if *#R$D3F5 is equal to *#R$D212.
+ $F28E LD B,A        ;
+ $F28F LD A,($D3F5)  ;
  $F292 CP B          ;
  $F293 RET Z         ; }
- $F294 CALL $DA28    ; Call #R$DA28.
+; Add a hint of randomness to whether we proceed or not. Roughly 50% chance.
+ $F294 CALL $DA28    ; #REGa=random number #N$00-#N$FF.
  $F297 CP $80        ; {Return if #REGa is higher than #N$80.
  $F299 RET NC        ; }
- $F29A LD HL,$D292   ; #REGhl=#R$D292.
-*$F29D INC HL        ; {Increment #REGhl by three.
- $F29E INC HL        ;
+; Loop to find an empty slot.
+ $F29A LD HL,$D292   ; #REGhl=#R$D292 (#R$D295-#N$03).
+@label=Handler_SpawnHelicopters_FindSlot
+*$F29D INC HL        ; {Move the table pointer to the next helicopter table
+ $F29E INC HL        ; data.
  $F29F INC HL        ; }
- $F2A0 LD A,(HL)     ; {Jump to #R$F29D if *#REGhl is not zero.
+ $F2A0 LD A,(HL)     ; {Jump to #R$F29D if this helicopter is already active.
  $F2A1 AND A         ;
  $F2A2 JR NZ,$F29D   ; }
- $F2A4 CALL $DA28    ; Call #R$DA28.
- $F2A7 AND %00000001 ; Keep only bits 0.
+; 50/50 chance of jumping to #R$F2B2.
+ $F2A4 CALL $DA28    ; {Get a random number of either zero or one.
+ $F2A7 AND %00000001 ; }
  $F2A9 JR Z,$F2B2    ; Jump to #R$F2B2 if the result is zero.
- $F2AB LD (HL),$40   ; Write #N$40 to *#REGhl.
- $F2AD INC HL        ; Increment #REGhl by one.
- $F2AE LD (HL),$FC   ; Write #N$FC to *#REGhl.
+; Creates a background helicopter.
+ $F2AB LD (HL),$40   ; Write #N$40 (background) to helicopter state.
+ $F2AD INC HL        ; Increment the helicopter table pointer by one.
+ $F2AE LD (HL),$FC   ; Write #N$FC to helicopter X position.
  $F2B0 JR $F2B7      ; Jump to #R$F2B7.
-*$F2B2 LD (HL),$80   ; Write #N$80 to *#REGhl.
- $F2B4 INC HL        ; Increment #REGhl by one.
- $F2B5 LD (HL),$24   ; Write #N$24 to *#REGhl.
-*$F2B7 INC HL        ; Increment #REGhl by one.
- $F2B8 LD (HL),$03   ; Write #N$03 to *#REGhl.
- $F2BA CALL $DA28    ; Call #R$DA28.
- $F2BD AND %00000011 ; Keep only bits 0-1.
- $F2BF JR Z,$F2C2    ; Jump to #R$F2C2 if the result is zero.
- $F2C1 LD (HL),A     ; Write #REGa to *#REGhl.
-*$F2C2 LD A,($D3F5)  ; #REGa=*#R$D3F5.
- $F2C5 INC A         ; Increment #REGa by one.
- $F2C6 LD ($D3F5),A  ; Write #REGa to *#R$D3F5.
+; Creates a foreground helicopter.
+@label=Handler_SpawnForegroundHelicopter
+*$F2B2 LD (HL),$80   ; Write #N$80 (foreground) to helicopter state.
+ $F2B4 INC HL        ; Increment the helicopter table pointer by one.
+ $F2B5 LD (HL),$24   ; Write #N$24 to helicopter X position.
+@label=Handler_Helicopter_SetYPos
+*$F2B7 INC HL        ; Increment the helicopter table pointer by one.
+ $F2B8 LD (HL),$03   ; Write #N$03 to helicopter Y position.
+; 25% chance of jumping to #R$F2C2.
+ $F2BA CALL $DA28    ; {Get a random number between 0-3.
+ $F2BD AND %00000011 ; }
+ $F2BF JR Z,$F2C2    ; Jump to #R$F2C2 if the random number is 0.
+ $F2C1 LD (HL),A     ; Write the random number to helicopter Y position.
+; Keep track of the number of active helicopters.
+@label=Helicopter_Update_Count
+*$F2C2 LD A,($D3F5)  ; {Increment *#R$D3F5 by one.
+ $F2C5 INC A         ;
+ $F2C6 LD ($D3F5),A  ; }
  $F2C9 RET           ; Return.
 
 ; Handler: Energy
@@ -8438,6 +8620,8 @@ c$F788 LD HL,$D243   ; #REGhl=#R$D243.
 ; Handler: Collision Monsters?
 ;
 ; Used by the routine at #R$F788.
+;
+; HL
 @label=Handler_Monsters
 c$F795 LD B,$03        ; #REGb=#N$03 (total number of monsters/ players).
 @label=Handler_Monsters_Loop
@@ -8471,8 +8655,10 @@ c$F795 LD B,$03        ; #REGb=#N$03 (total number of monsters/ players).
 ; Take off two hit points from the monsters energy.
  $F7D0 LD A,$02        ; #REGa=#N$02.
  $F7D2 CALL $DD6C      ; Call #R$DD6C.
+; #AUDIO(punched.wav)(#INCLUDE(Punched))
  $F7D5 LD A,$06        ; {Write #N$06 to *#R$FF8D.
  $F7D7 LD ($FF8D),A    ; }
+@label=Handler_Monsters_Next
 *$F7DA DEC HL          ; Decrease #REGhl by one.
  $F7DB DJNZ $F797      ; Decrease counter by one and loop back to #R$F797 until
                        ; counter is zero.
@@ -9316,74 +9502,98 @@ c$FC1A LD A,($D3FE)  ; {Return if *#R$D3FE is zero.
  $FC35 CALL $D7F6    ; Call #R$D7F6.
  $FC38 RET           ; Return.
 
-; Routine at FC39
+; Handler: Vehicle
 ;
 ; Used by the routine at #R$DE77.
-c$FC39 LD A,($D401)  ; {Return if *#R$D401 is equal to #N$FE.
- $FC3C CP $FE        ;
+;
+; O:B Vehicle Y sprite co-ordinates (if active)
+; O:C Vehicle X sprite co-ordinates (if active)
+@label=Handler_Vehicle
+c$FC39 LD A,($D401)  ; {Return if vehicle spawning is set to be off (*#R$D401
+ $FC3C CP $FE        ; is equal to #N$FE).
  $FC3E RET Z         ; }
- $FC3F CP $FF        ; {Jump to #R$FC72 if *#R$D401 is equal to #N$FF.
- $FC41 JR Z,$FC72    ; }
- $FC43 DEC A         ; Decrease #REGa by one.
- $FC44 LD ($D401),A  ; Write #REGa back to *#R$D401.
- $FC47 RET NZ        ; Return if #REGa is not zero.
+ $FC3F CP $FF        ; {Jump to #R$FC72 if a vehicle is already active
+ $FC41 JR Z,$FC72    ; (*#R$D401 is equal to #N$FF).}
+; Else the counter is a counter, so count it down.
+ $FC43 DEC A         ; {Decrease *#R$D401 by one.
+ $FC44 LD ($D401),A  ; }
+ $FC47 RET NZ        ; Return if *#R$D401 is still in progress.
+; Else the countdown is complete so set the counter/ state that a vehicle is
+; spawned and spawn a random vehicle!
  $FC48 LD A,$FF      ; {Write #N$FF to *#R$D401.
  $FC4A LD ($D401),A  ; }
- $FC4D CALL $DA28    ; Call #R$DA28.
- $FC50 AND %00000011 ; Keep only bits 0-1.
+; There are four vehicle types.
+ $FC4D CALL $DA28    ; {Get a random number between 0-3.
+ $FC50 AND %00000011 ; }
  $FC52 LD ($D402),A  ; Write #REGa to *#R$D402.
- $FC55 CALL $DA28    ; Call #R$DA28.
- $FC58 AND %00000001 ; Keep only bit 0.
- $FC5A JR NZ,$FC68   ; Jump to #R$FC68 if the result is not zero.
+; Randomly bring the vehicle in from either the left or right hand side of the
+; play area.
+ $FC55 CALL $DA28    ; {Get a random number which is either zero or one.
+ $FC58 AND %00000001 ; }
+ $FC5A JR NZ,$FC68   ; Jump to #R$FC68 if the random number is one.
+; Vehicle moves from left-to-right.
  $FC5C LD A,$14      ; {Write #N$14 to *#R$D404.
  $FC5E LD ($D404),A  ; }
  $FC61 LD A,$FA      ; {Write #N$FA to *#R$D403.
  $FC63 LD ($D403),A  ; }
  $FC66 JR $FC72      ; Jump to #R$FC72.
-*$FC68 LD A,$94      ; {Write #N$94 to *#R$D404.
+; Bit 7 signifies that this vehicle moves from right-to-left.
+@label=Handler_SpawnVehicleRight
+*$FC68 LD A,$94      ; {Write #N$94 (#N$14 + bit 7 set) to *#R$D404.
  $FC6A LD ($D404),A  ; }
  $FC6D LD A,$20      ; {Write #N$20 to *#R$D403.
  $FC6F LD ($D403),A  ; }
+@label=Handler_Vehicle_Movement
 *$FC72 LD A,($D404)  ; #REGa=*#R$D404.
- $FC75 CP $80        ; Compare #REGa with #N$80.
- $FC77 JR NC,$FC97   ; Jump to #R$FC97 if {} is higher.
- $FC79 LD B,A        ; #REGb=#REGa.
+ $FC75 CP $80        ; {Jump to #R$FC97 if #REGa is higher than #N$80 (if bit 7
+ $FC77 JR NC,$FC97   ; is set).}
+ $FC79 LD B,A        ; #REGb=vehicle Y position.
+; Handles moving the vehicle from the left-to-right hand side of the play area.
  $FC7A LD A,($D403)  ; #REGa=*#R$D403.
  $FC7D INC A         ; Increment #REGa by one.
+@label=Handler_Vehicle_SetXPos
 *$FC7E LD ($D403),A  ; Write #REGa to *#R$D403.
+; Check if the vehicle is off-screen.
  $FC81 CP $20        ; {Jump to #R$FCA7 if #REGa is equal to #N$20.
  $FC83 JR Z,$FCA7    ; }
- $FC85 LD C,A        ; #REGc=#REGa.
+ $FC85 LD C,A        ; #REGc=vehicle X position.
+; Has the vehicle been destroyed?
  $FC86 LD A,($D402)  ; #REGa=*#R$D402.
- $FC89 CP $03        ; {Return if #REGa is equal to #N$03.
- $FC8B RET Z         ; }
- $FC8C ADD A,A       ; #REGa+=#REGa.
- $FC8D ADD A,$3B     ; #REGa+=#N$3B.
+ $FC89 CP $03        ; {Return if the vehicle has been destroyed (*#R$D402 is
+ $FC8B RET Z         ; equal to #N$03).}
+ $FC8C ADD A,A       ; {#REGa*=#N$02+#N$3B.
+ $FC8D ADD A,$3B     ; }
  $FC8F CALL $D6C9    ; Call #R$D6C9.
- $FC92 XOR A         ; Reset the bits from #REGa.
- $FC93 LD ($D247),A  ; Write #REGa to *#R$D247.
+ $FC92 XOR A         ; {Write #N$00 to *#R$D247.
+ $FC93 LD ($D247),A  ; }
  $FC96 RET           ; Return.
-*$FC97 AND %01111111 ; Keep only bits 0-6.
- $FC99 LD B,A        ; #REGb=#REGa.
+; Handles moving the vehicle from the right-to-left hand side of the play area.
+@label=Handler_MoveVehicle_RightToLeft
+*$FC97 AND %01111111 ; Strip off the right-to-left flag.
+ $FC99 LD B,A        ; #REGb=vehicle Y position.
  $FC9A LD A,$01      ; {Write #N$01 to *#R$D247.
  $FC9C LD ($D247),A  ; }
  $FC9F LD A,($D403)  ; #REGa=*#R$D403.
  $FCA2 DEC A         ; Decrease #REGa by one.
+; Check if the vehicle is off-screen.
  $FCA3 CP $FA        ; {Jump to #R$FC7E if #REGa is not equal to #N$FA.
  $FCA5 JR NZ,$FC7E   ; }
-*$FCA7 CALL $DA28    ; Call #R$DA28.
- $FCAA AND %00001111 ; Keep only bits 0-3.
- $FCAC ADD A,$08     ; #REGa+=#N$08.
- $FCAE LD ($D401),A  ; Write #REGa to *#R$D401.
- $FCB1 XOR A         ; Reset the bits from #REGa.
- $FCB2 LD ($D247),A  ; Write #REGa to *#R$D247.
+; Initialise a new countdown.
+@label=Handler_Vehicle_SetCountdown
+*$FCA7 CALL $DA28    ; {Get a random number between 8-23.
+ $FCAA AND %00001111 ;
+ $FCAC ADD A,$08     ; }
+ $FCAE LD ($D401),A  ; Write the random number to *#R$D401.
+ $FCB1 XOR A         ; {Write #N$00 to *#R$D247.
+ $FCB2 LD ($D247),A  ; }
  $FCB5 RET           ; Return.
 
-; Routine at FCB6
+; Handler: Train
 ;
 ; Used by the routine at #R$DE77.
-c$FCB6 LD A,($D405)  ; {Return if *#R$D405 is equal to #N$FE.
- $FCB9 CP $FE        ;
+@label=Handler_Train
+c$FCB6 LD A,($D405)  ; {Return if train spawning is set to be off (*#R$D405 is
+ $FCB9 CP $FE        ; equal to #N$FE).
  $FCBB RET Z         ; }
  $FCBC CP $FF        ; {Jump to #R$FCE7 if it is equal to #N$FF.
  $FCBE JR Z,$FCE7    ; }

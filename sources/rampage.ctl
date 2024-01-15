@@ -150,6 +150,7 @@ D $CDE2 For usage see #R$DF90.
   $CFB4,$01 Terminator.
   $CFB5,$0D Scene #N$27.
   $CFC2,$01 Terminator.
+  $CFC3,$0F Scene #N$28.
 
 g $CFD2 Data: George
 @ $CFD2 label=George_State
@@ -339,7 +340,9 @@ L $D198,$08,$0F
 
 b $D211
 
-b $D212
+g $D212 Maximum Number Helicopters
+@ $D212 label=MaxHelicopterCount
+B $D212,$01
 
 b $D213
 
@@ -347,7 +350,13 @@ b $D214
 
 b $D215
 
-b $D216
+g $D216 Level Finished Countdown
+@ $D216 label=LevelFinishedCountdown
+D $D216 After all the buildings have collapsed, the game doesn't instantly end the level. This countdown is reduced and
+.       the level ends only when it reaches zero.
+B $D216,$01
+
+g $D217
 
 g $D218
 
@@ -384,9 +393,17 @@ g $D244
 
 g $D246
 
-g $D247
+g $D247 Vehicle Orientation Flag
+@ $D247 label=Flag_VehicleOrientation
+D $D247 #TABLE(default,centre,centre) { =h Value | =h Moving }
+. { #N$00 | Left-to-right  }
+. { #N$01 | Right-to-left }
+. TABLE#
+B $D247,$01
 
 g $D248
+
+g $D24A
 
 g $D24D
   $D24D,$02,$01
@@ -402,13 +419,23 @@ g $D255
 
 g $D292
 
-g $D295
+g $D295 Table: Helicopters
+@ $D295 label=Table_Helicopters
+D $D295 See #R$DBE5.
+N $D295 Helicopter ##N($01+(#PC-$D295)/$03).
+  $D295,$01 State.
+  $D296,$01 X position.
+  $D297,$01 Y position.
+L $D295,$03,$06
 
-g $D2A3
-
-g $D2A7
-
-b $D2BC
+g $D2A7 Table: Helicopter Something
+@ $D2A7 label=Table_SomethingHelicopters
+N $D2A7 Helicopter ##N($01+(#PC-$D2A7)/$04).
+  $D2A7,$01
+  $D2A8,$01
+  $D2A9,$01
+  $D2AA,$01
+L $D2A7,$04,$06
 
 b $D2BF Table: Bullets
 @ $D2BF label=Table_Bullets
@@ -426,11 +453,16 @@ b $D39F Table: Buildings
 @ $D39F label=Table_Buildings
   $D39F,$54,$0E
 
-b $D3F3
+g $D3F3 Number Of Buildings Remaining
+@ $D3F3 label=BuildingsRemainingCount
+D $D3F3 Number of buildings remaining standing on the current level.
+B $D3F3,$01
 
 b $D3F4
 
-b $D3F5
+g $D3F5 Active Helicopter Count
+@ $D3F5 label=NumberActiveHelicopters
+B $D3F5,$01
 
 b $D3F6
 
@@ -453,15 +485,41 @@ D $D3FD #TABLE(default,centre,centre)
 B $D3FD,$01
 
 b $D3FE
+  $D3FE
   $D3FF
   $D400
-  $D401
-  $D402
-  $D403
-  $D404
-  $D405
-  $D406
-  $D407
+
+b $D401 Table: Vehicle
+N $D401 See #R$FC39.
+@ $D401 label=VehicleCounter
+  $D401,$01 #TABLE(default,centre,centre) { =h Value | =h Meaning }
+. { #N$00-#N$18 | Countdown until spawn }
+. { #N$FE | Spawning "off" }
+. { #N$FF | Vehicle is spawned }
+. TABLE#
+@ $D402 label=VehicleType
+  $D402,$01 #TABLE(default,centre,centre) { =h Value | =h Vehicle }
+. { #N$00 | Tank }
+. { #N$01 | Car }
+. { #N$02 | Police car }
+. { #N$03 | Destroyed }
+. TABLE#
+@ $D403 label=VehicleXPosition
+  $D403,$01 Vehicle horizontal position on the screen.
+@ $D404 label=VehicleYPosition
+  $D404,$01 Vehicle vertical position on the screen.
+
+b $D405 Table: Train
+N $D405 See #R$FCB6.
+@ $D405 label=TrainState
+  $D405,$01 #TABLE(default,centre,centre) { =h Value | =h Meaning }
+. { #N$FE | Spawning "off" }
+. { #N$FF | Train is spawned }
+. TABLE#
+@ $D406 label=TrainXPosition
+  $D406,$01 Train horizontal position on the screen.
+  $D407,$01
+  $D408,$01
 
 c $D409
   $D409,$03 #REGbc=#N($0000,$04,$04).
@@ -1380,13 +1438,14 @@ R $DBD9 O:DE Pointer to Monster X Position
   $DBDF,$03 Call #R$DBBB.
   $DBE2,$03 Jump to #R$DB8A.
 
-c $DBE5
-  $DBE5,$02 #REGb=#N$06.
+c $DBE5 Handler: Helicopters
+@ $DBE5 label=Handler_Helicopters
+  $DBE5,$02 #REGb=#N$06 (number of possible helicopters).
   $DBE7,$04 #REGix=#R$D295.
   $DBEB,$04 Write #N$00 to *#R$D247.
-  $DBEF,$01 Stash #REGbc on the stack.
-  $DBF0,$04 #REGd=*#REGix+#N$00.
-  $DBF4,$04 Jump to #R$DC95 if #REGa is zero.
+@ $DBEF label=Handler_Helicopters_Loop
+  $DBEF,$01 Stash current helicopter on the stack.
+  $DBF0,$08 Jump to #R$DC95 if this helicopter is not active.
   $DBF8,$03 #REGc=*#REGix+#N$01.
   $DBFB,$03 #REGb=*#REGix+#N$02.
   $DBFE,$01 RLCA.
@@ -1403,7 +1462,9 @@ c $DBE5
   $DC18,$02 #REGb=#N$04.
   $DC1A,$02 #REGc=#N$20.
   $DC1C,$07 Jump to #R$DC4D if *#R$D3F6 is equal to #N$06.
-  $DC23,$03 #REGhl=#R$D2A3.
+N $DC23 Loop to find an empty slot.
+  $DC23,$03 #REGhl=#R$D2A3 (#R$D2A7-#N$04).
+@ $DC26 label=Handler_Helicopters_FindSlot
   $DC26,$04 Increment #REGhl by four.
   $DC2A,$04 Jump to #R$DC26 if *#REGhl is not zero.
   $DC2E,$01 Write #REGb to *#REGhl.
@@ -1423,15 +1484,12 @@ c $DBE5
   $DC45,$01 Write #REGa to *#REGhl.
   $DC46,$03 Call #R$DA28.
   $DC49,$02,b$01 Keep only bits 0-1.
+M $DC46,$05 Get a random number between 0-3.
   $DC4B,$01 #REGa+=*#REGhl.
   $DC4C,$01 Write #REGa to *#REGhl.
   $DC4D,$04 Write #N$00 to *#REGix+#N$00.
-  $DC51,$03 #REGa=*#R$D3F5.
-  $DC54,$01 Decrease #REGa by one.
-  $DC55,$03 Write #REGa to *#R$D3F5.
-  $DC58,$03 #REGa=*#R$D3F6.
-  $DC5B,$01 Increment #REGa by one.
-  $DC5C,$03 Write #REGa to *#R$D3F6.
+  $DC51,$07 Decrease *#R$D3F5 by one.
+  $DC58,$07 Increment *#R$D3F6 by one.
   $DC5F,$03 Jump to #R$DC95.
   $DC62,$06 Jump to #R$DC7F if #REGc is equal to #N$FC.
   $DC68,$05 Write #N$01 to *#R$D247.
@@ -1452,10 +1510,11 @@ c $DBE5
   $DC8C,$02 #REGa+=#N$DE.
   $DC8E,$03 Call #R$D6C9.
   $DC91,$04 Write #N$00 to *#R$D247.
-  $DC95,$06 Increment #REGix by three.
-  $DC9B,$01 Restore #REGbc from the stack.
-  $DC9C,$01 Decrease #REGb by one.
-  $DC9D,$03 Jump to #R$DBEF until #REGb is zero.
+@ $DC95 label=Handler_Helicopters_Next
+  $DC95,$06 Move onto the next helicopter table data.
+  $DC9B,$01 Restore helicopter ID from the stack.
+  $DC9C,$01 Decrease helicopter ID by one.
+  $DC9D,$03 Jump to #R$DBEF until all helicopters have been processed.
   $DCA0,$01 Return.
 
 c $DCA1
@@ -1555,16 +1614,30 @@ c $DD38
   $DD4B,$01 #REGa=#N$00.
   $DD4C,$01 Return.
 
-c $DD4D
+c $DD4D Convert To Monster Data
+@ $DD4D label=Convert_To_MonsterData
+R $DD4D O:A Monster ID
+E $DD4D Continue on to #R$DD52.
   $DD4D,$02,b$01 Keep only bits 6-7.
-  $DD4F,$02 RLCA.
+  $DD4F,$02 Rotate #REGa left twice, moving bits 6-7 to bits 0-1.
+N $DD51 Converts 0-2 into 1-3 for the monster ID.
   $DD51,$01 Increment #REGa by one.
+
+c $DD52 Sets #REGiy To Monster Data
+@ $DD52 label=SetIYMonsterData_George
+R $DD52 A Monster ID
+R $DD52 O:IY Monster data
+N $DD52 George:
   $DD52,$04 Jump to #R$DD5B if #REGa is not equal to #N$01.
   $DD56,$04 #REGiy=#R$CFD2.
   $DD5A,$01 Return.
+N $DD5B Lizzy:
+@ $DD5B label=SetIYMonsterData_Lizzy
   $DD5B,$04 Jump to #R$DD64 if #REGa is not equal to #N$02.
   $DD5F,$04 #REGiy=#R$D001.
   $DD63,$01 Return.
+N $DD64 Ralph:
+@ $DD64 label=SetIYMonsterData_Ralph
   $DD64,$03 Return if #REGa is not equal to #N$03.
   $DD67,$04 #REGiy=#R$D030.
   $DD6B,$01 Return.
@@ -1673,17 +1746,20 @@ N $DE45 Is Lizzy still in-play?
   $DE45,$07 Jump to #R$DE53 if *#R$D001 is not equal to #N$FF (in-play).
 N $DE4C Is Ralph still in-play?
   $DE4C,$07 Jump to #R$DE19 if *#R$D030 is equal to #N$FF (in-play).
+N $DE53 The game is in-play so run the handlers until the level is completed.
 @ $DE53 label=Game_InPlay
-  $DE53,$06 Jump to #R$DE77 if *#R$D3F3 is not zero.
+  $DE53,$06 Jump to #R$DE77 until *#R$D3F3 is zero - until all the buildings have collapsed.
+N $DE59 Keep running the handlers for a short while even though all the buildings have collapsed. It would be a bit
+.       jarring if the level stopped instantly after the last building rubble cleared.s
   $DE59,$03 #REGa=*#R$D216.
-  $DE5C,$01 Decrease #REGa by one.
-  $DE5D,$03 Write #REGa to *#R$D216.
-  $DE60,$02 Jump to #R$DE77 if #REGa is not zero.
+  $DE5C,$04 Decrease *#R$D216 by one.
+  $DE60,$02 Jump to #R$DE77 until #REGa is zero.
 N $DE62 Level complete! Move onto the next level.
   $DE62,$03 #REGa=*#R$DF44.
   $DE65,$01 Increment level number by one.
 N $DE66 Check to see if all levels (#N$28 in total) have been played, if so loop back to level #N$01.
   $DE66,$04 Jump to #R$DE6C if #REGa is not equal to #N$29.
+N $DE6A Else cycle back to level 1 again.
   $DE6A,$02 #REGa=level #N$01.
 @ $DE6C label=WriteLevelNumber
   $DE6C,$03 Write level number to *#R$DF44.
@@ -1787,26 +1863,30 @@ b $DF45
 
 c $DF46 Set Monster Defaults
 @ $DF46 label=MonsterDefaults
+N $DF46 George:
   $DF46,$04 #REGiy=#R$CFD2.
   $DF4A,$03 Call #R$DF68.
   $DF4D,$04 Write #N$01 to #R$CFDB (*#REGiy+#N$09).
+N $DF51 Lizzy:
   $DF51,$04 #REGiy=#R$D001.
   $DF55,$03 Call #R$DF68.
   $DF58,$04 Write #N$0D to #R$D00A (*#REGiy+#N$09).
+N $DF5C Ralph:
   $DF5C,$04 #REGiy=#R$D030.
   $DF60,$03 Call #R$DF68.
   $DF63,$04 Write #N$19 to #R$D039 (*#REGiy+#N$09).
   $DF67,$01 Return.
+N $DF68 Sets common defaults on #REGiy=Monster data.
 @ $DF68 label=SetMonsterDefaults
   $DF68,$06 Return if the monster state (#REGiy+#N$00) is "No Monster".
-  $DF6E,$07 Write #N$00 to: #LIST { #REGiy+#N$00 } { #REGiy+#N$02 } LIST#
+  $DF6E,$07 Write #N$00 to: #LIST { State (#REGiy+#N$00) } { #REGiy+#N$02 } LIST#
   $DF75,$04 Write #N$01 to #REGiy+#N$03.
   $DF79,$03 Write #N$00 to #REGiy+#N$04.
   $DF7C,$04 Write #N$19 to #REGiy+#N$05.
   $DF80,$04 Write #N$03 to #REGiy+#N$06.
   $DF84,$04 Write #N$19 to #REGiy+#N$07.
   $DF88,$03 Write #N$00 to #REGiy+#N$08.
-  $DF8B,$04 Write #N$12 to #REGiy+#N$0A.
+  $DF8B,$04 Write #N$12 to Y position (#REGiy+#N$0A).
   $DF8F,$01 Return.
 
 c $DF90
@@ -1960,13 +2040,35 @@ N $DF9D Process the scene data.
   $E09E,$05 Write #N$FE to *#R$D401.
   $E0A3,$02 Jump to #R$E073.
 B $E0A5
+
+c $E0AD
+  $E0AD,$03 #REGhl=#R$D24D.
+  $E0B0,$01 #REGa=#REGc.
+  $E0B1,$04 Jump to #R$E0C1 if the sign flag set.
+  $E0B5,$01 #REGa+=*#REGhl.
+  $E0B6,$01 #REGc=#REGa.
+  $E0B7,$01 Increment #REGhl by one.
+  $E0B8,$01 #REGa=#REGb.
+  $E0B9,$04 Jump to #R$E0C9 if the sign flag set.
+  $E0BD,$01 #REGa+=*#REGhl.
+  $E0BE,$01 #REGb=#REGa.
+  $E0BF,$02 Jump to #R$E0CF.
+  $E0C1,$02,b$01 Reset bit 7.
+  $E0C3,$01 #REGa-=*#REGhl.
+  $E0C4,$01 Invert the bits in #REGa.
+  $E0C5,$01 Increment #REGa by one.
+  $E0C6,$01 #REGc=#REGa.
+  $E0C7,$02 Jump to #R$E0B7.
+  $E0C9,$02,b$01 Reset bit 7.
+  $E0CB,$01 #REGa-=*#REGhl.
+  $E0CC,$01 Invert the bits in #REGa.
+  $E0CD,$01 Increment #REGa by one.
+  $E0CE,$01 #REGb=#REGa.
   $E0CF,$01 #REGa=#REGc.
   $E0D0,$04 Jump to #R$E10A if #REGa is higher than #N$20.
   $E0D4,$01 #REGa=#REGb.
   $E0D5,$04 Jump to #R$E10A if #REGa is higher than #N$18.
-  $E0D9,$01 RRCA.
-  $E0DA,$01 RRCA.
-  $E0DB,$01 RRCA.
+  $E0D9,$03 RRCA.
   $E0DC,$01 #REGl=#REGa.
   $E0DD,$02,b$01 Keep only bits 0-1.
   $E0DF,$02 #REGa+=#N$65.
@@ -2526,6 +2628,53 @@ N $E5EC Take off one hit point from the monsters energy.
   $E62C,$01 Return.
 
 c $E62D
+  $E62D,$06 Return if *#R$D244 is equal to #N$FF.
+  $E633,$04 Jump to #R$E67C if *#R$D244 is higher than #N$20.
+  $E637,$03 #REGa=*#R$D248.
+  $E63A,$01 RRCA.
+  $E63B,$02 Jump to #R$E67C if {} is lower.
+  $E63D,$03 #REGa=*#R$D246.
+  $E640,$01 RRCA.
+  $E641,$02 Jump to #R$E658 if {} is higher.
+  $E643,$03 #REGde=#N$80FE.
+  $E646,$02 #REGb=#N$03.
+  $E648,$03 #REGa=*#R$D247.
+  $E64B,$01 #REGc=#REGa.
+  $E64C,$01 #REGa=#REGb.
+  $E64D,$01 #REGa-=#REGc.
+  $E64E,$01 #REGa-=#REGc.
+  $E64F,$01 #REGa-=#REGc.
+  $E650,$01 #REGc=#REGa.
+  $E651,$03 Call #R$E0AD.
+  $E654,$02 Jump to #R$E67C if {} is zero.
+  $E656,$02 Jump to #R$E66F.
+  $E658,$03 #REGa=*#R$D24E.
+  $E65B,$02 Compare #REGa with #N$12.
+  $E65D,$02 Jump to #R$E67C if {} is zero.
+  $E65F,$02 #REGb=#N$05.
+  $E661,$03 #REGa=*#R$D247.
+  $E664,$02 #REGa+=#N$02.
+  $E666,$01 #REGc=#REGa.
+  $E667,$03 #REGde=#N$090F.
+  $E66A,$03 Call #R$E0AD.
+  $E66D,$02 Jump to #R$E67C if {} is not zero.
+  $E66F,$02 #REGa=#N$06.
+  $E671,$03 Write #REGa to *#R$D244.
+  $E674,$03 Write #REGa to *#R$D24A.
+  $E677,$02 #REGa=#N$01.
+  $E679,$03 Write #REGa to *#R$D248.
+  $E67C,$03 #REGa=*#R$D244.
+  $E67F,$01 #REGa+=#REGa.
+  $E680,$02 #REGh=#N$00.
+  $E682,$01 #REGl=#REGa.
+  $E683,$03 #REGde=#R$EF98.
+  $E686,$01 #REGhl+=#REGde.
+  $E687,$01 #REGa=*#REGhl.
+  $E688,$01 Increment #REGhl by one.
+  $E689,$01 #REGh=*#REGhl.
+  $E68A,$01 #REGl=#REGa.
+  $E68B,$01 Jump to the address held by *#REGhl.
+
   $EA88,$05 Write #N$09 to *#R$D244.
   $EA8D,$04 #REGiy=#R$D244.
 N $EA91 Take off four hit points from the monsters energy.
@@ -2708,35 +2857,195 @@ N $F0DD #HTML(The value here is self-modified at:
   $F10C,$01 #REGa=#REGl.
   $F10D,$01 Return.
 
-c $F10E
+c $F10E Helicopter Something
+@ $F10E label=Something_Helicopter
+  $F10E,$02 #REGb=#N$06.
+  $F110,$04 #REGix=#R$D2A7.
+  $F114,$05 #REGa=#N$EC-#REGb.
+  $F119,$03 Write #REGa to *#R$D408.
+  $F11C,$04 Write #N$00 to *#R$D247.
+  $F120,$01 Stash #REGbc on the stack.
+  $F121,$07 Jump to #R$F27D if *#REGix+#N$00 is zero.
+  $F128,$03 #REGa=*#REGix+#N$00.
+  $F12B,$03 #REGc=*#REGix+#N$01.
+  $F12E,$03 #REGe=*#REGix+#N$02.
+  $F131,$03 #REGb=*#REGix+#N$03.
+  $F134,$02,b$01 Reset bit 0.
+  $F136,$03 Write #REGa to *#REGix+#N$00.
+  $F139,$02,b$01 Keep only bit 0.
+  $F13B,$01 #REGd=#REGa.
+  $F13C,$03 #REGa=*#REGix+#N$00.
+  $F13F,$01 RRCA.
+  $F140,$02,b$01 Keep only bits 0-2.
+  $F142,$04 Jump to #R$F161 if #REGa is equal to #N$01.
+  $F146,$04 Jump to #R$F1A0 if #REGa is equal to #N$02.
+  $F14A,$05 Jump to #R$F1BE if #REGa is equal to #N$03.
+  $F14F,$05 Jump to #R$F22E if #REGa is equal to #N$04.
+  $F154,$05 Jump to #R$F254 if #REGa is equal to #N$05.
+  $F159,$05 Jump to #R$F161 if #REGa is equal to #N$06.
+  $F15E,$03 Jump to #R$F1A0.
+  $F161,$04 Jump to #R$F16A if #REGe is not equal to #REGc.
+  $F165,$03 Increment *#REGix+#N$02 by one.
+  $F168,$02 Jump to #R$F17A.
+  $F16A,$01 #REGa=#REGd.
+  $F16B,$01 RRCA.
+  $F16C,$02 #REGa=#N$E8.
+  $F16E,$03 Jump to #R$F276 if {} is higher.
+  $F171,$01 Increment #REGc by one.
+  $F172,$03 Write #REGc to *#REGix+#N$01.
+  $F175,$02 #REGa=#N$E6.
+  $F177,$03 Jump to #R$F276.
+  $F17A,$03 #REGa=*#REGix+#N$00.
+  $F17D,$02,b$01 Keep only bits 0-6.
+  $F17F,$04 Jump to #R$F191 if #REGa is lower than #N$08.
+  $F183,$04 Write #N$00 to *#REGix+#N$00.
+  $F187,$03 #REGa=*#R$D3F6.
+  $F18A,$01 Decrease #REGa by one.
+  $F18B,$03 Write #REGa to *#R$D3F6.
+  $F18E,$03 Jump to #R$F27D.
+  $F191,$04 Write #N$06 to *#REGix+#N$00.
+  $F195,$03 Write #REGb to *#REGix+#N$01.
+  $F198,$04 Write #N$01 to *#REGix+#N$03.
+  $F19C,$01 Restore #REGbc from the stack.
+  $F19D,$03 Jump to #R$F114.
+  $F1A0,$05 Write #N$01 to *#R$D247.
+  $F1A5,$04 Jump to #R$F1AE if #REGe is not equal to #REGc.
+  $F1A9,$03 Increment *#REGix+#N$02 by one.
+  $F1AC,$02 Jump to #R$F17A.
+  $F1AE,$01 #REGa=#REGd.
+  $F1AF,$01 RRCA.
+  $F1B0,$02 #REGa=#N$E8.
+  $F1B2,$03 Jump to #R$F276 if {} is higher.
+  $F1B5,$01 Decrease #REGc by one.
+  $F1B6,$03 Write #REGc to *#REGix+#N$01.
+  $F1B9,$02 #REGa=#N$E6.
+  $F1BB,$03 Jump to #R$F276.
+  $F1BE,$04 Jump to #R$F1D4 if #REGb is equal to #REGc.
+  $F1C2,$01 #REGb=#REGc.
+  $F1C3,$01 #REGc=#REGe.
+  $F1C4,$01 #REGa=#REGd.
+  $F1C5,$01 RRCA.
+  $F1C6,$02 #REGa=#N$EC.
+  $F1C8,$03 Jump to #R$F276 if {} is higher.
+  $F1CB,$01 Decrease #REGb by one.
+  $F1CC,$03 Write #REGb to *#REGix+#N$01.
+  $F1CF,$02 #REGa=#N$EA.
+  $F1D1,$03 Jump to #R$F276.
+  $F1D4,$01 #REGa=#REGe.
+  $F1D5,$04 Jump to #R$F1E9 if #REGa is higher than #N$10.
+  $F1D9,$04 Write #N$08 to *#REGix+#N$00.
+  $F1DD,$03 #REGc=*#REGix+#N$02.
+  $F1E0,$03 Decrease *#REGix+#N$02 by one.
+  $F1E3,$02 Increment #REGc by two.
+  $F1E5,$02 #REGd=#N$02.
+  $F1E7,$02 Jump to #R$F1F2.
+  $F1E9,$04 Write #N$0A to *#REGix+#N$00.
+  $F1ED,$03 #REGc=*#REGix+#N$02.
+  $F1F0,$02 #REGd=#N$82.
+  $F1F2,$04 Write #N$12 to *#REGix+#N$03.
+  $F1F6,$02 #REGb=#N$04.
+  $F1F8,$03 Call #R$F1FF.
+  $F1FB,$01 Restore #REGbc from the stack.
+  $F1FC,$03 Jump to #R$F114.
+  $F1FF,$03 #REGa=*#R$D3F9.
+  $F202,$03 Return if #REGa is higher than #N$10.
+  $F205,$02 #REGa+=#N$03.
+  $F207,$03 Write #REGa to *#R$D3F9.
+  $F20A,$03 #REGhl=#R$D2BC.
+  $F20D,$03 Increment #REGhl by three.
+  $F210,$04 Jump to #R$F20D if *#REGhl is not zero.
+  $F214,$02 #REGe=#N$03.
+  $F216,$01 Write #REGd to *#REGhl.
+  $F217,$01 Increment #REGhl by one.
+  $F218,$01 Write #REGc to *#REGhl.
+  $F219,$01 Increment #REGhl by one.
+  $F21A,$01 Write #REGb to *#REGhl.
+  $F21B,$01 Increment #REGhl by one.
+  $F21C,$01 Increment #REGb by one.
+  $F21D,$01 Increment #REGc by one.
+  $F21E,$05 Jump to #R$F225 if #REGd is equal to #N$02.
+  $F223,$02 Decrease #REGc by two.
+  $F225,$01 Decrease #REGe by one.
+  $F226,$02 Jump to #R$F216 until #REGe is zero.
+N $F228 #AUDIO(helicopter.wav)(#INCLUDE(Helicopter))
+  $F228,$05 Write #N$02 to *#R$FF8D.
+  $F22D,$01 Return.
+  $F22E,$05 Write #N$01 to *#R$D247.
+  $F233,$04 Jump to #R$F245 if #REGb is equal to #REGc.
+  $F237,$02 #REGa=#N$EE.
+  $F239,$01 Increment #REGc by one.
+  $F23A,$03 Write #REGc to *#REGix+#N$01.
+  $F23D,$01 Increment #REGe by one.
+  $F23E,$03 Write #REGe to *#REGix+#N$02.
+  $F241,$01 #REGb=#REGc.
+  $F242,$01 #REGc=#REGe.
+  $F243,$02 Jump to #R$F276.
+  $F245,$04 Write #N$0C to *#REGix+#N$00.
+  $F249,$03 Write #REGe to *#REGix+#N$01.
+  $F24C,$04 Write #N$22 to *#REGix+#N$02.
+  $F250,$01 Restore #REGbc from the stack.
+  $F251,$03 Jump to #R$F114.
+  $F254,$04 Jump to #R$F266 if #REGb is equal to #REGc.
+  $F258,$02 #REGa=#N$EE.
+  $F25A,$01 Increment #REGc by one.
+  $F25B,$03 Write #REGc to *#REGix+#N$01.
+  $F25E,$01 Decrease #REGe by one.
+  $F25F,$03 Write #REGe to *#REGix+#N$02.
+  $F262,$01 #REGb=#REGc.
+  $F263,$01 #REGc=#REGe.
+  $F264,$02 Jump to #R$F276.
+  $F266,$04 Write #N$0E to *#REGix+#N$00.
+  $F26A,$01 Decrease #REGe by one.
+  $F26B,$03 Write #REGe to *#REGix+#N$01.
+  $F26E,$04 Write #N$FA to *#REGix+#N$02.
+  $F272,$01 Restore #REGbc from the stack.
+  $F273,$03 Jump to #R$F114.
+  $F276,$03 Call #R$D6C9.
+  $F279,$04 Write #N$00 to *#R$D247.
+  $F27D,$08 Increment #REGix by four.
+  $F285,$01 Restore #REGbc from the stack.
+  $F286,$01 Decrease #REGb by one.
+  $F287,$03 Jump to #R$F114 until #REGb is zero.
+  $F28A,$01 Return.
 
-c $F28B
-  $F28B,$04 #REGb=*#R$D212.
-  $F28F,$05 Return if *#R$D3F5 is equal to #REGb.
-  $F294,$03 Call #R$DA28.
+c $F28B Handler: Spawn Helicopters
+@ $F28B label=Handler_SpawnHelicopters
+  $F28B,$09 Return if *#R$D3F5 is equal to *#R$D212.
+N $F294 Add a hint of randomness to whether we proceed or not. Roughly 50% chance.
+  $F294,$03 #REGa=random number #N$00-#N$FF.
   $F297,$03 Return if #REGa is higher than #N$80.
-  $F29A,$03 #REGhl=#R$D292.
-  $F29D,$03 Increment #REGhl by three.
-  $F2A0,$04 Jump to #R$F29D if *#REGhl is not zero.
+N $F29A Loop to find an empty slot.
+  $F29A,$03 #REGhl=#R$D292 (#R$D295-#N$03).
+@ $F29D label=Handler_SpawnHelicopters_FindSlot
+  $F29D,$03 Move the table pointer to the next helicopter table data.
+  $F2A0,$04 Jump to #R$F29D if this helicopter is already active.
+N $F2A4 50/50 chance of jumping to #R$F2B2.
   $F2A4,$03 Call #R$DA28.
-  $F2A7,$02,b$01 Keep only bits 0.
+  $F2A7,$02,b$01 Keep only bit 0.
+M $F2A4,$05 Get a random number of either zero or one.
   $F2A9,$02 Jump to #R$F2B2 if the result is zero.
-  $F2AB,$02 Write #N$40 to *#REGhl.
-  $F2AD,$01 Increment #REGhl by one.
-  $F2AE,$02 Write #N$FC to *#REGhl.
+N $F2AB Creates a background helicopter.
+  $F2AB,$02 Write #N$40 (background) to helicopter state.
+  $F2AD,$01 Increment the helicopter table pointer by one.
+  $F2AE,$02 Write #N$FC to helicopter X position.
   $F2B0,$02 Jump to #R$F2B7.
-  $F2B2,$02 Write #N$80 to *#REGhl.
-  $F2B4,$01 Increment #REGhl by one.
-  $F2B5,$02 Write #N$24 to *#REGhl.
-  $F2B7,$01 Increment #REGhl by one.
-  $F2B8,$02 Write #N$03 to *#REGhl.
+N $F2B2 Creates a foreground helicopter.
+@ $F2B2 label=Handler_SpawnForegroundHelicopter
+  $F2B2,$02 Write #N$80 (foreground) to helicopter state.
+  $F2B4,$01 Increment the helicopter table pointer by one.
+  $F2B5,$02 Write #N$24 to helicopter X position.
+@ $F2B7 label=Handler_Helicopter_SetYPos
+  $F2B7,$01 Increment the helicopter table pointer by one.
+  $F2B8,$02 Write #N$03 to helicopter Y position.
+N $F2BA 25% chance of jumping to #R$F2C2.
   $F2BA,$03 Call #R$DA28.
   $F2BD,$02,b$01 Keep only bits 0-1.
-  $F2BF,$02 Jump to #R$F2C2 if the result is zero.
-  $F2C1,$01 Write #REGa to *#REGhl.
-  $F2C2,$03 #REGa=*#R$D3F5.
-  $F2C5,$01 Increment #REGa by one.
-  $F2C6,$03 Write #REGa to *#R$D3F5.
+M $F2BA,$05 Get a random number between 0-3.
+  $F2BF,$02 Jump to #R$F2C2 if the random number is 0.
+  $F2C1,$01 Write the random number to helicopter Y position.
+N $F2C2 Keep track of the number of active helicopters.
+@ $F2C2 label=Helicopter_Update_Count
+  $F2C2,$07 Increment *#R$D3F5 by one.
   $F2C9,$01 Return.
 
 c $F2CA Handler: Energy
@@ -3087,6 +3396,7 @@ c $F788
 
 c $F795 Handler: Collision Monsters?
 @ $F795 label=Handler_Monsters
+R $F795 HL
   $F795,$02 #REGb=#N$03 (total number of monsters/ players).
 @ $F797 label=Handler_Monsters_Loop
   $F797,$01 #REGa=*#REGhl.
@@ -3112,7 +3422,9 @@ c $F795 Handler: Collision Monsters?
 N $F7D0 Take off two hit points from the monsters energy.
   $F7D0,$02 #REGa=#N$02.
   $F7D2,$03 Call #R$DD6C.
+N $F7D5 #AUDIO(punched.wav)(#INCLUDE(Punched))
   $F7D5,$05 Write #N$06 to *#R$FF8D.
+@ $F7DA label=Handler_Monsters_Next
   $F7DA,$01 Decrease #REGhl by one.
   $F7DB,$02 Decrease counter by one and loop back to #R$F797 until counter is zero.
   $F7DD,$01 Return.
@@ -3756,57 +4068,76 @@ c $FC1A
   $FC35,$03 Call #R$D7F6.
   $FC38,$01 Return.
 
-c $FC39
-  $FC39,$06 Return if *#R$D401 is equal to #N$FE.
-  $FC3F,$04 Jump to #R$FC72 if *#R$D401 is equal to #N$FF.
-  $FC43,$01 Decrease #REGa by one.
-  $FC44,$03 Write #REGa back to *#R$D401.
-  $FC47,$01 Return if #REGa is not zero.
+c $FC39 Handler: Vehicle
+@ $FC39 label=Handler_Vehicle
+R $FC39 O:B Vehicle Y sprite co-ordinates (if active)
+R $FC39 O:C Vehicle X sprite co-ordinates (if active)
+  $FC39,$06 Return if vehicle spawning is set to be off (*#R$D401 is equal to #N$FE).
+  $FC3F,$04 Jump to #R$FC72 if a vehicle is already active (*#R$D401 is equal to #N$FF).
+N $FC43 Else the counter is a counter, so count it down.
+  $FC43,$04 Decrease *#R$D401 by one.
+  $FC47,$01 Return if *#R$D401 is still in progress.
+N $FC48 Else the countdown is complete so set the counter/ state that a vehicle is spawned and spawn a random vehicle!
   $FC48,$05 Write #N$FF to *#R$D401.
+N $FC4D There are four vehicle types.
   $FC4D,$03 Call #R$DA28.
   $FC50,$02,b$01 Keep only bits 0-1.
+M $FC4D,$05 Get a random number between 0-3.
   $FC52,$03 Write #REGa to *#R$D402.
+N $FC55 Randomly bring the vehicle in from either the left or right hand side of the play area.
   $FC55,$03 Call #R$DA28.
   $FC58,$02,b$01 Keep only bit 0.
-  $FC5A,$02 Jump to #R$FC68 if the result is not zero.
+M $FC55,$05 Get a random number which is either zero or one.
+  $FC5A,$02 Jump to #R$FC68 if the random number is one.
+N $FC5C Vehicle moves from left-to-right.
   $FC5C,$05 Write #N$14 to *#R$D404.
   $FC61,$05 Write #N$FA to *#R$D403.
   $FC66,$02 Jump to #R$FC72.
-  $FC68,$05 Write #N$94 to *#R$D404.
+N $FC68 Bit 7 signifies that this vehicle moves from right-to-left.
+@ $FC68 label=Handler_SpawnVehicleRight
+  $FC68,$05 Write #N$94 (#N$14 + bit 7 set) to *#R$D404.
   $FC6D,$05 Write #N$20 to *#R$D403.
+@ $FC72 label=Handler_Vehicle_Movement
   $FC72,$03 #REGa=*#R$D404.
-  $FC75,$02 Compare #REGa with #N$80.
-  $FC77,$02 Jump to #R$FC97 if {} is higher.
-  $FC79,$01 #REGb=#REGa.
+  $FC75,$04 Jump to #R$FC97 if #REGa is higher than #N$80 (if bit 7 is set).
+  $FC79,$01 #REGb=vehicle Y position.
+N $FC7A Handles moving the vehicle from the left-to-right hand side of the play area.
   $FC7A,$03 #REGa=*#R$D403.
   $FC7D,$01 Increment #REGa by one.
+@ $FC7E label=Handler_Vehicle_SetXPos
   $FC7E,$03 Write #REGa to *#R$D403.
+N $FC81 Check if the vehicle is off-screen.
   $FC81,$04 Jump to #R$FCA7 if #REGa is equal to #N$20.
-  $FC85,$01 #REGc=#REGa.
+  $FC85,$01 #REGc=vehicle X position.
+N $FC86 Has the vehicle been destroyed?
   $FC86,$03 #REGa=*#R$D402.
-  $FC89,$03 Return if #REGa is equal to #N$03.
-  $FC8C,$01 #REGa+=#REGa.
-  $FC8D,$02 #REGa+=#N$3B.
+  $FC89,$03 Return if the vehicle has been destroyed (*#R$D402 is equal to #N$03).
+  $FC8C,$03 #REGa*=#N$02+#N$3B.
   $FC8F,$03 Call #R$D6C9.
-  $FC92,$01 Reset the bits from #REGa.
-  $FC93,$03 Write #REGa to *#R$D247.
+  $FC92,$04 Write #N$00 to *#R$D247.
   $FC96,$01 Return.
-  $FC97,$02,b$01 Keep only bits 0-6.
-  $FC99,$01 #REGb=#REGa.
+N $FC97 Handles moving the vehicle from the right-to-left hand side of the play area.
+@ $FC97 label=Handler_MoveVehicle_RightToLeft
+  $FC97,$02,b$01 Strip off the right-to-left flag.
+  $FC99,$01 #REGb=vehicle Y position.
   $FC9A,$05 Write #N$01 to *#R$D247.
   $FC9F,$03 #REGa=*#R$D403.
   $FCA2,$01 Decrease #REGa by one.
+N $FCA3 Check if the vehicle is off-screen.
   $FCA3,$04 Jump to #R$FC7E if #REGa is not equal to #N$FA.
+N $FCA7 Initialise a new countdown.
+@ $FCA7 label=Handler_Vehicle_SetCountdown
   $FCA7,$03 Call #R$DA28.
   $FCAA,$02,b$01 Keep only bits 0-3.
   $FCAC,$02 #REGa+=#N$08.
-  $FCAE,$03 Write #REGa to *#R$D401.
-  $FCB1,$01 Reset the bits from #REGa.
-  $FCB2,$03 Write #REGa to *#R$D247.
+M $FCA7,$07 Get a random number between 8-23.
+  $FCAE,$03 Write the random number to *#R$D401.
+  $FCB1,$04 Write #N$00 to *#R$D247.
   $FCB5,$01 Return.
 
-c $FCB6
-  $FCB6,$06 Return if *#R$D405 is equal to #N$FE.
+c $FCB6 Handler: Train
+@ $FCB6 label=Handler_Train
+  $FCB6,$06 Return if train spawning is set to be off (*#R$D405 is equal to #N$FE).
   $FCBC,$04 Jump to #R$FCE7 if it is equal to #N$FF.
   $FCC0,$01 Decrease #REGa by one.
   $FCC1,$03 Write #REGa to *#R$D405.
