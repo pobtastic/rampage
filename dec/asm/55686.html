@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at 55686</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="55286.html">55286</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#55686">Map</a></td>
+<td class="next">
+Next: <a href="55721.html">55721</a>
+</td>
+</tr>
+</table>
+<div class="description">55686: Routine at D986</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="54985.html">54985</a> and <a href="55286.html">55286</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="55686"></span>55686</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch to the shadow registers.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55687"></span>55687</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55688"></span>55688</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55689"></span>55689</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="3">RRCA.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55690"></span>55690</td>
+<td class="instruction">RRCA</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55691"></span>55691</td>
+<td class="instruction">RRCA</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55692"></span>55692</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55693"></span>55693</td>
+<td class="instruction">AND %00000111</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-2.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55695"></span>55695</td>
+<td class="instruction">ADD A,104</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=104.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55697"></span>55697</td>
+<td class="instruction">LD H,A</td>
+<td class="comment-1" rowspan="1"><span class="register">H</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55698"></span>55698</td>
+<td class="instruction">LD A,L</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">L</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55699"></span>55699</td>
+<td class="instruction">AND %11111000</td>
+<td class="comment-1" rowspan="1">Keep only bits 3-7.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55701"></span>55701</td>
+<td class="instruction">ADD A,C</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">C</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55702"></span>55702</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55703"></span>55703</td>
+<td class="instruction">LD A,(53780)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53780.html">53780</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55706"></span>55706</td>
+<td class="instruction">CP 230</td>
+<td class="comment-1" rowspan="2">Jump to <a href="55686.html#55717">55717</a> if <span class="register">A</span> is lower than 230.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55708"></span>55708</td>
+<td class="instruction">JR C,<a href="55686.html#55717">55717</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="55710"></span>55710</td>
+<td class="instruction">CP 239</td>
+<td class="comment-1" rowspan="2">Jump to <a href="55686.html#55717">55717</a> if <span class="register">A</span> is higher than 239.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55712"></span>55712</td>
+<td class="instruction">JR NC,<a href="55686.html#55717">55717</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="55714"></span>55714</td>
+<td class="instruction">LD A,(54280)</td>
+<td class="comment-1" rowspan="2">Write *<a href="54280.html">54280</a> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="55717"></span>55717</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55718"></span>55718</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55719"></span>55719</td>
+<td class="instruction">EXX</td>
+<td class="comment-1" rowspan="1">Switch back to the normal registers.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="55720"></span>55720</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="55286.html">55286</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#55686">Map</a></td>
+<td class="next">
+Next: <a href="55721.html">55721</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/55686.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

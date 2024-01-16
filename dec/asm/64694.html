@@ -232,7 +232,7 @@ Bit 7 signifies that this train moves from right-to-left.
 <td class="asm-label"></td>
 <td class="address-1"><span id="64748"></span>64748</td>
 <td class="instruction">RLCA</td>
-<td class="comment-1" rowspan="2">RLCA.</td>
+<td class="comment-1" rowspan="2">Rotate <span class="register">A</span> left twice, moving bit 6 to bit 0.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -249,7 +249,7 @@ Bit 7 signifies that this train moves from right-to-left.
 <td class="asm-label"></td>
 <td class="address-1"><span id="64751"></span>64751</td>
 <td class="instruction">LD A,(54279)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="64694.html#64801">Handler_Train_2</a> if *<a href="54277.html#54279">TrainYPosition</a> is higher than 128.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="64694.html#64801">Handler_MoveTrain_RightToLeft</a> if *<a href="54277.html#54279">TrainYPosition</a> is higher than 128.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -259,7 +259,7 @@ Bit 7 signifies that this train moves from right-to-left.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64756"></span>64756</td>
-<td class="instruction">JR NC,<a href="64694.html#64801">Handler_Train_2</a></td>
+<td class="instruction">JR NC,<a href="64694.html#64801">Handler_MoveTrain_RightToLeft</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -271,7 +271,7 @@ Bit 7 signifies that this train moves from right-to-left.
 <td class="asm-label"></td>
 <td class="address-1"><span id="64760"></span>64760</td>
 <td class="instruction">LD B,A</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=train X position.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -292,7 +292,7 @@ Bit 7 signifies that this train moves from right-to-left.
 <td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">C</span>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Train_0</td>
+<td class="asm-label">Handler_Train_SetXPos</td>
 <td class="address-2"><span id="64766"></span>64766</td>
 <td class="instruction">LD (54278),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54277.html#54278">TrainXPosition</a>.</td>
@@ -301,7 +301,7 @@ Bit 7 signifies that this train moves from right-to-left.
 <td class="asm-label"></td>
 <td class="address-1"><span id="64769"></span>64769</td>
 <td class="instruction">LD C,A</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=train X position.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -334,7 +334,7 @@ Bit 7 signifies that this train moves from right-to-left.
 <td class="comment-1" rowspan="1"><span class="register">A</span>=3.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Train_1</td>
+<td class="asm-label">Handler_Train_0</td>
 <td class="address-2"><span id="64779"></span>64779</td>
 <td class="instruction">PUSH AF</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">AF</span> on the stack.</td>
@@ -388,8 +388,8 @@ Bit 7 signifies that this train moves from right-to-left.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64791"></span>64791</td>
-<td class="instruction">JR NZ,<a href="64694.html#64779">Handler_Train_1</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="64694.html#64779">Handler_Train_1</a> until <span class="register">A</span> is zero.</td>
+<td class="instruction">JR NZ,<a href="64694.html#64779">Handler_Train_0</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="64694.html#64779">Handler_Train_0</a> until <span class="register">A</span> is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -421,16 +421,26 @@ Bit 7 signifies that this train moves from right-to-left.
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Train_2</td>
+<td class="routine-comment" colspan="5">
+<span id="64801"></span>
+<div class="comments">
+<div class="paragraph">
+Handles moving the train from the right-to-left hand side of the play area.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_MoveTrain_RightToLeft</td>
 <td class="address-2"><span id="64801"></span>64801</td>
 <td class="instruction">AND %00111111</td>
-<td class="comment-1" rowspan="1">Keep only bits 0-5.</td>
+<td class="comment-1" rowspan="1">Strip off the right-to-left flag.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64803"></span>64803</td>
 <td class="instruction">LD B,A</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=train Y position.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -453,8 +463,8 @@ Bit 7 signifies that this train moves from right-to-left.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="64809"></span>64809</td>
-<td class="instruction">JR <a href="64694.html#64766">Handler_Train_0</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="64694.html#64766">Handler_Train_0</a>.</td>
+<td class="instruction">JR <a href="64694.html#64766">Handler_Train_SetXPos</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="64694.html#64766">Handler_Train_SetXPos</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">

@@ -39,7 +39,7 @@ Next: <a href="55286.html">55286</a>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="55286.html">55286</a>, <a href="56293.html">Handler_Helicopters</a>, <a href="57949.html">57949</a>, <a href="58742.html">Handler_Bullets</a>, <a href="58925.html">58925</a>, <a href="61710.html">Something_Helicopter</a>, <a href="63135.html">Handler_Projectiles</a>, <a href="63257.html">Audio_Projectiles_Hit</a>, <a href="63381.html">Handler_Monsters</a>, <a href="64538.html">64538</a>, <a href="64569.html">Handler_Vehicle</a> and <a href="64694.html">Handler_Train</a>.
+Used by the routines at <a href="55739.html">55739</a>, <a href="55747.html">55747</a>, <a href="56293.html">Handler_Helicopters</a>, <a href="57949.html">57949</a>, <a href="58742.html">Handler_Bullets</a>, <a href="58925.html">58925</a>, <a href="61710.html">Something_Helicopter</a>, <a href="63135.html">Handler_Projectiles</a>, <a href="63257.html">Audio_Projectiles_Hit</a>, <a href="63381.html">Handler_Monsters</a>, <a href="64538.html">64538</a>, <a href="64569.html">Handler_Vehicle</a> and <a href="64694.html">Handler_Train</a>.
 </div>
 </div>
 </td>
@@ -56,8 +56,8 @@ Used by the routines at <a href="55286.html">55286</a>, <a href="56293.html">Han
 </tr>
 <tr>
 <td class="address-1"><span id="54989"></span>54989</td>
-<td class="instruction">CALL <a href="55286.html#55721">55721</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55286.html#55721">55721</a>.</td>
+<td class="instruction">CALL <a href="55721.html">55721</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55721.html">55721</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="54992"></span>54992</td>
@@ -127,22 +127,20 @@ Used by the routines at <a href="55286.html">55286</a>, <a href="56293.html">Han
 <tr>
 <td class="address-2"><span id="55009"></span>55009</td>
 <td class="instruction">EXX</td>
-<td class="comment-1" rowspan="1">Switch to the shadow registers.</td>
+<td class="comment-1" rowspan="1">Switch back to the normal registers.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="55010"></span>55010</td>
 <td class="instruction">LD A,C</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">C</span>.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="54985.html#55036">55036</a> if <span class="register">C</span> is not equal to <span class="register">L</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="55011"></span>55011</td>
 <td class="instruction">CP L</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with <span class="register">L</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="55012"></span>55012</td>
 <td class="instruction">JP NZ,<a href="54985.html#55036">55036</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="54985.html#55036">55036</a> if {} is not zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="55015"></span>55015</td>
@@ -232,7 +230,7 @@ Used by the routines at <a href="55286.html">55286</a>, <a href="56293.html">Han
 <tr>
 <td class="address-1"><span id="55037"></span>55037</td>
 <td class="instruction">EXX</td>
-<td class="comment-1" rowspan="1">Switch to the shadow registers.</td>
+<td class="comment-1" rowspan="1">Switch back to the normal registers.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="55038"></span>55038</td>
@@ -280,7 +278,7 @@ Used by the routines at <a href="55286.html">55286</a>, <a href="56293.html">Han
 <tr>
 <td class="address-1"><span id="55053"></span>55053</td>
 <td class="instruction">EXX</td>
-<td class="comment-1" rowspan="1">Switch to the shadow registers.</td>
+<td class="comment-1" rowspan="1">Switch back to the normal registers.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="55054"></span>55054</td>
@@ -665,8 +663,8 @@ Used by the routines at <a href="55286.html">55286</a>, <a href="56293.html">Han
 </tr>
 <tr>
 <td class="address-1"><span id="55137"></span>55137</td>
-<td class="instruction">CALL <a href="55286.html#55686">55686</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55286.html#55686">55686</a>.</td>
+<td class="instruction">CALL <a href="55686.html">55686</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55686.html">55686</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="55140"></span>55140</td>
@@ -701,7 +699,7 @@ Used by the routines at <a href="55286.html">55286</a>, <a href="56293.html">Han
 <tr>
 <td class="address-1"><span id="55146"></span>55146</td>
 <td class="instruction">EXX</td>
-<td class="comment-1" rowspan="1">Switch to the shadow registers.</td>
+<td class="comment-1" rowspan="1">Switch back to the normal registers.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="55147"></span>55147</td>
@@ -736,7 +734,7 @@ Used by the routines at <a href="55286.html">55286</a>, <a href="56293.html">Han
 <tr>
 <td class="address-1"><span id="55155"></span>55155</td>
 <td class="instruction">EXX</td>
-<td class="comment-1" rowspan="1">Switch to the shadow registers.</td>
+<td class="comment-1" rowspan="1">Switch back to the normal registers.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="55156"></span>55156</td>
@@ -928,8 +926,8 @@ Used by the routines at <a href="55286.html">55286</a>, <a href="56293.html">Han
 </tr>
 <tr>
 <td class="address-1"><span id="55199"></span>55199</td>
-<td class="instruction">CALL <a href="55286.html#55686">55686</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55286.html#55686">55686</a>.</td>
+<td class="instruction">CALL <a href="55686.html">55686</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55686.html">55686</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="55202"></span>55202</td>
@@ -1257,8 +1255,8 @@ Used by the routines at <a href="55286.html">55286</a>, <a href="56293.html">Han
 </tr>
 <tr>
 <td class="address-1"><span id="55280"></span>55280</td>
-<td class="instruction">CALL <a href="55286.html#55686">55686</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55286.html#55686">55686</a>.</td>
+<td class="instruction">CALL <a href="55686.html">55686</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55686.html">55686</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="55283"></span>55283</td>

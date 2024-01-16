@@ -33,7 +33,7 @@ Next: <a href="DDC0.html">DDC0</a>
 </td>
 </tr>
 </table>
-<div class="description">DD97: Routine at DD97</div>
+<div class="description">DD97: Add Points To Score</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,127 +42,231 @@ Next: <a href="DDC0.html">DDC0</a>
 Used by the routines at <a href="F450.html">F450</a> and <a href="F795.html">Handler_Monsters</a>.
 </div>
 </div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Monster ID</td>
+</tr>
+<tr>
+<td class="register">D</td>
+<td class="register-desc">Points to add to score digit</td>
+</tr>
+<tr>
+<td class="register">E</td>
+<td class="register-desc">Digit to update</td>
+</tr>
+</table>
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="dd97"></span>
+<div class="comments">
+<div class="paragraph">
+Derive pointer to monster score messaging from the given ID.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">AddPoints</td>
 <td class="address-2"><span id="dd97"></span>DD97</td>
 <td class="instruction">CP $01</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="DD97.html#dda0">AddPoints_SetLizzy</a> if <span class="register">A</span> is not targeting George (01).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd99"></span>DD99</td>
-<td class="instruction">JR NZ,<a href="DD97.html#dda0">$DDA0</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="DD97.html#dda0">AddPoints_SetLizzy</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="dd9b"></span>
+<div class="comments">
+<div class="paragraph">
+George:
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd9b"></span>DD9B</td>
 <td class="instruction">LD HL,$D066</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D05F.html#d066">Messaging_GeorgeScore</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd9e"></span>DD9E</td>
-<td class="instruction">JR <a href="DD97.html#ddaa">$DDAA</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR <a href="DD97.html#ddaa">AddPointsToScore</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="DD97.html#ddaa">AddPointsToScore</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="dda0"></span>
+<div class="comments">
+<div class="paragraph">
+Lizzy:
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">AddPoints_SetLizzy</td>
 <td class="address-2"><span id="dda0"></span>DDA0</td>
 <td class="instruction">LD HL,$D082</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D07B.html#d082">Messaging_RalphScore</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dda3"></span>DDA3</td>
 <td class="instruction">CP $02</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Jump to <a href="DD97.html#ddaa">AddPointsToScore</a> if <span class="register">A</span> is not targeting Lizzy (02).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dda5"></span>DDA5</td>
-<td class="instruction">JR NZ,<a href="DD97.html#ddaa">$DDAA</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR NZ,<a href="DD97.html#ddaa">AddPointsToScore</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="dda7"></span>
+<div class="comments">
+<div class="paragraph">
+Ralph:
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dda7"></span>DDA7</td>
 <td class="instruction">LD HL,$D074</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D06D.html#d074">Messaging_LizzyScore</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="ddaa"></span>
+<div class="comments">
+<div class="paragraph">
+Apply points to score.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">AddPointsToScore</td>
 <td class="address-2"><span id="ddaa"></span>DDAA</td>
 <td class="instruction">LD A,E</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="4">Work out which digit to update.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ddab"></span>DDAB</td>
-<td class="instruction">XOR $07</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">XOR %00000111</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ddad"></span>DDAD</td>
 <td class="instruction">DEC A</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ddae"></span>DDAE</td>
 <td class="instruction">LD E,A</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ddaf"></span>DDAF</td>
 <td class="instruction">LD A,D</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=points to add.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ddb0"></span>DDB0</td>
 <td class="instruction">LD D,$00</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Move <span class="register">HL</span> to the appropriate score digit.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ddb2"></span>DDB2</td>
 <td class="instruction">ADD HL,DE</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="asm-label">AddPointsToScore_Loop</td>
 <td class="address-2"><span id="ddb3"></span>DDB3</td>
 <td class="instruction">ADD A,(HL)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>+point value held in <span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ddb4"></span>DDB4</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ddb5"></span>DDB5</td>
 <td class="instruction">CP $3A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Return if <span class="register">A</span> is lower than 3A (ASCII 39 is "&#57;").</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ddb7"></span>DDB7</td>
 <td class="instruction">RET C</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="ddb8"></span>
+<div class="comments">
+<div class="paragraph">
+This digit is higher than "&#57;" so subtract 10 to make it a valid number again.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ddb8"></span>DDB8</td>
 <td class="instruction">SUB $0A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>-=0A.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ddba"></span>DDBA</td>
 <td class="instruction">LD (HL),A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Update the current score digit.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="ddbb"></span>
+<div class="comments">
+<div class="paragraph">
+We work backwards here, as the smaller units are on the right-hand side. So now we want to add "1" to the next digit. At it's simplest; 19+01 would first set "10" then move the pointer to the "tens" and add one to it to equal 20.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ddbb"></span>DDBB</td>
 <td class="instruction">DEC HL</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Decrease the score pointer by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ddbc"></span>DDBC</td>
 <td class="instruction">LD A,$01</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=01.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ddbe"></span>DDBE</td>
-<td class="instruction">JR <a href="DD97.html#ddb3">$DDB3</a></td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">JR <a href="DD97.html#ddb3">AddPointsToScore_Loop</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="DD97.html#ddb3">AddPointsToScore_Loop</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">

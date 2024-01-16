@@ -47,32 +47,31 @@ Used by the routine at <a href="F450.html">F450</a>.
 <tr>
 <td class="address-2"><span id="dd89"></span>DD89</td>
 <td class="instruction">ADD A,(IY+$0C)</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=*<span class="register">IY</span>+0C.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="dd8c"></span>DD8C</td>
 <td class="instruction">LD (IY+$0C),A</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">IY</span>+0C.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="dd8f"></span>DD8F</td>
 <td class="instruction">CP $41</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="2">Return if <span class="register">A</span> is lower than 41.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="dd91"></span>DD91</td>
 <td class="instruction">RET C</td>
-<td class="comment-0" rowspan="1"></td>
 </tr>
 <tr>
 <td class="address-1"><span id="dd92"></span>DD92</td>
 <td class="instruction">LD (IY+$0C),$40</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Write 40 to *<span class="register">IY</span>+0C.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="dd96"></span>DD96</td>
 <td class="instruction">RET</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Return.</td>
 </tr>
 </table>
 <table class="asm-navigation">
