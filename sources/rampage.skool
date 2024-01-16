@@ -2017,179 +2017,184 @@ b$9E00 DEFB $60,$90,$28,$08,$10,$28,$36,$38 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
  $C188 DEFB $00,$0C,$1C,$38,$30,$00,$00,$38
  $C190 DEFB $FF,$F3,$ED,$DD,$BB,$B7,$CF,$FF
  $C198 DEFB $38,$00,$00,$00,$00,$00,$00,$00
- $C1A0 DEFB $00,$05,$05,$80,$8D,$05,$05,$29
- $C1A8 DEFB $8E,$04,$03,$9A,$8E,$04,$03,$FE
- $C1B0 DEFB $8E,$05,$05,$4A,$8F,$05,$05,$F3
- $C1B8 DEFB $8F,$04,$06,$6C,$90,$04,$06,$24
- $C1C0 DEFB $91,$04,$06,$B4,$91,$04,$06,$5C
- $C1C8 DEFB $92,$05,$05,$EC,$92,$05,$05,$A5
- $C1D0 DEFB $93,$04,$03,$1E,$94,$04,$03,$5A
- $C1D8 DEFB $94,$04,$03,$8E,$94,$04,$03,$CA
- $C1E0 DEFB $94,$02,$01,$FE,$94,$02,$01,$10
- $C1E8 DEFB $95,$02,$01,$12,$95,$02,$01,$24
- $C1F0 DEFB $95,$02,$01,$26,$95,$02,$01,$38
- $C1F8 DEFB $95,$01,$02,$3A,$95,$01,$02,$4C
- $C200 DEFB $95,$04,$02,$4E,$95,$04,$02,$96
- $C208 DEFB $95,$01,$02,$CE,$95,$01,$02,$E0
- $C210 DEFB $95,$05,$03,$E2,$95,$05,$03,$51
- $C218 DEFB $96,$04,$03,$B0,$96,$04,$03,$1C
- $C220 DEFB $97,$04,$03,$60,$97,$04,$03,$C4
- $C228 DEFB $97,$04,$03,$18,$98,$04,$03,$7C
- $C230 DEFB $98,$04,$04,$C8,$98,$04,$04,$38
- $C238 DEFB $99,$00,$00,$98,$99,$00,$00,$98
- $C240 DEFB $99,$05,$05,$98,$99,$05,$05,$49
- $C248 DEFB $9A,$02,$01,$DA,$9A,$02,$01,$EC
- $C250 DEFB $9A,$02,$01,$EE,$9A,$02,$01,$00
- $C258 DEFB $9B,$02,$01,$02,$9B,$02,$01,$14
- $C260 DEFB $9B,$02,$01,$16,$9B,$02,$01,$28
- $C268 DEFB $9B,$00,$00,$2A,$9B,$00,$00,$2A
- $C270 DEFB $9B,$02,$03,$2A,$9B,$02,$03,$40
- $C278 DEFB $9B,$02,$03,$5E,$9B,$02,$03,$94
- $C280 DEFB $9B,$00,$00,$CA,$9B,$00,$00,$CA
- $C288 DEFB $9B,$03,$03,$CA,$9B,$03,$03,$1B
- $C290 DEFB $9C,$03,$03,$6C,$9C,$03,$03,$BD
- $C298 DEFB $9C,$03,$03,$0E,$9D,$03,$03,$5F
- $C2A0 DEFB $9D,$05,$05,$B0,$9D,$05,$05,$51
- $C2A8 DEFB $9E,$04,$03,$BA,$9E,$04,$03,$1E
- $C2B0 DEFB $9F,$05,$05,$6A,$9F,$05,$05,$13
- $C2B8 DEFB $A0,$04,$06,$8C,$A0,$04,$06,$44
- $C2C0 DEFB $A1,$04,$06,$DC,$A1,$04,$06,$7C
- $C2C8 DEFB $A2,$05,$05,$04,$A3,$05,$05,$AD
- $C2D0 DEFB $A3,$04,$03,$36,$A4,$04,$03,$6A
- $C2D8 DEFB $A4,$04,$03,$9E,$A4,$04,$03,$DA
- $C2E0 DEFB $A4,$02,$01,$16,$A5,$02,$01,$28
- $C2E8 DEFB $A5,$02,$01,$2A,$A5,$02,$01,$3C
- $C2F0 DEFB $A5,$02,$01,$3E,$A5,$02,$01,$50
- $C2F8 DEFB $A5,$01,$02,$52,$A5,$01,$02,$64
- $C300 DEFB $A5,$04,$02,$76,$A5,$04,$02,$B6
- $C308 DEFB $A5,$01,$02,$E6,$A5,$01,$02,$F8
- $C310 DEFB $A5,$05,$03,$0A,$A6,$05,$03,$79
- $C318 DEFB $A6,$04,$03,$D0,$A6,$04,$03,$34
- $C320 DEFB $A7,$04,$03,$80,$A7,$04,$03,$E4
- $C328 DEFB $A7,$04,$03,$38,$A8,$04,$03,$9C
- $C330 DEFB $A8,$04,$04,$F0,$A8,$04,$04,$60
- $C338 DEFB $A9,$00,$00,$C0,$A9,$00,$00,$C0
- $C340 DEFB $A9,$05,$05,$C0,$A9,$05,$05,$61
- $C348 DEFB $AA,$02,$01,$E2,$AA,$02,$01,$F4
- $C350 DEFB $AA,$02,$01,$F6,$AA,$02,$01,$08
- $C358 DEFB $AB,$02,$01,$0A,$AB,$02,$01,$1C
- $C360 DEFB $AB,$02,$01,$1E,$AB,$02,$01,$30
- $C368 DEFB $AB,$01,$01,$32,$AB,$01,$01,$3B
- $C370 DEFB $AB,$02,$02,$3C,$AB,$02,$02,$60
- $C378 DEFB $AB,$03,$03,$64,$AB,$03,$03,$B5
- $C380 DEFB $AB,$02,$04,$BE,$AB,$02,$04,$06
- $C388 DEFB $AC,$02,$04,$2E,$AC,$02,$04,$76
- $C390 DEFB $AC,$00,$00,$9E,$AC,$00,$00,$9E
- $C398 DEFB $AC,$04,$02,$9E,$AC,$04,$02,$DE
- $C3A0 DEFB $AC,$05,$05,$1E,$AD,$05,$05,$BF
- $C3A8 DEFB $AD,$04,$03,$30,$AE,$04,$03,$94
- $C3B0 DEFB $AE,$05,$05,$E0,$AE,$05,$05,$89
- $C3B8 DEFB $AF,$04,$06,$12,$B0,$04,$06,$CA
- $C3C0 DEFB $B0,$04,$06,$62,$B1,$04,$06,$12
- $C3C8 DEFB $B2,$05,$05,$AA,$B2,$05,$05,$5B
- $C3D0 DEFB $B3,$04,$03,$DC,$B3,$04,$03,$10
- $C3D8 DEFB $B4,$04,$03,$44,$B4,$04,$03,$70
- $C3E0 DEFB $B4,$02,$01,$9C,$B4,$02,$01,$AE
- $C3E8 DEFB $B4,$02,$01,$B0,$B4,$02,$01,$C2
- $C3F0 DEFB $B4,$02,$01,$C4,$B4,$02,$01,$D6
- $C3F8 DEFB $B4,$01,$02,$D8,$B4,$01,$02,$EA
- $C400 DEFB $B4,$04,$02,$FC,$B4,$04,$02,$44
- $C408 DEFB $B5,$01,$02,$7C,$B5,$01,$02,$8E
- $C410 DEFB $B5,$05,$03,$A0,$B5,$05,$03,$17
- $C418 DEFB $B6,$04,$03,$76,$B6,$04,$03,$DA
- $C420 DEFB $B6,$04,$03,$26,$B7,$04,$03,$8A
- $C428 DEFB $B7,$04,$03,$D6,$B7,$04,$03,$3A
- $C430 DEFB $B8,$04,$04,$8E,$B8,$04,$04,$FE
- $C438 DEFB $B8,$00,$00,$5E,$B9,$00,$00,$5E
- $C440 DEFB $B9,$05,$05,$5E,$B9,$05,$05,$07
- $C448 DEFB $BA,$02,$01,$90,$BA,$02,$01,$A2
- $C450 DEFB $BA,$02,$01,$A4,$BA,$02,$01,$B6
- $C458 DEFB $BA,$02,$01,$B8,$BA,$02,$01,$CA
- $C460 DEFB $BA,$02,$01,$CC,$BA,$02,$01,$DE
- $C468 DEFB $BA,$00,$00,$E0,$BA,$00,$00,$E0
- $C470 DEFB $BA,$00,$00,$E0,$BA,$00,$00,$E0
- $C478 DEFB $BA,$00,$00,$E0,$BA,$00,$00,$E0
- $C480 DEFB $BA,$00,$00,$E0,$BA,$00,$00,$E0
- $C488 DEFB $BA,$00,$00,$E0,$BA,$00,$00,$E0
- $C490 DEFB $BA,$00,$00,$E0,$BA,$00,$00,$E0
- $C498 DEFB $BA,$00,$00,$E0,$BA,$02,$02,$E0
- $C4A0 DEFB $BA,$02,$02,$E4,$BA,$02,$02,$F8
- $C4A8 DEFB $BA,$02,$02,$1C,$BB,$02,$02,$40
- $C4B0 DEFB $BB,$02,$02,$64,$BB,$02,$02,$88
- $C4B8 DEFB $BB,$02,$02,$AC,$BB,$02,$02,$D0
- $C4C0 DEFB $BB,$02,$02,$F4,$BB,$02,$02,$18
- $C4C8 DEFB $BC,$02,$02,$3C,$BC,$02,$02,$60
- $C4D0 DEFB $BC,$02,$02,$84,$BC,$02,$02,$A8
- $C4D8 DEFB $BC,$02,$02,$CC,$BC,$02,$02,$F0
- $C4E0 DEFB $BC,$02,$02,$14,$BD,$02,$02,$38
- $C4E8 DEFB $BD,$02,$02,$5C,$BD,$00,$00,$80
- $C4F0 DEFB $BD,$00,$00,$80,$BD,$00,$00,$80
- $C4F8 DEFB $BD,$00,$00,$80,$BD,$00,$00,$80
- $C500 DEFB $BD,$00,$00,$80,$BD,$00,$00,$80
- $C508 DEFB $BD,$00,$00,$80,$BD,$00,$00,$80
- $C510 DEFB $BD,$00,$00,$80,$BD,$02,$01,$80
- $C518 DEFB $BD,$02,$01,$92,$BD,$02,$01,$A4
- $C520 DEFB $BD,$02,$01,$B6,$BD,$02,$01,$C8
- $C528 DEFB $BD,$02,$01,$DA,$BD,$02,$01,$EC
- $C530 DEFB $BD,$02,$01,$FE,$BD,$05,$02,$10
- $C538 DEFB $BE,$05,$02,$5A,$BE,$05,$02,$A4
- $C540 DEFB $BE,$05,$02,$FE,$BE,$03,$03,$58
- $C548 DEFB $BF,$03,$03,$A9,$BF,$03,$03,$FA
- $C550 DEFB $BF,$03,$03,$4B,$C0,$04,$03,$9C
- $C558 DEFB $C0,$04,$03,$08,$C1,$00,$00,$74
- $C560 DEFB $C1,$00,$00,$74,$C1,$00,$00,$74
- $C568 DEFB $C1,$00,$00,$74,$C1,$01,$01,$74
- $C570 DEFB $C1,$01,$01,$7D,$C1,$01,$01,$86
- $C578 DEFB $C1,$01,$01,$8F,$C1,$00,$00,$98
- $C580 DEFB $C1,$00,$00,$98,$C1,$01,$01,$98
- $C588 DEFB $C1,$00,$00,$00,$00,$00,$00,$00
- $C590 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $C598 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $C5A0 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $C5A8 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $C5B0 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $C5B8 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $C5C0 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $C5C8 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $C5D0 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $C5D8 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $C5E0 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $C5E8 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $C5F0 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $C5F8 DEFB $00,$00,$00,$00,$00,$00,$00,$00
- $C600 DEFB $00,$80,$40,$C0,$20,$A0,$60,$E0
- $C608 DEFB $10,$90,$50,$D0,$30,$B0,$70,$F0
- $C610 DEFB $08,$88,$48,$C8,$28,$A8,$68,$E8
- $C618 DEFB $18,$98,$58,$D8,$38,$B8,$78,$F8
- $C620 DEFB $04,$84,$44,$C4,$24,$A4,$64,$E4
- $C628 DEFB $14,$94,$54,$D4,$34,$B4,$74,$F4
- $C630 DEFB $0C,$8C,$4C,$CC,$2C,$AC,$6C,$EC
- $C638 DEFB $1C,$9C,$5C,$DC,$3C,$BC,$7C,$FC
- $C640 DEFB $02,$82,$42,$C2,$22,$A2,$62,$E2
- $C648 DEFB $12,$92,$52,$D2,$32,$B2,$72,$F2
- $C650 DEFB $0A,$8A,$4A,$CA,$2A,$AA,$6A,$EA
- $C658 DEFB $1A,$9A,$5A,$DA,$3A,$BA,$7A,$FA
- $C660 DEFB $06,$86,$46,$C6,$26,$A6,$66,$E6
- $C668 DEFB $16,$96,$56,$D6,$36,$B6,$76,$F6
- $C670 DEFB $0E,$8E,$4E,$CE,$2E,$AE,$6E,$EE
- $C678 DEFB $1E,$9E,$5E,$DE,$3E,$BE,$7E,$FE
- $C680 DEFB $01,$81,$41,$C1,$21,$A1,$61,$E1
- $C688 DEFB $11,$91,$51,$D1,$31,$B1,$71,$F1
- $C690 DEFB $09,$89,$49,$C9,$29,$A9,$69,$E9
- $C698 DEFB $19,$99,$59,$D9,$39,$B9,$79,$F9
- $C6A0 DEFB $05,$85,$45,$C5,$25,$A5,$65,$E5
- $C6A8 DEFB $15,$95,$55,$D5,$35,$B5,$75,$F5
- $C6B0 DEFB $0D,$8D,$4D,$CD,$2D,$AD,$6D,$ED
- $C6B8 DEFB $1D,$9D,$5D,$DD,$3D,$BD,$7D,$FD
- $C6C0 DEFB $03,$83,$43,$C3,$23,$A3,$63,$E3
- $C6C8 DEFB $13,$93,$53,$D3,$33,$B3,$73,$F3
- $C6D0 DEFB $0B,$8B,$4B,$CB,$2B,$AB,$6B,$EB
- $C6D8 DEFB $1B,$9B,$5B,$DB,$3B,$BB,$7B,$FB
- $C6E0 DEFB $07,$87,$47,$C7,$27,$A7,$67,$E7
- $C6E8 DEFB $17,$97,$57,$D7,$37,$B7,$77,$F7
- $C6F0 DEFB $0F,$8F,$4F,$CF,$2F,$AF,$6F,$EF
- $C6F8 DEFB $1F,$9F,$5F,$DF,$3F,$BF,$7F,$FF
- $C700 DEFB $02,$06,$02,$06,$08,$00,$08,$00
+ $C1A0 DEFB $00
+
+; Data block at C1A1
+b$C1A1 DEFB $05,$05,$80,$8D,$05,$05,$29,$8E
+ $C1A9 DEFB $04,$03,$9A,$8E,$04,$03,$FE,$8E
+ $C1B1 DEFB $05,$05,$4A,$8F,$05,$05,$F3,$8F
+ $C1B9 DEFB $04,$06,$6C,$90,$04,$06,$24,$91
+ $C1C1 DEFB $04,$06,$B4,$91,$04,$06,$5C,$92
+ $C1C9 DEFB $05,$05,$EC,$92,$05,$05,$A5,$93
+ $C1D1 DEFB $04,$03,$1E,$94,$04,$03,$5A,$94
+ $C1D9 DEFB $04,$03,$8E,$94,$04,$03,$CA,$94
+ $C1E1 DEFB $02,$01,$FE,$94,$02,$01,$10,$95
+ $C1E9 DEFB $02,$01,$12,$95,$02,$01,$24,$95
+ $C1F1 DEFB $02,$01,$26,$95,$02,$01,$38,$95
+ $C1F9 DEFB $01,$02,$3A,$95,$01,$02,$4C,$95
+ $C201 DEFB $04,$02,$4E,$95,$04,$02,$96,$95
+ $C209 DEFB $01,$02,$CE,$95,$01,$02,$E0,$95
+ $C211 DEFB $05,$03,$E2,$95,$05,$03,$51,$96
+ $C219 DEFB $04,$03,$B0,$96,$04,$03,$1C,$97
+ $C221 DEFB $04,$03,$60,$97,$04,$03,$C4,$97
+ $C229 DEFB $04,$03,$18,$98,$04,$03,$7C,$98
+ $C231 DEFB $04,$04,$C8,$98,$04,$04,$38,$99
+ $C239 DEFB $00,$00,$98,$99,$00,$00,$98,$99
+ $C241 DEFB $05,$05,$98,$99,$05,$05,$49,$9A
+ $C249 DEFB $02,$01,$DA,$9A,$02,$01,$EC,$9A
+ $C251 DEFB $02,$01,$EE,$9A,$02,$01,$00,$9B
+ $C259 DEFB $02,$01,$02,$9B,$02,$01,$14,$9B
+ $C261 DEFB $02,$01,$16,$9B,$02,$01,$28,$9B
+ $C269 DEFB $00,$00,$2A,$9B,$00,$00,$2A,$9B
+ $C271 DEFB $02,$03,$2A,$9B,$02,$03,$40,$9B
+ $C279 DEFB $02,$03,$5E,$9B,$02,$03,$94,$9B
+ $C281 DEFB $00,$00,$CA,$9B,$00,$00,$CA,$9B
+ $C289 DEFB $03,$03,$CA,$9B,$03,$03,$1B,$9C
+ $C291 DEFB $03,$03,$6C,$9C,$03,$03,$BD,$9C
+ $C299 DEFB $03,$03,$0E,$9D,$03,$03,$5F,$9D
+ $C2A1 DEFB $05,$05,$B0,$9D,$05,$05,$51,$9E
+ $C2A9 DEFB $04,$03,$BA,$9E,$04,$03,$1E,$9F
+ $C2B1 DEFB $05,$05,$6A,$9F,$05,$05,$13,$A0
+ $C2B9 DEFB $04,$06,$8C,$A0,$04,$06,$44,$A1
+ $C2C1 DEFB $04,$06,$DC,$A1,$04,$06,$7C,$A2
+ $C2C9 DEFB $05,$05,$04,$A3,$05,$05,$AD,$A3
+ $C2D1 DEFB $04,$03,$36,$A4,$04,$03,$6A,$A4
+ $C2D9 DEFB $04,$03,$9E,$A4,$04,$03,$DA,$A4
+ $C2E1 DEFB $02,$01,$16,$A5,$02,$01,$28,$A5
+ $C2E9 DEFB $02,$01,$2A,$A5,$02,$01,$3C,$A5
+ $C2F1 DEFB $02,$01,$3E,$A5,$02,$01,$50,$A5
+ $C2F9 DEFB $01,$02,$52,$A5,$01,$02,$64,$A5
+ $C301 DEFB $04,$02,$76,$A5,$04,$02,$B6,$A5
+ $C309 DEFB $01,$02,$E6,$A5,$01,$02,$F8,$A5
+ $C311 DEFB $05,$03,$0A,$A6,$05,$03,$79,$A6
+ $C319 DEFB $04,$03,$D0,$A6,$04,$03,$34,$A7
+ $C321 DEFB $04,$03,$80,$A7,$04,$03,$E4,$A7
+ $C329 DEFB $04,$03,$38,$A8,$04,$03,$9C,$A8
+ $C331 DEFB $04,$04,$F0,$A8,$04,$04,$60,$A9
+ $C339 DEFB $00,$00,$C0,$A9,$00,$00,$C0,$A9
+ $C341 DEFB $05,$05,$C0,$A9,$05,$05,$61,$AA
+ $C349 DEFB $02,$01,$E2,$AA,$02,$01,$F4,$AA
+ $C351 DEFB $02,$01,$F6,$AA,$02,$01,$08,$AB
+ $C359 DEFB $02,$01,$0A,$AB,$02,$01,$1C,$AB
+ $C361 DEFB $02,$01,$1E,$AB,$02,$01,$30,$AB
+ $C369 DEFB $01,$01,$32,$AB,$01,$01,$3B,$AB
+ $C371 DEFB $02,$02,$3C,$AB,$02,$02,$60,$AB
+ $C379 DEFB $03,$03,$64,$AB,$03,$03,$B5,$AB
+ $C381 DEFB $02,$04,$BE,$AB,$02,$04,$06,$AC
+ $C389 DEFB $02,$04,$2E,$AC,$02,$04,$76,$AC
+ $C391 DEFB $00,$00,$9E,$AC,$00,$00,$9E,$AC
+ $C399 DEFB $04,$02,$9E,$AC,$04,$02,$DE,$AC
+ $C3A1 DEFB $05,$05,$1E,$AD,$05,$05,$BF,$AD
+ $C3A9 DEFB $04,$03,$30,$AE,$04,$03,$94,$AE
+ $C3B1 DEFB $05,$05,$E0,$AE,$05,$05,$89,$AF
+ $C3B9 DEFB $04,$06,$12,$B0,$04,$06,$CA,$B0
+ $C3C1 DEFB $04,$06,$62,$B1,$04,$06,$12,$B2
+ $C3C9 DEFB $05,$05,$AA,$B2,$05,$05,$5B,$B3
+ $C3D1 DEFB $04,$03,$DC,$B3,$04,$03,$10,$B4
+ $C3D9 DEFB $04,$03,$44,$B4,$04,$03,$70,$B4
+ $C3E1 DEFB $02,$01,$9C,$B4,$02,$01,$AE,$B4
+ $C3E9 DEFB $02,$01,$B0,$B4,$02,$01,$C2,$B4
+ $C3F1 DEFB $02,$01,$C4,$B4,$02,$01,$D6,$B4
+ $C3F9 DEFB $01,$02,$D8,$B4,$01,$02,$EA,$B4
+ $C401 DEFB $04,$02,$FC,$B4,$04,$02,$44,$B5
+ $C409 DEFB $01,$02,$7C,$B5,$01,$02,$8E,$B5
+ $C411 DEFB $05,$03,$A0,$B5,$05,$03,$17,$B6
+ $C419 DEFB $04,$03,$76,$B6,$04,$03,$DA,$B6
+ $C421 DEFB $04,$03,$26,$B7,$04,$03,$8A,$B7
+ $C429 DEFB $04,$03,$D6,$B7,$04,$03,$3A,$B8
+ $C431 DEFB $04,$04,$8E,$B8,$04,$04,$FE,$B8
+ $C439 DEFB $00,$00,$5E,$B9,$00,$00,$5E,$B9
+ $C441 DEFB $05,$05,$5E,$B9,$05,$05,$07,$BA
+ $C449 DEFB $02,$01,$90,$BA,$02,$01,$A2,$BA
+ $C451 DEFB $02,$01,$A4,$BA,$02,$01,$B6,$BA
+ $C459 DEFB $02,$01,$B8,$BA,$02,$01,$CA,$BA
+ $C461 DEFB $02,$01,$CC,$BA,$02,$01,$DE,$BA
+ $C469 DEFB $00,$00,$E0,$BA,$00,$00,$E0,$BA
+ $C471 DEFB $00,$00,$E0,$BA,$00,$00,$E0,$BA
+ $C479 DEFB $00,$00,$E0,$BA,$00,$00,$E0,$BA
+ $C481 DEFB $00,$00,$E0,$BA,$00,$00,$E0,$BA
+ $C489 DEFB $00,$00,$E0,$BA,$00,$00,$E0,$BA
+ $C491 DEFB $00,$00,$E0,$BA,$00,$00,$E0,$BA
+ $C499 DEFB $00,$00,$E0,$BA,$02,$02,$E0,$BA
+ $C4A1 DEFB $02,$02,$E4,$BA,$02,$02,$F8,$BA
+ $C4A9 DEFB $02,$02,$1C,$BB,$02,$02,$40,$BB
+ $C4B1 DEFB $02,$02,$64,$BB,$02,$02,$88,$BB
+ $C4B9 DEFB $02,$02,$AC,$BB,$02,$02,$D0,$BB
+ $C4C1 DEFB $02,$02,$F4,$BB,$02,$02,$18,$BC
+ $C4C9 DEFB $02,$02,$3C,$BC,$02,$02,$60,$BC
+ $C4D1 DEFB $02,$02,$84,$BC,$02,$02,$A8,$BC
+ $C4D9 DEFB $02,$02,$CC,$BC,$02,$02,$F0,$BC
+ $C4E1 DEFB $02,$02,$14,$BD,$02,$02,$38,$BD
+ $C4E9 DEFB $02,$02,$5C,$BD,$00,$00,$80,$BD
+ $C4F1 DEFB $00,$00,$80,$BD,$00,$00,$80,$BD
+ $C4F9 DEFB $00,$00,$80,$BD,$00,$00,$80,$BD
+ $C501 DEFB $00,$00,$80,$BD,$00,$00,$80,$BD
+ $C509 DEFB $00,$00,$80,$BD,$00,$00,$80,$BD
+ $C511 DEFB $00,$00,$80,$BD,$02,$01,$80,$BD
+ $C519 DEFB $02,$01,$92,$BD,$02,$01,$A4,$BD
+ $C521 DEFB $02,$01,$B6,$BD,$02,$01,$C8,$BD
+ $C529 DEFB $02,$01,$DA,$BD,$02,$01,$EC,$BD
+ $C531 DEFB $02,$01,$FE,$BD,$05,$02,$10,$BE
+ $C539 DEFB $05,$02,$5A,$BE,$05,$02,$A4,$BE
+ $C541 DEFB $05,$02,$FE,$BE,$03,$03,$58,$BF
+ $C549 DEFB $03,$03,$A9,$BF,$03,$03,$FA,$BF
+ $C551 DEFB $03,$03,$4B,$C0,$04,$03,$9C,$C0
+ $C559 DEFB $04,$03,$08,$C1,$00,$00,$74,$C1
+ $C561 DEFB $00,$00,$74,$C1,$00,$00,$74,$C1
+ $C569 DEFB $00,$00,$74,$C1,$01,$01,$74,$C1
+ $C571 DEFB $01,$01,$7D,$C1,$01,$01,$86,$C1
+ $C579 DEFB $01,$01,$8F,$C1,$00,$00,$98,$C1
+ $C581 DEFB $00,$00,$98,$C1,$01,$01,$98,$C1
+ $C589 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $C591 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $C599 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $C5A1 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $C5A9 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $C5B1 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $C5B9 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $C5C1 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $C5C9 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $C5D1 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $C5D9 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $C5E1 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $C5E9 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $C5F1 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $C5F9 DEFB $00,$00,$00,$00,$00,$00,$00,$00
+ $C601 DEFB $80,$40,$C0,$20,$A0,$60,$E0,$10
+ $C609 DEFB $90,$50,$D0,$30,$B0,$70,$F0,$08
+ $C611 DEFB $88,$48,$C8,$28,$A8,$68,$E8,$18
+ $C619 DEFB $98,$58,$D8,$38,$B8,$78,$F8,$04
+ $C621 DEFB $84,$44,$C4,$24,$A4,$64,$E4,$14
+ $C629 DEFB $94,$54,$D4,$34,$B4,$74,$F4,$0C
+ $C631 DEFB $8C,$4C,$CC,$2C,$AC,$6C,$EC,$1C
+ $C639 DEFB $9C,$5C,$DC,$3C,$BC,$7C,$FC,$02
+ $C641 DEFB $82,$42,$C2,$22,$A2,$62,$E2,$12
+ $C649 DEFB $92,$52,$D2,$32,$B2,$72,$F2,$0A
+ $C651 DEFB $8A,$4A,$CA,$2A,$AA,$6A,$EA,$1A
+ $C659 DEFB $9A,$5A,$DA,$3A,$BA,$7A,$FA,$06
+ $C661 DEFB $86,$46,$C6,$26,$A6,$66,$E6,$16
+ $C669 DEFB $96,$56,$D6,$36,$B6,$76,$F6,$0E
+ $C671 DEFB $8E,$4E,$CE,$2E,$AE,$6E,$EE,$1E
+ $C679 DEFB $9E,$5E,$DE,$3E,$BE,$7E,$FE,$01
+ $C681 DEFB $81,$41,$C1,$21,$A1,$61,$E1,$11
+ $C689 DEFB $91,$51,$D1,$31,$B1,$71,$F1,$09
+ $C691 DEFB $89,$49,$C9,$29,$A9,$69,$E9,$19
+ $C699 DEFB $99,$59,$D9,$39,$B9,$79,$F9,$05
+ $C6A1 DEFB $85,$45,$C5,$25,$A5,$65,$E5,$15
+ $C6A9 DEFB $95,$55,$D5,$35,$B5,$75,$F5,$0D
+ $C6B1 DEFB $8D,$4D,$CD,$2D,$AD,$6D,$ED,$1D
+ $C6B9 DEFB $9D,$5D,$DD,$3D,$BD,$7D,$FD,$03
+ $C6C1 DEFB $83,$43,$C3,$23,$A3,$63,$E3,$13
+ $C6C9 DEFB $93,$53,$D3,$33,$B3,$73,$F3,$0B
+ $C6D1 DEFB $8B,$4B,$CB,$2B,$AB,$6B,$EB,$1B
+ $C6D9 DEFB $9B,$5B,$DB,$3B,$BB,$7B,$FB,$07
+ $C6E1 DEFB $87,$47,$C7,$27,$A7,$67,$E7,$17
+ $C6E9 DEFB $97,$57,$D7,$37,$B7,$77,$F7,$0F
+ $C6F1 DEFB $8F,$4F,$CF,$2F,$AF,$6F,$EF,$1F
+ $C6F9 DEFB $9F,$5F,$DF,$3F,$BF,$7F,$FF
+
+; Data block at C700
+b$C700 DEFB $02,$06,$02,$06,$08,$00,$08,$00
  $C708 DEFB $08,$07,$08,$07,$0A,$05,$0A,$05
  $C710 DEFB $12,$00,$0A,$00,$0A,$00,$11,$02
  $C718 DEFB $11,$02,$0F,$00,$0F,$00,$07,$06
@@ -2829,7 +2834,8 @@ g$D216 DEFB $00
 g$D217 DEFB $00
 
 ; Game status buffer entry at D218
-g$D218 DEFB $00,$00
+g$D218 DEFB $00
+ $D219 DEFB $00
 
 ; Game Clock
 ;
@@ -2850,7 +2856,13 @@ g$D224 DEFW $D22C
 
 ; Game status buffer entry at D226
 g$D226 DEFW $D23E
- $D228 DEFB $00,$00,$00,$00
+ $D228 DEFB $00
+
+; Data block at D229
+b$D229 DEFB $00
+
+; Game status buffer entry at D22A
+g$D22A DEFW $0000
 
 ; Game status buffer entry at D22C
 g$D22C DEFB $00,$00,$00,$00,$00,$00
@@ -2902,7 +2914,10 @@ g$D24D DEFB $00
 g$D24F DEFB $00,$00
 
 ; Data block at D251
-b$D251 DEFB $00,$00
+b$D251 DEFB $00
+
+; Data block at D252
+b$D252 DEFB $00
 
 ; Game status buffer entry at D253
 g$D253 DEFW $0000
@@ -3069,7 +3084,10 @@ b$D3F4 DEFB $00
 g$D3F5 DEFB $00
 
 ; Data block at D3F6
-b$D3F6 DEFB $00,$00
+b$D3F6 DEFB $00
+
+; Data block at D3F7
+b$D3F7 DEFB $00
 
 ; Data block at D3F8
 b$D3F8 DEFB $00
@@ -3207,8 +3225,8 @@ c$D409 LD BC,$0000   ; #REGbc=#N($0000,$04,$04).
  $D469 ADD HL,HL     ;
  $D46A ADD HL,HL     ;
  $D46B ADD HL,DE     ; }
- $D46C CP $80        ; Compare #REGa with #N$80.
- $D46E JP NC,$D49A   ; Jump to #R$D49A if {} is higher.
+ $D46C CP $80        ; {Jump to #R$D49A if #REGa is higher than #N$80.
+ $D46E JP NC,$D49A   ; }
  $D471 CALL $D4E8    ; Call #R$D4E8.
 ; The value here is self-modified at:
 ; #TABLE(default,centre,centre) { =h Location | =h Value Set }
@@ -3684,8 +3702,8 @@ c$D688 LDI           ; {Copy one line to the screen buffer.
 
 ; Routine at D6C9
 ;
-; Used by the routines at #R$D7F6, #R$DBE5, #R$E25D, #R$E576, #R$E62D, #R$F10E,
-; #R$F69F, #R$F719, #R$F795, #R$FC1A, #R$FC39 and #R$FCB6.
+; Used by the routines at #R$D9BB, #R$D9C3, #R$DBE5, #R$E25D, #R$E576, #R$E62D,
+; #R$F10E, #R$F69F, #R$F719, #R$F795, #R$FC1A, #R$FC39 and #R$FCB6.
 c$D6C9 LD ($D214),A  ; Write #REGa to *#R$D214.
  $D6CC PUSH BC       ; Stash #REGbc on the stack.
  $D6CD CALL $D9A9    ; Call #R$D9A9.
@@ -3703,10 +3721,10 @@ c$D6C9 LD ($D214),A  ; Write #REGa to *#R$D214.
  $D6DE INC HL        ; Increment #REGhl by one.
  $D6DF LD H,(HL)     ; #REGh=*#REGhl.
  $D6E0 LD L,A        ; #REGl=#REGa.
-*$D6E1 EXX           ; Switch to the shadow registers.
- $D6E2 LD A,C        ; #REGa=#REGc.
- $D6E3 CP L          ; Compare #REGa with #REGl.
- $D6E4 JP NZ,$D6FC   ; Jump to #R$D6FC if {} is not zero.
+*$D6E1 EXX           ; Switch back to the normal registers.
+ $D6E2 LD A,C        ; {Jump to #R$D6FC if #REGc is not equal to #REGl.
+ $D6E3 CP L          ;
+ $D6E4 JP NZ,$D6FC   ; }
  $D6E7 LD A,B        ; #REGa=#REGb.
  $D6E8 AND %11111000 ; Keep only bits 3-7.
  $D6EA ADD A,$6B     ; #REGa+=#N$6B.
@@ -3726,7 +3744,7 @@ c$D6C9 LD ($D214),A  ; Write #REGa to *#R$D214.
  $D6F8 LD B,A        ; #REGb=#REGa.
  $D6F9 JP $D700      ; Jump to #R$D700.
 *$D6FC LD A,H        ; #REGa=#REGh.
- $D6FD EXX           ; Switch to the shadow registers.
+ $D6FD EXX           ; Switch back to the normal registers.
  $D6FE INC C         ; Increment #REGc by one.
  $D6FF LD B,A        ; #REGb=#REGa.
 *$D700 EXX           ; Switch to the shadow registers.
@@ -3736,7 +3754,7 @@ c$D6C9 LD ($D214),A  ; Write #REGa to *#R$D214.
  $D707 LD A,B        ; #REGa=#REGb.
  $D708 CP $18        ; {Jump to #R$D7A5 if #REGa is higher than #N$18.
  $D70A JP NC,$D7A5   ; }
- $D70D EXX           ; Switch to the shadow registers.
+ $D70D EXX           ; Switch back to the normal registers.
  $D70E LD A,(HL)     ; {Jump to #R$D778 if *#REGhl is equal to #N$36.
  $D70F CP $36        ;
  $D711 JP Z,$D778    ; }
@@ -3821,14 +3839,14 @@ c$D6C9 LD ($D214),A  ; Write #REGa to *#R$D214.
  $D767 INC C         ; Increment #REGc by one.
  $D768 LD A,E        ; #REGa=#REGe.
  $D769 CP C          ; Compare #REGa with #REGc.
- $D76A EXX           ; Switch to the shadow registers.
+ $D76A EXX           ; Switch back to the normal registers.
  $D76B JP NZ,$D6E1   ; Jump to #R$D6E1 if {} is not zero.
  $D76E EXX           ; Switch to the shadow registers.
  $D76F LD C,L        ; #REGc=#REGl.
  $D770 INC B         ; Increment #REGb by one.
  $D771 LD A,D        ; #REGa=#REGd.
  $D772 CP B          ; Compare #REGa with #REGb.
- $D773 EXX           ; Switch to the shadow registers.
+ $D773 EXX           ; Switch back to the normal registers.
  $D774 JP NZ,$D6E1   ; Jump to #R$D6E1 if {} is not zero.
  $D777 RET           ; Return.
 *$D778 LD A,(DE)     ; {Jump to #R$D764 if *#REGde is equal to #N$36.
@@ -3942,448 +3960,468 @@ c$D6C9 LD ($D214),A  ; Write #REGa to *#R$D214.
 ; Routine at D7F6
 ;
 ; Used by the routines at #R$E25D, #R$FC1A and #R$FCB6.
-c$D7F6 LD ($D214),A    ;
- $D7F9 DEC C           ;
- $D7FA PUSH BC         ;
- $D7FB CALL $D9A9      ;
- $D7FE POP BC          ;
- $D7FF LD D,A          ;
+c$D7F6 LD ($D214),A  ; Write #REGa to #R$D214.
+ $D7F9 DEC C         ; Decrease #REGc by one.
+ $D7FA PUSH BC       ; Stash #REGbc on the stack.
+ $D7FB CALL $D9A9    ; Call #R$D9A9.
+ $D7FE POP BC        ; Restore #REGbc from the stack.
+ $D7FF LD D,A        ; #REGd=#REGa.
 ; This entry point is used by the routine at #R$D6C9.
-*$D800 EX AF,AF'       ;
- $D801 LD L,A          ;
- $D802 LD E,C          ;
- $D803 LD C,A          ;
- $D804 EXX             ;
- $D805 LD A,(HL)       ;
- $D806 INC HL          ;
- $D807 LD H,(HL)       ;
- $D808 LD L,A          ;
-*$D809 EXX             ;
- $D80A LD A,C          ;
- $D80B CP L            ;
- $D80C JP NZ,$D824     ;
- $D80F LD A,B          ;
- $D810 AND $F8         ;
- $D812 ADD A,$6B       ;
- $D814 LD H,A          ;
- $D815 EX AF,AF'       ;
- $D816 LD A,B          ;
- $D817 AND $07         ;
- $D819 RRCA            ;
- $D81A RRCA            ;
- $D81B RRCA            ;
- $D81C ADD A,C         ;
- $D81D EXX             ;
- $D81E LD C,A          ;
- $D81F EX AF,AF'       ;
- $D820 LD B,A          ;
- $D821 JP $D828        ;
-*$D824 LD A,H          ;
- $D825 EXX             ;
- $D826 DEC C           ;
- $D827 LD B,A          ;
-*$D828 EXX             ;
- $D829 LD A,C          ;
- $D82A CP $20          ;
- $D82C JP NC,$D8D8     ;
- $D82F LD A,B          ;
- $D830 CP $18          ;
- $D832 JP NC,$D8D8     ;
- $D835 EXX             ;
- $D836 LD A,(HL)       ;
- $D837 CP $36          ;
- $D839 JP Z,$D8FA      ;
- $D83C LD A,(DE)       ;
- $D83D CP $36          ;
- $D83F JP Z,$D93B      ;
- $D842 INC HL          ;
- $D843 INC DE          ;
- $D844 PUSH HL         ;
- $D845 LD A,(BC)       ;
- $D846 LD L,(HL)       ;
- $D847 LD H,$C6        ;
- $D849 AND (HL)        ;
- $D84A EX AF,AF'       ;
- $D84B LD A,(DE)       ;
- $D84C LD L,A          ;
- $D84D EX AF,AF'       ;
- $D84E OR (HL)         ;
- $D84F LD (BC),A       ;
- $D850 POP HL          ;
- $D851 INC DE          ;
- $D852 INC HL          ;
- $D853 INC B           ;
- $D854 PUSH HL         ;
- $D855 LD A,(BC)       ;
- $D856 LD L,(HL)       ;
- $D857 LD H,$C6        ;
- $D859 AND (HL)        ;
- $D85A EX AF,AF'       ;
- $D85B LD A,(DE)       ;
- $D85C LD L,A          ;
- $D85D EX AF,AF'       ;
- $D85E OR (HL)         ;
- $D85F LD (BC),A       ;
- $D860 POP HL          ;
- $D861 INC DE          ;
- $D862 INC HL          ;
- $D863 INC B           ;
- $D864 PUSH HL         ;
- $D865 LD A,(BC)       ;
- $D866 LD L,(HL)       ;
- $D867 LD H,$C6        ;
- $D869 AND (HL)        ;
- $D86A EX AF,AF'       ;
- $D86B LD A,(DE)       ;
- $D86C LD L,A          ;
- $D86D EX AF,AF'       ;
- $D86E OR (HL)         ;
- $D86F LD (BC),A       ;
- $D870 POP HL          ;
- $D871 INC DE          ;
- $D872 INC HL          ;
- $D873 INC B           ;
- $D874 PUSH HL         ;
- $D875 LD A,(BC)       ;
- $D876 LD L,(HL)       ;
- $D877 LD H,$C6        ;
- $D879 AND (HL)        ;
- $D87A EX AF,AF'       ;
- $D87B LD A,(DE)       ;
- $D87C LD L,A          ;
- $D87D EX AF,AF'       ;
- $D87E OR (HL)         ;
- $D87F LD (BC),A       ;
- $D880 POP HL          ;
- $D881 INC DE          ;
- $D882 INC HL          ;
- $D883 INC B           ;
- $D884 PUSH HL         ;
- $D885 LD A,(BC)       ;
- $D886 LD L,(HL)       ;
- $D887 LD H,$C6        ;
- $D889 AND (HL)        ;
- $D88A EX AF,AF'       ;
- $D88B LD A,(DE)       ;
- $D88C LD L,A          ;
- $D88D EX AF,AF'       ;
- $D88E OR (HL)         ;
- $D88F LD (BC),A       ;
- $D890 POP HL          ;
- $D891 INC DE          ;
- $D892 INC HL          ;
- $D893 INC B           ;
- $D894 PUSH HL         ;
- $D895 LD A,(BC)       ;
- $D896 LD L,(HL)       ;
- $D897 LD H,$C6        ;
- $D899 AND (HL)        ;
- $D89A EX AF,AF'       ;
- $D89B LD A,(DE)       ;
- $D89C LD L,A          ;
- $D89D EX AF,AF'       ;
- $D89E OR (HL)         ;
- $D89F LD (BC),A       ;
- $D8A0 POP HL          ;
- $D8A1 INC DE          ;
- $D8A2 INC HL          ;
- $D8A3 INC B           ;
- $D8A4 PUSH HL         ;
- $D8A5 LD A,(BC)       ;
- $D8A6 LD L,(HL)       ;
- $D8A7 LD H,$C6        ;
- $D8A9 AND (HL)        ;
- $D8AA EX AF,AF'       ;
- $D8AB LD A,(DE)       ;
- $D8AC LD L,A          ;
- $D8AD EX AF,AF'       ;
- $D8AE OR (HL)         ;
- $D8AF LD (BC),A       ;
- $D8B0 POP HL          ;
- $D8B1 INC DE          ;
- $D8B2 INC HL          ;
- $D8B3 INC B           ;
- $D8B4 PUSH HL         ;
- $D8B5 LD A,(BC)       ;
- $D8B6 LD L,(HL)       ;
- $D8B7 LD H,$C6        ;
- $D8B9 AND (HL)        ;
- $D8BA EX AF,AF'       ;
- $D8BB LD A,(DE)       ;
- $D8BC LD L,A          ;
- $D8BD EX AF,AF'       ;
- $D8BE OR (HL)         ;
- $D8BF LD (BC),A       ;
- $D8C0 POP HL          ;
- $D8C1 CALL $D986      ;
-*$D8C4 INC DE          ;
- $D8C5 INC HL          ;
-*$D8C6 EXX             ;
- $D8C7 DEC C           ;
- $D8C8 LD A,E          ;
- $D8C9 CP C            ;
- $D8CA EXX             ;
- $D8CB JP NZ,$D809     ;
- $D8CE EXX             ;
- $D8CF LD C,L          ;
- $D8D0 INC B           ;
- $D8D1 LD A,D          ;
- $D8D2 CP B            ;
- $D8D3 EXX             ;
- $D8D4 JP NZ,$D809     ;
- $D8D7 RET             ;
-*$D8D8 EXX             ;
- $D8D9 LD A,(DE)       ;
- $D8DA INC DE          ;
- $D8DB CP $36          ;
- $D8DD JP Z,$D8E8      ;
- $D8E0 INC DE          ;
- $D8E1 INC DE          ;
- $D8E2 INC DE          ;
- $D8E3 INC DE          ;
- $D8E4 INC DE          ;
- $D8E5 INC DE          ;
- $D8E6 INC DE          ;
- $D8E7 INC DE          ;
-*$D8E8 LD A,(HL)       ;
- $D8E9 INC HL          ;
- $D8EA CP $36          ;
- $D8EC JP Z,$D8C6      ;
- $D8EF INC HL          ;
- $D8F0 INC HL          ;
- $D8F1 INC HL          ;
- $D8F2 INC HL          ;
- $D8F3 INC HL          ;
- $D8F4 INC HL          ;
- $D8F5 INC HL          ;
- $D8F6 INC HL          ;
- $D8F7 JP $D8C6        ;
-*$D8FA LD A,(DE)       ;
- $D8FB CP $36          ;
- $D8FD JP Z,$D8C4      ;
- $D900 INC DE          ;
- $D901 INC HL          ;
- $D902 PUSH HL         ;
- $D903 LD H,$C6        ;
- $D905 LD A,(DE)       ;
- $D906 LD L,A          ;
- $D907 LD A,(HL)       ;
- $D908 LD (BC),A       ;
- $D909 INC DE          ;
- $D90A INC B           ;
- $D90B LD A,(DE)       ;
- $D90C LD L,A          ;
- $D90D LD A,(HL)       ;
- $D90E LD (BC),A       ;
- $D90F INC DE          ;
- $D910 INC B           ;
- $D911 LD A,(DE)       ;
- $D912 LD L,A          ;
- $D913 LD A,(HL)       ;
- $D914 LD (BC),A       ;
- $D915 INC DE          ;
- $D916 INC B           ;
- $D917 LD A,(DE)       ;
- $D918 LD L,A          ;
- $D919 LD A,(HL)       ;
- $D91A LD (BC),A       ;
- $D91B INC DE          ;
- $D91C INC B           ;
- $D91D LD A,(DE)       ;
- $D91E LD L,A          ;
- $D91F LD A,(HL)       ;
- $D920 LD (BC),A       ;
- $D921 INC DE          ;
- $D922 INC B           ;
- $D923 LD A,(DE)       ;
- $D924 LD L,A          ;
- $D925 LD A,(HL)       ;
- $D926 LD (BC),A       ;
- $D927 INC DE          ;
- $D928 INC B           ;
- $D929 LD A,(DE)       ;
- $D92A LD L,A          ;
- $D92B LD A,(HL)       ;
- $D92C LD (BC),A       ;
- $D92D INC DE          ;
- $D92E INC B           ;
- $D92F LD A,(DE)       ;
- $D930 LD L,A          ;
- $D931 LD A,(HL)       ;
- $D932 LD (BC),A       ;
- $D933 INC DE          ;
- $D934 POP HL          ;
- $D935 CALL $D986      ;
- $D938 JP $D8C6        ;
-*$D93B INC DE          ;
- $D93C INC HL          ;
- $D93D PUSH DE         ;
- $D93E LD D,$C6        ;
- $D940 LD E,(HL)       ;
- $D941 LD A,(DE)       ;
- $D942 LD E,A          ;
- $D943 LD A,(BC)       ;
- $D944 AND E           ;
- $D945 LD (BC),A       ;
- $D946 INC HL          ;
- $D947 INC B           ;
- $D948 LD E,(HL)       ;
- $D949 LD A,(DE)       ;
- $D94A LD E,A          ;
- $D94B LD A,(BC)       ;
- $D94C AND E           ;
- $D94D LD (BC),A       ;
- $D94E INC HL          ;
- $D94F INC B           ;
- $D950 LD E,(HL)       ;
- $D951 LD A,(DE)       ;
- $D952 LD E,A          ;
- $D953 LD A,(BC)       ;
- $D954 AND E           ;
- $D955 LD (BC),A       ;
- $D956 INC HL          ;
- $D957 INC B           ;
- $D958 LD E,(HL)       ;
- $D959 LD A,(DE)       ;
- $D95A LD E,A          ;
- $D95B LD A,(BC)       ;
- $D95C AND E           ;
- $D95D LD (BC),A       ;
- $D95E INC HL          ;
- $D95F INC B           ;
- $D960 LD E,(HL)       ;
- $D961 LD A,(DE)       ;
- $D962 LD E,A          ;
- $D963 LD A,(BC)       ;
- $D964 AND E           ;
- $D965 LD (BC),A       ;
- $D966 INC HL          ;
- $D967 INC B           ;
- $D968 LD E,(HL)       ;
- $D969 LD A,(DE)       ;
- $D96A LD E,A          ;
- $D96B LD A,(BC)       ;
- $D96C AND E           ;
- $D96D LD (BC),A       ;
- $D96E INC HL          ;
- $D96F INC B           ;
- $D970 LD E,(HL)       ;
- $D971 LD A,(DE)       ;
- $D972 LD E,A          ;
- $D973 LD A,(BC)       ;
- $D974 AND E           ;
- $D975 LD (BC),A       ;
- $D976 INC HL          ;
- $D977 INC B           ;
- $D978 LD E,(HL)       ;
- $D979 LD A,(DE)       ;
- $D97A LD E,A          ;
- $D97B LD A,(BC)       ;
- $D97C AND E           ;
- $D97D LD (BC),A       ;
- $D97E INC HL          ;
- $D97F POP DE          ;
- $D980 CALL $D986      ;
- $D983 JP $D8C6        ;
-; This entry point is used by the routine at #R$D6C9.
-*$D986 EXX             ;
- $D987 PUSH HL         ;
- $D988 LD A,B          ;
- $D989 RRCA            ;
- $D98A RRCA            ;
- $D98B RRCA            ;
- $D98C LD L,A          ;
- $D98D AND $07         ;
- $D98F ADD A,$68       ;
- $D991 LD H,A          ;
- $D992 LD A,L          ;
- $D993 AND $F8         ;
- $D995 ADD A,C         ;
- $D996 LD L,A          ;
- $D997 LD A,($D214)    ;
- $D99A CP $E6          ;
- $D99C JR C,$D9A5      ;
- $D99E CP $EF          ;
- $D9A0 JR NC,$D9A5     ;
- $D9A2 LD A,($D408)    ;
-*$D9A5 LD (HL),A       ;
- $D9A6 POP HL          ;
- $D9A7 EXX             ;
- $D9A8 RET             ;
-; This entry point is used by the routine at #R$D6C9.
-*$D9A9 CALL $DA1D      ;
- $D9AC LD A,C          ;
- $D9AD ADD A,(HL)      ;
- $D9AE EX AF,AF'       ;
- $D9AF INC HL          ;
- $D9B0 LD A,B          ;
- $D9B1 ADD A,(HL)      ;
- $D9B2 INC HL          ;
- $D9B3 LD E,(HL)       ;
- $D9B4 INC HL          ;
- $D9B5 LD D,(HL)       ;
- $D9B6 INC HL          ;
- $D9B7 INC HL          ;
- $D9B8 INC HL          ;
- $D9B9 EXX             ;
- $D9BA RET             ;
-; This entry point is used by the routine at #R$E62D.
-*$D9BB LD L,A          ;
- $D9BC LD A,($D251)    ;
- $D9BF OR L            ;
- $D9C0 JP $D6C9        ;
-; This entry point is used by the routines at #R$E62D and #R$EF86.
-*$D9C3 LD A,(IX+$05)   ;
- $D9C6 CP (IX+$04)     ;
- $D9C9 JP Z,$D9D2      ;
- $D9CC INC (IX+$05)    ;
- $D9CF JP $D9E2        ;
-*$D9D2 LD A,(IX+$01)   ;
- $D9D5 CP (IX+$02)     ;
- $D9D8 JP Z,$D9E2      ;
- $D9DB INC (IX+$01)    ;
- $D9DE LD (IX+$05),$01 ;
-*$D9E2 LD A,(IX+$00)   ;
- $D9E5 AND $03         ;
- $D9E7 JP Z,$D9F3      ;
- $D9EA LD B,(IX+$03)   ;
- $D9ED LD C,(IX+$01)   ;
- $D9F0 JP $D9F9        ;
-*$D9F3 LD B,(IX+$01)   ;
- $D9F6 LD C,(IX+$03)   ;
-*$D9F9 LD A,(IX+$05)   ;
- $D9FC ADD A,$05       ;
- $D9FE ADD A,L         ;
- $D9FF LD L,A          ;
- $DA00 LD A,$00        ;
- $DA02 ADC A,H         ;
- $DA03 LD H,A          ;
- $DA04 LD A,(HL)       ;
- $DA05 CALL $D6C9      ;
- $DA08 LD A,(IX+$05)   ;
- $DA0B CP (IX+$04)     ;
- $DA0E RET             ;
-; This entry point is used by the routines at #R$E62D and #R$EF86.
-*$DA0F DEC A           ;
- $DA10 ADD A,A         ;
- $DA11 LD L,A          ;
- $DA12 ADD A,A         ;
- $DA13 ADD A,A         ;
- $DA14 ADD A,L         ;
- $DA15 LD H,$00        ;
- $DA17 LD L,A          ;
- $DA18 ADD HL,DE       ;
- $DA19 PUSH HL         ;
- $DA1A POP IX          ;
- $DA1C RET             ;
-*$DA1D DEC A           ;
- $DA1E LD H,$00        ;
- $DA20 LD L,A          ;
- $DA21 LD DE,$C1A1     ;
- $DA24 ADD HL,HL       ;
- $DA25 ADD HL,HL       ;
- $DA26 ADD HL,DE       ;
- $DA27 RET             ;
+*$D800 EX AF,AF'     ;
+ $D801 LD L,A        ;
+ $D802 LD E,C        ;
+ $D803 LD C,A        ;
+ $D804 EXX           ;
+ $D805 LD A,(HL)     ;
+ $D806 INC HL        ;
+ $D807 LD H,(HL)     ;
+ $D808 LD L,A        ;
+*$D809 EXX           ;
+ $D80A LD A,C        ;
+ $D80B CP L          ;
+ $D80C JP NZ,$D824   ;
+ $D80F LD A,B        ;
+ $D810 AND $F8       ;
+ $D812 ADD A,$6B     ;
+ $D814 LD H,A        ;
+ $D815 EX AF,AF'     ;
+ $D816 LD A,B        ;
+ $D817 AND $07       ;
+ $D819 RRCA          ;
+ $D81A RRCA          ;
+ $D81B RRCA          ;
+ $D81C ADD A,C       ;
+ $D81D EXX           ;
+ $D81E LD C,A        ;
+ $D81F EX AF,AF'     ;
+ $D820 LD B,A        ;
+ $D821 JP $D828      ;
+*$D824 LD A,H        ;
+ $D825 EXX           ;
+ $D826 DEC C         ;
+ $D827 LD B,A        ;
+*$D828 EXX           ;
+ $D829 LD A,C        ;
+ $D82A CP $20        ;
+ $D82C JP NC,$D8D8   ;
+ $D82F LD A,B        ;
+ $D830 CP $18        ;
+ $D832 JP NC,$D8D8   ;
+ $D835 EXX           ;
+ $D836 LD A,(HL)     ;
+ $D837 CP $36        ;
+ $D839 JP Z,$D8FA    ;
+ $D83C LD A,(DE)     ;
+ $D83D CP $36        ;
+ $D83F JP Z,$D93B    ;
+ $D842 INC HL        ;
+ $D843 INC DE        ;
+ $D844 PUSH HL       ;
+ $D845 LD A,(BC)     ;
+ $D846 LD L,(HL)     ;
+ $D847 LD H,$C6      ;
+ $D849 AND (HL)      ;
+ $D84A EX AF,AF'     ;
+ $D84B LD A,(DE)     ;
+ $D84C LD L,A        ;
+ $D84D EX AF,AF'     ;
+ $D84E OR (HL)       ;
+ $D84F LD (BC),A     ;
+ $D850 POP HL        ;
+ $D851 INC DE        ;
+ $D852 INC HL        ;
+ $D853 INC B         ;
+ $D854 PUSH HL       ;
+ $D855 LD A,(BC)     ;
+ $D856 LD L,(HL)     ;
+ $D857 LD H,$C6      ;
+ $D859 AND (HL)      ;
+ $D85A EX AF,AF'     ;
+ $D85B LD A,(DE)     ;
+ $D85C LD L,A        ;
+ $D85D EX AF,AF'     ;
+ $D85E OR (HL)       ;
+ $D85F LD (BC),A     ;
+ $D860 POP HL        ;
+ $D861 INC DE        ;
+ $D862 INC HL        ;
+ $D863 INC B         ;
+ $D864 PUSH HL       ;
+ $D865 LD A,(BC)     ;
+ $D866 LD L,(HL)     ;
+ $D867 LD H,$C6      ;
+ $D869 AND (HL)      ;
+ $D86A EX AF,AF'     ;
+ $D86B LD A,(DE)     ;
+ $D86C LD L,A        ;
+ $D86D EX AF,AF'     ;
+ $D86E OR (HL)       ;
+ $D86F LD (BC),A     ;
+ $D870 POP HL        ;
+ $D871 INC DE        ;
+ $D872 INC HL        ;
+ $D873 INC B         ;
+ $D874 PUSH HL       ;
+ $D875 LD A,(BC)     ;
+ $D876 LD L,(HL)     ;
+ $D877 LD H,$C6      ;
+ $D879 AND (HL)      ;
+ $D87A EX AF,AF'     ;
+ $D87B LD A,(DE)     ;
+ $D87C LD L,A        ;
+ $D87D EX AF,AF'     ;
+ $D87E OR (HL)       ;
+ $D87F LD (BC),A     ;
+ $D880 POP HL        ;
+ $D881 INC DE        ;
+ $D882 INC HL        ;
+ $D883 INC B         ;
+ $D884 PUSH HL       ;
+ $D885 LD A,(BC)     ;
+ $D886 LD L,(HL)     ;
+ $D887 LD H,$C6      ;
+ $D889 AND (HL)      ;
+ $D88A EX AF,AF'     ;
+ $D88B LD A,(DE)     ;
+ $D88C LD L,A        ;
+ $D88D EX AF,AF'     ;
+ $D88E OR (HL)       ;
+ $D88F LD (BC),A     ;
+ $D890 POP HL        ;
+ $D891 INC DE        ;
+ $D892 INC HL        ;
+ $D893 INC B         ;
+ $D894 PUSH HL       ;
+ $D895 LD A,(BC)     ;
+ $D896 LD L,(HL)     ;
+ $D897 LD H,$C6      ;
+ $D899 AND (HL)      ;
+ $D89A EX AF,AF'     ;
+ $D89B LD A,(DE)     ;
+ $D89C LD L,A        ;
+ $D89D EX AF,AF'     ;
+ $D89E OR (HL)       ;
+ $D89F LD (BC),A     ;
+ $D8A0 POP HL        ;
+ $D8A1 INC DE        ;
+ $D8A2 INC HL        ;
+ $D8A3 INC B         ;
+ $D8A4 PUSH HL       ;
+ $D8A5 LD A,(BC)     ;
+ $D8A6 LD L,(HL)     ;
+ $D8A7 LD H,$C6      ;
+ $D8A9 AND (HL)      ;
+ $D8AA EX AF,AF'     ;
+ $D8AB LD A,(DE)     ;
+ $D8AC LD L,A        ;
+ $D8AD EX AF,AF'     ;
+ $D8AE OR (HL)       ;
+ $D8AF LD (BC),A     ;
+ $D8B0 POP HL        ;
+ $D8B1 INC DE        ;
+ $D8B2 INC HL        ;
+ $D8B3 INC B         ;
+ $D8B4 PUSH HL       ;
+ $D8B5 LD A,(BC)     ;
+ $D8B6 LD L,(HL)     ;
+ $D8B7 LD H,$C6      ;
+ $D8B9 AND (HL)      ;
+ $D8BA EX AF,AF'     ;
+ $D8BB LD A,(DE)     ;
+ $D8BC LD L,A        ;
+ $D8BD EX AF,AF'     ;
+ $D8BE OR (HL)       ;
+ $D8BF LD (BC),A     ;
+ $D8C0 POP HL        ;
+ $D8C1 CALL $D986    ;
+*$D8C4 INC DE        ;
+ $D8C5 INC HL        ;
+*$D8C6 EXX           ;
+ $D8C7 DEC C         ;
+ $D8C8 LD A,E        ;
+ $D8C9 CP C          ;
+ $D8CA EXX           ;
+ $D8CB JP NZ,$D809   ;
+ $D8CE EXX           ;
+ $D8CF LD C,L        ;
+ $D8D0 INC B         ;
+ $D8D1 LD A,D        ;
+ $D8D2 CP B          ;
+ $D8D3 EXX           ;
+ $D8D4 JP NZ,$D809   ;
+ $D8D7 RET           ;
+*$D8D8 EXX           ;
+ $D8D9 LD A,(DE)     ;
+ $D8DA INC DE        ;
+ $D8DB CP $36        ;
+ $D8DD JP Z,$D8E8    ;
+ $D8E0 INC DE        ;
+ $D8E1 INC DE        ;
+ $D8E2 INC DE        ;
+ $D8E3 INC DE        ;
+ $D8E4 INC DE        ;
+ $D8E5 INC DE        ;
+ $D8E6 INC DE        ;
+ $D8E7 INC DE        ;
+*$D8E8 LD A,(HL)     ;
+ $D8E9 INC HL        ;
+ $D8EA CP $36        ;
+ $D8EC JP Z,$D8C6    ;
+ $D8EF INC HL        ;
+ $D8F0 INC HL        ;
+ $D8F1 INC HL        ;
+ $D8F2 INC HL        ;
+ $D8F3 INC HL        ;
+ $D8F4 INC HL        ;
+ $D8F5 INC HL        ;
+ $D8F6 INC HL        ;
+ $D8F7 JP $D8C6      ;
+*$D8FA LD A,(DE)     ;
+ $D8FB CP $36        ;
+ $D8FD JP Z,$D8C4    ;
+ $D900 INC DE        ;
+ $D901 INC HL        ;
+ $D902 PUSH HL       ;
+ $D903 LD H,$C6      ;
+ $D905 LD A,(DE)     ;
+ $D906 LD L,A        ;
+ $D907 LD A,(HL)     ;
+ $D908 LD (BC),A     ;
+ $D909 INC DE        ;
+ $D90A INC B         ;
+ $D90B LD A,(DE)     ;
+ $D90C LD L,A        ;
+ $D90D LD A,(HL)     ;
+ $D90E LD (BC),A     ;
+ $D90F INC DE        ;
+ $D910 INC B         ;
+ $D911 LD A,(DE)     ;
+ $D912 LD L,A        ;
+ $D913 LD A,(HL)     ;
+ $D914 LD (BC),A     ;
+ $D915 INC DE        ;
+ $D916 INC B         ;
+ $D917 LD A,(DE)     ;
+ $D918 LD L,A        ;
+ $D919 LD A,(HL)     ;
+ $D91A LD (BC),A     ;
+ $D91B INC DE        ;
+ $D91C INC B         ;
+ $D91D LD A,(DE)     ;
+ $D91E LD L,A        ;
+ $D91F LD A,(HL)     ;
+ $D920 LD (BC),A     ;
+ $D921 INC DE        ;
+ $D922 INC B         ;
+ $D923 LD A,(DE)     ;
+ $D924 LD L,A        ;
+ $D925 LD A,(HL)     ;
+ $D926 LD (BC),A     ;
+ $D927 INC DE        ;
+ $D928 INC B         ;
+ $D929 LD A,(DE)     ;
+ $D92A LD L,A        ;
+ $D92B LD A,(HL)     ;
+ $D92C LD (BC),A     ;
+ $D92D INC DE        ;
+ $D92E INC B         ;
+ $D92F LD A,(DE)     ;
+ $D930 LD L,A        ;
+ $D931 LD A,(HL)     ;
+ $D932 LD (BC),A     ;
+ $D933 INC DE        ;
+ $D934 POP HL        ;
+ $D935 CALL $D986    ;
+ $D938 JP $D8C6      ;
+*$D93B INC DE        ;
+ $D93C INC HL        ;
+ $D93D PUSH DE       ;
+ $D93E LD D,$C6      ;
+ $D940 LD E,(HL)     ;
+ $D941 LD A,(DE)     ;
+ $D942 LD E,A        ;
+ $D943 LD A,(BC)     ;
+ $D944 AND E         ;
+ $D945 LD (BC),A     ;
+ $D946 INC HL        ;
+ $D947 INC B         ;
+ $D948 LD E,(HL)     ;
+ $D949 LD A,(DE)     ;
+ $D94A LD E,A        ;
+ $D94B LD A,(BC)     ;
+ $D94C AND E         ;
+ $D94D LD (BC),A     ;
+ $D94E INC HL        ;
+ $D94F INC B         ;
+ $D950 LD E,(HL)     ;
+ $D951 LD A,(DE)     ;
+ $D952 LD E,A        ;
+ $D953 LD A,(BC)     ;
+ $D954 AND E         ;
+ $D955 LD (BC),A     ;
+ $D956 INC HL        ;
+ $D957 INC B         ;
+ $D958 LD E,(HL)     ;
+ $D959 LD A,(DE)     ;
+ $D95A LD E,A        ;
+ $D95B LD A,(BC)     ;
+ $D95C AND E         ;
+ $D95D LD (BC),A     ;
+ $D95E INC HL        ;
+ $D95F INC B         ;
+ $D960 LD E,(HL)     ;
+ $D961 LD A,(DE)     ;
+ $D962 LD E,A        ;
+ $D963 LD A,(BC)     ;
+ $D964 AND E         ;
+ $D965 LD (BC),A     ;
+ $D966 INC HL        ;
+ $D967 INC B         ;
+ $D968 LD E,(HL)     ;
+ $D969 LD A,(DE)     ;
+ $D96A LD E,A        ;
+ $D96B LD A,(BC)     ;
+ $D96C AND E         ;
+ $D96D LD (BC),A     ;
+ $D96E INC HL        ;
+ $D96F INC B         ;
+ $D970 LD E,(HL)     ;
+ $D971 LD A,(DE)     ;
+ $D972 LD E,A        ;
+ $D973 LD A,(BC)     ;
+ $D974 AND E         ;
+ $D975 LD (BC),A     ;
+ $D976 INC HL        ;
+ $D977 INC B         ;
+ $D978 LD E,(HL)     ;
+ $D979 LD A,(DE)     ;
+ $D97A LD E,A        ;
+ $D97B LD A,(BC)     ;
+ $D97C AND E         ;
+ $D97D LD (BC),A     ;
+ $D97E INC HL        ;
+ $D97F POP DE        ;
+ $D980 CALL $D986    ;
+ $D983 JP $D8C6      ;
+
+; Routine at D986
+;
+; Used by the routines at #R$D6C9 and #R$D7F6.
+c$D986 EXX           ; Switch to the shadow registers.
+ $D987 PUSH HL       ; Stash #REGhl on the stack.
+ $D988 LD A,B        ; #REGa=#REGb.
+ $D989 RRCA          ; {RRCA.
+ $D98A RRCA          ;
+ $D98B RRCA          ; }
+ $D98C LD L,A        ; #REGl=#REGa.
+ $D98D AND %00000111 ; Keep only bits 0-2.
+ $D98F ADD A,$68     ; #REGa+=#N$68.
+ $D991 LD H,A        ; #REGh=#REGa.
+ $D992 LD A,L        ; #REGa=#REGl.
+ $D993 AND %11111000 ; Keep only bits 3-7.
+ $D995 ADD A,C       ; #REGa+=#REGc.
+ $D996 LD L,A        ; #REGl=#REGa.
+ $D997 LD A,($D214)  ; #REGa=*#R$D214.
+ $D99A CP $E6        ; {Jump to #R$D9A5 if #REGa is lower than #N$E6.
+ $D99C JR C,$D9A5    ; }
+ $D99E CP $EF        ; {Jump to #R$D9A5 if #REGa is higher than #N$EF.
+ $D9A0 JR NC,$D9A5   ; }
+ $D9A2 LD A,($D408)  ; {Write *#R$D408 to *#REGhl.
+*$D9A5 LD (HL),A     ; }
+ $D9A6 POP HL        ; Restore #REGhl from the stack.
+ $D9A7 EXX           ; Switch back to the normal registers.
+ $D9A8 RET           ; Return.
+
+; Routine at D9A9
+;
+; Used by the routines at #R$D6C9 and #R$D7F6.
+c$D9A9 CALL $DA1D    ; Call #R$DA1D.
+ $D9AC LD A,C        ; #REGa=#REGc.
+ $D9AD ADD A,(HL)    ; #REGa+=*#REGhl.
+ $D9AE EX AF,AF'     ; Exchange the #REGaf register with the shadow #REGaf
+                     ; register.
+ $D9AF INC HL        ; Increment #REGhl by one.
+ $D9B0 LD A,B        ; #REGa=#REGb.
+ $D9B1 ADD A,(HL)    ; #REGa+=*#REGhl.
+ $D9B2 INC HL        ; Increment #REGhl by one.
+ $D9B3 LD E,(HL)     ; #REGe=*#REGhl.
+ $D9B4 INC HL        ; Increment #REGhl by one.
+ $D9B5 LD D,(HL)     ; #REGd=*#REGhl.
+ $D9B6 INC HL        ; {Increment #REGhl by three.
+ $D9B7 INC HL        ;
+ $D9B8 INC HL        ; }
+ $D9B9 EXX           ; Switch to the shadow registers.
+ $D9BA RET           ; Return.
+
+; Routine at D9BB
+;
+; Used by the routine at #R$E62D.
+c$D9BB LD L,A        ; #REGl=#REGa.
+ $D9BC LD A,($D251)  ; #REGa=*#R$D251.
+ $D9BF OR L          ; Set the bits from #REGl.
+ $D9C0 JP $D6C9      ; Jump to #R$D6C9.
+
+; Routine at D9C3
+;
+; Used by the routines at #R$E62D and #R$EF86.
+c$D9C3 LD A,(IX+$05)   ; {Jump to #R$D9D2 if *#REGix+#N$05 is equal to
+ $D9C6 CP (IX+$04)     ; *#REGix+#N$04.
+ $D9C9 JP Z,$D9D2      ; }
+ $D9CC INC (IX+$05)    ; Increment *#REGix+#N$05 by one.
+ $D9CF JP $D9E2        ; Jump to #R$D9E2.
+*$D9D2 LD A,(IX+$01)   ; {Jump to #R$D9E2 if *#REGix+#N$01 is equal to
+ $D9D5 CP (IX+$02)     ; *#REGix+#N$02.
+ $D9D8 JP Z,$D9E2      ; }
+ $D9DB INC (IX+$01)    ; Increment *#REGix+#N$01 by one.
+ $D9DE LD (IX+$05),$01 ; Write #N$01 to *#REGix+#N$05.
+*$D9E2 LD A,(IX+$00)   ; #REGa=*#REGix+#N$00.
+ $D9E5 AND %00000011   ; Keep only bits 0-1.
+ $D9E7 JP Z,$D9F3      ; Jump to #R$D9F3 if the result is zero.
+ $D9EA LD B,(IX+$03)   ; #REGb=*#REGix+#N$03.
+ $D9ED LD C,(IX+$01)   ; #REGc=*#REGix+#N$01.
+ $D9F0 JP $D9F9        ; Jump to #R$D9F9.
+*$D9F3 LD B,(IX+$01)   ; #REGb=*#REGix+#N$01.
+ $D9F6 LD C,(IX+$03)   ; #REGc=*#REGix+#N$03.
+*$D9F9 LD A,(IX+$05)   ; #REGa=*#REGix+#N$05.
+ $D9FC ADD A,$05       ; #REGa+=#N$05.
+ $D9FE ADD A,L         ; #REGa+=#REGl.
+ $D9FF LD L,A          ; #REGl=#REGa.
+ $DA00 LD A,$00        ; #REGa=#N$00.
+ $DA02 ADC A,H         ; #REGa+=#REGh.
+ $DA03 LD H,A          ; #REGh=#REGa.
+ $DA04 LD A,(HL)       ; #REGa=*#REGhl.
+ $DA05 CALL $D6C9      ; Call #R$D6C9.
+ $DA08 LD A,(IX+$05)   ; #REGa=*#REGix+#N$05.
+ $DA0B CP (IX+$04)     ; Compare #REGa with *#REGix+#N$04.
+ $DA0E RET             ; Return.
+
+; Routine at DA0F
+;
+; Used by the routines at #R$E62D and #R$EF86.
+c$DA0F DEC A         ; Decrease #REGa by one.
+ $DA10 ADD A,A       ; #REGa*=#N$02.
+ $DA11 LD L,A        ; {#REGa*=#N$05.
+ $DA12 ADD A,A       ;
+ $DA13 ADD A,A       ;
+ $DA14 ADD A,L       ; }
+ $DA15 LD H,$00      ; #REGh=#N$00.
+ $DA17 LD L,A        ; #REGl=#REGa.
+ $DA18 ADD HL,DE     ; #REGhl+=#REGde.
+ $DA19 PUSH HL       ; {#REGix=#REGhl.
+ $DA1A POP IX        ; }
+ $DA1C RET           ; Return.
+
+; Routine at DA1D
+;
+; Used by the routine at #R$D9A9.
+c$DA1D DEC A         ; Decrease #REGa by one.
+ $DA1E LD H,$00      ; #REGh=#N$00.
+ $DA20 LD L,A        ; #REGl=#REGa.
+ $DA21 LD DE,$C1A1   ; {#REGhl=#R$C1A1+(#REGhl*#N$04).
+ $DA24 ADD HL,HL     ;
+ $DA25 ADD HL,HL     ;
+ $DA26 ADD HL,DE     ; }
+ $DA27 RET           ; Return.
 
 ; Random Number
 ;
@@ -5011,40 +5049,59 @@ c$DD6C EX AF,AF'       ; Exchange the #REGaf register with the shadow #REGaf
 ; Routine at DD89
 ;
 ; Used by the routine at #R$F450.
-c$DD89 ADD A,(IY+$0C)  ;
- $DD8C LD (IY+$0C),A   ;
- $DD8F CP $41          ;
- $DD91 RET C           ;
- $DD92 LD (IY+$0C),$40 ;
- $DD96 RET             ;
+c$DD89 ADD A,(IY+$0C)  ; #REGa+=*#REGiy+#N$0C.
+ $DD8C LD (IY+$0C),A   ; Write #REGa to *#REGiy+#N$0C.
+ $DD8F CP $41          ; {Return if #REGa is lower than #N$41.
+ $DD91 RET C           ; }
+ $DD92 LD (IY+$0C),$40 ; Write #N$40 to *#REGiy+#N$0C.
+ $DD96 RET             ; Return.
 
-; Routine at DD97
+; Add Points To Score
 ;
 ; Used by the routines at #R$F450 and #R$F795.
-c$DD97 CP $01        ;
- $DD99 JR NZ,$DDA0   ;
- $DD9B LD HL,$D066   ;
- $DD9E JR $DDAA      ;
-*$DDA0 LD HL,$D082   ;
- $DDA3 CP $02        ;
- $DDA5 JR NZ,$DDAA   ;
- $DDA7 LD HL,$D074   ;
-*$DDAA LD A,E        ;
- $DDAB XOR $07       ;
+;
+; A Monster ID
+; D Points to add to score digit
+; E Digit to update
+;
+; Derive pointer to monster score messaging from the given ID.
+@label=AddPoints
+c$DD97 CP $01        ; {Jump to #R$DDA0 if #REGa is not targeting George
+ $DD99 JR NZ,$DDA0   ; (#N$01).}
+; George:
+ $DD9B LD HL,$D066   ; #REGhl=#R$D066.
+ $DD9E JR $DDAA      ; Jump to #R$DDAA.
+; Lizzy:
+@label=AddPoints_SetLizzy
+*$DDA0 LD HL,$D082   ; #REGhl=#R$D082.
+ $DDA3 CP $02        ; {Jump to #R$DDAA if #REGa is not targeting Lizzy
+ $DDA5 JR NZ,$DDAA   ; (#N$02).}
+; Ralph:
+ $DDA7 LD HL,$D074   ; #REGhl=#R$D074.
+; Apply points to score.
+@label=AddPointsToScore
+*$DDAA LD A,E        ; {Work out which digit to update.
+ $DDAB XOR %00000111 ;
  $DDAD DEC A         ;
- $DDAE LD E,A        ;
- $DDAF LD A,D        ;
- $DDB0 LD D,$00      ;
- $DDB2 ADD HL,DE     ;
-*$DDB3 ADD A,(HL)    ;
- $DDB4 LD (HL),A     ;
- $DDB5 CP $3A        ;
- $DDB7 RET C         ;
- $DDB8 SUB $0A       ;
- $DDBA LD (HL),A     ;
- $DDBB DEC HL        ;
- $DDBC LD A,$01      ;
- $DDBE JR $DDB3      ;
+ $DDAE LD E,A        ; }
+ $DDAF LD A,D        ; #REGa=points to add.
+ $DDB0 LD D,$00      ; {Move #REGhl to the appropriate score digit.
+ $DDB2 ADD HL,DE     ; }
+@label=AddPointsToScore_Loop
+*$DDB3 ADD A,(HL)    ; #REGa=*#REGhl+point value held in #REGa.
+ $DDB4 LD (HL),A     ; Write #REGa to *#REGhl.
+ $DDB5 CP $3A        ; {Return if #REGa is lower than #N$3A (ASCII #N$39 is
+ $DDB7 RET C         ; "#CHR$39").}
+; This digit is higher than "#CHR$39" so subtract 10 to make it a valid number
+; again.
+ $DDB8 SUB $0A       ; #REGa-=#N$0A.
+ $DDBA LD (HL),A     ; Update the current score digit.
+; We work backwards here, as the smaller units are on the right-hand side. So now we want to add "1" to the next
+;       digit. At it's simplest; 19+01 would first set "10" then move the pointer to the "tens" and add one to it to
+;       equal 20.
+ $DDBB DEC HL        ; Decrease the score pointer by one.
+ $DDBC LD A,$01      ; #REGa=#N$01.
+ $DDBE JR $DDB3      ; Jump to #R$DDB3.
 
 ; Choose Control Type
 ;
@@ -5656,123 +5713,122 @@ c$E119 LD HL,$CFD2   ; #REGhl=#R$CFD2.
 ; Routine at E179
 ;
 ; Used by the routine at #R$E62D.
-c$E179 LD A,($D252)  ;
+c$E179 LD A,($D252)  ; {Jump to #R$E1CE if *#R$D252 is not zero.
  $E17C AND A         ;
- $E17D JR NZ,$E1CE   ;
-*$E17F CALL $DA28    ;
- $E182 AND $1F       ;
- $E184 LD ($D217),A  ;
- $E187 LD A,($D248)  ;
- $E18A RRCA          ;
- $E18B JR NC,$E193   ;
- $E18D LD A,$08      ;
- $E18F LD ($D217),A  ;
- $E192 RET           ;
-*$E193 LD A,($D246)  ;
- $E196 RRCA          ;
- $E197 JR NC,$E1A1   ;
- $E199 LD A,($D217)  ;
+ $E17D JR NZ,$E1CE   ; }
+*$E17F CALL $DA28    ; Call #R$DA28.
+ $E182 AND %00011111 ; Keep only bits 0-4.
+ $E184 LD ($D217),A  ; Write #REGa to *#R$D217.
+ $E187 LD A,($D248)  ; #REGa=*#R$D248.
+ $E18A RRCA          ; RRCA.
+ $E18B JR NC,$E193   ; Jump to #R$E193 if {} is higher.
+ $E18D LD A,$08      ; {Write #N$08 to *#R$D217.
+ $E18F LD ($D217),A  ; }
+ $E192 RET           ; Return.
+*$E193 LD A,($D246)  ; #REGa=*#R$D246.
+ $E196 RRCA          ; RRCA.
+ $E197 JR NC,$E1A1   ; Jump to #R$E1A1 if {} is higher.
+ $E199 LD A,($D217)  ; {Jump to #R$E17F if *#R$D217 is equal to #N$10.
  $E19C CP $10        ;
- $E19E JR Z,$E17F    ;
- $E1A0 RET           ;
-*$E1A1 LD A,($D24E)  ;
- $E1A4 CP $11        ;
- $E1A6 LD A,($D217)  ;
- $E1A9 RET C         ;
- $E1AA CP $10        ;
- $E1AC JR Z,$E17F    ;
- $E1AE LD A,($D24D)  ;
- $E1B1 CP $FA        ;
- $E1B3 JR NC,$E1C3   ;
- $E1B5 CP $03        ;
- $E1B7 JR C,$E1C3    ;
- $E1B9 CP $1B        ;
- $E1BB LD A,($D217)  ;
- $E1BE RET C         ;
- $E1BF RES 1,A       ;
- $E1C1 JR $E1C8      ;
-*$E1C3 LD A,($D217)  ;
- $E1C6 RES 0,A       ;
-*$E1C8 RES 4,A       ;
- $E1CA LD ($D217),A  ;
- $E1CD RET           ;
-*$E1CE ADD A,A       ;
- $E1CF LD H,$00      ;
- $E1D1 LD L,A        ;
- $E1D2 LD DE,$E24F   ;
- $E1D5 ADD HL,DE     ;
- $E1D6 LD A,(HL)     ;
- $E1D7 INC HL        ;
- $E1D8 LD H,(HL)     ;
- $E1D9 LD L,A        ;
- $E1DA JP (HL)       ;
- $E1DB XOR A         ;
- $E1DC JP $E243      ;
- $E1DF LD A,$F7      ;
+ $E19E JR Z,$E17F    ; }
+ $E1A0 RET           ; Return.
+*$E1A1 LD A,($D24E)  ; #REGa=*#R$D24E.
+ $E1A4 CP $11        ; Compare #REGa with #N$11.
+ $E1A6 LD A,($D217)  ; #REGa=*#R$D217.
+ $E1A9 RET C         ; Return if {} is lower.
+ $E1AA CP $10        ; {Jump to #R$E17F if #REGa is equal to #N$10.
+ $E1AC JR Z,$E17F    ; }
+ $E1AE LD A,($D24D)  ; #REGa=*#R$D24D.
+ $E1B1 CP $FA        ; {Jump to #R$E1C3 if #REGa is higher than #N$FA.
+ $E1B3 JR NC,$E1C3   ; }
+ $E1B5 CP $03        ; {Jump to #R$E1C3 if #REGa is lower than #N$03.
+ $E1B7 JR C,$E1C3    ; }
+ $E1B9 CP $1B        ; Compare #REGa with #N$1B.
+ $E1BB LD A,($D217)  ; #REGa=*#R$D217.
+ $E1BE RET C         ; Return if {} is lower.
+ $E1BF RES 1,A       ; Reset bit 1 of #REGa.
+ $E1C1 JR $E1C8      ; Jump to #R$E1C8.
+*$E1C3 LD A,($D217)  ; #REGa=*#R$D217.
+ $E1C6 RES 0,A       ; Reset bit 0 of #REGa.
+*$E1C8 RES 4,A       ; Reset bit 4 of #REGa.
+ $E1CA LD ($D217),A  ; Write #REGa to *#R$D217.
+ $E1CD RET           ; Return.
+*$E1CE ADD A,A       ; #REGa+=#REGa.
+ $E1CF LD H,$00      ; #REGh=#N$00.
+ $E1D1 LD L,A        ; #REGl=#REGa.
+ $E1D2 LD DE,$E24F   ; #REGde=#R$E24F.
+ $E1D5 ADD HL,DE     ; #REGhl+=#REGde.
+ $E1D6 LD A,(HL)     ; #REGa=*#REGhl.
+ $E1D7 INC HL        ; Increment #REGhl by one.
+ $E1D8 LD H,(HL)     ; #REGh=*#REGhl.
+ $E1D9 LD L,A        ; #REGl=#REGa.
+ $E1DA JP (HL)       ; Jump to the address held by *#REGhl.
+ $E1DB XOR A         ; #REGa=#N$00.
+ $E1DC JP $E243      ; Jump to #R$E243.
+ $E1DF LD A,$F7      ; #REGa=#N$F7.
  $E1E1 IN A,($FE)    ;
- $E1E3 XOR $BF       ;
- $E1E5 AND $1F       ;
- $E1E7 JP $E243      ;
- $E1EA LD A,$EF      ;
+ $E1E3 XOR %10111111 ;
+ $E1E5 AND %00011111 ; Keep only bits 0-4.
+ $E1E7 JP $E243      ; Jump to #R$E243.
+ $E1EA LD A,$EF      ; #REGa=#N$EF.
  $E1EC IN A,($FE)    ;
- $E1EE LD B,$C6      ;
+ $E1EE LD B,$C6      ; #REGb=#N$C6.
  $E1F0 LD C,A        ;
- $E1F1 LD A,(BC)     ;
- $E1F2 RRCA          ;
+ $E1F1 LD A,(BC)     ; #REGa=*#REGbc.
+ $E1F2 RRCA          ; {RRCA.
  $E1F3 RRCA          ;
- $E1F4 RRCA          ;
- $E1F5 XOR $BF       ;
- $E1F7 AND $1F       ;
- $E1F9 JP $E243      ;
+ $E1F4 RRCA          ; }
+ $E1F5 XOR %10111111 ; Reset bits 0-5, 7.
+ $E1F7 AND %00011111 ; Keep only bits 0-4.
+ $E1F9 JP $E243      ; Jump to #R$E243.
  $E1FC IN A,($1F)    ;
- $E1FE AND $1F       ;
- $E200 JP Z,$E243    ;
- $E203 LD B,A        ;
- $E204 AND $03       ;
- $E206 LD A,B        ;
- $E207 JP Z,$E20C    ;
- $E20A XOR $03       ;
-*$E20C OR A          ;
- $E20D JP $E243      ;
- $E210 LD HL,$C850   ;
- $E213 JR $E21D      ;
- $E215 LD HL,$C85A   ;
- $E218 JR $E21D      ;
-*$E21A LD HL,$C864   ;
-*$E21D LD C,$00      ;
- $E21F CALL $E248    ;
- $E222 JR NZ,$E226   ;
- $E224 SET 0,C       ;
-*$E226 CALL $E248    ;
- $E229 JR NZ,$E22D   ;
- $E22B SET 1,C       ;
-*$E22D CALL $E248    ;
- $E230 JR NZ,$E234   ;
- $E232 SET 3,C       ;
-*$E234 CALL $E248    ;
- $E237 JR NZ,$E23B   ;
- $E239 SET 2,C       ;
-*$E23B CALL $E248    ;
- $E23E JR NZ,$E242   ;
- $E240 SET 4,C       ;
-*$E242 LD A,C        ;
-*$E243 AND A         ;
- $E244 LD ($D217),A  ;
- $E247 RET           ;
-*$E248 LD A,(HL)     ;
+ $E1FE AND %00011111 ; Keep only bits 0-4.
+ $E200 JP Z,$E243    ; Jump to #R$E243 if the result is zero.
+ $E203 LD B,A        ; #REGb=#REGa.
+ $E204 AND %00000011 ; Keep only bits 0-1.
+ $E206 LD A,B        ; #REGa=#REGb.
+ $E207 JP Z,$E20C    ; Jump to #R$E20C if {} is zero.
+ $E20A XOR %00000011 ; Reset bits 0-1.
+*$E20C OR A          ; Set the bits from #REGa.
+ $E20D JP $E243      ; Jump to #R$E243.
+ $E210 LD HL,$C850   ; #REGhl=#R$C850.
+ $E213 JR $E21D      ; Jump to #R$E21D.
+ $E215 LD HL,$C85A   ; #REGhl=#R$C85A.
+ $E218 JR $E21D      ; Jump to #R$E21D.
+ $E21A LD HL,$C864   ; #REGhl=#R$C864.
+*$E21D LD C,$00      ; #REGc=#N$00.
+ $E21F CALL $E248    ; Call #R$E248.
+ $E222 JR NZ,$E226   ; Jump to #R$E226 if {} is not zero.
+ $E224 SET 0,C       ; Set bit 0 of #REGc.
+*$E226 CALL $E248    ; Call #R$E248.
+ $E229 JR NZ,$E22D   ; Jump to #R$E22D if {} is not zero.
+ $E22B SET 1,C       ; Set bit 1 of #REGc.
+*$E22D CALL $E248    ; Call #R$E248.
+ $E230 JR NZ,$E234   ; Jump to #R$E234 if {} is not zero.
+ $E232 SET 3,C       ; Set bit 3 of #REGc.
+*$E234 CALL $E248    ; Call #R$E248.
+ $E237 JR NZ,$E23B   ; Jump to #R$E23B if {} is not zero.
+ $E239 SET 2,C       ; Set bit 2 of #REGc.
+*$E23B CALL $E248    ; Call #R$E248.
+ $E23E JR NZ,$E242   ; Jump to #R$E242 if {} is not zero.
+ $E240 SET 4,C       ; Set bit 4 of #REGc.
+*$E242 LD A,C        ; #REGa=#REGc.
+*$E243 AND A         ; Set flags.
+ $E244 LD ($D217),A  ; Write #REGa to *#R$D217.
+ $E247 RET           ; Return.
+*$E248 LD A,(HL)     ; #REGa=*#REGhl.
  $E249 IN A,($FE)    ;
- $E24B INC HL        ;
- $E24C AND (HL)      ;
- $E24D INC HL        ;
- $E24E RET           ;
- $E24F IN A,($E1)    ;
- $E251 RST $18       ;
- $E252 POP HL        ;
- $E253 JP PE,$FCE1   ;
- $E256 POP HL        ;
- $E257 DJNZ $E23B    ;
- $E259 DEC D         ;
- $E25A JP PO,$E21A   ;
+ $E24B INC HL        ; Increment #REGhl by one.
+ $E24C AND (HL)      ; Merge the bits from *#REGhl.
+ $E24D INC HL        ; Increment #REGhl by one.
+ $E24E RET           ; Return.
+ $E24F DEFW $E1DB    ;
+ $E251 DEFW $E1DF    ;
+ $E253 DEFW $E1EA    ;
+ $E255 DEFW $E1FC    ;
+ $E257 DEFW $E210    ;
+ $E259 DEFW $E215    ;
+ $E25B DEFW $E21A    ;
 
 ; Routine at E25D
 ;
@@ -8135,307 +8191,311 @@ c$F434 LD HL,$D238   ; #REGhl=#R$D238.
 ; Routine at F450
 ;
 ; Used by the routine at #R$F434.
-c$F450 LD B,A          ;
- $F451 INC HL          ;
- $F452 LD C,(HL)       ;
- $F453 INC HL          ;
- $F454 LD A,(HL)       ;
- $F455 RRCA            ;
- $F456 RET NC          ;
- $F457 INC HL          ;
- $F458 LD A,(HL)       ;
- $F459 RRCA            ;
- $F45A RET C           ;
- $F45B LD ($D228),BC   ;
- $F45F LD H,$00        ;
- $F461 LD L,B          ;
- $F462 LD D,H          ;
- $F463 LD E,C          ;
- $F464 ADD HL,HL       ;
+c$F450 LD B,A          ; #REGb=#REGa.
+ $F451 INC HL          ; Increment #REGhl by one.
+ $F452 LD C,(HL)       ; #REGc=*#REGhl.
+ $F453 INC HL          ; Increment #REGhl by one.
+ $F454 LD A,(HL)       ; #REGa=*#REGhl.
+ $F455 RRCA            ; RRCA.
+ $F456 RET NC          ; Return if {} is higher.
+ $F457 INC HL          ; Increment #REGhl by one.
+ $F458 LD A,(HL)       ; #REGa=*#REGhl.
+ $F459 RRCA            ; RRCA.
+ $F45A RET C           ; Return if {} is lower.
+ $F45B LD ($D228),BC   ; Write #REGbc to *#R$D228.
+ $F45F LD H,$00        ; #REGh=#N$00.
+ $F461 LD L,B          ; #REGl=#REGb.
+ $F462 LD D,H          ; #REGd=#REGh.
+ $F463 LD E,C          ; #REGe=#REGc.
+ $F464 ADD HL,HL       ; {#REGhl*=#N$20+#REGde.
  $F465 ADD HL,HL       ;
  $F466 ADD HL,HL       ;
  $F467 ADD HL,HL       ;
  $F468 ADD HL,HL       ;
- $F469 ADD HL,DE       ;
- $F46A LD A,$01        ;
- $F46C LD ($D3FB),A    ;
- $F46F LD ($D22A),HL   ;
-*$F472 LD DE,$013F     ;
- $F475 CALL $E0CF      ;
- $F478 LD A,($D3FC)    ;
- $F47B RRCA            ;
- $F47C JR C,$F480      ;
- $F47E JR Z,$F488      ;
-*$F480 LD BC,$0000     ;
- $F483 LD E,$01        ;
- $F485 CALL $F543      ;
-*$F488 LD A,($D215)    ;
- $F48B CP $4D          ;
- $F48D JR C,$F4E6      ;
- $F48F SUB $4C         ;
- $F491 AND $03         ;
- $F493 CP $01          ;
- $F495 JR NZ,$F4E6     ;
- $F497 LD A,$01        ;
- $F499 LD ($D3FC),A    ;
- $F49C LD A,($D215)    ;
- $F49F SUB $4D         ;
- $F4A1 SRL A           ;
- $F4A3 SRL A           ;
- $F4A5 CP $08          ;
- $F4A7 JR C,$F4B8      ;
- $F4A9 AND $03         ;
- $F4AB INC A           ;
- $F4AC ADD A,A         ;
- $F4AD LD D,A          ;
- $F4AE LD E,$03        ;
- $F4B0 LD A,($DF45)    ;
- $F4B3 CALL $DD97      ;
- $F4B6 JR $F4DC        ;
-*$F4B8 CP $04          ;
- $F4BA JR C,$F4D1      ;
- $F4BC LD A,($DF45)    ;
- $F4BF CALL $DD52      ;
- $F4C2 LD A,$06        ;
- $F4C4 CALL $DD6C      ;
- $F4C7 LD (IY+$00),$1D ;
- $F4CB LD (IY+$07),$04 ;
- $F4CF JR $F472        ;
-*$F4D1 LD A,($DF45)    ;
- $F4D4 CALL $DD52      ;
- $F4D7 LD A,$08        ;
- $F4D9 CALL $DD89      ;
-*$F4DC LD (IY+$00),$1A ;
- $F4E0 LD (IY+$07),$04 ;
- $F4E4 JR $F472        ;
-*$F4E6 LD DE,$013F     ;
- $F4E9 LD BC,($D228)   ;
- $F4ED INC C           ;
- $F4EE CALL $E0CF      ;
- $F4F1 LD A,($D3FC)    ;
- $F4F4 RRCA            ;
- $F4F5 JR C,$F4F9      ;
- $F4F7 JR Z,$F501      ;
-*$F4F9 LD BC,$0001     ;
- $F4FC LD E,$02        ;
- $F4FE CALL $F543      ;
-*$F501 LD DE,$013F     ;
- $F504 LD BC,($D228)   ;
- $F508 INC B           ;
- $F509 CALL $E0CF      ;
- $F50C LD A,($D3FC)    ;
- $F50F RRCA            ;
- $F510 JR C,$F514      ;
- $F512 JR Z,$F51C      ;
-*$F514 LD BC,$0020     ;
- $F517 LD E,$03        ;
- $F519 CALL $F543      ;
-*$F51C LD DE,$013F     ;
- $F51F LD BC,($D228)   ;
- $F523 INC B           ;
- $F524 INC C           ;
- $F525 CALL $E0CF      ;
- $F528 LD A,($D3FC)    ;
- $F52B RRCA            ;
- $F52C JR C,$F530      ;
- $F52E JR Z,$F538      ;
-*$F530 LD BC,$0021     ;
- $F533 LD E,$04        ;
- $F535 CALL $F543      ;
-*$F538 XOR A           ;
- $F539 LD ($D3FB),A    ;
+ $F469 ADD HL,DE       ; }
+ $F46A LD A,$01        ; #REGa=#N$01.
+ $F46C LD ($D3FB),A    ; Write #REGa to *#R$D3FB.
+ $F46F LD ($D22A),HL   ; Write #REGhl to *#R$D22A.
+*$F472 LD DE,$013F     ; #REGde=#N$013F.
+ $F475 CALL $E0CF      ; Call #R$E0CF.
+ $F478 LD A,($D3FC)    ; #REGa=*#R$D3FC.
+ $F47B RRCA            ; RRCA.
+ $F47C JR C,$F480      ; Jump to #R$F480 if {} is lower.
+ $F47E JR Z,$F488      ; Jump to #R$F488 if #REGa is zero.
+*$F480 LD BC,$0000     ; #REGbc=#N($0000,$04,$04).
+ $F483 LD E,$01        ; #REGe=#N$01.
+ $F485 CALL $F543      ; Call #R$F543.
+*$F488 LD A,($D215)    ; #REGa=*#R$D215.
+ $F48B CP $4D          ; {Jump to #R$F4E6 if #REGa is lower than #N$4D.
+ $F48D JR C,$F4E6      ; }
+ $F48F SUB $4C         ; #REGa-=#N$4C.
+ $F491 AND %00000011   ; Keep only bits 0-1.
+ $F493 CP $01          ; {Jump to #R$F4E6 if #REGa is not equal to #N$01.
+ $F495 JR NZ,$F4E6     ; }
+ $F497 LD A,$01        ; {Write #N$01 to *#R$D3FC.
+ $F499 LD ($D3FC),A    ; }
+ $F49C LD A,($D215)    ; #REGa=*#R$D215.
+ $F49F SUB $4D         ; #REGa-=#N$4D.
+ $F4A1 SRL A           ; Shift #REGa right.
+ $F4A3 SRL A           ; Shift #REGa right.
+ $F4A5 CP $08          ; {Jump to #R$F4B8 if #REGa is lower than #N$08.
+ $F4A7 JR C,$F4B8      ; }
+ $F4A9 AND %00000011   ; Keep only bits 0-1.
+ $F4AB INC A           ; Increment #REGa by one.
+ $F4AC ADD A,A         ; #REGa+=#REGa.
+ $F4AD LD D,A          ; #REGd=#REGa.
+ $F4AE LD E,$03        ; #REGe=#N$03.
+ $F4B0 LD A,($DF45)    ; #REGa=*#R$DF45.
+ $F4B3 CALL $DD97      ; Call #R$DD97.
+ $F4B6 JR $F4DC        ; Jump to #R$F4DC.
+*$F4B8 CP $04          ; {Jump to #R$F4D1 if #REGa is lower than #N$04.
+ $F4BA JR C,$F4D1      ; }
+ $F4BC LD A,($DF45)    ; #REGa=*#R$DF45.
+ $F4BF CALL $DD52      ; Call #R$DD52.
+ $F4C2 LD A,$06        ; #REGa=#N$06.
+ $F4C4 CALL $DD6C      ; Call #R$DD6C.
+ $F4C7 LD (IY+$00),$1D ; Write #N$1D to *#REGiy+#N$00.
+ $F4CB LD (IY+$07),$04 ; Write #N$04 to *#REGiy+#N$07.
+ $F4CF JR $F472        ; Jump to #R$F472.
+*$F4D1 LD A,($DF45)    ; #REGa=*#R$DF45.
+ $F4D4 CALL $DD52      ; Call #R$DD52.
+ $F4D7 LD A,$08        ; #REGa=#N$08.
+ $F4D9 CALL $DD89      ; Call #R$DD89.
+*$F4DC LD (IY+$00),$1A ; Write #N$1A to *#REGiy+#N$00.
+ $F4E0 LD (IY+$07),$04 ; Write #N$04 to *#REGiy+#N$07.
+ $F4E4 JR $F472        ; Jump to #R$F472.
+*$F4E6 LD DE,$013F     ; #REGde=#N$013F.
+ $F4E9 LD BC,($D228)   ; #REGbc=*#R$D228.
+ $F4ED INC C           ; Increment #REGc by one.
+ $F4EE CALL $E0CF      ; Call #R$E0CF.
+ $F4F1 LD A,($D3FC)    ; #REGa=*#R$D3FC.
+ $F4F4 RRCA            ; RRCA.
+ $F4F5 JR C,$F4F9      ; Jump to #R$F4F9 if {} is lower.
+ $F4F7 JR Z,$F501      ; Jump to #R$F501 if #REGa is zero.
+*$F4F9 LD BC,$0001     ; #REGbc=#N($0001,$04,$04).
+ $F4FC LD E,$02        ; #REGe=#N$02.
+ $F4FE CALL $F543      ; Call #R$F543.
+*$F501 LD DE,$013F     ; #REGde=#N$013F.
+ $F504 LD BC,($D228)   ; #REGbc=*#R$D228.
+ $F508 INC B           ; Increment #REGb by one.
+ $F509 CALL $E0CF      ; Call #R$E0CF.
+ $F50C LD A,($D3FC)    ; #REGa=*#R$D3FC.
+ $F50F RRCA            ; RRCA.
+ $F510 JR C,$F514      ; Jump to #R$F514 if {} is lower.
+ $F512 JR Z,$F51C      ; Jump to #R$F51C if #REGa is zero.
+*$F514 LD BC,$0020     ; #REGbc=#N($0020,$04,$04).
+ $F517 LD E,$03        ; #REGe=#N$03.
+ $F519 CALL $F543      ; Call #R$F543.
+*$F51C LD DE,$013F     ; #REGde=#N$013F.
+ $F51F LD BC,($D228)   ; #REGbc=*#R$D228.
+ $F523 INC B           ; Increment #REGb by one.
+ $F524 INC C           ; Increment #REGc by one.
+ $F525 CALL $E0CF      ; Call #R$E0CF.
+ $F528 LD A,($D3FC)    ; #REGa=*#R$D3FC.
+ $F52B RRCA            ; RRCA.
+ $F52C JR C,$F530      ; Jump to #R$F530 if #REGa is lower.
+ $F52E JR Z,$F538      ; Jump to #R$F538 if #REGa is zero.
+*$F530 LD BC,$0021     ; #REGbc=#N($0021,$04,$04).
+ $F533 LD E,$04        ; #REGe=#N$04.
+ $F535 CALL $F543      ; Call #R$F543.
+*$F538 XOR A           ; {Write #N$00 to: #LIST { *#R$D3FB } { *#R$D3FC } {
+ $F539 LD ($D3FB),A    ; *#R$D219 } LIST#
  $F53C LD ($D3FC),A    ;
- $F53F LD ($D219),A    ;
- $F542 RET             ;
-*$F543 LD A,($D3FC)    ;
- $F546 RRCA            ;
- $F547 LD A,($D215)    ;
- $F54A JR NC,$F551     ;
- $F54C LD A,$10        ;
- $F54E LD ($D215),A    ;
-*$F551 AND A           ;
- $F552 RET Z           ;
- $F553 CP $09          ;
- $F555 JR C,$F56A      ;
- $F557 CP $0E          ;
- $F559 JR NC,$F565     ;
- $F55B LD A,E          ;
- $F55C AND $01         ;
- $F55E XOR $01         ;
- $F560 ADD A,$0E       ;
- $F562 JP $F61F        ;
-*$F565 CP $10          ;
- $F567 JP NZ,$F5E6     ;
-*$F56A LD A,E          ;
- $F56B CP $01          ;
- $F56D JR NZ,$F572     ;
- $F56F LD ($D219),A    ;
-*$F572 CP $04          ;
- $F574 JR NZ,$F59E     ;
- $F576 LD A,($D219)    ;
+ $F53F LD ($D219),A    ; }
+ $F542 RET             ; Return.
+*$F543 LD A,($D3FC)    ; #REGa=*#R$D3FC.
+ $F546 RRCA            ; RRCA.
+ $F547 LD A,($D215)    ; #REGa=*#R$D215.
+ $F54A JR NC,$F551     ; Jump to #R$F551 if {} is higher.
+ $F54C LD A,$10        ; #REGa=#N$10.
+ $F54E LD ($D215),A    ; Write #REGa to *#R$D215.
+*$F551 AND A           ; {Return if #REGa is zero.
+ $F552 RET Z           ; }
+ $F553 CP $09          ; {Jump to #R$F56A if #REGa is lower than #N$09.
+ $F555 JR C,$F56A      ; }
+ $F557 CP $0E          ; {Jump to #R$F565 if #REGa is higher than #N$0E.
+ $F559 JR NC,$F565     ; }
+ $F55B LD A,E          ; #REGa=#REGe.
+ $F55C AND %00000001   ; Keep only bits 0.
+ $F55E XOR %00000001   ; Reset bits 0.
+ $F560 ADD A,$0E       ; #REGa+=#N$0E.
+ $F562 JP $F61F        ; Jump to #R$F61F.
+*$F565 CP $10          ; {Jump to #R$F5E6 if #REGa is not equal to #N$10.
+ $F567 JP NZ,$F5E6     ; }
+*$F56A LD A,E          ; #REGa=#REGe.
+ $F56B CP $01          ; {Jump to #R$F572 if #REGa is not equal to #N$01.
+ $F56D JR NZ,$F572     ; }
+ $F56F LD ($D219),A    ; Write #REGa to *#R$D219.
+*$F572 CP $04          ; {Jump to #R$F59E if #REGa is noot equal to #N$04.
+ $F574 JR NZ,$F59E     ; }
+ $F576 LD A,($D219)    ; {Jump to #R$F59E if *#R$D219 is zero.
  $F579 AND A           ;
- $F57A JR Z,$F59E      ;
- $F57C LD A,($D3FC)    ;
+ $F57A JR Z,$F59E      ; }
+ $F57C LD A,($D3FC)    ; {Jump to #R$F59E if *#R$D3FC is not zero.
  $F57F AND A           ;
- $F580 JR NZ,$F59E     ;
- $F582 PUSH DE         ;
- $F583 CALL $DA28      ;
- $F586 POP DE          ;
- $F587 CP $10          ;
- $F589 JP NC,$F59E     ;
- $F58C LD A,($D3F7)    ;
- $F58F CP $08          ;
- $F591 JR Z,$F59E      ;
- $F593 INC A           ;
- $F594 LD ($D3F7),A    ;
- $F597 PUSH DE         ;
- $F598 CALL $F5A4      ;
- $F59B POP DE          ;
- $F59C JR $F538        ;
-*$F59E LD A,E          ;
- $F59F ADD A,$2F       ;
- $F5A1 JP $F61F        ;
-*$F5A4 CALL $DA28      ;
- $F5A7 AND $03         ;
- $F5A9 CP $03          ;
- $F5AB JR Z,$F5A4      ;
- $F5AD ADD A,A         ;
+ $F580 JR NZ,$F59E     ; }
+ $F582 PUSH DE         ; Stash #REGde on the stack.
+ $F583 CALL $DA28      ; Call #R$DA28.
+ $F586 POP DE          ; Restore #REGde from the stack.
+ $F587 CP $10          ; {Jump to #R$F59E if #REGa is higher than #N$10.
+ $F589 JP NC,$F59E     ; }
+ $F58C LD A,($D3F7)    ; #REGa=*#R$D3F7.
+ $F58F CP $08          ; {Jump to #R$F59E if #REGa is equal to #N$08.
+ $F591 JR Z,$F59E      ; }
+ $F593 INC A           ; Increment #REGa by one.
+ $F594 LD ($D3F7),A    ; Write #REGa to *#R$D3F7.
+ $F597 PUSH DE         ; Stash #REGde on the stack.
+ $F598 CALL $F5A4      ; Call #R$F5A4.
+ $F59B POP DE          ; Restore #REGde from the stack.
+ $F59C JR $F538        ; Jump to #R$F538.
+*$F59E LD A,E          ; #REGa=#REGe.
+ $F59F ADD A,$2F       ; #REGa+=#N$2F.
+ $F5A1 JP $F61F        ; Jump to #R$F61F.
+*$F5A4 CALL $DA28      ; Call #R$DA28.
+ $F5A7 AND %00000011   ; Keep only bits 0-1.
+ $F5A9 CP $03          ; {Jump to #R$F5A4 if #REGa is equal to #N$03.
+ $F5AB JR Z,$F5A4      ; }
+ $F5AD ADD A,A         ; {#REGc=#REGa*#N$04.
  $F5AE ADD A,A         ;
- $F5AF LD C,A          ;
- $F5B0 CALL $DA28      ;
- $F5B3 AND $03         ;
- $F5B5 OR C            ;
- $F5B6 ADD A,A         ;
+ $F5AF LD C,A          ; }
+ $F5B0 CALL $DA28      ; Call #R$DA28.
+ $F5B3 AND %00000011   ; Keep only bits 0-1.
+ $F5B5 OR C            ; Set the bits from #REGc.
+ $F5B6 ADD A,A         ; {#REGe=#N$4D+#REGa*#N$04.
  $F5B7 ADD A,A         ;
  $F5B8 ADD A,$4D       ;
- $F5BA LD E,A          ;
- $F5BB LD A,($D218)    ;
- $F5BE LD D,A          ;
- $F5BF LD BC,($D22A)   ;
- $F5C3 CALL $F5D8      ;
- $F5C6 INC C           ;
- $F5C7 CALL $F5D8      ;
- $F5CA LD HL,$001F     ;
- $F5CD ADD HL,BC       ;
- $F5CE LD B,H          ;
- $F5CF LD C,L          ;
- $F5D0 CALL $F5D8      ;
- $F5D3 INC C           ;
- $F5D4 CALL $F5D8      ;
- $F5D7 RET             ;
-*$F5D8 PUSH DE         ;
- $F5D9 PUSH BC         ;
- $F5DA CALL $DA3D      ;
- $F5DD POP BC          ;
- $F5DE POP DE          ;
- $F5DF INC E           ;
- $F5E0 LD A,$01        ;
- $F5E2 LD ($FF8D),A    ;
- $F5E5 RET             ;
-*$F5E6 CP $11          ;
- $F5E8 JR NZ,$F5F4     ;
- $F5EA LD A,E          ;
- $F5EB CP $03          ;
- $F5ED LD A,$13        ;
- $F5EF JR NC,$F61F     ;
- $F5F1 DEC A           ;
- $F5F2 JR $F61F        ;
-*$F5F4 CP $0E          ;
- $F5F6 RET Z           ;
- $F5F7 CP $0F          ;
- $F5F9 RET Z           ;
- $F5FA CP $12          ;
- $F5FC RET Z           ;
- $F5FD CP $13          ;
- $F5FF RET Z           ;
- $F600 CP $15          ;
- $F602 RET Z           ;
- $F603 CP $16          ;
- $F605 RET Z           ;
- $F606 CP $14          ;
- $F608 JR NZ,$F614     ;
- $F60A LD A,E          ;
- $F60B CP $03          ;
- $F60D LD A,$16        ;
- $F60F JR NC,$F61F     ;
- $F611 DEC A           ;
- $F612 JR $F61F        ;
-*$F614 CP $30          ;
- $F616 JP C,$F56A      ;
- $F619 CP $34          ;
- $F61B JP NC,$F56A     ;
- $F61E RET             ;
-*$F61F LD E,A          ;
- $F620 PUSH BC         ;
- $F621 PUSH DE         ;
- $F622 LD BC,($D228)   ;
- $F626 CALL $F63E      ;
- $F629 POP DE          ;
- $F62A POP BC          ;
- $F62B LD HL,($D22A)   ;
- $F62E ADD HL,BC       ;
- $F62F LD B,H          ;
- $F630 LD C,L          ;
- $F631 LD A,($D218)    ;
- $F634 LD D,A          ;
- $F635 CALL $DA3D      ;
- $F638 LD A,$01        ;
- $F63A LD ($FF8D),A    ;
- $F63D RET             ;
-*$F63E LD HL,$D31F     ;
- $F641 LD D,$00        ;
- $F643 LD E,C          ;
- $F644 ADD HL,DE       ;
- $F645 LD A,(HL)       ;
- $F646 EX AF,AF'       ;
- $F647 LD E,$01        ;
- $F649 LD A,(HL)       ;
- $F64A CP $08          ;
- $F64C JR C,$F654      ;
- $F64E RRCA            ;
+ $F5BA LD E,A          ; }
+ $F5BB LD A,($D218)    ; {#REGd=*#R$D218.
+ $F5BE LD D,A          ; }
+ $F5BF LD BC,($D22A)   ; #REGbc=*#R$D22A.
+ $F5C3 CALL $F5D8      ; Call #R$F5D8.
+ $F5C6 INC C           ; Increment #REGc by one.
+ $F5C7 CALL $F5D8      ; Call #R$F5D8.
+ $F5CA LD HL,$001F     ; #REGhl=#N($001F,$04,$04).
+ $F5CD ADD HL,BC       ; #REGhl+=#REGbc.
+ $F5CE LD B,H          ; #REGb=#REGh.
+ $F5CF LD C,L          ; #REGc=#REGl.
+ $F5D0 CALL $F5D8      ; Call #R$F5D8.
+ $F5D3 INC C           ; Increment #REGc by one.
+ $F5D4 CALL $F5D8      ; Call #R$F5D8.
+ $F5D7 RET             ; Return.
+*$F5D8 PUSH DE         ; {Stash #REGde and #REGbc on the stack.
+ $F5D9 PUSH BC         ; }
+ $F5DA CALL $DA3D      ; Call #R$DA3D.
+ $F5DD POP BC          ; {Restore #REGbc and #REGde from the stack.
+ $F5DE POP DE          ; }
+ $F5DF INC E           ; Increment #REGe by one.
+; #AUDIO(test.wav)(#INCLUDE(Unknown1))
+ $F5E0 LD A,$01        ; {Write #N$01 to *#R$FF8D.
+ $F5E2 LD ($FF8D),A    ; }
+ $F5E5 RET             ; Return.
+*$F5E6 CP $11          ; {Jump to #R$F5F4 if #REGa is not equal to #N$11.
+ $F5E8 JR NZ,$F5F4     ; }
+ $F5EA LD A,E          ; #REGa=#REGe.
+ $F5EB CP $03          ; Compare #REGa with #N$03.
+ $F5ED LD A,$13        ; #REGa=#N$13.
+ $F5EF JR NC,$F61F     ; Jump to #R$F61F if {} is higher.
+ $F5F1 DEC A           ; Decrease #REGa by one.
+ $F5F2 JR $F61F        ; Jump to #R$F61F.
+*$F5F4 CP $0E          ; {Return if #REGa is equal to #N$0E.
+ $F5F6 RET Z           ; }
+ $F5F7 CP $0F          ; {Return if #REGa is equal to #N$0F.
+ $F5F9 RET Z           ; }
+ $F5FA CP $12          ; {Return if #REGa is equal to #N$12.
+ $F5FC RET Z           ; }
+ $F5FD CP $13          ; {Return if #REGa is equal to #N$13.
+ $F5FF RET Z           ; }
+ $F600 CP $15          ; {Return if #REGa is equal to #N$15.
+ $F602 RET Z           ; }
+ $F603 CP $16          ; {Return if #REGa is equal to #N$16.
+ $F605 RET Z           ; }
+ $F606 CP $14          ; {Jump to #R$F614 if #REGa is not equal to #N$14.
+ $F608 JR NZ,$F614     ; }
+ $F60A LD A,E          ; #REGa=#REGe.
+ $F60B CP $03          ; Compare #REGa with #N$03.
+ $F60D LD A,$16        ; #REGa=#N$16.
+ $F60F JR NC,$F61F     ; Jump to #R$F61F if {} is higher.
+ $F611 DEC A           ; Decrease #REGa by one.
+ $F612 JR $F61F        ; Jump to #R$F61F.
+*$F614 CP $30          ; {Jump to #R$F56A if #REGa is lower than #N$30.
+ $F616 JP C,$F56A      ; }
+ $F619 CP $34          ; {Jump to #R$F56A if #REGa is higher than #N$34.
+ $F61B JP NC,$F56A     ; }
+ $F61E RET             ; Return.
+*$F61F LD E,A          ; #REGe=#REGa.
+ $F620 PUSH BC         ; {Stash #REGbc and #REGde on the stack.
+ $F621 PUSH DE         ; }
+ $F622 LD BC,($D228)   ; #REGbc=*#R$D228.
+ $F626 CALL $F63E      ; Call #R$F63E.
+ $F629 POP DE          ; {Restore #REGde and #REGbc from the stack.
+ $F62A POP BC          ; }
+ $F62B LD HL,($D22A)   ; #REGhl=*#R$D22A.
+ $F62E ADD HL,BC       ; #REGhl+=#REGbc.
+ $F62F LD B,H          ; #REGb=#REGh.
+ $F630 LD C,L          ; #REGc=#REGl.
+ $F631 LD A,($D218)    ; {#REGd=*#R$D218.
+ $F634 LD D,A          ; }
+ $F635 CALL $DA3D      ; Call #R$DA3D.
+; #AUDIO(test.wav)(#INCLUDE(Unknown1))
+ $F638 LD A,$01        ; {Write #N$01 to *#R$FF8D.
+ $F63A LD ($FF8D),A    ; }
+ $F63D RET             ; Return.
+*$F63E LD HL,$D31F     ; #REGhl=#R$D31F.
+ $F641 LD D,$00        ; #REGd=#N$00.
+ $F643 LD E,C          ; #REGe=#REGc.
+ $F644 ADD HL,DE       ; #REGhl+=#REGde.
+ $F645 LD A,(HL)       ; #REGa=*#REGhl.
+ $F646 EX AF,AF'       ; Exchange the #REGaf register with the shadow #REGaf
+                       ; register.
+ $F647 LD E,$01        ; #REGe=#N$01.
+ $F649 LD A,(HL)       ; #REGa=*#REGhl.
+ $F64A CP $08          ; {Jump to #R$F654 if #REGa is lower than #N$08.
+ $F64C JR C,$F654      ; }
+ $F64E RRCA            ; {RRCA.
  $F64F RRCA            ;
- $F650 RRCA            ;
- $F651 AND $07         ;
- $F653 INC E           ;
-*$F654 LD HL,$D218     ;
- $F657 LD (HL),E       ;
- $F658 DEC A           ;
- $F659 ADD A,A         ;
- $F65A LD H,A          ;
- $F65B ADD A,A         ;
- $F65C LD L,A          ;
- $F65D ADD A,A         ;
- $F65E ADD A,H         ;
- $F65F ADD A,L         ;
- $F660 LD E,A          ;
- $F661 LD IX,$D39F     ;
- $F665 ADD IX,DE       ;
- $F667 LD A,(IX+$00)   ;
- $F66A CP $03          ;
- $F66C RET NC          ;
- $F66D LD A,$13        ;
- $F66F SUB (IX+$05)    ;
- $F672 LD B,A          ;
- $F673 LD A,($D229)    ;
- $F676 DEC A           ;
- $F677 CP B            ;
- $F678 JR NC,$F681     ;
- $F67A EX AF,AF'       ;
- $F67B AND $07         ;
- $F67D LD E,$01        ;
- $F67F JR $F654        ;
-*$F681 LD A,(IX+$09)   ;
- $F684 SUB $02         ;
- $F686 LD (IX+$09),A   ;
- $F689 JR NC,$F694     ;
- $F68B LD (IX+$09),$00 ;
- $F68F LD (IX+$00),$02 ;
- $F693 RET             ;
-*$F694 LD D,$01        ;
- $F696 LD E,$02        ;
- $F698 LD A,($DF45)    ;
- $F69B CALL $DD97      ;
- $F69E RET             ;
+ $F650 RRCA            ; }
+ $F651 AND %00000111   ; Keep only bits 0-2.
+ $F653 INC E           ; Increment #REGe by one.
+*$F654 LD HL,$D218     ; #REGhl=#R$D218.
+ $F657 LD (HL),E       ; Write #REGe to *#REGhl.
+ $F658 DEC A           ; Decrease #REGa by one.
+ $F659 ADD A,A         ; #REGa+=#REGa.
+ $F65A LD H,A          ; #REGh=#REGa.
+ $F65B ADD A,A         ; #REGa+=#REGa.
+ $F65C LD L,A          ; #REGl=#REGa.
+ $F65D ADD A,A         ; #REGa+=#REGa.
+ $F65E ADD A,H         ; #REGa+=#REGh.
+ $F65F ADD A,L         ; #REGa+=#REGl.
+ $F660 LD E,A          ; #REGe=#REGa.
+ $F661 LD IX,$D39F     ; #REGix=#R$D39F.
+ $F665 ADD IX,DE       ; #REGix+=#REGde.
+ $F667 LD A,(IX+$00)   ; #REGa=*#REGix+#N$00.
+ $F66A CP $03          ; {Return if #REGa is higher than #N$03.
+ $F66C RET NC          ; }
+ $F66D LD A,$13        ; #REGa=#N$13.
+ $F66F SUB (IX+$05)    ; #REGa-=*#REGix+#N$05.
+ $F672 LD B,A          ; #REGb=#REGa.
+ $F673 LD A,($D229)    ; #REGa=*#R$D229.
+ $F676 DEC A           ; Decrease #REGa by one.
+ $F677 CP B            ; Compare #REGa with #REGb.
+ $F678 JR NC,$F681     ; Jump to #R$F681 if {} is higher.
+ $F67A EX AF,AF'       ; Exchange the #REGaf register with the shadow #REGaf
+                       ; register.
+ $F67B AND %00000111   ; Keep only bits 0-2.
+ $F67D LD E,$01        ; #REGe=#N$01.
+ $F67F JR $F654        ; Jump to #R$F654.
+*$F681 LD A,(IX+$09)   ; #REGa=*#REGix+#N$09.
+ $F684 SUB $02         ; #REGa-=#N$02.
+ $F686 LD (IX+$09),A   ; Write #REGa to *#REGix+#N$09.
+ $F689 JR NC,$F694     ; Jump to #R$F694 if {} is higher.
+ $F68B LD (IX+$09),$00 ; Write #N$00 to *#REGix+#N$09.
+ $F68F LD (IX+$00),$02 ; Write #N$02 to *#REGix+#N$00.
+ $F693 RET             ; Return.
+*$F694 LD D,$01        ; #REGd=#N$01.
+ $F696 LD E,$02        ; #REGe=#N$02.
+ $F698 LD A,($DF45)    ; #REGa=*#R$DF45.
+ $F69B CALL $DD97      ; Call #R$DD97.
+ $F69E RET             ; Return.
 
 ; Handler: Projectiles
 ;
@@ -9629,19 +9689,20 @@ c$FCB6 LD A,($D405)  ; {Return if train spawning is set to be off (*#R$D405 is
 @label=Handler_Train_Movement
 *$FCE7 LD A,($D407)  ; #REGa=*#R$D407.
  $FCEA AND %01000000 ; Keep only bit 6.
- $FCEC RLCA          ; {RLCA.
+ $FCEC RLCA          ; {Rotate #REGa left twice, moving bit 6 to bit 0.
  $FCED RLCA          ; }
  $FCEE LD C,A        ; #REGc=#REGa.
  $FCEF LD A,($D407)  ; {Jump to #R$FD21 if *#R$D407 is higher than #N$80.
  $FCF2 CP $80        ;
  $FCF4 JR NC,$FD21   ; }
  $FCF6 AND %00111111 ; Keep only bits 0-5.
- $FCF8 LD B,A        ; #REGb=#REGa.
+ $FCF8 LD B,A        ; #REGb=train X position.
  $FCF9 LD A,($D406)  ; #REGa=*#R$D406.
  $FCFC INC A         ; Increment #REGa by one.
  $FCFD ADD A,C       ; #REGa+=#REGc.
+@label=Handler_Train_SetXPos
 *$FCFE LD ($D406),A  ; Write #REGa to *#R$D406.
- $FD01 LD C,A        ; #REGc=#REGa.
+ $FD01 LD C,A        ; #REGc=train X position.
  $FD02 LD A,$79      ; #REGa=#N$79.
  $FD04 PUSH BC       ; Stash #REGbc on the stack.
  $FD05 CALL $D6C9    ; Call #R$D6C9.
@@ -9662,8 +9723,10 @@ c$FCB6 LD A,($D405)  ; {Return if train spawning is set to be off (*#R$D405 is
  $FD1B LD A,$79      ; #REGa=#N$79.
  $FD1D CALL $D7F6    ; Call #R$D7F6.
  $FD20 RET           ; Return.
-*$FD21 AND %00111111 ; Keep only bits 0-5.
- $FD23 LD B,A        ; #REGb=#REGa.
+; Handles moving the train from the right-to-left hand side of the play area.
+@label=Handler_MoveTrain_RightToLeft
+*$FD21 AND %00111111 ; Strip off the right-to-left flag.
+ $FD23 LD B,A        ; #REGb=train Y position.
  $FD24 LD A,($D406)  ; #REGa=*#R$D406.
  $FD27 DEC A         ; Decrease #REGa by one.
  $FD28 SUB C         ; #REGa-=#REGc.
