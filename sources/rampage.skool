@@ -4786,8 +4786,8 @@ c$DBE5 LD B,$06        ; #REGb=#N$06 (number of possible helicopters).
  $DC2F INC HL          ; Increment #REGhl by one.
  $DC30 LD (HL),C       ; Write #REGc to *#REGhl.
  $DC31 INC HL          ; Increment #REGhl by one.
- $DC32 CALL $DA28      ; Call #R$DA28.
- $DC35 AND %00011111   ; Keep only bits 0-4.
+ $DC32 CALL $DA28      ; {Get a random number between 0-31.
+ $DC35 AND %00011111   ; }
  $DC37 ADD A,$08       ; #REGa+=#N$08.
  $DC39 AND %00011111   ; Keep only bits 0-4.
  $DC3B LD (HL),A       ; Write #REGa to *#REGhl.
@@ -4931,8 +4931,8 @@ c$DCA1 LD A,($D3F4)  ; {#REGb=*#R$D3F4.
  $DD15 JR NZ,$DD0F   ; }
  $DD17 LD (HL),$01   ; Write #N$01 to *#REGhl.
  $DD19 INC HL        ; Increment #REGhl by one.
- $DD1A CALL $DA28    ; Call #R$DA28.
- $DD1D AND %00011111 ; Keep only bits 0-4.
+ $DD1A CALL $DA28    ; {Get a random number between 0-31.
+ $DD1D AND %00011111 ; }
  $DD1F ADD A,$1F     ; #REGa+=#N$1F.
  $DD21 LD (HL),A     ; Write #REGa to *#REGhl.
  $DD22 INC HL        ; Increment #REGhl by one.
@@ -5716,9 +5716,9 @@ c$E119 LD HL,$CFD2   ; #REGhl=#R$CFD2.
 c$E179 LD A,($D252)  ; {Jump to #R$E1CE if *#R$D252 is not zero.
  $E17C AND A         ;
  $E17D JR NZ,$E1CE   ; }
-*$E17F CALL $DA28    ; Call #R$DA28.
- $E182 AND %00011111 ; Keep only bits 0-4.
- $E184 LD ($D217),A  ; Write #REGa to *#R$D217.
+*$E17F CALL $DA28    ; {Write a random number between 0-31 to *#R$D217.
+ $E182 AND %00011111 ;
+ $E184 LD ($D217),A  ; }
  $E187 LD A,($D248)  ; #REGa=*#R$D248.
  $E18A RRCA          ; RRCA.
  $E18B JR NC,$E193   ; Jump to #R$E193 if {} is higher.
@@ -5733,9 +5733,9 @@ c$E179 LD A,($D252)  ; {Jump to #R$E1CE if *#R$D252 is not zero.
  $E19E JR Z,$E17F    ; }
  $E1A0 RET           ; Return.
 *$E1A1 LD A,($D24E)  ; #REGa=*#R$D24E.
- $E1A4 CP $11        ; Compare #REGa with #N$11.
+ $E1A4 CP $11        ; Compare #REGa with #N$11...
  $E1A6 LD A,($D217)  ; #REGa=*#R$D217.
- $E1A9 RET C         ; Return if {} is lower.
+ $E1A9 RET C         ; Return if #REGa was is lower than #N$11 on line #R$E1A4.
  $E1AA CP $10        ; {Jump to #R$E17F if #REGa is equal to #N$10.
  $E1AC JR Z,$E17F    ; }
  $E1AE LD A,($D24D)  ; #REGa=*#R$D24D.
@@ -5743,9 +5743,9 @@ c$E179 LD A,($D252)  ; {Jump to #R$E1CE if *#R$D252 is not zero.
  $E1B3 JR NC,$E1C3   ; }
  $E1B5 CP $03        ; {Jump to #R$E1C3 if #REGa is lower than #N$03.
  $E1B7 JR C,$E1C3    ; }
- $E1B9 CP $1B        ; Compare #REGa with #N$1B.
+ $E1B9 CP $1B        ; Compare #REGa with #N$1B...
  $E1BB LD A,($D217)  ; #REGa=*#R$D217.
- $E1BE RET C         ; Return if {} is lower.
+ $E1BE RET C         ; Return if #REGa was lower #N$1B on line #R$E1B9.
  $E1BF RES 1,A       ; Reset bit 1 of #REGa.
  $E1C1 JR $E1C8      ; Jump to #R$E1C8.
 *$E1C3 LD A,($D217)  ; #REGa=*#R$D217.
@@ -5891,8 +5891,8 @@ c$E25D LD B,$10      ; #REGb=#N$10.
  $E2A9 JP NZ,$E54D   ; Jump to #R$E54D if {} is not zero.
  $E2AC LD (HL),$0E   ; Write #N$0E to *#REGhl.
  $E2AE DEC HL        ; Decrease #REGhl by one.
- $E2AF CALL $DA28    ; Call #R$DA28.
- $E2B2 AND %00001111 ; Keep only bits 0-3.
+ $E2AF CALL $DA28    ; {Get a random number between 0-15.
+ $E2B2 AND %00001111 ; }
  $E2B4 INC A         ; Increment #REGa by one.
  $E2B5 LD (HL),A     ; Write #REGa to *#REGhl.
  $E2B6 POP BC        ; Restore #REGbc from the stack.
@@ -6244,8 +6244,9 @@ c$E25D LD B,$10      ; #REGb=#N$10.
  $E527 LD A,($D3F8)  ; #REGa=*#R$D3F8.
  $E52A INC A         ; Increment #REGa by one.
  $E52B LD ($D3F8),A  ; Write #REGa to *#R$D3F8.
- $E52E LD A,$02      ; #REGa=#N$02.
- $E530 LD ($FF8D),A  ; Write #REGa to *#R$FF8D.
+; #AUDIO(helicopter.wav)(#INCLUDE(Helicopter))
+ $E52E LD A,$02      ; {Write melody ID #N$02 to *#R$FF8D.
+ $E530 LD ($FF8D),A  ; }
  $E533 EX AF,AF'     ; Exchange the #REGaf register with the shadow #REGaf
                      ; register.
  $E534 RET           ; Return.
@@ -6892,7 +6893,8 @@ c$E62D LD A,($D244)  ; {Return if *#R$D244 is equal to #N$FF.
 ; Take off four hit points from the monsters energy.
  $EA91 LD A,$04      ; #REGa=#N$04.
  $EA93 CALL $DD6C    ; Call #R$DD6C.
- $EA96 LD A,$05      ; {Write #N$05 to *#R$FF8D.
+; #AUDIO(projectile.wav)(#INCLUDE(Projectile))
+ $EA96 LD A,$05      ; {Write melody ID #N$05 to *#R$FF8D.
  $EA98 LD ($FF8D),A  ; }
  $EA9B RET           ; Return.
  $EA9C LD A,($D24B)  ;
@@ -7521,7 +7523,7 @@ c$EFE0 XOR A           ; #REGa=#N$00 (building data offset).
  $F004 RET             ; Return.
 *$F005 DEC (IX+$0D)    ; Decrease *#REGix+#N$0D by one.
  $F008 JP NZ,$F052     ; Jump to #R$F052 until *#REGix+#N$0D is zero.
- $F00B LD (IX+$0D),$02 ; Write #N$0D to *#REGix+#N$0D.
+ $F00B LD (IX+$0D),$02 ; Write #N$02 to *#REGix+#N$0D.
  $F00F DEC (IX+$0A)    ; Decrease *#REGix+#N$0A by one.
  $F012 JR NZ,$F03C     ; Jump to #R$F03C until *#REGix+#N$0A is zero.
  $F014 LD (IX+$00),$03 ; Write #N$03 to building state (*#REGix+#N$00).
@@ -7558,16 +7560,22 @@ c$EFE0 XOR A           ; #REGa=#N$00 (building data offset).
  $F04F INC DE          ; Increment #REGde by one.
  $F050 DJNZ $F048      ; Decrease counter by one and loop back to #R$F048 until
                        ; counter is zero.
-*$F052 LD A,$09        ; {Write #N$09 to *#R$FF8D.
- $F054 LD ($FF8D),A    ; }
- $F057 JP $F0AB        ; Jump to #R$F0AB.
-*$F05A DEC (IX+$0D)    ; Decrease *#REGix+#N$0D by one.
- $F05D JR NZ,$F0AB     ; Jump to #R$F0AB until *#REGix+#N$0D is zero.
 ; Plays a single building "crumbling" sound, the handler looping will keep it
 ; going until it's fallen and done.
 ; .
-; #AUDIO(building.wav)(#INCLUDE(Building))
- $F05F LD A,$08        ; {Write #N$08 to *#R$FF8D.
+; #AUDIO(building-crumbling.wav)(#INCLUDE(Crumbling))
+@label=Sounds_BuildingCrumbling
+*$F052 LD A,$09        ; {Write melody ID #N$09 to *#R$FF8D.
+ $F054 LD ($FF8D),A    ; }
+ $F057 JP $F0AB        ; Jump to #R$F0AB.
+@label=Sounds_BuildingCollapsing
+*$F05A DEC (IX+$0D)    ; Decrease *#REGix+#N$0D by one.
+ $F05D JR NZ,$F0AB     ; Jump to #R$F0AB until *#REGix+#N$0D is zero.
+; Plays a single building "collapsing" sound, the handler looping will keep it
+; going until it's fallen and done.
+; .
+; #AUDIO(building-collapsing.wav)(#INCLUDE(Collapsing))
+ $F05F LD A,$08        ; {Write melody ID #N$08 to *#R$FF8D.
  $F061 LD ($FF8D),A    ; }
  $F064 LD (IX+$0D),$02 ; Write #N$02 to *#REGix+#N$0D.
  $F068 DEC (IX+$0B)    ; Decrease *#REGix+#N$0B by one.
@@ -7821,7 +7829,7 @@ c$F10E LD B,$06        ; #REGb=#N$06.
 *$F225 DEC E           ; Decrease #REGe by one.
  $F226 JR NZ,$F216     ; Jump to #R$F216 until #REGe is zero.
 ; #AUDIO(helicopter.wav)(#INCLUDE(Helicopter))
- $F228 LD A,$02        ; {Write #N$02 to *#R$FF8D.
+ $F228 LD A,$02        ; {Write melody ID #N$02 to *#R$FF8D.
  $F22A LD ($FF8D),A    ; }
  $F22D RET             ; Return.
 *$F22E LD A,$01        ; {Write #N$01 to *#R$D247.
@@ -8351,15 +8359,15 @@ c$F450 LD B,A          ; #REGb=#REGa.
 *$F59E LD A,E          ; #REGa=#REGe.
  $F59F ADD A,$2F       ; #REGa+=#N$2F.
  $F5A1 JP $F61F        ; Jump to #R$F61F.
-*$F5A4 CALL $DA28      ; Call #R$DA28.
- $F5A7 AND %00000011   ; Keep only bits 0-1.
+*$F5A4 CALL $DA28      ; {Get a random number between 0-3.
+ $F5A7 AND %00000011   ; }
  $F5A9 CP $03          ; {Jump to #R$F5A4 if #REGa is equal to #N$03.
  $F5AB JR Z,$F5A4      ; }
  $F5AD ADD A,A         ; {#REGc=#REGa*#N$04.
  $F5AE ADD A,A         ;
  $F5AF LD C,A          ; }
- $F5B0 CALL $DA28      ; Call #R$DA28.
- $F5B3 AND %00000011   ; Keep only bits 0-1.
+ $F5B0 CALL $DA28      ; {Get a random number between 0-3.
+ $F5B3 AND %00000011   ; }
  $F5B5 OR C            ; Set the bits from #REGc.
  $F5B6 ADD A,A         ; {#REGe=#N$4D+#REGa*#N$04.
  $F5B7 ADD A,A         ;
@@ -8386,7 +8394,7 @@ c$F450 LD B,A          ; #REGb=#REGa.
  $F5DE POP DE          ; }
  $F5DF INC E           ; Increment #REGe by one.
 ; #AUDIO(test.wav)(#INCLUDE(Unknown1))
- $F5E0 LD A,$01        ; {Write #N$01 to *#R$FF8D.
+ $F5E0 LD A,$01        ; {Write melody ID #N$01 to *#R$FF8D.
  $F5E2 LD ($FF8D),A    ; }
  $F5E5 RET             ; Return.
 *$F5E6 CP $11          ; {Jump to #R$F5F4 if #REGa is not equal to #N$11.
@@ -8437,7 +8445,7 @@ c$F450 LD B,A          ; #REGb=#REGa.
  $F634 LD D,A          ; }
  $F635 CALL $DA3D      ; Call #R$DA3D.
 ; #AUDIO(test.wav)(#INCLUDE(Unknown1))
- $F638 LD A,$01        ; {Write #N$01 to *#R$FF8D.
+ $F638 LD A,$01        ; {Write melody ID #N$01 to *#R$FF8D.
  $F63A LD ($FF8D),A    ; }
  $F63D RET             ; Return.
 *$F63E LD HL,$D31F     ; #REGhl=#R$D31F.
@@ -8591,7 +8599,7 @@ c$F69F LD B,$06      ; #REGb=#N$06 (number of possible projectiles).
 ;
 ; #AUDIO(projectile.wav)(#INCLUDE(Projectile))
 @label=Audio_Projectiles_Hit
-c$F719 LD A,$05      ; {Write melody #N$05 to *#R$FF8D.
+c$F719 LD A,$05      ; {Write melody ID #N$05 to *#R$FF8D.
  $F71B LD ($FF8D),A  ; }
  $F71E LD A,$75      ; #REGa=#N$75.
  $F720 CALL $D6C9    ; Call #R$D6C9.
@@ -8720,7 +8728,7 @@ c$F795 LD B,$03        ; #REGb=#N$03 (total number of monsters/ players).
  $F7D0 LD A,$02        ; #REGa=#N$02.
  $F7D2 CALL $DD6C      ; Call #R$DD6C.
 ; #AUDIO(punched.wav)(#INCLUDE(Punched))
- $F7D5 LD A,$06        ; {Write #N$06 to *#R$FF8D.
+ $F7D5 LD A,$06        ; {Write melody ID #N$06 to *#R$FF8D.
  $F7D7 LD ($FF8D),A    ; }
 @label=Handler_Monsters_Next
 *$F7DA DEC HL          ; Decrease #REGhl by one.
@@ -8763,8 +8771,9 @@ c$F795 LD B,$03        ; #REGb=#N$03 (total number of monsters/ players).
  $F81E LD C,A          ; #REGc=#REGa.
  $F81F LD A,$77        ; #REGa=#N$77.
  $F821 CALL $D6C9      ; Call #R$D6C9.
- $F824 LD A,$06        ; #REGa=#N$06.
- $F826 LD ($FF8D),A    ; Write #REGa to *#R$FF8D.
+; #AUDIO(punched.wav)(#INCLUDE(Punched))
+ $F824 LD A,$06        ; {Write melody ID #N$06 to *#R$FF8D.
+ $F826 LD ($FF8D),A    ; }
  $F829 JR $F804        ; Jump to #R$F804.
 *$F82B LD A,B          ; #REGa=#REGb.
  $F82C CALL $DD52      ; Call #R$DD52.
@@ -8779,7 +8788,8 @@ c$F795 LD B,$03        ; #REGb=#N$03 (total number of monsters/ players).
  $F843 LD A,B          ; #REGa=#REGb.
  $F844 LD DE,$0203     ; #REGde=#N$0203.
  $F847 CALL $DD97      ; Call #R$DD97.
- $F84A LD A,$06        ; {Write #N$06 to *#R$FF8D.
+; #AUDIO(punched.wav)(#INCLUDE(Punched))
+ $F84A LD A,$06        ; {Write melody ID #N$06 to *#R$FF8D.
  $F84C LD ($FF8D),A    ; }
  $F84F JR $F804        ; Jump to #R$F804.
 *$F851 LD A,B          ; #REGa=#REGb.
@@ -8796,7 +8806,8 @@ c$F795 LD B,$03        ; #REGb=#N$03 (total number of monsters/ players).
  $F86A LD D,$01        ; #REGd=#N$01.
  $F86C LD E,$03        ; #REGe=#N$03.
  $F86E CALL $DD97      ; Call #R$DD97.
- $F871 LD A,$06        ; {Write #N$06 to *#R$FF8D.
+; #AUDIO(punched.wav)(#INCLUDE(Punched))
+ $F871 LD A,$06        ; {Write melody ID #N$06 to *#R$FF8D.
  $F873 LD ($FF8D),A    ; }
  $F876 JR $F804        ; Jump to #R$F804.
 *$F878 PUSH AF         ; Stash #REGaf on the stack.
@@ -8832,7 +8843,8 @@ c$F795 LD B,$03        ; #REGb=#N$03 (total number of monsters/ players).
  $F8AA LD C,(HL)       ; #REGc=*#REGhl.
 *$F8AB LD A,$77        ; #REGa=#N$77.
  $F8AD CALL $D6C9      ; Call #R$D6C9.
- $F8B0 LD A,$06        ; {Write #N$06 to *#R$FF8D.
+; #AUDIO(punched.wav)(#INCLUDE(Punched))
+ $F8B0 LD A,$06        ; {Write melody ID #N$06 to *#R$FF8D.
  $F8B2 LD ($FF8D),A    ; }
  $F8B5 JP $F804        ; Jump to #R$F804.
 *$F8B8 LD C,(HL)       ; #REGc=*#REGhl.
@@ -9819,8 +9831,10 @@ c$FD86 LD HL,$7300   ; #REGhl=#R$7300.
 ;
 ; Used by the routine at #R$FD64.
 @label=Print_TickerNewsCopy
-c$FD9E CALL $DA28    ; Call #R$DA28.
- $FDA1 AND %00000111 ; Keep only bits 0-2.
+c$FD9E CALL $DA28    ; {Get a random number between 0-7.
+ $FDA1 AND %00000111 ; }
+; Multiply the random number by two, as the messages are address pointers
+;       in a table (so two bytes in length each).
  $FDA3 ADD A,A       ; #REGa*=#N$02.
  $FDA4 LD H,$00      ; {Create an offset in #REGhl.
  $FDA6 LD L,A        ; }
@@ -9963,24 +9977,31 @@ c$FF00 LD A,($FF8D)                         ; {Return if no sound(s) are set to
  $FF07 LD ($FF8D),A                         ; }
  $FF0A LD A,L                               ; Restore the melody ID back to
                                             ; #REGa.
- $FF0B CP $08                               ; {Jump to #R$FF6B if #REGa is
- $FF0D JR Z,$FF6B                           ; equal to #N$08.}
- $FF0F CP $09                               ; {Jump to #R$FF72 if #REGa is
- $FF11 JR Z,$FF72                           ; equal to #N$09.}
- $FF13 DEC A                                ; Decrease #REGa by one.
- $FF14 ADD A,A                              ; {#REGa*=#N$08.
- $FF15 ADD A,A                              ;
- $FF16 ADD A,A                              ; }
- $FF17 LD H,$00                             ; #REGh=#N$00.
- $FF19 LD L,A                               ; #REGl=#REGa.
+; Handle special cases for the in-game buildings crumbling and then collapsing.
+ $FF0B CP $08                               ; {Jump to #R$FF6B if the melody is
+ $FF0D JR Z,$FF6B                           ; for the building collapsing
+                                            ; (#N$08).}
+ $FF0F CP $09                               ; {Jump to #R$FF72 if the melody is
+ $FF11 JR Z,$FF72                           ; for the building crumbling
+                                            ; (#N$09).}
+; Fetch the melody data using the melody ID as an offset.
+ $FF13 DEC A                                ; Decrease the melody ID by one for
+                                            ; the table lookup.
+ $FF14 ADD A,A                              ; {Multiple the melody ID by #N$08
+ $FF15 ADD A,A                              ; as the table holds eight bytes of
+ $FF16 ADD A,A                              ; data for the melodies.}
+ $FF17 LD H,$00                             ; {Create an offset using #REGhl.
+ $FF19 LD L,A                               ; }
  $FF1A LD DE,$FF8E                          ; {#REGhl+=#R$FF8E.
  $FF1D ADD HL,DE                            ; }
  $FF1E LD DE,$FF85                          ; #REGde=#R$FF85.
  $FF21 LD BC,$0008                          ; #REGbc=#N($0008,$04,$04).
- $FF24 LDIR                                 ; LDIR.
+ $FF24 LDIR                                 ; Copy the selected melody data
+                                            ; into #R$FF85.
  $FF26 LD A,($FF8C)                         ; {Jump to #R$FF2D if *#R$FF8C is
  $FF29 CP $02                               ; equal to #N$02.
  $FF2B JR Z,$FF2D                           ; }
+@label=PlaySounds_Loop
 *$FF2D LD A,($FF8B)                         ; {Jump to #R$FF67 if *#R$FF8B is
  $FF30 AND A                                ; zero.
  $FF31 JR Z,$FF67                           ; }
@@ -9990,6 +10011,7 @@ c$FF00 LD A,($FF8D)                         ; {Return if no sound(s) are set to
  $FF3A ADD HL,BC                            ; #REGhl+=#REGbc.
  $FF3B LD ($FF85),HL                        ; Write #REGhl to *#R$FF85.
  $FF3E JR $FF2D                             ; Jump to #R$FF2D.
+@label=Unused_PlaySound_Loop
 *$FF40 LD A,($FF8B)                         ; {Jump to #R$FF67 if *#R$FF8B is
  $FF43 AND A                                ; zero.
  $FF44 JR Z,$FF67                           ; }
@@ -10000,8 +10022,12 @@ c$FF00 LD A,($FF8D)                         ; {Return if no sound(s) are set to
  $FF4E SBC HL,BC                            ; #REGhl-=#REGbc.
  $FF50 LD ($FF85),HL                        ; Write #REGhl to *#R$FF85.
  $FF53 JR $FF40                             ; Jump to #R$FF40.
-*$FF55 LD HL,($FF85)                        ; #REGhl=*#R$FF85.
- $FF58 LD DE,($FF87)                        ; #REGde=*#R$FF87.
+@label=PlayBeeper
+*$FF55 LD HL,($FF85)                        ; #REGhl=Loop delay parameter
+                                            ; (*#R$FF85(#N$FF85)).
+ $FF58 LD DE,($FF87)                        ; #REGde=Number of passes to make
+                                            ; through the sound generation loop
+                                            ; (*#R$FF87).
  $FF5C CALL $03B5                           ; #HTML(Call <a
                                             ; href="https://skoolkit.ca/disassemblies/rom/hex/asm/03B5.html">BEEPER</a>.)
  $FF5F LD HL,($FF85)                        ; #REGhl=*#R$FF85.
@@ -10012,15 +10038,19 @@ c$FF00 LD A,($FF8D)                         ; {Return if no sound(s) are set to
 *$FF67 XOR A                                ; {Speaker off.
  $FF68 OUT ($FE),A                          ; }
  $FF6A RET                                  ; Return.
+@label=InitSound_BuildingCollapsing
 *$FF6B LD HL,$007D                          ; #REGhl=#N($007D,$04,$04).
  $FF6E LD C,$64                             ; #REGc=#N$64.
  $FF70 JR $FF77                             ; Jump to #R$FF77.
+@label=InitSound_BuildingCrumbling
 *$FF72 LD HL,$00FA                          ; #REGhl=#N($00FA,$04,$04).
  $FF75 LD C,$19                             ; #REGc=#N$19.
+@label=PlaySounds_Building_Loop
 *$FF77 LD A,(HL)                            ; #REGa=*#REGhl.
  $FF78 AND %11111000                        ; Keep only bits 3-7.
  $FF7A OUT ($FE),A                          ; OUT #N$FE
  $FF7C LD B,C                               ; #REGb=#REGc.
+@label=PlaySounds_Building_Delay
 *$FF7D DJNZ $FF7D                           ; Decrease counter by one and loop
                                             ; back to #R$FF7D until counter is
                                             ; zero.
@@ -10037,6 +10067,7 @@ c$FF00 LD A,($FF8D)                         ; {Return if no sound(s) are set to
  $FF8C DEFB $00                             ;
 @label=MelodyID
  $FF8D DEFB $00                             ;
+@label=Table_Melodies
  $FF8E DEFB $F4,$01,$00,$00,$32,$00,$0A,$01 ;
  $FF96 DEFB $F4,$01,$00,$00,$F4,$01,$01,$02 ;
  $FF9E DEFB $96,$00,$F4,$01,$C8,$00,$01,$02 ;
