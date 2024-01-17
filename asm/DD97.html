@@ -75,12 +75,12 @@ Derive pointer to monster score messaging from the given ID.
 <td class="asm-label">AddPoints</td>
 <td class="address-2"><span id="dd97"></span>DD97</td>
 <td class="instruction">CP $01</td>
-<td class="comment-1" rowspan="2">Jump to <a href="DD97.html#dda0">AddPoints_SetLizzy</a> if <span class="register">A</span> is not targeting George (01).</td>
+<td class="comment-1" rowspan="2">Jump to <a href="DD97.html#dda0">AddPoints_CheckLizzy</a> if <span class="register">A</span> is not targeting George (01).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="dd99"></span>DD99</td>
-<td class="instruction">JR NZ,<a href="DD97.html#dda0">AddPoints_SetLizzy</a></td>
+<td class="instruction">JR NZ,<a href="DD97.html#dda0">AddPoints_CheckLizzy</a></td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -109,13 +109,13 @@ George:
 <span id="dda0"></span>
 <div class="comments">
 <div class="paragraph">
-Lizzy:
+Ralph:
 </div>
 </div>
 </td>
 </tr>
 <tr>
-<td class="asm-label">AddPoints_SetLizzy</td>
+<td class="asm-label">AddPoints_CheckLizzy</td>
 <td class="address-2"><span id="dda0"></span>DDA0</td>
 <td class="instruction">LD HL,$D082</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D07B.html#d082">Messaging_RalphScore</a>.</td>
@@ -124,7 +124,7 @@ Lizzy:
 <td class="asm-label"></td>
 <td class="address-1"><span id="dda3"></span>DDA3</td>
 <td class="instruction">CP $02</td>
-<td class="comment-1" rowspan="2">Jump to <a href="DD97.html#ddaa">AddPointsToScore</a> if <span class="register">A</span> is not targeting Lizzy (02).</td>
+<td class="comment-1" rowspan="2">Jump to <a href="DD97.html#ddaa">AddPointsToScore</a> if <span class="register">A</span> is not targeting Lizzy (02) (i.e. keep Ralph which was set above).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -136,7 +136,7 @@ Lizzy:
 <span id="dda7"></span>
 <div class="comments">
 <div class="paragraph">
-Ralph:
+Lizzy:
 </div>
 </div>
 </td>

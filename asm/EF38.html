@@ -52,17 +52,27 @@ Used by the routines at <a href="E62D.html">E62D</a> and <a href="F352.html">F35
 <tr>
 <td class="address-1"><span id="ef3c"></span>EF3C</td>
 <td class="instruction">LD A,($D247)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D247.html">Flag_VehicleOrientation</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D247.html">Flag_VehicleOrientation</a> (will be 00 or 01).</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="ef3f"></span>
+<div class="comments">
+<div class="paragraph">
+Moves the orientation flag into the carry flag.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ef3f"></span>EF3F</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 7 was set.</td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ef40"></span>EF40</td>
 <td class="instruction">JR C,<a href="EF38.html#ef49">$EF49</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="EF38.html#ef49">EF49</a> if {} is lower.</td>
+<td class="comment-1" rowspan="1">Jump to <a href="EF38.html#ef49">EF49</a> if the carry flag is set.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ef42"></span>EF42</td>

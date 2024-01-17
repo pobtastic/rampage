@@ -52,17 +52,27 @@ Used by the routines at <a href="58925.html">58925</a> and <a href="62290.html">
 <tr>
 <td class="address-1"><span id="61244"></span>61244</td>
 <td class="instruction">LD A,(53831)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53831.html">Flag_VehicleOrientation</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53831.html">Flag_VehicleOrientation</a> (will be 0 or 1).</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="61247"></span>
+<div class="comments">
+<div class="paragraph">
+Moves the orientation flag into the carry flag.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="address-1"><span id="61247"></span>61247</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 7 was set.</td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="61248"></span>61248</td>
 <td class="instruction">JR C,<a href="61240.html#61257">61257</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="61240.html#61257">61257</a> if {} is lower.</td>
+<td class="comment-1" rowspan="1">Jump to <a href="61240.html#61257">61257</a> if the carry flag is set.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="61250"></span>61250</td>
