@@ -893,8 +893,9 @@ c $D604 Update Screen Buffer
   $D613,$03 Call #R$D61C.
   $D616,$03 #REGhl=#R$7B00.
   $D619,$03 #REGde=#R$5000.
+N $D61C This routine is called three times which correlates to the three sections of the screen layout.
 @ $D61C label=CopyShadowBufferToScreen
-  $D61C,$01 Stash #REGhl on the stack.
+  $D61C,$01 Stash the shadow buffer pointer on the stack.
   $D61D,$01 #REGa=#REGd.
   $D61E,$01 Exchange #REGaf with the shadow #REGaf register.
   $D61F,$01 #REGa=#REGl.
@@ -936,7 +937,7 @@ c $D604 Update Screen Buffer
   $D651,$03 Call #R$D688.
   $D654,$01 Switch #REGaf back with the normal #REGaf register.
   $D655,$01 #REGd=#REGa.
-  $D656,$01 Restore #REGhl from the stack.
+  $D656,$01 Restore the shadow buffer pointer from the stack.
   $D657,$04 #REGl+=#N$20.
   $D65B,$01 #REGe=#REGa.
   $D65C,$05 Jump to #R$D61C if #REGa is not #N$E0.
@@ -1790,11 +1791,11 @@ N $DD97 Derive pointer to monster score messaging from the given ID.
 N $DD9B George:
   $DD9B,$03 #REGhl=#R$D066.
   $DD9E,$02 Jump to #R$DDAA.
-N $DDA0 Lizzy:
-@ $DDA0 label=AddPoints_SetLizzy
+N $DDA0 Ralph:
+@ $DDA0 label=AddPoints_CheckLizzy
   $DDA0,$03 #REGhl=#R$D082.
-  $DDA3,$04 Jump to #R$DDAA if #REGa is not targeting Lizzy (#N$02).
-N $DDA7 Ralph:
+  $DDA3,$04 Jump to #R$DDAA if #REGa is not targeting Lizzy (#N$02) (i.e. keep Ralph which was set above).
+N $DDA7 Lizzy:
   $DDA7,$03 #REGhl=#R$D074.
 N $DDAA Apply points to score.
 @ $DDAA label=AddPointsToScore
@@ -2012,7 +2013,9 @@ g $DF44 Game: Current Level
 @ $DF44 label=CurrentLevel
   $DF44,$01
 
-b $DF45
+g $DF45 Temporary Monster ID
+@ $DF45 label=Temp_MonsterID
+  $DF45,$01
 
 c $DF46 Set Monster Defaults
 @ $DF46 label=MonsterDefaults
@@ -2940,9 +2943,10 @@ N $EA96 #AUDIO(projectile.wav)(#INCLUDE(Projectile))
 
 c $EF38
   $EF38,$04 #REGbc=*#R$D24D.
-  $EF3C,$03 #REGa=*#R$D247.
-  $EF3F,$01 Rotate #REGa right one position, setting the carry flag if bit 7 was set.
-  $EF40,$02 Jump to #R$EF49 if {} is lower.
+  $EF3C,$03 #REGa=*#R$D247 (will be #N$00 or #N$01).
+N $EF3F Moves the orientation flag into the carry flag.
+  $EF3F,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $EF40,$02 Jump to #R$EF49 if the carry flag is set.
   $EF42,$03 #REGb+=#REGh.
   $EF45,$03 #REGc+=#REGl.
   $EF48,$01 Return.

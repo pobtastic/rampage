@@ -3588,8 +3588,10 @@ c$D604 LD HL,$6B00   ; #REGhl=#R$6B00.
  $D613 CALL $D61C    ; Call #R$D61C.
  $D616 LD HL,$7B00   ; #REGhl=#R$7B00.
  $D619 LD DE,$5000   ; #REGde=#R$5000.
+; This routine is called three times which correlates to the three sections of
+; the screen layout.
 @label=CopyShadowBufferToScreen
-*$D61C PUSH HL       ; Stash #REGhl on the stack.
+*$D61C PUSH HL       ; Stash the shadow buffer pointer on the stack.
  $D61D LD A,D        ; #REGa=#REGd.
  $D61E EX AF,AF'     ; Exchange #REGaf with the shadow #REGaf register.
  $D61F LD A,L        ; #REGa=#REGl.
@@ -3631,7 +3633,7 @@ c$D604 LD HL,$6B00   ; #REGhl=#R$6B00.
  $D651 CALL $D688    ; Call #R$D688.
  $D654 EX AF,AF'     ; Switch #REGaf back with the normal #REGaf register.
  $D655 LD D,A        ; #REGd=#REGa.
- $D656 POP HL        ; Restore #REGhl from the stack.
+ $D656 POP HL        ; Restore the shadow buffer pointer from the stack.
  $D657 LD A,L        ; {#REGl+=#N$20.
  $D658 ADD A,$20     ;
  $D65A LD L,A        ; }
@@ -5071,12 +5073,12 @@ c$DD97 CP $01        ; {Jump to #R$DDA0 if #REGa is not targeting George
 ; George:
  $DD9B LD HL,$D066   ; #REGhl=#R$D066.
  $DD9E JR $DDAA      ; Jump to #R$DDAA.
-; Lizzy:
-@label=AddPoints_SetLizzy
-*$DDA0 LD HL,$D082   ; #REGhl=#R$D082.
- $DDA3 CP $02        ; {Jump to #R$DDAA if #REGa is not targeting Lizzy
- $DDA5 JR NZ,$DDAA   ; (#N$02).}
 ; Ralph:
+@label=AddPoints_CheckLizzy
+*$DDA0 LD HL,$D082   ; #REGhl=#R$D082.
+ $DDA3 CP $02        ; {Jump to #R$DDAA if #REGa is not targeting Lizzy (#N$02)
+ $DDA5 JR NZ,$DDAA   ; (i.e. keep Ralph which was set above).}
+; Lizzy:
  $DDA7 LD HL,$D074   ; #REGhl=#R$D074.
 ; Apply points to score.
 @label=AddPointsToScore
@@ -5354,8 +5356,9 @@ c$DF39 LD D,H        ; {#REGde=#REGhl+#N$01.
 @label=CurrentLevel
 g$DF44 DEFB $00
 
-; Data block at DF45
-b$DF45 DEFB $00
+; Temporary Monster ID
+@label=Temp_MonsterID
+g$DF45 DEFB $00
 
 ; Set Monster Defaults
 ;
@@ -7437,10 +7440,11 @@ c$E62D LD A,($D244)  ; {Return if *#R$D244 is equal to #N$FF.
 ;
 ; Used by the routines at #R$E62D and #R$F352.
 c$EF38 LD BC,($D24D) ; #REGbc=*#R$D24D.
- $EF3C LD A,($D247)  ; #REGa=*#R$D247.
+ $EF3C LD A,($D247)  ; #REGa=*#R$D247 (will be #N$00 or #N$01).
+; Moves the orientation flag into the carry flag.
  $EF3F RRCA          ; Rotate #REGa right one position, setting the carry flag
-                     ; if bit 7 was set.
- $EF40 JR C,$EF49    ; Jump to #R$EF49 if {} is lower.
+                     ; if bit 0 was set.
+ $EF40 JR C,$EF49    ; Jump to #R$EF49 if the carry flag is set.
  $EF42 LD A,B        ; {#REGb+=#REGh.
  $EF43 ADD A,H       ;
  $EF44 LD B,A        ; }
