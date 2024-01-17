@@ -60,17 +60,15 @@ Used by the routine at <a href="E62D.html">E62D</a>.
 <tr>
 <td class="address-2"><span id="e17f"></span>E17F</td>
 <td class="instruction">CALL <a href="DA28.html">RandomNumber</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DA28.html">RandomNumber</a>.</td>
+<td class="comment-1" rowspan="3">Write a random number between 0-31 to *<a href="D217.html">D217</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e182"></span>E182</td>
 <td class="instruction">AND %00011111</td>
-<td class="comment-1" rowspan="1">Keep only bits 0-4.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e184"></span>E184</td>
 <td class="instruction">LD ($D217),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D217.html">D217</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e187"></span>E187</td>
@@ -142,7 +140,7 @@ Used by the routine at <a href="E62D.html">E62D</a>.
 <tr>
 <td class="address-1"><span id="e1a4"></span>E1A4</td>
 <td class="instruction">CP $11</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 11.</td>
+<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 11...</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e1a6"></span>E1A6</td>
@@ -152,7 +150,7 @@ Used by the routine at <a href="E62D.html">E62D</a>.
 <tr>
 <td class="address-1"><span id="e1a9"></span>E1A9</td>
 <td class="instruction">RET C</td>
-<td class="comment-1" rowspan="1">Return if {} is lower.</td>
+<td class="comment-1" rowspan="1">Return if <span class="register">A</span> was is lower than 11 on line <a href="E179.html#e1a4">E1A4</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e1aa"></span>E1AA</td>
@@ -189,7 +187,7 @@ Used by the routine at <a href="E62D.html">E62D</a>.
 <tr>
 <td class="address-1"><span id="e1b9"></span>E1B9</td>
 <td class="instruction">CP $1B</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 1B.</td>
+<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 1B...</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e1bb"></span>E1BB</td>
@@ -199,7 +197,7 @@ Used by the routine at <a href="E62D.html">E62D</a>.
 <tr>
 <td class="address-1"><span id="e1be"></span>E1BE</td>
 <td class="instruction">RET C</td>
-<td class="comment-1" rowspan="1">Return if {} is lower.</td>
+<td class="comment-1" rowspan="1">Return if <span class="register">A</span> was lower 1B on line <a href="E179.html#e1b9">E1B9</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e1bf"></span>E1BF</td>

@@ -60,17 +60,15 @@ Used by the routine at <a href="58925.html">58925</a>.
 <tr>
 <td class="address-2"><span id="57727"></span>57727</td>
 <td class="instruction">CALL <a href="55848.html">RandomNumber</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55848.html">RandomNumber</a>.</td>
+<td class="comment-1" rowspan="3">Write a random number between 0-31 to *<a href="53783.html">53783</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="57730"></span>57730</td>
 <td class="instruction">AND %00011111</td>
-<td class="comment-1" rowspan="1">Keep only bits 0-4.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="57732"></span>57732</td>
 <td class="instruction">LD (53783),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53783.html">53783</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="57735"></span>57735</td>
@@ -142,7 +140,7 @@ Used by the routine at <a href="58925.html">58925</a>.
 <tr>
 <td class="address-1"><span id="57764"></span>57764</td>
 <td class="instruction">CP 17</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 17.</td>
+<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 17...</td>
 </tr>
 <tr>
 <td class="address-1"><span id="57766"></span>57766</td>
@@ -152,7 +150,7 @@ Used by the routine at <a href="58925.html">58925</a>.
 <tr>
 <td class="address-1"><span id="57769"></span>57769</td>
 <td class="instruction">RET C</td>
-<td class="comment-1" rowspan="1">Return if {} is lower.</td>
+<td class="comment-1" rowspan="1">Return if <span class="register">A</span> was is lower than 17 on line <a href="57721.html#57764">57764</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="57770"></span>57770</td>
@@ -189,7 +187,7 @@ Used by the routine at <a href="58925.html">58925</a>.
 <tr>
 <td class="address-1"><span id="57785"></span>57785</td>
 <td class="instruction">CP 27</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 27.</td>
+<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 27...</td>
 </tr>
 <tr>
 <td class="address-1"><span id="57787"></span>57787</td>
@@ -199,7 +197,7 @@ Used by the routine at <a href="58925.html">58925</a>.
 <tr>
 <td class="address-1"><span id="57790"></span>57790</td>
 <td class="instruction">RET C</td>
-<td class="comment-1" rowspan="1">Return if {} is lower.</td>
+<td class="comment-1" rowspan="1">Return if <span class="register">A</span> was lower 27 on line <a href="57721.html#57785">57785</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="57791"></span>57791</td>

@@ -48,13 +48,22 @@ Used by the routine at <a href="FD64.html">Handler_TickerNews</a>.
 <td class="asm-label">Print_TickerNewsCopy</td>
 <td class="address-2"><span id="fd9e"></span>FD9E</td>
 <td class="instruction">CALL <a href="DA28.html">RandomNumber</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DA28.html">RandomNumber</a>.</td>
+<td class="comment-1" rowspan="2">Get a random number between 0-7.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fda1"></span>FDA1</td>
 <td class="instruction">AND %00000111</td>
-<td class="comment-1" rowspan="1">Keep only bits 0-2.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="fda3"></span>
+<div class="comments">
+<div class="paragraph">
+Multiply the random number by two, as the messages are address pointers in a table (so two bytes in length each).
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
