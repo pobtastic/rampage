@@ -2463,123 +2463,301 @@ b$CB29 DEFB $FF
 ; For usage see #R$DF90.
 @label=Scene_Data
 b$CDE2 DEFB $FF                             ; Terminator.
- $CDE3 DEFB $01,$01,$0B,$09,$84,$28,$2D,$1A ; {Scene #N$01.
- $CDEB DEFB $D6                             ; }
+; Scene #N$01.
+ $CDE3 DEFB $01,$01
+ $CDE5 DEFB $0B                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CDE6 DEFB $09,$84,$28,$2D,$1A,$D6
  $CDEC DEFB $FF                             ; Terminator.
- $CDED DEFB $40,$20,$1C,$2C,$05,$2E,$92,$88 ; {Scene #N$02.
- $CDF5 DEFB $A8,$92,$35                     ; }
+; Scene #N$02.
+ $CDED DEFB $40,$20
+ $CDEF DEFB $1C                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CDF0 DEFB $2C,$05,$2E,$92,$88,$A8,$92,$35
  $CDF8 DEFB $FF                             ; Terminator.
- $CDF9 DEFB $0D,$04,$15,$2A,$82,$29,$CC,$2A ; {Scene #N$03.
- $CE01 DEFB $96,$87,$49,$8B,$33             ; }
+; Scene #N$03.
+ $CDF9 DEFB $0D,$04
+ $CDFB DEFB $15                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CDFC DEFB $2A,$82,$29,$CC,$2A,$96,$87,$49
+ $CE04 DEFB $8B,$33
  $CE06 DEFB $FF                             ; Terminator.
- $CE07 DEFB $37,$1C,$25,$26,$CF,$2C,$38,$8C ; {Scene #N$04.
- $CE0F DEFB $A2,$2D,$C7,$89,$52             ; }
+; Scene #N$04.
+ $CE07 DEFB $37,$1C
+ $CE09 DEFB $25                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CE0A DEFB $26,$CF,$2C,$38,$8C,$A2,$2D,$C7
+ $CE12 DEFB $89,$52
  $CE14 DEFB $FF                             ; Terminator.
- $CE15 DEFB $05,$0A,$44,$2F,$84,$2B,$96,$84 ; {Scene #N$05.
- $CE1D DEFB $47,$88,$33                     ; }
+; Scene #N$05.
+ $CE15 DEFB $05,$0A
+ $CE17 DEFB $44                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CE18 DEFB $2F,$84,$2B,$96,$84,$47,$88,$33
  $CE20 DEFB $FF                             ; Terminator.
- $CE21 DEFB $1F,$27,$34,$22,$02,$2B,$96,$82 ; {Scene #N$06.
- $CE29 DEFB $46,$8F,$30                     ; }
+; Scene #N$06.
+ $CE21 DEFB $1F,$27
+ $CE23 DEFB $34                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CE24 DEFB $22,$02,$2B,$96,$82,$46,$8F,$30
  $CE2C DEFB $FF                             ; Terminator.
- $CE2D DEFB $13,$0B,$0D,$30,$82,$25,$8C,$27 ; {Scene #N$07.
- $CE35 DEFB $96,$81,$C7,$8B,$D1             ; }
+; Scene #N$07.
+ $CE2D DEFB $13,$0B
+ $CE2F DEFB $0D                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CE30 DEFB $30,$82,$25,$8C,$27,$96,$81,$C7
+ $CE38 DEFB $8B,$D1
  $CE3A DEFB $FF                             ; Terminator.
- $CE3B DEFB $04,$30,$1C,$23,$E4,$2C,$F7,$84 ; {Scene #N$08.
- $CE43 DEFB $A9,$89,$B3                     ; }
+; Scene #N$08.
+ $CE3B DEFB $04,$30
+ $CE3D DEFB $1C                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CE3E DEFB $23,$E4,$2C,$F7,$84,$A9,$89,$B3
  $CE46 DEFB $FF                             ; Terminator.
- $CE47 DEFB $17,$16,$2D,$30,$83,$2B,$55,$81 ; {Scene #N$09.
- $CE4F DEFB $C2,$81,$CD,$81,$D8             ; }
+; Scene #N$09.
+ $CE47 DEFB $17,$16
+ $CE49 DEFB $2D                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CE4A DEFB $30,$83,$2B,$55,$81,$C2,$81,$CD
+ $CE52 DEFB $81,$D8
  $CE54 DEFB $FF                             ; Terminator.
- $CE55 DEFB $10,$02,$23,$1E,$42,$1E,$CC,$1E ; {Scene #N$0A.
- $CE5D DEFB $96                             ; }
+; Scene #N$0A.
+ $CE55 DEFB $10,$02
+ $CE57 DEFB $23                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CE58 DEFB $1E,$42,$1E,$CC,$1E,$96
  $CE5E DEFB $FF                             ; Terminator.
- $CE5F DEFB $3B,$1B,$45,$28,$64,$27,$CC,$26 ; {Scene #N$0B.
- $CE67 DEFB $F5,$82,$02,$87,$78             ; }
+; Scene #N$0B.
+ $CE5F DEFB $3B,$1B
+ $CE61 DEFB $45                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CE62 DEFB $28,$64,$27,$CC,$26,$F5,$82,$02
+ $CE6A DEFB $87,$78
  $CE6C DEFB $FF                             ; Terminator.
- $CE6D DEFB $02,$2E,$3C,$1F,$24,$30,$D3,$86 ; {Scene #N$0C.
- $CE75 DEFB $07,$84,$91                     ; }
+; Scene #N$0C.
+ $CE6D DEFB $02,$2E
+ $CE6F DEFB $3C                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CE70 DEFB $1F,$24,$30,$D3,$86,$07,$84,$91
  $CE78 DEFB $FF                             ; Terminator.
- $CE79 DEFB $3C,$12,$1D,$2C,$C5,$2D,$D7,$8F ; {Scene #N$0D.
- $CE81 DEFB $22,$99,$CD,$8A,$34             ; }
+; Scene #N$0D.
+ $CE79 DEFB $3C,$12
+ $CE7B DEFB $1D                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CE7C DEFB $2C,$C5,$2D,$D7,$8F,$22,$99,$CD
+ $CE84 DEFB $8A,$34
  $CE86 DEFB $FF                             ; Terminator.
- $CE87 DEFB $29,$21,$13,$30,$02,$30,$2C,$30 ; {Scene #N$0E.
- $CE8F DEFB $56                             ; }
+; Scene #N$0E.
+ $CE87 DEFB $29,$21
+ $CE89 DEFB $13                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CE8A DEFB $30,$02,$30,$2C,$30,$56
  $CE90 DEFB $FF                             ; Terminator.
- $CE91 DEFB $06,$0D,$24,$2E,$B7,$97,$E3,$94 ; {Scene #N$0F.
- $CE99 DEFB $CD,$8D,$55                     ; }
+; Scene #N$0F.
+ $CE91 DEFB $06,$0D
+ $CE93 DEFB $24                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CE94 DEFB $2E,$B7,$97,$E3,$94,$CD,$8D,$55
  $CE9C DEFB $FF                             ; Terminator.
- $CE9D DEFB $1D,$02,$44,$2B,$A3,$2F,$D4,$90 ; {Scene #N$10.
- $CEA5 DEFB $26,$90,$50                     ; }
+; Scene #N$10.
+ $CE9D DEFB $1D,$02
+ $CE9F DEFB $44                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CEA0 DEFB $2B,$A3,$2F,$D4,$90,$26,$90,$50
  $CEA8 DEFB $FF                             ; Terminator.
- $CEA9 DEFB $04,$05,$1D,$2A,$85,$25,$EF,$1F ; {Scene #N$11.
- $CEB1 DEFB $57,$87,$C3,$85,$12             ; }
+; Scene #N$11.
+ $CEA9 DEFB $04,$05
+ $CEAB DEFB $1D                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CEAC DEFB $2A,$85,$25,$EF,$1F,$57,$87,$C3
+ $CEB4 DEFB $85,$12
  $CEB6 DEFB $FF                             ; Terminator.
- $CEB7 DEFB $0B,$2D,$14,$29,$44,$24,$CE,$0E ; {Scene #N$12.
- $CEBF DEFB $B8,$8C,$E2                     ; }
+; Scene #N$12.
+ $CEB7 DEFB $0B,$2D
+ $CEB9 DEFB $14                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CEBA DEFB $29,$44,$24,$CE,$0E,$B8,$8C,$E2
  $CEC2 DEFB $FF                             ; Terminator.
- $CEC3 DEFB $27,$0F,$45,$2A,$85,$28,$6F,$21 ; {Scene #N$13.
- $CECB DEFB $57,$83,$23,$81,$15             ; }
+; Scene #N$13.
+ $CEC3 DEFB $27,$0F
+ $CEC5 DEFB $45                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CEC6 DEFB $2A,$85,$28,$6F,$21,$57,$83,$23
+ $CECE DEFB $81,$15
  $CED0 DEFB $FF                             ; Terminator.
- $CED1 DEFB $09,$26,$0C,$2D,$C2,$09,$8E,$2B ; {Scene #N$14.
- $CED9 DEFB $18,$86,$65                     ; }
+; Scene #N$14.
+ $CED1 DEFB $09,$26
+ $CED3 DEFB $0C                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CED4 DEFB $2D,$C2,$09,$8E,$2B,$18,$86,$65
  $CEDC DEFB $FF                             ; Terminator.
- $CEDD DEFB $33,$10,$3C,$1A,$C2,$19,$69,$14 ; {Scene #N$15.
- $CEE5 DEFB $90,$2B,$F7                     ; }
+; Scene #N$15.
+ $CEDD DEFB $33,$10
+ $CEDF DEFB $3C                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CEE0 DEFB $1A,$C2,$19,$69,$14,$90,$2B,$F7
  $CEE8 DEFB $FF                             ; Terminator.
- $CEE9 DEFB $15,$06,$1D,$26,$A2,$27,$ED,$30 ; {Scene #N$16.
- $CEF1 DEFB $36,$87,$05,$8A,$D0             ; }
+; Scene #N$16.
+ $CEE9 DEFB $15,$06
+ $CEEB DEFB $1D                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CEEC DEFB $26,$A2,$27,$ED,$30,$36,$87,$05
+ $CEF4 DEFB $8A,$D0
  $CEF6 DEFB $FF                             ; Terminator.
- $CEF7 DEFB $01,$27,$35,$2E,$42,$26,$ED,$29 ; {Scene #N$17.
- $CEFF DEFB $D5,$88,$25,$8C,$90             ; }
+; Scene #N$17.
+ $CEF7 DEFB $01,$27
+ $CEF9 DEFB $35                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CEFA DEFB $2E,$42,$26,$ED,$29,$D5,$88,$25
+ $CF02 DEFB $8C,$90
  $CF04 DEFB $FF                             ; Terminator.
- $CF05 DEFB $08,$1C,$45,$30,$A2,$24,$EC,$2B ; {Scene #N$18.
- $CF0D DEFB $15,$85,$25,$8E,$58             ; }
+; Scene #N$18.
+ $CF05 DEFB $08,$1C
+ $CF07 DEFB $45                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CF08 DEFB $30,$A2,$24,$EC,$2B,$15,$85,$25
+ $CF10 DEFB $8E,$58
  $CF12 DEFB $FF                             ; Terminator.
- $CF13 DEFB $3F,$11,$1D,$2A,$E4,$25,$AD,$20 ; {Scene #N$19.
- $CF1B DEFB $54,$84,$02,$83,$F7             ; }
+; Scene #N$19.
+ $CF13 DEFB $3F,$11
+ $CF15 DEFB $1D                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CF16 DEFB $2A,$E4,$25,$AD,$20,$54,$84,$02
+ $CF1E DEFB $83,$F7
  $CF20 DEFB $FF                             ; Terminator.
- $CF21 DEFB $16,$03,$24,$2A,$C5,$21,$6E,$17 ; {Scene #N$1A.
- $CF29 DEFB $36,$8B,$02                     ; }
+; Scene #N$1A.
+ $CF21 DEFB $16,$03
+ $CF23 DEFB $24                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CF24 DEFB $2A,$C5,$21,$6E,$17,$36,$8B,$02
  $CF2C DEFB $FF                             ; Terminator.
- $CF2D DEFB $3A,$20,$2E,$25,$42,$26,$2A,$2C ; {Scene #N$1B.
- $CF35 DEFB $11,$2B,$F8,$81,$C5,$9A,$76     ; }
+; Scene #N$1B.
+ $CF2D DEFB $3A,$20
+ $CF2F DEFB $2E                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CF30 DEFB $25,$42,$26,$2A,$2C,$11,$2B,$F8
+ $CF38 DEFB $81,$C5,$9A,$76
  $CF3C DEFB $FF                             ; Terminator.
- $CF3D DEFB $0D,$28,$35,$2C,$62,$20,$8C,$2C ; {Scene #N$1C.
- $CF45 DEFB $37,$88,$85,$8A,$F3             ; }
+; Scene #N$1C.
+ $CF3D DEFB $0D,$28
+ $CF3F DEFB $35                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CF40 DEFB $2C,$62,$20,$8C,$2C,$37,$88,$85
+ $CF48 DEFB $8A,$F3
  $CF4A DEFB $FF                             ; Terminator.
- $CF4B DEFB $31,$14,$0C,$2C,$C3,$1F,$8A,$13 ; {Scene #N$1D.
- $CF53 DEFB $11,$07,$58                     ; }
+; Scene #N$1D.
+ $CF4B DEFB $31,$14
+ $CF4D DEFB $0C                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CF4E DEFB $2C,$C3,$1F,$8A,$13,$11,$07,$58
  $CF56 DEFB $FF                             ; Terminator.
- $CF57 DEFB $12,$2E,$13,$A9,$85,$29,$CC,$A9 ; {Scene #N$1E.
- $CF5F DEFB $93                             ; }
+; Scene #N$1E.
+ $CF57 DEFB $12,$2E
+ $CF59 DEFB $13                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CF5A DEFB $A9,$85,$29,$CC,$A9,$93
  $CF60 DEFB $FF                             ; Terminator.
- $CF61 DEFB $3C,$0E,$1C,$30,$46,$03,$AF,$27 ; {Scene #N$1F.
- $CF69 DEFB $F7,$91,$23                     ; }
+; Scene #N$1F.
+ $CF61 DEFB $3C,$0E
+ $CF63 DEFB $1C                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CF64 DEFB $30,$46,$03,$AF,$27,$F7,$91,$23
  $CF6C DEFB $FF                             ; Terminator.
- $CF6D DEFB $0A,$09,$34,$2A,$22,$84,$05,$AC ; {Scene #N$20.
- $CF75 DEFB $8E,$A1,$F5                     ; }
+; Scene #N$20.
+ $CF6D DEFB $0A,$09
+ $CF6F DEFB $34                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CF70 DEFB $2A,$22,$84,$05,$AC,$8E,$A1,$F5
  $CF78 DEFB $FF                             ; Terminator.
- $CF79 DEFB $05,$0D,$2C,$2B,$E2,$2C,$89,$2B ; {Scene #N$21.
- $CF81 DEFB $70,$2C,$D7                     ; }
+; Scene #N$21.
+ $CF79 DEFB $05,$0D
+ $CF7B DEFB $2C                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CF7C DEFB $2B,$E2,$2C,$89,$2B,$70,$2C,$D7
  $CF84 DEFB $FF                             ; Terminator.
- $CF85 DEFB $3D,$2D,$34,$27,$43,$07,$EF,$21 ; {Scene #N$22.
- $CF8D DEFB $36,$89,$86                     ; }
+; Scene #N$22.
+ $CF85 DEFB $3D,$2D
+ $CF87 DEFB $34                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CF88 DEFB $27,$43,$07,$EF,$21,$36,$89,$86
  $CF90 DEFB $FF                             ; Terminator.
- $CF91 DEFB $12,$17,$43,$2A,$02,$2E,$8C,$2A ; {Scene #N$23.
- $CF99 DEFB $F5                             ; }
+; Scene #N$23.
+ $CF91 DEFB $12,$17
+ $CF93 DEFB $43                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CF94 DEFB $2A,$02,$2E,$8C,$2A,$F5
  $CF9A DEFB $FF                             ; Terminator.
- $CF9B DEFB $02,$1F,$1A,$2F,$47,$2F,$11     ; Scene #N$24.
+; Scene #N$24.
+ $CF9B DEFB $02,$1F
+ $CF9D DEFB $1A                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CF9E DEFB $2F,$47,$2F,$11
  $CFA2 DEFB $FF                             ; Terminator.
- $CFA3 DEFB $10,$0D,$24,$28,$C2,$27,$8F,$16 ; {Scene #N$25.
- $CFAB DEFB $F7,$98,$4B                     ; }
+; Scene #N$25.
+ $CFA3 DEFB $10,$0D
+ $CFA5 DEFB $24                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CFA6 DEFB $28,$C2,$27,$8F,$16,$F7,$98,$4B
  $CFAE DEFB $FF                             ; Terminator.
- $CFAF DEFB $30,$1B,$29,$01,$CD             ; Scene #N$26.
+; Scene #N$26.
+ $CFAF DEFB $30,$1B
+ $CFB1 DEFB $29                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CFB2 DEFB $01,$CD
  $CFB4 DEFB $FF                             ; Terminator.
- $CFB5 DEFB $39,$28,$3D,$2E,$C2,$2B,$8C,$28 ; {Scene #N$27.
- $CFBD DEFB $F3,$92,$25,$86,$76             ; }
+; Scene #N$27.
+ $CFB5 DEFB $39,$28
+ $CFB7 DEFB $3D                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CFB8 DEFB $2E,$C2,$2B,$8C,$28,$F3,$92,$25
+ $CFC0 DEFB $86,$76
  $CFC2 DEFB $FF                             ; Terminator.
- $CFC3 DEFB $01,$01,$0E,$2B,$43,$2B,$2D,$2B ; {Scene #N$28.
- $CFCB DEFB $17,$B0,$C2,$B0,$8C,$B0,$D6     ; }
+; Scene #N$28.
+ $CFC3 DEFB $01,$01
+ $CFC5 DEFB $0E                             ; #TABLE(default,centre,centre) { =h Scene Type | =h Number Of Buildings }
+                                            ; { #N(#EVAL((#PEEK(#PC)&$78)>>$03)) | #N(#EVAL(#PEEK(#PC)&$07)) }
+                                            ; TABLE#
+ $CFC6 DEFB $2B,$43,$2B,$2D,$2B,$17,$B0,$C2
+ $CFCE DEFB $B0,$8C,$B0,$D6
 
 ; Data: George
 @label=George_State
@@ -2875,15 +3053,13 @@ g$D238 DEFB $00,$00,$00,$00,$00,$00
 
 ; Game status buffer entry at D23E
 g$D23E DEFB $00
+ $D23F DEFB $00
+ $D240 DEFB $00
 
-; Game status buffer entry at D23F
-g$D23F DEFB $00
-
-; Game status buffer entry at D240
-g$D240 DEFB $00,$00,$00
-
-; Game status buffer entry at D243
-g$D243 DEFB $00
+; Game status buffer entry at D241
+g$D241 DEFB $00
+ $D242 DEFB $00
+ $D243 DEFB $00
 
 ; Game status buffer entry at D244
 g$D244 DEFB $00,$00
@@ -3113,7 +3289,10 @@ g$D3FD DEFB $00
 ; Data block at D3FE
 b$D3FE DEFB $00
  $D3FF DEFB $00
- $D400 DEFB $00
+
+; Scene Type
+@label=Scene_Type
+g$D400 DEFB $00
 
 ; Table: Vehicle
 ;
@@ -5430,26 +5609,33 @@ c$DF90 LD E,A                               ; #REGe=level.
  $DFA3 INC HL                               ; Increment the scene data pointer
                                             ; by one.
  $DFA4 LD A,(HL)                            ; #REGa=*#REGhl.
- $DFA5 PUSH HL                              ; Stash #REGhl on the stack.
+ $DFA5 PUSH HL                              ; Stash the scene data pointer on
+                                            ; the stack temporarily.
  $DFA6 CALL $D55B                           ; Call #R$D55B.
- $DFA9 POP HL                               ; Restore #REGhl from the stack.
- $DFAA INC HL                               ; Increment #REGhl by one.
+ $DFA9 POP HL                               ; Restore the scene data pointer
+                                            ; from the stack.
+ $DFAA INC HL                               ; Increment the scene data pointer
+                                            ; by one.
  $DFAB LD A,(HL)                            ; #REGa=*#REGhl.
  $DFAC AND %01111000                        ; Keep only bits 3-6.
  $DFAE RRCA                                 ; {Rotate #REGa right three
  $DFAF RRCA                                 ; positions (bits 3 to 6 are now in
  $DFB0 RRCA                                 ; positions 0 to 3).}
- $DFB1 PUSH HL                              ; Stash #REGhl on the stack.
+ $DFB1 PUSH HL                              ; Stash the scene data pointer on
+                                            ; the stack temporarily.
  $DFB2 LD ($D400),A                         ; Write #REGa to *#R$D400.
  $DFB5 CALL $D593                           ; Call #R$D593.
- $DFB8 POP HL                               ; Restore #REGhl from the stack.
+ $DFB8 POP HL                               ; Restore the scene data pointer
+                                            ; from the stack.
  $DFB9 XOR A                                ; {Write #N$00 to: #LIST { *#R$D220
  $DFBA LD ($D220),A                         ; } { *#R$D222 } LIST#
  $DFBD LD ($D222),A                         ; }
+; Set the number of buildings for this level.
  $DFC0 LD A,(HL)                            ; #REGa=*#REGhl.
  $DFC1 AND %00000111                        ; Keep only bits 0-2.
  $DFC3 LD ($D3F3),A                         ; Write #REGa to *#R$D3F3.
- $DFC6 INC HL                               ; Increment #REGhl by one.
+ $DFC6 INC HL                               ; Increment the scene data pointer
+                                            ; by one.
 *$DFC7 PUSH AF                              ; {Stash #REGaf and #REGhl on the
  $DFC8 PUSH HL                              ; stack.}
  $DFC9 LD HL,$D39F                          ; #REGhl=#R$D39F.
@@ -5457,8 +5643,8 @@ c$DF90 LD E,A                               ; #REGe=level.
  $DFCF LD D,$00                             ; #REGd=#N$00.
  $DFD1 LD E,A                               ; #REGe=#REGa.
  $DFD2 ADD HL,DE                            ; #REGhl+=#REGde.
- $DFD3 PUSH HL                              ; Stash #REGhl on the stack.
- $DFD4 POP IX                               ; Restore #REGix from the stack.
+ $DFD3 PUSH HL                              ; {#REGix=#REGhl using the stack.
+ $DFD4 POP IX                               ; }
  $DFD6 ADD A,$0E                            ; #REGa+=#N$0E.
  $DFD8 LD ($D220),A                         ; Write #REGa to *#R$D220.
  $DFDB LD A,($D222)                         ; #REGa=*#R$D222.
@@ -5480,7 +5666,7 @@ c$DF90 LD E,A                               ; #REGe=level.
  $DFEF AND %11100000                        ; Keep only bits 5-7.
  $DFF1 RLCA                                 ; {Rotate #REGa left three
  $DFF2 RLCA                                 ; positions (bits 5 to 7 are now in
- $DFF3 RLCA                                 ; positions 2 to 4).}
+ $DFF3 RLCA                                 ; positions 0 to 2).}
  $DFF4 LD B,$00                             ; #REGb=#N$00.
  $DFF6 LD C,A                               ; #REGc=#REGa.
  $DFF7 PUSH HL                              ; Stash #REGhl on the stack.
@@ -5558,8 +5744,8 @@ c$DF90 LD E,A                               ; #REGe=level.
  $E05C DJNZ $E054                           ; Decrease counter by one and loop
                                             ; back to #R$E054 until counter is
                                             ; zero.
- $E05E LD A,$FE                             ; {Write #N$FE to *#R$D405.
- $E060 LD ($D405),A                         ; }
+ $E05E LD A,$FE                             ; {Write #N$FE (spawning "off") to
+ $E060 LD ($D405),A                         ; *#R$D405.}
  $E063 LD A,($D400)                         ; {Jump to #R$E099 if *#R$D400 is
  $E066 CP $02                               ; equal to #N$02.
  $E068 JR Z,$E099                           ; }
@@ -5567,19 +5753,29 @@ c$DF90 LD E,A                               ; #REGe=level.
  $E06C JR Z,$E09E                           ; equal to #N$05.}
  $E06E LD A,$18                             ; {Write #N$18 to *#R$D401.
  $E070 LD ($D401),A                         ; }
+@label=Helicopters_CalculateCount
 *$E073 LD A,($DF44)                         ; #REGa=*#R$DF44.
- $E076 RRCA                                 ; RRCA.
- $E077 RRCA                                 ; RRCA.
- $E078 RRCA                                 ; RRCA.
+; Divide the level number by #N$08 but ensure the result is no higher than
+; #N$07.
+ $E076 RRCA                                 ; {Rotate #REGa right three
+ $E077 RRCA                                 ; positions (bits 3 to 5 are now in
+ $E078 RRCA                                 ; positions 0 to 2).}
  $E079 AND %00000111                        ; Keep only bits 0-2.
+; Always ensure there are at least two helicopters.
  $E07B ADD A,$02                            ; #REGa+=#N$02.
+; Don't allow any more than six helicopters.
  $E07D CP $07                               ; {Jump to #R$E083 if #REGa is
  $E07F JR C,$E083                           ; lower than #N$07.}
- $E081 LD A,$06                             ; {Write #N$06 to *#R$D212.
-*$E083 LD ($D212),A                         ; }
+; Else, set the limit of six which is the maximum the game can support.
+ $E081 LD A,$06                             ; #REGa=#N$06.
+@label=Helicopter_SetCount
+*$E083 LD ($D212),A                         ; Write #REGa to *#R$D212.
  $E086 LD A,($DF44)                         ; #REGa=*#R$DF44.
- $E089 RRCA                                 ; RRCA.
- $E08A RRCA                                 ; RRCA.
+; Divide the level number by #N$04 but ensure the result is no higher than
+; #N$0F.
+ $E089 RRCA                                 ; {Rotate #REGa right two positions
+ $E08A RRCA                                 ; (bits 2 to 5 are now in positions
+                                            ; 0 to 3).}
  $E08B AND %00001111                        ; Keep only bits 0-3.
  $E08D ADD A,$06                            ; #REGa+=#N$06.
  $E08F CP $11                               ; {Jump to #R$E095 if #REGa is
@@ -5587,10 +5783,13 @@ c$DF90 LD E,A                               ; #REGe=level.
  $E093 LD A,$10                             ; {Write #N$10 to *#R$D211.
 *$E095 LD ($D211),A                         ; }
  $E098 RET                                  ; Return.
+; Sets the train countdown and turns off vehicles as they can't co-exist.
+@label=Train_Enable
 *$E099 LD A,$20                             ; {Write #N$20 to *#R$D405.
  $E09B LD ($D405),A                         ; }
-*$E09E LD A,$FE                             ; {Write #N$FE to *#R$D401.
- $E0A0 LD ($D401),A                         ; }
+@label=Vehicle_Disable
+*$E09E LD A,$FE                             ; {Write #N$FE (spawning "off") to
+ $E0A0 LD ($D401),A                         ; *#R$D401.}
  $E0A3 JR $E073                             ; Jump to #R$E073.
  $E0A5 DEFB $50,$58,$60,$20,$70,$30,$78,$38 ;
 
@@ -8697,7 +8896,7 @@ c$F788 LD HL,$D243   ; #REGhl=#R$D243.
 ;
 ; Used by the routine at #R$F788.
 ;
-; HL
+; HL Either #R$D243 or #R$D240
 @label=Handler_Monsters
 c$F795 LD B,$03        ; #REGb=#N$03 (total number of monsters/ players).
 @label=Handler_Monsters_Loop
