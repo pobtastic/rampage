@@ -180,7 +180,7 @@ Process the scene data.
 <td class="asm-label"></td>
 <td class="address-1"><span id="57253"></span>57253</td>
 <td class="instruction">PUSH HL</td>
-<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
+<td class="comment-1" rowspan="1">Stash the scene data pointer on the stack temporarily.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -192,13 +192,13 @@ Process the scene data.
 <td class="asm-label"></td>
 <td class="address-1"><span id="57257"></span>57257</td>
 <td class="instruction">POP HL</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+<td class="comment-1" rowspan="1">Restore the scene data pointer from the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="57258"></span>57258</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+<td class="comment-1" rowspan="1">Increment the scene data pointer by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -232,13 +232,13 @@ Process the scene data.
 <td class="asm-label"></td>
 <td class="address-1"><span id="57265"></span>57265</td>
 <td class="instruction">PUSH HL</td>
-<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
+<td class="comment-1" rowspan="1">Stash the scene data pointer on the stack temporarily.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="57266"></span>57266</td>
 <td class="instruction">LD (54272),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54270.html#54272">54272</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="54272.html">Scene_Type</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -250,7 +250,7 @@ Process the scene data.
 <td class="asm-label"></td>
 <td class="address-1"><span id="57272"></span>57272</td>
 <td class="instruction">POP HL</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+<td class="comment-1" rowspan="1">Restore the scene data pointer from the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -270,6 +270,16 @@ Process the scene data.
 <td class="asm-label"></td>
 <td class="address-1"><span id="57277"></span>57277</td>
 <td class="instruction">LD (53794),A</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="57280"></span>
+<div class="comments">
+<div class="paragraph">
+Set the number of buildings for this level.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -293,7 +303,7 @@ Process the scene data.
 <td class="asm-label"></td>
 <td class="address-1"><span id="57286"></span>57286</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+<td class="comment-1" rowspan="1">Increment the scene data pointer by one.</td>
 </tr>
 <tr>
 <td class="asm-label">FindScene_0</td>
@@ -340,13 +350,12 @@ Process the scene data.
 <td class="asm-label"></td>
 <td class="address-1"><span id="57299"></span>57299</td>
 <td class="instruction">PUSH HL</td>
-<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
+<td class="comment-1" rowspan="2"><span class="register">IX</span>=<span class="register">HL</span> using the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="57300"></span>57300</td>
 <td class="instruction">POP IX</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">IX</span> from the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -454,7 +463,7 @@ Process the scene data.
 <td class="asm-label"></td>
 <td class="address-1"><span id="57329"></span>57329</td>
 <td class="instruction">RLCA</td>
-<td class="comment-1" rowspan="3">Rotate <span class="register">A</span> left three positions (bits 5 to 7 are now in positions 2 to 4).</td>
+<td class="comment-1" rowspan="3">Rotate <span class="register">A</span> left three positions (bits 5 to 7 are now in positions 0 to 2).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -863,7 +872,7 @@ Process the scene data.
 <td class="asm-label"></td>
 <td class="address-1"><span id="57438"></span>57438</td>
 <td class="instruction">LD A,254</td>
-<td class="comment-1" rowspan="2">Write 254 to *<a href="54277.html">TrainState</a>.</td>
+<td class="comment-1" rowspan="2">Write 254 (spawning "off") to *<a href="54277.html">TrainState</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -874,7 +883,7 @@ Process the scene data.
 <td class="asm-label"></td>
 <td class="address-1"><span id="57443"></span>57443</td>
 <td class="instruction">LD A,(54272)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="57232.html#57497">FindScene_8</a> if *<a href="54270.html#54272">54272</a> is equal to 2.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="57232.html#57497">Train_Enable</a> if *<a href="54272.html">Scene_Type</a> is equal to 2.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -884,18 +893,18 @@ Process the scene data.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="57448"></span>57448</td>
-<td class="instruction">JR Z,<a href="57232.html#57497">FindScene_8</a></td>
+<td class="instruction">JR Z,<a href="57232.html#57497">Train_Enable</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="57450"></span>57450</td>
 <td class="instruction">CP 5</td>
-<td class="comment-1" rowspan="2">Jump to <a href="57232.html#57502">FindScene_9</a> if <span class="register">A</span> is equal to 5.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="57232.html#57502">Vehicle_Disable</a> if <span class="register">A</span> is equal to 5.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="57452"></span>57452</td>
-<td class="instruction">JR Z,<a href="57232.html#57502">FindScene_9</a></td>
+<td class="instruction">JR Z,<a href="57232.html#57502">Vehicle_Disable</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -909,28 +918,36 @@ Process the scene data.
 <td class="instruction">LD (54273),A</td>
 </tr>
 <tr>
-<td class="asm-label">FindScene_5</td>
+<td class="asm-label">Helicopters_CalculateCount</td>
 <td class="address-2"><span id="57459"></span>57459</td>
 <td class="instruction">LD A,(57156)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="57156.html">CurrentLevel</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="57462"></span>
+<div class="comments">
+<div class="paragraph">
+Divide the level number by 8 but ensure the result is no higher than 7.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="57462"></span>57462</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1">RRCA.</td>
+<td class="comment-1" rowspan="3">Rotate <span class="register">A</span> right three positions (bits 3 to 5 are now in positions 0 to 2).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="57463"></span>57463</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1">RRCA.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="57464"></span>57464</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1">RRCA.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -939,32 +956,63 @@ Process the scene data.
 <td class="comment-1" rowspan="1">Keep only bits 0-2.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="57467"></span>
+<div class="comments">
+<div class="paragraph">
+Always ensure there are at least two helicopters.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="57467"></span>57467</td>
 <td class="instruction">ADD A,2</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>+=2.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="57469"></span>
+<div class="comments">
+<div class="paragraph">
+Don't allow any more than six helicopters.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="57469"></span>57469</td>
 <td class="instruction">CP 7</td>
-<td class="comment-1" rowspan="2">Jump to <a href="57232.html#57475">FindScene_6</a> if <span class="register">A</span> is lower than 7.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="57232.html#57475">Helicopter_SetCount</a> if <span class="register">A</span> is lower than 7.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="57471"></span>57471</td>
-<td class="instruction">JR C,<a href="57232.html#57475">FindScene_6</a></td>
+<td class="instruction">JR C,<a href="57232.html#57475">Helicopter_SetCount</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="57473"></span>
+<div class="comments">
+<div class="paragraph">
+Else, set the limit of six which is the maximum the game can support.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="57473"></span>57473</td>
 <td class="instruction">LD A,6</td>
-<td class="comment-1" rowspan="2">Write 6 to *<a href="53778.html">MaxHelicopterCount</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=6.</td>
 </tr>
 <tr>
-<td class="asm-label">FindScene_6</td>
+<td class="asm-label">Helicopter_SetCount</td>
 <td class="address-2"><span id="57475"></span>57475</td>
 <td class="instruction">LD (53778),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53778.html">MaxHelicopterCount</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -973,16 +1021,25 @@ Process the scene data.
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="57156.html">CurrentLevel</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="57481"></span>
+<div class="comments">
+<div class="paragraph">
+Divide the level number by 4 but ensure the result is no higher than 15.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="57481"></span>57481</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1">RRCA.</td>
+<td class="comment-1" rowspan="2">Rotate <span class="register">A</span> right two positions (bits 2 to 5 are now in positions 0 to 3).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="57482"></span>57482</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1">RRCA.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1000,12 +1057,12 @@ Process the scene data.
 <td class="asm-label"></td>
 <td class="address-1"><span id="57487"></span>57487</td>
 <td class="instruction">CP 17</td>
-<td class="comment-1" rowspan="2">Jump to <a href="57232.html#57493">FindScene_7</a> if <span class="register">A</span> is lower than 17.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="57232.html#57493">FindScene_5</a> if <span class="register">A</span> is lower than 17.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="57489"></span>57489</td>
-<td class="instruction">JR C,<a href="57232.html#57493">FindScene_7</a></td>
+<td class="instruction">JR C,<a href="57232.html#57493">FindScene_5</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1014,7 +1071,7 @@ Process the scene data.
 <td class="comment-1" rowspan="2">Write 16 to *<a href="53777.html">53777</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">FindScene_7</td>
+<td class="asm-label">FindScene_5</td>
 <td class="address-2"><span id="57493"></span>57493</td>
 <td class="instruction">LD (53777),A</td>
 </tr>
@@ -1025,7 +1082,17 @@ Process the scene data.
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
-<td class="asm-label">FindScene_8</td>
+<td class="routine-comment" colspan="5">
+<span id="57497"></span>
+<div class="comments">
+<div class="paragraph">
+Sets the train countdown and turns off vehicles as they can't co-exist.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Train_Enable</td>
 <td class="address-2"><span id="57497"></span>57497</td>
 <td class="instruction">LD A,32</td>
 <td class="comment-1" rowspan="2">Write 32 to *<a href="54277.html">TrainState</a>.</td>
@@ -1036,10 +1103,10 @@ Process the scene data.
 <td class="instruction">LD (54277),A</td>
 </tr>
 <tr>
-<td class="asm-label">FindScene_9</td>
+<td class="asm-label">Vehicle_Disable</td>
 <td class="address-2"><span id="57502"></span>57502</td>
 <td class="instruction">LD A,254</td>
-<td class="comment-1" rowspan="2">Write 254 to *<a href="54273.html">VehicleCounter</a>.</td>
+<td class="comment-1" rowspan="2">Write 254 (spawning "off") to *<a href="54273.html">VehicleCounter</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1049,8 +1116,8 @@ Process the scene data.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="57507"></span>57507</td>
-<td class="instruction">JR <a href="57232.html#57459">FindScene_5</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="57232.html#57459">FindScene_5</a>.</td>
+<td class="instruction">JR <a href="57232.html#57459">Helicopters_CalculateCount</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="57232.html#57459">Helicopters_CalculateCount</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
