@@ -1135,8 +1135,7 @@ c $D50C
   $D543,$02,b$01 Keep only bits 0-6.
   $D545,$01 Write #REGa to *#REGhl.
   $D546,$01 #REGa=*#REGde.
-  $D547,$02 Test bit 7 of #REGa.
-  $D549,$02 Jump to #R$D550 if {} is not zero.
+  $D547,$04 Jump to #R$D550 if bit 7 of #REGa is set.
   $D54B,$02 #REGhl-=#REGbc.
   $D54D,$01 Increment #REGde by one.
   $D54E,$02 Jump to #R$D542.
@@ -3306,8 +3305,7 @@ c $E62D
 c $E68C
   $E68C,$03 Call #R$E179.
   $E68F,$04 Jump to #R$E950 if #REGa is zero.
-  $E693,$02 Test bit 4 of #REGa.
-  $E695,$03 Jump to #R$E6C5 if {} is zero.
+  $E693,$05 Jump to #R$E6C5 if bit 4 of #REGa is not set.
   $E698,$02,b$01 Flip bit 4.
   $E69A,$02 Jump to #R$E6A9 if the result is not zero.
   $E69C,$05 Write #N$0A to *#R$D244.
@@ -3319,8 +3317,7 @@ c $E68C
   $E6B7,$06 Jump to #R$E69C if *#R$D252 is zero.
   $E6BD,$05 Write #N$0E to *#R$D244.
   $E6C2,$03 Jump to #R$E67C.
-  $E6C5,$02 Test bit 3 of #REGa.
-  $E6C7,$03 Jump to #R$E7DE if {} is zero.
+  $E6C5,$05 Jump to #R$E7DE if bit 3 of #REGa is not set.
   $E6CA,$03 #REGa=*#R$D247.
   $E6CD,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $E6CE,$02 Jump to #R$E6E4 if the carry flag is set.
@@ -3415,8 +3412,7 @@ c $E68C
   $E7CF,$04 Write #N$01 to *#R$D246.
   $E7D3,$08 Write #N$03 to: #LIST { *#R$D244 } { *#R$D245 } LIST#
   $E7DB,$03 Jump to #R$E67C.
-  $E7DE,$02 Test bit 2 of #REGa.
-  $E7E0,$03 Jump to #R$E8E7 if {} is zero.
+  $E7DE,$05 Jump to #R$E8E7 if bit 2 of #REGa is not set.
   $E7E3,$08 Jump to #R$E8CF if *#R$D24E is equal to #N$10.
   $E7EB,$03 #REGa=*#R$D247.
   $E7EE,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
@@ -3505,8 +3501,7 @@ c $E68C
   $E8DD,$03 Call #R$DA61 if the carry flag is not set.
   $E8E0,$04 Write #N$00 to *#R$D246.
   $E8E4,$03 Jump to #R$E67C.
-  $E8E7,$02 Test bit 0 of #REGa.
-  $E8E9,$02 Jump to #R$E91C if {} is zero.
+  $E8E7,$04 Jump to #R$E91C if bit 0 of #REGa is not set.
   $E8EB,$03 #REGa=*#R$D246.
   $E8EE,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $E8EF,$03 Jump to #R$EF86 if the carry flag is set.
@@ -3521,8 +3516,7 @@ c $E68C
   $E90E,$04 Write #N$01 to *#R$D247.
   $E912,$07 Write #N$02 to: #LIST { *#REGix+#N$00 } { *#R$D244 } LIST#
   $E919,$03 Jump to #R$E67C.
-  $E91C,$02 Test bit 1 of #REGa.
-  $E91E,$02 Jump to #R$E950 if {} is zero.
+  $E91C,$04 Jump to #R$E950 if bit 1 of #REGa is not set.
   $E920,$03 #REGa=*#R$D246.
   $E923,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $E924,$03 Jump to #R$EF86 if the carry flag is set.
@@ -3738,14 +3732,11 @@ c $EAF6
   $EB5D,$01 #REGhl+=#REGde.
   $EB5E,$03 Write #REGhl to *#R$D21E.
   $EB61,$01 #REGd=*#REGhl.
-  $EB62,$02 Test bit 5 of #REGd.
-  $EB64,$02 Jump to #R$EB67 if {} is zero.
+  $EB62,$04 Jump to #R$EB67 if bit 5 of #REGd is not set.
   $EB66,$01 Increment #REGc by one.
-  $EB67,$02 Test bit 0 of #REGd.
-  $EB69,$02 Jump to #R$EB6C if {} is zero.
+  $EB67,$04 Jump to #R$EB6C if bit 0 of #REGd is not set.
   $EB6B,$01 Increment #REGc by one.
-  $EB6C,$02 Test bit 1 of #REGd.
-  $EB6E,$02 Jump to #R$EB71 if {} is zero.
+  $EB6C,$04 Jump to #R$EB71 if bit 1 of #REGd is not set.
   $EB70,$01 Decrease #REGc by one.
   $EB71,$06 Jump to #R$EB88 if *#R$D3FF is not zero.
   $EB77,$03 #REGa=*#R$D247.
@@ -3754,13 +3745,11 @@ c $EAF6
   $EB80,$02,b$01 Flip bits 1-4.
   $EB82,$02 #REGa+=#N$FC.
   $EB84,$04 Jump to #R$EC6E if #REGa is equal to #REGc.
-  $EB88,$02 Test bit 2 of #REGd.
-  $EB8A,$02 Jump to #R$EB8D if {} is zero.
+  $EB88,$04 Jump to #R$EB8D if bit 2 of #REGd is not set.
   $EB8C,$01 Decrease #REGb by one.
   $EB8D,$01 #REGa=#REGd.
   $EB8E,$01 Exchange the #REGaf register with the shadow #REGaf register.
-  $EB8F,$02 Test bit 3 of #REGd.
-  $EB91,$02 Jump to #R$EBDD if {} is zero.
+  $EB8F,$04 Jump to #R$EBDD if bit 3 of #REGd is not set.
   $EB93,$01 Increment #REGb by one.
   $EB94,$06 Jump to #R$EBDD if *#R$D3FF is not zero.
   $EB9A,$06 Jump to #R$EC52 if #REGb is equal to #N$12.
@@ -3784,8 +3773,7 @@ c $EAF6
   $EBDB,$02 Jump to #R$EC52 if {} is not zero.
   $EBDD,$05 Return if *#R$D3FF is not zero.
   $EBE2,$01 Exchange the #REGaf register with the shadow #REGaf register.
-  $EBE3,$02 Test bit 4 of #REGa.
-  $EBE5,$02 Jump to #R$EC30 if {} is zero.
+  $EBE3,$04 Jump to #R$EC30 if bit 4 of #REGa is not set.
   $EBE7,$01 Increment #REGb by one.
   $EBE8,$05 Return if *#R$D3FF is not zero.
   $EBED,$05 Jump to #R$EC52 if #REGb is not equal to #N$12.
@@ -3873,8 +3861,7 @@ c $ECE0
   $ECE0,$03 #REGa=*#R$D217.
   $ECE3,$02,b$01 Keep only bits 0-3.
   $ECE5,$01 #REGb=#REGa.
-  $ECE6,$02 Test bit 3 of #REGb.
-  $ECE8,$02 Jump to #R$ECEC if {} is not zero.
+  $ECE6,$04 Jump to #R$ECEC if bit 3 of #REGb is set.
   $ECEA,$02 Jump to #R$ED0C.
   $ECEC,$03 #REGhl=#R$FE00.
   $ECEF,$03 #REGde=#N$FE03.
@@ -3906,18 +3893,14 @@ c $ED31
   $ED31,$03 #REGa=*#R$D217.
   $ED34,$02,b$01 Keep only bits 0-3.
   $ED36,$01 #REGb=#REGa.
-  $ED37,$02 Test bit 2 of #REGb.
-  $ED39,$03 Jump to #R$EDA3 if {} is not zero.
-  $ED3C,$02 Test bit 3 of #REGb.
-  $ED3E,$02 Jump to #R$ED54 if {} is not zero.
+  $ED37,$05 Jump to #R$EDA3 if bit 2 of #REGb is set.
+  $ED3C,$04 Jump to #R$ED54 if bit 3 of #REGb is set.
   $ED40,$03 #REGa=*#R$D247.
   $ED43,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $ED44,$02 Jump to #R$ED4D if the carry flag is set.
-  $ED46,$02 Test bit 1 of #REGb.
-  $ED48,$02 Jump to #R$ED79 if {} is not zero.
+  $ED46,$04 Jump to #R$ED79 if bit 1 of #REGb is set.
   $ED4A,$03 Jump to #R$EF86.
-  $ED4D,$02 Test bit 1 of #REGb.
-  $ED4F,$02 Jump to #R$ED79 if {} is zero.
+  $ED4D,$04 Jump to #R$ED79 if bit 1 of #REGb is not set.
   $ED51,$03 Jump to #R$EF86.
   $ED54,$03 #REGhl=#R$FE00.
   $ED57,$03 #REGde=#N$FE03.
@@ -3967,18 +3950,14 @@ c $EDC2
   $EDC2,$03 #REGa=*#R$D217.
   $EDC5,$02,b$01 Keep only bits 0-3.
   $EDC7,$01 #REGb=#REGa.
-  $EDC8,$02 Test bit 3 of #REGb.
-  $EDCA,$02 Jump to #R$EDE5 if {} is not zero.
-  $EDCC,$02 Test bit 2 of #REGb.
-  $EDCE,$03 Jump to #R$EE4A if {} is not zero.
+  $EDC8,$04 Jump to #R$EDE5 if bit 3 of #REGb is set.
+  $EDCC,$05 Jump to #R$EE4A if bit 2 of #REGb is set.
   $EDD1,$03 #REGa=*#R$D247.
   $EDD4,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $EDD5,$02 Jump to #R$EDDE if the carry flag is set.
-  $EDD7,$02 Test bit 1 of #REGb.
-  $EDD9,$02 Jump to #R$EE12 if {} is not zero.
+  $EDD7,$04 Jump to #R$EE12 if bit 1 of #REGb is set.
   $EDDB,$03 Jump to #R$EF86.
-  $EDDE,$02 Test bit 1 of #REGb.
-  $EDE0,$02 Jump to #R$EE12 if {} is zero.
+  $EDDE,$04 Jump to #R$EE12 if bit 1 of #REGb is not set.
   $EDE2,$03 Jump to #R$EF86.
   $EDE5,$03 #REGhl=#N$FE01.
   $EDE8,$03 #REGde=#N$FE03.
