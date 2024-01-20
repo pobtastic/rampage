@@ -42,6 +42,15 @@ Next: <a href="56190.html">56190</a>
 Used by the routine at <a href="57232.html">FindScene</a>.
 </div>
 </div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">IX</td>
+<td class="register-desc">Buildings Table</td>
+</tr>
+</table>
 </td>
 </tr>
 <tr>
@@ -117,7 +126,7 @@ Used by the routine at <a href="57232.html">FindScene</a>.
 <tr>
 <td class="address-1"><span id="55954"></span>55954</td>
 <td class="instruction">LD HL,52009</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="52009.html">52009</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="52009.html">Buildings_Data</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="55957"></span>55957</td>
@@ -166,12 +175,11 @@ Used by the routine at <a href="57232.html">FindScene</a>.
 <tr>
 <td class="address-1"><span id="55972"></span>55972</td>
 <td class="instruction">RLCA</td>
-<td class="comment-1" rowspan="1">RLCA.</td>
+<td class="comment-1" rowspan="2">Rotate <span class="register">A</span> left two positions (bits 6 to 7 are now in positions 0 to 1).</td>
 </tr>
 <tr>
 <td class="address-1"><span id="55973"></span>55973</td>
 <td class="instruction">RLCA</td>
-<td class="comment-1" rowspan="1">RLCA.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="55974"></span>55974</td>
@@ -633,7 +641,7 @@ Used by the routine at <a href="57232.html">FindScene</a>.
 <span id="56148"></span>
 <div class="comments">
 <div class="paragraph">
-This entry point is used by the routines at <a href="58925.html">58925</a> and <a href="61318.html">61318</a>.
+This entry point is used by the routines at <a href="59761.html">59761</a>, <a href="59778.html">59778</a> and <a href="61318.html">61318</a>.
 </div>
 </div>
 </td>

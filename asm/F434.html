@@ -33,7 +33,7 @@ Next: <a href="F450.html">F450</a>
 </td>
 </tr>
 </table>
-<div class="description">F434: Routine at F434</div>
+<div class="description">F434: Process Monsters</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,86 +45,115 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">ProcessMonsters</td>
 <td class="address-2"><span id="f434"></span>F434</td>
 <td class="instruction">LD HL,$D238</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D238.html">D238</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D233.html#d238">D238</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f437"></span>
+<div class="comments">
+<div class="paragraph">
+Work backwards from Ralph to George.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f437"></span>F437</td>
 <td class="instruction">LD A,$03</td>
-<td class="comment-1" rowspan="2">Write 03 to *<a href="DF45.html">Temp_MonsterID</a>.</td>
+<td class="comment-1" rowspan="2">Write 03 (Ralph) to *<a href="DF45.html">Temp_MonsterID</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">ProcessMonsters_Loop</td>
 <td class="address-2"><span id="f439"></span>F439</td>
 <td class="instruction">LD ($DF45),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f43c"></span>F43C</td>
 <td class="instruction">PUSH AF</td>
-<td class="comment-1" rowspan="2">Stash <span class="register">AF</span> and <span class="register">HL</span> on the stack.</td>
+<td class="comment-1" rowspan="2">Stash the current monster ID and <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f43d"></span>F43D</td>
 <td class="instruction">PUSH HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f43e"></span>F43E</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="3">If *<span class="register">HL</span> is not at the terminator jump to <a href="F450.html">F450</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f43f"></span>F43F</td>
 <td class="instruction">CP $FF</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f441"></span>F441</td>
 <td class="instruction">CALL NZ,<a href="F450.html">$F450</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f444"></span>F444</td>
 <td class="instruction">POP HL</td>
-<td class="comment-1" rowspan="2">Restore <span class="register">HL</span> and <span class="register">AF</span> from the stack.</td>
+<td class="comment-1" rowspan="2">Restore <span class="register">HL</span> and the current monster ID from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f445"></span>F445</td>
 <td class="instruction">POP AF</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f446"></span>F446</td>
 <td class="instruction">DEC HL</td>
 <td class="comment-1" rowspan="6">Decrease <span class="register">HL</span> by six.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f447"></span>F447</td>
 <td class="instruction">DEC HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f448"></span>F448</td>
 <td class="instruction">DEC HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f449"></span>F449</td>
 <td class="instruction">DEC HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f44a"></span>F44A</td>
 <td class="instruction">DEC HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f44b"></span>F44B</td>
 <td class="instruction">DEC HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f44c"></span>F44C</td>
 <td class="instruction">DEC A</td>
-<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
+<td class="comment-1" rowspan="1">Decrease current monster ID by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f44d"></span>F44D</td>
-<td class="instruction">JR NZ,<a href="F434.html#f439">$F439</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="F434.html#f439">F439</a> until <span class="register">A</span> is zero.</td>
+<td class="instruction">JR NZ,<a href="F434.html#f439">ProcessMonsters_Loop</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="F434.html#f439">ProcessMonsters_Loop</a> until all monsters have been processed.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f44f"></span>F44F</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

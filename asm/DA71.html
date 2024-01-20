@@ -42,6 +42,15 @@ Next: <a href="DB7E.html">DB7E</a>
 Used by the routine at <a href="DF90.html">FindScene</a>.
 </div>
 </div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">IX</td>
+<td class="register-desc">Buildings Table</td>
+</tr>
+</table>
 </td>
 </tr>
 <tr>
@@ -117,7 +126,7 @@ Used by the routine at <a href="DF90.html">FindScene</a>.
 <tr>
 <td class="address-1"><span id="da92"></span>DA92</td>
 <td class="instruction">LD HL,$CB29</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="CB29.html">CB29</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="CB29.html">Buildings_Data</a>.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="da95"></span>DA95</td>
@@ -166,12 +175,11 @@ Used by the routine at <a href="DF90.html">FindScene</a>.
 <tr>
 <td class="address-1"><span id="daa4"></span>DAA4</td>
 <td class="instruction">RLCA</td>
-<td class="comment-1" rowspan="1">RLCA.</td>
+<td class="comment-1" rowspan="2">Rotate <span class="register">A</span> left two positions (bits 6 to 7 are now in positions 0 to 1).</td>
 </tr>
 <tr>
 <td class="address-1"><span id="daa5"></span>DAA5</td>
 <td class="instruction">RLCA</td>
-<td class="comment-1" rowspan="1">RLCA.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="daa6"></span>DAA6</td>
@@ -633,7 +641,7 @@ Used by the routine at <a href="DF90.html">FindScene</a>.
 <span id="db54"></span>
 <div class="comments">
 <div class="paragraph">
-This entry point is used by the routines at <a href="E62D.html">E62D</a> and <a href="EF86.html">EF86</a>.
+This entry point is used by the routines at <a href="E971.html">E971</a>, <a href="E982.html">E982</a> and <a href="EF86.html">EF86</a>.
 </div>
 </div>
 </td>

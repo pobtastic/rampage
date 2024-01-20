@@ -257,7 +257,7 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="address-1"><span id="e299"></span>E299</td>
 <td class="instruction">JP NZ,<a href="E25D.html#e54d">$E54D</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e54d">E54D</a> if {} is not zero.</td>
+<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e54d">E54D</a> until <span class="register">A</span> is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e29c"></span>E29C</td>
@@ -307,7 +307,7 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="address-1"><span id="e2a9"></span>E2A9</td>
 <td class="instruction">JP NZ,<a href="E25D.html#e54d">$E54D</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e54d">E54D</a> if {} is not zero.</td>
+<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e54d">E54D</a> until <span class="register">A</span> is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e2ac"></span>E2AC</td>
@@ -1161,7 +1161,7 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="address-1"><span id="e3ed"></span>E3ED</td>
 <td class="instruction">JR C,<a href="E25D.html#e408">$E408</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e408">E408</a> if {} is lower.</td>
+<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e408">E408</a> if <span class="register">A</span> is lower than 80.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e3ef"></span>E3EF</td>
@@ -1385,22 +1385,20 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="address-1"><span id="e44b"></span>E44B</td>
 <td class="instruction">CP $C8</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with C8.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E25D.html#e4d6">E4D6</a> if <span class="register">A</span> is higher than C8.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e44d"></span>E44D</td>
 <td class="instruction">JP NC,<a href="E25D.html#e4d6">$E4D6</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e4d6">E4D6</a> if {} is higher.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e450"></span>E450</td>
 <td class="instruction">CP $14</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 14.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E25D.html#e4d2">E4D2</a> if <span class="register">A</span> is lower than 14.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e452"></span>E452</td>
 <td class="instruction">JR C,<a href="E25D.html#e4d2">$E4D2</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e4d2">E4D2</a> if {} is lower.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e454"></span>E454</td>
@@ -1410,7 +1408,7 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="address-1"><span id="e456"></span>E456</td>
 <td class="instruction">JR Z,<a href="E25D.html#e463">$E463</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e463">E463</a> if {} is zero.</td>
+<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e463">E463</a> if the result is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e458"></span>E458</td>
@@ -1420,17 +1418,15 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="address-1"><span id="e459"></span>E459</td>
 <td class="instruction">RLCA</td>
-<td class="comment-1" rowspan="1">RLCA.</td>
+<td class="comment-1" rowspan="3">RLCA.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e45a"></span>E45A</td>
 <td class="instruction">RLCA</td>
-<td class="comment-1" rowspan="1">RLCA.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e45b"></span>E45B</td>
 <td class="instruction">RLCA</td>
-<td class="comment-1" rowspan="1">RLCA.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e45c"></span>E45C</td>
@@ -1475,17 +1471,15 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="address-1"><span id="e46e"></span>E46E</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1">RRCA.</td>
+<td class="comment-1" rowspan="3">RRCA.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e46f"></span>E46F</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1">RRCA.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e470"></span>E470</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1">RRCA.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e471"></span>E471</td>
@@ -1534,7 +1528,7 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="address-1"><span id="e47b"></span>E47B</td>
 <td class="instruction">JR Z,<a href="E25D.html#e486">$E486</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e486">E486</a> if {} is zero.</td>
+<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e486">E486</a> if <span class="register">HL</span> is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e47d"></span>E47D</td>
@@ -1544,17 +1538,16 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="address-1"><span id="e47f"></span>E47F</td>
 <td class="instruction">CP C</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with <span class="register">C</span>.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E25D.html#e49a">E49A</a> if <span class="register">A</span> is equal to <span class="register">C</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e480"></span>E480</td>
 <td class="instruction">JR Z,<a href="E25D.html#e49a">$E49A</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e49a">E49A</a> if {} is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e482"></span>E482</td>
 <td class="instruction">JR C,<a href="E25D.html#e496">$E496</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e496">E496</a> if {} is lower.</td>
+<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e496">E496</a> if <span class="register">A</span> is lower than <span class="register">C</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e484"></span>E484</td>
@@ -1564,12 +1557,11 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="address-2"><span id="e486"></span>E486</td>
 <td class="instruction">CP C</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with <span class="register">C</span>.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E25D.html#e492">E492</a> if <span class="register">A</span> is lower than <span class="register">C</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e487"></span>E487</td>
 <td class="instruction">JR C,<a href="E25D.html#e492">$E492</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e492">E492</a> if {} is lower.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e489"></span>E489</td>
@@ -1579,17 +1571,16 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="address-2"><span id="e48b"></span>E48B</td>
 <td class="instruction">CP C</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with <span class="register">C</span>.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E25D.html#e4b5">E4B5</a> if <span class="register">A</span> is equal to <span class="register">C</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e48c"></span>E48C</td>
 <td class="instruction">JR Z,<a href="E25D.html#e4b5">$E4B5</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e4b5">E4B5</a> if {} is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e48e"></span>E48E</td>
 <td class="instruction">JR C,<a href="E25D.html#e4b1">$E4B1</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e4b1">E4B1</a> if {} is lower.</td>
+<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e4b1">E4B1</a> if <span class="register">A</span> is lower than <span class="register">C</span>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e490"></span>E490</td>
@@ -1714,7 +1705,7 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="address-1"><span id="e4c4"></span>E4C4</td>
 <td class="instruction">CP $04</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 04.</td>
+<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 04...</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e4c6"></span>E4C6</td>
@@ -1724,7 +1715,7 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="address-1"><span id="e4c7"></span>E4C7</td>
 <td class="instruction">JP NC,<a href="E25D.html#e535">$E535</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e535">E535</a> if {} is higher.</td>
+<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e535">E535</a> if <span class="register">A</span> is higher than 04.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e4ca"></span>E4CA</td>
@@ -1744,12 +1735,11 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="address-2"><span id="e4d2"></span>E4D2</td>
 <td class="instruction">CP $0A</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 0A.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E25D.html#e463">E463</a> if <span class="register">A</span> is equal to 0A.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e4d4"></span>E4D4</td>
 <td class="instruction">JR Z,<a href="E25D.html#e463">$E463</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e463">E463</a> if {} is zero.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="e4d6"></span>E4D6</td>
@@ -1812,17 +1802,15 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="address-1"><span id="e4ec"></span>E4EC</td>
 <td class="instruction">LD A,(DE)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="E25D.html#e4e9">E4E9</a> if *<span class="register">DE</span> is not zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e4ed"></span>E4ED</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="1">Set flags.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e4ee"></span>E4EE</td>
 <td class="instruction">JR NZ,<a href="E25D.html#e4e9">$E4E9</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e4e9">E4E9</a> if {} is not zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e4f0"></span>E4F0</td>
@@ -1877,12 +1865,11 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="address-1"><span id="e4fb"></span>E4FB</td>
 <td class="instruction">CP $04</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 04.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E25D.html#e502">E502</a> if <span class="register">A</span> is not equal to 04.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e4fd"></span>E4FD</td>
 <td class="instruction">JR NZ,<a href="E25D.html#e502">$E502</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e502">E502</a> if {} is not zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e4ff"></span>E4FF</td>
@@ -1897,12 +1884,11 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="address-2"><span id="e502"></span>E502</td>
 <td class="instruction">CP $82</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 82.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E25D.html#e509">E509</a> if <span class="register">A</span> is not equal to 82.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e504"></span>E504</td>
 <td class="instruction">JR NZ,<a href="E25D.html#e509">$E509</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e509">E509</a> if {} is not zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e506"></span>E506</td>
@@ -1917,32 +1903,29 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="address-2"><span id="e509"></span>E509</td>
 <td class="instruction">CP $02</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 02.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E25D.html#e515">E515</a> if <span class="register">A</span> is equal to 02.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e50b"></span>E50B</td>
 <td class="instruction">JR Z,<a href="E25D.html#e515">$E515</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e515">E515</a> if {} is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e50d"></span>E50D</td>
 <td class="instruction">CP $01</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 01.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E25D.html#e515">E515</a> if <span class="register">A</span> is equal to 01.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e50f"></span>E50F</td>
 <td class="instruction">JR Z,<a href="E25D.html#e515">$E515</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e515">E515</a> if {} is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e511"></span>E511</td>
 <td class="instruction">CP $85</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 85.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E25D.html#e519">E519</a> if <span class="register">A</span> is not equal to 85.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e513"></span>E513</td>
 <td class="instruction">JR NZ,<a href="E25D.html#e519">$E519</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e519">E519</a> if {} is not zero.</td>
 </tr>
 <tr>
 <td class="address-2"><span id="e515"></span>E515</td>
@@ -1967,12 +1950,11 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="address-1"><span id="e51b"></span>E51B</td>
 <td class="instruction">CP $03</td>
-<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 03.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E25D.html#e520">E520</a> if <span class="register">A</span> is not equal to 03.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e51d"></span>E51D</td>
 <td class="instruction">JR NZ,<a href="E25D.html#e520">$E520</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e520">E520</a> if {} is not zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e51f"></span>E51F</td>
@@ -2175,7 +2157,7 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="address-1"><span id="e552"></span>E552</td>
 <td class="instruction">JP NZ,<a href="E25D.html#e266">$E266</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e266">E266</a> if {} is not zero.</td>
+<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e266">E266</a> until <span class="register">B</span> is zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e555"></span>E555</td>

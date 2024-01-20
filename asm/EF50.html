@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Rampage: Data at EF50</title>
+<title>Rampage: Routine at EF50</title>
 <meta charset="utf-8" />
 <link rel="stylesheet" type="text/css" href="../skoolkit.css" />
 <link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
@@ -15,11 +15,11 @@ gtag('js', new Date());
 gtag('config', 'G-75RERFCHBG');
 </script>
 </head>
-<body class="Asm-b">
+<body class="Asm-c">
 <table class="header">
 <tr>
 <td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
-<td class="page-header">Data</td>
+<td class="page-header">Routines</td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -29,11 +29,11 @@ Prev: <a href="EF38.html">EF38</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#ef50">Map</a></td>
 <td class="next">
-Next: <a href="EF86.html">EF86</a>
+Next: <a href="EF70.html">EF70</a>
 </td>
 </tr>
 </table>
-<div class="description">EF50: Data block at EF50</div>
+<div class="description">EF50: Routine at EF50</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,39 +42,93 @@ Next: <a href="EF86.html">EF86</a>
 </td>
 </tr>
 <tr>
-<td class="address-1"><span id="ef50"></span>EF50</td>
-<td class="instruction">DEFB $CD,$79,$E1,$E6,$10,$20,$07,$AF</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="address-2"><span id="ef50"></span>EF50</td>
+<td class="instruction">CALL <a href="E179.html">Controls</a></td>
+<td class="comment-1" rowspan="1">Call <a href="E179.html">Controls</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef53"></span>EF53</td>
+<td class="instruction">AND %00010000</td>
+<td class="comment-1" rowspan="1">Keep only bit 4.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef55"></span>EF55</td>
+<td class="instruction">JR NZ,<a href="EF50.html#ef5e">$EF5E</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EF50.html#ef5e">EF5E</a> if the result is not zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef57"></span>EF57</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Write 00 to *<a href="D244.html">D244</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ef58"></span>EF58</td>
-<td class="instruction">DEFB $32,$44,$D2,$C3,$7C,$E6,$3A,$44</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">LD ($D244),A</td>
 </tr>
 <tr>
-<td class="address-1"><span id="ef60"></span>EF60</td>
-<td class="instruction">DEFB $D2,$D6,$0F,$26,$00,$6F,$29,$11</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="address-1"><span id="ef5b"></span>EF5B</td>
+<td class="instruction">JP <a href="E62D.html#e67c">$E67C</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">E67C</a>.</td>
 </tr>
 <tr>
-<td class="address-1"><span id="ef68"></span>EF68</td>
-<td class="instruction">DEFB $70,$EF,$19,$7E,$23,$66,$6F,$E9</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="address-2"><span id="ef5e"></span>EF5E</td>
+<td class="instruction">LD A,($D244)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D244.html">D244</a>.</td>
 </tr>
 <tr>
-<td class="address-1"><span id="ef70"></span>EF70</td>
-<td class="instruction">DEFB $F5,$EC,$15,$ED,$F5,$EC,$5D,$ED</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="address-1"><span id="ef61"></span>EF61</td>
+<td class="instruction">SUB $0F</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>-=0F.</td>
 </tr>
 <tr>
-<td class="address-1"><span id="ef78"></span>EF78</td>
-<td class="instruction">DEFB $82,$ED,$5D,$ED,$AC,$ED,$EE,$ED</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="address-1"><span id="ef63"></span>EF63</td>
+<td class="instruction">LD H,$00</td>
+<td class="comment-1" rowspan="1"><span class="register">H</span>=00.</td>
 </tr>
 <tr>
-<td class="address-1"><span id="ef80"></span>EF80</td>
-<td class="instruction">DEFB $1B,$EE,$EE,$ED,$53,$EE</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="address-1"><span id="ef65"></span>EF65</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef66"></span>EF66</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef67"></span>EF67</td>
+<td class="instruction">LD DE,$EF70</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="EF70.html">EF70</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef6a"></span>EF6A</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef6b"></span>EF6B</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef6c"></span>EF6C</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef6d"></span>EF6D</td>
+<td class="instruction">LD H,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">H</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef6e"></span>EF6E</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ef6f"></span>EF6F</td>
+<td class="instruction">JP (HL)</td>
+<td class="comment-1" rowspan="1">Jump to the address held by *<span class="register">HL</span>.</td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -84,7 +138,7 @@ Prev: <a href="EF38.html">EF38</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#ef50">Map</a></td>
 <td class="next">
-Next: <a href="EF86.html">EF86</a>
+Next: <a href="EF70.html">EF70</a>
 </td>
 </tr>
 </table>

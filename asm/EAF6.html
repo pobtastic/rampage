@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at EAF6</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="EA9C.html">EA9C</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#eaf6">Map</a></td>
+<td class="next">
+Next: <a href="EC8A.html">EC8A</a>
+</td>
+</tr>
+</table>
+<div class="description">EAF6: Routine at EAF6</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="eaf6"></span>EAF6</td>
+<td class="instruction">CALL <a href="E179.html">Controls</a></td>
+<td class="comment-1" rowspan="1">Call <a href="E179.html">Controls</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eaf9"></span>EAF9</td>
+<td class="instruction">CP $08</td>
+<td class="comment-1" rowspan="2">Jump to <a href="EAF6.html#eb2f">EB2F</a> if <span class="register">A</span> is not equal to 08.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eafb"></span>EAFB</td>
+<td class="instruction">JP NZ,<a href="EAF6.html#eb2f">$EB2F</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="eafe"></span>EAFE</td>
+<td class="instruction">LD A,($D244)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EAF6.html#eb2f">EB2F</a> if *<a href="D244.html">D244</a> is equal to 1C.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb01"></span>EB01</td>
+<td class="instruction">CP $1C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb03"></span>EB03</td>
+<td class="instruction">JP Z,<a href="EAF6.html#eb2f">$EB2F</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb06"></span>EB06</td>
+<td class="instruction">LD A,($D24E)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EAF6.html#eb2f">EB2F</a> if *<a href="D24D.html#d24e">D24E</a> is higher than 11.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb09"></span>EB09</td>
+<td class="instruction">CP $11</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb0b"></span>EB0B</td>
+<td class="instruction">JR NC,<a href="EAF6.html#eb2f">$EB2F</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb0d"></span>EB0D</td>
+<td class="instruction">LD A,($D24D)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EAF6.html#eb18">EB18</a> if *<a href="D24D.html">D24D</a> is equal to FF.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb10"></span>EB10</td>
+<td class="instruction">CP $FF</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb12"></span>EB12</td>
+<td class="instruction">JR Z,<a href="EAF6.html#eb18">$EB18</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb14"></span>EB14</td>
+<td class="instruction">CP $1D</td>
+<td class="comment-1" rowspan="2">Jump to <a href="EAF6.html#eb2f">EB2F</a> if *<a href="D24D.html">D24D</a> is higher than 1D.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb16"></span>EB16</td>
+<td class="instruction">JR NC,<a href="EAF6.html#eb2f">$EB2F</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="eb18"></span>EB18</td>
+<td class="instruction">LD HL,$D247</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D247.html">Flag_VehicleOrientation</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb1b"></span>EB1B</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb1c"></span>EB1C</td>
+<td class="instruction">XOR %00000001</td>
+<td class="comment-1" rowspan="1">Flip bit 0.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb1e"></span>EB1E</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb1f"></span>EB1F</td>
+<td class="instruction">AND (HL)</td>
+<td class="comment-1" rowspan="1">Merge the bits from *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb20"></span>EB20</td>
+<td class="instruction">CALL NZ,<a href="DA61.html">$DA61</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DA61.html">DA61</a> not zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb23"></span>EB23</td>
+<td class="instruction">LD A,($D246)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D246.html">D246</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb26"></span>EB26</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb27"></span>EB27</td>
+<td class="instruction">CALL C,<a href="DA59.html">$DA59</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DA59.html">DA59</a> if the carry flag is set.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb2a"></span>EB2A</td>
+<td class="instruction">LD A,$08</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=08.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb2c"></span>EB2C</td>
+<td class="instruction">JP <a href="E68C.html#e6c5">$E6C5</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E68C.html#e6c5">E6C5</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="eb2f"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="E68C.html">E68C</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="eb2f"></span>EB2F</td>
+<td class="instruction">LD A,($D246)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D246.html">D246</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb32"></span>EB32</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb33"></span>EB33</td>
+<td class="instruction">JR NC,<a href="EAF6.html#eb43">$EB43</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EAF6.html#eb43">EB43</a> if the carry flag is not set.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb35"></span>EB35</td>
+<td class="instruction">LD HL,$C896</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="C86E.html#c896">C896</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb38"></span>EB38</td>
+<td class="instruction">LD A,($D247)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D247.html">Flag_VehicleOrientation</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb3b"></span>EB3B</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb3c"></span>EB3C</td>
+<td class="instruction">JR NC,<a href="EAF6.html#eb4f">$EB4F</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EAF6.html#eb4f">EB4F</a> if the carry flag is not set.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb3e"></span>EB3E</td>
+<td class="instruction">LD HL,$C8A9</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="C86E.html#c8a9">C8A9</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb41"></span>EB41</td>
+<td class="instruction">JR <a href="EAF6.html#eb4f">$EB4F</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EAF6.html#eb4f">EB4F</a>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="eb43"></span>EB43</td>
+<td class="instruction">LD HL,$C86E</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="C86E.html">C86E</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb46"></span>EB46</td>
+<td class="instruction">LD A,($D247)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D247.html">Flag_VehicleOrientation</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb49"></span>EB49</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb4a"></span>EB4A</td>
+<td class="instruction">JR NC,<a href="EAF6.html#eb4f">$EB4F</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EAF6.html#eb4f">EB4F</a> if the carry flag is not set.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb4c"></span>EB4C</td>
+<td class="instruction">LD HL,$C882</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="C86E.html#c882">C882</a>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="eb4f"></span>EB4F</td>
+<td class="instruction">LD BC,($D24D)</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">D24D</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb53"></span>EB53</td>
+<td class="instruction">LD A,($D24C)</td>
+<td class="comment-1" rowspan="3">Increment *<a href="D24C.html">D24C</a> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb56"></span>EB56</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb57"></span>EB57</td>
+<td class="instruction">LD ($D24C),A</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="eb5a"></span>
+<div class="comments">
+<div class="paragraph">
+This entry point is used by the routine at <a href="F69F.html">Handler_Projectiles</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="eb5a"></span>EB5A</td>
+<td class="instruction">LD D,$00</td>
+<td class="comment-1" rowspan="1"><span class="register">D</span>=00.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb5c"></span>EB5C</td>
+<td class="instruction">LD E,A</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb5d"></span>EB5D</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb5e"></span>EB5E</td>
+<td class="instruction">LD ($D21E),HL</td>
+<td class="comment-1" rowspan="1">Write <span class="register">HL</span> to *<a href="D21E.html">D21E</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb61"></span>EB61</td>
+<td class="instruction">LD D,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">D</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb62"></span>EB62</td>
+<td class="instruction">BIT 5,D</td>
+<td class="comment-1" rowspan="1">Test bit 5 of <span class="register">D</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb64"></span>EB64</td>
+<td class="instruction">JR Z,<a href="EAF6.html#eb67">$EB67</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EAF6.html#eb67">EB67</a> if {} is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb66"></span>EB66</td>
+<td class="instruction">INC C</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="eb67"></span>EB67</td>
+<td class="instruction">BIT 0,D</td>
+<td class="comment-1" rowspan="1">Test bit 0 of <span class="register">D</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb69"></span>EB69</td>
+<td class="instruction">JR Z,<a href="EAF6.html#eb6c">$EB6C</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EAF6.html#eb6c">EB6C</a> if {} is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb6b"></span>EB6B</td>
+<td class="instruction">INC C</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="eb6c"></span>EB6C</td>
+<td class="instruction">BIT 1,D</td>
+<td class="comment-1" rowspan="1">Test bit 1 of <span class="register">D</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb6e"></span>EB6E</td>
+<td class="instruction">JR Z,<a href="EAF6.html#eb71">$EB71</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EAF6.html#eb71">EB71</a> if {} is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb70"></span>EB70</td>
+<td class="instruction">DEC C</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">C</span> by one.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="eb71"></span>EB71</td>
+<td class="instruction">LD A,($D3FF)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EAF6.html#eb88">EB88</a> if *<a href="D3FE.html#d3ff">D3FF</a> is not zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb74"></span>EB74</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb75"></span>EB75</td>
+<td class="instruction">JR NZ,<a href="EAF6.html#eb88">$EB88</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb77"></span>EB77</td>
+<td class="instruction">LD A,($D247)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D247.html">Flag_VehicleOrientation</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb7a"></span>EB7A</td>
+<td class="instruction">XOR %00011111</td>
+<td class="comment-1" rowspan="1">Flip bits 0-4.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb7c"></span>EB7C</td>
+<td class="instruction">CP C</td>
+<td class="comment-1" rowspan="2">Jump to <a href="EAF6.html#ec6e">EC6E</a> if <span class="register">A</span> is equal to <span class="register">C</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb7d"></span>EB7D</td>
+<td class="instruction">JP Z,<a href="EAF6.html#ec6e">$EC6E</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb80"></span>EB80</td>
+<td class="instruction">XOR %00011110</td>
+<td class="comment-1" rowspan="1">Flip bits 1-4.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb82"></span>EB82</td>
+<td class="instruction">ADD A,$FC</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=FC.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb84"></span>EB84</td>
+<td class="instruction">CP C</td>
+<td class="comment-1" rowspan="2">Jump to <a href="EAF6.html#ec6e">EC6E</a> if <span class="register">A</span> is equal to <span class="register">C</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb85"></span>EB85</td>
+<td class="instruction">JP Z,<a href="EAF6.html#ec6e">$EC6E</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="eb88"></span>EB88</td>
+<td class="instruction">BIT 2,D</td>
+<td class="comment-1" rowspan="1">Test bit 2 of <span class="register">D</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb8a"></span>EB8A</td>
+<td class="instruction">JR Z,<a href="EAF6.html#eb8d">$EB8D</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EAF6.html#eb8d">EB8D</a> if {} is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb8c"></span>EB8C</td>
+<td class="instruction">DEC B</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">B</span> by one.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="eb8d"></span>EB8D</td>
+<td class="instruction">LD A,D</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">D</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb8e"></span>EB8E</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb8f"></span>EB8F</td>
+<td class="instruction">BIT 3,D</td>
+<td class="comment-1" rowspan="1">Test bit 3 of <span class="register">D</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb91"></span>EB91</td>
+<td class="instruction">JR Z,<a href="EAF6.html#ebdd">$EBDD</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EAF6.html#ebdd">EBDD</a> if {} is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb93"></span>EB93</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb94"></span>EB94</td>
+<td class="instruction">LD A,($D3FF)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EAF6.html#ebdd">EBDD</a> if *<a href="D3FE.html#d3ff">D3FF</a> is not zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb97"></span>EB97</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb98"></span>EB98</td>
+<td class="instruction">JR NZ,<a href="EAF6.html#ebdd">$EBDD</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb9a"></span>EB9A</td>
+<td class="instruction">LD A,$12</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EAF6.html#ec52">EC52</a> if <span class="register">B</span> is equal to 12.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb9c"></span>EB9C</td>
+<td class="instruction">CP B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eb9d"></span>EB9D</td>
+<td class="instruction">JP Z,<a href="EAF6.html#ec52">$EC52</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="eba0"></span>EBA0</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="2">Write <span class="register">B</span> to *<a href="D24D.html#d24e">D24E</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eba1"></span>EBA1</td>
+<td class="instruction">LD ($D24E),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eba4"></span>EBA4</td>
+<td class="instruction">LD ($D21C),BC</td>
+<td class="comment-1" rowspan="1">Write <span class="register">BC</span> to *<a href="D21A.html#d21c">D21C</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eba8"></span>EBA8</td>
+<td class="instruction">LD BC,$0502</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0502.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebab"></span>EBAB</td>
+<td class="instruction">LD DE,$090F</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=090F.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebae"></span>EBAE</td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
+<td class="comment-1" rowspan="1">Call <a href="E0AD.html">E0AD</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebb1"></span>EBB1</td>
+<td class="instruction">LD BC,($D21C)</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D21A.html#d21c">D21C</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebb5"></span>EBB5</td>
+<td class="instruction">JR Z,<a href="EAF6.html#ebdd">$EBDD</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EAF6.html#ebdd">EBDD</a> if {} is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebb7"></span>EBB7</td>
+<td class="instruction">LD A,($D244)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EAF6.html#ebdd">EBDD</a> if *<a href="D244.html">D244</a> is equal to 1C.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebba"></span>EBBA</td>
+<td class="instruction">CP $1C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebbc"></span>EBBC</td>
+<td class="instruction">JR Z,<a href="EAF6.html#ebdd">$EBDD</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebbe"></span>EBBE</td>
+<td class="instruction">LD A,($D246)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D246.html">D246</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebc1"></span>EBC1</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebc2"></span>EBC2</td>
+<td class="instruction">JP NC,<a href="EAF6.html#ec52">$EC52</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EAF6.html#ec52">EC52</a> if the carry flag is not set.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebc5"></span>EBC5</td>
+<td class="instruction">LD ($D21C),BC</td>
+<td class="comment-1" rowspan="1">Write <span class="register">BC</span> to *<a href="D21A.html#d21c">D21C</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebc9"></span>EBC9</td>
+<td class="instruction">LD B,$05</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=05.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebcb"></span>EBCB</td>
+<td class="instruction">LD A,($D247)</td>
+<td class="comment-1" rowspan="4"><span class="register">C</span>=*<a href="D247.html">Flag_VehicleOrientation</a>*04.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebce"></span>EBCE</td>
+<td class="instruction">ADD A,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebcf"></span>EBCF</td>
+<td class="instruction">ADD A,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebd0"></span>EBD0</td>
+<td class="instruction">LD C,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebd1"></span>EBD1</td>
+<td class="instruction">LD DE,$090F</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=090F.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebd4"></span>EBD4</td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
+<td class="comment-1" rowspan="1">Call <a href="E0AD.html">E0AD</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebd7"></span>EBD7</td>
+<td class="instruction">LD BC,($D21C)</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D21A.html#d21c">D21C</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebdb"></span>EBDB</td>
+<td class="instruction">JR NZ,<a href="EAF6.html#ec52">$EC52</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EAF6.html#ec52">EC52</a> if {} is not zero.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="ebdd"></span>EBDD</td>
+<td class="instruction">LD A,($D3FF)</td>
+<td class="comment-1" rowspan="3">Return if *<a href="D3FE.html#d3ff">D3FF</a> is not zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebe0"></span>EBE0</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebe1"></span>EBE1</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebe2"></span>EBE2</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebe3"></span>EBE3</td>
+<td class="instruction">BIT 4,A</td>
+<td class="comment-1" rowspan="1">Test bit 4 of <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebe5"></span>EBE5</td>
+<td class="instruction">JR Z,<a href="EAF6.html#ec30">$EC30</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EAF6.html#ec30">EC30</a> if {} is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebe7"></span>EBE7</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebe8"></span>EBE8</td>
+<td class="instruction">LD A,($D3FF)</td>
+<td class="comment-1" rowspan="3">Return if *<a href="D3FE.html#d3ff">D3FF</a> is not zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebeb"></span>EBEB</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebec"></span>EBEC</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebed"></span>EBED</td>
+<td class="instruction">LD A,$12</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EAF6.html#ec52">EC52</a> if <span class="register">B</span> is not equal to 12.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebef"></span>EBEF</td>
+<td class="instruction">CP B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebf0"></span>EBF0</td>
+<td class="instruction">JR Z,<a href="EAF6.html#ec52">$EC52</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebf2"></span>EBF2</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebf3"></span>EBF3</td>
+<td class="instruction">LD ($D24E),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D24D.html#d24e">D24E</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebf6"></span>EBF6</td>
+<td class="instruction">LD ($D21C),BC</td>
+<td class="comment-1" rowspan="1">Write <span class="register">BC</span> to *<a href="D21A.html#d21c">D21C</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebfa"></span>EBFA</td>
+<td class="instruction">LD BC,$0502</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=0502.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ebfd"></span>EBFD</td>
+<td class="instruction">LD DE,$090F</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=090F.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec00"></span>EC00</td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
+<td class="comment-1" rowspan="1">Call <a href="E0AD.html">E0AD</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec03"></span>EC03</td>
+<td class="instruction">LD BC,($D21C)</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D21A.html#d21c">D21C</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec07"></span>EC07</td>
+<td class="instruction">JP Z,<a href="EAF6.html#ec30">$EC30</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EAF6.html#ec30">EC30</a> if {} is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec0a"></span>EC0A</td>
+<td class="instruction">LD A,($D244)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EAF6.html#ec30">EC30</a> if *<a href="D244.html">D244</a> is equal to 1C.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec0d"></span>EC0D</td>
+<td class="instruction">CP $1C</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec0f"></span>EC0F</td>
+<td class="instruction">JP Z,<a href="EAF6.html#ec30">$EC30</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec12"></span>EC12</td>
+<td class="instruction">LD A,($D246)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D246.html">D246</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec15"></span>EC15</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec16"></span>EC16</td>
+<td class="instruction">JR NC,<a href="EAF6.html#ec52">$EC52</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EAF6.html#ec52">EC52</a> if the carry flag is not set.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec18"></span>EC18</td>
+<td class="instruction">LD ($D21C),BC</td>
+<td class="comment-1" rowspan="1">Write <span class="register">BC</span> to *<a href="D21A.html#d21c">D21C</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec1c"></span>EC1C</td>
+<td class="instruction">LD B,$05</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=05.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec1e"></span>EC1E</td>
+<td class="instruction">LD A,($D247)</td>
+<td class="comment-1" rowspan="4"><span class="register">C</span>=*<a href="D247.html">Flag_VehicleOrientation</a>*04.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec21"></span>EC21</td>
+<td class="instruction">ADD A,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec22"></span>EC22</td>
+<td class="instruction">ADD A,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec23"></span>EC23</td>
+<td class="instruction">LD C,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec24"></span>EC24</td>
+<td class="instruction">LD DE,$090F</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=090F.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec27"></span>EC27</td>
+<td class="instruction">CALL <a href="E0AD.html">$E0AD</a></td>
+<td class="comment-1" rowspan="1">Call <a href="E0AD.html">E0AD</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec2a"></span>EC2A</td>
+<td class="instruction">LD BC,($D21C)</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D21A.html#d21c">D21C</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec2e"></span>EC2E</td>
+<td class="instruction">JR NZ,<a href="EAF6.html#ec52">$EC52</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EAF6.html#ec52">EC52</a> if {} is not zero.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="ec30"></span>EC30</td>
+<td class="instruction">LD ($D24D),BC</td>
+<td class="comment-1" rowspan="1">Write <span class="register">BC</span> to *<a href="D24D.html">D24D</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec34"></span>EC34</td>
+<td class="instruction">LD A,($D217)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="ECE0.html">ECE0</a> if *<a href="D217.html">D217</a> is higher than 11.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec37"></span>EC37</td>
+<td class="instruction">CP $11</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec39"></span>EC39</td>
+<td class="instruction">JP NC,<a href="ECE0.html">$ECE0</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec3c"></span>EC3C</td>
+<td class="instruction">LD A,$09</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=09.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec3e"></span>EC3E</td>
+<td class="instruction">PUSH BC</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">BC</span> on the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec3f"></span>EC3F</td>
+<td class="instruction">CALL <a href="D9BB.html">$D9BB</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D9BB.html">D9BB</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec42"></span>EC42</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec43"></span>EC43</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec44"></span>EC44</td>
+<td class="instruction">INC C</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec45"></span>EC45</td>
+<td class="instruction">LD A,($D247)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D247.html">Flag_VehicleOrientation</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec48"></span>EC48</td>
+<td class="instruction">XOR %00000001</td>
+<td class="comment-1" rowspan="1">Flip bit 0.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec4a"></span>EC4A</td>
+<td class="instruction">ADD A,C</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">C</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec4b"></span>EC4B</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec4c"></span>EC4C</td>
+<td class="instruction">LD A,$17</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=17.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec4e"></span>EC4E</td>
+<td class="instruction">CALL <a href="D9BB.html">$D9BB</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D9BB.html">D9BB</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec51"></span>EC51</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="ec52"></span>EC52</td>
+<td class="instruction">LD ($D24D),BC</td>
+<td class="comment-1" rowspan="1">Write <span class="register">BC</span> to *<a href="D24D.html">D24D</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec56"></span>EC56</td>
+<td class="instruction">LD A,($D247)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D247.html">Flag_VehicleOrientation</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec59"></span>EC59</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec5a"></span>EC5A</td>
+<td class="instruction">CALL NC,<a href="DA61.html">$DA61</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DA61.html">DA61</a> if the carry flag is not set.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec5d"></span>EC5D</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="4">Write 00 to: <ul class="">
+<li>*<a href="D24C.html">D24C</a></li>
+<li>*<a href="D246.html">D246</a></li>
+<li>*<a href="D248.html">D248</a></li>
+</ul></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec5e"></span>EC5E</td>
+<td class="instruction">LD ($D24C),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec61"></span>EC61</td>
+<td class="instruction">LD ($D246),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec64"></span>EC64</td>
+<td class="instruction">LD ($D248),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec67"></span>EC67</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec68"></span>EC68</td>
+<td class="instruction">LD ($D24F),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D24F.html">D24F</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec6b"></span>EC6B</td>
+<td class="instruction">JP <a href="EF86.html">$EF86</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EF86.html">EF86</a>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="ec6e"></span>EC6E</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Write 00 to *<a href="D24C.html">D24C</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec6f"></span>EC6F</td>
+<td class="instruction">LD ($D24C),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec72"></span>EC72</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec73"></span>EC73</td>
+<td class="instruction">LD ($D244),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D244.html">D244</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec76"></span>EC76</td>
+<td class="instruction">LD A,($D24E)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EF86.html">EF86</a> if *<a href="D24D.html#d24e">D24E</a> is equal to 12.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec79"></span>EC79</td>
+<td class="instruction">CP $12</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec7b"></span>EC7B</td>
+<td class="instruction">JP Z,<a href="EF86.html">$EF86</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec7e"></span>EC7E</td>
+<td class="instruction">LD A,$0B</td>
+<td class="comment-1" rowspan="2">Write 0B to *<a href="D244.html">D244</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec80"></span>EC80</td>
+<td class="instruction">LD ($D244),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec83"></span>EC83</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="2">Write <span class="register">B</span> to *<a href="D24D.html#d24e">D24E</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec84"></span>EC84</td>
+<td class="instruction">LD ($D24E),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ec87"></span>EC87</td>
+<td class="instruction">JP <a href="E62D.html#e67c">$E67C</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">E67C</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="EA9C.html">EA9C</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#eaf6">Map</a></td>
+<td class="next">
+Next: <a href="EC8A.html">EC8A</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/EAF6.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

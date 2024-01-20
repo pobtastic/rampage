@@ -33,42 +33,70 @@ Next: <a href="56727.html">56727</a>
 </td>
 </tr>
 </table>
-<div class="description">56713: Routine at DD89</div>
+<div class="description">56713: Handler: Increase Energy (Eaten Food)</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routine at <a href="62544.html">62544</a>.
+Used by the routine at <a href="62673.html">Handler_EatFood</a>.
+</div>
+</div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">IY</td>
+<td class="register-desc">Monster data</td>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Energy increment</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_IncreaseEnergy</td>
+<td class="address-2"><span id="56713"></span>56713</td>
+<td class="instruction">ADD A,(IY+12)</td>
+<td class="comment-1" rowspan="2">Add the energy value to the monsters current energy level (*<span class="register">IY</span>+12).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="56716"></span>56716</td>
+<td class="instruction">LD (IY+12),A</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56719"></span>
+<div class="comments">
+<div class="paragraph">
+Ensure the maximum value for monster energy is not breached.
 </div>
 </div>
 </td>
 </tr>
 <tr>
-<td class="address-2"><span id="56713"></span>56713</td>
-<td class="instruction">ADD A,(IY+12)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=*<span class="register">IY</span>+12.</td>
-</tr>
-<tr>
-<td class="address-1"><span id="56716"></span>56716</td>
-<td class="instruction">LD (IY+12),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">IY</span>+12.</td>
-</tr>
-<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56719"></span>56719</td>
 <td class="instruction">CP 65</td>
-<td class="comment-1" rowspan="2">Return if <span class="register">A</span> is lower than 65.</td>
+<td class="comment-1" rowspan="2">Return if the monsters energy is lower than 65.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56721"></span>56721</td>
 <td class="instruction">RET C</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56722"></span>56722</td>
 <td class="instruction">LD (IY+12),64</td>
-<td class="comment-1" rowspan="1">Write 64 to *<span class="register">IY</span>+12.</td>
+<td class="comment-1" rowspan="1">Else write 64 to the monsters energy (*<span class="register">IY</span>+12) to keep it within the acceptable range.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56726"></span>56726</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

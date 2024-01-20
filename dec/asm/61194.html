@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at 61194</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="61163.html">61163</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#61194">Map</a></td>
+<td class="next">
+Next: <a href="61240.html">61240</a>
+</td>
+</tr>
+</table>
+<div class="description">61194: Routine at EF0A</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="61194"></span>61194</td>
+<td class="instruction">LD BC,(53837)</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">53837</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61198"></span>61198</td>
+<td class="instruction">LD A,(53833)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53833.html">53833</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61201"></span>61201</td>
+<td class="instruction">AND %00000001</td>
+<td class="comment-1" rowspan="1">Keep only bit 0.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61203"></span>61203</td>
+<td class="instruction">XOR %00000001</td>
+<td class="comment-1" rowspan="1">Flip bit 0.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61205"></span>61205</td>
+<td class="instruction">LD (53833),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53833.html">53833</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61208"></span>61208</td>
+<td class="instruction">JR NZ,<a href="61194.html#61216">61216</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="61194.html#61216">61216</a> if <span class="register">A</span> is not zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61210"></span>61210</td>
+<td class="instruction">LD A,55</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=55.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61212"></span>61212</td>
+<td class="instruction">CALL <a href="54985.html">54985</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54985.html">54985</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61215"></span>61215</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="61216"></span>61216</td>
+<td class="instruction">LD A,(53837)</td>
+<td class="comment-1" rowspan="3">Increment *<a href="53837.html">53837</a> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61219"></span>61219</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61220"></span>61220</td>
+<td class="instruction">LD (53837),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61223"></span>61223</td>
+<td class="instruction">CP 40</td>
+<td class="comment-1" rowspan="2">Jump to <a href="61194.html#61234">61234</a> if <span class="register">A</span> is equal to 40.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61225"></span>61225</td>
+<td class="instruction">JR Z,<a href="61194.html#61234">61234</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="61227"></span>61227</td>
+<td class="instruction">INC C</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61228"></span>61228</td>
+<td class="instruction">LD A,53</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=53.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61230"></span>61230</td>
+<td class="instruction">CALL <a href="54985.html">54985</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54985.html">54985</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61233"></span>61233</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="61234"></span>61234</td>
+<td class="instruction">LD A,255</td>
+<td class="comment-1" rowspan="2">Write 255 to *<a href="53828.html">53828</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61236"></span>61236</td>
+<td class="instruction">LD (53828),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61239"></span>61239</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="61163.html">61163</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#61194">Map</a></td>
+<td class="next">
+Next: <a href="61240.html">61240</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/61194.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

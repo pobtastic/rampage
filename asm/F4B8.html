@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at F4B8</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="F450.html">F450</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#f4b8">Map</a></td>
+<td class="next">
+Next: <a href="F4D1.html">F4D1</a>
+</td>
+</tr>
+</table>
+<div class="description">F4B8: Handler: Eating</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="F450.html">F450</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="f4b8"></span>
+<div class="comments">
+<div class="paragraph">
+Monster has eaten something, work out what.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_Eating</td>
+<td class="address-2"><span id="f4b8"></span>F4B8</td>
+<td class="instruction">CP $04</td>
+<td class="comment-1" rowspan="2">Anything with an ID lower than 04 is food, if so jump to <a href="F4D1.html">Handler_EatFood</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f4ba"></span>F4BA</td>
+<td class="instruction">JR C,<a href="F4D1.html">Handler_EatFood</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="f4bc"></span>
+<div class="comments">
+<div class="paragraph">
+Else it's something inedible so fetch the monster state and handle it.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f4bc"></span>F4BC</td>
+<td class="instruction">LD A,($DF45)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="DF45.html">Temp_MonsterID</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f4bf"></span>F4BF</td>
+<td class="instruction">CALL <a href="DD52.html">SetIYMonsterData</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DD52.html">SetIYMonsterData</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="f4c2"></span>
+<div class="comments">
+<div class="paragraph">
+Take 06 away from the monsters energy level.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f4c2"></span>F4C2</td>
+<td class="instruction">LD A,$06</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=06.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f4c4"></span>F4C4</td>
+<td class="instruction">CALL <a href="DD6C.html">Handler_DecreaseEnergy</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DD6C.html">Handler_DecreaseEnergy</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f4c7"></span>F4C7</td>
+<td class="instruction">LD (IY+$00),$1D</td>
+<td class="comment-1" rowspan="1">Write 1D to monster state (*<span class="register">IY</span>+00).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f4cb"></span>F4CB</td>
+<td class="instruction">LD (IY+$07),$04</td>
+<td class="comment-1" rowspan="1">Write 04 to *<span class="register">IY</span>+07.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="f4cf"></span>F4CF</td>
+<td class="instruction">JR <a href="F450.html#f472">$F472</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="F450.html#f472">F472</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="F450.html">F450</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#f4b8">Map</a></td>
+<td class="next">
+Next: <a href="F4D1.html">F4D1</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/F4B8.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

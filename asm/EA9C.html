@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at EA9C</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="EA43.html">EA43</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#ea9c">Map</a></td>
+<td class="next">
+Next: <a href="EAF6.html">EAF6</a>
+</td>
+</tr>
+</table>
+<div class="description">EA9C: Routine at EA9C</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="ea9c"></span>EA9C</td>
+<td class="instruction">LD A,($D24B)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EA9C.html#eab4">EAB4</a> if *<a href="D24B.html">D24B</a> is equal to 19.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea9f"></span>EA9F</td>
+<td class="instruction">CP $19</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eaa1"></span>EAA1</td>
+<td class="instruction">JR Z,<a href="EA9C.html#eab4">$EAB4</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="eaa3"></span>EAA3</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eaa4"></span>EAA4</td>
+<td class="instruction">LD ($D24B),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D24B.html">D24B</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eaa7"></span>EAA7</td>
+<td class="instruction">JR NZ,<a href="EA9C.html#eace">$EACE</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EA9C.html#eace">EACE</a> if <span class="register">A</span> is not zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eaa9"></span>EAA9</td>
+<td class="instruction">LD A,$19</td>
+<td class="comment-1" rowspan="2">Write 19 to *<a href="D24B.html">D24B</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eaab"></span>EAAB</td>
+<td class="instruction">LD ($D24B),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eaae"></span>EAAE</td>
+<td class="instruction">LD A,($D252)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EA9C.html#eaba">EABA</a> if *<a href="D252.html">D252</a> is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eab1"></span>EAB1</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eab2"></span>EAB2</td>
+<td class="instruction">JR Z,<a href="EA9C.html#eaba">$EABA</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="eab4"></span>EAB4</td>
+<td class="instruction">CALL <a href="E179.html">Controls</a></td>
+<td class="comment-1" rowspan="1">Call <a href="E179.html">Controls</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eab7"></span>EAB7</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="2">Jump to <a href="EA9C.html#eace">EACE</a> if <span class="register">A</span> is zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eab8"></span>EAB8</td>
+<td class="instruction">JR Z,<a href="EA9C.html#eace">$EACE</a></td>
+</tr>
+<tr>
+<td class="address-2"><span id="eaba"></span>EABA</td>
+<td class="instruction">LD A,($D247)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D247.html">Flag_VehicleOrientation</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eabd"></span>EABD</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eabe"></span>EABE</td>
+<td class="instruction">CALL NC,<a href="DA61.html">$DA61</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DA61.html">DA61</a> if the carry flag is not set.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eac1"></span>EAC1</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="4">Write 00 to: <ul class="">
+<li>*<a href="D244.html">D244</a></li>
+<li>*<a href="D246.html">D246</a></li>
+<li>*<a href="D248.html">D248</a></li>
+</ul></td>
+</tr>
+<tr>
+<td class="address-1"><span id="eac2"></span>EAC2</td>
+<td class="instruction">LD ($D244),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eac5"></span>EAC5</td>
+<td class="instruction">LD ($D246),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eac8"></span>EAC8</td>
+<td class="instruction">LD ($D248),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eacb"></span>EACB</td>
+<td class="instruction">JP <a href="E62D.html#e67c">$E67C</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">E67C</a>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="eace"></span>EACE</td>
+<td class="instruction">LD A,$07</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=07.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ead0"></span>EAD0</td>
+<td class="instruction">LD BC,($D24D)</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">D24D</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ead4"></span>EAD4</td>
+<td class="instruction">CALL <a href="D9BB.html">$D9BB</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D9BB.html">D9BB</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ead7"></span>EAD7</td>
+<td class="instruction">LD BC,($D24D)</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">D24D</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eadb"></span>EADB</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="2">Increment <span class="register">B</span> by two.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eadc"></span>EADC</td>
+<td class="instruction">INC B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eadd"></span>EADD</td>
+<td class="instruction">INC C</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eade"></span>EADE</td>
+<td class="instruction">LD A,($D247)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D247.html">Flag_VehicleOrientation</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eae1"></span>EAE1</td>
+<td class="instruction">XOR %00000001</td>
+<td class="comment-1" rowspan="1">Flip bit 0.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eae3"></span>EAE3</td>
+<td class="instruction">ADD A,C</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">C</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eae4"></span>EAE4</td>
+<td class="instruction">LD C,A</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eae5"></span>EAE5</td>
+<td class="instruction">LD A,$1B</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=1B.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eae7"></span>EAE7</td>
+<td class="instruction">CALL <a href="D9BB.html">$D9BB</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D9BB.html">D9BB</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eaea"></span>EAEA</td>
+<td class="instruction">LD A,($D244)</td>
+<td class="comment-1" rowspan="3">Return if *<a href="D244.html">D244</a> is not equal to 20.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eaed"></span>EAED</td>
+<td class="instruction">CP $20</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eaef"></span>EAEF</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eaf0"></span>EAF0</td>
+<td class="instruction">LD A,$21</td>
+<td class="comment-1" rowspan="2">Write 21 to *<a href="D244.html">D244</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eaf2"></span>EAF2</td>
+<td class="instruction">LD ($D244),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eaf5"></span>EAF5</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="EA43.html">EA43</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#ea9c">Map</a></td>
+<td class="next">
+Next: <a href="EAF6.html">EAF6</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/EA9C.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

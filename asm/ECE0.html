@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at ECE0</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="EC8A.html">EC8A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#ece0">Map</a></td>
+<td class="next">
+Next: <a href="ED31.html">ED31</a>
+</td>
+</tr>
+</table>
+<div class="description">ECE0: Routine at ECE0</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routine at <a href="EAF6.html">EAF6</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="ece0"></span>ECE0</td>
+<td class="instruction">LD A,($D217)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D217.html">D217</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ece3"></span>ECE3</td>
+<td class="instruction">AND %00001111</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-3.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ece5"></span>ECE5</td>
+<td class="instruction">LD B,A</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ece6"></span>ECE6</td>
+<td class="instruction">BIT 3,B</td>
+<td class="comment-1" rowspan="1">Test bit 3 of <span class="register">B</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ece8"></span>ECE8</td>
+<td class="instruction">JR NZ,<a href="ECE0.html#ecec">$ECEC</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="ECE0.html#ecec">ECEC</a> if {} is not zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ecea"></span>ECEA</td>
+<td class="instruction">JR <a href="ECE0.html#ed0c">$ED0C</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="ECE0.html#ed0c">ED0C</a>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="ecec"></span>ECEC</td>
+<td class="instruction">LD HL,$FE00</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="FDDE.html#fe00">Messaging_TickerNews_2</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ecef"></span>ECEF</td>
+<td class="instruction">LD DE,$FE03</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=FE03.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ecf2"></span>ECF2</td>
+<td class="instruction">CALL <a href="F352.html">$F352</a></td>
+<td class="comment-1" rowspan="1">Call <a href="F352.html">F352</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ecf5"></span>ECF5</td>
+<td class="instruction">LD BC,($D24D)</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">D24D</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ecf9"></span>ECF9</td>
+<td class="instruction">DEC B</td>
+<td class="comment-1" rowspan="2">Decrease <span class="register">B</span> by two.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ecfa"></span>ECFA</td>
+<td class="instruction">DEC B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ecfb"></span>ECFB</td>
+<td class="instruction">LD A,$25</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=25.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ecfd"></span>ECFD</td>
+<td class="instruction">CALL <a href="D9BB.html">$D9BB</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D9BB.html">D9BB</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ed00"></span>ED00</td>
+<td class="instruction">LD BC,($D24D)</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">D24D</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ed04"></span>ED04</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="2">Increment <span class="register">B</span> by two.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ed05"></span>ED05</td>
+<td class="instruction">INC B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ed06"></span>ED06</td>
+<td class="instruction">LD A,$23</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=23.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ed08"></span>ED08</td>
+<td class="instruction">CALL <a href="D9BB.html">$D9BB</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D9BB.html">D9BB</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ed0b"></span>ED0B</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="ed0c"></span>ED0C</td>
+<td class="instruction">LD HL,$0103</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=0103.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ed0f"></span>ED0F</td>
+<td class="instruction">LD DE,$0100</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=0100.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ed12"></span>ED12</td>
+<td class="instruction">CALL <a href="F352.html">$F352</a></td>
+<td class="comment-1" rowspan="1">Call <a href="F352.html">F352</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ed15"></span>ED15</td>
+<td class="instruction">LD BC,($D24D)</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">D24D</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ed19"></span>ED19</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="2">Increment <span class="register">B</span> by two.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ed1a"></span>ED1A</td>
+<td class="instruction">INC B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ed1b"></span>ED1B</td>
+<td class="instruction">LD A,$23</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=23.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ed1d"></span>ED1D</td>
+<td class="instruction">CALL <a href="D9BB.html">$D9BB</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D9BB.html">D9BB</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ed20"></span>ED20</td>
+<td class="instruction">LD BC,($D24D)</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">D24D</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ed24"></span>ED24</td>
+<td class="instruction">LD A,($D247)</td>
+<td class="comment-1" rowspan="2"><span class="register">H</span>=*<a href="D247.html">Flag_VehicleOrientation</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ed27"></span>ED27</td>
+<td class="instruction">LD H,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ed28"></span>ED28</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="3"><span class="register">C</span>-=<span class="register">H</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ed29"></span>ED29</td>
+<td class="instruction">SUB H</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ed2a"></span>ED2A</td>
+<td class="instruction">LD C,A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ed2b"></span>ED2B</td>
+<td class="instruction">LD A,$1D</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=1D.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ed2d"></span>ED2D</td>
+<td class="instruction">CALL <a href="D9BB.html">$D9BB</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D9BB.html">D9BB</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ed30"></span>ED30</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="EC8A.html">EC8A</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#ece0">Map</a></td>
+<td class="next">
+Next: <a href="ED31.html">ED31</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/ECE0.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

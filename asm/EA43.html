@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at EA43</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="EA18.html">EA18</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#ea43">Map</a></td>
+<td class="next">
+Next: <a href="EA9C.html">EA9C</a>
+</td>
+</tr>
+</table>
+<div class="description">EA43: Routine at EA43</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="ea43"></span>EA43</td>
+<td class="instruction">LD A,$19</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=19.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea45"></span>EA45</td>
+<td class="instruction">LD BC,($D24D)</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">D24D</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea49"></span>EA49</td>
+<td class="instruction">CALL <a href="D9BB.html">$D9BB</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D9BB.html">D9BB</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea4c"></span>EA4C</td>
+<td class="instruction">LD BC,($D24D)</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">D24D</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea50"></span>EA50</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="2">Increment <span class="register">B</span> by two.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea51"></span>EA51</td>
+<td class="instruction">INC B</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea52"></span>EA52</td>
+<td class="instruction">LD A,$23</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=23.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea54"></span>EA54</td>
+<td class="instruction">CALL <a href="D9BB.html">$D9BB</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D9BB.html">D9BB</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea57"></span>EA57</td>
+<td class="instruction">CALL <a href="DA59.html">$DA59</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DA59.html">DA59</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea5a"></span>EA5A</td>
+<td class="instruction">CP $12</td>
+<td class="comment-1" rowspan="2">Jump to <a href="EA43.html#ea6e">EA6E</a> if <span class="register">A</span> is equal to 12.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea5c"></span>EA5C</td>
+<td class="instruction">JR Z,<a href="EA43.html#ea6e">$EA6E</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea5e"></span>EA5E</td>
+<td class="instruction">LD A,($D24B)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D24B.html">D24B</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea61"></span>EA61</td>
+<td class="instruction">DEC A</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea62"></span>EA62</td>
+<td class="instruction">LD ($D24B),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D24B.html">D24B</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea65"></span>EA65</td>
+<td class="instruction">CP $12</td>
+<td class="comment-1" rowspan="2">Return if <span class="register">A</span> is higher than 12.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea67"></span>EA67</td>
+<td class="instruction">RET NC</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea68"></span>EA68</td>
+<td class="instruction">CALL <a href="DA59.html">$DA59</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DA59.html">DA59</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea6b"></span>EA6B</td>
+<td class="instruction">CP $12</td>
+<td class="comment-1" rowspan="2">Return if <span class="register">A</span> is not equal to 12.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea6d"></span>EA6D</td>
+<td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="address-2"><span id="ea6e"></span>EA6E</td>
+<td class="instruction">LD A,$12</td>
+<td class="comment-1" rowspan="2">Write 12 to *<a href="D24D.html#d24e">D24E</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea70"></span>EA70</td>
+<td class="instruction">LD ($D24E),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea73"></span>EA73</td>
+<td class="instruction">LD A,$0C</td>
+<td class="comment-1" rowspan="2">Write 0C to *<a href="D24B.html">D24B</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea75"></span>EA75</td>
+<td class="instruction">LD ($D24B),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea78"></span>EA78</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Write 00 to *<a href="D246.html">D246</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea79"></span>EA79</td>
+<td class="instruction">LD ($D246),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea7c"></span>EA7C</td>
+<td class="instruction">LD A,($D244)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EA43.html#ea88">EA88</a> if *<a href="D244.html">D244</a> is not equal to 20.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea7f"></span>EA7F</td>
+<td class="instruction">CP $20</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea81"></span>EA81</td>
+<td class="instruction">JR NZ,<a href="EA43.html#ea88">$EA88</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea83"></span>EA83</td>
+<td class="instruction">LD A,$21</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=21.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea85"></span>EA85</td>
+<td class="instruction">JP <a href="E62D.html#e67c">$E67C</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">E67C</a>.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="ea88"></span>EA88</td>
+<td class="instruction">LD A,$09</td>
+<td class="comment-1" rowspan="2">Write 09 to *<a href="D244.html">D244</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea8a"></span>EA8A</td>
+<td class="instruction">LD ($D244),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea8d"></span>EA8D</td>
+<td class="instruction">LD IY,$D244</td>
+<td class="comment-1" rowspan="1"><span class="register">IY</span>=<a href="D244.html">D244</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="ea91"></span>
+<div class="comments">
+<div class="paragraph">
+Take off four hit points from the monsters energy.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea91"></span>EA91</td>
+<td class="instruction">LD A,$04</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=04.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea93"></span>EA93</td>
+<td class="instruction">CALL <a href="DD6C.html">Handler_DecreaseEnergy</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DD6C.html">Handler_DecreaseEnergy</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="ea96"></span>
+<div class="comments">
+<div class="paragraph">
+<audio controls="" src="../audio/projectile.wav">
+<p>Your browser doesn't support HTML5 audio. Here is a <a href="../audio/projectile.wav">link to the audio</a> instead.</p>
+</audio>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea96"></span>EA96</td>
+<td class="instruction">LD A,$05</td>
+<td class="comment-1" rowspan="2">Write melody ID 05 to *<a href="FF00.html#ff8d">MelodyID</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea98"></span>EA98</td>
+<td class="instruction">LD ($FF8D),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="ea9b"></span>EA9B</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="EA18.html">EA18</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#ea43">Map</a></td>
+<td class="next">
+Next: <a href="EA9C.html">EA9C</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/EA43.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

@@ -33,7 +33,7 @@ Next: <a href="57517.html">57517</a>
 </td>
 </tr>
 </table>
-<div class="description">57232: Routine at DF90</div>
+<div class="description">57232: Find Scene</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -812,7 +812,7 @@ Set the number of buildings for this level.
 <td class="asm-label"></td>
 <td class="address-1"><span id="57426"></span>57426</td>
 <td class="instruction">LD B,32</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=32.</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=32 (counter).</td>
 </tr>
 <tr>
 <td class="asm-label">FindScene_4</td>
@@ -824,19 +824,17 @@ Set the number of buildings for this level.
 <td class="asm-label"></td>
 <td class="address-1"><span id="57429"></span>57429</td>
 <td class="instruction">RLCA</td>
-<td class="comment-1" rowspan="1">RLCA.</td>
+<td class="comment-1" rowspan="3">Rotate <span class="register">A</span> left three positions.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="57430"></span>57430</td>
 <td class="instruction">RLCA</td>
-<td class="comment-1" rowspan="1">RLCA.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="57431"></span>57431</td>
 <td class="instruction">RLCA</td>
-<td class="comment-1" rowspan="1">RLCA.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -867,6 +865,16 @@ Set the number of buildings for this level.
 <td class="address-1"><span id="57436"></span>57436</td>
 <td class="instruction">DJNZ <a href="57232.html#57428">FindScene_4</a></td>
 <td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="57232.html#57428">FindScene_4</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="57438"></span>
+<div class="comments">
+<div class="paragraph">
+Default to not using the train.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -905,6 +913,16 @@ Set the number of buildings for this level.
 <td class="asm-label"></td>
 <td class="address-1"><span id="57452"></span>57452</td>
 <td class="instruction">JR Z,<a href="57232.html#57502">Vehicle_Disable</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="57454"></span>
+<div class="comments">
+<div class="paragraph">
+Anything else uses vehicles.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

@@ -54,6 +54,16 @@ Used by the routine at <a href="F788.html">F788</a>.
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f795"></span>
+<div class="comments">
+<div class="paragraph">
+<span class="register">B</span> is used as the "currently processed monster ID"; we work backwards from Ralph, to Lizzy and last George.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label">Handler_Monsters</td>
 <td class="address-2"><span id="f795"></span>F795</td>
 <td class="instruction">LD B,$03</td>
@@ -113,8 +123,8 @@ Used by the routine at <a href="F788.html">F788</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f7a6"></span>F7A6</td>
-<td class="instruction">CALL <a href="DD52.html">SetIYMonsterData_George</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DD52.html">SetIYMonsterData_George</a>.</td>
+<td class="instruction">CALL <a href="DD52.html">SetIYMonsterData</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DD52.html">SetIYMonsterData</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -425,8 +435,8 @@ Take off two hit points from the monsters energy.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f811"></span>F811</td>
-<td class="instruction">CALL <a href="DD97.html">AddPoints</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DD97.html">AddPoints</a>.</td>
+<td class="instruction">CALL <a href="DD97.html">Handler_AddPoints</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DD97.html">Handler_AddPoints</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -456,13 +466,12 @@ Take off two hit points from the monsters energy.
 <td class="asm-label"></td>
 <td class="address-1"><span id="f81b"></span>F81B</td>
 <td class="instruction">LD A,($D403)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D401.html#d403">VehicleXPosition</a>.</td>
+<td class="comment-1" rowspan="2"><span class="register">C</span>=*<a href="D401.html#d403">VehicleXPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f81e"></span>F81E</td>
 <td class="instruction">LD C,A</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -514,8 +523,8 @@ Take off two hit points from the monsters energy.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f82c"></span>F82C</td>
-<td class="instruction">CALL <a href="DD52.html">SetIYMonsterData_George</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DD52.html">SetIYMonsterData_George</a>.</td>
+<td class="instruction">CALL <a href="DD52.html">SetIYMonsterData</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DD52.html">SetIYMonsterData</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -551,7 +560,7 @@ Take off two hit points from the monsters energy.
 <td class="asm-label"></td>
 <td class="address-1"><span id="f83c"></span>F83C</td>
 <td class="instruction">XOR %10000000</td>
-<td class="comment-1" rowspan="1">Reset bit 7.</td>
+<td class="comment-1" rowspan="1">Flip bit 7.</td>
 </tr>
 <tr>
 <td class="asm-label">Handler_Monsters_4</td>
@@ -580,8 +589,8 @@ Take off two hit points from the monsters energy.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f847"></span>F847</td>
-<td class="instruction">CALL <a href="DD97.html">AddPoints</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DD97.html">AddPoints</a>.</td>
+<td class="instruction">CALL <a href="DD97.html">Handler_AddPoints</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DD97.html">Handler_AddPoints</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -621,8 +630,8 @@ Take off two hit points from the monsters energy.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f852"></span>F852</td>
-<td class="instruction">CALL <a href="DD52.html">SetIYMonsterData_George</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DD52.html">SetIYMonsterData_George</a>.</td>
+<td class="instruction">CALL <a href="DD52.html">SetIYMonsterData</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DD52.html">SetIYMonsterData</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -689,8 +698,8 @@ Take off two hit points from the monsters energy.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f86e"></span>F86E</td>
-<td class="instruction">CALL <a href="DD97.html">AddPoints</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DD97.html">AddPoints</a>.</td>
+<td class="instruction">CALL <a href="DD97.html">Handler_AddPoints</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DD97.html">Handler_AddPoints</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -748,8 +757,8 @@ Take off two hit points from the monsters energy.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f87e"></span>F87E</td>
-<td class="instruction">CALL <a href="DD97.html">AddPoints</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DD97.html">AddPoints</a>.</td>
+<td class="instruction">CALL <a href="DD97.html">Handler_AddPoints</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DD97.html">Handler_AddPoints</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

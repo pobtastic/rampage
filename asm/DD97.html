@@ -33,13 +33,13 @@ Next: <a href="DDC0.html">DDC0</a>
 </td>
 </tr>
 </table>
-<div class="description">DD97: Add Points To Score</div>
+<div class="description">DD97: Handler: Add Points To Score</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="F450.html">F450</a> and <a href="F795.html">Handler_Monsters</a>.
+Used by the routines at <a href="F450.html">F450</a>, <a href="F4E6.html">F4E6</a> and <a href="F795.html">Handler_Monsters</a>.
 </div>
 </div>
 <table class="input">
@@ -72,7 +72,7 @@ Derive pointer to monster score messaging from the given ID.
 </td>
 </tr>
 <tr>
-<td class="asm-label">AddPoints</td>
+<td class="asm-label">Handler_AddPoints</td>
 <td class="address-2"><span id="dd97"></span>DD97</td>
 <td class="instruction">CP $01</td>
 <td class="comment-1" rowspan="2">Jump to <a href="DD97.html#dda0">AddPoints_CheckLizzy</a> if <span class="register">A</span> is not targeting George (01).</td>

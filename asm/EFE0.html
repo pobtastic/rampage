@@ -246,13 +246,13 @@ Have we accounted for all the buildings?
 <td class="asm-label"></td>
 <td class="address-1"><span id="f024"></span>F024</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1">RRCA.</td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f025"></span>F025</td>
 <td class="instruction">JR NC,<a href="EFE0.html#f029">Handler_Buildings_1</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="EFE0.html#f029">Handler_Buildings_1</a> if {} is higher.</td>
+<td class="comment-1" rowspan="1">Jump to <a href="EFE0.html#f029">Handler_Buildings_1</a> if the carry flag is not set.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

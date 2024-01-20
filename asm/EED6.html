@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at EED6</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="EE9B.html">EE9B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#eed6">Map</a></td>
+<td class="next">
+Next: <a href="EEEB.html">EEEB</a>
+</td>
+</tr>
+</table>
+<div class="description">EED6: Routine at EED6</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="eed6"></span>EED6</td>
+<td class="instruction">LD BC,($D24D)</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">D24D</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eeda"></span>EEDA</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eedb"></span>EEDB</td>
+<td class="instruction">INC C</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eedc"></span>EEDC</td>
+<td class="instruction">LD A,$77</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=77.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eede"></span>EEDE</td>
+<td class="instruction">CALL <a href="D6C9.html">$D6C9</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D6C9.html">D6C9</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eee1"></span>EEE1</td>
+<td class="instruction">LD A,$22</td>
+<td class="comment-1" rowspan="2">Write 22 to *<a href="D244.html">D244</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eee3"></span>EEE3</td>
+<td class="instruction">LD ($D244),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eee6"></span>EEE6</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Write 00 to *<a href="D249.html">D249</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eee7"></span>EEE7</td>
+<td class="instruction">LD ($D249),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="eeea"></span>EEEA</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="EE9B.html">EE9B</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#eed6">Map</a></td>
+<td class="next">
+Next: <a href="EEEB.html">EEEB</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/EED6.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

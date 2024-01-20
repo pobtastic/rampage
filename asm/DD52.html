@@ -39,7 +39,7 @@ Next: <a href="DD6C.html">DD6C</a>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="F450.html">F450</a> and <a href="F795.html">Handler_Monsters</a>.
+Used by the routines at <a href="F4B8.html">Handler_Eating</a>, <a href="F4D1.html">Handler_EatFood</a> and <a href="F795.html">Handler_Monsters</a>.
 </div>
 </div>
 <table class="input">
@@ -63,17 +63,7 @@ Used by the routines at <a href="F450.html">F450</a> and <a href="F795.html">Han
 </td>
 </tr>
 <tr>
-<td class="routine-comment" colspan="5">
-<span id="dd52"></span>
-<div class="comments">
-<div class="paragraph">
-George:
-</div>
-</div>
-</td>
-</tr>
-<tr>
-<td class="asm-label">SetIYMonsterData_George</td>
+<td class="asm-label">SetIYMonsterData</td>
 <td class="address-2"><span id="dd52"></span>DD52</td>
 <td class="instruction">CP $01</td>
 <td class="comment-1" rowspan="2">Jump to <a href="DD52.html#dd5b">SetIYMonsterData_Lizzy</a> if <span class="register">A</span> is not equal to 01.</td>
@@ -82,6 +72,16 @@ George:
 <td class="asm-label"></td>
 <td class="address-1"><span id="dd54"></span>DD54</td>
 <td class="instruction">JR NZ,<a href="DD52.html#dd5b">SetIYMonsterData_Lizzy</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="dd56"></span>
+<div class="comments">
+<div class="paragraph">
+<span class="register">A</span> is 01; set to George:
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -100,7 +100,7 @@ George:
 <span id="dd5b"></span>
 <div class="comments">
 <div class="paragraph">
-Lizzy:
+If it's not 01 is it 02?
 </div>
 </div>
 </td>
@@ -115,6 +115,16 @@ Lizzy:
 <td class="asm-label"></td>
 <td class="address-1"><span id="dd5d"></span>DD5D</td>
 <td class="instruction">JR NZ,<a href="DD52.html#dd64">SetIYMonsterData_Ralph</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="dd5f"></span>
+<div class="comments">
+<div class="paragraph">
+<span class="register">A</span> is 02; set to Lizzy:
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -133,7 +143,7 @@ Lizzy:
 <span id="dd64"></span>
 <div class="comments">
 <div class="paragraph">
-Ralph:
+Just return if <span class="register">A</span> is none of 01 02 or 03.
 </div>
 </div>
 </td>
@@ -148,6 +158,16 @@ Ralph:
 <td class="asm-label"></td>
 <td class="address-1"><span id="dd66"></span>DD66</td>
 <td class="instruction">RET NZ</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="dd67"></span>
+<div class="comments">
+<div class="paragraph">
+<span class="register">A</span> is 03; set to Ralph:
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

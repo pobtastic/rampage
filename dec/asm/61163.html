@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at 61163</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="61142.html">61142</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#61163">Map</a></td>
+<td class="next">
+Next: <a href="61194.html">61194</a>
+</td>
+</tr>
+</table>
+<div class="description">61163: Routine at EEEB</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="address-2"><span id="61163"></span>61163</td>
+<td class="instruction">LD A,(53838)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="61163.html#61180">61180</a> if *<a href="53837.html#53838">53838</a> is not equal to 20.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61166"></span>61166</td>
+<td class="instruction">CP 20</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61168"></span>61168</td>
+<td class="instruction">JR NZ,<a href="61163.html#61180">61180</a></td>
+</tr>
+<tr>
+<td class="address-1"><span id="61170"></span>61170</td>
+<td class="instruction">LD A,35</td>
+<td class="comment-1" rowspan="2">Write 35 to *<a href="53828.html">53828</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61172"></span>61172</td>
+<td class="instruction">LD (53828),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61175"></span>61175</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Write 0 to *<a href="53833.html">53833</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61176"></span>61176</td>
+<td class="instruction">LD (53833),A</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61179"></span>61179</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+<tr>
+<td class="address-2"><span id="61180"></span>61180</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61181"></span>61181</td>
+<td class="instruction">LD (53838),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53837.html#53838">53838</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61184"></span>61184</td>
+<td class="instruction">LD BC,(53837)</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">53837</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61188"></span>61188</td>
+<td class="instruction">LD A,53</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=53.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61190"></span>61190</td>
+<td class="instruction">CALL <a href="54985.html">54985</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54985.html">54985</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61193"></span>61193</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="61142.html">61142</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#61163">Map</a></td>
+<td class="next">
+Next: <a href="61194.html">61194</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="asm/61163.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

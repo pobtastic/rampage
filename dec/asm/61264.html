@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Rampage: Data at 61264</title>
+<title>Rampage: Routine at 61264</title>
 <meta charset="utf-8" />
 <link rel="stylesheet" type="text/css" href="../skoolkit.css" />
 <link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
@@ -15,11 +15,11 @@ gtag('js', new Date());
 gtag('config', 'G-75RERFCHBG');
 </script>
 </head>
-<body class="Asm-b">
+<body class="Asm-c">
 <table class="header">
 <tr>
 <td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
-<td class="page-header">Data</td>
+<td class="page-header">Routines</td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -29,11 +29,11 @@ Prev: <a href="61240.html">61240</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#61264">Map</a></td>
 <td class="next">
-Next: <a href="61318.html">61318</a>
+Next: <a href="61296.html">61296</a>
 </td>
 </tr>
 </table>
-<div class="description">61264: Data block at EF50</div>
+<div class="description">61264: Routine at EF50</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,39 +42,93 @@ Next: <a href="61318.html">61318</a>
 </td>
 </tr>
 <tr>
-<td class="address-1"><span id="61264"></span>61264</td>
-<td class="instruction">DEFB 205,121,225,230,16,32,7,175</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="address-2"><span id="61264"></span>61264</td>
+<td class="instruction">CALL <a href="57721.html">Controls</a></td>
+<td class="comment-1" rowspan="1">Call <a href="57721.html">Controls</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61267"></span>61267</td>
+<td class="instruction">AND %00010000</td>
+<td class="comment-1" rowspan="1">Keep only bit 4.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61269"></span>61269</td>
+<td class="instruction">JR NZ,<a href="61264.html#61278">61278</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="61264.html#61278">61278</a> if the result is not zero.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61271"></span>61271</td>
+<td class="instruction">XOR A</td>
+<td class="comment-1" rowspan="2">Write 0 to *<a href="53828.html">53828</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="61272"></span>61272</td>
-<td class="instruction">DEFB 50,68,210,195,124,230,58,68</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">LD (53828),A</td>
 </tr>
 <tr>
-<td class="address-1"><span id="61280"></span>61280</td>
-<td class="instruction">DEFB 210,214,15,38,0,111,41,17</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="address-1"><span id="61275"></span>61275</td>
+<td class="instruction">JP <a href="58925.html#59004">59004</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">59004</a>.</td>
 </tr>
 <tr>
-<td class="address-1"><span id="61288"></span>61288</td>
-<td class="instruction">DEFB 112,239,25,126,35,102,111,233</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="address-2"><span id="61278"></span>61278</td>
+<td class="instruction">LD A,(53828)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53828.html">53828</a>.</td>
 </tr>
 <tr>
-<td class="address-1"><span id="61296"></span>61296</td>
-<td class="instruction">DEFB 245,236,21,237,245,236,93,237</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="address-1"><span id="61281"></span>61281</td>
+<td class="instruction">SUB 15</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>-=15.</td>
 </tr>
 <tr>
-<td class="address-1"><span id="61304"></span>61304</td>
-<td class="instruction">DEFB 130,237,93,237,172,237,238,237</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="address-1"><span id="61283"></span>61283</td>
+<td class="instruction">LD H,0</td>
+<td class="comment-1" rowspan="1"><span class="register">H</span>=0.</td>
 </tr>
 <tr>
-<td class="address-1"><span id="61312"></span>61312</td>
-<td class="instruction">DEFB 27,238,238,237,83,238</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="address-1"><span id="61285"></span>61285</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61286"></span>61286</td>
+<td class="instruction">ADD HL,HL</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61287"></span>61287</td>
+<td class="instruction">LD DE,61296</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="61296.html">61296</a>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61290"></span>61290</td>
+<td class="instruction">ADD HL,DE</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61291"></span>61291</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61292"></span>61292</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61293"></span>61293</td>
+<td class="instruction">LD H,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">H</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61294"></span>61294</td>
+<td class="instruction">LD L,A</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="address-1"><span id="61295"></span>61295</td>
+<td class="instruction">JP (HL)</td>
+<td class="comment-1" rowspan="1">Jump to the address held by *<span class="register">HL</span>.</td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -84,7 +138,7 @@ Prev: <a href="61240.html">61240</a>
 </td>
 <td class="up">Up: <a href="../maps/all.html#61264">Map</a></td>
 <td class="next">
-Next: <a href="61318.html">61318</a>
+Next: <a href="61296.html">61296</a>
 </td>
 </tr>
 </table>
