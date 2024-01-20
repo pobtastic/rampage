@@ -2269,9 +2269,10 @@ g$C850 DEFB $FB,$01  ; {Stores in the following format:
 ; Data block at C86E
 b$C86E DEFB $00,$25,$05,$01,$09,$09,$09,$09
  $C876 DEFB $09,$19,$19,$19,$19,$19,$19,$19
- $C87E DEFB $19,$19,$19,$19,$00,$06,$06,$02
- $C886 DEFB $0A,$0A,$0A,$0A,$0A,$1A,$1A,$1A
- $C88E DEFB $1A,$1A,$1A,$1A,$1A,$1A,$1A,$1A
+ $C87E DEFB $19,$19,$19,$19
+ $C882 DEFB $00,$06,$06,$02,$0A,$0A,$0A,$0A
+ $C88A DEFB $0A,$1A,$1A,$1A,$1A,$1A,$1A,$1A
+ $C892 DEFB $1A,$1A,$1A,$1A
  $C896 DEFB $00,$04,$06,$02,$0A,$1A,$1A,$1A
  $C89E DEFB $1A,$1A,$1A,$1A,$1A,$1A,$1A,$1A
  $C8A6 DEFB $1A,$1A,$1A
@@ -2280,183 +2281,294 @@ b$C86E DEFB $00,$25,$05,$01,$09,$09,$09,$09
  $C8B9 DEFB $19
 
 ; Data block at C8BA
-b$C8BA DEFB $02,$03,$04,$05,$06,$06,$06,$06 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C8C2 DEFB $07,$07,$07,$07,$02,$03,$04,$05 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C8CA DEFB $08,$08,$08,$08,$09,$09,$09,$09 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C8D2 DEFB $01,$01,$01,$01,$06,$06,$06,$06 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C8DA DEFB $07,$07,$07,$07,$02,$0A,$0B,$02 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C8E2 DEFB $06,$06,$06,$06,$07,$07,$07,$07 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C8EA DEFB $01,$01,$01,$01,$08,$08,$08,$08 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C8F2 DEFB $09,$09,$09,$09,$0C,$0C,$0C,$0C ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C8FA DEFB $0D,$0E,$0C,$0C,$10,$11,$0C,$0C ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C902 DEFB $0C,$0C,$0C,$0C,$0C,$0C,$0D,$0E ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C90A DEFB $0C,$0C,$10,$11,$02,$03,$04,$05 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C912 DEFB $01,$01,$01,$01,$01,$01,$01,$01 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C91A DEFB $33,$33,$33,$33,$33,$33,$33,$33 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C922 DEFB $25,$26,$27,$25,$26,$27,$25,$26 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C92A DEFB $27,$25,$26,$27,$25,$26,$2D,$2B ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C932 DEFB $2C,$2D,$29,$2A,$28,$29,$2A,$28 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C93A DEFB $29,$2A,$28,$29,$2A,$28,$29,$2A ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C942 DEFB $01,$01,$01,$01,$01,$01,$01,$01 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C94A DEFB $01,$24,$01,$24,$01,$24,$01,$24 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C952 DEFB $31,$31,$31,$31,$31,$31,$31,$31 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C95A DEFB $32,$32,$32,$32,$32,$32,$32,$32 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C962 DEFB $27,$25,$26,$27,$25,$26,$27,$25 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C96A DEFB $26,$27,$25,$26,$27,$25,$26,$27 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C972 DEFB $41,$41,$41,$41,$41,$41,$41,$41 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C97A DEFB $41,$41,$41,$41,$41,$41,$41,$3F ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C982 DEFB $3D,$3D,$3D,$3D,$4B,$41,$41,$41 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C98A DEFB $41,$41,$41,$3F,$3D,$3D,$3D,$3D ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C992 DEFB $41,$41,$41,$41,$41,$41,$3F,$3D ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C99A DEFB $3D,$3D,$3D,$3D                 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
+b$C8BA DEFB $02,$03,$04,$05,$06,$06,$06,$06
+ $C8C2 DEFB $07,$07,$07,$07,$02,$03,$04,$05
+ $C8CA DEFB $08,$08,$08,$08,$09,$09,$09,$09
+ $C8D2 DEFB $01,$01,$01,$01,$06,$06,$06,$06
+ $C8DA DEFB $07,$07,$07,$07,$02,$0A,$0B,$02
+ $C8E2 DEFB $06,$06,$06,$06,$07,$07,$07,$07
+ $C8EA DEFB $01,$01,$01,$01,$08,$08,$08,$08
+ $C8F2 DEFB $09,$09,$09,$09,$0C,$0C,$0C,$0C
+ $C8FA DEFB $0D,$0E,$0C,$0C,$10,$11,$0C,$0C
+ $C902 DEFB $0C,$0C,$0C,$0C,$0C,$0C,$0D,$0E
+ $C90A DEFB $0C,$0C,$10,$11,$02,$03,$04,$05
+ $C912 DEFB $01,$01,$01,$01,$01,$01,$01,$01
+ $C91A DEFB $33,$33,$33,$33,$33,$33,$33,$33
+ $C922 DEFB $25,$26,$27,$25,$26,$27,$25,$26
+ $C92A DEFB $27,$25,$26,$27,$25,$26,$2D,$2B
+ $C932 DEFB $2C,$2D,$29,$2A,$28,$29,$2A,$28
+ $C93A DEFB $29,$2A,$28,$29,$2A,$28,$29,$2A
+ $C942 DEFB $01,$01,$01,$01,$01,$01,$01,$01
+ $C94A DEFB $01,$24,$01,$24,$01,$24,$01,$24
+ $C952 DEFB $31,$31,$31,$31,$31,$31,$31,$31
+ $C95A DEFB $32,$32,$32,$32,$32,$32,$32,$32
+ $C962 DEFB $27,$25,$26,$27,$25,$26,$27,$25
+ $C96A DEFB $26,$27,$25,$26,$27,$25,$26,$27
+ $C972 DEFB $41,$41,$41,$41,$41,$41,$41,$41
+ $C97A DEFB $41,$41,$41,$41,$41,$41,$41,$3F
+ $C982 DEFB $3D,$3D,$3D,$3D,$4B,$41,$41,$41
+ $C98A DEFB $41,$41,$41,$3F,$3D,$3D,$3D,$3D
+ $C992 DEFB $41,$41,$41,$41,$41,$41,$3F,$3D
+ $C99A DEFB $3D,$3D,$3D,$3D
 
 ; Data block at C99E
-b$C99E DEFB $3D,$4B,$41,$41
- $C9A2 DEFB $09,$09,$09,$09,$0A,$0A,$0A,$0A ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C9AA DEFB $0B,$0B,$0B,$0B,$0C,$0C,$0C,$0C ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C9B2 DEFB $0D,$0D,$0D,$0D,$10,$10,$10,$10 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C9BA DEFB $01,$02,$01,$02,$03,$04,$03,$04 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C9C2 DEFB $19,$1A,$1A,$22,$1C,$1D,$1D,$1E ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C9CA DEFB $1F,$20,$20,$21,$05,$06,$05,$06 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C9D2 DEFB $23,$05,$06,$23,$2B,$2B,$2B,$2B ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C9DA DEFB $2B,$23,$23,$2B,$2B,$05,$06,$2B ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C9E2 DEFB $2B,$26,$27,$2B,$10,$34,$35,$10 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C9EA DEFB $10,$36,$37,$10,$10,$38,$39,$10 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $C9F2 DEFB $10,$28,$28,$10,$10,$29,$29     ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
+b$C99E DEFB $3D,$4B,$41,$41,$09,$09,$09,$09
+ $C9A6 DEFB $0A,$0A,$0A,$0A,$0B,$0B,$0B,$0B
+ $C9AE DEFB $0C,$0C,$0C,$0C,$0D,$0D,$0D,$0D
+ $C9B6 DEFB $10,$10,$10,$10,$01,$02,$01,$02
+ $C9BE DEFB $03,$04,$03,$04,$19,$1A,$1A,$22
+ $C9C6 DEFB $1C,$1D,$1D,$1E,$1F,$20,$20,$21
+ $C9CE DEFB $05,$06,$05,$06,$23,$05,$06,$23
+ $C9D6 DEFB $2B,$2B,$2B,$2B,$2B,$23,$23,$2B
+ $C9DE DEFB $2B,$05,$06,$2B,$2B,$26,$27,$2B
+ $C9E6 DEFB $10,$34,$35,$10,$10,$36,$37,$10
+ $C9EE DEFB $10,$38,$39,$10,$10,$28,$28,$10
+ $C9F6 DEFB $10,$29,$29
 
 ; Data block at C9F9
-b$C9F9 DEFB $10
- $C9FA DEFB $10,$2A,$2A,$10,$09,$09,$09,$09 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CA02 DEFB $09,$0A,$0A,$0A,$0A,$0A,$0B,$0B ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CA0A DEFB $0B,$0B,$0B,$0C,$0C,$0C,$0C,$0C ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CA12 DEFB $0D,$0D,$0D,$0D,$0D,$10,$10,$10 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CA1A DEFB $10,$10,$01,$02,$10,$01,$02,$03 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CA22 DEFB $04,$10,$03,$04,$2B,$26,$23,$27 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CA2A DEFB $2B,$24,$25,$10,$24,$25,$28,$28 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CA32 DEFB $10,$28,$28,$29,$29,$10,$29,$29 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CA3A DEFB $2A,$2A,$10,$2A,$2A,$19,$1A,$22 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CA42 DEFB $34,$35,$1C,$1D,$1E,$36,$37,$1F ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CA4A DEFB $20,$21,$38,$39,$05,$06,$10,$05 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CA52 DEFB $06,$3F,$3F,$3F,$3F             ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
+b$C9F9 DEFB $10,$10,$2A,$2A,$10,$09,$09,$09
+ $CA01 DEFB $09,$09,$0A,$0A,$0A,$0A,$0A,$0B
+ $CA09 DEFB $0B,$0B,$0B,$0B,$0C,$0C,$0C,$0C
+ $CA11 DEFB $0C,$0D,$0D,$0D,$0D,$0D,$10,$10
+ $CA19 DEFB $10,$10,$10,$01,$02,$10,$01,$02
+ $CA21 DEFB $03,$04,$10,$03,$04,$2B,$26,$23
+ $CA29 DEFB $27,$2B,$24,$25,$10,$24,$25,$28
+ $CA31 DEFB $28,$10,$28,$28,$29,$29,$10,$29
+ $CA39 DEFB $29,$2A,$2A,$10,$2A,$2A,$19,$1A
+ $CA41 DEFB $22,$34,$35,$1C,$1D,$1E,$36,$37
+ $CA49 DEFB $1F,$20,$21,$38,$39,$05,$06,$10
+ $CA51 DEFB $05,$06,$3F,$3F,$3F,$3F
 
 ; Data block at CA57
-b$CA57 DEFB $3F,$2B,$2B
- $CA5A DEFB $2B,$2B,$2B,$09,$09,$09,$09,$09 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CA62 DEFB $09,$0A,$0A,$0A,$0A,$0A,$0A,$0B ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CA6A DEFB $0B,$0B,$0B,$0B,$0B,$0C,$0C,$0C ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CA72 DEFB $0C,$0C,$0C,$0D,$0D,$0D,$0D,$0D ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CA7A DEFB $0D,$10,$10,$10,$10,$10,$10,$01 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CA82 DEFB $02,$01,$02,$01,$02,$03,$04,$03 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CA8A DEFB $04,$03,$04,$19,$1A,$1A,$22,$34 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CA92 DEFB $35,$1F,$20,$20,$21,$36,$37,$10 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CA9A DEFB $10,$10,$10,$38,$39,$26,$27,$2B ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CAA2 DEFB $2B,$26,$27,$05,$06,$05,$06,$05 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CAAA DEFB $06,$19,$1A,$1A,$22,$05,$06,$1C ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CAB2 DEFB $1D,$1D,$1E,$05,$06,$1F,$20,$20 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CABA DEFB $21,$05,$06,$10,$10,$28,$28,$10 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CAC2 DEFB $10,$10,$10,$29,$29,$10,$10,$10 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CACA DEFB $10,$2A,$2A,$10,$10,$3F,$3F,$3F ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CAD2 DEFB $3F,$3F,$3F,$2E,$17,$2F,$3A,$3B ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CADA DEFB $10,$10,$3D,$3C,$2D,$3A,$10,$10 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CAE2 DEFB $2C,$2E,$17,$3A,$10,$10,$2C,$2E ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CAEA DEFB $17,$18,$10,$10,$18,$17,$2C,$2F ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CAF2 DEFB $10,$17,$2D,$2D,$3E,$3D,$3A,$10 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CAFA DEFB $2E,$3C,$2F,$10,$10,$10,$2F,$17 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CB02 DEFB $17,$3B,$10,$10,$2E,$3C,$3B,$3B ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CB0A DEFB $10,$10,$3D,$17,$3D,$3A,$10,$10 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CB12 DEFB $3D,$17,$3B,$3C,$10,$10,$2C,$3C ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CB1A DEFB $3B,$3A,$10,$2F,$17,$10,$3B,$3A ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CB22 DEFB $2F,$10,$2D,$3B,$3C,$2F,$10     ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
+b$CA57 DEFB $3F,$2B,$2B,$2B,$2B,$2B,$09,$09
+ $CA5F DEFB $09,$09,$09,$09,$0A,$0A,$0A,$0A
+ $CA67 DEFB $0A,$0A,$0B,$0B,$0B,$0B,$0B,$0B
+ $CA6F DEFB $0C,$0C,$0C,$0C,$0C,$0C,$0D,$0D
+ $CA77 DEFB $0D,$0D,$0D,$0D,$10,$10,$10,$10
+ $CA7F DEFB $10,$10,$01,$02,$01,$02,$01,$02
+ $CA87 DEFB $03,$04,$03,$04,$03,$04,$19,$1A
+ $CA8F DEFB $1A,$22,$34,$35,$1F,$20,$20,$21
+ $CA97 DEFB $36,$37,$10,$10,$10,$10,$38,$39
+ $CA9F DEFB $26,$27,$2B,$2B,$26,$27,$05,$06
+ $CAA7 DEFB $05,$06,$05,$06,$19,$1A,$1A,$22
+ $CAAF DEFB $05,$06,$1C,$1D,$1D,$1E,$05,$06
+ $CAB7 DEFB $1F,$20,$20,$21,$05,$06,$10,$10
+ $CABF DEFB $28,$28,$10,$10,$10,$10,$29,$29
+ $CAC7 DEFB $10,$10,$10,$10,$2A,$2A,$10,$10
+ $CACF DEFB $3F,$3F,$3F,$3F,$3F,$3F,$2E,$17
+ $CAD7 DEFB $2F,$3A,$3B,$10,$10,$3D,$3C,$2D
+ $CADF DEFB $3A,$10,$10,$2C,$2E,$17,$3A,$10
+ $CAE7 DEFB $10,$2C,$2E,$17,$18,$10,$10,$18
+ $CAEF DEFB $17,$2C,$2F,$10,$17,$2D,$2D,$3E
+ $CAF7 DEFB $3D,$3A,$10,$2E,$3C,$2F,$10,$10
+ $CAFF DEFB $10,$2F,$17,$17,$3B,$10,$10,$2E
+ $CB07 DEFB $3C,$3B,$3B,$10,$10,$3D,$17,$3D
+ $CB0F DEFB $3A,$10,$10,$3D,$17,$3B,$3C,$10
+ $CB17 DEFB $10,$2C,$3C,$3B,$3A,$10,$2F,$17
+ $CB1F DEFB $10,$3B,$3A,$2F,$10,$2D,$3B,$3C
+ $CB27 DEFB $2F,$10
 
-; Data block at CB29
-b$CB29 DEFB $FF
- $CB2A DEFB $03,$06,$07,$08,$07,$08,$07,$15 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CB32 DEFB $16,$17,$FF,$02,$11,$07,$08,$09 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CB3A DEFB $0A,$0B,$12,$13,$14,$FF,$44,$47 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CB42 DEFB $48,$47,$48,$47,$48,$4B,$4C,$4D ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CB4A DEFB $FF,$43,$47,$48,$52,$47,$48,$52 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CB52 DEFB $4E,$4F,$50,$FF,$84,$8E,$8F,$90 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CB5A DEFB $87,$88,$86,$91,$92,$93,$FF,$85 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CB62 DEFB $87,$88,$87,$88,$94,$86,$89,$8A ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CB6A DEFB $8B,$FF,$02,$06,$07,$08,$07,$08 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CB72 DEFB $07,$08,$12,$13,$14,$FF,$01,$11 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CB7A DEFB $09,$0A,$0B,$07,$08,$07,$12,$13 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CB82 DEFB $14,$FF,$43,$47,$48,$51,$47,$48 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CB8A DEFB $51,$51,$4E,$4F,$50,$FF,$45,$52 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CB92 DEFB $49,$49,$51,$47,$48,$52,$4B,$4C ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CB9A DEFB $4D,$FF,$82,$87,$88,$87,$88,$87 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CBA2 DEFB $88,$96,$89,$8A,$8B,$FF,$82,$8C ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CBAA DEFB $86,$8D,$8E,$8F,$90,$94,$89,$8A ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CBB2 DEFB $8B,$FF,$03,$06,$0C,$0C,$0C,$0C ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CBBA DEFB $0C,$0C,$0C,$12,$13,$14,$FF,$05 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CBC2 DEFB $10,$09,$0A,$0B,$07,$08,$07,$08 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CBCA DEFB $15,$16,$17,$FF,$43,$47,$48,$47 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CBD2 DEFB $48,$47,$48,$47,$48,$4E,$4F,$50 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CBDA DEFB $FF,$44,$47,$48,$47,$48,$47,$48 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CBE2 DEFB $47,$48,$4B,$4C,$4D,$FF,$82,$86 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CBEA DEFB $87,$88,$87,$88,$86,$9C,$98,$89 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CBF2 DEFB $8A,$8B,$FF,$85,$86,$87,$88,$87 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CBFA DEFB $88,$87,$88,$A0,$91,$92,$93,$FF ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CC02 DEFB $04,$07,$08,$08,$07,$08,$07,$08 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CC0A DEFB $07,$08,$15,$16,$17,$FF,$01,$06 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CC12 DEFB $07,$08,$07,$08,$07,$08,$07,$08 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CC1A DEFB $15,$16,$17,$FF,$45,$47,$48,$51 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CC22 DEFB $47,$48,$51,$47,$48,$51,$4B,$4C ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CC2A DEFB $4D,$FF,$45,$47,$48,$52,$47,$48 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CC32 DEFB $52,$47,$48,$52,$4B,$4C,$4D,$FF ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CC3A DEFB $83,$86,$87,$88,$87,$88,$87,$88 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CC42 DEFB $97,$98,$89,$8A,$8B,$FF,$81,$86 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CC4A DEFB $8D,$8E,$8F,$90,$94,$87,$88,$9D ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CC52 DEFB $91,$92,$93,$FF,$03,$07,$08,$07 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CC5A DEFB $08,$07,$08,$07,$08,$07,$08,$12 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CC62 DEFB $13,$14,$FF,$02,$0C,$0C,$0C,$0C ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CC6A DEFB $0C,$0C,$0C,$0C,$0C,$0C,$15,$16 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CC72 DEFB $17,$FF,$45,$47,$48,$47,$48,$47 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CC7A DEFB $48,$47,$48,$47,$48,$4B,$4C,$4D ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CC82 DEFB $FF,$42,$47,$48,$47,$48,$52,$47 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CC8A DEFB $48,$47,$48,$52,$4E,$4F,$50,$FF ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CC92 DEFB $84,$86,$87,$88,$94,$87,$88,$94 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CC9A DEFB $87,$88,$94,$89,$8A,$8B,$FF,$81 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CCA2 DEFB $87,$87,$87,$88,$87,$88,$87,$88 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CCAA DEFB $87,$88,$89,$8A,$8B,$FF,$01,$06 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CCB2 DEFB $07,$06,$07,$06,$07,$06,$07,$06 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CCBA DEFB $07,$06,$12,$13,$14,$FF,$01,$10 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CCC2 DEFB $07,$08,$09,$0A,$0B,$07,$08,$09 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CCCA DEFB $0A,$0B,$15,$16,$17,$FF,$41,$47 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CCD2 DEFB $48,$47,$48,$47,$48,$47,$48,$47 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CCDA DEFB $48,$47,$4B,$4C,$4D,$FF,$44,$51 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CCE2 DEFB $51,$47,$48,$51,$47,$48,$51,$47 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CCEA DEFB $48,$51,$4E,$4F,$50,$FF,$84,$86 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CCF2 DEFB $8E,$8F,$90,$94,$8E,$8F,$90,$94 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CCFA DEFB $99,$9A,$91,$92,$93,$FF,$81,$86 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CD02 DEFB $87,$A1,$87,$88,$87,$88,$87,$88 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CD0A DEFB $87,$87,$91,$92,$93,$FF,$01,$09 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CD12 DEFB $0A,$0B,$07,$08,$07,$08,$07,$08 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CD1A DEFB $07,$08,$07,$15,$16,$17,$FF,$02 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CD22 DEFB $0D,$09,$0A,$0B,$07,$08,$07,$08 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CD2A DEFB $07,$08,$07,$08,$12,$13,$14,$FF ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CD32 DEFB $44,$47,$48,$47,$48,$47,$48,$47 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CD3A DEFB $48,$47,$48,$47,$48,$4E,$4F,$50 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CD42 DEFB $FF,$44,$47,$48,$52,$47,$48,$52 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CD4A DEFB $47,$48,$52,$47,$48,$52,$4E,$4F ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CD52 DEFB $50,$FF,$81,$87,$88,$87,$88,$87 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CD5A DEFB $88,$87,$88,$87,$88,$87,$95,$91 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CD62 DEFB $92,$93,$FF,$85,$8E,$8F,$90,$8E ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CD6A DEFB $8F,$90,$8E,$8F,$90,$8E,$8F,$90 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CD72 DEFB $91,$92,$93,$FF,$03,$07,$08,$07 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CD7A DEFB $08,$07,$08,$07,$08,$07,$08,$07 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CD82 DEFB $08,$07,$12,$13,$14,$FF,$03,$07 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CD8A DEFB $08,$09,$0A,$0B,$07,$08,$09,$0A ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CD92 DEFB $0B,$09,$0A,$0B,$12,$13,$14,$FF ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CD9A DEFB $41,$47,$48,$52,$47,$48,$52,$47 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CDA2 DEFB $48,$47,$48,$52,$47,$48,$4B,$4C ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CDAA DEFB $4D,$FF,$41,$47,$48,$47,$48,$51 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CDB2 DEFB $47,$48,$51,$47,$48,$51,$47,$48 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CDBA DEFB $4B,$4C,$4D,$FF,$82,$87,$86,$87 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CDC2 DEFB $88,$87,$88,$87,$88,$87,$88,$87 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CDCA DEFB $88,$88,$89,$8A,$8B,$FF,$84,$87 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CDD2 DEFB $8E,$8F,$90,$87,$88,$8E,$8F,$90 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $CDDA DEFB $87,$88,$87,$88,$89,$8A,$8B,$FF ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
+; Data: Buildings
+@label=Buildings_Data
+b$CB29 DEFB $FF                             ; Terminator.
+; Building #N$01.
+ $CB2A DEFB $03,$06,$07,$08,$07,$08,$07,$15
+ $CB32 DEFB $16,$17
+ $CB34 DEFB $FF                             ; Terminator.
+; Building #N$02.
+ $CB35 DEFB $02,$11,$07,$08,$09,$0A,$0B,$12
+ $CB3D DEFB $13,$14
+ $CB3F DEFB $FF                             ; Terminator.
+; Building #N$03.
+ $CB40 DEFB $44,$47,$48,$47,$48,$47,$48,$4B
+ $CB48 DEFB $4C,$4D
+ $CB4A DEFB $FF                             ; Terminator.
+; Building #N$04.
+ $CB4B DEFB $43,$47,$48,$52,$47,$48,$52,$4E
+ $CB53 DEFB $4F,$50
+ $CB55 DEFB $FF                             ; Terminator.
+; Building #N$05.
+ $CB56 DEFB $84,$8E,$8F,$90,$87,$88,$86,$91
+ $CB5E DEFB $92,$93
+ $CB60 DEFB $FF                             ; Terminator.
+; Building #N$06.
+ $CB61 DEFB $85,$87,$88,$87,$88,$94,$86,$89
+ $CB69 DEFB $8A,$8B
+ $CB6B DEFB $FF                             ; Terminator.
+; Building #N$07.
+ $CB6C DEFB $02,$06,$07,$08,$07,$08,$07,$08
+ $CB74 DEFB $12,$13,$14
+ $CB77 DEFB $FF                             ; Terminator.
+; Building #N$08.
+ $CB78 DEFB $01,$11,$09,$0A,$0B,$07,$08,$07
+ $CB80 DEFB $12,$13,$14
+ $CB83 DEFB $FF                             ; Terminator.
+; Building #N$09.
+ $CB84 DEFB $43,$47,$48,$51,$47,$48,$51,$51
+ $CB8C DEFB $4E,$4F,$50
+ $CB8F DEFB $FF                             ; Terminator.
+; Building #N$0A.
+ $CB90 DEFB $45,$52,$49,$49,$51,$47,$48,$52
+ $CB98 DEFB $4B,$4C,$4D
+ $CB9B DEFB $FF                             ; Terminator.
+; Building #N$0B.
+ $CB9C DEFB $82,$87,$88,$87,$88,$87,$88,$96
+ $CBA4 DEFB $89,$8A,$8B
+ $CBA7 DEFB $FF                             ; Terminator.
+; Building #N$0C.
+ $CBA8 DEFB $82,$8C,$86,$8D,$8E,$8F,$90,$94
+ $CBB0 DEFB $89,$8A,$8B
+ $CBB3 DEFB $FF                             ; Terminator.
+; Building #N$0D.
+ $CBB4 DEFB $03,$06,$0C,$0C,$0C,$0C,$0C,$0C
+ $CBBC DEFB $0C,$12,$13,$14
+ $CBC0 DEFB $FF                             ; Terminator.
+; Building #N$0E.
+ $CBC1 DEFB $05,$10,$09,$0A,$0B,$07,$08,$07
+ $CBC9 DEFB $08,$15,$16,$17
+ $CBCD DEFB $FF                             ; Terminator.
+; Building #N$0F.
+ $CBCE DEFB $43,$47,$48,$47,$48,$47,$48,$47
+ $CBD6 DEFB $48,$4E,$4F,$50
+ $CBDA DEFB $FF                             ; Terminator.
+; Building #N$10.
+ $CBDB DEFB $44,$47,$48,$47,$48,$47,$48,$47
+ $CBE3 DEFB $48,$4B,$4C,$4D
+ $CBE7 DEFB $FF                             ; Terminator.
+; Building #N$11.
+ $CBE8 DEFB $82,$86,$87,$88,$87,$88,$86,$9C
+ $CBF0 DEFB $98,$89,$8A,$8B
+ $CBF4 DEFB $FF                             ; Terminator.
+; Building #N$12.
+ $CBF5 DEFB $85,$86,$87,$88,$87,$88,$87,$88
+ $CBFD DEFB $A0,$91,$92,$93
+ $CC01 DEFB $FF                             ; Terminator.
+; Building #N$13.
+ $CC02 DEFB $04,$07,$08,$08,$07,$08,$07,$08
+ $CC0A DEFB $07,$08,$15,$16,$17
+ $CC0F DEFB $FF                             ; Terminator.
+; Building #N$14.
+ $CC10 DEFB $01,$06,$07,$08,$07,$08,$07,$08
+ $CC18 DEFB $07,$08,$15,$16,$17
+ $CC1D DEFB $FF                             ; Terminator.
+; Building #N$15.
+ $CC1E DEFB $45,$47,$48,$51,$47,$48,$51,$47
+ $CC26 DEFB $48,$51,$4B,$4C,$4D
+ $CC2B DEFB $FF                             ; Terminator.
+; Building #N$16.
+ $CC2C DEFB $45,$47,$48,$52,$47,$48,$52,$47
+ $CC34 DEFB $48,$52,$4B,$4C,$4D
+ $CC39 DEFB $FF                             ; Terminator.
+; Building #N$17.
+ $CC3A DEFB $83,$86,$87,$88,$87,$88,$87,$88
+ $CC42 DEFB $97,$98,$89,$8A,$8B
+ $CC47 DEFB $FF                             ; Terminator.
+; Building #N$18.
+ $CC48 DEFB $81,$86,$8D,$8E,$8F,$90,$94,$87
+ $CC50 DEFB $88,$9D,$91,$92,$93
+ $CC55 DEFB $FF                             ; Terminator.
+; Building #N$19.
+ $CC56 DEFB $03,$07,$08,$07,$08,$07,$08,$07
+ $CC5E DEFB $08,$07,$08,$12,$13,$14
+ $CC64 DEFB $FF                             ; Terminator.
+; Building #N$1A.
+ $CC65 DEFB $02,$0C,$0C,$0C,$0C,$0C,$0C,$0C
+ $CC6D DEFB $0C,$0C,$0C,$15,$16,$17
+ $CC73 DEFB $FF                             ; Terminator.
+; Building #N$1B.
+ $CC74 DEFB $45,$47,$48,$47,$48,$47,$48,$47
+ $CC7C DEFB $48,$47,$48,$4B,$4C,$4D
+ $CC82 DEFB $FF                             ; Terminator.
+; Building #N$1C.
+ $CC83 DEFB $42,$47,$48,$47,$48,$52,$47,$48
+ $CC8B DEFB $47,$48,$52,$4E,$4F,$50
+ $CC91 DEFB $FF                             ; Terminator.
+; Building #N$1D.
+ $CC92 DEFB $84,$86,$87,$88,$94,$87,$88,$94
+ $CC9A DEFB $87,$88,$94,$89,$8A,$8B
+ $CCA0 DEFB $FF                             ; Terminator.
+; Building #N$1E.
+ $CCA1 DEFB $81,$87,$87,$87,$88,$87,$88,$87
+ $CCA9 DEFB $88,$87,$88,$89,$8A,$8B
+ $CCAF DEFB $FF                             ; Terminator.
+; Building #N$1F.
+ $CCB0 DEFB $01,$06,$07,$06,$07,$06,$07,$06
+ $CCB8 DEFB $07,$06,$07,$06,$12,$13,$14
+ $CCBF DEFB $FF                             ; Terminator.
+; Building #N$20.
+ $CCC0 DEFB $01,$10,$07,$08,$09,$0A,$0B,$07
+ $CCC8 DEFB $08,$09,$0A,$0B,$15,$16,$17
+ $CCCF DEFB $FF                             ; Terminator.
+; Building #N$21.
+ $CCD0 DEFB $41,$47,$48,$47,$48,$47,$48,$47
+ $CCD8 DEFB $48,$47,$48,$47,$4B,$4C,$4D
+ $CCDF DEFB $FF                             ; Terminator.
+; Building #N$22.
+ $CCE0 DEFB $44,$51,$51,$47,$48,$51,$47,$48
+ $CCE8 DEFB $51,$47,$48,$51,$4E,$4F,$50
+ $CCEF DEFB $FF                             ; Terminator.
+; Building #N$23.
+ $CCF0 DEFB $84,$86,$8E,$8F,$90,$94,$8E,$8F
+ $CCF8 DEFB $90,$94,$99,$9A,$91,$92,$93
+ $CCFF DEFB $FF                             ; Terminator.
+; Building #N$24.
+ $CD00 DEFB $81,$86,$87,$A1,$87,$88,$87,$88
+ $CD08 DEFB $87,$88,$87,$87,$91,$92,$93
+ $CD0F DEFB $FF                             ; Terminator.
+; Building #N$25.
+ $CD10 DEFB $01,$09,$0A,$0B,$07,$08,$07,$08
+ $CD18 DEFB $07,$08,$07,$08,$07,$15,$16,$17
+ $CD20 DEFB $FF                             ; Terminator.
+; Building #N$26.
+ $CD21 DEFB $02,$0D,$09,$0A,$0B,$07,$08,$07
+ $CD29 DEFB $08,$07,$08,$07,$08,$12,$13,$14
+ $CD31 DEFB $FF                             ; Terminator.
+; Building #N$27.
+ $CD32 DEFB $44,$47,$48,$47,$48,$47,$48,$47
+ $CD3A DEFB $48,$47,$48,$47,$48,$4E,$4F,$50
+ $CD42 DEFB $FF                             ; Terminator.
+; Building #N$28.
+ $CD43 DEFB $44,$47,$48,$52,$47,$48,$52,$47
+ $CD4B DEFB $48,$52,$47,$48,$52,$4E,$4F,$50
+ $CD53 DEFB $FF                             ; Terminator.
+; Building #N$29.
+ $CD54 DEFB $81,$87,$88,$87,$88,$87,$88,$87
+ $CD5C DEFB $88,$87,$88,$87,$95,$91,$92,$93
+ $CD64 DEFB $FF                             ; Terminator.
+; Building #N$2A.
+ $CD65 DEFB $85,$8E,$8F,$90,$8E,$8F,$90,$8E
+ $CD6D DEFB $8F,$90,$8E,$8F,$90,$91,$92,$93
+ $CD75 DEFB $FF                             ; Terminator.
+; Building #N$2B.
+ $CD76 DEFB $03,$07,$08,$07,$08,$07,$08,$07
+ $CD7E DEFB $08,$07,$08,$07,$08,$07,$12,$13
+ $CD86 DEFB $14
+ $CD87 DEFB $FF                             ; Terminator.
+; Building #N$2C.
+ $CD88 DEFB $03,$07,$08,$09,$0A,$0B,$07,$08
+ $CD90 DEFB $09,$0A,$0B,$09,$0A,$0B,$12,$13
+ $CD98 DEFB $14
+ $CD99 DEFB $FF                             ; Terminator.
+; Building #N$2D.
+ $CD9A DEFB $41,$47,$48,$52,$47,$48,$52,$47
+ $CDA2 DEFB $48,$47,$48,$52,$47,$48,$4B,$4C
+ $CDAA DEFB $4D
+ $CDAB DEFB $FF                             ; Terminator.
+; Building #N$2E.
+ $CDAC DEFB $41,$47,$48,$47,$48,$51,$47,$48
+ $CDB4 DEFB $51,$47,$48,$51,$47,$48,$4B,$4C
+ $CDBC DEFB $4D
+ $CDBD DEFB $FF                             ; Terminator.
+; Building #N$2F.
+ $CDBE DEFB $82,$87,$86,$87,$88,$87,$88,$87
+ $CDC6 DEFB $88,$87,$88,$87,$88,$88,$89,$8A
+ $CDCE DEFB $8B
+ $CDCF DEFB $FF                             ; Terminator.
+; Building #N$30.
+ $CDD0 DEFB $84,$87,$8E,$8F,$90,$87,$88,$8E
+ $CDD8 DEFB $8F,$90,$87,$88,$87,$88,$89,$8A
+ $CDE0 DEFB $8B
+ $CDE1 DEFB $FF                             ; Terminator.
 
 ; Data: Scenes
 ;
@@ -2761,15 +2873,23 @@ b$CDE2 DEFB $FF                             ; Terminator.
 
 ; Data: George
 @label=George_State
-g$CFD2 DEFB $00             ; #TABLE(default,centre,centre)
-                            ; { =h Value | =h Meaning }
-                            ; { #N$05 | Waiting }
-                            ; { #N$1C | Falling }
-                            ; { #N$21 | Explosion }
-                            ; { #N$23 | Human }
-                            ; { #N$FF | Game Over }
-                            ; TABLE#
- $CFD3 DEFB $00,$00,$00,$00
+g$CFD2 DEFB $00         ; #TABLE(default,centre,centre)
+                        ; { =h Value | =h Meaning }
+                        ; { #N$05 | Waiting }
+                        ; { #N$1A | Eating }
+                        ; { #N$1C | Falling }
+                        ; { #N$21 | Explosion }
+                        ; { #N$23 | Human }
+                        ; { #N$FF | Game Over }
+                        ; TABLE#
+ $CFD3 DEFB $00,$00
+@label=George_Direction
+ $CFD5 DEFB $00         ; #TABLE(default,centre,centre)
+                        ; { =h Value | =h Meaning }
+                        ; { #N$00 | Right }
+                        ; { #N$01 | Left }
+                        ; TABLE#
+ $CFD6 DEFB $00
 @label=George_Countdown
  $CFD7 DEFB $19
  $CFD8 DEFB $03,$19,$00
@@ -2783,16 +2903,16 @@ g$CFD2 DEFB $00             ; #TABLE(default,centre,centre)
 @label=George_Banner_Counter
  $CFDF DEFB $00
 @label=George_Control_Type
- $CFE0 DEFB $04             ; #TABLE(default,centre,centre) { =h Value | =h Meaning }
-                            ; { #N$00 | Computer Controlled }
-                            ; { #N$01 | Sinclair Interface 2 (port 2) }
-                            ; { #N$02 | Sinclair Interface 2 (port 1) }
-                            ; { #N$03 | Kempston Joystick }
-                            ; { #N$04 | Keyboard (set 1) }
-                            ; { #N$05 | Keyboard (set 2) }
-                            ; { #N$06 | Keyboard (set 3 }
-                            ; { #N$FF | Not set }
-                            ; TABLE#
+ $CFE0 DEFB $04         ; #TABLE(default,centre,centre) { =h Value | =h Meaning }
+                        ; { #N$00 | Computer Controlled }
+                        ; { #N$01 | Sinclair Interface 2 (port 2) }
+                        ; { #N$02 | Sinclair Interface 2 (port 1) }
+                        ; { #N$03 | Kempston Joystick }
+                        ; { #N$04 | Keyboard (set 1) }
+                        ; { #N$05 | Keyboard (set 2) }
+                        ; { #N$06 | Keyboard (set 3 }
+                        ; { #N$FF | Not set }
+                        ; TABLE#
  $CFE1 DEFW $CFE3
  $CFE3 DEFB $01,$0A,$0A
  $CFE6 DEFB $12,$02,$02
@@ -2810,12 +2930,20 @@ g$CFD2 DEFB $00             ; #TABLE(default,centre,centre)
 g$D001 DEFB $00                             ; #TABLE(default,centre,centre)
                                             ; { =h Value | =h Meaning }
                                             ; { #N$05 | Waiting }
+                                            ; { #N$1A | Eating }
                                             ; { #N$1C | Falling }
                                             ; { #N$21 | Explosion }
                                             ; { #N$23 | Human }
                                             ; { #N$FF | Game Over }
                                             ; TABLE#
- $D002 DEFB $00,$00,$00,$00
+ $D002 DEFB $00,$00
+@label=Lizzy_Direction
+ $D004 DEFB $00                             ; #TABLE(default,centre,centre)
+                                            ; { =h Value | =h Meaning }
+                                            ; { #N$00 | Right }
+                                            ; { #N$01 | Left }
+                                            ; TABLE#
+ $D005 DEFB $00
 @label=Lizzy_Countdown
  $D006 DEFB $14
  $D007 DEFB $03,$19,$00
@@ -2850,12 +2978,20 @@ g$D001 DEFB $00                             ; #TABLE(default,centre,centre)
 g$D030 DEFB $00                             ; #TABLE(default,centre,centre)
                                             ; { =h Value | =h Meaning }
                                             ; { #N$05 | Waiting }
+                                            ; { #N$1A | Eating }
                                             ; { #N$1C | Falling }
                                             ; { #N$21 | Explosion }
                                             ; { #N$23 | Human }
                                             ; { #N$FF | Game Over }
                                             ; TABLE#
- $D031 DEFB $00,$00,$00,$00
+ $D031 DEFB $00,$00
+@label=Ralph_Direction
+ $D033 DEFB $00                             ; #TABLE(default,centre,centre)
+                                            ; { =h Value | =h Meaning }
+                                            ; { #N$00 | Right }
+                                            ; { #N$01 | Left }
+                                            ; TABLE#
+ $D034 DEFB $00
 @label=Ralph_Countdown
  $D035 DEFB $0F
  $D036 DEFB $03,$19,$00
@@ -2967,23 +3103,29 @@ t$D133 DEFM "K - KEYBOAR","D"+$80   ; "#STR(#PC)".
 t$D18F DEFM "GAME OVE","R"+$80 ; "#STR(#PC)".
 
 ; Graphics: Ticker
+;
+; See #R$FD44.
 @label=Graphics_Ticker
-b$D198 DEFB $43,$46,$46,$46,$46,$46,$46,$46 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $D1A0 DEFB $46,$46,$46,$46,$46,$46,$46,$46 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $D1A8 DEFB $46,$46,$46,$46,$46,$46,$46,$45 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $D1B0 DEFB $43,$46,$00,$47,$48,$00,$46,$46 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $D1B8 DEFB $43,$46,$00,$49,$4A,$01,$46,$46 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $D1C0 DEFB $43,$46,$00,$01,$00,$01,$46,$46 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $D1C8 DEFB $43,$46,$00,$01,$01,$01,$46,$46 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $D1D0 DEFB $43,$46,$01,$01,$01,$01,$46,$46 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $D1D8 DEFB $00,$02,$00,$00,$01,$00,$46,$45 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $D1E0 DEFB $01,$01,$00,$08,$01,$10,$46,$45 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $D1E8 DEFB $01,$01,$0C,$01,$01,$0F,$46,$45 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $D1F0 DEFB $01,$01,$01,$01,$01,$01,$46,$45 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $D1F8 DEFB $43,$44,$44,$44,$44,$44,$44,$44 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $D200 DEFB $44,$44,$44,$44,$44,$44,$44,$44 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $D208 DEFB $44,$44,$44,$44,$44,$44,$44,$45 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
- $D210 DEFB $00
+b$D198 DEFB $43,$46,$46,$46,$46,$46,$46,$46
+ $D1A0 DEFB $46,$46,$46,$46,$46,$46,$46,$46
+ $D1A8 DEFB $46,$46,$46,$46,$46,$46,$46,$45
+ $D1B0 DEFB $43,$46,$00,$47,$48,$00,$46,$46
+ $D1B8 DEFB $43,$46,$00,$49,$4A,$01,$46,$46
+ $D1C0 DEFB $43,$46,$00,$01,$00,$01,$46,$46
+ $D1C8 DEFB $43,$46,$00,$01,$01,$01,$46,$46
+ $D1D0 DEFB $43,$46,$01,$01,$01,$01,$46,$46
+ $D1D8 DEFB $00,$02,$00,$00,$01,$00,$46,$45
+ $D1E0 DEFB $01,$01,$00,$08,$01,$10,$46,$45
+ $D1E8 DEFB $01,$01,$0C,$01,$01,$0F,$46,$45
+ $D1F0 DEFB $01,$01,$01,$01,$01,$01,$46,$45
+ $D1F8 DEFB $43,$44,$44,$44,$44,$44,$44,$44
+ $D200 DEFB $44,$44,$44,$44,$44,$44,$44,$44
+ $D208 DEFB $44,$44,$44,$44,$44,$44,$44,$45
+
+; Game status buffer entry at D210
+;
+; Defaults to #N$80 (see #R$DEC9).
+g$D210 DEFB $00
 
 ; Data block at D211
 b$D211 DEFB $00
@@ -3021,7 +3163,10 @@ g$D218 DEFB $00
 ; never reset).
 @label=Game_Clock
 g$D21A DEFW $0000
- $D21C DEFB $00,$00,$00,$00
+ $D21C DEFB $00,$00
+
+; Game status buffer entry at D21E
+g$D21E DEFB $00,$00
 
 ; Game status buffer entry at D220
 g$D220 DEFB $00,$00
@@ -3033,23 +3178,34 @@ g$D222 DEFB $00,$00
 g$D224 DEFW $D22C
 
 ; Game status buffer entry at D226
-g$D226 DEFW $D23E
+g$D226 DEFB $3E
+
+; George
+g$D227 DEFB $D2
  $D228 DEFB $00
+ $D229 DEFB $00
+ $D22A DEFB $00
+ $D22B DEFB $00
+ $D22C DEFB $00
 
-; Data block at D229
-b$D229 DEFB $00
+; Lizzy
+g$D22D DEFB $00
+ $D22E DEFB $00
+ $D22F DEFB $00
+ $D230 DEFB $00
+ $D231 DEFB $00
+ $D232 DEFB $00
 
-; Game status buffer entry at D22A
-g$D22A DEFW $0000
+; Ralph
+g$D233 DEFB $00
+ $D234 DEFB $00
+ $D235 DEFB $00
+ $D236 DEFB $00
+ $D237 DEFB $00
+ $D238 DEFB $00
 
-; Game status buffer entry at D22C
-g$D22C DEFB $00,$00,$00,$00,$00,$00
-
-; Game status buffer entry at D232
-g$D232 DEFB $00,$00,$00,$00,$00,$00
-
-; Game status buffer entry at D238
-g$D238 DEFB $00,$00,$00,$00,$00,$00
+; Data block at D239
+b$D239 DEFB $00,$00,$00,$00,$00
 
 ; Game status buffer entry at D23E
 g$D23E DEFB $00
@@ -3062,7 +3218,10 @@ g$D241 DEFB $00
  $D243 DEFB $00
 
 ; Game status buffer entry at D244
-g$D244 DEFB $00,$00
+g$D244 DEFB $00
+
+; Game status buffer entry at D245
+g$D245 DEFB $00
 
 ; Game status buffer entry at D246
 g$D246 DEFB $00
@@ -3077,10 +3236,19 @@ g$D246 DEFB $00
 g$D247 DEFB $00
 
 ; Game status buffer entry at D248
-g$D248 DEFB $00,$00
+g$D248 DEFB $00
+
+; Game status buffer entry at D249
+g$D249 DEFB $00
 
 ; Game status buffer entry at D24A
-g$D24A DEFB $00,$00,$00
+g$D24A DEFB $00
+
+; Game status buffer entry at D24B
+g$D24B DEFB $00
+
+; Game status buffer entry at D24C
+g$D24C DEFB $00
 
 ; Game status buffer entry at D24D
 g$D24D DEFB $00
@@ -3340,9 +3508,10 @@ b$D405 DEFB $00      ; #TABLE(default,centre,centre) { =h Value | =h Meaning }
 ; Data block at D408
 b$D408 DEFB $00
 
-; Routine at D409
+; Write Scene To Shadow Buffer
 ;
 ; Used by the routines at #R$DE77, #R$F916 and #R$FD64.
+@label=WriteSceneToShadowBuffer
 c$D409 LD BC,$0000   ; #REGbc=#N($0000,$04,$04).
 ; Self-modifying code. These lines populate the value for a LoaD command below. The values relate to areas of the
 ;       shadow screen buffer: #LIST { #R$6B00(#N$6B00) } { #R$7300 } { #R$7B00 } LIST#
@@ -3357,6 +3526,7 @@ c$D409 LD BC,$0000   ; #REGbc=#N($0000,$04,$04).
  $D422 LD A,$7B      ; {Write #N$7B to: #LIST { *#R$D474(#N$D475) } {
  $D424 LD ($D475),A  ; *#R$D4B5(#N$D4B6) } LIST#
  $D427 LD ($D4B6),A  ; }
+@label=WriteSceneToShadowBuffer_Loop_1
 *$D42A LD A,$89      ; #REGa=#N$89.
  $D42C EX AF,AF'     ; Exchange the #REGaf register with the shadow #REGaf
                      ; register.
@@ -3394,6 +3564,7 @@ c$D409 LD BC,$0000   ; #REGbc=#N($0000,$04,$04).
  $D45D EX AF,AF'     ; Exchange the #REGaf register with the shadow #REGaf
                      ; register.
  $D45E LD A,(HL)     ; #REGa=*#REGhl.
+@label=WriteSceneToShadowBuffer_Loop_2
 *$D45F AND %01111111 ; Keep only bits 0-6.
  $D461 LD E,A        ; #REGe=#REGa.
  $D462 LD A,(HL)     ; #REGa=*#REGhl.
@@ -3442,6 +3613,7 @@ c$D409 LD BC,$0000   ; #REGbc=#N($0000,$04,$04).
  $D491 INC D         ; Increment #REGd by one.
  $D492 LD A,(HL)     ; #REGa=*#REGhl.
  $D493 LD (DE),A     ; Write #REGa to *#REGde.
+@label=WriteSceneToShadowBuffer_Loop_3
 *$D494 INC C         ; Increment #REGc by one.
  $D495 JP NZ,$D42A   ; Jump to #R$D42A if {} is not zero.
  $D498 INC B         ; Increment #REGb by one.
@@ -3520,7 +3692,11 @@ c$D409 LD BC,$0000   ; #REGbc=#N($0000,$04,$04).
  $D4E3 LD (DE),A     ; Write #REGa to *#REGde.
  $D4E4 POP BC        ; Restore #REGbc from the stack.
  $D4E5 JP $D494      ; Jump to #R$D494.
-*$D4E8 EX AF,AF'     ; Exchange the #REGaf register with the shadow #REGaf
+
+; Routine at D4E8
+;
+; Used by the routine at #R$D409.
+c$D4E8 EX AF,AF'     ; Exchange the #REGaf register with the shadow #REGaf
                      ; register.
  $D4E9 ADD A,H       ; #REGa+=#REGh.
  $D4EA LD H,A        ; #REGh=#REGa.
@@ -3883,16 +4059,18 @@ c$D688 LDI           ; {Copy one line to the screen buffer.
 
 ; Routine at D6C9
 ;
-; Used by the routines at #R$D9BB, #R$D9C3, #R$DBE5, #R$E25D, #R$E576, #R$E62D,
-; #R$F10E, #R$F69F, #R$F719, #R$F795, #R$FC1A, #R$FC39 and #R$FCB6.
+; Used by the routines at #R$D9BB, #R$D9C3, #R$DBE5, #R$E25D, #R$E576, #R$EED6,
+; #R$EEEB, #R$EF0A, #R$F10E, #R$F69F, #R$F719, #R$F795, #R$FC1A, #R$FC39 and
+; #R$FCB6.
 c$D6C9 LD ($D214),A  ; Write #REGa to *#R$D214.
  $D6CC PUSH BC       ; Stash #REGbc on the stack.
  $D6CD CALL $D9A9    ; Call #R$D9A9.
  $D6D0 POP BC        ; Restore #REGbc from the stack.
  $D6D1 LD D,A        ; #REGd=#REGa.
  $D6D2 LD A,($D247)  ; #REGa=*#R$D247.
- $D6D5 RRCA          ; RRCA.
- $D6D6 JP C,$D800    ; Jump to #R$D800 if {} is lower.
+ $D6D5 RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $D6D6 JP C,$D800    ; Jump to #R$D800 if the carry flag is set.
  $D6D9 EX AF,AF'     ; Exchange the #REGaf register with the shadow #REGaf
                      ; register.
  $D6DA LD E,A        ; #REGe=#REGa.
@@ -3914,9 +4092,9 @@ c$D6C9 LD ($D214),A  ; Write #REGa to *#R$D214.
                      ; register.
  $D6EE LD A,B        ; #REGa=#REGb.
  $D6EF AND %00000111 ; Keep only bits 0-2.
- $D6F1 RRCA          ; RRCA.
- $D6F2 RRCA          ; RRCA.
- $D6F3 RRCA          ; RRCA.
+ $D6F1 RRCA          ; {RRCA.
+ $D6F2 RRCA          ;
+ $D6F3 RRCA          ; }
  $D6F4 ADD A,C       ; #REGa+=#REGc.
  $D6F5 EXX           ; Switch to the shadow registers.
  $D6F6 LD C,A        ; #REGc=#REGa.
@@ -4536,7 +4714,8 @@ c$D9A9 CALL $DA1D    ; Call #R$DA1D.
 
 ; Routine at D9BB
 ;
-; Used by the routine at #R$E62D.
+; Used by the routines at #R$E99B, #R$EA18, #R$EA43, #R$EA9C, #R$EAF6, #R$EC8A,
+; #R$ECE0, #R$ED31, #R$EDC2, #R$EE70 and #R$EE9B.
 c$D9BB LD L,A        ; #REGl=#REGa.
  $D9BC LD A,($D251)  ; #REGa=*#R$D251.
  $D9BF OR L          ; Set the bits from #REGl.
@@ -4544,7 +4723,7 @@ c$D9BB LD L,A        ; #REGl=#REGa.
 
 ; Routine at D9C3
 ;
-; Used by the routines at #R$E62D and #R$EF86.
+; Used by the routines at #R$E971, #R$E982 and #R$EF86.
 c$D9C3 LD A,(IX+$05)   ; {Jump to #R$D9D2 if *#REGix+#N$05 is equal to
  $D9C6 CP (IX+$04)     ; *#REGix+#N$04.
  $D9C9 JP Z,$D9D2      ; }
@@ -4578,7 +4757,7 @@ c$D9C3 LD A,(IX+$05)   ; {Jump to #R$D9D2 if *#REGix+#N$05 is equal to
 
 ; Routine at DA0F
 ;
-; Used by the routines at #R$E62D and #R$EF86.
+; Used by the routines at #R$E68C, #R$E971, #R$E982 and #R$EF86.
 c$DA0F DEC A         ; Decrease #REGa by one.
  $DA10 ADD A,A       ; #REGa*=#N$02.
  $DA11 LD L,A        ; {#REGa*=#N$05.
@@ -4606,8 +4785,8 @@ c$DA1D DEC A         ; Decrease #REGa by one.
 
 ; Random Number
 ;
-; Used by the routines at #R$DB7E, #R$DBE5, #R$DCA1, #R$E179, #R$E25D, #R$E62D,
-; #R$F28B, #R$F450, #R$FC39, #R$FCB6, #R$FD64, #R$FD9E and #R$FDC4.
+; Used by the routines at #R$DB7E, #R$DBE5, #R$DCA1, #R$E179, #R$E25D, #R$E99B,
+; #R$F28B, #R$F4E6, #R$FC39, #R$FCB6, #R$FD64, #R$FD9E and #R$FDC4.
 ;
 ; O:A Random number
 @label=RandomNumber
@@ -4632,7 +4811,7 @@ c$DA28 LD DE,($D21A) ; #REGde=*#R$D21A.
 
 ; Routine at DA3D
 ;
-; Used by the routines at #R$DA71, #R$F2CA and #R$F450.
+; Used by the routines at #R$DA71, #R$F2CA and #R$F4E6.
 c$DA3D LD A,D        ; #REGa=#REGd.
  $DA3E ADD A,A       ; #REGa+=#REGa.
  $DA3F ADD A,D       ; #REGa+=#REGd.
@@ -4653,39 +4832,41 @@ c$DA3D LD A,D        ; #REGa=#REGd.
 
 ; Routine at DA51
 ;
-; Used by the routine at #R$E62D.
-c$DA51 LD A,($D24D)  ; #REGa=*#R$D24D.
- $DA54 INC A         ; Increment #REGa by one.
- $DA55 LD ($D24D),A  ; Write #REGa to *#R$D24D.
+; Used by the routines at #R$E68C and #R$EA04.
+c$DA51 LD A,($D24D)  ; {Increment *#R$D24D by one.
+ $DA54 INC A         ;
+ $DA55 LD ($D24D),A  ; }
  $DA58 RET           ; Return.
 
 ; Routine at DA59
 ;
-; Used by the routine at #R$E62D.
-c$DA59 LD A,($D24E)  ; #REGa=*#R$D24E.
- $DA5C INC A         ; Increment #REGa by one.
- $DA5D LD ($D24E),A  ; Write #REGa to *#R$D24E.
+; Used by the routines at #R$E982, #R$EA43, #R$EAF6 and #R$EC8A.
+c$DA59 LD A,($D24E)  ; {Increment *#R$D24E by one.
+ $DA5C INC A         ;
+ $DA5D LD ($D24E),A  ; }
  $DA60 RET           ; Return.
 
 ; Routine at DA61
 ;
-; Used by the routine at #R$E62D.
-c$DA61 LD A,($D24D)  ; #REGa=*#R$D24D.
- $DA64 DEC A         ; Decrease #REGa by one.
- $DA65 LD ($D24D),A  ; Write #REGa to *#R$D24D.
+; Used by the routines at #R$E68C, #R$EA9C, #R$EAF6 and #R$EC8A.
+c$DA61 LD A,($D24D)  ; {Decrease *#R$D24D by one.
+ $DA64 DEC A         ;
+ $DA65 LD ($D24D),A  ; }
  $DA68 RET           ; Return.
 
 ; Routine at DA69
 ;
-; Used by the routine at #R$E62D.
-c$DA69 LD A,($D24E)  ; #REGa=*#R$D24E.
- $DA6C DEC A         ; Decrease #REGa by one.
- $DA6D LD ($D24E),A  ; Write #REGa to *#R$D24E.
+; Used by the routine at #R$E68C.
+c$DA69 LD A,($D24E)  ; {Decrease *#R$D24E by one.
+ $DA6C DEC A         ;
+ $DA6D LD ($D24E),A  ; }
  $DA70 RET           ; Return.
 
 ; Routine at DA71
 ;
 ; Used by the routine at #R$DF90.
+;
+; IX Buildings Table
 c$DA71 LD ($D213),A    ; Write #REGa to *#R$D213.
  $DA74 LD (IX+$00),$01 ; Write #N$01 to *#REGix+#N$00.
  $DA78 LD (IX+$07),A   ; Write #REGa to *#REGix+#N$07.
@@ -4710,8 +4891,8 @@ c$DA71 LD ($D213),A    ; Write #REGa to *#R$D213.
  $DA9E LD ($DB52),HL   ; Write #REGhl to *#R$DB52.
  $DAA1 LD A,(HL)       ; #REGa=*#REGhl.
  $DAA2 AND %11000000   ; Keep only bits 6-7.
- $DAA4 RLCA            ; RLCA.
- $DAA5 RLCA            ; RLCA.
+ $DAA4 RLCA            ; {Rotate #REGa left two positions (bits 6 to 7 are now
+ $DAA5 RLCA            ; in positions 0 to 1).}
  $DAA6 CP $00          ; {Jump to #R$DAB1 if #REGa is not equal to #N$00.
  $DAA8 JR NZ,$DAB1     ; }
  $DAAA LD HL,$C99E     ; #REGhl=#R$C99E.
@@ -4805,7 +4986,7 @@ c$DA71 LD ($D213),A    ; Write #REGa to *#R$D213.
  $DB50 POP DE          ; Restore #REGde from the stack.
  $DB51 RET             ; Return.
  $DB52 DEFW $0000      ;
-; This entry point is used by the routines at #R$E62D and #R$EF86.
+; This entry point is used by the routines at #R$E971, #R$E982 and #R$EF86.
 *$DB54 LD IX,($D253)   ; #REGix=#R$D253.
  $DB58 LD A,($D24D)    ; #REGa=*#R$D24D.
  $DB5B LD (IX+$01),A   ; Write #REGa to *#REGix+#N$01.
@@ -4934,8 +5115,9 @@ c$DBE5 LD B,$06        ; #REGb=#N$06 (number of possible helicopters).
  $DBF5 JP Z,$DC95      ; }
  $DBF8 LD C,(IX+$01)   ; #REGc=*#REGix+#N$01.
  $DBFB LD B,(IX+$02)   ; #REGb=*#REGix+#N$02.
- $DBFE RLCA            ; RLCA.
- $DBFF JR C,$DC62      ; Jump to #R$DC62 if {} is lower.
+ $DBFE RLCA            ; Rotate #REGa left one position, setting the carry flag
+                       ; if bit 7 was set.
+ $DBFF JR C,$DC62      ; Jump to #R$DC62 if the carry flag is set.
  $DC01 LD A,C          ; {Jump to #R$DC18 if #REGc is equal to #N$21.
  $DC02 CP $21          ;
  $DC04 JR Z,$DC18      ; }
@@ -5174,33 +5356,34 @@ c$DD4D AND %11000000 ; Keep only bits 6-7.
 
 ; Sets #REGiy To Monster Data
 ;
-; Used by the routines at #R$F450 and #R$F795.
+; Used by the routines at #R$F4B8, #R$F4D1 and #R$F795.
 ;
 ;   A Monster ID
 ; O:IY Monster data
-;
-; George:
-@label=SetIYMonsterData_George
+@label=SetIYMonsterData
 c$DD52 CP $01        ; {Jump to #R$DD5B if #REGa is not equal to #N$01.
  $DD54 JR NZ,$DD5B   ; }
+; #REGa is #N$01; set to George:
  $DD56 LD IY,$CFD2   ; #REGiy=#R$CFD2.
  $DD5A RET           ; Return.
-; Lizzy:
+; If it's not #N$01, is it #N$02?
 @label=SetIYMonsterData_Lizzy
 *$DD5B CP $02        ; {Jump to #R$DD64 if #REGa is not equal to #N$02.
  $DD5D JR NZ,$DD64   ; }
+; #REGa is #N$02; set to Lizzy:
  $DD5F LD IY,$D001   ; #REGiy=#R$D001.
  $DD63 RET           ; Return.
-; Ralph:
+; Just return if #REGa is none of #N$01, #N$02 or #N$03.
 @label=SetIYMonsterData_Ralph
 *$DD64 CP $03        ; {Return if #REGa is not equal to #N$03.
  $DD66 RET NZ        ; }
+; #REGa is #N$03; set to Ralph:
  $DD67 LD IY,$D030   ; #REGiy=#R$D030.
  $DD6B RET           ; Return.
 
 ; Handler: Decrease Energy
 ;
-; Used by the routines at #R$E576, #R$E62D, #R$F450, #R$F69F and #R$F795.
+; Used by the routines at #R$E576, #R$EA43, #R$F4B8, #R$F69F and #R$F795.
 ;
 ; IY Monster Pointer
 ; A Damage value
@@ -5227,26 +5410,33 @@ c$DD6C EX AF,AF'       ; Exchange the #REGaf register with the shadow #REGaf
                        ; state (*#REGiy+#N$00).
  $DD88 RET             ; Return.
 
-; Routine at DD89
+; Handler: Increase Energy (Eaten Food)
 ;
-; Used by the routine at #R$F450.
-c$DD89 ADD A,(IY+$0C)  ; #REGa+=*#REGiy+#N$0C.
- $DD8C LD (IY+$0C),A   ; Write #REGa to *#REGiy+#N$0C.
- $DD8F CP $41          ; {Return if #REGa is lower than #N$41.
+; Used by the routine at #R$F4D1.
+;
+; IY Monster data
+; A Energy increment
+@label=Handler_IncreaseEnergy
+c$DD89 ADD A,(IY+$0C)  ; {Add the energy value to the monsters current energy
+ $DD8C LD (IY+$0C),A   ; level (*#REGiy+#N$0C).}
+; Ensure the maximum value for monster energy is not breached.
+ $DD8F CP $41          ; {Return if the monsters energy is lower than #N$41.
  $DD91 RET C           ; }
- $DD92 LD (IY+$0C),$40 ; Write #N$40 to *#REGiy+#N$0C.
+ $DD92 LD (IY+$0C),$40 ; Else write #N$40 to the monsters energy
+                       ; (*#REGiy+#N$0C) to keep it within the acceptable
+                       ; range.
  $DD96 RET             ; Return.
 
-; Add Points To Score
+; Handler: Add Points To Score
 ;
-; Used by the routines at #R$F450 and #R$F795.
+; Used by the routines at #R$F450, #R$F4E6 and #R$F795.
 ;
 ; A Monster ID
 ; D Points to add to score digit
 ; E Digit to update
 ;
 ; Derive pointer to monster score messaging from the given ID.
-@label=AddPoints
+@label=Handler_AddPoints
 c$DD97 CP $01        ; {Jump to #R$DDA0 if #REGa is not targeting George
  $DD99 JR NZ,$DDA0   ; (#N$01).}
 ; George:
@@ -5474,11 +5664,12 @@ c$DEC6 CALL $FBDB    ; Call #R$FBDB.
 ;
 ; Used by the routine at #R$DE19.
 @label=InitialiseNewGame
-c$DEE1 XOR A           ; #REGa=#N$00.
+c$DEE1 XOR A           ; #REGa=#N$00 (face right).
 ; Set up George.
  $DEE2 LD IY,$CFD2     ; #REGiy=#R$CFD2.
  $DEE6 CALL $DF1F      ; Call #R$DF1F.
- $DEE9 LD (IY+$03),$01 ; Write #N$01 to *#REGiy+#N$03.
+ $DEE9 LD (IY+$03),$01 ; Write #N$01 (face left) to monster direction
+                       ; (*#REGiy+#N$03).
  $DEED LD (IY+$09),$15 ; Write #N$15 to monster X position (*#REGiy+#N$09).
 ; Set up Lizzy.
  $DEF1 LD IY,$D001     ; #REGiy=#R$D001.
@@ -5509,8 +5700,8 @@ c$DEE1 XOR A           ; #REGa=#N$00.
 ; See: #R$CFD2, #R$D001, #R$D030.
 @label=SetMonsterStates
 c$DF1F LD (IY+$00),$1C ; Write #N$1C (falling) to monster state (#REGiy+#N$00).
- $DF23 LD (IY+$02),A   ; {Write #REGa to: #LIST { #REGiy+#N$02 } { #REGiy+#N$03
- $DF26 LD (IY+$03),A   ; } { #REGiy+#N$08 } LIST#
+ $DF23 LD (IY+$02),A   ; {Write #REGa to: #LIST { #REGiy+#N$02 } { monster
+ $DF26 LD (IY+$03),A   ; direction (#REGiy+#N$03) } { #REGiy+#N$08 } LIST#
  $DF29 LD (IY+$08),A   ; }
  $DF2C LD (IY+$04),$01 ; Write #N$01 to #REGiy+#N$04.
  $DF30 LD (IY+$0A),$FE ; Write #N$FE to monster Y position (#REGiy+#N$0A).
@@ -5567,7 +5758,8 @@ c$DF46 LD IY,$CFD2     ; #REGiy=#R$CFD2.
  $DF6E XOR A           ; {Write #N$00 to: #LIST { State (#REGiy+#N$00) } {
  $DF6F LD (IY+$00),A   ; #REGiy+#N$02 } LIST#
  $DF72 LD (IY+$02),A   ; }
- $DF75 LD (IY+$03),$01 ; Write #N$01 to #REGiy+#N$03.
+ $DF75 LD (IY+$03),$01 ; Write #N$01 (face left) to monster direction
+                       ; (#REGiy+#N$03).
  $DF79 LD (IY+$04),A   ; Write #N$00 to #REGiy+#N$04.
  $DF7C LD (IY+$05),$19 ; Write #N$19 to #REGiy+#N$05.
  $DF80 LD (IY+$06),$03 ; Write #N$03 to #REGiy+#N$06.
@@ -5576,7 +5768,7 @@ c$DF46 LD IY,$CFD2     ; #REGiy=#R$CFD2.
  $DF8B LD (IY+$0A),$12 ; Write #N$12 to Y position (#REGiy+#N$0A).
  $DF8F RET             ; Return.
 
-; Routine at DF90
+; Find Scene
 ;
 ; Used by the routines at #R$DE19 and #R$F916.
 ;
@@ -5732,11 +5924,11 @@ c$DF90 LD E,A                               ; #REGe=level.
                                             ; zero.
  $E04C LD HL,$D31F                          ; #REGhl=#R$D31F.
  $E04F LD DE,$D35F                          ; #REGde=#R$D35F.
- $E052 LD B,$20                             ; #REGb=#N$20.
+ $E052 LD B,$20                             ; #REGb=#N$20 (counter).
 *$E054 LD A,(DE)                            ; #REGa=*#REGde.
- $E055 RLCA                                 ; RLCA.
- $E056 RLCA                                 ; RLCA.
- $E057 RLCA                                 ; RLCA.
+ $E055 RLCA                                 ; {Rotate #REGa left three
+ $E056 RLCA                                 ; positions.
+ $E057 RLCA                                 ; }
  $E058 OR (HL)                              ; Set the bits from *#REGhl.
  $E059 LD (HL),A                            ; Write #REGa to *#REGhl.
  $E05A INC HL                               ; Increment #REGhl by one.
@@ -5744,6 +5936,7 @@ c$DF90 LD E,A                               ; #REGe=level.
  $E05C DJNZ $E054                           ; Decrease counter by one and loop
                                             ; back to #R$E054 until counter is
                                             ; zero.
+; Default to not using the train.
  $E05E LD A,$FE                             ; {Write #N$FE (spawning "off") to
  $E060 LD ($D405),A                         ; *#R$D405.}
  $E063 LD A,($D400)                         ; {Jump to #R$E099 if *#R$D400 is
@@ -5751,6 +5944,7 @@ c$DF90 LD E,A                               ; #REGe=level.
  $E068 JR Z,$E099                           ; }
  $E06A CP $05                               ; {Jump to #R$E09E if #REGa is
  $E06C JR Z,$E09E                           ; equal to #N$05.}
+; Anything else uses vehicles.
  $E06E LD A,$18                             ; {Write #N$18 to *#R$D401.
  $E070 LD ($D401),A                         ; }
 @label=Helicopters_CalculateCount
@@ -5795,7 +5989,7 @@ c$DF90 LD E,A                               ; #REGe=level.
 
 ; Routine at E0AD
 ;
-; Used by the routine at #R$E62D.
+; Used by the routines at #R$E62D, #R$E68C and #R$EAF6.
 c$E0AD LD HL,$D24D   ; #REGhl=#R$D24D.
  $E0B0 LD A,C        ; #REGa=#REGc.
  $E0B1 AND A         ; {Jump to #R$E0C1 if the sign flag set.
@@ -5809,18 +6003,18 @@ c$E0AD LD HL,$D24D   ; #REGhl=#R$D24D.
  $E0BD ADD A,(HL)    ; #REGa+=*#REGhl.
  $E0BE LD B,A        ; #REGb=#REGa.
  $E0BF JR $E0CF      ; Jump to #R$E0CF.
-*$E0C1 XOR %10000000 ; Reset bit 7.
+*$E0C1 XOR %10000000 ; Flip bit 7.
  $E0C3 SUB (HL)      ; #REGa-=*#REGhl.
  $E0C4 CPL           ; Invert the bits in #REGa.
  $E0C5 INC A         ; Increment #REGa by one.
  $E0C6 LD C,A        ; #REGc=#REGa.
  $E0C7 JR $E0B7      ; Jump to #R$E0B7.
-*$E0C9 XOR %10000000 ; Reset bit 7.
+*$E0C9 XOR %10000000 ; Flip bit 7.
  $E0CB SUB (HL)      ; #REGa-=*#REGhl.
  $E0CC CPL           ; Invert the bits in #REGa.
  $E0CD INC A         ; Increment #REGa by one.
  $E0CE LD B,A        ; #REGb=#REGa.
-; This entry point is used by the routines at #R$E25D and #R$F450.
+; This entry point is used by the routines at #R$E25D, #R$F450 and #R$F4E6.
 *$E0CF LD A,C        ; #REGa=#REGc.
  $E0D0 CP $20        ; {Jump to #R$E10A if #REGa is higher than #N$20.
  $E0D2 JR NC,$E10A   ; }
@@ -5877,12 +6071,17 @@ c$E0AD LD HL,$D24D   ; #REGhl=#R$D24D.
 ; Routine at E119
 ;
 ; Used by the routine at #R$DE77.
+;
+; .
+;
+; George:
 c$E119 LD HL,$CFD2   ; #REGhl=#R$CFD2.
  $E11C CALL $E16B    ; Call #R$E16B.
  $E11F CALL $E62D    ; Call #R$E62D.
  $E122 CALL $F3CA    ; Call #R$F3CA.
  $E125 LD DE,$CFD2   ; #REGde=#R$CFD2.
  $E128 CALL $E170    ; Call #R$E170.
+; Lizzy:
  $E12B LD HL,$D001   ; #REGhl=#R$D001.
  $E12E CALL $E16B    ; Call #R$E16B.
  $E131 CALL $E62D    ; Call #R$E62D.
@@ -5892,6 +6091,7 @@ c$E119 LD HL,$CFD2   ; #REGhl=#R$CFD2.
  $E13D CALL $F3CA    ; Call #R$F3CA.
  $E140 LD DE,$D001   ; #REGde=#R$D001.
  $E143 CALL $E170    ; Call #R$E170.
+; Ralph:
  $E146 LD HL,$D030   ; #REGhl=#R$D030.
  $E149 CALL $E16B    ; Call #R$E16B.
  $E14C CALL $E62D    ; Call #R$E62D.
@@ -5912,9 +6112,10 @@ c$E119 LD HL,$CFD2   ; #REGhl=#R$CFD2.
  $E176 LDIR          ; LDIR.
  $E178 RET           ; Return.
 
-; Routine at E179
+; Controls?
 ;
-; Used by the routine at #R$E62D.
+; Used by the routines at #R$E68C, #R$E99B, #R$EA9C, #R$EAF6 and #R$EF50.
+@label=Controls
 c$E179 LD A,($D252)  ; {Jump to #R$E1CE if *#R$D252 is not zero.
  $E17C AND A         ;
  $E17D JR NZ,$E1CE   ; }
@@ -5922,14 +6123,16 @@ c$E179 LD A,($D252)  ; {Jump to #R$E1CE if *#R$D252 is not zero.
  $E182 AND %00011111 ;
  $E184 LD ($D217),A  ; }
  $E187 LD A,($D248)  ; #REGa=*#R$D248.
- $E18A RRCA          ; RRCA.
- $E18B JR NC,$E193   ; Jump to #R$E193 if {} is higher.
+ $E18A RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $E18B JR NC,$E193   ; Jump to #R$E193 if the carry flag is not set.
  $E18D LD A,$08      ; {Write #N$08 to *#R$D217.
  $E18F LD ($D217),A  ; }
  $E192 RET           ; Return.
 *$E193 LD A,($D246)  ; #REGa=*#R$D246.
- $E196 RRCA          ; RRCA.
- $E197 JR NC,$E1A1   ; Jump to #R$E1A1 if {} is higher.
+ $E196 RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $E197 JR NC,$E1A1   ; Jump to #R$E1A1 if the carry flag is not set.
  $E199 LD A,($D217)  ; {Jump to #R$E17F if *#R$D217 is equal to #N$10.
  $E19C CP $10        ;
  $E19E JR Z,$E17F    ; }
@@ -5969,7 +6172,7 @@ c$E179 LD A,($D252)  ; {Jump to #R$E1CE if *#R$D252 is not zero.
  $E1DC JP $E243      ; Jump to #R$E243.
  $E1DF LD A,$F7      ; #REGa=#N$F7.
  $E1E1 IN A,($FE)    ;
- $E1E3 XOR %10111111 ;
+ $E1E3 XOR %10111111 ; Flip bits 0-5 and 7.
  $E1E5 AND %00011111 ; Keep only bits 0-4.
  $E1E7 JP $E243      ; Jump to #R$E243.
  $E1EA LD A,$EF      ; #REGa=#N$EF.
@@ -5980,7 +6183,7 @@ c$E179 LD A,($D252)  ; {Jump to #R$E1CE if *#R$D252 is not zero.
  $E1F2 RRCA          ; {RRCA.
  $E1F3 RRCA          ;
  $E1F4 RRCA          ; }
- $E1F5 XOR %10111111 ; Reset bits 0-5, 7.
+ $E1F5 XOR %10111111 ; Flip bits 0-5 and 7.
  $E1F7 AND %00011111 ; Keep only bits 0-4.
  $E1F9 JP $E243      ; Jump to #R$E243.
  $E1FC IN A,($1F)    ;
@@ -5990,7 +6193,7 @@ c$E179 LD A,($D252)  ; {Jump to #R$E1CE if *#R$D252 is not zero.
  $E204 AND %00000011 ; Keep only bits 0-1.
  $E206 LD A,B        ; #REGa=#REGb.
  $E207 JP Z,$E20C    ; Jump to #R$E20C if {} is zero.
- $E20A XOR %00000011 ; Reset bits 0-1.
+ $E20A XOR %00000011 ; Flip bits 0-1.
 *$E20C OR A          ; Set the bits from #REGa.
  $E20D JP $E243      ; Jump to #R$E243.
  $E210 LD HL,$C850   ; #REGhl=#R$C850.
@@ -6080,7 +6283,7 @@ c$E25D LD B,$10      ; #REGb=#N$10.
  $E296 LD A,(HL)     ; #REGa=*#REGhl.
  $E297 DEC A         ; Decrease #REGa by one.
  $E298 LD (HL),A     ; Write #REGa to *#REGhl.
- $E299 JP NZ,$E54D   ; Jump to #R$E54D if {} is not zero.
+ $E299 JP NZ,$E54D   ; Jump to #R$E54D until #REGa is zero.
  $E29C LD (HL),$10   ; Write #N$10 to *#REGhl.
  $E29E DEC HL        ; Decrease #REGhl by one.
  $E29F LD (HL),$02   ; Write #N$02 to *#REGhl.
@@ -6090,7 +6293,7 @@ c$E25D LD B,$10      ; #REGb=#N$10.
  $E2A6 LD A,(HL)     ; #REGa=*#REGhl.
  $E2A7 DEC A         ; Decrease #REGa by one.
  $E2A8 LD (HL),A     ; Write #REGa to *#REGhl.
- $E2A9 JP NZ,$E54D   ; Jump to #R$E54D if {} is not zero.
+ $E2A9 JP NZ,$E54D   ; Jump to #R$E54D until #REGa is zero.
  $E2AC LD (HL),$0E   ; Write #N$0E to *#REGhl.
  $E2AE DEC HL        ; Decrease #REGhl by one.
  $E2AF CALL $DA28    ; {Get a random number between 0-15.
@@ -6268,7 +6471,7 @@ c$E25D LD B,$10      ; #REGb=#N$10.
  $E3E7 JR NC,$E40C   ; }
  $E3E9 CP $80        ; {Jump to #R$E3F7 if #REGa is equal to #N$80.
  $E3EB JR Z,$E3F7    ; }
- $E3ED JR C,$E408    ; Jump to #R$E408 if {} is lower.
+ $E3ED JR C,$E408    ; Jump to #R$E408 if #REGa is lower than #N$80.
  $E3EF AND %00000011 ; Keep only bits 0-1.
  $E3F1 CP $02        ; {Jump to #R$E3FE if #REGa is lower than #N$02.
  $E3F3 JR C,$E3FE    ; }
@@ -6314,16 +6517,16 @@ c$E25D LD B,$10      ; #REGb=#N$10.
 *$E448 LD A,(HL)     ; #REGa=*#REGhl.
  $E449 DEC A         ; Decrease #REGa by one.
  $E44A LD (HL),A     ; Write #REGa to *#REGhl.
- $E44B CP $C8        ; Compare #REGa with #N$C8.
- $E44D JP NC,$E4D6   ; Jump to #R$E4D6 if {} is higher.
- $E450 CP $14        ; Compare #REGa with #N$14.
- $E452 JR C,$E4D2    ; Jump to #R$E4D2 if {} is lower.
+ $E44B CP $C8        ; {Jump to #R$E4D6 if #REGa is higher than #N$C8.
+ $E44D JP NC,$E4D6   ; }
+ $E450 CP $14        ; {Jump to #R$E4D2 if #REGa is lower than #N$14.
+ $E452 JR C,$E4D2    ; }
  $E454 AND %00011111 ; Keep only bits 0-4.
- $E456 JR Z,$E463    ; Jump to #R$E463 if {} is zero.
+ $E456 JR Z,$E463    ; Jump to #R$E463 if the result is zero.
  $E458 LD A,(HL)     ; #REGa=*#REGhl.
- $E459 RLCA          ; RLCA.
- $E45A RLCA          ; RLCA.
- $E45B RLCA          ; RLCA.
+ $E459 RLCA          ; {RLCA.
+ $E45A RLCA          ;
+ $E45B RLCA          ; }
  $E45C AND %00000011 ; Keep only bits 0-1.
  $E45E CALL $DBD9    ; Call #R$DBD9.
  $E461 JR $E474      ; Jump to #R$E474.
@@ -6333,9 +6536,9 @@ c$E25D LD B,$10      ; #REGb=#N$10.
  $E46B EX AF,AF'     ; Exchange the #REGaf register with the shadow #REGaf
                      ; register.
  $E46C AND %00000011 ; Keep only bits 0-1.
- $E46E RRCA          ; RRCA.
- $E46F RRCA          ; RRCA.
- $E470 RRCA          ; RRCA.
+ $E46E RRCA          ; {RRCA.
+ $E46F RRCA          ;
+ $E470 RRCA          ; }
  $E471 OR %00011111  ; Set bits 0-4.
  $E473 LD (HL),A     ; Write #REGa to *#REGhl.
 *$E474 INC HL        ; Increment #REGhl by one.
@@ -6345,18 +6548,18 @@ c$E25D LD B,$10      ; #REGb=#N$10.
  $E478 LD A,(HL)     ; #REGa=*#REGhl.
  $E479 DEC HL        ; {Decrease #REGhl by two.
  $E47A DEC HL        ; }
- $E47B JR Z,$E486    ; Jump to #R$E486 if {} is zero.
+ $E47B JR Z,$E486    ; Jump to #R$E486 if #REGhl is zero.
  $E47D JR NC,$E48B   ; Jump to #R$E48B if {} is higher.
- $E47F CP C          ; Compare #REGa with #REGc.
- $E480 JR Z,$E49A    ; Jump to #R$E49A if {} is zero.
- $E482 JR C,$E496    ; Jump to #R$E496 if {} is lower.
+ $E47F CP C          ; {Jump to #R$E49A if #REGa is equal to #REGc.
+ $E480 JR Z,$E49A    ; }
+ $E482 JR C,$E496    ; Jump to #R$E496 if #REGa is lower than #REGc.
  $E484 JR $E49E      ; Jump to #R$E49E.
-*$E486 CP C          ; Compare #REGa with #REGc.
- $E487 JR C,$E492    ; Jump to #R$E492 if {} is lower.
+*$E486 CP C          ; {Jump to #R$E492 if #REGa is lower than #REGc.
+ $E487 JR C,$E492    ; }
  $E489 JR $E4BD      ; Jump to #R$E4BD.
-*$E48B CP C          ; Compare #REGa with #REGc.
- $E48C JR Z,$E4B5    ; Jump to #R$E4B5 if {} is zero.
- $E48E JR C,$E4B1    ; Jump to #R$E4B1 if {} is lower.
+*$E48B CP C          ; {Jump to #R$E4B5 if #REGa is equal to #REGc.
+ $E48C JR Z,$E4B5    ; }
+ $E48E JR C,$E4B1    ; Jump to #R$E4B1 if #REGa is lower than #REGc.
  $E490 JR $E4B9      ; Jump to #R$E4B9.
 *$E492 LD B,$CA      ; #REGb=#N$CA.
  $E494 JR $E4C1      ; Jump to #R$E4C1.
@@ -6381,14 +6584,14 @@ c$E25D LD B,$10      ; #REGb=#N$10.
 *$E4BD LD B,$D2      ; #REGb=#N$D2.
  $E4BF JR $E4A0      ; Jump to #R$E4A0.
 *$E4C1 CALL $DA28    ; Call #R$DA28.
- $E4C4 CP $04        ; Compare #REGa with #N$04.
+ $E4C4 CP $04        ; Compare #REGa with #N$04...
  $E4C6 LD A,B        ; #REGa=#REGb.
- $E4C7 JP NC,$E535   ; Jump to #R$E535 if {} is higher.
+ $E4C7 JP NC,$E535   ; Jump to #R$E535 if #REGa is higher than #N$04.
  $E4CA LD C,$80      ; #REGc=#N$80.
  $E4CC CALL $E4DE    ; Call #R$E4DE.
  $E4CF JP $E535      ; Jump to #R$E535.
-*$E4D2 CP $0A        ; Compare #REGa with #N$0A.
- $E4D4 JR Z,$E463    ; Jump to #R$E463 if {} is zero.
+*$E4D2 CP $0A        ; {Jump to #R$E463 if #REGa is equal to #N$0A.
+ $E4D4 JR Z,$E463    ; }
 *$E4D6 LD A,$C0      ; #REGa=#N$C0.
  $E4D8 JP NZ,$E541   ; Jump to #R$E541 if {} is not zero.
  $E4DB JP $E2C3      ; Jump to #R$E2C3.
@@ -6402,9 +6605,9 @@ c$E25D LD B,$10      ; #REGb=#N$10.
 *$E4E9 INC DE        ; {Increment #REGde by three.
  $E4EA INC DE        ;
  $E4EB INC DE        ; }
- $E4EC LD A,(DE)     ; #REGa=*#REGde.
- $E4ED AND A         ; Set flags.
- $E4EE JR NZ,$E4E9   ; Jump to #R$E4E9 if {} is not zero.
+ $E4EC LD A,(DE)     ; {Jump to #R$E4E9 if *#REGde is not zero.
+ $E4ED AND A         ;
+ $E4EE JR NZ,$E4E9   ; }
  $E4F0 LD A,B        ; #REGa=#REGb.
  $E4F1 SUB $C8       ; #REGa-=#N$C8.
  $E4F3 RRCA          ; RRCA.
@@ -6415,26 +6618,26 @@ c$E25D LD B,$10      ; #REGb=#N$10.
  $E4F8 LD C,(HL)     ; #REGc=*#REGhl.
  $E4F9 INC HL        ; Increment #REGhl by one.
  $E4FA LD B,(HL)     ; #REGb=*#REGhl.
- $E4FB CP $04        ; Compare #REGa with #N$04.
- $E4FD JR NZ,$E502   ; Jump to #R$E502 if {} is not zero.
+ $E4FB CP $04        ; {Jump to #R$E502 if #REGa is not equal to #N$04.
+ $E4FD JR NZ,$E502   ; }
  $E4FF INC C         ; Increment #REGc by one.
  $E500 JR $E520      ; Jump to #R$E520.
-*$E502 CP $82        ; Compare #REGa with #N$82.
- $E504 JR NZ,$E509   ; Jump to #R$E509 if {} is not zero.
+*$E502 CP $82        ; {Jump to #R$E509 if #REGa is not equal to #N$82.
+ $E504 JR NZ,$E509   ; }
  $E506 INC B         ; Increment #REGb by one.
  $E507 JR $E520      ; Jump to #R$E520.
-*$E509 CP $02        ; Compare #REGa with #N$02.
- $E50B JR Z,$E515    ; Jump to #R$E515 if {} is zero.
- $E50D CP $01        ; Compare #REGa with #N$01.
- $E50F JR Z,$E515    ; Jump to #R$E515 if {} is zero.
- $E511 CP $85        ; Compare #REGa with #N$85.
- $E513 JR NZ,$E519   ; Jump to #R$E519 if {} is not zero.
+*$E509 CP $02        ; {Jump to #R$E515 if #REGa is equal to #N$02.
+ $E50B JR Z,$E515    ; }
+ $E50D CP $01        ; {Jump to #R$E515 if #REGa is equal to #N$01.
+ $E50F JR Z,$E515    ; }
+ $E511 CP $85        ; {Jump to #R$E519 if #REGa is not equal to #N$85.
+ $E513 JR NZ,$E519   ; }
 *$E515 INC B         ; Increment #REGb by one.
  $E516 INC C         ; Increment #REGc by one.
  $E517 JR $E520      ; Jump to #R$E520.
 *$E519 AND %00000011 ; Keep only bits 0-1.
- $E51B CP $03        ; Compare #REGa with #N$03.
- $E51D JR NZ,$E520   ; Jump to #R$E520 if {} is not zero.
+ $E51B CP $03        ; {Jump to #R$E520 if #REGa is not equal to #N$03.
+ $E51D JR NZ,$E520   ; }
  $E51F INC B         ; Increment #REGb by one.
 *$E520 LD A,C        ; #REGa=#REGc.
  $E521 LD (DE),A     ; Write #REGa to *#REGde.
@@ -6475,7 +6678,7 @@ c$E25D LD B,$10      ; #REGb=#N$10.
  $E54F INC HL        ; }
 *$E550 POP BC        ; Restore #REGbc from the stack.
  $E551 DEC B         ; Decrease #REGb by one.
- $E552 JP NZ,$E266   ; Jump to #R$E266 if {} is not zero.
+ $E552 JP NZ,$E266   ; Jump to #R$E266 until #REGb is zero.
  $E555 RET           ; Return.
 
 ; Jump Table
@@ -6624,15 +6827,19 @@ c$E62D LD A,($D244)  ; {Return if *#R$D244 is equal to #N$FF.
  $E633 CP $20        ; {Jump to #R$E67C if *#R$D244 is higher than #N$20.
  $E635 JR NC,$E67C   ; }
  $E637 LD A,($D248)  ; #REGa=*#R$D248.
- $E63A RRCA          ; RRCA.
- $E63B JR C,$E67C    ; Jump to #R$E67C if {} is lower.
+ $E63A RRCA          ; Rotate #REGa right; bit 0 moves to the carry flag (and
+                     ; to bit 7).
+ $E63B JR C,$E67C    ; Jump to #R$E67C if the carry flag is set (if bit 0 was
+                     ; set).
  $E63D LD A,($D246)  ; #REGa=*#R$D246.
- $E640 RRCA          ; RRCA.
- $E641 JR NC,$E658   ; Jump to #R$E658 if {} is higher.
+ $E640 RRCA          ; Rotate #REGa right; bit 0 moves to the carry flag (and
+                     ; to bit 7).
+ $E641 JR NC,$E658   ; Jump to #R$E658 if the carry flag is not set (if bit 0
+                     ; was unset).
  $E643 LD DE,$80FE   ; #REGde=#N$80FE.
  $E646 LD B,$03      ; #REGb=#N$03.
- $E648 LD A,($D247)  ; #REGa=*#R$D247.
- $E64B LD C,A        ; #REGc=#REGa.
+ $E648 LD A,($D247)  ; {#REGc=*#R$D247.
+ $E64B LD C,A        ; }
  $E64C LD A,B        ; #REGa=#REGb.
  $E64D SUB C         ; #REGa-=#REGc.
  $E64E SUB C         ; #REGa-=#REGc.
@@ -6641,9 +6848,9 @@ c$E62D LD A,($D244)  ; {Return if *#R$D244 is equal to #N$FF.
  $E651 CALL $E0AD    ; Call #R$E0AD.
  $E654 JR Z,$E67C    ; Jump to #R$E67C if {} is zero.
  $E656 JR $E66F      ; Jump to #R$E66F.
-*$E658 LD A,($D24E)  ; #REGa=*#R$D24E.
- $E65B CP $12        ; Compare #REGa with #N$12.
- $E65D JR Z,$E67C    ; Jump to #R$E67C if {} is zero.
+*$E658 LD A,($D24E)  ; {Jump to #R$E67C if *#R$D24E is equal to #N$12.
+ $E65B CP $12        ;
+ $E65D JR Z,$E67C    ; }
  $E65F LD B,$05      ; #REGb=#N$05.
  $E661 LD A,($D247)  ; #REGa=*#R$D247.
  $E664 ADD A,$02     ; #REGa+=#N$02.
@@ -6651,11 +6858,13 @@ c$E62D LD A,($D244)  ; {Return if *#R$D244 is equal to #N$FF.
  $E667 LD DE,$090F   ; #REGde=#N$090F.
  $E66A CALL $E0AD    ; Call #R$E0AD.
  $E66D JR NZ,$E67C   ; Jump to #R$E67C if {} is not zero.
-*$E66F LD A,$06      ; #REGa=#N$06.
- $E671 LD ($D244),A  ; Write #REGa to *#R$D244.
- $E674 LD ($D24A),A  ; Write #REGa to *#R$D24A.
- $E677 LD A,$01      ; #REGa=#N$01.
- $E679 LD ($D248),A  ; Write #REGa to *#R$D248.
+*$E66F LD A,$06      ; {Write #N$06 to: #LIST { *#R$D244 } { *#R$D24A } LIST#
+ $E671 LD ($D244),A  ;
+ $E674 LD ($D24A),A  ; }
+ $E677 LD A,$01      ; {Write #N$01 to *#R$D248.
+ $E679 LD ($D248),A  ; }
+; This entry point is used by the routines at #R$E68C, #R$EA04, #R$EA18,
+; #R$EA43, #R$EA9C, #R$EAF6, #R$EE70, #R$EE9B and #R$EF50.
 *$E67C LD A,($D244)  ; #REGa=*#R$D244.
  $E67F ADD A,A       ; #REGa+=#REGa.
  $E680 LD H,$00      ; #REGh=#N$00.
@@ -6667,428 +6876,463 @@ c$E62D LD A,($D244)  ; {Return if *#R$D244 is equal to #N$FF.
  $E689 LD H,(HL)     ; #REGh=*#REGhl.
  $E68A LD L,A        ; #REGl=#REGa.
  $E68B JP (HL)       ; Jump to the address held by *#REGhl.
- $E68C CALL $E179    ;
- $E68F AND A         ;
- $E690 JP Z,$E950    ;
-*$E693 BIT 4,A       ;
- $E695 JP Z,$E6C5    ;
- $E698 XOR $10       ;
- $E69A JR NZ,$E6A9   ;
-*$E69C LD A,$0A      ;
- $E69E LD ($D244),A  ;
- $E6A1 LD A,$01      ;
- $E6A3 LD ($D248),A  ;
- $E6A6 JP $E67C      ;
-*$E6A9 LD A,($D246)  ;
+
+; Routine at E68C
+c$E68C CALL $E179    ; Call #R$E179.
+ $E68F AND A         ; {Jump to #R$E950 if #REGa is zero.
+ $E690 JP Z,$E950    ; }
+; This entry point is used by the routine at #R$E99B.
+*$E693 BIT 4,A       ; Test bit 4 of #REGa.
+ $E695 JP Z,$E6C5    ; Jump to #R$E6C5 if {} is zero.
+ $E698 XOR %00010000 ; Flip bit 4.
+ $E69A JR NZ,$E6A9   ; Jump to #R$E6A9 if the result is not zero.
+*$E69C LD A,$0A      ; {Write #N$0A to *#R$D244.
+ $E69E LD ($D244),A  ; }
+ $E6A1 LD A,$01      ; {Write #N$01 to *#R$D248.
+ $E6A3 LD ($D248),A  ; }
+ $E6A6 JP $E67C      ; Jump to #R$E67C.
+*$E6A9 LD A,($D246)  ; {Jump to #R$E6B7 if *#R$D246 is zero.
  $E6AC AND A         ;
- $E6AD JR Z,$E6B7    ;
- $E6AF LD A,$0D      ;
- $E6B1 LD ($D244),A  ;
- $E6B4 JP $E67C      ;
-*$E6B7 LD A,($D252)  ;
+ $E6AD JR Z,$E6B7    ; }
+ $E6AF LD A,$0D      ; {Write #N$0D to *#R$D244.
+ $E6B1 LD ($D244),A  ; }
+ $E6B4 JP $E67C      ; Jump to #R$E67C.
+*$E6B7 LD A,($D252)  ; {Jump to #R$E69C if *#R$D252 is zero.
  $E6BA AND A         ;
- $E6BB JR Z,$E69C    ;
- $E6BD LD A,$0E      ;
- $E6BF LD ($D244),A  ;
- $E6C2 JP $E67C      ;
-*$E6C5 BIT 3,A       ;
- $E6C7 JP Z,$E7DE    ;
- $E6CA LD A,($D247)  ;
- $E6CD RRCA          ;
- $E6CE JR C,$E6E4    ;
- $E6D0 LD BC,$0102   ;
- $E6D3 LD DE,$090F   ;
- $E6D6 CALL $E0AD    ;
- $E6D9 JR Z,$E712    ;
- $E6DB LD A,($D248)  ;
- $E6DE RRCA          ;
- $E6DF JP C,$E795    ;
- $E6E2 JR $E6F9      ;
-*$E6E4 LD BC,$0101   ;
- $E6E7 LD DE,$090F   ;
- $E6EA CALL $E0AD    ;
- $E6ED JR Z,$E746    ;
- $E6EF LD A,($D248)  ;
- $E6F2 RRCA          ;
- $E6F3 JP C,$E795    ;
- $E6F6 CALL $DA61    ;
-*$E6F9 LD A,($D24E)  ;
- $E6FC SUB $04       ;
- $E6FE LD ($D24E),A  ;
- $E701 XOR A         ;
- $E702 LD ($D248),A  ;
+ $E6BB JR Z,$E69C    ; }
+ $E6BD LD A,$0E      ; {Write #N$0E to *#R$D244.
+ $E6BF LD ($D244),A  ; }
+ $E6C2 JP $E67C      ; Jump to #R$E67C.
+; This entry point is used by the routine at #R$EAF6.
+*$E6C5 BIT 3,A       ; Test bit 3 of #REGa.
+ $E6C7 JP Z,$E7DE    ; Jump to #R$E7DE if {} is zero.
+ $E6CA LD A,($D247)  ; #REGa=*#R$D247.
+ $E6CD RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $E6CE JR C,$E6E4    ; Jump to #R$E6E4 if the carry flag is set.
+ $E6D0 LD BC,$0102   ; #REGbc=#N$0102.
+ $E6D3 LD DE,$090F   ; #REGde=#N$090F.
+ $E6D6 CALL $E0AD    ; Call #R$E0AD.
+ $E6D9 JR Z,$E712    ; Jump to #R$E712 if {} is zero.
+ $E6DB LD A,($D248)  ; #REGa=*#R$D248.
+ $E6DE RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $E6DF JP C,$E795    ; Jump to #R$E795 if the carry flag is set.
+ $E6E2 JR $E6F9      ; Jump to #R$E6F9.
+*$E6E4 LD BC,$0101   ; #REGbc=#N$0101.
+ $E6E7 LD DE,$090F   ; #REGde=#N$090F.
+ $E6EA CALL $E0AD    ; Call #R$E0AD.
+ $E6ED JR Z,$E746    ; Jump to #R$E746 if {} is zero.
+ $E6EF LD A,($D248)  ; #REGa=*#R$D248.
+ $E6F2 RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $E6F3 JP C,$E795    ; Jump to #R$E795 if the carry flag is set.
+ $E6F6 CALL $DA61    ; Call #R$DA61.
+*$E6F9 LD A,($D24E)  ; #REGa=*#R$D24E.
+ $E6FC SUB $04       ; #REGa-=#N$04.
+ $E6FE LD ($D24E),A  ; Write #REGa to *#R$D24E.
+ $E701 XOR A         ; {Write #N$00 to: #LIST { *#R$D248 } { *#R$D246 } {
+ $E702 LD ($D248),A  ; *#R$D24C } LIST#
  $E705 LD ($D246),A  ;
- $E708 LD ($D24C),A  ;
- $E70B INC A         ;
- $E70C LD ($D244),A  ;
- $E70F JP $E67C      ;
-*$E712 LD BC,$0202   ;
- $E715 LD DE,$1113   ;
- $E718 LD A,($D246)  ;
- $E71B RRCA          ;
- $E71C JR C,$E729    ;
-*$E71E INC C         ;
- $E71F CALL $E0AD    ;
- $E722 JR Z,$E734    ;
- $E724 CALL $DA51    ;
- $E727 JR $E763      ;
-*$E729 LD A,($D248)  ;
- $E72C RRCA          ;
- $E72D JR C,$E71E    ;
- $E72F CALL $E0AD    ;
- $E732 JR NZ,$E763   ;
-*$E734 LD BC,$0202   ;
- $E737 LD DE,$1416   ;
- $E73A CALL $E0AD    ;
- $E73D JR Z,$E785    ;
- $E73F LD A,$01      ;
- $E741 LD ($D247),A  ;
- $E744 JR $E763      ;
-*$E746 LD BC,$0202   ;
- $E749 LD DE,$1416   ;
- $E74C CALL $E0AD    ;
- $E74F JR NZ,$E763   ;
- $E751 LD BC,$0203   ;
- $E754 LD DE,$1113   ;
- $E757 CALL $E0AD    ;
- $E75A JR Z,$E785    ;
- $E75C XOR A         ;
- $E75D LD ($D247),A  ;
- $E760 CALL $DA51    ;
-*$E763 LD A,($D246)  ;
- $E766 RRCA          ;
- $E767 JR C,$E7AA    ;
- $E769 LD A,($D24E)  ;
- $E76C CP $12        ;
- $E76E JR NZ,$E775   ;
- $E770 SUB $02       ;
- $E772 LD ($D24E),A  ;
-*$E775 XOR A         ;
+ $E708 LD ($D24C),A  ; }
+ $E70B INC A         ; {Write #N$01 to *#R$D244.
+ $E70C LD ($D244),A  ; }
+ $E70F JP $E67C      ; Jump to #R$E67C.
+*$E712 LD BC,$0202   ; #REGbc=#N$0202.
+ $E715 LD DE,$1113   ; #REGde=#N$1113.
+ $E718 LD A,($D246)  ; #REGa=*#R$D246.
+ $E71B RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $E71C JR C,$E729    ; Jump to #R$E729 if the carry flag is set.
+*$E71E INC C         ; Increment #REGc by one.
+ $E71F CALL $E0AD    ; Call #R$E0AD.
+ $E722 JR Z,$E734    ; Jump to #R$E734 if {} is zero.
+ $E724 CALL $DA51    ; Call #R$DA51.
+ $E727 JR $E763      ; Jump to #R$E763.
+*$E729 LD A,($D248)  ; #REGa=*#R$D248.
+ $E72C RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $E72D JR C,$E71E    ; Jump to #R$E71E if the carry flag is set.
+ $E72F CALL $E0AD    ; Call #R$E0AD.
+ $E732 JR NZ,$E763   ; Jump to #R$E763 if {} is not zero.
+*$E734 LD BC,$0202   ; #REGbc=#N$0202.
+ $E737 LD DE,$1416   ; #REGde=#N$1416.
+ $E73A CALL $E0AD    ; Call #R$E0AD.
+ $E73D JR Z,$E785    ; Jump to #R$E785 if {} is zero.
+ $E73F LD A,$01      ; {Write #N$01 to *#R$D247.
+ $E741 LD ($D247),A  ; }
+ $E744 JR $E763      ; Jump to #R$E763.
+*$E746 LD BC,$0202   ; #REGbc=#N$0202.
+ $E749 LD DE,$1416   ; #REGde=#N$1416.
+ $E74C CALL $E0AD    ; Call #R$E0AD.
+ $E74F JR NZ,$E763   ; Jump to #R$E763 if {} is not zero.
+ $E751 LD BC,$0203   ; #REGbc=#N$0203.
+ $E754 LD DE,$1113   ; #REGde=#N$1113.
+ $E757 CALL $E0AD    ; Call #R$E0AD.
+ $E75A JR Z,$E785    ; Jump to #R$E785 if {} is zero.
+ $E75C XOR A         ; {Write #N$00 to *#R$D247.
+ $E75D LD ($D247),A  ; }
+ $E760 CALL $DA51    ; Call #R$DA51.
+*$E763 LD A,($D246)  ; #REGa=*#R$D246.
+ $E766 RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $E767 JR C,$E7AA    ; Jump to #R$E7AA if the carry flag is set.
+ $E769 LD A,($D24E)  ; #REGa=*#R$D24E.
+ $E76C CP $12        ; {Jump to #R$E775 if #REGa is no equal to #N$12.
+ $E76E JR NZ,$E775   ; }
+ $E770 SUB $02       ; #REGa-=#N$02.
+ $E772 LD ($D24E),A  ; Write #REGa to *#R$D24E.
+*$E775 XOR A         ; {Write #N$00 to: #LIST { *#R$D248 } { *#R$D24C } LIST#
  $E776 LD ($D248),A  ;
- $E779 LD ($D24C),A  ;
- $E77C INC A         ;
- $E77D LD ($D246),A  ;
- $E780 LD A,$03      ;
- $E782 LD ($D24F),A  ;
-*$E785 LD A,($D248)  ;
- $E788 RRCA          ;
- $E789 JR C,$E795    ;
- $E78B XOR A         ;
+ $E779 LD ($D24C),A  ; }
+ $E77C INC A         ; {Write #N$01 to *#R$D246.
+ $E77D LD ($D246),A  ; }
+ $E780 LD A,$03      ; {Write #N$03 to *#R$D24F.
+ $E782 LD ($D24F),A  ; }
+*$E785 LD A,($D248)  ; #REGa=*#R$D248.
+ $E788 RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $E789 JR C,$E795    ; Jump to #R$E795 if the carry flag is set.
+ $E78B XOR A         ; {Write #N$00 to: #LIST { *#R$D248 } { *#R$D24C } LIST#
  $E78C LD ($D248),A  ;
- $E78F LD ($D24C),A  ;
- $E792 JP $EF86      ;
-*$E795 LD HL,$D247   ;
- $E798 LD A,(HL)     ;
- $E799 XOR $01       ;
- $E79B INC HL        ;
- $E79C AND (HL)      ;
- $E79D CALL NZ,$DA51 ;
- $E7A0 LD A,($D246)  ;
- $E7A3 RRCA          ;
- $E7A4 CALL C,$DA69  ;
- $E7A7 JP $EB2F      ;
-*$E7AA LD A,$03      ;
- $E7AC LD ($D24F),A  ;
- $E7AF LD DE,($D253) ;
- $E7B3 CALL $DA0F    ;
- $E7B6 LD A,($D245)  ;
- $E7B9 AND $01       ;
- $E7BB XOR $01       ;
- $E7BD LD (IX+$05),A ;
- $E7C0 CALL Z,$DA69  ;
- $E7C3 LD A,$08      ;
- $E7C5 LD (IX+$00),A ;
- $E7C8 XOR A         ;
+ $E78F LD ($D24C),A  ; }
+ $E792 JP $EF86      ; Jump to #R$EF86.
+*$E795 LD HL,$D247   ; #REGhl=#R$D247.
+ $E798 LD A,(HL)     ; #REGa=*#REGhl.
+ $E799 XOR %00000001 ; Flip bit 0.
+ $E79B INC HL        ; Increment #REGhl by one.
+ $E79C AND (HL)      ; Merge the bits from *#REGhl.
+ $E79D CALL NZ,$DA51 ; Call #R$DA51 not zero.
+ $E7A0 LD A,($D246)  ; #REGa=*#R$D246.
+ $E7A3 RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $E7A4 CALL C,$DA69  ; Call #R$DA69 if the carry flag is set.
+ $E7A7 JP $EB2F      ; Jump to #R$EB2F.
+*$E7AA LD A,$03      ; {Write #N$03 to *#R$D24F.
+ $E7AC LD ($D24F),A  ; }
+ $E7AF LD DE,($D253) ; #REGde=*#R$D253.
+ $E7B3 CALL $DA0F    ; Call #R$DA0F.
+ $E7B6 LD A,($D245)  ; #REGa=*#R$D245.
+ $E7B9 AND %00000001 ; Keep only bit 0.
+ $E7BB XOR %00000001 ; Flip bit 0.
+ $E7BD LD (IX+$05),A ; Write #REGa to *#REGix+#N$05.
+ $E7C0 CALL Z,$DA69  ; Call #R$DA69 zero.
+ $E7C3 LD A,$08      ; {Write #N$08 to *#REGix+#N$00.
+ $E7C5 LD (IX+$00),A ; }
+ $E7C8 XOR A         ; {Write #N$00 to: #LIST { *#R$D248 } { *#R$D24C } LIST#
  $E7C9 LD ($D248),A  ;
- $E7CC LD ($D24C),A  ;
- $E7CF INC A         ;
- $E7D0 LD ($D246),A  ;
- $E7D3 LD A,$03      ;
+ $E7CC LD ($D24C),A  ; }
+ $E7CF INC A         ; {Write #N$01 to *#R$D246.
+ $E7D0 LD ($D246),A  ; }
+ $E7D3 LD A,$03      ; {Write #N$03 to: #LIST { *#R$D244 } { *#R$D245 } LIST#
  $E7D5 LD ($D244),A  ;
- $E7D8 LD ($D245),A  ;
- $E7DB JP $E67C      ;
-*$E7DE BIT 2,A       ;
- $E7E0 JP Z,$E8E7    ;
- $E7E3 LD A,($D24E)  ;
+ $E7D8 LD ($D245),A  ; }
+ $E7DB JP $E67C      ; Jump to #R$E67C.
+*$E7DE BIT 2,A       ; Test bit 2 of #REGa.
+ $E7E0 JP Z,$E8E7    ; Jump to #R$E8E7 if {} is zero.
+ $E7E3 LD A,($D24E)  ; {Jump to #R$E8CF if *#R$D24E is equal to #N$10.
  $E7E6 CP $10        ;
- $E7E8 JP Z,$E8CF    ;
- $E7EB LD A,($D247)  ;
- $E7EE RRCA          ;
- $E7EF JR C,$E81F    ;
- $E7F1 LD BC,$0502   ;
- $E7F4 LD DE,$090F   ;
- $E7F7 CALL $E0AD    ;
- $E7FA LD C,$02      ;
- $E7FC JR Z,$E851    ;
- $E7FE LD BC,$0602   ;
- $E801 LD DE,$1416   ;
- $E804 CALL $E0AD    ;
- $E807 JR Z,$E80E    ;
- $E809 LD A,$01      ;
- $E80B JP $E8B4      ;
-*$E80E LD BC,$0602   ;
- $E811 LD DE,$1113   ;
- $E814 CALL $E0AD    ;
- $E817 LD C,$02      ;
- $E819 JR Z,$E851    ;
- $E81B XOR A         ;
- $E81C JP $E8B4      ;
-*$E81F LD BC,$0503   ;
- $E822 LD DE,$090F   ;
- $E825 CALL $E0AD    ;
- $E828 LD C,$03      ;
- $E82A JR Z,$E851    ;
- $E82C LD BC,$0603   ;
- $E82F LD DE,$1113   ;
- $E832 CALL $E0AD    ;
- $E835 JR Z,$E83D    ;
- $E837 CALL $DA51    ;
- $E83A XOR A         ;
- $E83B JR $E8B4      ;
-*$E83D LD BC,$0603   ;
- $E840 LD DE,$1416   ;
- $E843 CALL $E0AD    ;
- $E846 LD C,$03      ;
- $E848 JR Z,$E851    ;
- $E84A CALL $DA51    ;
- $E84D LD A,$01      ;
- $E84F JR $E8B4      ;
-*$E851 LD A,($D246)  ;
- $E854 XOR $01       ;
- $E856 ADD A,$05     ;
- $E858 LD B,A        ;
- $E859 LD DE,$090F   ;
- $E85C CALL $E0AD    ;
- $E85F JR Z,$E876    ;
- $E861 XOR A         ;
- $E862 LD ($D246),A  ;
- $E865 INC A         ;
+ $E7E8 JP Z,$E8CF    ; }
+ $E7EB LD A,($D247)  ; #REGa=*#R$D247.
+ $E7EE RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $E7EF JR C,$E81F    ; Jump to #R$E81F if the carry flag is set.
+ $E7F1 LD BC,$0502   ; #REGbc=#N$0502.
+ $E7F4 LD DE,$090F   ; #REGde=#N$090F.
+ $E7F7 CALL $E0AD    ; Call #R$E0AD.
+ $E7FA LD C,$02      ; #REGc=#N$02.
+ $E7FC JR Z,$E851    ; Jump to #R$E851 if {} is zero.
+ $E7FE LD BC,$0602   ; #REGbc=#N$0602.
+ $E801 LD DE,$1416   ; #REGde=#N$1416.
+ $E804 CALL $E0AD    ; Call #R$E0AD.
+ $E807 JR Z,$E80E    ; Jump to #R$E80E if {} is zero.
+ $E809 LD A,$01      ; #REGa=#N$01.
+ $E80B JP $E8B4      ; Jump to #R$E8B4.
+*$E80E LD BC,$0602   ; #REGbc=#N$0602.
+ $E811 LD DE,$1113   ; #REGde=#N$1113.
+ $E814 CALL $E0AD    ; Call #R$E0AD.
+ $E817 LD C,$02      ; #REGc=#N$02.
+ $E819 JR Z,$E851    ; Jump to #R$E851 if {} is zero.
+ $E81B XOR A         ; #REGa=#N$00.
+ $E81C JP $E8B4      ; Jump to #R$E8B4.
+*$E81F LD BC,$0503   ; #REGbc=#N$0503.
+ $E822 LD DE,$090F   ; #REGde=#N$090F.
+ $E825 CALL $E0AD    ; Call #R$E0AD.
+ $E828 LD C,$03      ; #REGc=#N$03.
+ $E82A JR Z,$E851    ; Jump to #R$E851 if {} is zero.
+ $E82C LD BC,$0603   ; #REGbc=#N$0603.
+ $E82F LD DE,$1113   ; #REGde=#N$1113.
+ $E832 CALL $E0AD    ; Call #R$E0AD.
+ $E835 JR Z,$E83D    ; Jump to #R$E83D if {} is zero.
+ $E837 CALL $DA51    ; Call #R$DA51.
+ $E83A XOR A         ; #REGa=#N$00.
+ $E83B JR $E8B4      ; Jump to #R$E8B4.
+*$E83D LD BC,$0603   ; #REGbc=#N$0603.
+ $E840 LD DE,$1416   ; #REGde=#N$1416.
+ $E843 CALL $E0AD    ; Call #R$E0AD.
+ $E846 LD C,$03      ; #REGc=#N$03.
+ $E848 JR Z,$E851    ; Jump to #R$E851 if {} is zero.
+ $E84A CALL $DA51    ; Call #R$DA51.
+ $E84D LD A,$01      ; #REGa=#N$01.
+ $E84F JR $E8B4      ; Jump to #R$E8B4.
+*$E851 LD A,($D246)  ; #REGa=*#R$D246.
+ $E854 XOR %00000001 ; Flip bit 0.
+ $E856 ADD A,$05     ; #REGa+=#N$05.
+ $E858 LD B,A        ; #REGb=#REGa.
+ $E859 LD DE,$090F   ; #REGde=#N$090F.
+ $E85C CALL $E0AD    ; Call #R$E0AD.
+ $E85F JR Z,$E876    ; Jump to #R$E876 if {} is zero.
+ $E861 XOR A         ; {Write #N$00 to *#R$D246.
+ $E862 LD ($D246),A  ; }
+ $E865 INC A         ; {Write #N$01 to: #LIST { *#R$D244 } { *#R$D24F } LIST#
  $E866 LD ($D244),A  ;
- $E869 LD ($D24F),A  ;
- $E86C LD A,($D247)  ;
- $E86F RRCA          ;
- $E870 CALL NC,$DA61 ;
- $E873 JP $EF86      ;
-*$E876 LD A,($D246)  ;
- $E879 RRCA          ;
- $E87A JP NC,$EF86   ;
- $E87D LD BC,$0402   ;
- $E880 LD DE,$1113   ;
- $E883 LD A,($D247)  ;
- $E886 RRCA          ;
- $E887 JR NC,$E88C   ;
- $E889 LD DE,$1416   ;
-*$E88C CALL $E0AD    ;
- $E88F JP Z,$EF86    ;
- $E892 LD A,$02      ;
- $E894 LD ($D24F),A  ;
- $E897 LD DE,($D253) ;
- $E89B CALL $DA0F    ;
- $E89E LD A,($D245)  ;
- $E8A1 AND $01       ;
- $E8A3 LD (IX+$05),A ;
- $E8A6 LD A,$04      ;
- $E8A8 LD (IX+$00),A ;
+ $E869 LD ($D24F),A  ; }
+ $E86C LD A,($D247)  ; #REGa=*#R$D247.
+ $E86F RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $E870 CALL NC,$DA61 ; Call #R$DA61 if the carry flag is not set.
+ $E873 JP $EF86      ; Jump to #R$EF86.
+*$E876 LD A,($D246)  ; #REGa=*#R$D246.
+ $E879 RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $E87A JP NC,$EF86   ; Jump to #R$EF86 if the carry flag is not set.
+ $E87D LD BC,$0402   ; #REGbc=#N$0402.
+ $E880 LD DE,$1113   ; #REGde=#N$1113.
+ $E883 LD A,($D247)  ; #REGa=*#R$D247.
+ $E886 RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $E887 JR NC,$E88C   ; Jump to #R$E88C if the carry flag is not set.
+ $E889 LD DE,$1416   ; #REGde=#N$1416.
+*$E88C CALL $E0AD    ; Call #R$E0AD.
+ $E88F JP Z,$EF86    ; Jump to #R$EF86 if {} is zero.
+ $E892 LD A,$02      ; {Write #N$02 to *#R$D24F.
+ $E894 LD ($D24F),A  ; }
+ $E897 LD DE,($D253) ; #REGde=*#R$D253.
+ $E89B CALL $DA0F    ; Call #R$DA0F.
+ $E89E LD A,($D245)  ; #REGa=*#R$D245.
+ $E8A1 AND %00000001 ; Keep only bit 0.
+ $E8A3 LD (IX+$05),A ; Write #REGa to *#REGix+#N$05.
+ $E8A6 LD A,$04      ; {Write #N$04 to: #LIST { *#REGix+#N$00 } { *#R$D244 } {
+ $E8A8 LD (IX+$00),A ; *#R$D245 } LIST#
  $E8AB LD ($D244),A  ;
- $E8AE LD ($D245),A  ;
- $E8B1 JP $E67C      ;
-*$E8B4 LD ($D247),A  ;
- $E8B7 LD A,($D24E)  ;
- $E8BA ADD A,$04     ;
- $E8BC LD ($D24E),A  ;
- $E8BF LD A,$03      ;
+ $E8AE LD ($D245),A  ; }
+ $E8B1 JP $E67C      ; Jump to #R$E67C.
+*$E8B4 LD ($D247),A  ; Write #REGa to *#R$D247.
+ $E8B7 LD A,($D24E)  ; #REGa=*#R$D24E.
+ $E8BA ADD A,$04     ; #REGa+=#N$04.
+ $E8BC LD ($D24E),A  ; Write #REGa to *#R$D24E.
+ $E8BF LD A,$03      ; {Write #N$03 to: #LIST { *#R$D244 } { *#R$D24F } LIST#
  $E8C1 LD ($D244),A  ;
- $E8C4 LD ($D24F),A  ;
- $E8C7 LD A,$01      ;
- $E8C9 LD ($D246),A  ;
- $E8CC JP $E67C      ;
-*$E8CF LD A,$12      ;
- $E8D1 LD ($D24E),A  ;
- $E8D4 LD A,$01      ;
- $E8D6 LD ($D244),A  ;
- $E8D9 LD A,($D247)  ;
- $E8DC RRCA          ;
- $E8DD CALL NC,$DA61 ;
- $E8E0 XOR A         ;
- $E8E1 LD ($D246),A  ;
- $E8E4 JP $E67C      ;
-*$E8E7 BIT 0,A       ;
- $E8E9 JR Z,$E91C    ;
- $E8EB LD A,($D246)  ;
- $E8EE RRCA          ;
- $E8EF JP C,$EF86    ;
- $E8F2 LD A,$01      ;
- $E8F4 LD ($D24F),A  ;
- $E8F7 LD DE,($D253) ;
- $E8FB CALL $DA0F    ;
- $E8FE LD A,($D24D)  ;
- $E901 DEC A         ;
- $E902 CP $FC        ;
- $E904 JP Z,$EF86    ;
- $E907 LD ($D24D),A  ;
- $E90A XOR A         ;
- $E90B LD (IX+$05),A ;
- $E90E INC A         ;
- $E90F LD ($D247),A  ;
- $E912 INC A         ;
- $E913 LD (IX+$00),A ;
- $E916 LD ($D244),A  ;
- $E919 JP $E67C      ;
-*$E91C BIT 1,A       ;
- $E91E JR Z,$E950    ;
- $E920 LD A,($D246)  ;
- $E923 RRCA          ;
- $E924 JP C,$EF86    ;
- $E927 LD A,$01      ;
- $E929 LD ($D24F),A  ;
- $E92C LD DE,($D253) ;
- $E930 CALL $DA0F    ;
- $E933 LD A,($D24D)  ;
- $E936 INC A         ;
- $E937 CP $1E        ;
- $E939 JP Z,$EF86    ;
- $E93C LD ($D24D),A  ;
- $E93F XOR A         ;
- $E940 LD (IX+$05),A ;
- $E943 LD ($D247),A  ;
- $E946 INC A         ;
- $E947 LD (IX+$00),A ;
- $E94A LD ($D244),A  ;
- $E94D JP $E67C      ;
-*$E950 LD A,($D249)  ;
- $E953 DEC A         ;
- $E954 LD ($D249),A  ;
- $E957 JP NZ,$EF86   ;
- $E95A LD A,$19      ;
- $E95C LD ($D249),A  ;
- $E95F LD A,$05      ;
- $E961 LD ($D244),A  ;
- $E964 JP $E67C      ;
-*$E967 LD A,$01      ;
- $E969 LD ($D24F),A  ;
- $E96C JP $EF86      ;
- $E96F JR $E967      ;
- $E971 CALL $DB54    ;
- $E974 LD A,$03      ;
- $E976 CALL $DA0F    ;
- $E979 CALL $D9C3    ;
- $E97C RET NZ        ;
- $E97D XOR A         ;
- $E97E LD ($D244),A  ;
- $E981 RET           ;
- $E982 CALL $DB54    ;
- $E985 LD A,$02      ;
- $E987 CALL $DA0F    ;
- $E98A CALL $D9C3    ;
- $E98D RET NZ        ;
- $E98E CALL $DA59    ;
- $E991 LD A,$03      ;
- $E993 LD ($D24F),A  ;
- $E996 XOR A         ;
- $E997 LD ($D244),A  ;
- $E99A RET           ;
- $E99B CALL $E179    ;
- $E99E AND A         ;
- $E99F JP NZ,$E693   ;
- $E9A2 LD A,($D252)  ;
+ $E8C4 LD ($D24F),A  ; }
+ $E8C7 LD A,$01      ; {Write #N$01 to *#R$D246.
+ $E8C9 LD ($D246),A  ; }
+ $E8CC JP $E67C      ; Jump to #R$E67C.
+*$E8CF LD A,$12      ; {Write #N$12 to *#R$D24E.
+ $E8D1 LD ($D24E),A  ; }
+ $E8D4 LD A,$01      ; {Write #N$01 to *#R$D244.
+ $E8D6 LD ($D244),A  ; }
+ $E8D9 LD A,($D247)  ; #REGa=*#R$D247.
+ $E8DC RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $E8DD CALL NC,$DA61 ; Call #R$DA61 if the carry flag is not set.
+ $E8E0 XOR A         ; {Write #N$00 to *#R$D246.
+ $E8E1 LD ($D246),A  ; }
+ $E8E4 JP $E67C      ; Jump to #R$E67C.
+*$E8E7 BIT 0,A       ; Test bit 0 of #REGa.
+ $E8E9 JR Z,$E91C    ; Jump to #R$E91C if {} is zero.
+ $E8EB LD A,($D246)  ; #REGa=*#R$D246.
+ $E8EE RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $E8EF JP C,$EF86    ; Jump to #R$EF86 if the carry flag is set.
+ $E8F2 LD A,$01      ; {Write #N$01 to *#R$D24F.
+ $E8F4 LD ($D24F),A  ; }
+ $E8F7 LD DE,($D253) ; #REGde=*#R$D253.
+ $E8FB CALL $DA0F    ; Call #R$DA0F.
+ $E8FE LD A,($D24D)  ; #REGa=*#R$D24D.
+ $E901 DEC A         ; Decrease #REGa by one.
+ $E902 CP $FC        ; {Jump to #R$EF86 if #REGa is equal to #N$FC.
+ $E904 JP Z,$EF86    ; }
+ $E907 LD ($D24D),A  ; Write #REGa to *#R$D24D.
+ $E90A XOR A         ; {Write #N$00 to *#REGix+#N$05.
+ $E90B LD (IX+$05),A ; }
+ $E90E INC A         ; {Write #N$01 to *#R$D247.
+ $E90F LD ($D247),A  ; }
+ $E912 INC A         ; {Write #N$02 to: #LIST { *#REGix+#N$00 } { *#R$D244 }
+ $E913 LD (IX+$00),A ; LIST#
+ $E916 LD ($D244),A  ; }
+ $E919 JP $E67C      ; Jump to #R$E67C.
+*$E91C BIT 1,A       ; Test bit 1 of #REGa.
+ $E91E JR Z,$E950    ; Jump to #R$E950 if {} is zero.
+ $E920 LD A,($D246)  ; #REGa=*#R$D246.
+ $E923 RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $E924 JP C,$EF86    ; Jump to #R$EF86 if the carry flag is set.
+ $E927 LD A,$01      ; {Write #N$01 to *#R$D24F.
+ $E929 LD ($D24F),A  ; }
+ $E92C LD DE,($D253) ; #REGde=*#R$D253.
+ $E930 CALL $DA0F    ; Call #R$DA0F.
+ $E933 LD A,($D24D)  ; #REGa=*#R$D24D.
+ $E936 INC A         ; Increment #REGa by one.
+ $E937 CP $1E        ; {Jump to #R$EF86 if #REGa is equal to #N$1E.
+ $E939 JP Z,$EF86    ; }
+ $E93C LD ($D24D),A  ; Write #REGa to *#R$D24D.
+ $E93F XOR A         ; {Write #N$00 to: #LIST { *#REGix+#N$05 } { *#R$D247 }
+ $E940 LD (IX+$05),A ; LIST#
+ $E943 LD ($D247),A  ; }
+ $E946 INC A         ; {Write #N$01 to: #LIST { *#REGix+#N$00 } { *#R$D244 }
+ $E947 LD (IX+$00),A ; LIST#
+ $E94A LD ($D244),A  ; }
+ $E94D JP $E67C      ; Jump to #R$E67C.
+*$E950 LD A,($D249)  ; #REGa=*#R$D249.
+ $E953 DEC A         ; Decrease #REGa by one.
+ $E954 LD ($D249),A  ; Write #REGa to *#R$D249.
+ $E957 JP NZ,$EF86   ; Jump to #R$EF86 if #REGa is not zero.
+ $E95A LD A,$19      ; {Write #N$19 to *#R$D249.
+ $E95C LD ($D249),A  ; }
+ $E95F LD A,$05      ; {Write #N$05 to *#R$D244.
+ $E961 LD ($D244),A  ; }
+ $E964 JP $E67C      ; Jump to #R$E67C.
+
+; Routine at E967
+c$E967 LD A,$01      ; {Write #N$01 to *#R$D24F.
+ $E969 LD ($D24F),A  ; }
+ $E96C JP $EF86      ; Jump to #R$EF86.
+ $E96F JR $E967      ; Jump to #R$E967.
+
+; Routine at E971
+c$E971 CALL $DB54    ; Call #R$DB54.
+ $E974 LD A,$03      ; #REGa=#N$03.
+ $E976 CALL $DA0F    ; Call #R$DA0F.
+ $E979 CALL $D9C3    ; Call #R$D9C3.
+ $E97C RET NZ        ; Return if {} is not zero.
+ $E97D XOR A         ; {Write #N$00 to *#R$D244.
+ $E97E LD ($D244),A  ; }
+ $E981 RET           ; Return.
+
+; Routine at E982
+c$E982 CALL $DB54    ; Call #R$DB54.
+ $E985 LD A,$02      ; #REGa=#N$02.
+ $E987 CALL $DA0F    ; Call #R$DA0F.
+ $E98A CALL $D9C3    ; Call #R$D9C3.
+ $E98D RET NZ        ; Return if {} is not zero.
+ $E98E CALL $DA59    ; Call #R$DA59.
+ $E991 LD A,$03      ; {Write #N$03 to *#R$D24F.
+ $E993 LD ($D24F),A  ; }
+ $E996 XOR A         ; {Write #N$00 to *#R$D244.
+ $E997 LD ($D244),A  ; }
+ $E99A RET           ; Return.
+
+; Routine at E99B
+c$E99B CALL $E179    ; Call #R$E179.
+ $E99E AND A         ; Set flags.
+ $E99F JP NZ,$E693   ; Jump to #R$E693 if {} is not zero.
+ $E9A2 LD A,($D252)  ; {Jump to #R$E9AE if *#R$D252 is not zero.
  $E9A5 AND A         ;
- $E9A6 JR NZ,$E9AE   ;
- $E9A8 CALL $DA28    ;
- $E9AB JP $E693      ;
-*$E9AE LD A,($D246)  ;
- $E9B1 RRCA          ;
- $E9B2 JP C,$E9EA    ;
- $E9B5 LD A,$05      ;
- $E9B7 LD BC,($D24D) ;
- $E9BB CALL $D9BB    ;
- $E9BE LD BC,($D24D) ;
- $E9C2 LD A,($D247)  ;
- $E9C5 XOR $01       ;
- $E9C7 ADD A,C       ;
- $E9C8 LD C,A        ;
- $E9C9 LD A,$0F      ;
- $E9CB CALL $D9BB    ;
- $E9CE LD BC,($D24D) ;
- $E9D2 INC B         ;
- $E9D3 INC C         ;
- $E9D4 LD A,($D247)  ;
- $E9D7 XOR $01       ;
- $E9D9 ADD A,C       ;
- $E9DA LD C,A        ;
-*$E9DB CALL $DA28    ;
- $E9DE AND $03       ;
- $E9E0 JR Z,$E9DB    ;
- $E9E2 DEC A         ;
- $E9E3 ADD A,A       ;
- $E9E4 ADD A,$11     ;
- $E9E6 CALL $D9BB    ;
- $E9E9 RET           ;
-*$E9EA LD A,$09      ;
- $E9EC LD BC,($D24D) ;
- $E9F0 CALL $D9BB    ;
- $E9F3 LD BC,($D24D) ;
- $E9F7 LD A,$0D      ;
- $E9F9 CALL $D9BB    ;
- $E9FC LD BC,($D24D) ;
- $EA00 INC B         ;
- $EA01 INC C         ;
- $EA02 JR $E9DB      ;
- $EA04 LD A,$06      ;
- $EA06 LD ($D24A),A  ;
- $EA09 LD A,$07      ;
- $EA0B LD ($D244),A  ;
- $EA0E LD A,($D247)  ;
- $EA11 RRCA          ;
- $EA12 CALL NC,$DA51 ;
- $EA15 JP $E67C      ;
- $EA18 LD A,($D24A)  ;
+ $E9A6 JR NZ,$E9AE   ; }
+ $E9A8 CALL $DA28    ; Call #R$DA28.
+ $E9AB JP $E693      ; Jump to #R$E693.
+*$E9AE LD A,($D246)  ; #REGa=*#R$D246.
+ $E9B1 RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $E9B2 JP C,$E9EA    ; Jump to #R$E9EA if the carry flag is set.
+ $E9B5 LD A,$05      ; #REGa=#N$05.
+ $E9B7 LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $E9BB CALL $D9BB    ; Call #R$D9BB.
+ $E9BE LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $E9C2 LD A,($D247)  ; #REGa=*#R$D247.
+ $E9C5 XOR %00000001 ; Flip bit 0.
+ $E9C7 ADD A,C       ; #REGa+=#REGc.
+ $E9C8 LD C,A        ; #REGc=#REGa.
+ $E9C9 LD A,$0F      ; #REGa=#N$0F.
+ $E9CB CALL $D9BB    ; Call #R$D9BB.
+ $E9CE LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $E9D2 INC B         ; Increment #REGb by one.
+ $E9D3 INC C         ; Increment #REGc by one.
+ $E9D4 LD A,($D247)  ; #REGa=*#R$D247.
+ $E9D7 XOR %00000001 ; Flip bit 0.
+ $E9D9 ADD A,C       ; #REGa+=#REGc.
+ $E9DA LD C,A        ; #REGc=#REGa.
+*$E9DB CALL $DA28    ; Call #R$DA28.
+ $E9DE AND %00000011 ; Keep only bits 0-1.
+ $E9E0 JR Z,$E9DB    ; Jump to #R$E9DB if the result is zero.
+ $E9E2 DEC A         ; Decrease #REGa by one.
+ $E9E3 ADD A,A       ; #REGa+=#REGa.
+ $E9E4 ADD A,$11     ; #REGa+=#N$11.
+ $E9E6 CALL $D9BB    ; Call #R$D9BB.
+ $E9E9 RET           ; Return.
+*$E9EA LD A,$09      ; #REGa=#N$09.
+ $E9EC LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $E9F0 CALL $D9BB    ; Call #R$D9BB.
+ $E9F3 LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $E9F7 LD A,$0D      ; #REGa=#N$0D.
+ $E9F9 CALL $D9BB    ; Call #R$D9BB.
+ $E9FC LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $EA00 INC B         ; Increment #REGb by one.
+ $EA01 INC C         ; Increment #REGc by one.
+ $EA02 JR $E9DB      ; Jump to #R$E9DB.
+
+; Routine at EA04
+c$EA04 LD A,$06      ; {Write #N$06 to *#R$D24A.
+ $EA06 LD ($D24A),A  ; }
+ $EA09 LD A,$07      ; {Write #N$07 to *#R$D244.
+ $EA0B LD ($D244),A  ; }
+ $EA0E LD A,($D247)  ; #REGa=*#R$D247.
+ $EA11 RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $EA12 CALL NC,$DA51 ; Call #R$DA51 if the carry flag is not set.
+ $EA15 JP $E67C      ; Jump to #R$E67C.
+
+; Routine at EA18
+c$EA18 LD A,($D24A)  ; {Decrease *#R$D24A by one.
  $EA1B DEC A         ;
- $EA1C LD ($D24A),A  ;
- $EA1F JR Z,$EA36    ;
- $EA21 LD A,$19      ;
- $EA23 LD BC,($D24D) ;
- $EA27 CALL $D9BB    ;
- $EA2A LD BC,($D24D) ;
- $EA2E INC B         ;
- $EA2F INC B         ;
- $EA30 LD A,$23      ;
- $EA32 CALL $D9BB    ;
- $EA35 RET           ;
-*$EA36 LD A,$03      ;
- $EA38 LD ($D24A),A  ;
- $EA3B LD A,$08      ;
- $EA3D LD ($D244),A  ;
- $EA40 JP $E67C      ;
- $EA43 LD A,$19      ;
- $EA45 LD BC,($D24D) ;
- $EA49 CALL $D9BB    ;
- $EA4C LD BC,($D24D) ;
- $EA50 INC B         ;
- $EA51 INC B         ;
- $EA52 LD A,$23      ;
- $EA54 CALL $D9BB    ;
- $EA57 CALL $DA59    ;
- $EA5A CP $12        ;
- $EA5C JR Z,$EA6E    ;
- $EA5E LD A,($D24B)  ;
- $EA61 DEC A         ;
- $EA62 LD ($D24B),A  ;
- $EA65 CP $12        ;
- $EA67 RET NC        ;
- $EA68 CALL $DA59    ;
- $EA6B CP $12        ;
- $EA6D RET NZ        ;
-*$EA6E LD A,$12      ;
- $EA70 LD ($D24E),A  ;
- $EA73 LD A,$0C      ;
- $EA75 LD ($D24B),A  ;
- $EA78 XOR A         ;
- $EA79 LD ($D246),A  ;
- $EA7C LD A,($D244)  ;
+ $EA1C LD ($D24A),A  ; }
+ $EA1F JR Z,$EA36    ; Jump to #R$EA36 if *#R$D24A is zero.
+ $EA21 LD A,$19      ; #REGa=#N$19.
+ $EA23 LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $EA27 CALL $D9BB    ; Call #R$D9BB.
+ $EA2A LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $EA2E INC B         ; {Increment #REGb by two.
+ $EA2F INC B         ; }
+ $EA30 LD A,$23      ; #REGa=#N$23.
+ $EA32 CALL $D9BB    ; Call #R$D9BB.
+ $EA35 RET           ; Return.
+*$EA36 LD A,$03      ; {Write #N$03 to *#R$D24A.
+ $EA38 LD ($D24A),A  ; }
+ $EA3B LD A,$08      ; {Write #N$08 to *#R$D244.
+ $EA3D LD ($D244),A  ; }
+ $EA40 JP $E67C      ; Jump to #R$E67C.
+
+; Routine at EA43
+c$EA43 LD A,$19      ; #REGa=#N$19.
+ $EA45 LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $EA49 CALL $D9BB    ; Call #R$D9BB.
+ $EA4C LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $EA50 INC B         ; {Increment #REGb by two.
+ $EA51 INC B         ; }
+ $EA52 LD A,$23      ; #REGa=#N$23.
+ $EA54 CALL $D9BB    ; Call #R$D9BB.
+ $EA57 CALL $DA59    ; Call #R$DA59.
+ $EA5A CP $12        ; {Jump to #R$EA6E if #REGa is equal to #N$12.
+ $EA5C JR Z,$EA6E    ; }
+ $EA5E LD A,($D24B)  ; #REGa=*#R$D24B.
+ $EA61 DEC A         ; Decrease #REGa by one.
+ $EA62 LD ($D24B),A  ; Write #REGa to *#R$D24B.
+ $EA65 CP $12        ; {Return if #REGa is higher than #N$12.
+ $EA67 RET NC        ; }
+ $EA68 CALL $DA59    ; Call #R$DA59.
+ $EA6B CP $12        ; {Return if #REGa is not equal to #N$12.
+ $EA6D RET NZ        ; }
+*$EA6E LD A,$12      ; {Write #N$12 to *#R$D24E.
+ $EA70 LD ($D24E),A  ; }
+ $EA73 LD A,$0C      ; {Write #N$0C to *#R$D24B.
+ $EA75 LD ($D24B),A  ; }
+ $EA78 XOR A         ; {Write #N$00 to *#R$D246.
+ $EA79 LD ($D246),A  ; }
+ $EA7C LD A,($D244)  ; {Jump to #R$EA88 if *#R$D244 is not equal to #N$20.
  $EA7F CP $20        ;
- $EA81 JR NZ,$EA88   ;
- $EA83 LD A,$21      ;
- $EA85 JP $E67C      ;
+ $EA81 JR NZ,$EA88   ; }
+ $EA83 LD A,$21      ; #REGa=#N$21.
+ $EA85 JP $E67C      ; Jump to #R$E67C.
 *$EA88 LD A,$09      ; {Write #N$09 to *#R$D244.
  $EA8A LD ($D244),A  ; }
  $EA8D LD IY,$D244   ; #REGiy=#R$D244.
@@ -7099,545 +7343,583 @@ c$E62D LD A,($D244)  ; {Return if *#R$D244 is equal to #N$FF.
  $EA96 LD A,$05      ; {Write melody ID #N$05 to *#R$FF8D.
  $EA98 LD ($FF8D),A  ; }
  $EA9B RET           ; Return.
- $EA9C LD A,($D24B)  ;
+
+; Routine at EA9C
+c$EA9C LD A,($D24B)  ; {Jump to #R$EAB4 if *#R$D24B is equal to #N$19.
  $EA9F CP $19        ;
- $EAA1 JR Z,$EAB4    ;
- $EAA3 DEC A         ;
- $EAA4 LD ($D24B),A  ;
- $EAA7 JR NZ,$EACE   ;
- $EAA9 LD A,$19      ;
- $EAAB LD ($D24B),A  ;
- $EAAE LD A,($D252)  ;
+ $EAA1 JR Z,$EAB4    ; }
+ $EAA3 DEC A         ; Decrease #REGa by one.
+ $EAA4 LD ($D24B),A  ; Write #REGa to *#R$D24B.
+ $EAA7 JR NZ,$EACE   ; Jump to #R$EACE if #REGa is not zero.
+ $EAA9 LD A,$19      ; {Write #N$19 to *#R$D24B.
+ $EAAB LD ($D24B),A  ; }
+ $EAAE LD A,($D252)  ; {Jump to #R$EABA if *#R$D252 is zero.
  $EAB1 AND A         ;
- $EAB2 JR Z,$EABA    ;
-*$EAB4 CALL $E179    ;
- $EAB7 AND A         ;
- $EAB8 JR Z,$EACE    ;
-*$EABA LD A,($D247)  ;
- $EABD RRCA          ;
- $EABE CALL NC,$DA61 ;
- $EAC1 XOR A         ;
- $EAC2 LD ($D244),A  ;
+ $EAB2 JR Z,$EABA    ; }
+*$EAB4 CALL $E179    ; Call #R$E179.
+ $EAB7 AND A         ; {Jump to #R$EACE if #REGa is zero.
+ $EAB8 JR Z,$EACE    ; }
+*$EABA LD A,($D247)  ; #REGa=*#R$D247.
+ $EABD RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $EABE CALL NC,$DA61 ; Call #R$DA61 if the carry flag is not set.
+ $EAC1 XOR A         ; {Write #N$00 to: #LIST { *#R$D244 } { *#R$D246 } {
+ $EAC2 LD ($D244),A  ; *#R$D248 } LIST#
  $EAC5 LD ($D246),A  ;
- $EAC8 LD ($D248),A  ;
- $EACB JP $E67C      ;
-*$EACE LD A,$07      ;
- $EAD0 LD BC,($D24D) ;
- $EAD4 CALL $D9BB    ;
- $EAD7 LD BC,($D24D) ;
- $EADB INC B         ;
- $EADC INC B         ;
- $EADD INC C         ;
- $EADE LD A,($D247)  ;
- $EAE1 XOR $01       ;
- $EAE3 ADD A,C       ;
- $EAE4 LD C,A        ;
- $EAE5 LD A,$1B      ;
- $EAE7 CALL $D9BB    ;
- $EAEA LD A,($D244)  ;
+ $EAC8 LD ($D248),A  ; }
+ $EACB JP $E67C      ; Jump to #R$E67C.
+*$EACE LD A,$07      ; #REGa=#N$07.
+ $EAD0 LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $EAD4 CALL $D9BB    ; Call #R$D9BB.
+ $EAD7 LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $EADB INC B         ; {Increment #REGb by two.
+ $EADC INC B         ; }
+ $EADD INC C         ; Increment #REGc by one.
+ $EADE LD A,($D247)  ; #REGa=*#R$D247.
+ $EAE1 XOR %00000001 ; Flip bit 0.
+ $EAE3 ADD A,C       ; #REGa+=#REGc.
+ $EAE4 LD C,A        ; #REGc=#REGa.
+ $EAE5 LD A,$1B      ; #REGa=#N$1B.
+ $EAE7 CALL $D9BB    ; Call #R$D9BB.
+ $EAEA LD A,($D244)  ; {Return if *#R$D244 is not equal to #N$20.
  $EAED CP $20        ;
- $EAEF RET NZ        ;
- $EAF0 LD A,$21      ;
- $EAF2 LD ($D244),A  ;
- $EAF5 RET           ;
- $EAF6 CALL $E179    ;
- $EAF9 CP $08        ;
- $EAFB JP NZ,$EB2F   ;
- $EAFE LD A,($D244)  ;
+ $EAEF RET NZ        ; }
+ $EAF0 LD A,$21      ; {Write #N$21 to *#R$D244.
+ $EAF2 LD ($D244),A  ; }
+ $EAF5 RET           ; Return.
+
+; Routine at EAF6
+c$EAF6 CALL $E179    ; Call #R$E179.
+ $EAF9 CP $08        ; {Jump to #R$EB2F if #REGa is not equal to #N$08.
+ $EAFB JP NZ,$EB2F   ; }
+ $EAFE LD A,($D244)  ; {Jump to #R$EB2F if *#R$D244 is equal to #N$1C.
  $EB01 CP $1C        ;
- $EB03 JP Z,$EB2F    ;
- $EB06 LD A,($D24E)  ;
+ $EB03 JP Z,$EB2F    ; }
+ $EB06 LD A,($D24E)  ; {Jump to #R$EB2F if *#R$D24E is higher than #N$11.
  $EB09 CP $11        ;
- $EB0B JR NC,$EB2F   ;
- $EB0D LD A,($D24D)  ;
+ $EB0B JR NC,$EB2F   ; }
+ $EB0D LD A,($D24D)  ; {Jump to #R$EB18 if *#R$D24D is equal to #N$FF.
  $EB10 CP $FF        ;
- $EB12 JR Z,$EB18    ;
- $EB14 CP $1D        ;
- $EB16 JR NC,$EB2F   ;
-*$EB18 LD HL,$D247   ;
- $EB1B LD A,(HL)     ;
- $EB1C XOR $01       ;
- $EB1E INC HL        ;
- $EB1F AND (HL)      ;
- $EB20 CALL NZ,$DA61 ;
- $EB23 LD A,($D246)  ;
- $EB26 RRCA          ;
- $EB27 CALL C,$DA59  ;
- $EB2A LD A,$08      ;
- $EB2C JP $E6C5      ;
-*$EB2F LD A,($D246)  ;
- $EB32 RRCA          ;
- $EB33 JR NC,$EB43   ;
- $EB35 LD HL,$C896   ;
- $EB38 LD A,($D247)  ;
- $EB3B RRCA          ;
- $EB3C JR NC,$EB4F   ;
- $EB3E LD HL,$C8A9   ;
- $EB41 JR $EB4F      ;
-*$EB43 LD HL,$C86E   ;
- $EB46 LD A,($D247)  ;
- $EB49 RRCA          ;
- $EB4A JR NC,$EB4F   ;
- $EB4C LD HL,$C882   ;
-*$EB4F LD BC,($D24D) ;
- $EB53 LD A,($D24C)  ;
+ $EB12 JR Z,$EB18    ; }
+ $EB14 CP $1D        ; {Jump to #R$EB2F if *#R$D24D is higher than #N$1D.
+ $EB16 JR NC,$EB2F   ; }
+*$EB18 LD HL,$D247   ; #REGhl=#R$D247.
+ $EB1B LD A,(HL)     ; #REGa=*#REGhl.
+ $EB1C XOR %00000001 ; Flip bit 0.
+ $EB1E INC HL        ; Increment #REGhl by one.
+ $EB1F AND (HL)      ; Merge the bits from *#REGhl.
+ $EB20 CALL NZ,$DA61 ; Call #R$DA61 not zero.
+ $EB23 LD A,($D246)  ; #REGa=*#R$D246.
+ $EB26 RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $EB27 CALL C,$DA59  ; Call #R$DA59 if the carry flag is set.
+ $EB2A LD A,$08      ; #REGa=#N$08.
+ $EB2C JP $E6C5      ; Jump to #R$E6C5.
+; This entry point is used by the routine at #R$E68C.
+*$EB2F LD A,($D246)  ; #REGa=*#R$D246.
+ $EB32 RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $EB33 JR NC,$EB43   ; Jump to #R$EB43 if the carry flag is not set.
+ $EB35 LD HL,$C896   ; #REGhl=#R$C896.
+ $EB38 LD A,($D247)  ; #REGa=*#R$D247.
+ $EB3B RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $EB3C JR NC,$EB4F   ; Jump to #R$EB4F if the carry flag is not set.
+ $EB3E LD HL,$C8A9   ; #REGhl=#R$C8A9.
+ $EB41 JR $EB4F      ; Jump to #R$EB4F.
+*$EB43 LD HL,$C86E   ; #REGhl=#R$C86E.
+ $EB46 LD A,($D247)  ; #REGa=*#R$D247.
+ $EB49 RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $EB4A JR NC,$EB4F   ; Jump to #R$EB4F if the carry flag is not set.
+ $EB4C LD HL,$C882   ; #REGhl=#R$C882.
+*$EB4F LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $EB53 LD A,($D24C)  ; {Increment *#R$D24C by one.
  $EB56 INC A         ;
- $EB57 LD ($D24C),A  ;
+ $EB57 LD ($D24C),A  ; }
 ; This entry point is used by the routine at #R$F69F.
-*$EB5A LD D,$00      ;
- $EB5C LD E,A        ;
- $EB5D ADD HL,DE     ;
- $EB5E LD ($D21E),HL ;
- $EB61 LD D,(HL)     ;
- $EB62 BIT 5,D       ;
- $EB64 JR Z,$EB67    ;
- $EB66 INC C         ;
-*$EB67 BIT 0,D       ;
- $EB69 JR Z,$EB6C    ;
- $EB6B INC C         ;
-*$EB6C BIT 1,D       ;
- $EB6E JR Z,$EB71    ;
- $EB70 DEC C         ;
-*$EB71 LD A,($D3FF)  ;
+*$EB5A LD D,$00      ; #REGd=#N$00.
+ $EB5C LD E,A        ; #REGe=#REGa.
+ $EB5D ADD HL,DE     ; #REGhl+=#REGde.
+ $EB5E LD ($D21E),HL ; Write #REGhl to *#R$D21E.
+ $EB61 LD D,(HL)     ; #REGd=*#REGhl.
+ $EB62 BIT 5,D       ; Test bit 5 of #REGd.
+ $EB64 JR Z,$EB67    ; Jump to #R$EB67 if {} is zero.
+ $EB66 INC C         ; Increment #REGc by one.
+*$EB67 BIT 0,D       ; Test bit 0 of #REGd.
+ $EB69 JR Z,$EB6C    ; Jump to #R$EB6C if {} is zero.
+ $EB6B INC C         ; Increment #REGc by one.
+*$EB6C BIT 1,D       ; Test bit 1 of #REGd.
+ $EB6E JR Z,$EB71    ; Jump to #R$EB71 if {} is zero.
+ $EB70 DEC C         ; Decrease #REGc by one.
+*$EB71 LD A,($D3FF)  ; {Jump to #R$EB88 if *#R$D3FF is not zero.
  $EB74 AND A         ;
- $EB75 JR NZ,$EB88   ;
- $EB77 LD A,($D247)  ;
- $EB7A XOR $1F       ;
- $EB7C CP C          ;
- $EB7D JP Z,$EC6E    ;
- $EB80 XOR $1E       ;
- $EB82 ADD A,$FC     ;
- $EB84 CP C          ;
- $EB85 JP Z,$EC6E    ;
-*$EB88 BIT 2,D       ;
- $EB8A JR Z,$EB8D    ;
- $EB8C DEC B         ;
-*$EB8D LD A,D        ;
- $EB8E EX AF,AF'     ;
- $EB8F BIT 3,D       ;
- $EB91 JR Z,$EBDD    ;
- $EB93 INC B         ;
- $EB94 LD A,($D3FF)  ;
+ $EB75 JR NZ,$EB88   ; }
+ $EB77 LD A,($D247)  ; #REGa=*#R$D247.
+ $EB7A XOR %00011111 ; Flip bits 0-4.
+ $EB7C CP C          ; {Jump to #R$EC6E if #REGa is equal to #REGc.
+ $EB7D JP Z,$EC6E    ; }
+ $EB80 XOR %00011110 ; Flip bits 1-4.
+ $EB82 ADD A,$FC     ; #REGa+=#N$FC.
+ $EB84 CP C          ; {Jump to #R$EC6E if #REGa is equal to #REGc.
+ $EB85 JP Z,$EC6E    ; }
+*$EB88 BIT 2,D       ; Test bit 2 of #REGd.
+ $EB8A JR Z,$EB8D    ; Jump to #R$EB8D if {} is zero.
+ $EB8C DEC B         ; Decrease #REGb by one.
+*$EB8D LD A,D        ; #REGa=#REGd.
+ $EB8E EX AF,AF'     ; Exchange the #REGaf register with the shadow #REGaf
+                     ; register.
+ $EB8F BIT 3,D       ; Test bit 3 of #REGd.
+ $EB91 JR Z,$EBDD    ; Jump to #R$EBDD if {} is zero.
+ $EB93 INC B         ; Increment #REGb by one.
+ $EB94 LD A,($D3FF)  ; {Jump to #R$EBDD if *#R$D3FF is not zero.
  $EB97 AND A         ;
- $EB98 JR NZ,$EBDD   ;
- $EB9A LD A,$12      ;
+ $EB98 JR NZ,$EBDD   ; }
+ $EB9A LD A,$12      ; {Jump to #R$EC52 if #REGb is equal to #N$12.
  $EB9C CP B          ;
- $EB9D JP Z,$EC52    ;
- $EBA0 LD A,B        ;
- $EBA1 LD ($D24E),A  ;
- $EBA4 LD ($D21C),BC ;
- $EBA8 LD BC,$0502   ;
- $EBAB LD DE,$090F   ;
- $EBAE CALL $E0AD    ;
- $EBB1 LD BC,($D21C) ;
- $EBB5 JR Z,$EBDD    ;
- $EBB7 LD A,($D244)  ;
+ $EB9D JP Z,$EC52    ; }
+ $EBA0 LD A,B        ; {Write #REGb to *#R$D24E.
+ $EBA1 LD ($D24E),A  ; }
+ $EBA4 LD ($D21C),BC ; Write #REGbc to *#R$D21C.
+ $EBA8 LD BC,$0502   ; #REGbc=#N$0502.
+ $EBAB LD DE,$090F   ; #REGde=#N$090F.
+ $EBAE CALL $E0AD    ; Call #R$E0AD.
+ $EBB1 LD BC,($D21C) ; #REGbc=*#R$D21C.
+ $EBB5 JR Z,$EBDD    ; Jump to #R$EBDD if {} is zero.
+ $EBB7 LD A,($D244)  ; {Jump to #R$EBDD if *#R$D244 is equal to #N$1C.
  $EBBA CP $1C        ;
- $EBBC JR Z,$EBDD    ;
- $EBBE LD A,($D246)  ;
- $EBC1 RRCA          ;
- $EBC2 JP NC,$EC52   ;
- $EBC5 LD ($D21C),BC ;
- $EBC9 LD B,$05      ;
- $EBCB LD A,($D247)  ;
+ $EBBC JR Z,$EBDD    ; }
+ $EBBE LD A,($D246)  ; #REGa=*#R$D246.
+ $EBC1 RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $EBC2 JP NC,$EC52   ; Jump to #R$EC52 if the carry flag is not set.
+ $EBC5 LD ($D21C),BC ; Write #REGbc to *#R$D21C.
+ $EBC9 LD B,$05      ; #REGb=#N$05.
+ $EBCB LD A,($D247)  ; {#REGc=*#R$D247*#N$04.
  $EBCE ADD A,A       ;
  $EBCF ADD A,A       ;
- $EBD0 LD C,A        ;
- $EBD1 LD DE,$090F   ;
- $EBD4 CALL $E0AD    ;
- $EBD7 LD BC,($D21C) ;
- $EBDB JR NZ,$EC52   ;
-*$EBDD LD A,($D3FF)  ;
+ $EBD0 LD C,A        ; }
+ $EBD1 LD DE,$090F   ; #REGde=#N$090F.
+ $EBD4 CALL $E0AD    ; Call #R$E0AD.
+ $EBD7 LD BC,($D21C) ; #REGbc=*#R$D21C.
+ $EBDB JR NZ,$EC52   ; Jump to #R$EC52 if {} is not zero.
+*$EBDD LD A,($D3FF)  ; {Return if *#R$D3FF is not zero.
  $EBE0 AND A         ;
- $EBE1 RET NZ        ;
- $EBE2 EX AF,AF'     ;
- $EBE3 BIT 4,A       ;
- $EBE5 JR Z,$EC30    ;
- $EBE7 INC B         ;
- $EBE8 LD A,($D3FF)  ;
+ $EBE1 RET NZ        ; }
+ $EBE2 EX AF,AF'     ; Exchange the #REGaf register with the shadow #REGaf
+                     ; register.
+ $EBE3 BIT 4,A       ; Test bit 4 of #REGa.
+ $EBE5 JR Z,$EC30    ; Jump to #R$EC30 if {} is zero.
+ $EBE7 INC B         ; Increment #REGb by one.
+ $EBE8 LD A,($D3FF)  ; {Return if *#R$D3FF is not zero.
  $EBEB AND A         ;
- $EBEC RET NZ        ;
- $EBED LD A,$12      ;
+ $EBEC RET NZ        ; }
+ $EBED LD A,$12      ; {Jump to #R$EC52 if #REGb is not equal to #N$12.
  $EBEF CP B          ;
- $EBF0 JR Z,$EC52    ;
- $EBF2 LD A,B        ;
- $EBF3 LD ($D24E),A  ;
- $EBF6 LD ($D21C),BC ;
- $EBFA LD BC,$0502   ;
- $EBFD LD DE,$090F   ;
- $EC00 CALL $E0AD    ;
- $EC03 LD BC,($D21C) ;
- $EC07 JP Z,$EC30    ;
- $EC0A LD A,($D244)  ;
+ $EBF0 JR Z,$EC52    ; }
+ $EBF2 LD A,B        ; #REGa=#REGb.
+ $EBF3 LD ($D24E),A  ; Write #REGa to *#R$D24E.
+ $EBF6 LD ($D21C),BC ; Write #REGbc to *#R$D21C.
+ $EBFA LD BC,$0502   ; #REGbc=#N$0502.
+ $EBFD LD DE,$090F   ; #REGde=#N$090F.
+ $EC00 CALL $E0AD    ; Call #R$E0AD.
+ $EC03 LD BC,($D21C) ; #REGbc=*#R$D21C.
+ $EC07 JP Z,$EC30    ; Jump to #R$EC30 if {} is zero.
+ $EC0A LD A,($D244)  ; {Jump to #R$EC30 if *#R$D244 is equal to #N$1C.
  $EC0D CP $1C        ;
- $EC0F JP Z,$EC30    ;
- $EC12 LD A,($D246)  ;
- $EC15 RRCA          ;
- $EC16 JR NC,$EC52   ;
- $EC18 LD ($D21C),BC ;
- $EC1C LD B,$05      ;
- $EC1E LD A,($D247)  ;
+ $EC0F JP Z,$EC30    ; }
+ $EC12 LD A,($D246)  ; #REGa=*#R$D246.
+ $EC15 RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $EC16 JR NC,$EC52   ; Jump to #R$EC52 if the carry flag is not set.
+ $EC18 LD ($D21C),BC ; Write #REGbc to *#R$D21C.
+ $EC1C LD B,$05      ; #REGb=#N$05.
+ $EC1E LD A,($D247)  ; {#REGc=*#R$D247*#N$04.
  $EC21 ADD A,A       ;
  $EC22 ADD A,A       ;
- $EC23 LD C,A        ;
- $EC24 LD DE,$090F   ;
- $EC27 CALL $E0AD    ;
- $EC2A LD BC,($D21C) ;
- $EC2E JR NZ,$EC52   ;
-*$EC30 LD ($D24D),BC ;
- $EC34 LD A,($D217)  ;
+ $EC23 LD C,A        ; }
+ $EC24 LD DE,$090F   ; #REGde=#N$090F.
+ $EC27 CALL $E0AD    ; Call #R$E0AD.
+ $EC2A LD BC,($D21C) ; #REGbc=*#R$D21C.
+ $EC2E JR NZ,$EC52   ; Jump to #R$EC52 if {} is not zero.
+*$EC30 LD ($D24D),BC ; Write #REGbc to *#R$D24D.
+ $EC34 LD A,($D217)  ; {Jump to #R$ECE0 if *#R$D217 is higher than #N$11.
  $EC37 CP $11        ;
- $EC39 JP NC,$ECE0   ;
- $EC3C LD A,$09      ;
- $EC3E PUSH BC       ;
- $EC3F CALL $D9BB    ;
- $EC42 POP BC        ;
- $EC43 INC B         ;
- $EC44 INC C         ;
- $EC45 LD A,($D247)  ;
- $EC48 XOR $01       ;
- $EC4A ADD A,C       ;
- $EC4B LD C,A        ;
- $EC4C LD A,$17      ;
- $EC4E CALL $D9BB    ;
- $EC51 RET           ;
-*$EC52 LD ($D24D),BC ;
- $EC56 LD A,($D247)  ;
- $EC59 RRCA          ;
- $EC5A CALL NC,$DA61 ;
- $EC5D XOR A         ;
- $EC5E LD ($D24C),A  ;
+ $EC39 JP NC,$ECE0   ; }
+ $EC3C LD A,$09      ; #REGa=#N$09.
+ $EC3E PUSH BC       ; Stash #REGbc on the stack.
+ $EC3F CALL $D9BB    ; Call #R$D9BB.
+ $EC42 POP BC        ; Restore #REGbc from the stack.
+ $EC43 INC B         ; Increment #REGb by one.
+ $EC44 INC C         ; Increment #REGc by one.
+ $EC45 LD A,($D247)  ; #REGa=*#R$D247.
+ $EC48 XOR %00000001 ; Flip bit 0.
+ $EC4A ADD A,C       ; #REGa+=#REGc.
+ $EC4B LD C,A        ; #REGc=#REGa.
+ $EC4C LD A,$17      ; #REGa=#N$17.
+ $EC4E CALL $D9BB    ; Call #R$D9BB.
+ $EC51 RET           ; Return.
+*$EC52 LD ($D24D),BC ; Write #REGbc to *#R$D24D.
+ $EC56 LD A,($D247)  ; #REGa=*#R$D247.
+ $EC59 RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $EC5A CALL NC,$DA61 ; Call #R$DA61 if the carry flag is not set.
+ $EC5D XOR A         ; {Write #N$00 to: #LIST { *#R$D24C } { *#R$D246 } {
+ $EC5E LD ($D24C),A  ; *#R$D248 } LIST#
  $EC61 LD ($D246),A  ;
- $EC64 LD ($D248),A  ;
- $EC67 INC A         ;
- $EC68 LD ($D24F),A  ;
- $EC6B JP $EF86      ;
-*$EC6E XOR A         ;
- $EC6F LD ($D24C),A  ;
- $EC72 INC A         ;
- $EC73 LD ($D244),A  ;
- $EC76 LD A,($D24E)  ;
+ $EC64 LD ($D248),A  ; }
+ $EC67 INC A         ; Increment #REGa by one.
+ $EC68 LD ($D24F),A  ; Write #REGa to *#R$D24F.
+ $EC6B JP $EF86      ; Jump to #R$EF86.
+*$EC6E XOR A         ; {Write #N$00 to *#R$D24C.
+ $EC6F LD ($D24C),A  ; }
+ $EC72 INC A         ; Increment #REGa by one.
+ $EC73 LD ($D244),A  ; Write #REGa to *#R$D244.
+ $EC76 LD A,($D24E)  ; {Jump to #R$EF86 if *#R$D24E is equal to #N$12.
  $EC79 CP $12        ;
- $EC7B JP Z,$EF86    ;
- $EC7E LD A,$0B      ;
- $EC80 LD ($D244),A  ;
- $EC83 LD A,B        ;
- $EC84 LD ($D24E),A  ;
- $EC87 JP $E67C      ;
- $EC8A LD A,($D24E)  ;
+ $EC7B JP Z,$EF86    ; }
+ $EC7E LD A,$0B      ; {Write #N$0B to *#R$D244.
+ $EC80 LD ($D244),A  ; }
+ $EC83 LD A,B        ; {Write #REGb to *#R$D24E.
+ $EC84 LD ($D24E),A  ; }
+ $EC87 JP $E67C      ; Jump to #R$E67C.
+
+; Routine at EC8A
+c$EC8A LD A,($D24E)  ; {Jump to #R$ECC0 if *#R$D24E is equal to #N$12.
  $EC8D CP $12        ;
- $EC8F JR Z,$ECC0    ;
- $EC91 LD A,($D24B)  ;
+ $EC8F JR Z,$ECC0    ; }
+ $EC91 LD A,($D24B)  ; {Decrease *#R$D24B by one.
  $EC94 DEC A         ;
- $EC95 LD ($D24B),A  ;
- $EC98 CP $12        ;
- $EC9A JR NC,$ECA3   ;
- $EC9C CALL $DA59    ;
- $EC9F CP $12        ;
- $ECA1 JR Z,$ECC0    ;
-*$ECA3 LD A,$09      ;
- $ECA5 LD BC,($D24D) ;
- $ECA9 PUSH BC       ;
- $ECAA CALL $D9BB    ;
- $ECAD POP BC        ;
- $ECAE INC B         ;
- $ECAF INC C         ;
- $ECB0 LD A,($D247)  ;
- $ECB3 XOR $01       ;
- $ECB5 ADD A,C       ;
- $ECB6 LD C,A        ;
- $ECB7 LD A,$17      ;
- $ECB9 CALL $D9BB    ;
- $ECBC CALL $DA59    ;
- $ECBF RET           ;
-*$ECC0 LD A,($D247)  ;
- $ECC3 RRCA          ;
- $ECC4 CALL NC,$DA61 ;
- $ECC7 LD A,$12      ;
- $ECC9 LD ($D24E),A  ;
- $ECCC LD A,$19      ;
- $ECCE LD ($D24B),A  ;
- $ECD1 XOR A         ;
+ $EC95 LD ($D24B),A  ; }
+ $EC98 CP $12        ; {Jump to #R$ECA3 if *#R$D24B is higher than #N$12.
+ $EC9A JR NC,$ECA3   ; }
+ $EC9C CALL $DA59    ; Call #R$DA59.
+ $EC9F CP $12        ; {Jump to #R$ECC0 if #REGa is equal to #N$12.
+ $ECA1 JR Z,$ECC0    ; }
+*$ECA3 LD A,$09      ; #REGa=#N$09.
+ $ECA5 LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $ECA9 PUSH BC       ; Stash #REGbc on the stack.
+ $ECAA CALL $D9BB    ; Call #R$D9BB.
+ $ECAD POP BC        ; Restore #REGbc from the stack.
+ $ECAE INC B         ; Increment #REGb by one.
+ $ECAF INC C         ; Increment #REGc by one.
+ $ECB0 LD A,($D247)  ; #REGa=*#R$D247.
+ $ECB3 XOR %00000001 ; Flip bit 0.
+ $ECB5 ADD A,C       ; #REGa+=#REGc.
+ $ECB6 LD C,A        ; #REGc=#REGa.
+ $ECB7 LD A,$17      ; #REGa=#N$17.
+ $ECB9 CALL $D9BB    ; Call #R$D9BB.
+ $ECBC CALL $DA59    ; Call #R$DA59.
+ $ECBF RET           ; Return.
+*$ECC0 LD A,($D247)  ; #REGa=*#R$D247.
+ $ECC3 RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $ECC4 CALL NC,$DA61 ; Call #R$DA61 if the carry flag is not set.
+ $ECC7 LD A,$12      ; {Write #N$12 to *#R$D24E.
+ $ECC9 LD ($D24E),A  ; }
+ $ECCC LD A,$19      ; {Write #N$19 to *#R$D24B.
+ $ECCE LD ($D24B),A  ; }
+ $ECD1 XOR A         ; {Write #N$00 to: #LIST { *#R$D246 } { *#R$D248 } LIST#
  $ECD2 LD ($D246),A  ;
- $ECD5 LD ($D248),A  ;
- $ECD8 LD A,$01      ;
- $ECDA LD ($D24F),A  ;
- $ECDD JP $EF86      ;
-*$ECE0 LD A,($D217)  ;
- $ECE3 AND $0F       ;
- $ECE5 LD B,A        ;
- $ECE6 BIT 3,B       ;
- $ECE8 JR NZ,$ECEC   ;
- $ECEA JR $ED0C      ;
-*$ECEC LD HL,$FE00   ;
- $ECEF LD DE,$FE03   ;
- $ECF2 CALL $F352    ;
- $ECF5 LD BC,($D24D) ;
- $ECF9 DEC B         ;
- $ECFA DEC B         ;
- $ECFB LD A,$25      ;
- $ECFD CALL $D9BB    ;
- $ED00 LD BC,($D24D) ;
- $ED04 INC B         ;
- $ED05 INC B         ;
- $ED06 LD A,$23      ;
- $ED08 CALL $D9BB    ;
- $ED0B RET           ;
-*$ED0C LD HL,$0103   ;
- $ED0F LD DE,$0100   ;
- $ED12 CALL $F352    ;
- $ED15 LD BC,($D24D) ;
- $ED19 INC B         ;
- $ED1A INC B         ;
- $ED1B LD A,$23      ;
- $ED1D CALL $D9BB    ;
- $ED20 LD BC,($D24D) ;
- $ED24 LD A,($D247)  ;
- $ED27 LD H,A        ;
- $ED28 LD A,C        ;
+ $ECD5 LD ($D248),A  ; }
+ $ECD8 LD A,$01      ; {Write #N$01 to *#R$D24F.
+ $ECDA LD ($D24F),A  ; }
+ $ECDD JP $EF86      ; Jump to #R$EF86.
+
+; Routine at ECE0
+;
+; Used by the routine at #R$EAF6.
+c$ECE0 LD A,($D217)  ; #REGa=*#R$D217.
+ $ECE3 AND %00001111 ; Keep only bits 0-3.
+ $ECE5 LD B,A        ; #REGb=#REGa.
+ $ECE6 BIT 3,B       ; Test bit 3 of #REGb.
+ $ECE8 JR NZ,$ECEC   ; Jump to #R$ECEC if {} is not zero.
+ $ECEA JR $ED0C      ; Jump to #R$ED0C.
+*$ECEC LD HL,$FE00   ; #REGhl=#R$FE00.
+ $ECEF LD DE,$FE03   ; #REGde=#N$FE03.
+ $ECF2 CALL $F352    ; Call #R$F352.
+ $ECF5 LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $ECF9 DEC B         ; {Decrease #REGb by two.
+ $ECFA DEC B         ; }
+ $ECFB LD A,$25      ; #REGa=#N$25.
+ $ECFD CALL $D9BB    ; Call #R$D9BB.
+ $ED00 LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $ED04 INC B         ; {Increment #REGb by two.
+ $ED05 INC B         ; }
+ $ED06 LD A,$23      ; #REGa=#N$23.
+ $ED08 CALL $D9BB    ; Call #R$D9BB.
+ $ED0B RET           ; Return.
+*$ED0C LD HL,$0103   ; #REGhl=#N$0103.
+ $ED0F LD DE,$0100   ; #REGde=#N$0100.
+ $ED12 CALL $F352    ; Call #R$F352.
+ $ED15 LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $ED19 INC B         ; {Increment #REGb by two.
+ $ED1A INC B         ; }
+ $ED1B LD A,$23      ; #REGa=#N$23.
+ $ED1D CALL $D9BB    ; Call #R$D9BB.
+ $ED20 LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $ED24 LD A,($D247)  ; {#REGh=*#R$D247.
+ $ED27 LD H,A        ; }
+ $ED28 LD A,C        ; {#REGc-=#REGh.
  $ED29 SUB H         ;
- $ED2A LD C,A        ;
- $ED2B LD A,$1D      ;
- $ED2D CALL $D9BB    ;
- $ED30 RET           ;
- $ED31 LD A,($D217)  ;
- $ED34 AND $0F       ;
- $ED36 LD B,A        ;
- $ED37 BIT 2,B       ;
- $ED39 JP NZ,$EDA3   ;
- $ED3C BIT 3,B       ;
- $ED3E JR NZ,$ED54   ;
- $ED40 LD A,($D247)  ;
- $ED43 RRCA          ;
- $ED44 JR C,$ED4D    ;
- $ED46 BIT 1,B       ;
- $ED48 JR NZ,$ED79   ;
- $ED4A JP $EF86      ;
-*$ED4D BIT 1,B       ;
- $ED4F JR Z,$ED79    ;
- $ED51 JP $EF86      ;
-*$ED54 LD HL,$FE00   ;
- $ED57 LD DE,$FE03   ;
- $ED5A CALL $F352    ;
- $ED5D LD A,$12      ;
- $ED5F LD ($D244),A  ;
- $ED62 LD BC,($D24D) ;
- $ED66 DEC B         ;
- $ED67 DEC B         ;
- $ED68 LD A,$25      ;
- $ED6A CALL $D9BB    ;
- $ED6D LD BC,($D24D) ;
- $ED71 INC B         ;
- $ED72 INC B         ;
- $ED73 LD A,$21      ;
- $ED75 CALL $D9BB    ;
- $ED78 RET           ;
-*$ED79 LD HL,$0103   ;
- $ED7C LD DE,$0100   ;
- $ED7F CALL $F352    ;
- $ED82 LD A,$13      ;
- $ED84 LD ($D244),A  ;
- $ED87 LD BC,($D24D) ;
- $ED8B INC B         ;
- $ED8C INC B         ;
- $ED8D LD A,$21      ;
- $ED8F CALL $D9BB    ;
- $ED92 LD BC,($D24D) ;
- $ED96 LD A,($D247)  ;
- $ED99 SUB C         ;
- $ED9A CPL           ;
- $ED9B INC A         ;
- $ED9C LD C,A        ;
- $ED9D LD A,$1D      ;
- $ED9F CALL $D9BB    ;
- $EDA2 RET           ;
-*$EDA3 LD HL,$0302   ;
- $EDA6 LD DE,$0301   ;
- $EDA9 CALL $F352    ;
- $EDAC LD A,$15      ;
- $EDAE LD ($D244),A  ;
- $EDB1 LD BC,($D24D) ;
- $EDB5 LD A,($D247)  ;
- $EDB8 SUB C         ;
- $EDB9 CPL           ;
- $EDBA INC A         ;
- $EDBB LD C,A        ;
- $EDBC LD A,$29      ;
- $EDBE CALL $D9BB    ;
- $EDC1 RET           ;
- $EDC2 LD A,($D217)  ;
- $EDC5 AND $0F       ;
- $EDC7 LD B,A        ;
- $EDC8 BIT 3,B       ;
- $EDCA JR NZ,$EDE5   ;
- $EDCC BIT 2,B       ;
- $EDCE JP NZ,$EE4A   ;
- $EDD1 LD A,($D247)  ;
- $EDD4 RRCA          ;
- $EDD5 JR C,$EDDE    ;
- $EDD7 BIT 1,B       ;
- $EDD9 JR NZ,$EE12   ;
- $EDDB JP $EF86      ;
-*$EDDE BIT 1,B       ;
- $EDE0 JR Z,$EE12    ;
- $EDE2 JP $EF86      ;
-*$EDE5 LD HL,$FE01   ;
- $EDE8 LD DE,$FE03   ;
- $EDEB CALL $F352    ;
- $EDEE LD A,$16      ;
- $EDF0 LD ($D244),A  ;
- $EDF3 LD H,$FE      ;
- $EDF5 LD D,H        ;
- $EDF6 LD L,$01      ;
- $EDF8 LD E,$00      ;
- $EDFA CALL $EF38    ;
- $EDFD LD A,$25      ;
- $EDFF CALL $D9BB    ;
- $EE02 LD H,$02      ;
- $EE04 LD L,$01      ;
- $EE06 LD D,H        ;
- $EE07 LD E,$00      ;
- $EE09 CALL $EF38    ;
- $EE0C LD A,$1F      ;
- $EE0E CALL $D9BB    ;
- $EE11 RET           ;
-*$EE12 LD HL,$0104   ;
- $EE15 LD DE,$0100   ;
- $EE18 CALL $F352    ;
- $EE1B LD A,$17      ;
- $EE1D LD ($D244),A  ;
- $EE20 LD BC,($D24D) ;
- $EE24 INC B         ;
- $EE25 INC B         ;
- $EE26 LD A,($D247)  ;
- $EE29 XOR $01       ;
- $EE2B ADD A,C       ;
- $EE2C LD C,A        ;
- $EE2D LD A,$1F      ;
- $EE2F CALL $D9BB    ;
- $EE32 LD BC,($D24D) ;
- $EE36 LD A,($D247)  ;
- $EE39 SUB C         ;
- $EE3A CPL           ;
- $EE3B INC A         ;
- $EE3C LD C,A        ;
- $EE3D LD A,($D247)  ;
- $EE40 XOR $01       ;
- $EE42 ADD A,C       ;
- $EE43 LD C,A        ;
- $EE44 LD A,$1D      ;
- $EE46 CALL $D9BB    ;
- $EE49 RET           ;
-*$EE4A LD HL,$0303   ;
- $EE4D LD DE,$0301   ;
- $EE50 CALL $F352    ;
- $EE53 LD A,$19      ;
- $EE55 LD ($D244),A  ;
- $EE58 LD BC,($D24D) ;
- $EE5C LD A,($D247)  ;
- $EE5F SUB C         ;
- $EE60 CPL           ;
- $EE61 INC A         ;
- $EE62 LD C,A        ;
- $EE63 LD A,($D247)  ;
- $EE66 XOR $01       ;
- $EE68 ADD A,C       ;
- $EE69 LD C,A        ;
- $EE6A LD A,$0B      ;
- $EE6C CALL $D9BB    ;
- $EE6F RET           ;
- $EE70 LD A,($D24B)  ;
+ $ED2A LD C,A        ; }
+ $ED2B LD A,$1D      ; #REGa=#N$1D.
+ $ED2D CALL $D9BB    ; Call #R$D9BB.
+ $ED30 RET           ; Return.
+
+; Routine at ED31
+c$ED31 LD A,($D217)  ; #REGa=*#R$D217.
+ $ED34 AND %00001111 ; Keep only bits 0-3.
+ $ED36 LD B,A        ; #REGb=#REGa.
+ $ED37 BIT 2,B       ; Test bit 2 of #REGb.
+ $ED39 JP NZ,$EDA3   ; Jump to #R$EDA3 if {} is not zero.
+ $ED3C BIT 3,B       ; Test bit 3 of #REGb.
+ $ED3E JR NZ,$ED54   ; Jump to #R$ED54 if {} is not zero.
+ $ED40 LD A,($D247)  ; #REGa=*#R$D247.
+ $ED43 RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $ED44 JR C,$ED4D    ; Jump to #R$ED4D if the carry flag is set.
+ $ED46 BIT 1,B       ; Test bit 1 of #REGb.
+ $ED48 JR NZ,$ED79   ; Jump to #R$ED79 if {} is not zero.
+ $ED4A JP $EF86      ; Jump to #R$EF86.
+*$ED4D BIT 1,B       ; Test bit 1 of #REGb.
+ $ED4F JR Z,$ED79    ; Jump to #R$ED79 if {} is zero.
+ $ED51 JP $EF86      ; Jump to #R$EF86.
+*$ED54 LD HL,$FE00   ; #REGhl=#R$FE00.
+ $ED57 LD DE,$FE03   ; #REGde=#N$FE03.
+ $ED5A CALL $F352    ; Call #R$F352.
+ $ED5D LD A,$12      ; {Write #N$12 to *#R$D244.
+ $ED5F LD ($D244),A  ; }
+ $ED62 LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $ED66 DEC B         ; {Decrease #REGb by two.
+ $ED67 DEC B         ; }
+ $ED68 LD A,$25      ; #REGa=#N$25.
+ $ED6A CALL $D9BB    ; Call #R$D9BB.
+ $ED6D LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $ED71 INC B         ; {Increment #REGb by two.
+ $ED72 INC B         ; }
+ $ED73 LD A,$21      ; #REGa=#N$21.
+ $ED75 CALL $D9BB    ; Call #R$D9BB.
+ $ED78 RET           ; Return.
+*$ED79 LD HL,$0103   ; #REGhl=#N$0103.
+ $ED7C LD DE,$0100   ; #REGde=#N$0100.
+ $ED7F CALL $F352    ; Call #R$F352.
+ $ED82 LD A,$13      ; {Write #N$13 to *#R$D244.
+ $ED84 LD ($D244),A  ; }
+ $ED87 LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $ED8B INC B         ; {Increment #REGb by two.
+ $ED8C INC B         ; }
+ $ED8D LD A,$21      ; #REGa=#N$21.
+ $ED8F CALL $D9BB    ; Call #R$D9BB.
+ $ED92 LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $ED96 LD A,($D247)  ; #REGa=*#R$D247.
+ $ED99 SUB C         ; #REGa-=#REGc.
+ $ED9A CPL           ; Invert the bits in #REGa.
+ $ED9B INC A         ; Increment #REGa by one.
+ $ED9C LD C,A        ; #REGc=#REGa.
+ $ED9D LD A,$1D      ; #REGa=#N$1D.
+ $ED9F CALL $D9BB    ; Call #R$D9BB.
+ $EDA2 RET           ; Return.
+*$EDA3 LD HL,$0302   ; #REGhl=#N$0302.
+ $EDA6 LD DE,$0301   ; #REGde=#N$0301.
+ $EDA9 CALL $F352    ; Call #R$F352.
+ $EDAC LD A,$15      ; {Write #N$15 to *#R$D244.
+ $EDAE LD ($D244),A  ; }
+ $EDB1 LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $EDB5 LD A,($D247)  ; #REGa=*#R$D247.
+ $EDB8 SUB C         ; #REGa-=#REGc.
+ $EDB9 CPL           ; Invert the bits in #REGa.
+ $EDBA INC A         ; Increment #REGa by one.
+ $EDBB LD C,A        ; #REGc=#REGa.
+ $EDBC LD A,$29      ; #REGa=#N$29.
+ $EDBE CALL $D9BB    ; Call #R$D9BB.
+ $EDC1 RET           ; Return.
+
+; Routine at EDC2
+c$EDC2 LD A,($D217)  ; #REGa=*#R$D217.
+ $EDC5 AND %00001111 ; Keep only bits 0-3.
+ $EDC7 LD B,A        ; #REGb=#REGa.
+ $EDC8 BIT 3,B       ; Test bit 3 of #REGb.
+ $EDCA JR NZ,$EDE5   ; Jump to #R$EDE5 if {} is not zero.
+ $EDCC BIT 2,B       ; Test bit 2 of #REGb.
+ $EDCE JP NZ,$EE4A   ; Jump to #R$EE4A if {} is not zero.
+ $EDD1 LD A,($D247)  ; #REGa=*#R$D247.
+ $EDD4 RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $EDD5 JR C,$EDDE    ; Jump to #R$EDDE if the carry flag is set.
+ $EDD7 BIT 1,B       ; Test bit 1 of #REGb.
+ $EDD9 JR NZ,$EE12   ; Jump to #R$EE12 if {} is not zero.
+ $EDDB JP $EF86      ; Jump to #R$EF86.
+*$EDDE BIT 1,B       ; Test bit 1 of #REGb.
+ $EDE0 JR Z,$EE12    ; Jump to #R$EE12 if {} is zero.
+ $EDE2 JP $EF86      ; Jump to #R$EF86.
+*$EDE5 LD HL,$FE01   ; #REGhl=#N$FE01.
+ $EDE8 LD DE,$FE03   ; #REGde=#N$FE03.
+ $EDEB CALL $F352    ; Call #R$F352.
+ $EDEE LD A,$16      ; {Write #N$16 to *#R$D244.
+ $EDF0 LD ($D244),A  ; }
+ $EDF3 LD H,$FE      ; #REGh=#N$FE.
+ $EDF5 LD D,H        ; #REGd=#REGh.
+ $EDF6 LD L,$01      ; #REGl=#N$01.
+ $EDF8 LD E,$00      ; #REGe=#N$00.
+ $EDFA CALL $EF38    ; Call #R$EF38.
+ $EDFD LD A,$25      ; #REGa=#N$25.
+ $EDFF CALL $D9BB    ; Call #R$D9BB.
+ $EE02 LD H,$02      ; #REGh=#N$02.
+ $EE04 LD L,$01      ; #REGl=#N$01.
+ $EE06 LD D,H        ; #REGd=#REGh.
+ $EE07 LD E,$00      ; #REGe=#N$00.
+ $EE09 CALL $EF38    ; Call #R$EF38.
+ $EE0C LD A,$1F      ; #REGa=#N$1F.
+ $EE0E CALL $D9BB    ; Call #R$D9BB.
+ $EE11 RET           ; Return.
+*$EE12 LD HL,$0104   ; #REGhl=#N$0104.
+ $EE15 LD DE,$0100   ; #REGde=#N$0100.
+ $EE18 CALL $F352    ; Call #R$F352.
+ $EE1B LD A,$17      ; {Write #N$17 to *#R$D244.
+ $EE1D LD ($D244),A  ; }
+ $EE20 LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $EE24 INC B         ; {Increment #REGb by two.
+ $EE25 INC B         ; }
+ $EE26 LD A,($D247)  ; #REGa=*#R$D247.
+ $EE29 XOR %00000001 ; Flip bit 0.
+ $EE2B ADD A,C       ; #REGa+=#REGc.
+ $EE2C LD C,A        ; #REGc=#REGa.
+ $EE2D LD A,$1F      ; #REGa=#N$1F.
+ $EE2F CALL $D9BB    ; Call #R$D9BB.
+ $EE32 LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $EE36 LD A,($D247)  ; #REGa=*#R$D247.
+ $EE39 SUB C         ; #REGa-=#REGc.
+ $EE3A CPL           ; Invert the bits in #REGa.
+ $EE3B INC A         ; Increment #REGa by one.
+ $EE3C LD C,A        ; #REGc=#REGa.
+ $EE3D LD A,($D247)  ; #REGa=*#R$D247.
+ $EE40 XOR %00000001 ; Flip bit 0.
+ $EE42 ADD A,C       ; #REGa+=#REGc.
+ $EE43 LD C,A        ; #REGc=#REGa.
+ $EE44 LD A,$1D      ; #REGa=#N$1D.
+ $EE46 CALL $D9BB    ; Call #R$D9BB.
+ $EE49 RET           ; Return.
+*$EE4A LD HL,$0303   ; #REGhl=#N$0303.
+ $EE4D LD DE,$0301   ; #REGde=#N$0301.
+ $EE50 CALL $F352    ; Call #R$F352.
+ $EE53 LD A,$19      ; {Write #N$19 to *#R$D244.
+ $EE55 LD ($D244),A  ; }
+ $EE58 LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $EE5C LD A,($D247)  ; #REGa=*#R$D247.
+ $EE5F SUB C         ; #REGa-=#REGc.
+ $EE60 CPL           ; Invert the bits in #REGa.
+ $EE61 INC A         ; Increment #REGa by one.
+ $EE62 LD C,A        ; #REGc=#REGa.
+ $EE63 LD A,($D247)  ; #REGa=*#R$D247.
+ $EE66 XOR %00000001 ; Flip bit 0.
+ $EE68 ADD A,C       ; #REGa+=#REGc.
+ $EE69 LD C,A        ; #REGc=#REGa.
+ $EE6A LD A,$0B      ; #REGa=#N$0B.
+ $EE6C CALL $D9BB    ; Call #R$D9BB.
+ $EE6F RET           ; Return.
+
+; Routine at EE70
+c$EE70 LD A,($D24B)  ; {Decrease *#R$D24B by one.
  $EE73 DEC A         ;
- $EE74 LD ($D24B),A  ;
- $EE77 JR Z,$EE8E    ;
- $EE79 LD A,$21      ;
- $EE7B LD BC,($D24D) ;
- $EE7F INC B         ;
- $EE80 INC B         ;
- $EE81 CALL $D9BB    ;
- $EE84 LD BC,($D24D) ;
- $EE88 LD A,$03      ;
- $EE8A CALL $D9BB    ;
- $EE8D RET           ;
-*$EE8E LD A,$1B      ;
- $EE90 LD ($D244),A  ;
- $EE93 LD A,$06      ;
- $EE95 LD ($D24B),A  ;
- $EE98 JP $E67C      ;
- $EE9B LD A,($D24B)  ;
- $EE9E DEC A         ;
- $EE9F CP $FF        ;
- $EEA1 JR Z,$EECA    ;
- $EEA3 LD ($D24B),A  ;
- $EEA6 LD A,$09      ;
- $EEA8 LD BC,($D24D) ;
- $EEAC CALL $D9BB    ;
- $EEAF LD BC,($D24D) ;
- $EEB3 LD A,$0D      ;
- $EEB5 CALL $D9BB    ;
- $EEB8 LD BC,($D24D) ;
- $EEBC INC B         ;
- $EEBD INC C         ;
- $EEBE LD A,($D24B)  ;
- $EEC1 AND $03       ;
- $EEC3 ADD A,A       ;
- $EEC4 ADD A,$2B     ;
- $EEC6 CALL $D9BB    ;
- $EEC9 RET           ;
-*$EECA XOR A         ;
- $EECB LD ($D244),A  ;
- $EECE LD A,$19      ;
- $EED0 LD ($D24B),A  ;
- $EED3 JP $E67C      ;
- $EED6 LD BC,($D24D) ;
- $EEDA INC B         ;
- $EEDB INC C         ;
- $EEDC LD A,$77      ;
- $EEDE CALL $D6C9    ;
- $EEE1 LD A,$22      ;
- $EEE3 LD ($D244),A  ;
- $EEE6 XOR A         ;
- $EEE7 LD ($D249),A  ;
- $EEEA RET           ;
- $EEEB LD A,($D24E)  ;
+ $EE74 LD ($D24B),A  ; }
+ $EE77 JR Z,$EE8E    ; Jump to #R$EE8E if *#R$D24B is zero.
+ $EE79 LD A,$21      ; #REGa=#N$21.
+ $EE7B LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $EE7F INC B         ; {Increment #REGb by two.
+ $EE80 INC B         ; }
+ $EE81 CALL $D9BB    ; Call #R$D9BB.
+ $EE84 LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $EE88 LD A,$03      ; #REGa=#N$03.
+ $EE8A CALL $D9BB    ; Call #R$D9BB.
+ $EE8D RET           ; Return.
+*$EE8E LD A,$1B      ; {Write #N$1B to *#R$D244.
+ $EE90 LD ($D244),A  ; }
+ $EE93 LD A,$06      ; {Write #N$06 to *#R$D24B.
+ $EE95 LD ($D24B),A  ; }
+ $EE98 JP $E67C      ; Jump to #R$E67C.
+
+; Routine at EE9B
+c$EE9B LD A,($D24B)  ; #REGa=*#R$D24B.
+ $EE9E DEC A         ; Decrease #REGa by one.
+ $EE9F CP $FF        ; {Jump to #R$EECA if #REGa is equal to #N$FF.
+ $EEA1 JR Z,$EECA    ; }
+ $EEA3 LD ($D24B),A  ; Write #REGa to *#R$D24B.
+ $EEA6 LD A,$09      ; #REGa=#N$09.
+ $EEA8 LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $EEAC CALL $D9BB    ; Call #R$D9BB.
+ $EEAF LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $EEB3 LD A,$0D      ; #REGa=#N$0D.
+ $EEB5 CALL $D9BB    ; Call #R$D9BB.
+ $EEB8 LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $EEBC INC B         ; Increment #REGb by one.
+ $EEBD INC C         ; Increment #REGc by one.
+ $EEBE LD A,($D24B)  ; #REGa=*#R$D24B.
+ $EEC1 AND %00000011 ; Keep only bits 0-1.
+ $EEC3 ADD A,A       ; #REGa+=#REGa.
+ $EEC4 ADD A,$2B     ; #REGa+=#N$2B.
+ $EEC6 CALL $D9BB    ; Call #R$D9BB.
+ $EEC9 RET           ; Return.
+*$EECA XOR A         ; {Write #N$00 to *#R$D244.
+ $EECB LD ($D244),A  ; }
+ $EECE LD A,$19      ; {Write #N$19 to *#R$D24B.
+ $EED0 LD ($D24B),A  ; }
+ $EED3 JP $E67C      ; Jump to #R$E67C.
+
+; Routine at EED6
+c$EED6 LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $EEDA INC B         ; Increment #REGb by one.
+ $EEDB INC C         ; Increment #REGc by one.
+ $EEDC LD A,$77      ; #REGa=#N$77.
+ $EEDE CALL $D6C9    ; Call #R$D6C9.
+ $EEE1 LD A,$22      ; {Write #N$22 to *#R$D244.
+ $EEE3 LD ($D244),A  ; }
+ $EEE6 XOR A         ; {Write #N$00 to *#R$D249.
+ $EEE7 LD ($D249),A  ; }
+ $EEEA RET           ; Return.
+
+; Routine at EEEB
+c$EEEB LD A,($D24E)  ; {Jump to #R$EEFC if *#R$D24E is not equal to #N$14.
  $EEEE CP $14        ;
- $EEF0 JR NZ,$EEFC   ;
- $EEF2 LD A,$23      ;
- $EEF4 LD ($D244),A  ;
- $EEF7 XOR A         ;
- $EEF8 LD ($D249),A  ;
- $EEFB RET           ;
-*$EEFC INC A         ;
- $EEFD LD ($D24E),A  ;
- $EF00 LD BC,($D24D) ;
- $EF04 LD A,$35      ;
- $EF06 CALL $D6C9    ;
- $EF09 RET           ;
- $EF0A LD BC,($D24D) ;
- $EF0E LD A,($D249)  ;
- $EF11 AND $01       ;
- $EF13 XOR $01       ;
- $EF15 LD ($D249),A  ;
- $EF18 JR NZ,$EF20   ;
- $EF1A LD A,$37      ;
- $EF1C CALL $D6C9    ;
- $EF1F RET           ;
-*$EF20 LD A,($D24D)  ;
+ $EEF0 JR NZ,$EEFC   ; }
+ $EEF2 LD A,$23      ; {Write #N$23 to *#R$D244.
+ $EEF4 LD ($D244),A  ; }
+ $EEF7 XOR A         ; {Write #N$00 to *#R$D249.
+ $EEF8 LD ($D249),A  ; }
+ $EEFB RET           ; Return.
+*$EEFC INC A         ; Increment #REGa by one.
+ $EEFD LD ($D24E),A  ; Write #REGa to *#R$D24E.
+ $EF00 LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $EF04 LD A,$35      ; #REGa=#N$35.
+ $EF06 CALL $D6C9    ; Call #R$D6C9.
+ $EF09 RET           ; Return.
+
+; Routine at EF0A
+c$EF0A LD BC,($D24D) ; #REGbc=*#R$D24D.
+ $EF0E LD A,($D249)  ; #REGa=*#R$D249.
+ $EF11 AND %00000001 ; Keep only bit 0.
+ $EF13 XOR %00000001 ; Flip bit 0.
+ $EF15 LD ($D249),A  ; Write #REGa to *#R$D249.
+ $EF18 JR NZ,$EF20   ; Jump to #R$EF20 if #REGa is not zero.
+ $EF1A LD A,$37      ; #REGa=#N$37.
+ $EF1C CALL $D6C9    ; Call #R$D6C9.
+ $EF1F RET           ; Return.
+*$EF20 LD A,($D24D)  ; {Increment *#R$D24D by one.
  $EF23 INC A         ;
- $EF24 LD ($D24D),A  ;
- $EF27 CP $28        ;
- $EF29 JR Z,$EF32    ;
- $EF2B INC C         ;
- $EF2C LD A,$35      ;
- $EF2E CALL $D6C9    ;
- $EF31 RET           ;
-*$EF32 LD A,$FF      ;
- $EF34 LD ($D244),A  ;
- $EF37 RET           ;
+ $EF24 LD ($D24D),A  ; }
+ $EF27 CP $28        ; {Jump to #R$EF32 if #REGa is equal to #N$28.
+ $EF29 JR Z,$EF32    ; }
+ $EF2B INC C         ; Increment #REGc by one.
+ $EF2C LD A,$35      ; #REGa=#N$35.
+ $EF2E CALL $D6C9    ; Call #R$D6C9.
+ $EF31 RET           ; Return.
+*$EF32 LD A,$FF      ; {Write #N$FF to *#R$D244.
+ $EF34 LD ($D244),A  ; }
+ $EF37 RET           ; Return.
 
 ; Routine at EF38
 ;
-; Used by the routines at #R$E62D and #R$F352.
+; Used by the routines at #R$EDC2 and #R$F352.
 c$EF38 LD BC,($D24D) ; #REGbc=*#R$D24D.
  $EF3C LD A,($D247)  ; #REGa=*#R$D247 (will be #N$00 or #N$01).
 ; Moves the orientation flag into the carry flag.
@@ -7659,18 +7941,43 @@ c$EF38 LD BC,($D24D) ; #REGbc=*#R$D24D.
  $EF4E LD C,A        ; }
  $EF4F RET           ; Return.
 
-; Data block at EF50
-b$EF50 DEFB $CD,$79,$E1,$E6,$10,$20,$07,$AF
- $EF58 DEFB $32,$44,$D2,$C3,$7C,$E6,$3A,$44
- $EF60 DEFB $D2,$D6,$0F,$26,$00,$6F,$29,$11
- $EF68 DEFB $70,$EF,$19,$7E,$23,$66,$6F,$E9
- $EF70 DEFB $F5,$EC,$15,$ED,$F5,$EC,$5D,$ED
- $EF78 DEFB $82,$ED,$5D,$ED,$AC,$ED,$EE,$ED
- $EF80 DEFB $1B,$EE,$EE,$ED,$53,$EE
+; Routine at EF50
+c$EF50 CALL $E179    ; Call #R$E179.
+ $EF53 AND %00010000 ; Keep only bit 4.
+ $EF55 JR NZ,$EF5E   ; Jump to #R$EF5E if the result is not zero.
+ $EF57 XOR A         ; {Write #N$00 to *#R$D244.
+ $EF58 LD ($D244),A  ; }
+ $EF5B JP $E67C      ; Jump to #R$E67C.
+*$EF5E LD A,($D244)  ; #REGa=*#R$D244.
+ $EF61 SUB $0F       ; #REGa-=#N$0F.
+ $EF63 LD H,$00      ; #REGh=#N$00.
+ $EF65 LD L,A        ; #REGl=#REGa.
+ $EF66 ADD HL,HL     ; #REGhl+=#REGhl.
+ $EF67 LD DE,$EF70   ; #REGde=#R$EF70.
+ $EF6A ADD HL,DE     ; #REGhl+=#REGde.
+ $EF6B LD A,(HL)     ; #REGa=*#REGhl.
+ $EF6C INC HL        ; Increment #REGhl by one.
+ $EF6D LD H,(HL)     ; #REGh=*#REGhl.
+ $EF6E LD L,A        ; #REGl=#REGa.
+ $EF6F JP (HL)       ; Jump to the address held by *#REGhl.
+
+; Data block at EF70
+w$EF70 DEFW $ECF5
+ $EF72 DEFW $ED15
+ $EF74 DEFW $ECF5
+ $EF76 DEFW $ED5D
+ $EF78 DEFW $ED82
+ $EF7A DEFW $ED5D
+ $EF7C DEFW $EDAC
+ $EF7E DEFW $EDEE
+ $EF80 DEFW $EE1B
+ $EF82 DEFW $EDEE
+ $EF84 DEFW $EE53
 
 ; Routine at EF86
 ;
-; Used by the routines at #R$E0AD and #R$E62D.
+; Used by the routines at #R$E0AD, #R$E68C, #R$E967, #R$EAF6, #R$EC8A, #R$ED31
+; and #R$EDC2.
 c$EF86 CALL $DB54    ; Call #R$DB54.
  $EF89 LD A,($D24F)  ; #REGa=*#R$D24F.
  $EF8C CALL $DA0F    ; Call #R$DA0F.
@@ -7680,16 +7987,44 @@ c$EF86 CALL $DB54    ; Call #R$DB54.
  $EF94 LD ($D244),A  ; }
  $EF97 RET           ; Return.
 
-; Data block at EF98
-b$EF98 DEFB $8C,$E6,$67,$E9,$6F,$E9,$71,$E9
- $EFA0 DEFB $82,$E9,$9B,$E9,$04,$EA,$18,$EA
- $EFA8 DEFB $43,$EA,$9C,$EA,$F6,$EA,$8A,$EC
- $EFB0 DEFB $E0,$EC,$31,$ED,$C2,$ED,$50,$EF
- $EFB8 DEFB $50,$EF,$50,$EF,$50,$EF,$50,$EF
- $EFC0 DEFB $50,$EF,$50,$EF,$50,$EF,$50,$EF
- $EFC8 DEFB $50,$EF,$50,$EF,$70,$EE,$9B,$EE
- $EFD0 DEFB $F6,$EA,$70,$EE,$8C,$E6,$8C,$E6
- $EFD8 DEFB $04,$EA,$D6,$EE,$EB,$EE,$0A,$EF
+; Jump Table
+@label=Jump_Table
+w$EF98 DEFW $E68C
+ $EF9A DEFW $E967
+ $EF9C DEFW $E96F
+ $EF9E DEFW $E971
+ $EFA0 DEFW $E982
+ $EFA2 DEFW $E99B
+ $EFA4 DEFW $EA04
+ $EFA6 DEFW $EA18
+ $EFA8 DEFW $EA43
+ $EFAA DEFW $EA9C
+ $EFAC DEFW $EAF6
+ $EFAE DEFW $EC8A
+ $EFB0 DEFW $ECE0
+ $EFB2 DEFW $ED31
+ $EFB4 DEFW $EDC2
+ $EFB6 DEFW $EF50
+ $EFB8 DEFW $EF50
+ $EFBA DEFW $EF50
+ $EFBC DEFW $EF50
+ $EFBE DEFW $EF50
+ $EFC0 DEFW $EF50
+ $EFC2 DEFW $EF50
+ $EFC4 DEFW $EF50
+ $EFC6 DEFW $EF50
+ $EFC8 DEFW $EF50
+ $EFCA DEFW $EF50
+ $EFCC DEFW $EE70
+ $EFCE DEFW $EE9B
+ $EFD0 DEFW $EAF6
+ $EFD2 DEFW $EE70
+ $EFD4 DEFW $E68C
+ $EFD6 DEFW $E68C
+ $EFD8 DEFW $EA04
+ $EFDA DEFW $EED6
+ $EFDC DEFW $EEEB
+ $EFDE DEFW $EF0A
 
 ; Handler: Buildings
 ;
@@ -7735,8 +8070,9 @@ c$EFE0 XOR A           ; #REGa=#N$00 (building data offset).
  $F01C LD (IX+$0B),A   ; Write #REGa to *#REGix+#N$0B.
  $F01F LD C,$07        ; #REGc=#N$07.
  $F021 LD A,(IX+$07)   ; #REGa=*#REGix+#N$07.
- $F024 RRCA            ; RRCA.
- $F025 JR NC,$F029     ; Jump to #R$F029 if {} is higher.
+ $F024 RRCA            ; Rotate #REGa right one position, setting the carry
+                       ; flag if bit 0 was set.
+ $F025 JR NC,$F029     ; Jump to #R$F029 if the carry flag is not set.
  $F027 LD C,$38        ; #REGc=#N$38.
 *$F029 LD E,(IX+$01)   ; #REGe=*#REGix+#N$01.
  $F02C LD B,(IX+$06)   ; #REGb=*#REGix+#N$06.
@@ -7910,7 +8246,7 @@ c$F10E LD B,$06        ; #REGb=#N$06.
  $F12B LD C,(IX+$01)   ; #REGc=*#REGix+#N$01.
  $F12E LD E,(IX+$02)   ; #REGe=*#REGix+#N$02.
  $F131 LD B,(IX+$03)   ; #REGb=*#REGix+#N$03.
- $F134 XOR %00000001   ; Reset bit 0.
+ $F134 XOR %00000001   ; Flip bit 0.
  $F136 LD (IX+$00),A   ; Write #REGa to *#REGix+#N$00.
  $F139 AND %00000001   ; Keep only bit 0.
  $F13B LD D,A          ; #REGd=#REGa.
@@ -7936,9 +8272,10 @@ c$F10E LD B,$06        ; #REGb=#N$06.
  $F165 INC (IX+$02)    ; Increment *#REGix+#N$02 by one.
  $F168 JR $F17A        ; Jump to #R$F17A.
 *$F16A LD A,D          ; #REGa=#REGd.
- $F16B RRCA            ; RRCA.
+ $F16B RRCA            ; Rotate #REGa right one position, setting the carry
+                       ; flag if bit 0 was set.
  $F16C LD A,$E8        ; #REGa=#N$E8.
- $F16E JP NC,$F276     ; Jump to #R$F276 if {} is higher.
+ $F16E JP NC,$F276     ; Jump to #R$F276 if the carry flag is not set.
  $F171 INC C           ; Increment #REGc by one.
  $F172 LD (IX+$01),C   ; Write #REGc to *#REGix+#N$01.
  $F175 LD A,$E6        ; #REGa=#N$E6.
@@ -7965,9 +8302,10 @@ c$F10E LD B,$06        ; #REGb=#N$06.
  $F1A9 INC (IX+$02)    ; Increment *#REGix+#N$02 by one.
  $F1AC JR $F17A        ; Jump to #R$F17A.
 *$F1AE LD A,D          ; #REGa=#REGd.
- $F1AF RRCA            ; RRCA.
+ $F1AF RRCA            ; Rotate #REGa right one position, setting the carry
+                       ; flag if bit 0 was set.
  $F1B0 LD A,$E8        ; #REGa=#N$E8.
- $F1B2 JP NC,$F276     ; Jump to #R$F276 if {} is higher.
+ $F1B2 JP NC,$F276     ; Jump to #R$F276 if the carry flag is not set.
  $F1B5 DEC C           ; Decrease #REGc by one.
  $F1B6 LD (IX+$01),C   ; Write #REGc to *#REGix+#N$01.
  $F1B9 LD A,$E6        ; #REGa=#N$E6.
@@ -7978,9 +8316,10 @@ c$F10E LD B,$06        ; #REGb=#N$06.
  $F1C2 LD B,C          ; #REGb=#REGc.
  $F1C3 LD C,E          ; #REGc=#REGe.
  $F1C4 LD A,D          ; #REGa=#REGd.
- $F1C5 RRCA            ; RRCA.
+ $F1C5 RRCA            ; Rotate #REGa right one position, setting the carry
+                       ; flag if bit 0 was set.
  $F1C6 LD A,$EC        ; #REGa=#N$EC.
- $F1C8 JP NC,$F276     ; Jump to #R$F276 if {} is higher.
+ $F1C8 JP NC,$F276     ; Jump to #R$F276 if the carry flag is not set.
  $F1CB DEC B           ; Decrease #REGb by one.
  $F1CC LD (IX+$01),B   ; Write #REGb to *#REGix+#N$01.
  $F1CF LD A,$EA        ; #REGa=#N$EA.
@@ -8222,7 +8561,7 @@ c$F31C LD C,$22      ; #REGc=#N$22.
 
 ; Routine at F352
 ;
-; Used by the routine at #R$E62D.
+; Used by the routines at #R$ECE0, #R$ED31 and #R$EDC2.
 c$F352 CALL $EF38    ; Call #R$EF38.
  $F355 LD HL,($D224) ; #REGhl=*#R$D224.
  $F358 LD (HL),B     ; Write #REGb to *#REGhl.
@@ -8301,8 +8640,9 @@ c$F352 CALL $EF38    ; Call #R$EF38.
 ;
 ; Used by the routine at #R$E119.
 c$F3CA LD A,($D218)  ; #REGa=*#R$D218.
- $F3CD RRCA          ; RRCA.
- $F3CE JR C,$F3EA    ; Jump to #R$F3EA if {} is lower.
+ $F3CD RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $F3CE JR C,$F3EA    ; Jump to #R$F3EA if the carry flag is set.
  $F3D0 LD HL,($D224) ; #REGhl=*#R$D224.
  $F3D3 LD A,$FF      ; #REGa=#N$FF.
  $F3D5 LD (HL),$FF   ; Write #N$FF to *#REGhl.
@@ -8376,112 +8716,144 @@ c$F41A LD A,(HL)     ; {Return if *#REGhl is equal to #N$FF.
  $F432 LD (HL),B     ; Write #REGb to *#REGhl.
  $F433 RET           ; Return.
 
-; Routine at F434
+; Process Monsters
 ;
 ; Used by the routine at #R$DE77.
+@label=ProcessMonsters
 c$F434 LD HL,$D238   ; #REGhl=#R$D238.
- $F437 LD A,$03      ; {Write #N$03 to *#R$DF45.
+; Work backwards from Ralph to George.
+ $F437 LD A,$03      ; {Write #N$03 (Ralph) to *#R$DF45.
+@label=ProcessMonsters_Loop
 *$F439 LD ($DF45),A  ; }
- $F43C PUSH AF       ; {Stash #REGaf and #REGhl on the stack.
+ $F43C PUSH AF       ; {Stash the current monster ID and #REGhl on the stack.
  $F43D PUSH HL       ; }
  $F43E LD A,(HL)     ; {If *#REGhl is not at the terminator jump to #R$F450.
  $F43F CP $FF        ;
  $F441 CALL NZ,$F450 ; }
- $F444 POP HL        ; {Restore #REGhl and #REGaf from the stack.
- $F445 POP AF        ; }
+ $F444 POP HL        ; {Restore #REGhl and the current monster ID from the
+ $F445 POP AF        ; stack.}
  $F446 DEC HL        ; {Decrease #REGhl by six.
  $F447 DEC HL        ;
  $F448 DEC HL        ;
  $F449 DEC HL        ;
  $F44A DEC HL        ;
  $F44B DEC HL        ; }
- $F44C DEC A         ; Decrease #REGa by one.
- $F44D JR NZ,$F439   ; Jump to #R$F439 until #REGa is zero.
+ $F44C DEC A         ; Decrease current monster ID by one.
+ $F44D JR NZ,$F439   ; Jump to #R$F439 until all monsters have been processed.
  $F44F RET           ; Return.
 
 ; Routine at F450
 ;
 ; Used by the routine at #R$F434.
-c$F450 LD B,A          ; #REGb=#REGa.
- $F451 INC HL          ; Increment #REGhl by one.
- $F452 LD C,(HL)       ; #REGc=*#REGhl.
- $F453 INC HL          ; Increment #REGhl by one.
- $F454 LD A,(HL)       ; #REGa=*#REGhl.
- $F455 RRCA            ; RRCA.
- $F456 RET NC          ; Return if {} is higher.
- $F457 INC HL          ; Increment #REGhl by one.
- $F458 LD A,(HL)       ; #REGa=*#REGhl.
- $F459 RRCA            ; RRCA.
- $F45A RET C           ; Return if {} is lower.
- $F45B LD ($D228),BC   ; Write #REGbc to *#R$D228.
- $F45F LD H,$00        ; #REGh=#N$00.
- $F461 LD L,B          ; #REGl=#REGb.
- $F462 LD D,H          ; #REGd=#REGh.
- $F463 LD E,C          ; #REGe=#REGc.
- $F464 ADD HL,HL       ; {#REGhl*=#N$20+#REGde.
- $F465 ADD HL,HL       ;
- $F466 ADD HL,HL       ;
- $F467 ADD HL,HL       ;
- $F468 ADD HL,HL       ;
- $F469 ADD HL,DE       ; }
- $F46A LD A,$01        ; #REGa=#N$01.
- $F46C LD ($D3FB),A    ; Write #REGa to *#R$D3FB.
- $F46F LD ($D22A),HL   ; Write #REGhl to *#R$D22A.
-*$F472 LD DE,$013F     ; #REGde=#N$013F.
- $F475 CALL $E0CF      ; Call #R$E0CF.
- $F478 LD A,($D3FC)    ; #REGa=*#R$D3FC.
- $F47B RRCA            ; RRCA.
- $F47C JR C,$F480      ; Jump to #R$F480 if {} is lower.
- $F47E JR Z,$F488      ; Jump to #R$F488 if #REGa is zero.
-*$F480 LD BC,$0000     ; #REGbc=#N($0000,$04,$04).
- $F483 LD E,$01        ; #REGe=#N$01.
- $F485 CALL $F543      ; Call #R$F543.
-*$F488 LD A,($D215)    ; #REGa=*#R$D215.
- $F48B CP $4D          ; {Jump to #R$F4E6 if #REGa is lower than #N$4D.
- $F48D JR C,$F4E6      ; }
- $F48F SUB $4C         ; #REGa-=#N$4C.
- $F491 AND %00000011   ; Keep only bits 0-1.
- $F493 CP $01          ; {Jump to #R$F4E6 if #REGa is not equal to #N$01.
- $F495 JR NZ,$F4E6     ; }
- $F497 LD A,$01        ; {Write #N$01 to *#R$D3FC.
- $F499 LD ($D3FC),A    ; }
- $F49C LD A,($D215)    ; #REGa=*#R$D215.
- $F49F SUB $4D         ; #REGa-=#N$4D.
- $F4A1 SRL A           ; Shift #REGa right.
- $F4A3 SRL A           ; Shift #REGa right.
- $F4A5 CP $08          ; {Jump to #R$F4B8 if #REGa is lower than #N$08.
- $F4A7 JR C,$F4B8      ; }
- $F4A9 AND %00000011   ; Keep only bits 0-1.
- $F4AB INC A           ; Increment #REGa by one.
- $F4AC ADD A,A         ; #REGa+=#REGa.
- $F4AD LD D,A          ; #REGd=#REGa.
- $F4AE LD E,$03        ; #REGe=#N$03.
- $F4B0 LD A,($DF45)    ; #REGa=*#R$DF45.
- $F4B3 CALL $DD97      ; Call #R$DD97.
- $F4B6 JR $F4DC        ; Jump to #R$F4DC.
-*$F4B8 CP $04          ; {Jump to #R$F4D1 if #REGa is lower than #N$04.
- $F4BA JR C,$F4D1      ; }
+c$F450 LD B,A        ; #REGb=#REGa.
+ $F451 INC HL        ; Increment #REGhl by one.
+ $F452 LD C,(HL)     ; #REGc=*#REGhl.
+ $F453 INC HL        ; Increment #REGhl by one.
+ $F454 LD A,(HL)     ; #REGa=*#REGhl.
+ $F455 RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $F456 RET NC        ; Return if the carry flag is not set.
+ $F457 INC HL        ; Increment #REGhl by one.
+ $F458 LD A,(HL)     ; #REGa=*#REGhl.
+ $F459 RRCA          ; Rotate #REGa left one position, setting the carry flag
+                     ; if bit 0 was set.
+ $F45A RET C         ; Return if the carry flag is set.
+ $F45B LD ($D228),BC ; Write #REGbc to *#R$D228.
+ $F45F LD H,$00      ; #REGh=#N$00.
+ $F461 LD L,B        ; #REGl=#REGb.
+ $F462 LD D,H        ; #REGd=#REGh.
+ $F463 LD E,C        ; #REGe=#REGc.
+ $F464 ADD HL,HL     ; {#REGhl*=#N$20+#REGde.
+ $F465 ADD HL,HL     ;
+ $F466 ADD HL,HL     ;
+ $F467 ADD HL,HL     ;
+ $F468 ADD HL,HL     ;
+ $F469 ADD HL,DE     ; }
+ $F46A LD A,$01      ; #REGa=#N$01.
+ $F46C LD ($D3FB),A  ; Write #REGa to *#R$D3FB.
+ $F46F LD ($D22A),HL ; Write #REGhl to *#R$D22A.
+; This entry point is used by the routines at #R$F4B8 and #R$F4D1.
+*$F472 LD DE,$013F   ; #REGde=#N$013F.
+ $F475 CALL $E0CF    ; Call #R$E0CF.
+ $F478 LD A,($D3FC)  ; #REGa=*#R$D3FC.
+ $F47B RRCA          ; Rotate #REGa right one position, setting the carry flag
+                     ; if bit 0 was set.
+ $F47C JR C,$F480    ; Jump to #R$F480 if the carry flag is set.
+ $F47E JR Z,$F488    ; Jump to #R$F488 if #REGa is zero.
+*$F480 LD BC,$0000   ; #REGbc=#N($0000,$04,$04).
+ $F483 LD E,$01      ; #REGe=#N$01.
+ $F485 CALL $F543    ; Call #R$F543.
+*$F488 LD A,($D215)  ; #REGa=*#R$D215.
+ $F48B CP $4D        ; {Jump to #R$F4E6 if #REGa is lower than #N$4D.
+ $F48D JR C,$F4E6    ; }
+ $F48F SUB $4C       ; #REGa-=#N$4C.
+ $F491 AND %00000011 ; Keep only bits 0-1.
+ $F493 CP $01        ; {Jump to #R$F4E6 if #REGa is not equal to #N$01.
+ $F495 JR NZ,$F4E6   ; }
+ $F497 LD A,$01      ; {Write #N$01 to *#R$D3FC.
+ $F499 LD ($D3FC),A  ; }
+ $F49C LD A,($D215)  ; #REGa=*#R$D215.
+ $F49F SUB $4D       ; #REGa-=#N$4D.
+ $F4A1 SRL A         ; {Shift #REGa right twice.
+ $F4A3 SRL A         ; }
+ $F4A5 CP $08        ; {Jump to #R$F4B8 if #REGa is lower than #N$08.
+ $F4A7 JR C,$F4B8    ; }
+ $F4A9 AND %00000011 ; Keep only bits 0-1.
+ $F4AB INC A         ; Increment #REGa by one.
+ $F4AC ADD A,A       ; #REGa+=#REGa.
+ $F4AD LD D,A        ; #REGd=#REGa.
+ $F4AE LD E,$03      ; #REGe=#N$03.
+ $F4B0 LD A,($DF45)  ; #REGa=*#R$DF45.
+ $F4B3 CALL $DD97    ; Call #R$DD97.
+ $F4B6 JR $F4DC      ; Jump to #R$F4DC.
+
+; Handler: Eating
+;
+; Used by the routine at #R$F450.
+;
+; .
+;
+; Monster has eaten something, work out what.
+@label=Handler_Eating
+c$F4B8 CP $04          ; {Anything with an ID lower than #N$04 is food, if so
+ $F4BA JR C,$F4D1      ; jump to #R$F4D1.}
+; Else it's something inedible so fetch the monster state and handle it.
  $F4BC LD A,($DF45)    ; #REGa=*#R$DF45.
  $F4BF CALL $DD52      ; Call #R$DD52.
+; Take #N$06 away from the monsters energy level.
  $F4C2 LD A,$06        ; #REGa=#N$06.
  $F4C4 CALL $DD6C      ; Call #R$DD6C.
- $F4C7 LD (IY+$00),$1D ; Write #N$1D to *#REGiy+#N$00.
+ $F4C7 LD (IY+$00),$1D ; Write #N$1D to monster state (*#REGiy+#N$00).
  $F4CB LD (IY+$07),$04 ; Write #N$04 to *#REGiy+#N$07.
  $F4CF JR $F472        ; Jump to #R$F472.
-*$F4D1 LD A,($DF45)    ; #REGa=*#R$DF45.
+
+; Handler: Eaten Food
+;
+; Used by the routine at #R$F4B8.
+@label=Handler_EatFood
+c$F4D1 LD A,($DF45)    ; #REGa=*#R$DF45.
  $F4D4 CALL $DD52      ; Call #R$DD52.
+; Add #N$08 to the monsters energy level.
  $F4D7 LD A,$08        ; #REGa=#N$08.
  $F4D9 CALL $DD89      ; Call #R$DD89.
-*$F4DC LD (IY+$00),$1A ; Write #N$1A to *#REGiy+#N$00.
+; This entry point is used by the routine at #R$F450.
+@label=Handler_EatFood_SetState
+*$F4DC LD (IY+$00),$1A ; Write "eating" (#N$1A) to monster state
+                       ; (*#REGiy+#N$00).
  $F4E0 LD (IY+$07),$04 ; Write #N$04 to *#REGiy+#N$07.
  $F4E4 JR $F472        ; Jump to #R$F472.
-*$F4E6 LD DE,$013F     ; #REGde=#N$013F.
+
+; Routine at F4E6
+;
+; Used by the routine at #R$F450.
+c$F4E6 LD DE,$013F     ; #REGde=#N$013F.
  $F4E9 LD BC,($D228)   ; #REGbc=*#R$D228.
  $F4ED INC C           ; Increment #REGc by one.
  $F4EE CALL $E0CF      ; Call #R$E0CF.
  $F4F1 LD A,($D3FC)    ; #REGa=*#R$D3FC.
- $F4F4 RRCA            ; RRCA.
- $F4F5 JR C,$F4F9      ; Jump to #R$F4F9 if {} is lower.
+ $F4F4 RRCA            ; Rotate #REGa right one position, setting the carry
+                       ; flag if bit 0 was set.
+ $F4F5 JR C,$F4F9      ; Jump to #R$F4F9 if the carry flag is set.
  $F4F7 JR Z,$F501      ; Jump to #R$F501 if #REGa is zero.
 *$F4F9 LD BC,$0001     ; #REGbc=#N($0001,$04,$04).
  $F4FC LD E,$02        ; #REGe=#N$02.
@@ -8491,8 +8863,9 @@ c$F450 LD B,A          ; #REGb=#REGa.
  $F508 INC B           ; Increment #REGb by one.
  $F509 CALL $E0CF      ; Call #R$E0CF.
  $F50C LD A,($D3FC)    ; #REGa=*#R$D3FC.
- $F50F RRCA            ; RRCA.
- $F510 JR C,$F514      ; Jump to #R$F514 if {} is lower.
+ $F50F RRCA            ; Rotate #REGa right one position, setting the carry
+                       ; flag if bit 0 was set.
+ $F510 JR C,$F514      ; Jump to #R$F514 if the carry flag is set.
  $F512 JR Z,$F51C      ; Jump to #R$F51C if #REGa is zero.
 *$F514 LD BC,$0020     ; #REGbc=#N($0020,$04,$04).
  $F517 LD E,$03        ; #REGe=#N$03.
@@ -8503,8 +8876,9 @@ c$F450 LD B,A          ; #REGb=#REGa.
  $F524 INC C           ; Increment #REGc by one.
  $F525 CALL $E0CF      ; Call #R$E0CF.
  $F528 LD A,($D3FC)    ; #REGa=*#R$D3FC.
- $F52B RRCA            ; RRCA.
- $F52C JR C,$F530      ; Jump to #R$F530 if #REGa is lower.
+ $F52B RRCA            ; Rotate #REGa right one position, setting the carry
+                       ; flag if bit 0 was set.
+ $F52C JR C,$F530      ; Jump to #R$F530 if the carry flag is set.
  $F52E JR Z,$F538      ; Jump to #R$F538 if #REGa is zero.
 *$F530 LD BC,$0021     ; #REGbc=#N($0021,$04,$04).
  $F533 LD E,$04        ; #REGe=#N$04.
@@ -8514,10 +8888,12 @@ c$F450 LD B,A          ; #REGb=#REGa.
  $F53C LD ($D3FC),A    ;
  $F53F LD ($D219),A    ; }
  $F542 RET             ; Return.
+; This entry point is used by the routine at #R$F450.
 *$F543 LD A,($D3FC)    ; #REGa=*#R$D3FC.
- $F546 RRCA            ; RRCA.
+ $F546 RRCA            ; Rotate #REGa right one position, setting the carry
+                       ; flag if bit 0 was set.
  $F547 LD A,($D215)    ; #REGa=*#R$D215.
- $F54A JR NC,$F551     ; Jump to #R$F551 if {} is higher.
+ $F54A JR NC,$F551     ; Jump to #R$F551 if the carry flag is not set.
  $F54C LD A,$10        ; #REGa=#N$10.
  $F54E LD ($D215),A    ; Write #REGa to *#R$D215.
 *$F551 AND A           ; {Return if #REGa is zero.
@@ -8527,8 +8903,8 @@ c$F450 LD B,A          ; #REGb=#REGa.
  $F557 CP $0E          ; {Jump to #R$F565 if #REGa is higher than #N$0E.
  $F559 JR NC,$F565     ; }
  $F55B LD A,E          ; #REGa=#REGe.
- $F55C AND %00000001   ; Keep only bits 0.
- $F55E XOR %00000001   ; Reset bits 0.
+ $F55C AND %00000001   ; Keep only bit 0.
+ $F55E XOR %00000001   ; Flip bit 0.
  $F560 ADD A,$0E       ; #REGa+=#N$0E.
  $F562 JP $F61F        ; Jump to #R$F61F.
 *$F565 CP $10          ; {Jump to #R$F5E6 if #REGa is not equal to #N$10.
@@ -8603,9 +8979,10 @@ c$F450 LD B,A          ; #REGb=#REGa.
 *$F5E6 CP $11          ; {Jump to #R$F5F4 if #REGa is not equal to #N$11.
  $F5E8 JR NZ,$F5F4     ; }
  $F5EA LD A,E          ; #REGa=#REGe.
- $F5EB CP $03          ; Compare #REGa with #N$03.
+ $F5EB CP $03          ; Compare #REGa with #N$03...
  $F5ED LD A,$13        ; #REGa=#N$13.
- $F5EF JR NC,$F61F     ; Jump to #R$F61F if {} is higher.
+ $F5EF JR NC,$F61F     ; Jump to #R$F61F if #REGa was higher than #N$03 on line
+                       ; #R$F5EB.
  $F5F1 DEC A           ; Decrease #REGa by one.
  $F5F2 JR $F61F        ; Jump to #R$F61F.
 *$F5F4 CP $0E          ; {Return if #REGa is equal to #N$0E.
@@ -8623,9 +9000,10 @@ c$F450 LD B,A          ; #REGb=#REGa.
  $F606 CP $14          ; {Jump to #R$F614 if #REGa is not equal to #N$14.
  $F608 JR NZ,$F614     ; }
  $F60A LD A,E          ; #REGa=#REGe.
- $F60B CP $03          ; Compare #REGa with #N$03.
+ $F60B CP $03          ; Compare #REGa with #N$03...
  $F60D LD A,$16        ; #REGa=#N$16.
- $F60F JR NC,$F61F     ; Jump to #R$F61F if {} is higher.
+ $F60F JR NC,$F61F     ; Jump to #R$F61F #REGa was higher than #N$03 on line
+                       ; #R$F60B.
  $F611 DEC A           ; Decrease #REGa by one.
  $F612 JR $F61F        ; Jump to #R$F61F.
 *$F614 CP $30          ; {Jump to #R$F56A if #REGa is lower than #N$30.
@@ -8688,8 +9066,8 @@ c$F450 LD B,A          ; #REGb=#REGa.
  $F672 LD B,A          ; #REGb=#REGa.
  $F673 LD A,($D229)    ; #REGa=*#R$D229.
  $F676 DEC A           ; Decrease #REGa by one.
- $F677 CP B            ; Compare #REGa with #REGb.
- $F678 JR NC,$F681     ; Jump to #R$F681 if {} is higher.
+ $F677 CP B            ; {Jump to #R$F681 if #REGa is higher than #REGb.
+ $F678 JR NC,$F681     ; }
  $F67A EX AF,AF'       ; Exchange the #REGaf register with the shadow #REGaf
                        ; register.
  $F67B AND %00000111   ; Keep only bits 0-2.
@@ -8781,9 +9159,9 @@ c$F69F LD B,$06      ; #REGb=#N$06 (number of possible projectiles).
 ; This entry point is used by the routine at #R$F719.
 *$F707 DEC HL        ; Decrease #REGhl by one.
  $F708 LD (HL),$00   ; Write #N$00 to *#REGhl.
- $F70A LD A,($D3FA)  ; #REGa=*#R$D3FA.
- $F70D DEC A         ; Decrease #REGa by one.
- $F70E LD ($D3FA),A  ; Write #REGa to *#R$D3FA.
+ $F70A LD A,($D3FA)  ; {Decrease *#R$D3FA by one.
+ $F70D DEC A         ;
+ $F70E LD ($D3FA),A  ; }
 @label=Collision_Projectiles_Next
 *$F711 INC HL        ; {Move onto the next projectile table data.
  $F712 INC HL        ;
@@ -8897,6 +9275,9 @@ c$F788 LD HL,$D243   ; #REGhl=#R$D243.
 ; Used by the routine at #R$F788.
 ;
 ; HL Either #R$D243 or #R$D240
+;
+; #REGb is used as the "currently processed monster ID"; we work backwards from
+; Ralph, to Lizzy and last George.
 @label=Handler_Monsters
 c$F795 LD B,$03        ; #REGb=#N$03 (total number of monsters/ players).
 @label=Handler_Monsters_Loop
@@ -8970,8 +9351,8 @@ c$F795 LD B,$03        ; #REGb=#N$03 (total number of monsters/ players).
  $F817 AND %00111111   ; Keep only bits 0-5.
  $F819 INC A           ; Increment #REGa by one.
  $F81A LD B,A          ; #REGb=#REGa.
- $F81B LD A,($D403)    ; #REGa=*#R$D403.
- $F81E LD C,A          ; #REGc=#REGa.
+ $F81B LD A,($D403)    ; {#REGc=*#R$D403.
+ $F81E LD C,A          ; }
  $F81F LD A,$77        ; #REGa=#N$77.
  $F821 CALL $D6C9      ; Call #R$D6C9.
 ; #AUDIO(punched.wav)(#INCLUDE(Punched))
@@ -8985,7 +9366,7 @@ c$F795 LD B,$03        ; #REGb=#N$03 (total number of monsters/ players).
  $F834 CP (IY+$09)     ; Compare #REGa with *#REGiy+#N$09.
  $F837 LD A,($D407)    ; #REGa=*#R$D407.
  $F83A JR NC,$F83E     ; Jump to #R$F83E if {} is higher.
- $F83C XOR %10000000   ; Reset bit 7.
+ $F83C XOR %10000000   ; Flip bit 7.
 *$F83E OR %01000000    ; Set bit 6.
  $F840 LD ($D407),A    ; Write #REGa to *#R$D407.
  $F843 LD A,B          ; #REGa=#REGb.
@@ -10131,8 +10512,10 @@ w$FECF DEFW $FDDE
  $FEDD DEFW $FEB9
 
 ; Data: Ticker
+;
+; See #R$FD44.
 @label=Data_Ticker
-b$FEDF DEFB $00      ; #R($D198+#PEEK(#PC)*$08)(#N($D198+#PEEK(#PC)*$08)).
+g$FEDF DEFB $00      ; #R($D198+#PEEK(#PC)*$08)(#N($D198+#PEEK(#PC)*$08)).
  $FEE0 DEFB $01      ; #R($D198+#PEEK(#PC)*$08)(#N($D198+#PEEK(#PC)*$08)).
  $FEE1 DEFB $01      ; #R($D198+#PEEK(#PC)*$08)(#N($D198+#PEEK(#PC)*$08)).
  $FEE2 DEFB $02      ; #R($D198+#PEEK(#PC)*$08)(#N($D198+#PEEK(#PC)*$08)).

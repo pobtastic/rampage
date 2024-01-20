@@ -57,12 +57,12 @@ D $C850 For instance; if George and Lizzy are computer controlled and Ralph uses
 L $C850,$0A,$03
 
 b $C86E
+  $C882
   $C896
   $C8A9
 
 b $C8BA
-  $C8BA,$08 #UDGTABLE { #UDG(#PC) } UDGTABLE#
-L $C8BA,$08,$A5
+  $C8BA,$08
 
 b $C99E
 
@@ -70,7 +70,153 @@ b $C9F9
 
 b $CA57
 
-b $CB29
+b $CB29 Data: Buildings
+@ $CB29 label=Buildings_Data
+  $CB29,$01 Terminator.
+N $CB2A Building #N$01.
+  $CB2A,$0A
+  $CB34,$01 Terminator.
+N $CB35 Building #N$02.
+  $CB35,$0A
+  $CB3F,$01 Terminator.
+N $CB40 Building #N$03.
+  $CB40,$0A
+  $CB4A,$01 Terminator.
+N $CB4B Building #N$04.
+  $CB4B,$0A
+  $CB55,$01 Terminator.
+N $CB56 Building #N$05.
+  $CB56,$0A
+  $CB60,$01 Terminator.
+N $CB61 Building #N$06.
+  $CB61,$0A
+  $CB6B,$01 Terminator.
+N $CB6C Building #N$07.
+  $CB6C,$0B
+  $CB77,$01 Terminator.
+N $CB78 Building #N$08.
+  $CB78,$0B
+  $CB83,$01 Terminator.
+N $CB84 Building #N$09.
+  $CB84,$0B
+  $CB8F,$01 Terminator.
+N $CB90 Building #N$0A.
+  $CB90,$0B
+  $CB9B,$01 Terminator.
+N $CB9C Building #N$0B.
+  $CB9C,$0B
+  $CBA7,$01 Terminator.
+N $CBA8 Building #N$0C.
+  $CBA8,$0B
+  $CBB3,$01 Terminator.
+N $CBB4 Building #N$0D.
+  $CBB4,$0C
+  $CBC0,$01 Terminator.
+N $CBC1 Building #N$0E.
+  $CBC1,$0C
+  $CBCD,$01 Terminator.
+N $CBCE Building #N$0F.
+  $CBCE,$0C
+  $CBDA,$01 Terminator.
+N $CBDB Building #N$10.
+  $CBDB,$0C
+  $CBE7,$01 Terminator.
+N $CBE8 Building #N$11.
+  $CBE8,$0C
+  $CBF4,$01 Terminator.
+N $CBF5 Building #N$12.
+  $CBF5,$0C
+  $CC01,$01 Terminator.
+N $CC02 Building #N$13.
+  $CC02,$0D
+  $CC0F,$01 Terminator.
+N $CC10 Building #N$14.
+  $CC10,$0D
+  $CC1D,$01 Terminator.
+N $CC1E Building #N$15.
+  $CC1E,$0D
+  $CC2B,$01 Terminator.
+N $CC2C Building #N$16.
+  $CC2C,$0D
+  $CC39,$01 Terminator.
+N $CC3A Building #N$17.
+  $CC3A,$0D
+  $CC47,$01 Terminator.
+N $CC48 Building #N$18.
+  $CC48,$0D
+  $CC55,$01 Terminator.
+N $CC56 Building #N$19.
+  $CC56,$0E
+  $CC64,$01 Terminator.
+N $CC65 Building #N$1A.
+  $CC65,$0E
+  $CC73,$01 Terminator.
+N $CC74 Building #N$1B.
+  $CC74,$0E
+  $CC82,$01 Terminator.
+N $CC83 Building #N$1C.
+  $CC83,$0E
+  $CC91,$01 Terminator.
+N $CC92 Building #N$1D.
+  $CC92,$0E
+  $CCA0,$01 Terminator.
+N $CCA1 Building #N$1E.
+  $CCA1,$0E
+  $CCAF,$01 Terminator.
+N $CCB0 Building #N$1F.
+  $CCB0,$0F
+  $CCBF,$01 Terminator.
+N $CCC0 Building #N$20.
+  $CCC0,$0F
+  $CCCF,$01 Terminator.
+N $CCD0 Building #N$21.
+  $CCD0,$0F
+  $CCDF,$01 Terminator.
+N $CCE0 Building #N$22.
+  $CCE0,$0F
+  $CCEF,$01 Terminator.
+N $CCF0 Building #N$23.
+  $CCF0,$0F
+  $CCFF,$01 Terminator.
+N $CD00 Building #N$24.
+  $CD00,$0F
+  $CD0F,$01 Terminator.
+N $CD10 Building #N$25.
+  $CD10,$10
+  $CD20,$01 Terminator.
+N $CD21 Building #N$26.
+  $CD21,$10
+  $CD31,$01 Terminator.
+N $CD32 Building #N$27.
+  $CD32,$10
+  $CD42,$01 Terminator.
+N $CD43 Building #N$28.
+  $CD43,$10
+  $CD53,$01 Terminator.
+N $CD54 Building #N$29.
+  $CD54,$10
+  $CD64,$01 Terminator.
+N $CD65 Building #N$2A.
+  $CD65,$10
+  $CD75,$01 Terminator.
+N $CD76 Building #N$2B.
+  $CD76,$11
+  $CD87,$01 Terminator.
+N $CD88 Building #N$2C.
+  $CD88,$11
+  $CD99,$01 Terminator.
+N $CD9A Building #N$2D.
+  $CD9A,$11
+  $CDAB,$01 Terminator.
+N $CDAC Building #N$2E.
+  $CDAC,$11
+  $CDBD,$01 Terminator.
+N $CDBE Building #N$2F.
+  $CDBE,$11
+  $CDCF,$01 Terminator.
+N $CDD0 Building #N$30.
+  $CDD0,$11
+  $CDE1,$01 Terminator.
 
 b $CDE2 Data: Scenes
 @ $CDE2 label=Scene_Data
@@ -361,10 +507,17 @@ g $CFD2 Data: George
   $CFD2,$01 #TABLE(default,centre,centre)
 . { =h Value | =h Meaning }
 . { #N$05 | Waiting }
+. { #N$1A | Eating }
 . { #N$1C | Falling }
 . { #N$21 | Explosion }
 . { #N$23 | Human }
 . { #N$FF | Game Over }
+. TABLE#
+@ $CFD5 label=George_Direction
+  $CFD5,$01 #TABLE(default,centre,centre)
+. { =h Value | =h Meaning }
+. { #N$00 | Right }
+. { #N$01 | Left }
 . TABLE#
 @ $CFD7 label=George_Countdown
   $CFD7,$01
@@ -395,10 +548,17 @@ g $D001 Data: Lizzy
   $D001,$01 #TABLE(default,centre,centre)
 . { =h Value | =h Meaning }
 . { #N$05 | Waiting }
+. { #N$1A | Eating }
 . { #N$1C | Falling }
 . { #N$21 | Explosion }
 . { #N$23 | Human }
 . { #N$FF | Game Over }
+. TABLE#
+@ $D004 label=Lizzy_Direction
+  $D004,$01 #TABLE(default,centre,centre)
+. { =h Value | =h Meaning }
+. { #N$00 | Right }
+. { #N$01 | Left }
 . TABLE#
 @ $D006 label=Lizzy_Countdown
   $D006,$01
@@ -428,10 +588,17 @@ g $D030 Data: Ralph
   $D030,$01 #TABLE(default,centre,centre)
 . { =h Value | =h Meaning }
 . { #N$05 | Waiting }
+. { #N$1A | Eating }
 . { #N$1C | Falling }
 . { #N$21 | Explosion }
 . { #N$23 | Human }
 . { #N$FF | Game Over }
+. TABLE#
+@ $D033 label=Ralph_Direction
+  $D033,$01 #TABLE(default,centre,centre)
+. { =h Value | =h Meaning }
+. { #N$00 | Right }
+. { #N$01 | Left }
 . TABLE#
 @ $D035 label=Ralph_Countdown
   $D035,$01
@@ -539,8 +706,13 @@ t $D18F Messaging: Game Over
 
 b $D198 Graphics: Ticker
 @ $D198 label=Graphics_Ticker
-  $D198,$08 #UDGTABLE { #UDG(#PC) } UDGTABLE#
+D $D198 See #R$FD44.
+  $D198,$08
 L $D198,$08,$0F
+
+g $D210
+D $D210 Defaults to #N$80 (see #R$DEC9).
+B $D210,$01
 
 b $D211
 
@@ -571,6 +743,8 @@ g $D21A Game Clock
 D $D21A Counts up while the game plays, used as a random number generator (as it's never reset).
 W $D21A,$02
 
+g $D21E
+
 g $D220
 
 g $D222
@@ -579,18 +753,17 @@ g $D224
 W $D224,$02
 
 g $D226
-W $D226,$02
 
-b $D229
+g $D227 George
+B $D227,$06,$01
 
-g $D22A
-W $D22A,$02
+g $D22D Lizzy
+B $D22D,$06,$01
 
-g $D22C
+g $D233 Ralph
+B $D233,$06,$01
 
-g $D232
-
-g $D238
+b $D239
 
 g $D23E
 B $D23E,$03,$01
@@ -599,6 +772,8 @@ g $D241
 B $D241,$03,$01
 
 g $D244
+
+g $D245
 
 g $D246
 
@@ -612,7 +787,13 @@ B $D247,$01
 
 g $D248
 
+g $D249
+
 g $D24A
+
+g $D24B
+
+g $D24C
 
 g $D24D
   $D24D,$02,$01
@@ -740,7 +921,8 @@ N $D405 See #R$FCB6.
 
 b $D408
 
-c $D409
+c $D409 Write Scene To Shadow Buffer
+@ $D409 label=WriteSceneToShadowBuffer
   $D409,$03 #REGbc=#N($0000,$04,$04).
 N $D40C Self-modifying code. These lines populate the value for a LoaD command below. The values relate to areas of the
 .       shadow screen buffer: #LIST { #R$6B00(#N$6B00) } { #R$7300 } { #R$7B00 } LIST#
@@ -749,6 +931,7 @@ N $D40C Self-modifying code. These lines populate the value for a LoaD command b
   $D417,$08 Write #N$73 to: #LIST { *#R$D474(#N$D475) } { *#R$D4B5(#N$D4B6) } LIST#
   $D41F,$03 Call #R$D42A.
   $D422,$08 Write #N$7B to: #LIST { *#R$D474(#N$D475) } { *#R$D4B5(#N$D4B6) } LIST#
+@ $D42A label=WriteSceneToShadowBuffer_Loop_1
   $D42A,$02 #REGa=#N$89.
   $D42C,$01 Exchange the #REGaf register with the shadow #REGaf register.
   $D42D,$01 #REGa=#REGb.
@@ -769,6 +952,7 @@ N $D40C Self-modifying code. These lines populate the value for a LoaD command b
   $D45B,$02 #REGa=#N$86.
   $D45D,$01 Exchange the #REGaf register with the shadow #REGaf register.
   $D45E,$01 #REGa=*#REGhl.
+@ $D45F label=WriteSceneToShadowBuffer_Loop_2
   $D45F,$02,b$01 Keep only bits 0-6.
   $D461,$01 #REGe=#REGa.
   $D462,$01 #REGa=*#REGhl.
@@ -813,6 +997,7 @@ N $D474 The value here is self-modified at:
   $D491,$01 Increment #REGd by one.
   $D492,$01 #REGa=*#REGhl.
   $D493,$01 Write #REGa to *#REGde.
+@ $D494 label=WriteSceneToShadowBuffer_Loop_3
   $D494,$01 Increment #REGc by one.
   $D495,$03 Jump to #R$D42A if {} is not zero.
   $D498,$01 Increment #REGb by one.
@@ -887,6 +1072,8 @@ N $D4B5 The value here is self-modified at:
   $D4E3,$01 Write #REGa to *#REGde.
   $D4E4,$01 Restore #REGbc from the stack.
   $D4E5,$03 Jump to #R$D494.
+
+c $D4E8
   $D4E8,$01 Exchange the #REGaf register with the shadow #REGaf register.
   $D4E9,$01 #REGa+=#REGh.
   $D4EA,$01 #REGh=#REGa.
@@ -1178,8 +1365,8 @@ c $D6C9
   $D6D0,$01 Restore #REGbc from the stack.
   $D6D1,$01 #REGd=#REGa.
   $D6D2,$03 #REGa=*#R$D247.
-  $D6D5,$01 RRCA.
-  $D6D6,$03 Jump to #R$D800 if {} is lower.
+  $D6D5,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $D6D6,$03 Jump to #R$D800 if the carry flag is set.
   $D6D9,$01 Exchange the #REGaf register with the shadow #REGaf register.
   $D6DA,$01 #REGe=#REGa.
   $D6DB,$01 #REGl=#REGc.
@@ -1197,9 +1384,7 @@ c $D6C9
   $D6ED,$01 Exchange the #REGaf register with the shadow #REGaf register.
   $D6EE,$01 #REGa=#REGb.
   $D6EF,$02,b$01 Keep only bits 0-2.
-  $D6F1,$01 RRCA.
-  $D6F2,$01 RRCA.
-  $D6F3,$01 RRCA.
+  $D6F1,$03 RRCA.
   $D6F4,$01 #REGa+=#REGc.
   $D6F5,$01 Switch to the shadow registers.
   $D6F6,$01 #REGc=#REGa.
@@ -1528,30 +1713,23 @@ c $DA3D
   $DA50,$01 Return.
 
 c $DA51
-  $DA51,$03 #REGa=*#R$D24D.
-  $DA54,$01 Increment #REGa by one.
-  $DA55,$03 Write #REGa to *#R$D24D.
+  $DA51,$07 Increment *#R$D24D by one.
   $DA58,$01 Return.
 
 c $DA59
-  $DA59,$03 #REGa=*#R$D24E.
-  $DA5C,$01 Increment #REGa by one.
-  $DA5D,$03 Write #REGa to *#R$D24E.
+  $DA59,$07 Increment *#R$D24E by one.
   $DA60,$01 Return.
 
 c $DA61
-  $DA61,$03 #REGa=*#R$D24D.
-  $DA64,$01 Decrease #REGa by one.
-  $DA65,$03 Write #REGa to *#R$D24D.
+  $DA61,$07 Decrease *#R$D24D by one.
   $DA68,$01 Return.
 
 c $DA69
-  $DA69,$03 #REGa=*#R$D24E.
-  $DA6C,$01 Decrease #REGa by one.
-  $DA6D,$03 Write #REGa to *#R$D24E.
+  $DA69,$07 Decrease *#R$D24E by one.
   $DA70,$01 Return.
 
 c $DA71
+R $DA71 IX Buildings Table
   $DA71,$03 Write #REGa to *#R$D213.
   $DA74,$04 Write #N$01 to *#REGix+#N$00.
   $DA78,$03 Write #REGa to *#REGix+#N$07.
@@ -1575,8 +1753,7 @@ c $DA71
   $DA9E,$03 Write #REGhl to *#R$DB52.
   $DAA1,$01 #REGa=*#REGhl.
   $DAA2,$02,b$01 Keep only bits 6-7.
-  $DAA4,$01 RLCA.
-  $DAA5,$01 RLCA.
+  $DAA4,$02 Rotate #REGa left two positions (bits 6 to 7 are now in positions 0 to 1).
   $DAA6,$04 Jump to #R$DAB1 if #REGa is not equal to #N$00.
   $DAAA,$03 #REGhl=#R$C99E.
   $DAAD,$02 #REGe=#N$06.
@@ -1759,8 +1936,8 @@ c $DBE5 Handler: Helicopters
   $DBF0,$08 Jump to #R$DC95 if this helicopter is not active.
   $DBF8,$03 #REGc=*#REGix+#N$01.
   $DBFB,$03 #REGb=*#REGix+#N$02.
-  $DBFE,$01 RLCA.
-  $DBFF,$02 Jump to #R$DC62 if {} is lower.
+  $DBFE,$01 Rotate #REGa left one position, setting the carry flag if bit 7 was set.
+  $DBFF,$02 Jump to #R$DC62 if the carry flag is set.
   $DC01,$05 Jump to #R$DC18 if #REGc is equal to #N$21.
   $DC06,$01 #REGa=#REGd.
   $DC07,$02,b$01 Keep only bits 0-1 and 6.
@@ -1937,21 +2114,23 @@ N $DD51 Converts 0-2 into 1-3 for the monster ID.
   $DD51,$01 Increment #REGa by one.
 
 c $DD52 Sets #REGiy To Monster Data
-@ $DD52 label=SetIYMonsterData_George
+@ $DD52 label=SetIYMonsterData
 R $DD52 A Monster ID
 R $DD52 O:IY Monster data
-N $DD52 George:
   $DD52,$04 Jump to #R$DD5B if #REGa is not equal to #N$01.
+N $DD56 #REGa is #N$01; set to George:
   $DD56,$04 #REGiy=#R$CFD2.
   $DD5A,$01 Return.
-N $DD5B Lizzy:
+N $DD5B If it's not #N$01, is it #N$02?
 @ $DD5B label=SetIYMonsterData_Lizzy
   $DD5B,$04 Jump to #R$DD64 if #REGa is not equal to #N$02.
+N $DD5F #REGa is #N$02; set to Lizzy:
   $DD5F,$04 #REGiy=#R$D001.
   $DD63,$01 Return.
-N $DD64 Ralph:
+N $DD64 Just return if #REGa is none of #N$01, #N$02 or #N$03.
 @ $DD64 label=SetIYMonsterData_Ralph
   $DD64,$03 Return if #REGa is not equal to #N$03.
+N $DD67 #REGa is #N$03; set to Ralph:
   $DD67,$04 #REGiy=#R$D030.
   $DD6B,$01 Return.
 
@@ -1975,15 +2154,18 @@ N $DD80 If the monsters energy falls to less than #N$00 - their turn is over.
   $DD84,$04 Write #N$21 (explosion state) to the current monster state (*#REGiy+#N$00).
   $DD88,$01 Return.
 
-c $DD89
-  $DD89,$03 #REGa+=*#REGiy+#N$0C.
-  $DD8C,$03 Write #REGa to *#REGiy+#N$0C.
-  $DD8F,$03 Return if #REGa is lower than #N$41.
-  $DD92,$04 Write #N$40 to *#REGiy+#N$0C.
+c $DD89 Handler: Increase Energy (Eaten Food)
+R $DD89 IY Monster data
+R $DD89 A Energy increment
+@ $DD89 label=Handler_IncreaseEnergy
+  $DD89,$06 Add the energy value to the monsters current energy level (*#REGiy+#N$0C).
+N $DD8F Ensure the maximum value for monster energy is not breached.
+  $DD8F,$03 Return if the monsters energy is lower than #N$41.
+  $DD92,$04 Else write #N$40 to the monsters energy (*#REGiy+#N$0C) to keep it within the acceptable range.
   $DD96,$01 Return.
 
-c $DD97 Add Points To Score
-@ $DD97 label=AddPoints
+c $DD97 Handler: Add Points To Score
+@ $DD97 label=Handler_AddPoints
 R $DD97 A Monster ID
 R $DD97 D Points to add to score digit
 R $DD97 E Digit to update
@@ -2001,7 +2183,7 @@ N $DDA7 Lizzy:
 N $DDAA Apply points to score.
 @ $DDAA label=AddPointsToScore
   $DDAA,$01 #REGa=#REGe.
-  $DDAB,$02,b$01 Reset bits 0-2.
+  $DDAB,$02,b$01 Flip bits 0-2.
   $DDAD,$01 Decrease #REGa by one.
   $DDAE,$01 #REGe=#REGa.
 M $DDAA,$05 Work out which digit to update.
@@ -2165,11 +2347,11 @@ c $DEC6
 
 c $DEE1 Initialise New Game
 @ $DEE1 label=InitialiseNewGame
-  $DEE1,$01 #REGa=#N$00.
+  $DEE1,$01 #REGa=#N$00 (face right).
 N $DEE2 Set up George.
   $DEE2,$04 #REGiy=#R$CFD2.
   $DEE6,$03 Call #R$DF1F.
-  $DEE9,$04 Write #N$01 to *#REGiy+#N$03.
+  $DEE9,$04 Write #N$01 (face left) to monster direction (*#REGiy+#N$03).
   $DEED,$04 Write #N$15 to monster X position (*#REGiy+#N$09).
 N $DEF1 Set up Lizzy.
   $DEF1,$04 #REGiy=#R$D001.
@@ -2195,7 +2377,7 @@ c $DF1F Set Monster States
 R $DF1F A Default for
 N $DF1F See: #R$CFD2, #R$D001, #R$D030.
   $DF1F,$04 Write #N$1C (falling) to monster state (#REGiy+#N$00).
-  $DF23,$09 Write #REGa to: #LIST { #REGiy+#N$02 } { #REGiy+#N$03 } { #REGiy+#N$08 } LIST#
+  $DF23,$09 Write #REGa to: #LIST { #REGiy+#N$02 } { monster direction (#REGiy+#N$03) } { #REGiy+#N$08 } LIST#
   $DF2C,$04 Write #N$01 to #REGiy+#N$04.
   $DF30,$04 Write #N$FE to monster Y position (#REGiy+#N$0A).
   $DF34,$04 Write #N$40 to monster energy (#REGiy+#N$0C).
@@ -2237,7 +2419,7 @@ N $DF68 Sets common defaults on #REGiy=Monster data.
 @ $DF68 label=SetMonsterDefaults
   $DF68,$06 Return if the monster state (#REGiy+#N$00) is "No Monster".
   $DF6E,$07 Write #N$00 to: #LIST { State (#REGiy+#N$00) } { #REGiy+#N$02 } LIST#
-  $DF75,$04 Write #N$01 to #REGiy+#N$03.
+  $DF75,$04 Write #N$01 (face left) to monster direction (#REGiy+#N$03).
   $DF79,$03 Write #N$00 to #REGiy+#N$04.
   $DF7C,$04 Write #N$19 to #REGiy+#N$05.
   $DF80,$04 Write #N$03 to #REGiy+#N$06.
@@ -2246,7 +2428,7 @@ N $DF68 Sets common defaults on #REGiy=Monster data.
   $DF8B,$04 Write #N$12 to Y position (#REGiy+#N$0A).
   $DF8F,$01 Return.
 
-c $DF90
+c $DF90 Find Scene
 @ $DF90 label=FindScene
 R $DF90 A Level
 N $DF90 In order to find the scene data for the requested level, the code "counts" the number of terminator bytes found.
@@ -2363,19 +2545,19 @@ N $DFC0 Set the number of buildings for this level.
   $E049,$03 Jump to #R$DFC7 until #REGa is zero.
   $E04C,$03 #REGhl=#R$D31F.
   $E04F,$03 #REGde=#R$D35F.
-  $E052,$02 #REGb=#N$20.
+  $E052,$02 #REGb=#N$20 (counter).
   $E054,$01 #REGa=*#REGde.
-  $E055,$01 RLCA.
-  $E056,$01 RLCA.
-  $E057,$01 RLCA.
+  $E055,$03 Rotate #REGa left three positions.
   $E058,$01 Set the bits from *#REGhl.
   $E059,$01 Write #REGa to *#REGhl.
   $E05A,$01 Increment #REGhl by one.
   $E05B,$01 Increment #REGde by one.
   $E05C,$02 Decrease counter by one and loop back to #R$E054 until counter is zero.
+N $E05E Default to not using the train.
   $E05E,$05 Write #N$FE (spawning "off") to *#R$D405.
   $E063,$07 Jump to #R$E099 if *#R$D400 is equal to #N$02.
   $E06A,$04 Jump to #R$E09E if #REGa is equal to #N$05.
+N $E06E Anything else uses vehicles.
   $E06E,$05 Write #N$18 to *#R$D401.
 @ $E073 label=Helicopters_CalculateCount
   $E073,$03 #REGa=*#R$DF44.
@@ -2418,13 +2600,13 @@ c $E0AD
   $E0BD,$01 #REGa+=*#REGhl.
   $E0BE,$01 #REGb=#REGa.
   $E0BF,$02 Jump to #R$E0CF.
-  $E0C1,$02,b$01 Reset bit 7.
+  $E0C1,$02,b$01 Flip bit 7.
   $E0C3,$01 #REGa-=*#REGhl.
   $E0C4,$01 Invert the bits in #REGa.
   $E0C5,$01 Increment #REGa by one.
   $E0C6,$01 #REGc=#REGa.
   $E0C7,$02 Jump to #R$E0B7.
-  $E0C9,$02,b$01 Reset bit 7.
+  $E0C9,$02,b$01 Flip bit 7.
   $E0CB,$01 #REGa-=*#REGhl.
   $E0CC,$01 Invert the bits in #REGa.
   $E0CD,$01 Increment #REGa by one.
@@ -2463,12 +2645,14 @@ c $E0AD
   $E118,$01 Return.
 
 c $E119
+N $E119 George:
   $E119,$03 #REGhl=#R$CFD2.
   $E11C,$03 Call #R$E16B.
   $E11F,$03 Call #R$E62D.
   $E122,$03 Call #R$F3CA.
   $E125,$03 #REGde=#R$CFD2.
   $E128,$03 Call #R$E170.
+N $E12B Lizzy:
   $E12B,$03 #REGhl=#R$D001.
   $E12E,$03 Call #R$E16B.
   $E131,$03 Call #R$E62D.
@@ -2478,6 +2662,7 @@ c $E119
   $E13D,$03 Call #R$F3CA.
   $E140,$03 #REGde=#R$D001.
   $E143,$03 Call #R$E170.
+N $E146 Ralph:
   $E146,$03 #REGhl=#R$D030.
   $E149,$03 Call #R$E16B.
   $E14C,$03 Call #R$E62D.
@@ -2498,20 +2683,21 @@ c $E119
   $E176,$02 LDIR.
   $E178,$01 Return.
 
-c $E179
+c $E179 Controls?
+@ $E179 label=Controls
   $E179,$06 Jump to #R$E1CE if *#R$D252 is not zero.
   $E17F,$03 Call #R$DA28.
   $E182,$02,b$01 Keep only bits 0-4.
   $E184,$03 Write #REGa to *#R$D217.
 M $E17F,$08 Write a random number between 0-31 to *#R$D217.
   $E187,$03 #REGa=*#R$D248.
-  $E18A,$01 RRCA.
-  $E18B,$02 Jump to #R$E193 if {} is higher.
+  $E18A,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $E18B,$02 Jump to #R$E193 if the carry flag is not set.
   $E18D,$05 Write #N$08 to *#R$D217.
   $E192,$01 Return.
   $E193,$03 #REGa=*#R$D246.
-  $E196,$01 RRCA.
-  $E197,$02 Jump to #R$E1A1 if {} is higher.
+  $E196,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $E197,$02 Jump to #R$E1A1 if the carry flag is not set.
   $E199,$07 Jump to #R$E17F if *#R$D217 is equal to #N$10.
   $E1A0,$01 Return.
   $E1A1,$03 #REGa=*#R$D24E.
@@ -2546,7 +2732,7 @@ M $E17F,$08 Write a random number between 0-31 to *#R$D217.
   $E1DC,$03 Jump to #R$E243.
   $E1DF,$02 #REGa=#N$F7.
   $E1E1,$02
-  $E1E3,$02,b$01
+  $E1E3,$02,b$01 Flip bits 0-5 and 7.
   $E1E5,$02,b$01 Keep only bits 0-4.
   $E1E7,$03 Jump to #R$E243.
   $E1EA,$02 #REGa=#N$EF.
@@ -2554,7 +2740,7 @@ M $E17F,$08 Write a random number between 0-31 to *#R$D217.
   $E1EE,$02 #REGb=#N$C6.
   $E1F1,$01 #REGa=*#REGbc.
   $E1F2,$03 RRCA.
-  $E1F5,$02,b$01 Reset bits 0-5, 7.
+  $E1F5,$02,b$01 Flip bits 0-5 and 7.
   $E1F7,$02,b$01 Keep only bits 0-4.
   $E1F9,$03 Jump to #R$E243.
   $E1FC,$02
@@ -2564,7 +2750,7 @@ M $E17F,$08 Write a random number between 0-31 to *#R$D217.
   $E204,$02,b$01 Keep only bits 0-1.
   $E206,$01 #REGa=#REGb.
   $E207,$03 Jump to #R$E20C if {} is zero.
-  $E20A,$02,b$01 Reset bits 0-1.
+  $E20A,$02,b$01 Flip bits 0-1.
   $E20C,$01 Set the bits from #REGa.
   $E20D,$03 Jump to #R$E243.
   $E210,$03 #REGhl=#R$C850.
@@ -2639,7 +2825,7 @@ c $E25D
   $E296,$01 #REGa=*#REGhl.
   $E297,$01 Decrease #REGa by one.
   $E298,$01 Write #REGa to *#REGhl.
-  $E299,$03 Jump to #R$E54D if {} is not zero.
+  $E299,$03 Jump to #R$E54D until #REGa is zero.
   $E29C,$02 Write #N$10 to *#REGhl.
   $E29E,$01 Decrease #REGhl by one.
   $E29F,$02 Write #N$02 to *#REGhl.
@@ -2649,7 +2835,7 @@ c $E25D
   $E2A6,$01 #REGa=*#REGhl.
   $E2A7,$01 Decrease #REGa by one.
   $E2A8,$01 Write #REGa to *#REGhl.
-  $E2A9,$03 Jump to #R$E54D if {} is not zero.
+  $E2A9,$03 Jump to #R$E54D until #REGa is zero.
   $E2AC,$02 Write #N$0E to *#REGhl.
   $E2AE,$01 Decrease #REGhl by one.
   $E2AF,$03 Call #R$DA28.
@@ -2801,7 +2987,7 @@ M $E2AF,$05 Get a random number between 0-15.
   $E3E4,$01 Write #REGa to *#REGhl.
   $E3E5,$04 Jump to #R$E40C if #REGa is higher than #N$C8.
   $E3E9,$04 Jump to #R$E3F7 if #REGa is equal to #N$80.
-  $E3ED,$02 Jump to #R$E408 if {} is lower.
+  $E3ED,$02 Jump to #R$E408 if #REGa is lower than #N$80.
   $E3EF,$02,b$01 Keep only bits 0-1.
   $E3F1,$04 Jump to #R$E3FE if #REGa is lower than #N$02.
   $E3F5,$02 Jump to #R$E403.
@@ -2841,16 +3027,12 @@ M $E2AF,$05 Get a random number between 0-15.
   $E448,$01 #REGa=*#REGhl.
   $E449,$01 Decrease #REGa by one.
   $E44A,$01 Write #REGa to *#REGhl.
-  $E44B,$02 Compare #REGa with #N$C8.
-  $E44D,$03 Jump to #R$E4D6 if {} is higher.
-  $E450,$02 Compare #REGa with #N$14.
-  $E452,$02 Jump to #R$E4D2 if {} is lower.
+  $E44B,$05 Jump to #R$E4D6 if #REGa is higher than #N$C8.
+  $E450,$04 Jump to #R$E4D2 if #REGa is lower than #N$14.
   $E454,$02,b$01 Keep only bits 0-4.
-  $E456,$02 Jump to #R$E463 if {} is zero.
+  $E456,$02 Jump to #R$E463 if the result is zero.
   $E458,$01 #REGa=*#REGhl.
-  $E459,$01 RLCA.
-  $E45A,$01 RLCA.
-  $E45B,$01 RLCA.
+  $E459,$03 RLCA.
   $E45C,$02,b$01 Keep only bits 0-1.
   $E45E,$03 Call #R$DBD9.
   $E461,$02 Jump to #R$E474.
@@ -2859,9 +3041,7 @@ M $E2AF,$05 Get a random number between 0-15.
   $E468,$03 Call #R$DB7E.
   $E46B,$01 Exchange the #REGaf register with the shadow #REGaf register.
   $E46C,$02,b$01 Keep only bits 0-1.
-  $E46E,$01 RRCA.
-  $E46F,$01 RRCA.
-  $E470,$01 RRCA.
+  $E46E,$03 RRCA.
   $E471,$02,b$01 Set bits 0-4.
   $E473,$01 Write #REGa to *#REGhl.
   $E474,$01 Increment #REGhl by one.
@@ -2870,18 +3050,15 @@ M $E2AF,$05 Get a random number between 0-15.
   $E477,$01 Increment #REGhl by one.
   $E478,$01 #REGa=*#REGhl.
   $E479,$02 Decrease #REGhl by two.
-  $E47B,$02 Jump to #R$E486 if {} is zero.
+  $E47B,$02 Jump to #R$E486 if #REGhl is zero.
   $E47D,$02 Jump to #R$E48B if {} is higher.
-  $E47F,$01 Compare #REGa with #REGc.
-  $E480,$02 Jump to #R$E49A if {} is zero.
-  $E482,$02 Jump to #R$E496 if {} is lower.
+  $E47F,$03 Jump to #R$E49A if #REGa is equal to #REGc.
+  $E482,$02 Jump to #R$E496 if #REGa is lower than #REGc.
   $E484,$02 Jump to #R$E49E.
-  $E486,$01 Compare #REGa with #REGc.
-  $E487,$02 Jump to #R$E492 if {} is lower.
+  $E486,$03 Jump to #R$E492 if #REGa is lower than #REGc.
   $E489,$02 Jump to #R$E4BD.
-  $E48B,$01 Compare #REGa with #REGc.
-  $E48C,$02 Jump to #R$E4B5 if {} is zero.
-  $E48E,$02 Jump to #R$E4B1 if {} is lower.
+  $E48B,$03 Jump to #R$E4B5 if #REGa is equal to #REGc.
+  $E48E,$02 Jump to #R$E4B1 if #REGa is lower than #REGc.
   $E490,$02 Jump to #R$E4B9.
   $E492,$02 #REGb=#N$CA.
   $E494,$02 Jump to #R$E4C1.
@@ -2906,14 +3083,13 @@ M $E2AF,$05 Get a random number between 0-15.
   $E4BD,$02 #REGb=#N$D2.
   $E4BF,$02 Jump to #R$E4A0.
   $E4C1,$03 Call #R$DA28.
-  $E4C4,$02 Compare #REGa with #N$04.
+  $E4C4,$02 Compare #REGa with #N$04...
   $E4C6,$01 #REGa=#REGb.
-  $E4C7,$03 Jump to #R$E535 if {} is higher.
+  $E4C7,$03 Jump to #R$E535 if #REGa is higher than #N$04.
   $E4CA,$02 #REGc=#N$80.
   $E4CC,$03 Call #R$E4DE.
   $E4CF,$03 Jump to #R$E535.
-  $E4D2,$02 Compare #REGa with #N$0A.
-  $E4D4,$02 Jump to #R$E463 if {} is zero.
+  $E4D2,$04 Jump to #R$E463 if #REGa is equal to #N$0A.
   $E4D6,$02 #REGa=#N$C0.
   $E4D8,$03 Jump to #R$E541 if {} is not zero.
   $E4DB,$03 Jump to #R$E2C3.
@@ -2924,9 +3100,7 @@ M $E2AF,$05 Get a random number between 0-15.
   $E4E5,$03 #REGde=#R$D2BC.
   $E4E8,$01 Exchange the #REGaf register with the shadow #REGaf register.
   $E4E9,$03 Increment #REGde by three.
-  $E4EC,$01 #REGa=*#REGde.
-  $E4ED,$01 Set flags.
-  $E4EE,$02 Jump to #R$E4E9 if {} is not zero.
+  $E4EC,$04 Jump to #R$E4E9 if *#REGde is not zero.
   $E4F0,$01 #REGa=#REGb.
   $E4F1,$02 #REGa-=#N$C8.
   $E4F3,$01 RRCA.
@@ -2937,26 +3111,20 @@ M $E2AF,$05 Get a random number between 0-15.
   $E4F8,$01 #REGc=*#REGhl.
   $E4F9,$01 Increment #REGhl by one.
   $E4FA,$01 #REGb=*#REGhl.
-  $E4FB,$02 Compare #REGa with #N$04.
-  $E4FD,$02 Jump to #R$E502 if {} is not zero.
+  $E4FB,$04 Jump to #R$E502 if #REGa is not equal to #N$04.
   $E4FF,$01 Increment #REGc by one.
   $E500,$02 Jump to #R$E520.
-  $E502,$02 Compare #REGa with #N$82.
-  $E504,$02 Jump to #R$E509 if {} is not zero.
+  $E502,$04 Jump to #R$E509 if #REGa is not equal to #N$82.
   $E506,$01 Increment #REGb by one.
   $E507,$02 Jump to #R$E520.
-  $E509,$02 Compare #REGa with #N$02.
-  $E50B,$02 Jump to #R$E515 if {} is zero.
-  $E50D,$02 Compare #REGa with #N$01.
-  $E50F,$02 Jump to #R$E515 if {} is zero.
-  $E511,$02 Compare #REGa with #N$85.
-  $E513,$02 Jump to #R$E519 if {} is not zero.
+  $E509,$04 Jump to #R$E515 if #REGa is equal to #N$02.
+  $E50D,$04 Jump to #R$E515 if #REGa is equal to #N$01.
+  $E511,$04 Jump to #R$E519 if #REGa is not equal to #N$85.
   $E515,$01 Increment #REGb by one.
   $E516,$01 Increment #REGc by one.
   $E517,$02 Jump to #R$E520.
   $E519,$02,b$01 Keep only bits 0-1.
-  $E51B,$02 Compare #REGa with #N$03.
-  $E51D,$02 Jump to #R$E520 if {} is not zero.
+  $E51B,$04 Jump to #R$E520 if #REGa is not equal to #N$03.
   $E51F,$01 Increment #REGb by one.
   $E520,$01 #REGa=#REGc.
   $E521,$01 Write #REGa to *#REGde.
@@ -2992,7 +3160,7 @@ N $E52E #AUDIO(helicopter.wav)(#INCLUDE(Helicopter))
   $E54D,$03 Increment #REGhl by three.
   $E550,$01 Restore #REGbc from the stack.
   $E551,$01 Decrease #REGb by one.
-  $E552,$03 Jump to #R$E266 if {} is not zero.
+  $E552,$03 Jump to #R$E266 until #REGb is zero.
   $E555,$01 Return.
 
 w $E556 Jump Table
@@ -3097,15 +3265,14 @@ c $E62D
   $E62D,$06 Return if *#R$D244 is equal to #N$FF.
   $E633,$04 Jump to #R$E67C if *#R$D244 is higher than #N$20.
   $E637,$03 #REGa=*#R$D248.
-  $E63A,$01 RRCA.
-  $E63B,$02 Jump to #R$E67C if {} is lower.
+  $E63A,$01 Rotate #REGa right; bit 0 moves to the carry flag (and to bit 7).
+  $E63B,$02 Jump to #R$E67C if the carry flag is set (if bit 0 was set).
   $E63D,$03 #REGa=*#R$D246.
-  $E640,$01 RRCA.
-  $E641,$02 Jump to #R$E658 if {} is higher.
+  $E640,$01 Rotate #REGa right; bit 0 moves to the carry flag (and to bit 7).
+  $E641,$02 Jump to #R$E658 if the carry flag is not set (if bit 0 was unset).
   $E643,$03 #REGde=#N$80FE.
   $E646,$02 #REGb=#N$03.
-  $E648,$03 #REGa=*#R$D247.
-  $E64B,$01 #REGc=#REGa.
+  $E648,$04 #REGc=*#R$D247.
   $E64C,$01 #REGa=#REGb.
   $E64D,$01 #REGa-=#REGc.
   $E64E,$01 #REGa-=#REGc.
@@ -3114,9 +3281,7 @@ c $E62D
   $E651,$03 Call #R$E0AD.
   $E654,$02 Jump to #R$E67C if {} is zero.
   $E656,$02 Jump to #R$E66F.
-  $E658,$03 #REGa=*#R$D24E.
-  $E65B,$02 Compare #REGa with #N$12.
-  $E65D,$02 Jump to #R$E67C if {} is zero.
+  $E658,$07 Jump to #R$E67C if *#R$D24E is equal to #N$12.
   $E65F,$02 #REGb=#N$05.
   $E661,$03 #REGa=*#R$D247.
   $E664,$02 #REGa+=#N$02.
@@ -3124,11 +3289,8 @@ c $E62D
   $E667,$03 #REGde=#N$090F.
   $E66A,$03 Call #R$E0AD.
   $E66D,$02 Jump to #R$E67C if {} is not zero.
-  $E66F,$02 #REGa=#N$06.
-  $E671,$03 Write #REGa to *#R$D244.
-  $E674,$03 Write #REGa to *#R$D24A.
-  $E677,$02 #REGa=#N$01.
-  $E679,$03 Write #REGa to *#R$D248.
+  $E66F,$08 Write #N$06 to: #LIST { *#R$D244 } { *#R$D24A } LIST#
+  $E677,$05 Write #N$01 to *#R$D248.
   $E67C,$03 #REGa=*#R$D244.
   $E67F,$01 #REGa+=#REGa.
   $E680,$02 #REGh=#N$00.
@@ -3141,6 +3303,363 @@ c $E62D
   $E68A,$01 #REGl=#REGa.
   $E68B,$01 Jump to the address held by *#REGhl.
 
+c $E68C
+  $E68C,$03 Call #R$E179.
+  $E68F,$04 Jump to #R$E950 if #REGa is zero.
+  $E693,$02 Test bit 4 of #REGa.
+  $E695,$03 Jump to #R$E6C5 if {} is zero.
+  $E698,$02,b$01 Flip bit 4.
+  $E69A,$02 Jump to #R$E6A9 if the result is not zero.
+  $E69C,$05 Write #N$0A to *#R$D244.
+  $E6A1,$05 Write #N$01 to *#R$D248.
+  $E6A6,$03 Jump to #R$E67C.
+  $E6A9,$06 Jump to #R$E6B7 if *#R$D246 is zero.
+  $E6AF,$05 Write #N$0D to *#R$D244.
+  $E6B4,$03 Jump to #R$E67C.
+  $E6B7,$06 Jump to #R$E69C if *#R$D252 is zero.
+  $E6BD,$05 Write #N$0E to *#R$D244.
+  $E6C2,$03 Jump to #R$E67C.
+  $E6C5,$02 Test bit 3 of #REGa.
+  $E6C7,$03 Jump to #R$E7DE if {} is zero.
+  $E6CA,$03 #REGa=*#R$D247.
+  $E6CD,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $E6CE,$02 Jump to #R$E6E4 if the carry flag is set.
+  $E6D0,$03 #REGbc=#N$0102.
+  $E6D3,$03 #REGde=#N$090F.
+  $E6D6,$03 Call #R$E0AD.
+  $E6D9,$02 Jump to #R$E712 if {} is zero.
+  $E6DB,$03 #REGa=*#R$D248.
+  $E6DE,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $E6DF,$03 Jump to #R$E795 if the carry flag is set.
+  $E6E2,$02 Jump to #R$E6F9.
+  $E6E4,$03 #REGbc=#N$0101.
+  $E6E7,$03 #REGde=#N$090F.
+  $E6EA,$03 Call #R$E0AD.
+  $E6ED,$02 Jump to #R$E746 if {} is zero.
+  $E6EF,$03 #REGa=*#R$D248.
+  $E6F2,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $E6F3,$03 Jump to #R$E795 if the carry flag is set.
+  $E6F6,$03 Call #R$DA61.
+  $E6F9,$03 #REGa=*#R$D24E.
+  $E6FC,$02 #REGa-=#N$04.
+  $E6FE,$03 Write #REGa to *#R$D24E.
+  $E701,$0A Write #N$00 to: #LIST { *#R$D248 } { *#R$D246 } { *#R$D24C } LIST#
+  $E70B,$04 Write #N$01 to *#R$D244.
+  $E70F,$03 Jump to #R$E67C.
+  $E712,$03 #REGbc=#N$0202.
+  $E715,$03 #REGde=#N$1113.
+  $E718,$03 #REGa=*#R$D246.
+  $E71B,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $E71C,$02 Jump to #R$E729 if the carry flag is set.
+  $E71E,$01 Increment #REGc by one.
+  $E71F,$03 Call #R$E0AD.
+  $E722,$02 Jump to #R$E734 if {} is zero.
+  $E724,$03 Call #R$DA51.
+  $E727,$02 Jump to #R$E763.
+  $E729,$03 #REGa=*#R$D248.
+  $E72C,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $E72D,$02 Jump to #R$E71E if the carry flag is set.
+  $E72F,$03 Call #R$E0AD.
+  $E732,$02 Jump to #R$E763 if {} is not zero.
+  $E734,$03 #REGbc=#N$0202.
+  $E737,$03 #REGde=#N$1416.
+  $E73A,$03 Call #R$E0AD.
+  $E73D,$02 Jump to #R$E785 if {} is zero.
+  $E73F,$05 Write #N$01 to *#R$D247.
+  $E744,$02 Jump to #R$E763.
+  $E746,$03 #REGbc=#N$0202.
+  $E749,$03 #REGde=#N$1416.
+  $E74C,$03 Call #R$E0AD.
+  $E74F,$02 Jump to #R$E763 if {} is not zero.
+  $E751,$03 #REGbc=#N$0203.
+  $E754,$03 #REGde=#N$1113.
+  $E757,$03 Call #R$E0AD.
+  $E75A,$02 Jump to #R$E785 if {} is zero.
+  $E75C,$04 Write #N$00 to *#R$D247.
+  $E760,$03 Call #R$DA51.
+  $E763,$03 #REGa=*#R$D246.
+  $E766,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $E767,$02 Jump to #R$E7AA if the carry flag is set.
+  $E769,$03 #REGa=*#R$D24E.
+  $E76C,$04 Jump to #R$E775 if #REGa is no equal to #N$12.
+  $E770,$02 #REGa-=#N$02.
+  $E772,$03 Write #REGa to *#R$D24E.
+  $E775,$07 Write #N$00 to: #LIST { *#R$D248 } { *#R$D24C } LIST#
+  $E77C,$04 Write #N$01 to *#R$D246.
+  $E780,$05 Write #N$03 to *#R$D24F.
+  $E785,$03 #REGa=*#R$D248.
+  $E788,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $E789,$02 Jump to #R$E795 if the carry flag is set.
+  $E78B,$07 Write #N$00 to: #LIST { *#R$D248 } { *#R$D24C } LIST#
+  $E792,$03 Jump to #R$EF86.
+  $E795,$03 #REGhl=#R$D247.
+  $E798,$01 #REGa=*#REGhl.
+  $E799,$02,b$01 Flip bit 0.
+  $E79B,$01 Increment #REGhl by one.
+  $E79C,$01 Merge the bits from *#REGhl.
+  $E79D,$03 Call #R$DA51 not zero.
+  $E7A0,$03 #REGa=*#R$D246.
+  $E7A3,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $E7A4,$03 Call #R$DA69 if the carry flag is set.
+  $E7A7,$03 Jump to #R$EB2F.
+  $E7AA,$05 Write #N$03 to *#R$D24F.
+  $E7AF,$04 #REGde=*#R$D253.
+  $E7B3,$03 Call #R$DA0F.
+  $E7B6,$03 #REGa=*#R$D245.
+  $E7B9,$02,b$01 Keep only bit 0.
+  $E7BB,$02,b$01 Flip bit 0.
+  $E7BD,$03 Write #REGa to *#REGix+#N$05.
+  $E7C0,$03 Call #R$DA69 zero.
+  $E7C3,$05 Write #N$08 to *#REGix+#N$00.
+  $E7C8,$07 Write #N$00 to: #LIST { *#R$D248 } { *#R$D24C } LIST#
+  $E7CF,$04 Write #N$01 to *#R$D246.
+  $E7D3,$08 Write #N$03 to: #LIST { *#R$D244 } { *#R$D245 } LIST#
+  $E7DB,$03 Jump to #R$E67C.
+  $E7DE,$02 Test bit 2 of #REGa.
+  $E7E0,$03 Jump to #R$E8E7 if {} is zero.
+  $E7E3,$08 Jump to #R$E8CF if *#R$D24E is equal to #N$10.
+  $E7EB,$03 #REGa=*#R$D247.
+  $E7EE,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $E7EF,$02 Jump to #R$E81F if the carry flag is set.
+  $E7F1,$03 #REGbc=#N$0502.
+  $E7F4,$03 #REGde=#N$090F.
+  $E7F7,$03 Call #R$E0AD.
+  $E7FA,$02 #REGc=#N$02.
+  $E7FC,$02 Jump to #R$E851 if {} is zero.
+  $E7FE,$03 #REGbc=#N$0602.
+  $E801,$03 #REGde=#N$1416.
+  $E804,$03 Call #R$E0AD.
+  $E807,$02 Jump to #R$E80E if {} is zero.
+  $E809,$02 #REGa=#N$01.
+  $E80B,$03 Jump to #R$E8B4.
+  $E80E,$03 #REGbc=#N$0602.
+  $E811,$03 #REGde=#N$1113.
+  $E814,$03 Call #R$E0AD.
+  $E817,$02 #REGc=#N$02.
+  $E819,$02 Jump to #R$E851 if {} is zero.
+  $E81B,$01 #REGa=#N$00.
+  $E81C,$03 Jump to #R$E8B4.
+  $E81F,$03 #REGbc=#N$0503.
+  $E822,$03 #REGde=#N$090F.
+  $E825,$03 Call #R$E0AD.
+  $E828,$02 #REGc=#N$03.
+  $E82A,$02 Jump to #R$E851 if {} is zero.
+  $E82C,$03 #REGbc=#N$0603.
+  $E82F,$03 #REGde=#N$1113.
+  $E832,$03 Call #R$E0AD.
+  $E835,$02 Jump to #R$E83D if {} is zero.
+  $E837,$03 Call #R$DA51.
+  $E83A,$01 #REGa=#N$00.
+  $E83B,$02 Jump to #R$E8B4.
+  $E83D,$03 #REGbc=#N$0603.
+  $E840,$03 #REGde=#N$1416.
+  $E843,$03 Call #R$E0AD.
+  $E846,$02 #REGc=#N$03.
+  $E848,$02 Jump to #R$E851 if {} is zero.
+  $E84A,$03 Call #R$DA51.
+  $E84D,$02 #REGa=#N$01.
+  $E84F,$02 Jump to #R$E8B4.
+  $E851,$03 #REGa=*#R$D246.
+  $E854,$02,b$01 Flip bit 0.
+  $E856,$02 #REGa+=#N$05.
+  $E858,$01 #REGb=#REGa.
+  $E859,$03 #REGde=#N$090F.
+  $E85C,$03 Call #R$E0AD.
+  $E85F,$02 Jump to #R$E876 if {} is zero.
+  $E861,$04 Write #N$00 to *#R$D246.
+  $E865,$07 Write #N$01 to: #LIST { *#R$D244 } { *#R$D24F } LIST#
+  $E86C,$03 #REGa=*#R$D247.
+  $E86F,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $E870,$03 Call #R$DA61 if the carry flag is not set.
+  $E873,$03 Jump to #R$EF86.
+  $E876,$03 #REGa=*#R$D246.
+  $E879,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $E87A,$03 Jump to #R$EF86 if the carry flag is not set.
+  $E87D,$03 #REGbc=#N$0402.
+  $E880,$03 #REGde=#N$1113.
+  $E883,$03 #REGa=*#R$D247.
+  $E886,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $E887,$02 Jump to #R$E88C if the carry flag is not set.
+  $E889,$03 #REGde=#N$1416.
+  $E88C,$03 Call #R$E0AD.
+  $E88F,$03 Jump to #R$EF86 if {} is zero.
+  $E892,$05 Write #N$02 to *#R$D24F.
+  $E897,$04 #REGde=*#R$D253.
+  $E89B,$03 Call #R$DA0F.
+  $E89E,$03 #REGa=*#R$D245.
+  $E8A1,$02,b$01 Keep only bit 0.
+  $E8A3,$03 Write #REGa to *#REGix+#N$05.
+  $E8A6,$0B Write #N$04 to: #LIST { *#REGix+#N$00 } { *#R$D244 } { *#R$D245 } LIST#
+  $E8B1,$03 Jump to #R$E67C.
+  $E8B4,$03 Write #REGa to *#R$D247.
+  $E8B7,$03 #REGa=*#R$D24E.
+  $E8BA,$02 #REGa+=#N$04.
+  $E8BC,$03 Write #REGa to *#R$D24E.
+  $E8BF,$08 Write #N$03 to: #LIST { *#R$D244 } { *#R$D24F } LIST#
+  $E8C7,$05 Write #N$01 to *#R$D246.
+  $E8CC,$03 Jump to #R$E67C.
+  $E8CF,$05 Write #N$12 to *#R$D24E.
+  $E8D4,$05 Write #N$01 to *#R$D244.
+  $E8D9,$03 #REGa=*#R$D247.
+  $E8DC,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $E8DD,$03 Call #R$DA61 if the carry flag is not set.
+  $E8E0,$04 Write #N$00 to *#R$D246.
+  $E8E4,$03 Jump to #R$E67C.
+  $E8E7,$02 Test bit 0 of #REGa.
+  $E8E9,$02 Jump to #R$E91C if {} is zero.
+  $E8EB,$03 #REGa=*#R$D246.
+  $E8EE,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $E8EF,$03 Jump to #R$EF86 if the carry flag is set.
+  $E8F2,$05 Write #N$01 to *#R$D24F.
+  $E8F7,$04 #REGde=*#R$D253.
+  $E8FB,$03 Call #R$DA0F.
+  $E8FE,$03 #REGa=*#R$D24D.
+  $E901,$01 Decrease #REGa by one.
+  $E902,$05 Jump to #R$EF86 if #REGa is equal to #N$FC.
+  $E907,$03 Write #REGa to *#R$D24D.
+  $E90A,$04 Write #N$00 to *#REGix+#N$05.
+  $E90E,$04 Write #N$01 to *#R$D247.
+  $E912,$07 Write #N$02 to: #LIST { *#REGix+#N$00 } { *#R$D244 } LIST#
+  $E919,$03 Jump to #R$E67C.
+  $E91C,$02 Test bit 1 of #REGa.
+  $E91E,$02 Jump to #R$E950 if {} is zero.
+  $E920,$03 #REGa=*#R$D246.
+  $E923,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $E924,$03 Jump to #R$EF86 if the carry flag is set.
+  $E927,$05 Write #N$01 to *#R$D24F.
+  $E92C,$04 #REGde=*#R$D253.
+  $E930,$03 Call #R$DA0F.
+  $E933,$03 #REGa=*#R$D24D.
+  $E936,$01 Increment #REGa by one.
+  $E937,$05 Jump to #R$EF86 if #REGa is equal to #N$1E.
+  $E93C,$03 Write #REGa to *#R$D24D.
+  $E93F,$07 Write #N$00 to: #LIST { *#REGix+#N$05 } { *#R$D247 } LIST#
+  $E946,$07 Write #N$01 to: #LIST { *#REGix+#N$00 } { *#R$D244 } LIST#
+  $E94D,$03 Jump to #R$E67C.
+  $E950,$03 #REGa=*#R$D249.
+  $E953,$01 Decrease #REGa by one.
+  $E954,$03 Write #REGa to *#R$D249.
+  $E957,$03 Jump to #R$EF86 if #REGa is not zero.
+  $E95A,$05 Write #N$19 to *#R$D249.
+  $E95F,$05 Write #N$05 to *#R$D244.
+  $E964,$03 Jump to #R$E67C.
+
+c $E967
+  $E967,$05 Write #N$01 to *#R$D24F.
+  $E96C,$03 Jump to #R$EF86.
+  $E96F,$02 Jump to #R$E967.
+
+c $E971
+  $E971,$03 Call #R$DB54.
+  $E974,$02 #REGa=#N$03.
+  $E976,$03 Call #R$DA0F.
+  $E979,$03 Call #R$D9C3.
+  $E97C,$01 Return if {} is not zero.
+  $E97D,$04 Write #N$00 to *#R$D244.
+  $E981,$01 Return.
+
+c $E982
+  $E982,$03 Call #R$DB54.
+  $E985,$02 #REGa=#N$02.
+  $E987,$03 Call #R$DA0F.
+  $E98A,$03 Call #R$D9C3.
+  $E98D,$01 Return if {} is not zero.
+  $E98E,$03 Call #R$DA59.
+  $E991,$05 Write #N$03 to *#R$D24F.
+  $E996,$04 Write #N$00 to *#R$D244.
+  $E99A,$01 Return.
+
+c $E99B
+  $E99B,$03 Call #R$E179.
+  $E99E,$01 Set flags.
+  $E99F,$03 Jump to #R$E693 if {} is not zero.
+  $E9A2,$06 Jump to #R$E9AE if *#R$D252 is not zero.
+  $E9A8,$03 Call #R$DA28.
+  $E9AB,$03 Jump to #R$E693.
+  $E9AE,$03 #REGa=*#R$D246.
+  $E9B1,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $E9B2,$03 Jump to #R$E9EA if the carry flag is set.
+  $E9B5,$02 #REGa=#N$05.
+  $E9B7,$04 #REGbc=*#R$D24D.
+  $E9BB,$03 Call #R$D9BB.
+  $E9BE,$04 #REGbc=*#R$D24D.
+  $E9C2,$03 #REGa=*#R$D247.
+  $E9C5,$02,b$01 Flip bit 0.
+  $E9C7,$01 #REGa+=#REGc.
+  $E9C8,$01 #REGc=#REGa.
+  $E9C9,$02 #REGa=#N$0F.
+  $E9CB,$03 Call #R$D9BB.
+  $E9CE,$04 #REGbc=*#R$D24D.
+  $E9D2,$01 Increment #REGb by one.
+  $E9D3,$01 Increment #REGc by one.
+  $E9D4,$03 #REGa=*#R$D247.
+  $E9D7,$02,b$01 Flip bit 0.
+  $E9D9,$01 #REGa+=#REGc.
+  $E9DA,$01 #REGc=#REGa.
+  $E9DB,$03 Call #R$DA28.
+  $E9DE,$02,b$01 Keep only bits 0-1.
+  $E9E0,$02 Jump to #R$E9DB if the result is zero.
+  $E9E2,$01 Decrease #REGa by one.
+  $E9E3,$01 #REGa+=#REGa.
+  $E9E4,$02 #REGa+=#N$11.
+  $E9E6,$03 Call #R$D9BB.
+  $E9E9,$01 Return.
+  $E9EA,$02 #REGa=#N$09.
+  $E9EC,$04 #REGbc=*#R$D24D.
+  $E9F0,$03 Call #R$D9BB.
+  $E9F3,$04 #REGbc=*#R$D24D.
+  $E9F7,$02 #REGa=#N$0D.
+  $E9F9,$03 Call #R$D9BB.
+  $E9FC,$04 #REGbc=*#R$D24D.
+  $EA00,$01 Increment #REGb by one.
+  $EA01,$01 Increment #REGc by one.
+  $EA02,$02 Jump to #R$E9DB.
+
+c $EA04
+  $EA04,$05 Write #N$06 to *#R$D24A.
+  $EA09,$05 Write #N$07 to *#R$D244.
+  $EA0E,$03 #REGa=*#R$D247.
+  $EA11,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $EA12,$03 Call #R$DA51 if the carry flag is not set.
+  $EA15,$03 Jump to #R$E67C.
+
+c $EA18
+  $EA18,$07 Decrease *#R$D24A by one.
+  $EA1F,$02 Jump to #R$EA36 if *#R$D24A is zero.
+  $EA21,$02 #REGa=#N$19.
+  $EA23,$04 #REGbc=*#R$D24D.
+  $EA27,$03 Call #R$D9BB.
+  $EA2A,$04 #REGbc=*#R$D24D.
+  $EA2E,$02 Increment #REGb by two.
+  $EA30,$02 #REGa=#N$23.
+  $EA32,$03 Call #R$D9BB.
+  $EA35,$01 Return.
+  $EA36,$05 Write #N$03 to *#R$D24A.
+  $EA3B,$05 Write #N$08 to *#R$D244.
+  $EA40,$03 Jump to #R$E67C.
+
+c $EA43
+  $EA43,$02 #REGa=#N$19.
+  $EA45,$04 #REGbc=*#R$D24D.
+  $EA49,$03 Call #R$D9BB.
+  $EA4C,$04 #REGbc=*#R$D24D.
+  $EA50,$02 Increment #REGb by two.
+  $EA52,$02 #REGa=#N$23.
+  $EA54,$03 Call #R$D9BB.
+  $EA57,$03 Call #R$DA59.
+  $EA5A,$04 Jump to #R$EA6E if #REGa is equal to #N$12.
+  $EA5E,$03 #REGa=*#R$D24B.
+  $EA61,$01 Decrease #REGa by one.
+  $EA62,$03 Write #REGa to *#R$D24B.
+  $EA65,$03 Return if #REGa is higher than #N$12.
+  $EA68,$03 Call #R$DA59.
+  $EA6B,$03 Return if #REGa is not equal to #N$12.
+  $EA6E,$05 Write #N$12 to *#R$D24E.
+  $EA73,$05 Write #N$0C to *#R$D24B.
+  $EA78,$04 Write #N$00 to *#R$D246.
+  $EA7C,$07 Jump to #R$EA88 if *#R$D244 is not equal to #N$20.
+  $EA83,$02 #REGa=#N$21.
+  $EA85,$03 Jump to #R$E67C.
   $EA88,$05 Write #N$09 to *#R$D244.
   $EA8D,$04 #REGiy=#R$D244.
 N $EA91 Take off four hit points from the monsters energy.
@@ -3149,6 +3668,459 @@ N $EA91 Take off four hit points from the monsters energy.
 N $EA96 #AUDIO(projectile.wav)(#INCLUDE(Projectile))
   $EA96,$05 Write melody ID #N$05 to *#R$FF8D.
   $EA9B,$01 Return.
+
+c $EA9C
+  $EA9C,$07 Jump to #R$EAB4 if *#R$D24B is equal to #N$19.
+  $EAA3,$01 Decrease #REGa by one.
+  $EAA4,$03 Write #REGa to *#R$D24B.
+  $EAA7,$02 Jump to #R$EACE if #REGa is not zero.
+  $EAA9,$05 Write #N$19 to *#R$D24B.
+  $EAAE,$06 Jump to #R$EABA if *#R$D252 is zero.
+  $EAB4,$03 Call #R$E179.
+  $EAB7,$03 Jump to #R$EACE if #REGa is zero.
+  $EABA,$03 #REGa=*#R$D247.
+  $EABD,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $EABE,$03 Call #R$DA61 if the carry flag is not set.
+  $EAC1,$0A Write #N$00 to: #LIST { *#R$D244 } { *#R$D246 } { *#R$D248 } LIST#
+  $EACB,$03 Jump to #R$E67C.
+  $EACE,$02 #REGa=#N$07.
+  $EAD0,$04 #REGbc=*#R$D24D.
+  $EAD4,$03 Call #R$D9BB.
+  $EAD7,$04 #REGbc=*#R$D24D.
+  $EADB,$02 Increment #REGb by two.
+  $EADD,$01 Increment #REGc by one.
+  $EADE,$03 #REGa=*#R$D247.
+  $EAE1,$02,b$01 Flip bit 0.
+  $EAE3,$01 #REGa+=#REGc.
+  $EAE4,$01 #REGc=#REGa.
+  $EAE5,$02 #REGa=#N$1B.
+  $EAE7,$03 Call #R$D9BB.
+  $EAEA,$06 Return if *#R$D244 is not equal to #N$20.
+  $EAF0,$05 Write #N$21 to *#R$D244.
+  $EAF5,$01 Return.
+
+c $EAF6
+  $EAF6,$03 Call #R$E179.
+  $EAF9,$05 Jump to #R$EB2F if #REGa is not equal to #N$08.
+  $EAFE,$08 Jump to #R$EB2F if *#R$D244 is equal to #N$1C.
+  $EB06,$07 Jump to #R$EB2F if *#R$D24E is higher than #N$11.
+  $EB0D,$07 Jump to #R$EB18 if *#R$D24D is equal to #N$FF.
+  $EB14,$04 Jump to #R$EB2F if *#R$D24D is higher than #N$1D.
+  $EB18,$03 #REGhl=#R$D247.
+  $EB1B,$01 #REGa=*#REGhl.
+  $EB1C,$02,b$01 Flip bit 0.
+  $EB1E,$01 Increment #REGhl by one.
+  $EB1F,$01 Merge the bits from *#REGhl.
+  $EB20,$03 Call #R$DA61 not zero.
+  $EB23,$03 #REGa=*#R$D246.
+  $EB26,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $EB27,$03 Call #R$DA59 if the carry flag is set.
+  $EB2A,$02 #REGa=#N$08.
+  $EB2C,$03 Jump to #R$E6C5.
+  $EB2F,$03 #REGa=*#R$D246.
+  $EB32,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $EB33,$02 Jump to #R$EB43 if the carry flag is not set.
+  $EB35,$03 #REGhl=#R$C896.
+  $EB38,$03 #REGa=*#R$D247.
+  $EB3B,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $EB3C,$02 Jump to #R$EB4F if the carry flag is not set.
+  $EB3E,$03 #REGhl=#R$C8A9.
+  $EB41,$02 Jump to #R$EB4F.
+  $EB43,$03 #REGhl=#R$C86E.
+  $EB46,$03 #REGa=*#R$D247.
+  $EB49,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $EB4A,$02 Jump to #R$EB4F if the carry flag is not set.
+  $EB4C,$03 #REGhl=#R$C882.
+  $EB4F,$04 #REGbc=*#R$D24D.
+  $EB53,$07 Increment *#R$D24C by one.
+  $EB5A,$02 #REGd=#N$00.
+  $EB5C,$01 #REGe=#REGa.
+  $EB5D,$01 #REGhl+=#REGde.
+  $EB5E,$03 Write #REGhl to *#R$D21E.
+  $EB61,$01 #REGd=*#REGhl.
+  $EB62,$02 Test bit 5 of #REGd.
+  $EB64,$02 Jump to #R$EB67 if {} is zero.
+  $EB66,$01 Increment #REGc by one.
+  $EB67,$02 Test bit 0 of #REGd.
+  $EB69,$02 Jump to #R$EB6C if {} is zero.
+  $EB6B,$01 Increment #REGc by one.
+  $EB6C,$02 Test bit 1 of #REGd.
+  $EB6E,$02 Jump to #R$EB71 if {} is zero.
+  $EB70,$01 Decrease #REGc by one.
+  $EB71,$06 Jump to #R$EB88 if *#R$D3FF is not zero.
+  $EB77,$03 #REGa=*#R$D247.
+  $EB7A,$02,b$01 Flip bits 0-4.
+  $EB7C,$04 Jump to #R$EC6E if #REGa is equal to #REGc.
+  $EB80,$02,b$01 Flip bits 1-4.
+  $EB82,$02 #REGa+=#N$FC.
+  $EB84,$04 Jump to #R$EC6E if #REGa is equal to #REGc.
+  $EB88,$02 Test bit 2 of #REGd.
+  $EB8A,$02 Jump to #R$EB8D if {} is zero.
+  $EB8C,$01 Decrease #REGb by one.
+  $EB8D,$01 #REGa=#REGd.
+  $EB8E,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $EB8F,$02 Test bit 3 of #REGd.
+  $EB91,$02 Jump to #R$EBDD if {} is zero.
+  $EB93,$01 Increment #REGb by one.
+  $EB94,$06 Jump to #R$EBDD if *#R$D3FF is not zero.
+  $EB9A,$06 Jump to #R$EC52 if #REGb is equal to #N$12.
+  $EBA0,$04 Write #REGb to *#R$D24E.
+  $EBA4,$04 Write #REGbc to *#R$D21C.
+  $EBA8,$03 #REGbc=#N$0502.
+  $EBAB,$03 #REGde=#N$090F.
+  $EBAE,$03 Call #R$E0AD.
+  $EBB1,$04 #REGbc=*#R$D21C.
+  $EBB5,$02 Jump to #R$EBDD if {} is zero.
+  $EBB7,$07 Jump to #R$EBDD if *#R$D244 is equal to #N$1C.
+  $EBBE,$03 #REGa=*#R$D246.
+  $EBC1,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $EBC2,$03 Jump to #R$EC52 if the carry flag is not set.
+  $EBC5,$04 Write #REGbc to *#R$D21C.
+  $EBC9,$02 #REGb=#N$05.
+  $EBCB,$06 #REGc=*#R$D247*#N$04.
+  $EBD1,$03 #REGde=#N$090F.
+  $EBD4,$03 Call #R$E0AD.
+  $EBD7,$04 #REGbc=*#R$D21C.
+  $EBDB,$02 Jump to #R$EC52 if {} is not zero.
+  $EBDD,$05 Return if *#R$D3FF is not zero.
+  $EBE2,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $EBE3,$02 Test bit 4 of #REGa.
+  $EBE5,$02 Jump to #R$EC30 if {} is zero.
+  $EBE7,$01 Increment #REGb by one.
+  $EBE8,$05 Return if *#R$D3FF is not zero.
+  $EBED,$05 Jump to #R$EC52 if #REGb is not equal to #N$12.
+  $EBF2,$01 #REGa=#REGb.
+  $EBF3,$03 Write #REGa to *#R$D24E.
+  $EBF6,$04 Write #REGbc to *#R$D21C.
+  $EBFA,$03 #REGbc=#N$0502.
+  $EBFD,$03 #REGde=#N$090F.
+  $EC00,$03 Call #R$E0AD.
+  $EC03,$04 #REGbc=*#R$D21C.
+  $EC07,$03 Jump to #R$EC30 if {} is zero.
+  $EC0A,$08 Jump to #R$EC30 if *#R$D244 is equal to #N$1C.
+  $EC12,$03 #REGa=*#R$D246.
+  $EC15,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $EC16,$02 Jump to #R$EC52 if the carry flag is not set.
+  $EC18,$04 Write #REGbc to *#R$D21C.
+  $EC1C,$02 #REGb=#N$05.
+  $EC1E,$06 #REGc=*#R$D247*#N$04.
+  $EC24,$03 #REGde=#N$090F.
+  $EC27,$03 Call #R$E0AD.
+  $EC2A,$04 #REGbc=*#R$D21C.
+  $EC2E,$02 Jump to #R$EC52 if {} is not zero.
+  $EC30,$04 Write #REGbc to *#R$D24D.
+  $EC34,$08 Jump to #R$ECE0 if *#R$D217 is higher than #N$11.
+  $EC3C,$02 #REGa=#N$09.
+  $EC3E,$01 Stash #REGbc on the stack.
+  $EC3F,$03 Call #R$D9BB.
+  $EC42,$01 Restore #REGbc from the stack.
+  $EC43,$01 Increment #REGb by one.
+  $EC44,$01 Increment #REGc by one.
+  $EC45,$03 #REGa=*#R$D247.
+  $EC48,$02,b$01 Flip bit 0.
+  $EC4A,$01 #REGa+=#REGc.
+  $EC4B,$01 #REGc=#REGa.
+  $EC4C,$02 #REGa=#N$17.
+  $EC4E,$03 Call #R$D9BB.
+  $EC51,$01 Return.
+  $EC52,$04 Write #REGbc to *#R$D24D.
+  $EC56,$03 #REGa=*#R$D247.
+  $EC59,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $EC5A,$03 Call #R$DA61 if the carry flag is not set.
+  $EC5D,$0A Write #N$00 to: #LIST { *#R$D24C } { *#R$D246 } { *#R$D248 } LIST#
+  $EC67,$01 Increment #REGa by one.
+  $EC68,$03 Write #REGa to *#R$D24F.
+  $EC6B,$03 Jump to #R$EF86.
+  $EC6E,$04 Write #N$00 to *#R$D24C.
+  $EC72,$01 Increment #REGa by one.
+  $EC73,$03 Write #REGa to *#R$D244.
+  $EC76,$08 Jump to #R$EF86 if *#R$D24E is equal to #N$12.
+  $EC7E,$05 Write #N$0B to *#R$D244.
+  $EC83,$04 Write #REGb to *#R$D24E.
+  $EC87,$03 Jump to #R$E67C.
+
+c $EC8A
+  $EC8A,$07 Jump to #R$ECC0 if *#R$D24E is equal to #N$12.
+  $EC91,$07 Decrease *#R$D24B by one.
+  $EC98,$04 Jump to #R$ECA3 if *#R$D24B is higher than #N$12.
+  $EC9C,$03 Call #R$DA59.
+  $EC9F,$04 Jump to #R$ECC0 if #REGa is equal to #N$12.
+  $ECA3,$02 #REGa=#N$09.
+  $ECA5,$04 #REGbc=*#R$D24D.
+  $ECA9,$01 Stash #REGbc on the stack.
+  $ECAA,$03 Call #R$D9BB.
+  $ECAD,$01 Restore #REGbc from the stack.
+  $ECAE,$01 Increment #REGb by one.
+  $ECAF,$01 Increment #REGc by one.
+  $ECB0,$03 #REGa=*#R$D247.
+  $ECB3,$02,b$01 Flip bit 0.
+  $ECB5,$01 #REGa+=#REGc.
+  $ECB6,$01 #REGc=#REGa.
+  $ECB7,$02 #REGa=#N$17.
+  $ECB9,$03 Call #R$D9BB.
+  $ECBC,$03 Call #R$DA59.
+  $ECBF,$01 Return.
+  $ECC0,$03 #REGa=*#R$D247.
+  $ECC3,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $ECC4,$03 Call #R$DA61 if the carry flag is not set.
+  $ECC7,$05 Write #N$12 to *#R$D24E.
+  $ECCC,$05 Write #N$19 to *#R$D24B.
+  $ECD1,$07 Write #N$00 to: #LIST { *#R$D246 } { *#R$D248 } LIST#
+  $ECD8,$05 Write #N$01 to *#R$D24F.
+  $ECDD,$03 Jump to #R$EF86.
+
+c $ECE0
+  $ECE0,$03 #REGa=*#R$D217.
+  $ECE3,$02,b$01 Keep only bits 0-3.
+  $ECE5,$01 #REGb=#REGa.
+  $ECE6,$02 Test bit 3 of #REGb.
+  $ECE8,$02 Jump to #R$ECEC if {} is not zero.
+  $ECEA,$02 Jump to #R$ED0C.
+  $ECEC,$03 #REGhl=#R$FE00.
+  $ECEF,$03 #REGde=#N$FE03.
+  $ECF2,$03 Call #R$F352.
+  $ECF5,$04 #REGbc=*#R$D24D.
+  $ECF9,$02 Decrease #REGb by two.
+  $ECFB,$02 #REGa=#N$25.
+  $ECFD,$03 Call #R$D9BB.
+  $ED00,$04 #REGbc=*#R$D24D.
+  $ED04,$02 Increment #REGb by two.
+  $ED06,$02 #REGa=#N$23.
+  $ED08,$03 Call #R$D9BB.
+  $ED0B,$01 Return.
+  $ED0C,$03 #REGhl=#N$0103.
+  $ED0F,$03 #REGde=#N$0100.
+  $ED12,$03 Call #R$F352.
+  $ED15,$04 #REGbc=*#R$D24D.
+  $ED19,$02 Increment #REGb by two.
+  $ED1B,$02 #REGa=#N$23.
+  $ED1D,$03 Call #R$D9BB.
+  $ED20,$04 #REGbc=*#R$D24D.
+  $ED24,$04 #REGh=*#R$D247.
+  $ED28,$03 #REGc-=#REGh.
+  $ED2B,$02 #REGa=#N$1D.
+  $ED2D,$03 Call #R$D9BB.
+  $ED30,$01 Return.
+
+c $ED31
+  $ED31,$03 #REGa=*#R$D217.
+  $ED34,$02,b$01 Keep only bits 0-3.
+  $ED36,$01 #REGb=#REGa.
+  $ED37,$02 Test bit 2 of #REGb.
+  $ED39,$03 Jump to #R$EDA3 if {} is not zero.
+  $ED3C,$02 Test bit 3 of #REGb.
+  $ED3E,$02 Jump to #R$ED54 if {} is not zero.
+  $ED40,$03 #REGa=*#R$D247.
+  $ED43,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $ED44,$02 Jump to #R$ED4D if the carry flag is set.
+  $ED46,$02 Test bit 1 of #REGb.
+  $ED48,$02 Jump to #R$ED79 if {} is not zero.
+  $ED4A,$03 Jump to #R$EF86.
+  $ED4D,$02 Test bit 1 of #REGb.
+  $ED4F,$02 Jump to #R$ED79 if {} is zero.
+  $ED51,$03 Jump to #R$EF86.
+  $ED54,$03 #REGhl=#R$FE00.
+  $ED57,$03 #REGde=#N$FE03.
+  $ED5A,$03 Call #R$F352.
+  $ED5D,$05 Write #N$12 to *#R$D244.
+  $ED62,$04 #REGbc=*#R$D24D.
+  $ED66,$02 Decrease #REGb by two.
+  $ED68,$02 #REGa=#N$25.
+  $ED6A,$03 Call #R$D9BB.
+  $ED6D,$04 #REGbc=*#R$D24D.
+  $ED71,$02 Increment #REGb by two.
+  $ED73,$02 #REGa=#N$21.
+  $ED75,$03 Call #R$D9BB.
+  $ED78,$01 Return.
+  $ED79,$03 #REGhl=#N$0103.
+  $ED7C,$03 #REGde=#N$0100.
+  $ED7F,$03 Call #R$F352.
+  $ED82,$05 Write #N$13 to *#R$D244.
+  $ED87,$04 #REGbc=*#R$D24D.
+  $ED8B,$02 Increment #REGb by two.
+  $ED8D,$02 #REGa=#N$21.
+  $ED8F,$03 Call #R$D9BB.
+  $ED92,$04 #REGbc=*#R$D24D.
+  $ED96,$03 #REGa=*#R$D247.
+  $ED99,$01 #REGa-=#REGc.
+  $ED9A,$01 Invert the bits in #REGa.
+  $ED9B,$01 Increment #REGa by one.
+  $ED9C,$01 #REGc=#REGa.
+  $ED9D,$02 #REGa=#N$1D.
+  $ED9F,$03 Call #R$D9BB.
+  $EDA2,$01 Return.
+  $EDA3,$03 #REGhl=#N$0302.
+  $EDA6,$03 #REGde=#N$0301.
+  $EDA9,$03 Call #R$F352.
+  $EDAC,$05 Write #N$15 to *#R$D244.
+  $EDB1,$04 #REGbc=*#R$D24D.
+  $EDB5,$03 #REGa=*#R$D247.
+  $EDB8,$01 #REGa-=#REGc.
+  $EDB9,$01 Invert the bits in #REGa.
+  $EDBA,$01 Increment #REGa by one.
+  $EDBB,$01 #REGc=#REGa.
+  $EDBC,$02 #REGa=#N$29.
+  $EDBE,$03 Call #R$D9BB.
+  $EDC1,$01 Return.
+
+c $EDC2
+  $EDC2,$03 #REGa=*#R$D217.
+  $EDC5,$02,b$01 Keep only bits 0-3.
+  $EDC7,$01 #REGb=#REGa.
+  $EDC8,$02 Test bit 3 of #REGb.
+  $EDCA,$02 Jump to #R$EDE5 if {} is not zero.
+  $EDCC,$02 Test bit 2 of #REGb.
+  $EDCE,$03 Jump to #R$EE4A if {} is not zero.
+  $EDD1,$03 #REGa=*#R$D247.
+  $EDD4,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $EDD5,$02 Jump to #R$EDDE if the carry flag is set.
+  $EDD7,$02 Test bit 1 of #REGb.
+  $EDD9,$02 Jump to #R$EE12 if {} is not zero.
+  $EDDB,$03 Jump to #R$EF86.
+  $EDDE,$02 Test bit 1 of #REGb.
+  $EDE0,$02 Jump to #R$EE12 if {} is zero.
+  $EDE2,$03 Jump to #R$EF86.
+  $EDE5,$03 #REGhl=#N$FE01.
+  $EDE8,$03 #REGde=#N$FE03.
+  $EDEB,$03 Call #R$F352.
+  $EDEE,$05 Write #N$16 to *#R$D244.
+  $EDF3,$02 #REGh=#N$FE.
+  $EDF5,$01 #REGd=#REGh.
+  $EDF6,$02 #REGl=#N$01.
+  $EDF8,$02 #REGe=#N$00.
+  $EDFA,$03 Call #R$EF38.
+  $EDFD,$02 #REGa=#N$25.
+  $EDFF,$03 Call #R$D9BB.
+  $EE02,$02 #REGh=#N$02.
+  $EE04,$02 #REGl=#N$01.
+  $EE06,$01 #REGd=#REGh.
+  $EE07,$02 #REGe=#N$00.
+  $EE09,$03 Call #R$EF38.
+  $EE0C,$02 #REGa=#N$1F.
+  $EE0E,$03 Call #R$D9BB.
+  $EE11,$01 Return.
+  $EE12,$03 #REGhl=#N$0104.
+  $EE15,$03 #REGde=#N$0100.
+  $EE18,$03 Call #R$F352.
+  $EE1B,$05 Write #N$17 to *#R$D244.
+  $EE20,$04 #REGbc=*#R$D24D.
+  $EE24,$02 Increment #REGb by two.
+  $EE26,$03 #REGa=*#R$D247.
+  $EE29,$02,b$01 Flip bit 0.
+  $EE2B,$01 #REGa+=#REGc.
+  $EE2C,$01 #REGc=#REGa.
+  $EE2D,$02 #REGa=#N$1F.
+  $EE2F,$03 Call #R$D9BB.
+  $EE32,$04 #REGbc=*#R$D24D.
+  $EE36,$03 #REGa=*#R$D247.
+  $EE39,$01 #REGa-=#REGc.
+  $EE3A,$01 Invert the bits in #REGa.
+  $EE3B,$01 Increment #REGa by one.
+  $EE3C,$01 #REGc=#REGa.
+  $EE3D,$03 #REGa=*#R$D247.
+  $EE40,$02,b$01 Flip bit 0.
+  $EE42,$01 #REGa+=#REGc.
+  $EE43,$01 #REGc=#REGa.
+  $EE44,$02 #REGa=#N$1D.
+  $EE46,$03 Call #R$D9BB.
+  $EE49,$01 Return.
+  $EE4A,$03 #REGhl=#N$0303.
+  $EE4D,$03 #REGde=#N$0301.
+  $EE50,$03 Call #R$F352.
+  $EE53,$05 Write #N$19 to *#R$D244.
+  $EE58,$04 #REGbc=*#R$D24D.
+  $EE5C,$03 #REGa=*#R$D247.
+  $EE5F,$01 #REGa-=#REGc.
+  $EE60,$01 Invert the bits in #REGa.
+  $EE61,$01 Increment #REGa by one.
+  $EE62,$01 #REGc=#REGa.
+  $EE63,$03 #REGa=*#R$D247.
+  $EE66,$02,b$01 Flip bit 0.
+  $EE68,$01 #REGa+=#REGc.
+  $EE69,$01 #REGc=#REGa.
+  $EE6A,$02 #REGa=#N$0B.
+  $EE6C,$03 Call #R$D9BB.
+  $EE6F,$01 Return.
+
+c $EE70
+  $EE70,$07 Decrease *#R$D24B by one.
+  $EE77,$02 Jump to #R$EE8E if *#R$D24B is zero.
+  $EE79,$02 #REGa=#N$21.
+  $EE7B,$04 #REGbc=*#R$D24D.
+  $EE7F,$02 Increment #REGb by two.
+  $EE81,$03 Call #R$D9BB.
+  $EE84,$04 #REGbc=*#R$D24D.
+  $EE88,$02 #REGa=#N$03.
+  $EE8A,$03 Call #R$D9BB.
+  $EE8D,$01 Return.
+  $EE8E,$05 Write #N$1B to *#R$D244.
+  $EE93,$05 Write #N$06 to *#R$D24B.
+  $EE98,$03 Jump to #R$E67C.
+
+c $EE9B
+  $EE9B,$03 #REGa=*#R$D24B.
+  $EE9E,$01 Decrease #REGa by one.
+  $EE9F,$04 Jump to #R$EECA if #REGa is equal to #N$FF.
+  $EEA3,$03 Write #REGa to *#R$D24B.
+  $EEA6,$02 #REGa=#N$09.
+  $EEA8,$04 #REGbc=*#R$D24D.
+  $EEAC,$03 Call #R$D9BB.
+  $EEAF,$04 #REGbc=*#R$D24D.
+  $EEB3,$02 #REGa=#N$0D.
+  $EEB5,$03 Call #R$D9BB.
+  $EEB8,$04 #REGbc=*#R$D24D.
+  $EEBC,$01 Increment #REGb by one.
+  $EEBD,$01 Increment #REGc by one.
+  $EEBE,$03 #REGa=*#R$D24B.
+  $EEC1,$02,b$01 Keep only bits 0-1.
+  $EEC3,$01 #REGa+=#REGa.
+  $EEC4,$02 #REGa+=#N$2B.
+  $EEC6,$03 Call #R$D9BB.
+  $EEC9,$01 Return.
+  $EECA,$04 Write #N$00 to *#R$D244.
+  $EECE,$05 Write #N$19 to *#R$D24B.
+  $EED3,$03 Jump to #R$E67C.
+
+c $EED6
+  $EED6,$04 #REGbc=*#R$D24D.
+  $EEDA,$01 Increment #REGb by one.
+  $EEDB,$01 Increment #REGc by one.
+  $EEDC,$02 #REGa=#N$77.
+  $EEDE,$03 Call #R$D6C9.
+  $EEE1,$05 Write #N$22 to *#R$D244.
+  $EEE6,$04 Write #N$00 to *#R$D249.
+  $EEEA,$01 Return.
+
+c $EEEB
+  $EEEB,$07 Jump to #R$EEFC if *#R$D24E is not equal to #N$14.
+  $EEF2,$05 Write #N$23 to *#R$D244.
+  $EEF7,$04 Write #N$00 to *#R$D249.
+  $EEFB,$01 Return.
+  $EEFC,$01 Increment #REGa by one.
+  $EEFD,$03 Write #REGa to *#R$D24E.
+  $EF00,$04 #REGbc=*#R$D24D.
+  $EF04,$02 #REGa=#N$35.
+  $EF06,$03 Call #R$D6C9.
+  $EF09,$01 Return.
+
+c $EF0A
+  $EF0A,$04 #REGbc=*#R$D24D.
+  $EF0E,$03 #REGa=*#R$D249.
+  $EF11,$02,b$01 Keep only bit 0.
+  $EF13,$02,b$01 Flip bit 0.
+  $EF15,$03 Write #REGa to *#R$D249.
+  $EF18,$02 Jump to #R$EF20 if #REGa is not zero.
+  $EF1A,$02 #REGa=#N$37.
+  $EF1C,$03 Call #R$D6C9.
+  $EF1F,$01 Return.
+  $EF20,$07 Increment *#R$D24D by one.
+  $EF27,$04 Jump to #R$EF32 if #REGa is equal to #N$28.
+  $EF2B,$01 Increment #REGc by one.
+  $EF2C,$02 #REGa=#N$35.
+  $EF2E,$03 Call #R$D6C9.
+  $EF31,$01 Return.
+  $EF32,$05 Write #N$FF to *#R$D244.
+  $EF37,$01 Return.
 
 c $EF38
   $EF38,$04 #REGbc=*#R$D24D.
@@ -3163,7 +4135,25 @@ N $EF3F Moves the orientation flag into the carry flag.
   $EF4C,$03 #REGc+=#REGe.
   $EF4F,$01 Return.
 
-b $EF50
+c $EF50
+  $EF50,$03 Call #R$E179.
+  $EF53,$02,b$01 Keep only bit 4.
+  $EF55,$02 Jump to #R$EF5E if the result is not zero.
+  $EF57,$04 Write #N$00 to *#R$D244.
+  $EF5B,$03 Jump to #R$E67C.
+  $EF5E,$03 #REGa=*#R$D244.
+  $EF61,$02 #REGa-=#N$0F.
+  $EF63,$02 #REGh=#N$00.
+  $EF65,$01 #REGl=#REGa.
+  $EF66,$01 #REGhl+=#REGhl.
+  $EF67,$03 #REGde=#R$EF70.
+  $EF6A,$01 #REGhl+=#REGde.
+  $EF6B,$01 #REGa=*#REGhl.
+  $EF6C,$01 Increment #REGhl by one.
+  $EF6D,$01 #REGh=*#REGhl.
+  $EF6E,$01 #REGl=#REGa.
+  $EF6F,$01 Jump to the address held by *#REGhl.
+w $EF70
 
 c $EF86
   $EF86,$03 Call #R$DB54.
@@ -3174,7 +4164,8 @@ c $EF86
   $EF93,$04 Write #N$00 to *#R$D244.
   $EF97,$01 Return.
 
-b $EF98
+w $EF98 Jump Table
+@ $EF98 label=Jump_Table
 
 c $EFE0 Handler: Buildings
 @ $EFE0 label=Handler_Buildings
@@ -3205,8 +4196,8 @@ N $F000 Have we accounted for all the buildings?
   $F01C,$03 Write #REGa to *#REGix+#N$0B.
   $F01F,$02 #REGc=#N$07.
   $F021,$03 #REGa=*#REGix+#N$07.
-  $F024,$01 RRCA.
-  $F025,$02 Jump to #R$F029 if {} is higher.
+  $F024,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $F025,$02 Jump to #R$F029 if the carry flag is not set.
   $F027,$02 #REGc=#N$38.
   $F029,$03 #REGe=*#REGix+#N$01.
   $F02C,$03 #REGb=*#REGix+#N$06.
@@ -3342,7 +4333,7 @@ c $F10E Helicopter Something
   $F12B,$03 #REGc=*#REGix+#N$01.
   $F12E,$03 #REGe=*#REGix+#N$02.
   $F131,$03 #REGb=*#REGix+#N$03.
-  $F134,$02,b$01 Reset bit 0.
+  $F134,$02,b$01 Flip bit 0.
   $F136,$03 Write #REGa to *#REGix+#N$00.
   $F139,$02,b$01 Keep only bit 0.
   $F13B,$01 #REGd=#REGa.
@@ -3360,9 +4351,9 @@ c $F10E Helicopter Something
   $F165,$03 Increment *#REGix+#N$02 by one.
   $F168,$02 Jump to #R$F17A.
   $F16A,$01 #REGa=#REGd.
-  $F16B,$01 RRCA.
+  $F16B,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $F16C,$02 #REGa=#N$E8.
-  $F16E,$03 Jump to #R$F276 if {} is higher.
+  $F16E,$03 Jump to #R$F276 if the carry flag is not set.
   $F171,$01 Increment #REGc by one.
   $F172,$03 Write #REGc to *#REGix+#N$01.
   $F175,$02 #REGa=#N$E6.
@@ -3385,9 +4376,9 @@ c $F10E Helicopter Something
   $F1A9,$03 Increment *#REGix+#N$02 by one.
   $F1AC,$02 Jump to #R$F17A.
   $F1AE,$01 #REGa=#REGd.
-  $F1AF,$01 RRCA.
+  $F1AF,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $F1B0,$02 #REGa=#N$E8.
-  $F1B2,$03 Jump to #R$F276 if {} is higher.
+  $F1B2,$03 Jump to #R$F276 if the carry flag is not set.
   $F1B5,$01 Decrease #REGc by one.
   $F1B6,$03 Write #REGc to *#REGix+#N$01.
   $F1B9,$02 #REGa=#N$E6.
@@ -3396,9 +4387,9 @@ c $F10E Helicopter Something
   $F1C2,$01 #REGb=#REGc.
   $F1C3,$01 #REGc=#REGe.
   $F1C4,$01 #REGa=#REGd.
-  $F1C5,$01 RRCA.
+  $F1C5,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $F1C6,$02 #REGa=#N$EC.
-  $F1C8,$03 Jump to #R$F276 if {} is higher.
+  $F1C8,$03 Jump to #R$F276 if the carry flag is not set.
   $F1CB,$01 Decrease #REGb by one.
   $F1CC,$03 Write #REGb to *#REGix+#N$01.
   $F1CF,$02 #REGa=#N$EA.
@@ -3660,8 +4651,8 @@ c $F352
 
 c $F3CA
   $F3CA,$03 #REGa=*#R$D218.
-  $F3CD,$01 RRCA.
-  $F3CE,$02 Jump to #R$F3EA if {} is lower.
+  $F3CD,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $F3CE,$02 Jump to #R$F3EA if the carry flag is set.
   $F3D0,$03 #REGhl=*#R$D224.
   $F3D3,$02 #REGa=#N$FF.
   $F3D5,$02 Write #N$FF to *#REGhl.
@@ -3711,15 +4702,18 @@ c $F41A
   $F432,$01 Write #REGb to *#REGhl.
   $F433,$01 Return.
 
-c $F434
+c $F434 Process Monsters
+@ $F434 label=ProcessMonsters
   $F434,$03 #REGhl=#R$D238.
-  $F437,$05 Write #N$03 to *#R$DF45.
-  $F43C,$02 Stash #REGaf and #REGhl on the stack.
+N $F437 Work backwards from Ralph to George.
+  $F437,$05 Write #N$03 (Ralph) to *#R$DF45.
+@ $F439 label=ProcessMonsters_Loop
+  $F43C,$02 Stash the current monster ID and #REGhl on the stack.
   $F43E,$06 If *#REGhl is not at the terminator jump to #R$F450.
-  $F444,$02 Restore #REGhl and #REGaf from the stack.
+  $F444,$02 Restore #REGhl and the current monster ID from the stack.
   $F446,$06 Decrease #REGhl by six.
-  $F44C,$01 Decrease #REGa by one.
-  $F44D,$02 Jump to #R$F439 until #REGa is zero.
+  $F44C,$01 Decrease current monster ID by one.
+  $F44D,$02 Jump to #R$F439 until all monsters have been processed.
   $F44F,$01 Return.
 
 c $F450
@@ -3728,12 +4722,12 @@ c $F450
   $F452,$01 #REGc=*#REGhl.
   $F453,$01 Increment #REGhl by one.
   $F454,$01 #REGa=*#REGhl.
-  $F455,$01 RRCA.
-  $F456,$01 Return if {} is higher.
+  $F455,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $F456,$01 Return if the carry flag is not set.
   $F457,$01 Increment #REGhl by one.
   $F458,$01 #REGa=*#REGhl.
-  $F459,$01 RRCA.
-  $F45A,$01 Return if {} is lower.
+  $F459,$01 Rotate #REGa left one position, setting the carry flag if bit 0 was set.
+  $F45A,$01 Return if the carry flag is set.
   $F45B,$04 Write #REGbc to *#R$D228.
   $F45F,$02 #REGh=#N$00.
   $F461,$01 #REGl=#REGb.
@@ -3746,8 +4740,8 @@ c $F450
   $F472,$03 #REGde=#N$013F.
   $F475,$03 Call #R$E0CF.
   $F478,$03 #REGa=*#R$D3FC.
-  $F47B,$01 RRCA.
-  $F47C,$02 Jump to #R$F480 if {} is lower.
+  $F47B,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $F47C,$02 Jump to #R$F480 if the carry flag is set.
   $F47E,$02 Jump to #R$F488 if #REGa is zero.
   $F480,$03 #REGbc=#N($0000,$04,$04).
   $F483,$02 #REGe=#N$01.
@@ -3760,8 +4754,7 @@ c $F450
   $F497,$05 Write #N$01 to *#R$D3FC.
   $F49C,$03 #REGa=*#R$D215.
   $F49F,$02 #REGa-=#N$4D.
-  $F4A1,$02 Shift #REGa right.
-  $F4A3,$02 Shift #REGa right.
+  $F4A1,$04 Shift #REGa right twice.
   $F4A5,$04 Jump to #R$F4B8 if #REGa is lower than #N$08.
   $F4A9,$02,b$01 Keep only bits 0-1.
   $F4AB,$01 Increment #REGa by one.
@@ -3771,28 +4764,41 @@ c $F450
   $F4B0,$03 #REGa=*#R$DF45.
   $F4B3,$03 Call #R$DD97.
   $F4B6,$02 Jump to #R$F4DC.
-  $F4B8,$04 Jump to #R$F4D1 if #REGa is lower than #N$04.
+
+c $F4B8 Handler: Eating
+N $F4B8 Monster has eaten something, work out what.
+@ $F4B8 label=Handler_Eating
+  $F4B8,$04 Anything with an ID lower than #N$04 is food, if so jump to #R$F4D1.
+N $F4BC Else it's something inedible so fetch the monster state and handle it.
   $F4BC,$03 #REGa=*#R$DF45.
   $F4BF,$03 Call #R$DD52.
+N $F4C2 Take #N$06 away from the monsters energy level.
   $F4C2,$02 #REGa=#N$06.
   $F4C4,$03 Call #R$DD6C.
-  $F4C7,$04 Write #N$1D to *#REGiy+#N$00.
+  $F4C7,$04 Write #N$1D to monster state (*#REGiy+#N$00).
   $F4CB,$04 Write #N$04 to *#REGiy+#N$07.
   $F4CF,$02 Jump to #R$F472.
+
+c $F4D1 Handler: Eaten Food
+@ $F4D1 label=Handler_EatFood
   $F4D1,$03 #REGa=*#R$DF45.
   $F4D4,$03 Call #R$DD52.
+N $F4D7 Add #N$08 to the monsters energy level.
   $F4D7,$02 #REGa=#N$08.
   $F4D9,$03 Call #R$DD89.
-  $F4DC,$04 Write #N$1A to *#REGiy+#N$00.
+@ $F4DC label=Handler_EatFood_SetState
+  $F4DC,$04 Write "eating" (#N$1A) to monster state (*#REGiy+#N$00).
   $F4E0,$04 Write #N$04 to *#REGiy+#N$07.
   $F4E4,$02 Jump to #R$F472.
+
+c $F4E6
   $F4E6,$03 #REGde=#N$013F.
   $F4E9,$04 #REGbc=*#R$D228.
   $F4ED,$01 Increment #REGc by one.
   $F4EE,$03 Call #R$E0CF.
   $F4F1,$03 #REGa=*#R$D3FC.
-  $F4F4,$01 RRCA.
-  $F4F5,$02 Jump to #R$F4F9 if {} is lower.
+  $F4F4,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $F4F5,$02 Jump to #R$F4F9 if the carry flag is set.
   $F4F7,$02 Jump to #R$F501 if #REGa is zero.
   $F4F9,$03 #REGbc=#N($0001,$04,$04).
   $F4FC,$02 #REGe=#N$02.
@@ -3802,8 +4808,8 @@ c $F450
   $F508,$01 Increment #REGb by one.
   $F509,$03 Call #R$E0CF.
   $F50C,$03 #REGa=*#R$D3FC.
-  $F50F,$01 RRCA.
-  $F510,$02 Jump to #R$F514 if {} is lower.
+  $F50F,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $F510,$02 Jump to #R$F514 if the carry flag is set.
   $F512,$02 Jump to #R$F51C if #REGa is zero.
   $F514,$03 #REGbc=#N($0020,$04,$04).
   $F517,$02 #REGe=#N$03.
@@ -3814,8 +4820,8 @@ c $F450
   $F524,$01 Increment #REGc by one.
   $F525,$03 Call #R$E0CF.
   $F528,$03 #REGa=*#R$D3FC.
-  $F52B,$01 RRCA.
-  $F52C,$02 Jump to #R$F530 if #REGa is lower.
+  $F52B,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
+  $F52C,$02 Jump to #R$F530 if the carry flag is set.
   $F52E,$02 Jump to #R$F538 if #REGa is zero.
   $F530,$03 #REGbc=#N($0021,$04,$04).
   $F533,$02 #REGe=#N$04.
@@ -3823,17 +4829,17 @@ c $F450
   $F538,$0A Write #N$00 to: #LIST { *#R$D3FB } { *#R$D3FC } { *#R$D219 } LIST#
   $F542,$01 Return.
   $F543,$03 #REGa=*#R$D3FC.
-  $F546,$01 RRCA.
+  $F546,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $F547,$03 #REGa=*#R$D215.
-  $F54A,$02 Jump to #R$F551 if {} is higher.
+  $F54A,$02 Jump to #R$F551 if the carry flag is not set.
   $F54C,$02 #REGa=#N$10.
   $F54E,$03 Write #REGa to *#R$D215.
   $F551,$02 Return if #REGa is zero.
   $F553,$04 Jump to #R$F56A if #REGa is lower than #N$09.
   $F557,$04 Jump to #R$F565 if #REGa is higher than #N$0E.
   $F55B,$01 #REGa=#REGe.
-  $F55C,$02,b$01 Keep only bits 0.
-  $F55E,$02,b$01 Reset bits 0.
+  $F55C,$02,b$01 Keep only bit 0.
+  $F55E,$02,b$01 Flip bit 0.
   $F560,$02 #REGa+=#N$0E.
   $F562,$03 Jump to #R$F61F.
   $F565,$05 Jump to #R$F5E6 if #REGa is not equal to #N$10.
@@ -3890,9 +4896,9 @@ N $F5E0 #AUDIO(test.wav)(#INCLUDE(Unknown1))
   $F5E5,$01 Return.
   $F5E6,$04 Jump to #R$F5F4 if #REGa is not equal to #N$11.
   $F5EA,$01 #REGa=#REGe.
-  $F5EB,$02 Compare #REGa with #N$03.
+  $F5EB,$02 Compare #REGa with #N$03...
   $F5ED,$02 #REGa=#N$13.
-  $F5EF,$02 Jump to #R$F61F if {} is higher.
+  $F5EF,$02 Jump to #R$F61F if #REGa was higher than #N$03 on line #R$F5EB.
   $F5F1,$01 Decrease #REGa by one.
   $F5F2,$02 Jump to #R$F61F.
   $F5F4,$03 Return if #REGa is equal to #N$0E.
@@ -3903,9 +4909,9 @@ N $F5E0 #AUDIO(test.wav)(#INCLUDE(Unknown1))
   $F603,$03 Return if #REGa is equal to #N$16.
   $F606,$04 Jump to #R$F614 if #REGa is not equal to #N$14.
   $F60A,$01 #REGa=#REGe.
-  $F60B,$02 Compare #REGa with #N$03.
+  $F60B,$02 Compare #REGa with #N$03...
   $F60D,$02 #REGa=#N$16.
-  $F60F,$02 Jump to #R$F61F if {} is higher.
+  $F60F,$02 Jump to #R$F61F #REGa was higher than #N$03 on line #R$F60B.
   $F611,$01 Decrease #REGa by one.
   $F612,$02 Jump to #R$F61F.
   $F614,$05 Jump to #R$F56A if #REGa is lower than #N$30.
@@ -3957,8 +4963,7 @@ N $F638 #AUDIO(test.wav)(#INCLUDE(Unknown1))
   $F672,$01 #REGb=#REGa.
   $F673,$03 #REGa=*#R$D229.
   $F676,$01 Decrease #REGa by one.
-  $F677,$01 Compare #REGa with #REGb.
-  $F678,$02 Jump to #R$F681 if {} is higher.
+  $F677,$03 Jump to #R$F681 if #REGa is higher than #REGb.
   $F67A,$01 Exchange the #REGaf register with the shadow #REGaf register.
   $F67B,$02,b$01 Keep only bits 0-2.
   $F67D,$02 #REGe=#N$01.
@@ -4034,9 +5039,7 @@ N $F6F3 Take off two hit points from the monsters energy.
   $F705,$02 Jump to #R$F713.
   $F707,$01 Decrease #REGhl by one.
   $F708,$02 Write #N$00 to *#REGhl.
-  $F70A,$03 #REGa=*#R$D3FA.
-  $F70D,$01 Decrease #REGa by one.
-  $F70E,$03 Write #REGa to *#R$D3FA.
+  $F70A,$07 Decrease *#R$D3FA by one.
 @ $F711 label=Collision_Projectiles_Next
   $F711,$03 Move onto the next projectile table data.
   $F714,$01 Restore projectile ID from the stack.
@@ -4121,6 +5124,7 @@ c $F788
 c $F795 Handler: Collision Monsters?
 @ $F795 label=Handler_Monsters
 R $F795 HL Either #R$D243 or #R$D240
+N $F795 #REGb is used as the "currently processed monster ID"; we work backwards from Ralph, to Lizzy and last George.
   $F795,$02 #REGb=#N$03 (total number of monsters/ players).
 @ $F797 label=Handler_Monsters_Loop
   $F797,$01 #REGa=*#REGhl.
@@ -4173,8 +5177,7 @@ N $F7D5 #AUDIO(punched.wav)(#INCLUDE(Punched))
   $F817,$02,b$01 Keep only bits 0-5.
   $F819,$01 Increment #REGa by one.
   $F81A,$01 #REGb=#REGa.
-  $F81B,$03 #REGa=*#R$D403.
-  $F81E,$01 #REGc=#REGa.
+  $F81B,$04 #REGc=*#R$D403.
   $F81F,$02 #REGa=#N$77.
   $F821,$03 Call #R$D6C9.
 N $F824 #AUDIO(punched.wav)(#INCLUDE(Punched))
@@ -4187,7 +5190,7 @@ N $F824 #AUDIO(punched.wav)(#INCLUDE(Punched))
   $F834,$03 Compare #REGa with *#REGiy+#N$09.
   $F837,$03 #REGa=*#R$D407.
   $F83A,$02 Jump to #R$F83E if {} is higher.
-  $F83C,$02,b$01 Reset bit 7.
+  $F83C,$02,b$01 Flip bit 7.
   $F83E,$02,b$01 Set bit 6.
   $F840,$03 Write #REGa to *#R$D407.
   $F843,$01 #REGa=#REGb.
@@ -5068,11 +6071,12 @@ w $FECF Table: Ticker News
 @ $FECF label=Table_TickerNews
   $FECF,$10
 
-b $FEDF Data: Ticker
+g $FEDF Data: Ticker
 @ $FEDF label=Data_Ticker
-  $FEDF,$01 #R($D198+#PEEK(#PC)*$08)(#N($D198+#PEEK(#PC)*$08)).
+D $FEDF See #R$FD44.
+B $FEDF,$01 #R($D198+#PEEK(#PC)*$08)(#N($D198+#PEEK(#PC)*$08)).
 L $FEDF,$01,$20
-  $FEFF,$01 Terminator.
+B $FEFF,$01 Terminator.
 
 c $FF00 Play Sounds
 @ $FF00 label=PlaySounds
