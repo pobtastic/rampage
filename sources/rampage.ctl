@@ -1103,7 +1103,7 @@ c $D50C
   $D50C,$01 Set zero flag based on #REGa.
   $D50D,$02 Shift #REGa left (with carry).
   $D50F,$01 Store the result in #REGl.
-  $D510,$01 Rotate #REGa left through the carry flag (bit 7 to the carry flag, the carry flag to bit 0).
+  $D510,$01 Rotate #REGa left (bit 7 is moved to bit 0).
   $D511,$02,b$01 Keep only bit 0.
   $D513,$01 #REGh=#REGa.
   $D514,$03 #REGde=#R$C700.
@@ -2448,12 +2448,12 @@ N $DF9D Process the scene data.
   $DF9F,$03 Call #R$D50C.
   $DFA2,$01 Restore the scene data pointer from the stack.
   $DFA3,$01 Increment the scene data pointer by one.
-  $DFA4,$01 #REGa=*#REGhl.
+  $DFA4,$01 #REGa=byte of scene data.
   $DFA5,$01 Stash the scene data pointer on the stack temporarily.
   $DFA6,$03 Call #R$D55B.
   $DFA9,$01 Restore the scene data pointer from the stack.
   $DFAA,$01 Increment the scene data pointer by one.
-  $DFAB,$01 #REGa=*#REGhl.
+  $DFAB,$01 #REGa=byte of scene data.
   $DFAC,$02,b$01 Keep only bits 3-6.
   $DFAE,$03 Rotate #REGa right three positions (bits 3 to 6 are now in positions 0 to 3).
   $DFB1,$01 Stash the scene data pointer on the stack temporarily.

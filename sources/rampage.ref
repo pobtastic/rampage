@@ -8,7 +8,7 @@
 
 [Config]
 Expand=#INCLUDE(Expand)
-RefFiles=bases.ref;analytics.ref;changelog.ref;data.ref;facts.ref;pokes.ref;sound.ref
+RefFiles=bases.ref;analytics.ref;changelog.ref;data.ref;facts.ref;pokes.ref;scenes.ref;sound.ref
 GameDir=rampage
 
 [Game]
@@ -22,7 +22,23 @@ AddressAnchor={address#IF({base}==16)(:04x)}
 [PageHeaders]
 GameIndex=The complete<>RAM disassembly (work in progress)
 
+[Index]
+MemoryMaps
+Graphics
+DataTables
+Reference
+
+[Index:Graphics:Graphics]
+Scenes
+
+[Links]
+Scenes=[Scenes]
+
+[Page:Scenes]
+SectionPrefix=Scenes
+
 [Paths]
+Scenes=graphics/scenes.html
 Sound=sound/sound.html
 
 [Expand]
@@ -51,3 +67,12 @@ Sound=sound/sound.html
       7:WHITE))
   #LET(bright=$id&$40)#IF({bright}>$00)((BRIGHT))
   #LET(flash=$id&$80)#IF({flash}>$00)(FLASH: ON))
+
+#DEF(#SCENE(id)
+  #PUSHS
+  #SIM(start=$F916,stop=$F91C)
+  #SIM(start=$F91E,stop=$F924,a=$id)
+  #SIM(start=$F96D,stop=$F973)
+  #SCR$02(scene-$id)
+  #POPS
+)

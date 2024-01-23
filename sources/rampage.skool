@@ -3730,8 +3730,7 @@ c$D4E8 EX AF,AF'     ; Exchange the #REGaf register with the shadow #REGaf
 c$D50C OR A          ; Set zero flag based on #REGa.
  $D50D SLA A         ; Shift #REGa left (with carry).
  $D50F LD L,A        ; Store the result in #REGl.
- $D510 RLA           ; Rotate #REGa left through the carry flag (bit 7 to the
-                     ; carry flag, the carry flag to bit 0).
+ $D510 RLA           ; Rotate #REGa left (bit 7 is moved to bit 0).
  $D511 AND %00000001 ; Keep only bit 0.
  $D513 LD H,A        ; #REGh=#REGa.
  $D514 LD DE,$C700   ; #REGde=#R$C700.
@@ -5800,7 +5799,7 @@ c$DF90 LD E,A                               ; #REGe=level.
                                             ; from the stack.
  $DFA3 INC HL                               ; Increment the scene data pointer
                                             ; by one.
- $DFA4 LD A,(HL)                            ; #REGa=*#REGhl.
+ $DFA4 LD A,(HL)                            ; #REGa=byte of scene data.
  $DFA5 PUSH HL                              ; Stash the scene data pointer on
                                             ; the stack temporarily.
  $DFA6 CALL $D55B                           ; Call #R$D55B.
@@ -5808,7 +5807,7 @@ c$DF90 LD E,A                               ; #REGe=level.
                                             ; from the stack.
  $DFAA INC HL                               ; Increment the scene data pointer
                                             ; by one.
- $DFAB LD A,(HL)                            ; #REGa=*#REGhl.
+ $DFAB LD A,(HL)                            ; #REGa=byte of scene data.
  $DFAC AND %01111000                        ; Keep only bits 3-6.
  $DFAE RRCA                                 ; {Rotate #REGa right three
  $DFAF RRCA                                 ; positions (bits 3 to 6 are now in

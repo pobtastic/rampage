@@ -3,6 +3,12 @@
 [Page:Changelog]
 SectionType=BulletPoints
 
+[Changelog:20240123]
+-
+
+- Added scene graphics
+- Found the helicopter and vehicle handlers (written up some of it)
+
 [Changelog:20240106]
 -
 
