@@ -58,6 +58,16 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="64569"></span>
+<div class="comments">
+<div class="paragraph">
+Are vehicles permitted to be spawned on this level?
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label">Handler_Vehicle</td>
 <td class="address-2"><span id="64569"></span>64569</td>
 <td class="instruction">LD A,(54273)</td>
@@ -72,6 +82,16 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="64574"></span>64574</td>
 <td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="64575"></span>
+<div class="comments">
+<div class="paragraph">
+Just return if a a vehicle is already being displayed.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -136,6 +156,9 @@ Else the countdown is complete so set the counter/ state that a vehicle is spawn
 <td class="routine-comment" colspan="5">
 <span id="64589"></span>
 <div class="comments">
+<div class="paragraph">
+Spawn a new vehicle:
+</div>
 <div class="paragraph">
 There are four vehicle types.
 </div>

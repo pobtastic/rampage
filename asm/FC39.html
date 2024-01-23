@@ -58,6 +58,16 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="fc39"></span>
+<div class="comments">
+<div class="paragraph">
+Are vehicles permitted to be spawned on this level?
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label">Handler_Vehicle</td>
 <td class="address-2"><span id="fc39"></span>FC39</td>
 <td class="instruction">LD A,($D401)</td>
@@ -72,6 +82,16 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="fc3e"></span>FC3E</td>
 <td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="fc3f"></span>
+<div class="comments">
+<div class="paragraph">
+Just return if a a vehicle is already being displayed.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -136,6 +156,9 @@ Else the countdown is complete so set the counter/ state that a vehicle is spawn
 <td class="routine-comment" colspan="5">
 <span id="fc4d"></span>
 <div class="comments">
+<div class="paragraph">
+Spawn a new vehicle:
+</div>
 <div class="paragraph">
 There are four vehicle types.
 </div>
