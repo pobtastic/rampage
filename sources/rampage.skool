@@ -8423,6 +8423,11 @@ c$F10E LD B,$06        ; #REGb=#N$06.
 ; Handler: Spawn Helicopters
 ;
 ; Used by the routine at #R$DE77.
+;
+; .
+;
+; Just return if the number of active helicopters is already at the maximum
+; amount for this level.
 @label=Handler_SpawnHelicopters
 c$F28B LD A,($D212)  ; {Return if *#R$D3F5 is equal to *#R$D212.
  $F28E LD B,A        ;
@@ -10167,10 +10172,13 @@ c$FC1A LD A,($D3FE)  ; {Return if *#R$D3FE is zero.
 ;
 ; O:B Vehicle Y sprite co-ordinates (if active)
 ; O:C Vehicle X sprite co-ordinates (if active)
+;
+; Are vehicles permitted to be spawned on this level?
 @label=Handler_Vehicle
 c$FC39 LD A,($D401)  ; {Return if vehicle spawning is set to be off (*#R$D401
  $FC3C CP $FE        ; is equal to #N$FE).
  $FC3E RET Z         ; }
+; Just return if a a vehicle is already being displayed.
  $FC3F CP $FF        ; {Jump to #R$FC72 if a vehicle is already active
  $FC41 JR Z,$FC72    ; (*#R$D401 is equal to #N$FF).}
 ; Else the counter is a counter, so count it down.
@@ -10181,6 +10189,8 @@ c$FC39 LD A,($D401)  ; {Return if vehicle spawning is set to be off (*#R$D401
 ; spawned and spawn a random vehicle!
  $FC48 LD A,$FF      ; {Write #N$FF to *#R$D401.
  $FC4A LD ($D401),A  ; }
+; Spawn a new vehicle:
+; .
 ; There are four vehicle types.
  $FC4D CALL $DA28    ; {Get a random number between 0-3.
  $FC50 AND %00000011 ; }

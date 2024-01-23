@@ -71,8 +71,7 @@ Sound=sound/sound.html
 #DEF(#SCENE(id)
   #PUSHS
   #SIM(start=$F916,stop=$F91C)
-  #SIM(start=$F91E,stop=$F924,a=$id)
-  #SIM(start=$F96D,stop=$F973)
+  #SIM(start=$F964,stop=$F973,a=$id)
   #SCR$02(scene-$id)
   #POPS
 )

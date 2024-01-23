@@ -4452,6 +4452,7 @@ N $F228 #AUDIO(helicopter.wav)(#INCLUDE(Helicopter))
 
 c $F28B Handler: Spawn Helicopters
 @ $F28B label=Handler_SpawnHelicopters
+N $F28B Just return if the number of active helicopters is already at the maximum amount for this level.
   $F28B,$09 Return if *#R$D3F5 is equal to *#R$D212.
 N $F294 Add a hint of randomness to whether we proceed or not. Roughly 50% chance.
   $F294,$03 #REGa=random number #N$00-#N$FF.
@@ -5781,13 +5782,16 @@ c $FC39 Handler: Vehicle
 @ $FC39 label=Handler_Vehicle
 R $FC39 O:B Vehicle Y sprite co-ordinates (if active)
 R $FC39 O:C Vehicle X sprite co-ordinates (if active)
+N $FC39 Are vehicles permitted to be spawned on this level?
   $FC39,$06 Return if vehicle spawning is set to be off (*#R$D401 is equal to #N$FE).
+N $FC3F Just return if a a vehicle is already being displayed.
   $FC3F,$04 Jump to #R$FC72 if a vehicle is already active (*#R$D401 is equal to #N$FF).
 N $FC43 Else the counter is a counter, so count it down.
   $FC43,$04 Decrease *#R$D401 by one.
   $FC47,$01 Return if *#R$D401 is still in progress.
 N $FC48 Else the countdown is complete so set the counter/ state that a vehicle is spawned and spawn a random vehicle!
   $FC48,$05 Write #N$FF to *#R$D401.
+N $FC4D Spawn a new vehicle:
 N $FC4D There are four vehicle types.
   $FC4D,$03 Call #R$DA28.
   $FC50,$02,b$01 Keep only bits 0-1.
