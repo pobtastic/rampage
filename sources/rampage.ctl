@@ -30,14 +30,28 @@ b $6B00 Shadow Buffer
   $8300,$0300,$20 Attributes.
 
 b $8600
-D $8600 #UDGTABLE { #UDGARRAY$20,step=$20;(#PC)-(#PC+$100)-$01-$100(test) } UDGTABLE#
   $8600,$1800,$20 Pixels.
+  $8D80
+  $8E29
+  $8E9A
+  $8EFE
+  $8F4A
+  $8FF3
+  $906C
+  $9124
 
 b $9E00
   $9E00,$08 #UDGTABLE { #UDG(#PC) } UDGTABLE#
 L $9E00,$08,$180
+  $AB60,$10
 
 b $C1A1
+N $C1A1 #N($01+(#PC-$C1A1)/$04).
+  $C1A1,$02
+W $C1A3,$02
+  $C1A5,$02
+W $C1A7,$02
+L $C1A1,$08,$40
 
 b $C700
 
@@ -771,7 +785,9 @@ B $D23E,$03,$01
 g $D241
 B $D241,$03,$01
 
-g $D244
+g $D244 Jump Table Pointer
+@ $D244 label=JumpTable_Pointer
+B $D244,$01
 
 g $D245
 
@@ -856,7 +872,9 @@ g $D3F5 Active Helicopter Count
 @ $D3F5 label=NumberActiveHelicopters
 B $D3F5,$01
 
-b $D3F6
+g $D3F6 On-Screen Helicopter Count
+@ $D3F6 label=NumberOnScreenHelicopters
+B $D3F6,$01
 
 b $D3F7
 
@@ -878,9 +896,17 @@ D $D3FD #TABLE(default,centre,centre)
 . TABLE#
 B $D3FD,$01
 
-b $D3FE
-  $D3FE
-  $D3FF
+g $D3FE Scene Carpet
+@ $D3FE label=Scene_Carpet
+D $D3FE Is it carpet? Awning? Unsure...
+. #TABLE(default,centre,centre)
+. { =h Value | =h Meaning }
+. { #N$00 | No carpet }
+. { #N$01 | Carpet }
+. TABLE#
+  $D3FE,$01
+
+g $D3FF
 
 g $D400 Scene Type
 @ $D400 label=Scene_Type
@@ -1357,7 +1383,10 @@ c $D688 Fast Copy To The Screen Buffer
   $D688,$40 Copy one line to the screen buffer.
   $D6C8,$01 Return.
 
-c $D6C9
+c $D6C9 Print Sprite
+@ $D6C9 label=PrintSprite
+R $D6C9 A Sprite ID
+R $D6C9 BC Screen co-ordinates
   $D6C9,$03 Write #REGa to *#R$D214.
   $D6CC,$01 Stash #REGbc on the stack.
   $D6CD,$03 Call #R$D9A9.
@@ -1478,17 +1507,15 @@ c $D6C9
   $D765,$01 Increment #REGhl by one.
   $D766,$01 Switch to the shadow registers.
   $D767,$01 Increment #REGc by one.
-  $D768,$01 #REGa=#REGe.
-  $D769,$01 Compare #REGa with #REGc.
+  $D768,$02 Compare #REGe with #REGc...
   $D76A,$01 Switch back to the normal registers.
-  $D76B,$03 Jump to #R$D6E1 if {} is not zero.
+  $D76B,$03 Jump to #R$D6E1 if #REGe is not equal to #REGc on line #R$D768.
   $D76E,$01 Switch to the shadow registers.
   $D76F,$01 #REGc=#REGl.
   $D770,$01 Increment #REGb by one.
-  $D771,$01 #REGa=#REGd.
-  $D772,$01 Compare #REGa with #REGb.
+  $D771,$02 Compare #REGd with #REGb...
   $D773,$01 Switch back to the normal registers.
-  $D774,$03 Jump to #R$D6E1 if {} is not zero.
+  $D774,$03 Jump to #R$D6E1 if #REGd is not equal to #REGb on line #R$D771.
   $D777,$01 Return.
   $D778,$06 Jump to #R$D764 if *#REGde is equal to #N$36.
   $D77E,$01 Increment #REGde by one.
@@ -1588,6 +1615,311 @@ c $D7F6
   $D7FE,$01 Restore #REGbc from the stack.
   $D7FF,$01 #REGd=#REGa.
 
+  $D800,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $D801,$01 #REGl=#REGa.
+  $D802,$01 #REGe=#REGc.
+  $D803,$01 #REGc=#REGa.
+  $D804,$01 Switch to the shadow registers.
+  $D805,$01 #REGa=*#REGhl.
+  $D806,$01 Increment #REGhl by one.
+  $D807,$01 #REGh=*#REGhl.
+  $D808,$01 #REGl=#REGa.
+  $D809,$01 Switch to the shadow registers.
+  $D80A,$05 Jump to #R$D824 if #REGc is not equal to #REGl.
+  $D80F,$01 #REGa=#REGb.
+  $D810,$02,b$01 Keep only bits 3-7.
+  $D812,$02 #REGa+=#N$6B.
+  $D814,$01 #REGh=#REGa.
+  $D815,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $D816,$01 #REGa=#REGb.
+  $D817,$02,b$01 Keep only bits 0-2.
+  $D819,$03 RRCA.
+  $D81C,$01 #REGa+=#REGc.
+  $D81D,$01 Switch to the shadow registers.
+  $D81E,$01 #REGc=#REGa.
+  $D81F,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $D820,$01 #REGb=#REGa.
+  $D821,$03 Jump to #R$D828.
+  $D824,$01 #REGa=#REGh.
+  $D825,$01 Switch to the shadow registers.
+  $D826,$01 Decrease #REGc by one.
+  $D827,$01 #REGb=#REGa.
+  $D828,$01 Switch to the shadow registers.
+  $D829,$06 Jump to #R$D8D8 if #REGc is higher than #N$20.
+  $D82F,$06 Jump to #R$D8D8 if #REGb is higher than #N$18.
+  $D835,$01 Switch to the shadow registers.
+  $D836,$06 Jump to #R$D8FA if *#REGhl is equal to #N$36.
+  $D83C,$06 Jump to #R$D93B if *#REGde is equal to #N$36.
+  $D842,$01 Increment #REGhl by one.
+  $D843,$01 Increment #REGde by one.
+  $D844,$01 Stash #REGhl on the stack.
+  $D845,$01 #REGa=*#REGbc.
+  $D846,$01 #REGl=*#REGhl.
+  $D847,$02 #REGh=#N$C6.
+  $D849,$01 Merge the bits from *#REGhl.
+  $D84A,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $D84B,$01 #REGa=*#REGde.
+  $D84C,$01 #REGl=#REGa.
+  $D84D,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $D84E,$01 Set the bits from *#REGhl.
+  $D84F,$01 Write #REGa to *#REGbc.
+  $D850,$01 Restore #REGhl from the stack.
+  $D851,$01 Increment #REGde by one.
+  $D852,$01 Increment #REGhl by one.
+  $D853,$01 Increment #REGb by one.
+  $D854,$01 Stash #REGhl on the stack.
+  $D855,$01 #REGa=*#REGbc.
+  $D856,$01 #REGl=*#REGhl.
+  $D857,$02 #REGh=#N$C6.
+  $D859,$01 Merge the bits from *#REGhl.
+  $D85A,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $D85B,$01 #REGa=*#REGde.
+  $D85C,$01 #REGl=#REGa.
+  $D85D,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $D85E,$01 Set the bits from *#REGhl.
+  $D85F,$01 Write #REGa to *#REGbc.
+  $D860,$01 Restore #REGhl from the stack.
+  $D861,$01 Increment #REGde by one.
+  $D862,$01 Increment #REGhl by one.
+  $D863,$01 Increment #REGb by one.
+  $D864,$01 Stash #REGhl on the stack.
+  $D865,$01 #REGa=*#REGbc.
+  $D866,$01 #REGl=*#REGhl.
+  $D867,$02 #REGh=#N$C6.
+  $D869,$01 Merge the bits from *#REGhl.
+  $D86A,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $D86B,$01 #REGa=*#REGde.
+  $D86C,$01 #REGl=#REGa.
+  $D86D,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $D86E,$01 Set the bits from *#REGhl.
+  $D86F,$01 Write #REGa to *#REGbc.
+  $D870,$01 Restore #REGhl from the stack.
+  $D871,$01 Increment #REGde by one.
+  $D872,$01 Increment #REGhl by one.
+  $D873,$01 Increment #REGb by one.
+  $D874,$01 Stash #REGhl on the stack.
+  $D875,$01 #REGa=*#REGbc.
+  $D876,$01 #REGl=*#REGhl.
+  $D877,$02 #REGh=#N$C6.
+  $D879,$01 Merge the bits from *#REGhl.
+  $D87A,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $D87B,$01 #REGa=*#REGde.
+  $D87C,$01 #REGl=#REGa.
+  $D87D,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $D87E,$01 Set the bits from *#REGhl.
+  $D87F,$01 Write #REGa to *#REGbc.
+  $D880,$01 Restore #REGhl from the stack.
+  $D881,$01 Increment #REGde by one.
+  $D882,$01 Increment #REGhl by one.
+  $D883,$01 Increment #REGb by one.
+  $D884,$01 Stash #REGhl on the stack.
+  $D885,$01 #REGa=*#REGbc.
+  $D886,$01 #REGl=*#REGhl.
+  $D887,$02 #REGh=#N$C6.
+  $D889,$01 Merge the bits from *#REGhl.
+  $D88A,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $D88B,$01 #REGa=*#REGde.
+  $D88C,$01 #REGl=#REGa.
+  $D88D,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $D88E,$01 Set the bits from *#REGhl.
+  $D88F,$01 Write #REGa to *#REGbc.
+  $D890,$01 Restore #REGhl from the stack.
+  $D891,$01 Increment #REGde by one.
+  $D892,$01 Increment #REGhl by one.
+  $D893,$01 Increment #REGb by one.
+  $D894,$01 Stash #REGhl on the stack.
+  $D895,$01 #REGa=*#REGbc.
+  $D896,$01 #REGl=*#REGhl.
+  $D897,$02 #REGh=#N$C6.
+  $D899,$01 Merge the bits from *#REGhl.
+  $D89A,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $D89B,$01 #REGa=*#REGde.
+  $D89C,$01 #REGl=#REGa.
+  $D89D,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $D89E,$01 Set the bits from *#REGhl.
+  $D89F,$01 Write #REGa to *#REGbc.
+  $D8A0,$01 Restore #REGhl from the stack.
+  $D8A1,$01 Increment #REGde by one.
+  $D8A2,$01 Increment #REGhl by one.
+  $D8A3,$01 Increment #REGb by one.
+  $D8A4,$01 Stash #REGhl on the stack.
+  $D8A5,$01 #REGa=*#REGbc.
+  $D8A6,$01 #REGl=*#REGhl.
+  $D8A7,$02 #REGh=#N$C6.
+  $D8A9,$01 Merge the bits from *#REGhl.
+  $D8AA,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $D8AB,$01 #REGa=*#REGde.
+  $D8AC,$01 #REGl=#REGa.
+  $D8AD,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $D8AE,$01 Set the bits from *#REGhl.
+  $D8AF,$01 Write #REGa to *#REGbc.
+  $D8B0,$01 Restore #REGhl from the stack.
+  $D8B1,$01 Increment #REGde by one.
+  $D8B2,$01 Increment #REGhl by one.
+  $D8B3,$01 Increment #REGb by one.
+  $D8B4,$01 Stash #REGhl on the stack.
+  $D8B5,$01 #REGa=*#REGbc.
+  $D8B6,$01 #REGl=*#REGhl.
+  $D8B7,$02 #REGh=#N$C6.
+  $D8B9,$01 Merge the bits from *#REGhl.
+  $D8BA,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $D8BB,$01 #REGa=*#REGde.
+  $D8BC,$01 #REGl=#REGa.
+  $D8BD,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $D8BE,$01 Set the bits from *#REGhl.
+  $D8BF,$01 Write #REGa to *#REGbc.
+  $D8C0,$01 Restore #REGhl from the stack.
+  $D8C1,$03 Call #R$D986.
+  $D8C4,$01 Increment #REGde by one.
+  $D8C5,$01 Increment #REGhl by one.
+  $D8C6,$01 Switch to the shadow registers.
+  $D8C7,$01 Decrease #REGc by one.
+  $D8C8,$02 Compare #REGe with #REGc...
+  $D8CA,$01 Switch to the shadow registers.
+  $D8CB,$03 Jump to #R$D809 if #REGe is not equal to #REGc on line #R$D8C8.
+  $D8CE,$01 Switch to the shadow registers.
+  $D8CF,$01 #REGc=#REGl.
+  $D8D0,$01 Increment #REGb by one.
+  $D8D1,$02 Compare #REGd with #REGb...
+  $D8D3,$01 Switch to the shadow registers.
+  $D8D4,$03 Jump to #R$D809 if #REGd is not equal to #REGb on line #R$D8D1.
+  $D8D7,$01 Return.
+  $D8D8,$01 Switch to the shadow registers.
+  $D8D9,$01 #REGa=*#REGde.
+  $D8DA,$01 Increment #REGde by one.
+  $D8DB,$05 Jump to #R$D8E8 if #REGa is equal to #N$36.
+  $D8E0,$08 Increment #REGde by eight.
+  $D8E8,$01 #REGa=*#REGhl.
+  $D8E9,$01 Increment #REGhl by one.
+  $D8EA,$05 Jump to #R$D8C6 if #REGa is equal to #N$36.
+  $D8EF,$08 Increment #REGhl by eight.
+  $D8F7,$03 Jump to #R$D8C6.
+  $D8FA,$06 Jump to #R$D8C4 if *#REGde is equal to #N$36.
+  $D900,$01 Increment #REGde by one.
+  $D901,$01 Increment #REGhl by one.
+  $D902,$01 Stash #REGhl on the stack.
+  $D903,$02 #REGh=#N$C6.
+  $D905,$01 #REGa=*#REGde.
+  $D906,$01 #REGl=#REGa.
+  $D907,$01 #REGa=*#REGhl.
+  $D908,$01 Write #REGa to *#REGbc.
+  $D909,$01 Increment #REGde by one.
+  $D90A,$01 Increment #REGb by one.
+  $D90B,$01 #REGa=*#REGde.
+  $D90C,$01 #REGl=#REGa.
+  $D90D,$01 #REGa=*#REGhl.
+  $D90E,$01 Write #REGa to *#REGbc.
+  $D90F,$01 Increment #REGde by one.
+  $D910,$01 Increment #REGb by one.
+  $D911,$01 #REGa=*#REGde.
+  $D912,$01 #REGl=#REGa.
+  $D913,$01 #REGa=*#REGhl.
+  $D914,$01 Write #REGa to *#REGbc.
+  $D915,$01 Increment #REGde by one.
+  $D916,$01 Increment #REGb by one.
+  $D917,$01 #REGa=*#REGde.
+  $D918,$01 #REGl=#REGa.
+  $D919,$01 #REGa=*#REGhl.
+  $D91A,$01 Write #REGa to *#REGbc.
+  $D91B,$01 Increment #REGde by one.
+  $D91C,$01 Increment #REGb by one.
+  $D91D,$01 #REGa=*#REGde.
+  $D91E,$01 #REGl=#REGa.
+  $D91F,$01 #REGa=*#REGhl.
+  $D920,$01 Write #REGa to *#REGbc.
+  $D921,$01 Increment #REGde by one.
+  $D922,$01 Increment #REGb by one.
+  $D923,$01 #REGa=*#REGde.
+  $D924,$01 #REGl=#REGa.
+  $D925,$01 #REGa=*#REGhl.
+  $D926,$01 Write #REGa to *#REGbc.
+  $D927,$01 Increment #REGde by one.
+  $D928,$01 Increment #REGb by one.
+  $D929,$01 #REGa=*#REGde.
+  $D92A,$01 #REGl=#REGa.
+  $D92B,$01 #REGa=*#REGhl.
+  $D92C,$01 Write #REGa to *#REGbc.
+  $D92D,$01 Increment #REGde by one.
+  $D92E,$01 Increment #REGb by one.
+  $D92F,$01 #REGa=*#REGde.
+  $D930,$01 #REGl=#REGa.
+  $D931,$01 #REGa=*#REGhl.
+  $D932,$01 Write #REGa to *#REGbc.
+  $D933,$01 Increment #REGde by one.
+  $D934,$01 Restore #REGhl from the stack.
+  $D935,$03 Call #R$D986.
+  $D938,$03 Jump to #R$D8C6.
+  $D93B,$01 Increment #REGde by one.
+  $D93C,$01 Increment #REGhl by one.
+  $D93D,$01 Stash #REGde on the stack.
+  $D93E,$02 #REGd=#N$C6.
+  $D940,$01 #REGe=*#REGhl.
+  $D941,$01 #REGa=*#REGde.
+  $D942,$01 #REGe=#REGa.
+  $D943,$01 #REGa=*#REGbc.
+  $D944,$01 Merge the bits from #REGe.
+  $D945,$01 Write #REGa to *#REGbc.
+  $D946,$01 Increment #REGhl by one.
+  $D947,$01 Increment #REGb by one.
+  $D948,$01 #REGe=*#REGhl.
+  $D949,$01 #REGa=*#REGde.
+  $D94A,$01 #REGe=#REGa.
+  $D94B,$01 #REGa=*#REGbc.
+  $D94C,$01 Merge the bits from #REGe.
+  $D94D,$01 Write #REGa to *#REGbc.
+  $D94E,$01 Increment #REGhl by one.
+  $D94F,$01 Increment #REGb by one.
+  $D950,$01 #REGe=*#REGhl.
+  $D951,$01 #REGa=*#REGde.
+  $D952,$01 #REGe=#REGa.
+  $D953,$01 #REGa=*#REGbc.
+  $D954,$01 Merge the bits from #REGe.
+  $D955,$01 Write #REGa to *#REGbc.
+  $D956,$01 Increment #REGhl by one.
+  $D957,$01 Increment #REGb by one.
+  $D958,$01 #REGe=*#REGhl.
+  $D959,$01 #REGa=*#REGde.
+  $D95A,$01 #REGe=#REGa.
+  $D95B,$01 #REGa=*#REGbc.
+  $D95C,$01 Merge the bits from #REGe.
+  $D95D,$01 Write #REGa to *#REGbc.
+  $D95E,$01 Increment #REGhl by one.
+  $D95F,$01 Increment #REGb by one.
+  $D960,$01 #REGe=*#REGhl.
+  $D961,$01 #REGa=*#REGde.
+  $D962,$01 #REGe=#REGa.
+  $D963,$01 #REGa=*#REGbc.
+  $D964,$01 Merge the bits from #REGe.
+  $D965,$01 Write #REGa to *#REGbc.
+  $D966,$01 Increment #REGhl by one.
+  $D967,$01 Increment #REGb by one.
+  $D968,$01 #REGe=*#REGhl.
+  $D969,$01 #REGa=*#REGde.
+  $D96A,$01 #REGe=#REGa.
+  $D96B,$01 #REGa=*#REGbc.
+  $D96C,$01 Merge the bits from #REGe.
+  $D96D,$01 Write #REGa to *#REGbc.
+  $D96E,$01 Increment #REGhl by one.
+  $D96F,$01 Increment #REGb by one.
+  $D970,$01 #REGe=*#REGhl.
+  $D971,$01 #REGa=*#REGde.
+  $D972,$01 #REGe=#REGa.
+  $D973,$01 #REGa=*#REGbc.
+  $D974,$01 Merge the bits from #REGe.
+  $D975,$01 Write #REGa to *#REGbc.
+  $D976,$01 Increment #REGhl by one.
+  $D977,$01 Increment #REGb by one.
+  $D978,$01 #REGe=*#REGhl.
+  $D979,$01 #REGa=*#REGde.
+  $D97A,$01 #REGe=#REGa.
+  $D97B,$01 #REGa=*#REGbc.
+  $D97C,$01 Merge the bits from #REGe.
+  $D97D,$01 Write #REGa to *#REGbc.
+  $D97E,$01 Increment #REGhl by one.
+  $D97F,$01 Restore #REGde from the stack.
+  $D980,$03 Call #R$D986.
+  $D983,$03 Jump to #R$D8C6.
+
 c $D986
   $D986,$01 Switch to the shadow registers.
   $D987,$01 Stash #REGhl on the stack.
@@ -1666,7 +1998,7 @@ c $DA0F
   $DA15,$02 #REGh=#N$00.
   $DA17,$01 #REGl=#REGa.
   $DA18,$01 #REGhl+=#REGde.
-  $DA19,$03 #REGix=#REGhl.
+  $DA19,$03 #REGix=#REGhl using the stack.
   $DA1C,$01 Return.
 
 c $DA1D
@@ -2748,7 +3080,7 @@ M $E17F,$08 Write a random number between 0-31 to *#R$D217.
   $E203,$01 #REGb=#REGa.
   $E204,$02,b$01 Keep only bits 0-1.
   $E206,$01 #REGa=#REGb.
-  $E207,$03 Jump to #R$E20C if {} is zero.
+  $E207,$03 Jump to #R$E20C if #REGa is zero.
   $E20A,$02,b$01 Flip bits 0-1.
   $E20C,$01 Set the bits from #REGa.
   $E20D,$03 Jump to #R$E243.
@@ -3290,12 +3622,12 @@ c $E62D
   $E66D,$02 Jump to #R$E67C if {} is not zero.
   $E66F,$08 Write #N$06 to: #LIST { *#R$D244 } { *#R$D24A } LIST#
   $E677,$05 Write #N$01 to *#R$D248.
-  $E67C,$03 #REGa=*#R$D244.
-  $E67F,$01 #REGa+=#REGa.
+  $E67C,$04 #REGa=*#R$D244*#N$02.
+N $E680 Create an offset using #REGhl.
   $E680,$02 #REGh=#N$00.
   $E682,$01 #REGl=#REGa.
-  $E683,$03 #REGde=#R$EF98.
-  $E686,$01 #REGhl+=#REGde.
+  $E683,$04 #REGhl+=#R$EF98.
+N $E687 Fetch the address to jump and store it in #REGhl.
   $E687,$01 #REGa=*#REGhl.
   $E688,$01 Increment #REGhl by one.
   $E689,$01 #REGh=*#REGhl.
@@ -4064,7 +4396,7 @@ c $EED6
   $EED6,$04 #REGbc=*#R$D24D.
   $EEDA,$01 Increment #REGb by one.
   $EEDB,$01 Increment #REGc by one.
-  $EEDC,$02 #REGa=#N$77.
+  $EEDC,$02 #REGa=explosion sprite (#N$77).
   $EEDE,$03 Call #R$D6C9.
   $EEE1,$05 Write #N$22 to *#R$D244.
   $EEE6,$04 Write #N$00 to *#R$D249.
@@ -4341,9 +4673,7 @@ c $F10E Helicopter Something
   $F17D,$02,b$01 Keep only bits 0-6.
   $F17F,$04 Jump to #R$F191 if #REGa is lower than #N$08.
   $F183,$04 Write #N$00 to *#REGix+#N$00.
-  $F187,$03 #REGa=*#R$D3F6.
-  $F18A,$01 Decrease #REGa by one.
-  $F18B,$03 Write #REGa to *#R$D3F6.
+  $F187,$07 Decrease *#R$D3F6 by one.
   $F18E,$03 Jump to #R$F27D.
   $F191,$04 Write #N$06 to *#REGix+#N$00.
   $F195,$03 Write #REGb to *#REGix+#N$01.
@@ -5112,12 +5442,14 @@ N $F795 #REGb is used as the "currently processed monster ID"; we work backwards
   $F79B,$04 Jump to #R$F7DE if #REGa is higher than #N$C1.
   $F79F,$02,b$01 Keep only bits 0-5.
   $F7A1,$04 Jump to #R$F7DE if #REGa is higher than #N$32.
-  $F7A5,$01 #REGa=#REGb.
+  $F7A5,$01 #REGa=currently processed monster ID.
   $F7A6,$03 Call #R$DD52.
-  $F7A9,$04 #REGix=#REGiy.
+N $F7A9 #REGix now contains a pointer to the currently processed monster state data.
+  $F7A9,$04 #REGix=#REGiy using the stack.
   $F7AD,$01 #REGa=*#REGhl.
-  $F7AE,$03 Call #R$DD4D.
-  $F7B1,$03 Jump to #R$F7DA if #REGa is equal to #REGb.
+  $F7AE,$03 Call #R$DD4D, on return - #REGa will contain the action monster ID and #REGiy the monster state.
+N $F7B1 Is the action targeting the currently processed monster?
+  $F7B1,$03 Jump to #R$F7DA if the action is for the monster currently being processed.
   $F7B4,$06 Jump to #R$F7C8 if *#REGiy+#N$02 is not zero.
   $F7BA,$03 #REGa=*#REGiy+#N$03.
   $F7BD,$03
@@ -5147,10 +5479,14 @@ N $F7D5 #AUDIO(punched.wav)(#INCLUDE(Punched))
   $F7F9,$04 Jump to #R$F804 if #REGa is equal to #N$77.
   $F7FD,$04 Jump to #R$F851 if #REGa is lower than #N$DD.
   $F801,$03 Jump to #R$F878.
+N $F804 Tidies the stack before moving onto the next monster.
+@ $F804 label=Housekeeping_Monsters_Next
   $F804,$02 Restore #REGbc and #REGhl from the stack.
   $F806,$02 Jump to #R$F7DA.
-  $F808,$05 Write #N$18 to *#R$D401.
-  $F80D,$01 #REGa=#REGb.
+N $F808 Handles when a vehicle has been punched.
+@ $F808 label=Handler_Vehicle_Punched
+  $F808,$05 Reset *#R$D401 back to #N$18.
+  $F80D,$01 #REGa=currently processed monster ID.
   $F80E,$03 #REGde=#N$0503.
   $F811,$03 Call #R$DD97.
   $F814,$03 #REGa=*#R$D404.
@@ -5158,7 +5494,7 @@ N $F7D5 #AUDIO(punched.wav)(#INCLUDE(Punched))
   $F819,$01 Increment #REGa by one.
   $F81A,$01 #REGb=#REGa.
   $F81B,$04 #REGc=*#R$D403.
-  $F81F,$02 #REGa=#N$77.
+  $F81F,$02 #REGa=explosion sprite (#N$77).
   $F821,$03 Call #R$D6C9.
 N $F824 #AUDIO(punched.wav)(#INCLUDE(Punched))
   $F824,$05 Write melody ID #N$06 to *#R$FF8D.
@@ -5192,6 +5528,8 @@ N $F84A #AUDIO(punched.wav)(#INCLUDE(Punched))
 N $F871 #AUDIO(punched.wav)(#INCLUDE(Punched))
   $F871,$05 Write melody ID #N$06 to *#R$FF8D.
   $F876,$02 Jump to #R$F804.
+N $F878 Handles when a helicopter has been punched.
+@ $F878 label=Handler_Helicopter_Punched
   $F878,$01 Stash #REGaf on the stack.
   $F879,$01 #REGa=#REGb.
   $F87A,$02 #REGd=#N$05.
@@ -5199,16 +5537,12 @@ N $F871 #AUDIO(punched.wav)(#INCLUDE(Punched))
   $F87E,$03 Call #R$DD97.
   $F881,$01 Restore #REGaf from the stack.
   $F882,$02 #REGa-=#N$E6.
-  $F884,$01 #REGa+=#REGa.
-  $F885,$01 #REGa+=#REGa.
+  $F884,$02 #REGa*=#N$04.
   $F886,$02 #REGh=#N$00.
   $F888,$01 #REGl=#REGa.
-  $F889,$03 #REGde=#R$D2A7.
-  $F88C,$01 #REGhl+=#REGde.
+  $F889,$04 #REGhl+=#R$D2A7.
   $F88D,$05 Jump to #R$F804 if *#REGhl is zero.
-  $F892,$03 #REGa=*#R$D3F6.
-  $F895,$01 Decrease #REGa by one.
-  $F896,$03 Write #REGa to *#R$D3F6.
+  $F892,$07 Decrease *#R$D3F6 by one.
   $F899,$01 #REGa=*#REGhl.
   $F89A,$02 Write #N$00 to *#REGhl.
   $F89C,$01 Increment #REGhl by one.
@@ -5216,14 +5550,19 @@ N $F871 #AUDIO(punched.wav)(#INCLUDE(Punched))
   $F89E,$02,b$01 Keep only bits 0-2.
   $F8A0,$04 Jump to #R$F8B8 if #REGa is lower than #N$03.
   $F8A4,$04 Jump to #R$F8B8 if #REGa is higher than #N$06.
+N $F8A8 Set #REGbc to the screen co-ordinates for the explosion.
   $F8A8,$01 #REGb=*#REGhl.
   $F8A9,$01 Increment #REGhl by one.
   $F8AA,$01 #REGc=*#REGhl.
-  $F8AB,$02 #REGa=#N$77.
+N $F8AB Displays an explosion sprite.
+@ $F8AB label=Handler_Helicopter_Explosion
+  $F8AB,$02 #REGa=explosion sprite (#N$77).
   $F8AD,$03 Call #R$D6C9.
 N $F8B0 #AUDIO(punched.wav)(#INCLUDE(Punched))
   $F8B0,$05 Write melody ID #N$06 to *#R$FF8D.
   $F8B5,$03 Jump to #R$F804.
+N $F8B8 Set #REGbc to the screen co-ordinates for the explosion.
+@ $F8B8 label=SetExplosionCoordinates
   $F8B8,$01 #REGc=*#REGhl.
   $F8B9,$02 Increment #REGhl by two.
   $F8BB,$01 #REGb=*#REGhl.
@@ -5301,6 +5640,8 @@ N $F90E Testing for the number keys.
 
 c $F916 Selection Screen
 @ $F916 label=SelectionScreen
+N $F916 This routine builds the game selection screen.
+N $F916 #PUSHS #SIM(start=$F916,stop=$F92A) #SIM(start=$F96D,stop=$F973) #SCR$02(select-screen) #POPS
   $F916,$03 Set border colour to BLACK.
   $F919,$03 Call #R$FBDB.
 N $F91C The admin screens show the right-hand side of level 2.
@@ -5401,17 +5742,20 @@ N $F9C4 Reset the control type for all monsters.
   $F9C4,$0B Write #N$FF to: #LIST { *#R$CFE0 } { *#R$D00F } { *#R$D03E } LIST#
 N $F9CF Set up a count for how many players will be using the keyboard (see #R$FA53).
   $F9CF,$05 Write #N$03 to *#R$FB5A.
-N $F9D4 George.
+N $F9D4 Create a "change controls" page for George:
+N $F9D4 #PUSHS #SIM(start=$F916,stop=$F924) #SIM(start=#PC,stop=$FA33) #SCR$02(controls-george) #POPS
   $F9D4,$03 Call #R$FB8E.
   $F9D7,$03 #REGhl=#R$D05F.
   $F9DA,$04 #REGix=#R$CFD2.
   $F9DE,$03 Call #R$F9FC.
-N $F9E1 Lizzy.
+N $F9E1 Create a "change controls" page for Lizzy.
+N $F9E1 #PUSHS #SIM(start=$F916,stop=$F924) #SIM(start=#PC,stop=$FA33) #SCR$02(controls-lizzy) #POPS
   $F9E1,$03 Call #R$FB8E.
   $F9E4,$04 #REGix=#R$D001.
   $F9E8,$03 #REGhl=#R$D06D.
   $F9EB,$03 Call #R$F9FC.
-N $F9EE Ralph.
+N $F9EE Create a "change controls" page for Ralph.
+N $F9EE #PUSHS #SIM(start=$F916,stop=$F924) #SIM(start=#PC,stop=$FA33) #SCR$02(controls-ralph) #POPS
   $F9EE,$03 Call #R$FB8E.
   $F9F1,$04 #REGix=#R$D030.
   $F9F5,$03 #REGhl=#R$D07B.
@@ -5764,9 +6108,11 @@ b $FBF2 ASCII Table
   $FBF2,$01 "#STR(#PC,$00,$01)".
 L $FBF2,$01,$28
 
-c $FC1A
-  $FC1A,$05 Return if *#R$D3FE is zero.
-  $FC1F,$03 #REGbc=#N$1506.
+c $FC1A Scene: Display Carpet
+@ $FC1A label=Scene_DisplayCarpet
+N $FC1A Return if this scene doesn't contain the carpet.
+  $FC1A,$05 Return if *#R$D3FE is #N$00.
+  $FC1F,$03 #REGbc=#N$1506 (screen co-ordinates).
   $FC22,$04 Jump to #R$FC28 if *#R$D3FE is #N$01.
   $FC26,$02 #REGc=#N$16.
   $FC28,$02 #REGa=#N$7F.
