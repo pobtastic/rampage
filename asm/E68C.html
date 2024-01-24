@@ -87,7 +87,7 @@ This entry point is used by the routine at <a href="E99B.html">E99B</a>.
 <tr>
 <td class="address-2"><span id="e69c"></span>E69C</td>
 <td class="instruction">LD A,$0A</td>
-<td class="comment-1" rowspan="2">Write 0A to *<a href="D244.html">D244</a>.</td>
+<td class="comment-1" rowspan="2">Write 0A to *<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e69e"></span>E69E</td>
@@ -123,7 +123,7 @@ This entry point is used by the routine at <a href="E99B.html">E99B</a>.
 <tr>
 <td class="address-1"><span id="e6af"></span>E6AF</td>
 <td class="instruction">LD A,$0D</td>
-<td class="comment-1" rowspan="2">Write 0D to *<a href="D244.html">D244</a>.</td>
+<td class="comment-1" rowspan="2">Write 0D to *<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e6b1"></span>E6B1</td>
@@ -150,7 +150,7 @@ This entry point is used by the routine at <a href="E99B.html">E99B</a>.
 <tr>
 <td class="address-1"><span id="e6bd"></span>E6BD</td>
 <td class="instruction">LD A,$0E</td>
-<td class="comment-1" rowspan="2">Write 0E to *<a href="D244.html">D244</a>.</td>
+<td class="comment-1" rowspan="2">Write 0E to *<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e6bf"></span>E6BF</td>
@@ -314,7 +314,7 @@ This entry point is used by the routine at <a href="EAF6.html">EAF6</a>.
 <tr>
 <td class="address-1"><span id="e70b"></span>E70B</td>
 <td class="instruction">INC A</td>
-<td class="comment-1" rowspan="2">Write 01 to *<a href="D244.html">D244</a>.</td>
+<td class="comment-1" rowspan="2">Write 01 to *<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e70c"></span>E70C</td>
@@ -729,7 +729,7 @@ This entry point is used by the routine at <a href="EAF6.html">EAF6</a>.
 <td class="address-1"><span id="e7d3"></span>E7D3</td>
 <td class="instruction">LD A,$03</td>
 <td class="comment-1" rowspan="3">Write 03 to: <ul class="">
-<li>*<a href="D244.html">D244</a></li>
+<li>*<a href="D244.html">JumpTable_Pointer</a></li>
 <li>*<a href="D245.html">D245</a></li>
 </ul></td>
 </tr>
@@ -1021,7 +1021,7 @@ This entry point is used by the routine at <a href="EAF6.html">EAF6</a>.
 <td class="address-1"><span id="e865"></span>E865</td>
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="3">Write 01 to: <ul class="">
-<li>*<a href="D244.html">D244</a></li>
+<li>*<a href="D244.html">JumpTable_Pointer</a></li>
 <li>*<a href="D24F.html">D24F</a></li>
 </ul></td>
 </tr>
@@ -1147,7 +1147,7 @@ This entry point is used by the routine at <a href="EAF6.html">EAF6</a>.
 <td class="instruction">LD A,$04</td>
 <td class="comment-1" rowspan="4">Write 04 to: <ul class="">
 <li>*<span class="register">IX</span>+00</li>
-<li>*<a href="D244.html">D244</a></li>
+<li>*<a href="D244.html">JumpTable_Pointer</a></li>
 <li>*<a href="D245.html">D245</a></li>
 </ul></td>
 </tr>
@@ -1192,7 +1192,7 @@ This entry point is used by the routine at <a href="EAF6.html">EAF6</a>.
 <td class="address-1"><span id="e8bf"></span>E8BF</td>
 <td class="instruction">LD A,$03</td>
 <td class="comment-1" rowspan="3">Write 03 to: <ul class="">
-<li>*<a href="D244.html">D244</a></li>
+<li>*<a href="D244.html">JumpTable_Pointer</a></li>
 <li>*<a href="D24F.html">D24F</a></li>
 </ul></td>
 </tr>
@@ -1230,7 +1230,7 @@ This entry point is used by the routine at <a href="EAF6.html">EAF6</a>.
 <tr>
 <td class="address-1"><span id="e8d4"></span>E8D4</td>
 <td class="instruction">LD A,$01</td>
-<td class="comment-1" rowspan="2">Write 01 to *<a href="D244.html">D244</a>.</td>
+<td class="comment-1" rowspan="2">Write 01 to *<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e8d6"></span>E8D6</td>
@@ -1355,7 +1355,7 @@ This entry point is used by the routine at <a href="EAF6.html">EAF6</a>.
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="3">Write 02 to: <ul class="">
 <li>*<span class="register">IX</span>+00</li>
-<li>*<a href="D244.html">D244</a></li>
+<li>*<a href="D244.html">JumpTable_Pointer</a></li>
 </ul></td>
 </tr>
 <tr>
@@ -1459,7 +1459,7 @@ This entry point is used by the routine at <a href="EAF6.html">EAF6</a>.
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="3">Write 01 to: <ul class="">
 <li>*<span class="register">IX</span>+00</li>
-<li>*<a href="D244.html">D244</a></li>
+<li>*<a href="D244.html">JumpTable_Pointer</a></li>
 </ul></td>
 </tr>
 <tr>
@@ -1507,7 +1507,7 @@ This entry point is used by the routine at <a href="EAF6.html">EAF6</a>.
 <tr>
 <td class="address-1"><span id="e95f"></span>E95F</td>
 <td class="instruction">LD A,$05</td>
-<td class="comment-1" rowspan="2">Write 05 to *<a href="D244.html">D244</a>.</td>
+<td class="comment-1" rowspan="2">Write 05 to *<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e961"></span>E961</td>

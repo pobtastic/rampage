@@ -33,7 +33,7 @@ Next: <a href="64569.html">64569</a>
 </td>
 </tr>
 </table>
-<div class="description">64538: Routine at FC1A</div>
+<div class="description">64538: Scene: Display Carpet</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,81 +45,108 @@ Used by the routines at <a href="56951.html">RunHandlers</a> and <a href="63766.
 </td>
 </tr>
 <tr>
-<td class="address-2"><span id="64538"></span>64538</td>
-<td class="instruction">LD A,(54270)</td>
-<td class="comment-1" rowspan="3">Return if *<a href="54270.html">54270</a> is zero.</td>
+<td class="routine-comment" colspan="5">
+<span id="64538"></span>
+<div class="comments">
+<div class="paragraph">
+Return if this scene doesn't contain the carpet.
+</div>
+</div>
+</td>
 </tr>
 <tr>
+<td class="asm-label">Scene_DisplayCarpet</td>
+<td class="address-2"><span id="64538"></span>64538</td>
+<td class="instruction">LD A,(54270)</td>
+<td class="comment-1" rowspan="3">Return if *<a href="54270.html">Scene_Carpet</a> is 0.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64541"></span>64541</td>
 <td class="instruction">AND A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64542"></span>64542</td>
 <td class="instruction">RET Z</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64543"></span>64543</td>
 <td class="instruction">LD BC,5382</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=5382.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=5382 (screen co-ordinates).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64546"></span>64546</td>
 <td class="instruction">CP 1</td>
-<td class="comment-1" rowspan="2">Jump to <a href="64538.html#64552">64552</a> if *<a href="54270.html">54270</a> is 1.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="64538.html#64552">Scene_DisplayCarpet_0</a> if *<a href="54270.html">Scene_Carpet</a> is 1.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64548"></span>64548</td>
-<td class="instruction">JR Z,<a href="64538.html#64552">64552</a></td>
+<td class="instruction">JR Z,<a href="64538.html#64552">Scene_DisplayCarpet_0</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64550"></span>64550</td>
 <td class="instruction">LD C,22</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=22.</td>
 </tr>
 <tr>
+<td class="asm-label">Scene_DisplayCarpet_0</td>
 <td class="address-2"><span id="64552"></span>64552</td>
 <td class="instruction">LD A,127</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=127.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64554"></span>64554</td>
 <td class="instruction">PUSH BC</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">BC</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64555"></span>64555</td>
-<td class="instruction">CALL <a href="54985.html">54985</a></td>
-<td class="comment-1" rowspan="1">Call <a href="54985.html">54985</a>.</td>
+<td class="instruction">CALL <a href="54985.html">PrintSprite</a></td>
+<td class="comment-1" rowspan="1">Call <a href="54985.html">PrintSprite</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64558"></span>64558</td>
 <td class="instruction">POP BC</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64559"></span>64559</td>
 <td class="instruction">LD A,C</td>
 <td class="comment-1" rowspan="3"><span class="register">C</span>+=4.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64560"></span>64560</td>
 <td class="instruction">ADD A,4</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64562"></span>64562</td>
 <td class="instruction">LD C,A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64563"></span>64563</td>
 <td class="instruction">LD A,127</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=127.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64565"></span>64565</td>
 <td class="instruction">CALL <a href="55286.html">55286</a></td>
 <td class="comment-1" rowspan="1">Call <a href="55286.html">55286</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="64568"></span>64568</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

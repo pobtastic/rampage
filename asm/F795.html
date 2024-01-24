@@ -118,7 +118,7 @@ Used by the routine at <a href="F788.html">F788</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="f7a5"></span>F7A5</td>
 <td class="instruction">LD A,B</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=currently processed monster ID.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -127,10 +127,20 @@ Used by the routine at <a href="F788.html">F788</a>.
 <td class="comment-1" rowspan="1">Call <a href="DD52.html">SetIYMonsterData</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f7a9"></span>
+<div class="comments">
+<div class="paragraph">
+<span class="register">IX</span> now contains a pointer to the currently processed monster state data.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f7a9"></span>F7A9</td>
 <td class="instruction">PUSH IY</td>
-<td class="comment-1" rowspan="2"><span class="register">IX</span>=<span class="register">IY</span>.</td>
+<td class="comment-1" rowspan="2"><span class="register">IX</span>=<span class="register">IY</span> using the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -147,13 +157,23 @@ Used by the routine at <a href="F788.html">F788</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="f7ae"></span>F7AE</td>
 <td class="instruction">CALL <a href="DD4D.html">Convert_To_MonsterData</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DD4D.html">Convert_To_MonsterData</a>.</td>
+<td class="comment-1" rowspan="1">Call <a href="DD4D.html">Convert_To_MonsterData</a>, on return - <span class="register">A</span> will contain the action monster ID and <span class="register">IY</span> the monster state.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="f7b1"></span>
+<div class="comments">
+<div class="paragraph">
+Is the action targeting the currently processed monster?
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f7b1"></span>F7B1</td>
 <td class="instruction">CP B</td>
-<td class="comment-1" rowspan="2">Jump to <a href="F795.html#f7da">Handler_Monsters_Next</a> if <span class="register">A</span> is equal to <span class="register">B</span>.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="F795.html#f7da">Handler_Monsters_Next</a> if the action is for the monster currently being processed.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -302,98 +322,108 @@ Take off two hit points from the monsters energy.
 <td class="asm-label"></td>
 <td class="address-1"><span id="f7e1"></span>F7E1</td>
 <td class="instruction">CP $05</td>
-<td class="comment-1" rowspan="2">Jump to <a href="F795.html#f804">Handler_Monsters_1</a> if <span class="register">A</span> is equal to 05.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="F795.html#f804">Housekeeping_Monsters_Next</a> if <span class="register">A</span> is equal to 05.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f7e3"></span>F7E3</td>
-<td class="instruction">JR Z,<a href="F795.html#f804">Handler_Monsters_1</a></td>
+<td class="instruction">JR Z,<a href="F795.html#f804">Housekeeping_Monsters_Next</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f7e5"></span>F7E5</td>
 <td class="instruction">CP $40</td>
-<td class="comment-1" rowspan="2">Jump to <a href="F795.html#f808">Handler_Monsters_2</a> if <span class="register">A</span> is lower than 40.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="F795.html#f808">Handler_Vehicle_Punched</a> if <span class="register">A</span> is lower than 40.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f7e7"></span>F7E7</td>
-<td class="instruction">JR C,<a href="F795.html#f808">Handler_Monsters_2</a></td>
+<td class="instruction">JR C,<a href="F795.html#f808">Handler_Vehicle_Punched</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f7e9"></span>F7E9</td>
 <td class="instruction">CP $79</td>
-<td class="comment-1" rowspan="2">Jump to <a href="F795.html#f82b">Handler_Monsters_3</a> if <span class="register">A</span> is equal to 79.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="F795.html#f82b">Handler_Monsters_1</a> if <span class="register">A</span> is equal to 79.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f7eb"></span>F7EB</td>
-<td class="instruction">JR Z,<a href="F795.html#f82b">Handler_Monsters_3</a></td>
+<td class="instruction">JR Z,<a href="F795.html#f82b">Handler_Monsters_1</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f7ed"></span>F7ED</td>
 <td class="instruction">CP $7B</td>
-<td class="comment-1" rowspan="2">Jump to <a href="F795.html#f804">Handler_Monsters_1</a> if <span class="register">A</span> is equal to 7B.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="F795.html#f804">Housekeeping_Monsters_Next</a> if <span class="register">A</span> is equal to 7B.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f7ef"></span>F7EF</td>
-<td class="instruction">JR Z,<a href="F795.html#f804">Handler_Monsters_1</a></td>
+<td class="instruction">JR Z,<a href="F795.html#f804">Housekeeping_Monsters_Next</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f7f1"></span>F7F1</td>
 <td class="instruction">CP $7F</td>
-<td class="comment-1" rowspan="2">Jump to <a href="F795.html#f804">Handler_Monsters_1</a> if <span class="register">A</span> is equal to 7F.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="F795.html#f804">Housekeeping_Monsters_Next</a> if <span class="register">A</span> is equal to 7F.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f7f3"></span>F7F3</td>
-<td class="instruction">JR Z,<a href="F795.html#f804">Handler_Monsters_1</a></td>
+<td class="instruction">JR Z,<a href="F795.html#f804">Housekeeping_Monsters_Next</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f7f5"></span>F7F5</td>
 <td class="instruction">CP $75</td>
-<td class="comment-1" rowspan="2">Jump to <a href="F795.html#f804">Handler_Monsters_1</a> if <span class="register">A</span> is equal to 75.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="F795.html#f804">Housekeeping_Monsters_Next</a> if <span class="register">A</span> is equal to 75.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f7f7"></span>F7F7</td>
-<td class="instruction">JR Z,<a href="F795.html#f804">Handler_Monsters_1</a></td>
+<td class="instruction">JR Z,<a href="F795.html#f804">Housekeeping_Monsters_Next</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f7f9"></span>F7F9</td>
 <td class="instruction">CP $77</td>
-<td class="comment-1" rowspan="2">Jump to <a href="F795.html#f804">Handler_Monsters_1</a> if <span class="register">A</span> is equal to 77.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="F795.html#f804">Housekeeping_Monsters_Next</a> if <span class="register">A</span> is equal to 77.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f7fb"></span>F7FB</td>
-<td class="instruction">JR Z,<a href="F795.html#f804">Handler_Monsters_1</a></td>
+<td class="instruction">JR Z,<a href="F795.html#f804">Housekeeping_Monsters_Next</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f7fd"></span>F7FD</td>
 <td class="instruction">CP $DD</td>
-<td class="comment-1" rowspan="2">Jump to <a href="F795.html#f851">Handler_Monsters_5</a> if <span class="register">A</span> is lower than DD.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="F795.html#f851">Handler_Monsters_3</a> if <span class="register">A</span> is lower than DD.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f7ff"></span>F7FF</td>
-<td class="instruction">JR C,<a href="F795.html#f851">Handler_Monsters_5</a></td>
+<td class="instruction">JR C,<a href="F795.html#f851">Handler_Monsters_3</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f801"></span>F801</td>
-<td class="instruction">JP <a href="F795.html#f878">Handler_Monsters_6</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="F795.html#f878">Handler_Monsters_6</a>.</td>
+<td class="instruction">JP <a href="F795.html#f878">Handler_Helicopter_Punched</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="F795.html#f878">Handler_Helicopter_Punched</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Monsters_1</td>
+<td class="routine-comment" colspan="5">
+<span id="f804"></span>
+<div class="comments">
+<div class="paragraph">
+Tidies the stack before moving onto the next monster.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Housekeeping_Monsters_Next</td>
 <td class="address-2"><span id="f804"></span>F804</td>
 <td class="instruction">POP BC</td>
 <td class="comment-1" rowspan="2">Restore <span class="register">BC</span> and <span class="register">HL</span> from the stack.</td>
@@ -410,10 +440,20 @@ Take off two hit points from the monsters energy.
 <td class="comment-1" rowspan="1">Jump to <a href="F795.html#f7da">Handler_Monsters_Next</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Monsters_2</td>
+<td class="routine-comment" colspan="5">
+<span id="f808"></span>
+<div class="comments">
+<div class="paragraph">
+Handles when a vehicle has been punched.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_Vehicle_Punched</td>
 <td class="address-2"><span id="f808"></span>F808</td>
 <td class="instruction">LD A,$18</td>
-<td class="comment-1" rowspan="2">Write 18 to *<a href="D401.html">VehicleCounter</a>.</td>
+<td class="comment-1" rowspan="2">Reset *<a href="D401.html">VehicleCounter</a> back to 18.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -424,7 +464,7 @@ Take off two hit points from the monsters energy.
 <td class="asm-label"></td>
 <td class="address-1"><span id="f80d"></span>F80D</td>
 <td class="instruction">LD A,B</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=currently processed monster ID.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -477,13 +517,13 @@ Take off two hit points from the monsters energy.
 <td class="asm-label"></td>
 <td class="address-1"><span id="f81f"></span>F81F</td>
 <td class="instruction">LD A,$77</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=77.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=explosion sprite (77).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f821"></span>F821</td>
-<td class="instruction">CALL <a href="D6C9.html">$D6C9</a></td>
-<td class="comment-1" rowspan="1">Call <a href="D6C9.html">D6C9</a>.</td>
+<td class="instruction">CALL <a href="D6C9.html">PrintSprite</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D6C9.html">PrintSprite</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -511,11 +551,11 @@ Take off two hit points from the monsters energy.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f829"></span>F829</td>
-<td class="instruction">JR <a href="F795.html#f804">Handler_Monsters_1</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="F795.html#f804">Handler_Monsters_1</a>.</td>
+<td class="instruction">JR <a href="F795.html#f804">Housekeeping_Monsters_Next</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="F795.html#f804">Housekeeping_Monsters_Next</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Monsters_3</td>
+<td class="asm-label">Handler_Monsters_1</td>
 <td class="address-2"><span id="f82b"></span>F82B</td>
 <td class="instruction">LD A,B</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
@@ -553,8 +593,8 @@ Take off two hit points from the monsters energy.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f83a"></span>F83A</td>
-<td class="instruction">JR NC,<a href="F795.html#f83e">Handler_Monsters_4</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="F795.html#f83e">Handler_Monsters_4</a> if {} is higher.</td>
+<td class="instruction">JR NC,<a href="F795.html#f83e">Handler_Monsters_2</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="F795.html#f83e">Handler_Monsters_2</a> if {} is higher.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -563,7 +603,7 @@ Take off two hit points from the monsters energy.
 <td class="comment-1" rowspan="1">Flip bit 7.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Monsters_4</td>
+<td class="asm-label">Handler_Monsters_2</td>
 <td class="address-2"><span id="f83e"></span>F83E</td>
 <td class="instruction">OR %01000000</td>
 <td class="comment-1" rowspan="1">Set bit 6.</td>
@@ -618,11 +658,11 @@ Take off two hit points from the monsters energy.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f84f"></span>F84F</td>
-<td class="instruction">JR <a href="F795.html#f804">Handler_Monsters_1</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="F795.html#f804">Handler_Monsters_1</a>.</td>
+<td class="instruction">JR <a href="F795.html#f804">Housekeeping_Monsters_Next</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="F795.html#f804">Housekeeping_Monsters_Next</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Monsters_5</td>
+<td class="asm-label">Handler_Monsters_3</td>
 <td class="address-2"><span id="f851"></span>F851</td>
 <td class="instruction">LD A,B</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
@@ -637,7 +677,7 @@ Take off two hit points from the monsters energy.
 <td class="asm-label"></td>
 <td class="address-1"><span id="f855"></span>F855</td>
 <td class="instruction">LD A,(IY+$04)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="F795.html#f804">Handler_Monsters_1</a> if *<span class="register">IY</span>+04 is not zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="F795.html#f804">Housekeeping_Monsters_Next</a> if *<span class="register">IY</span>+04 is not zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -647,13 +687,13 @@ Take off two hit points from the monsters energy.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f859"></span>F859</td>
-<td class="instruction">JR NZ,<a href="F795.html#f804">Handler_Monsters_1</a></td>
+<td class="instruction">JR NZ,<a href="F795.html#f804">Housekeeping_Monsters_Next</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f85b"></span>F85B</td>
 <td class="instruction">LD A,(IY+$02)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="F795.html#f804">Handler_Monsters_1</a> if *<span class="register">IY</span>+02 is zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="F795.html#f804">Housekeeping_Monsters_Next</a> if *<span class="register">IY</span>+02 is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -663,7 +703,7 @@ Take off two hit points from the monsters energy.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f85f"></span>F85F</td>
-<td class="instruction">JR Z,<a href="F795.html#f804">Handler_Monsters_1</a></td>
+<td class="instruction">JR Z,<a href="F795.html#f804">Housekeeping_Monsters_Next</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -727,11 +767,21 @@ Take off two hit points from the monsters energy.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f876"></span>F876</td>
-<td class="instruction">JR <a href="F795.html#f804">Handler_Monsters_1</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="F795.html#f804">Handler_Monsters_1</a>.</td>
+<td class="instruction">JR <a href="F795.html#f804">Housekeeping_Monsters_Next</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="F795.html#f804">Housekeeping_Monsters_Next</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Monsters_6</td>
+<td class="routine-comment" colspan="5">
+<span id="f878"></span>
+<div class="comments">
+<div class="paragraph">
+Handles when a helicopter has been punched.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_Helicopter_Punched</td>
 <td class="address-2"><span id="f878"></span>F878</td>
 <td class="instruction">PUSH AF</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">AF</span> on the stack.</td>
@@ -776,13 +826,12 @@ Take off two hit points from the monsters energy.
 <td class="asm-label"></td>
 <td class="address-1"><span id="f884"></span>F884</td>
 <td class="instruction">ADD A,A</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">A</span>.</td>
+<td class="comment-1" rowspan="2"><span class="register">A</span>*=04.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f885"></span>F885</td>
 <td class="instruction">ADD A,A</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -800,19 +849,18 @@ Take off two hit points from the monsters energy.
 <td class="asm-label"></td>
 <td class="address-1"><span id="f889"></span>F889</td>
 <td class="instruction">LD DE,$D2A7</td>
-<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="D2A7.html">Table_SomethingHelicopters</a>.</td>
+<td class="comment-1" rowspan="2"><span class="register">HL</span>+=<a href="D2A7.html">Table_SomethingHelicopters</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f88c"></span>F88C</td>
 <td class="instruction">ADD HL,DE</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">DE</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f88d"></span>F88D</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="F795.html#f804">Handler_Monsters_1</a> if *<span class="register">HL</span> is zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="F795.html#f804">Housekeeping_Monsters_Next</a> if *<span class="register">HL</span> is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -822,25 +870,23 @@ Take off two hit points from the monsters energy.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f88f"></span>F88F</td>
-<td class="instruction">JP Z,<a href="F795.html#f804">Handler_Monsters_1</a></td>
+<td class="instruction">JP Z,<a href="F795.html#f804">Housekeeping_Monsters_Next</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f892"></span>F892</td>
 <td class="instruction">LD A,($D3F6)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D3F6.html">D3F6</a>.</td>
+<td class="comment-1" rowspan="3">Decrease *<a href="D3F6.html">NumberOnScreenHelicopters</a> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f895"></span>F895</td>
 <td class="instruction">DEC A</td>
-<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f896"></span>F896</td>
 <td class="instruction">LD ($D3F6),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3F6.html">D3F6</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -876,23 +922,33 @@ Take off two hit points from the monsters energy.
 <td class="asm-label"></td>
 <td class="address-1"><span id="f8a0"></span>F8A0</td>
 <td class="instruction">CP $03</td>
-<td class="comment-1" rowspan="2">Jump to <a href="F795.html#f8b8">Handler_Monsters_8</a> if <span class="register">A</span> is lower than 03.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="F795.html#f8b8">SetExplosionCoordinates</a> if <span class="register">A</span> is lower than 03.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f8a2"></span>F8A2</td>
-<td class="instruction">JR C,<a href="F795.html#f8b8">Handler_Monsters_8</a></td>
+<td class="instruction">JR C,<a href="F795.html#f8b8">SetExplosionCoordinates</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f8a4"></span>F8A4</td>
 <td class="instruction">CP $06</td>
-<td class="comment-1" rowspan="2">Jump to <a href="F795.html#f8b8">Handler_Monsters_8</a> if <span class="register">A</span> is higher than 06.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="F795.html#f8b8">SetExplosionCoordinates</a> if <span class="register">A</span> is higher than 06.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f8a6"></span>F8A6</td>
-<td class="instruction">JR NC,<a href="F795.html#f8b8">Handler_Monsters_8</a></td>
+<td class="instruction">JR NC,<a href="F795.html#f8b8">SetExplosionCoordinates</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="f8a8"></span>
+<div class="comments">
+<div class="paragraph">
+Set <span class="register">BC</span> to the screen co-ordinates for the explosion.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -913,16 +969,26 @@ Take off two hit points from the monsters energy.
 <td class="comment-1" rowspan="1"><span class="register">C</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Monsters_7</td>
+<td class="routine-comment" colspan="5">
+<span id="f8ab"></span>
+<div class="comments">
+<div class="paragraph">
+Displays an explosion sprite.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_Helicopter_Explosion</td>
 <td class="address-2"><span id="f8ab"></span>F8AB</td>
 <td class="instruction">LD A,$77</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=77.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=explosion sprite (77).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f8ad"></span>F8AD</td>
-<td class="instruction">CALL <a href="D6C9.html">$D6C9</a></td>
-<td class="comment-1" rowspan="1">Call <a href="D6C9.html">D6C9</a>.</td>
+<td class="instruction">CALL <a href="D6C9.html">PrintSprite</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D6C9.html">PrintSprite</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -950,11 +1016,21 @@ Take off two hit points from the monsters energy.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f8b5"></span>F8B5</td>
-<td class="instruction">JP <a href="F795.html#f804">Handler_Monsters_1</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="F795.html#f804">Handler_Monsters_1</a>.</td>
+<td class="instruction">JP <a href="F795.html#f804">Housekeeping_Monsters_Next</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="F795.html#f804">Housekeeping_Monsters_Next</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Monsters_8</td>
+<td class="routine-comment" colspan="5">
+<span id="f8b8"></span>
+<div class="comments">
+<div class="paragraph">
+Set <span class="register">BC</span> to the screen co-ordinates for the explosion.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">SetExplosionCoordinates</td>
 <td class="address-2"><span id="f8b8"></span>F8B8</td>
 <td class="instruction">LD C,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=*<span class="register">HL</span>.</td>
@@ -979,8 +1055,8 @@ Take off two hit points from the monsters energy.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f8bc"></span>F8BC</td>
-<td class="instruction">JR <a href="F795.html#f8ab">Handler_Monsters_7</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="F795.html#f8ab">Handler_Monsters_7</a>.</td>
+<td class="instruction">JR <a href="F795.html#f8ab">Handler_Helicopter_Explosion</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="F795.html#f8ab">Handler_Helicopter_Explosion</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">

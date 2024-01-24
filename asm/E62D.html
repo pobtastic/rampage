@@ -47,7 +47,7 @@ Used by the routine at <a href="E119.html">E119</a>.
 <tr>
 <td class="address-2"><span id="e62d"></span>E62D</td>
 <td class="instruction">LD A,($D244)</td>
-<td class="comment-1" rowspan="3">Return if *<a href="D244.html">D244</a> is equal to FF.</td>
+<td class="comment-1" rowspan="3">Return if *<a href="D244.html">JumpTable_Pointer</a> is equal to FF.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e630"></span>E630</td>
@@ -60,7 +60,7 @@ Used by the routine at <a href="E119.html">E119</a>.
 <tr>
 <td class="address-1"><span id="e633"></span>E633</td>
 <td class="instruction">CP $20</td>
-<td class="comment-1" rowspan="2">Jump to <a href="E62D.html#e67c">E67C</a> if *<a href="D244.html">D244</a> is higher than 20.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E62D.html#e67c">E67C</a> if *<a href="D244.html">JumpTable_Pointer</a> is higher than 20.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e635"></span>E635</td>
@@ -207,7 +207,7 @@ Used by the routine at <a href="E119.html">E119</a>.
 <td class="address-2"><span id="e66f"></span>E66F</td>
 <td class="instruction">LD A,$06</td>
 <td class="comment-1" rowspan="3">Write 06 to: <ul class="">
-<li>*<a href="D244.html">D244</a></li>
+<li>*<a href="D244.html">JumpTable_Pointer</a></li>
 <li>*<a href="D24A.html">D24A</a></li>
 </ul></td>
 </tr>
@@ -241,12 +241,21 @@ This entry point is used by the routines at <a href="E68C.html">E68C</a>, <a hre
 <tr>
 <td class="address-2"><span id="e67c"></span>E67C</td>
 <td class="instruction">LD A,($D244)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D244.html">D244</a>.</td>
+<td class="comment-1" rowspan="2"><span class="register">A</span>=*<a href="D244.html">JumpTable_Pointer</a>*02.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e67f"></span>E67F</td>
 <td class="instruction">ADD A,A</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e680"></span>
+<div class="comments">
+<div class="paragraph">
+Create an offset using <span class="register">HL</span>.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e680"></span>E680</td>
@@ -261,12 +270,21 @@ This entry point is used by the routines at <a href="E68C.html">E68C</a>, <a hre
 <tr>
 <td class="address-1"><span id="e683"></span>E683</td>
 <td class="instruction">LD DE,$EF98</td>
-<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="EF98.html">Jump_Table</a>.</td>
+<td class="comment-1" rowspan="2"><span class="register">HL</span>+=<a href="EF98.html">Jump_Table</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e686"></span>E686</td>
 <td class="instruction">ADD HL,DE</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e687"></span>
+<div class="comments">
+<div class="paragraph">
+Fetch the address to jump and store it in <span class="register">HL</span>.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="address-1"><span id="e687"></span>E687</td>

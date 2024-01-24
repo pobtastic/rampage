@@ -358,19 +358,17 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="f187"></span>F187</td>
 <td class="instruction">LD A,($D3F6)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D3F6.html">D3F6</a>.</td>
+<td class="comment-1" rowspan="3">Decrease *<a href="D3F6.html">NumberOnScreenHelicopters</a> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f18a"></span>F18A</td>
 <td class="instruction">DEC A</td>
-<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f18b"></span>F18B</td>
 <td class="instruction">LD ($D3F6),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3F6.html">D3F6</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1074,8 +1072,8 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="asm-label">Something_Helicopter_19</td>
 <td class="address-2"><span id="f276"></span>F276</td>
-<td class="instruction">CALL <a href="D6C9.html">$D6C9</a></td>
-<td class="comment-1" rowspan="1">Call <a href="D6C9.html">D6C9</a>.</td>
+<td class="instruction">CALL <a href="D6C9.html">PrintSprite</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D6C9.html">PrintSprite</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

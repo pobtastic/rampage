@@ -162,7 +162,7 @@ Next: <a href="EA9C.html">EA9C</a>
 <tr>
 <td class="address-1"><span id="ea7c"></span>EA7C</td>
 <td class="instruction">LD A,($D244)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="EA43.html#ea88">EA88</a> if *<a href="D244.html">D244</a> is not equal to 20.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EA43.html#ea88">EA88</a> if *<a href="D244.html">JumpTable_Pointer</a> is not equal to 20.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ea7f"></span>EA7F</td>
@@ -185,7 +185,7 @@ Next: <a href="EA9C.html">EA9C</a>
 <tr>
 <td class="address-2"><span id="ea88"></span>EA88</td>
 <td class="instruction">LD A,$09</td>
-<td class="comment-1" rowspan="2">Write 09 to *<a href="D244.html">D244</a>.</td>
+<td class="comment-1" rowspan="2">Write 09 to *<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ea8a"></span>EA8A</td>
@@ -194,7 +194,7 @@ Next: <a href="EA9C.html">EA9C</a>
 <tr>
 <td class="address-1"><span id="ea8d"></span>EA8D</td>
 <td class="instruction">LD IY,$D244</td>
-<td class="comment-1" rowspan="1"><span class="register">IY</span>=<a href="D244.html">D244</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">IY</span>=<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">

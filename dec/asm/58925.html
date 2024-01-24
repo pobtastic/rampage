@@ -47,7 +47,7 @@ Used by the routine at <a href="57625.html">57625</a>.
 <tr>
 <td class="address-2"><span id="58925"></span>58925</td>
 <td class="instruction">LD A,(53828)</td>
-<td class="comment-1" rowspan="3">Return if *<a href="53828.html">53828</a> is equal to 255.</td>
+<td class="comment-1" rowspan="3">Return if *<a href="53828.html">JumpTable_Pointer</a> is equal to 255.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="58928"></span>58928</td>
@@ -60,7 +60,7 @@ Used by the routine at <a href="57625.html">57625</a>.
 <tr>
 <td class="address-1"><span id="58931"></span>58931</td>
 <td class="instruction">CP 32</td>
-<td class="comment-1" rowspan="2">Jump to <a href="58925.html#59004">59004</a> if *<a href="53828.html">53828</a> is higher than 32.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="58925.html#59004">59004</a> if *<a href="53828.html">JumpTable_Pointer</a> is higher than 32.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="58933"></span>58933</td>
@@ -207,7 +207,7 @@ Used by the routine at <a href="57625.html">57625</a>.
 <td class="address-2"><span id="58991"></span>58991</td>
 <td class="instruction">LD A,6</td>
 <td class="comment-1" rowspan="3">Write 6 to: <ul class="">
-<li>*<a href="53828.html">53828</a></li>
+<li>*<a href="53828.html">JumpTable_Pointer</a></li>
 <li>*<a href="53834.html">53834</a></li>
 </ul></td>
 </tr>
@@ -241,12 +241,21 @@ This entry point is used by the routines at <a href="59020.html">59020</a>, <a h
 <tr>
 <td class="address-2"><span id="59004"></span>59004</td>
 <td class="instruction">LD A,(53828)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53828.html">53828</a>.</td>
+<td class="comment-1" rowspan="2"><span class="register">A</span>=*<a href="53828.html">JumpTable_Pointer</a>*2.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="59007"></span>59007</td>
 <td class="instruction">ADD A,A</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="59008"></span>
+<div class="comments">
+<div class="paragraph">
+Create an offset using <span class="register">HL</span>.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="address-1"><span id="59008"></span>59008</td>
@@ -261,12 +270,21 @@ This entry point is used by the routines at <a href="59020.html">59020</a>, <a h
 <tr>
 <td class="address-1"><span id="59011"></span>59011</td>
 <td class="instruction">LD DE,61336</td>
-<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="61336.html">Jump_Table</a>.</td>
+<td class="comment-1" rowspan="2"><span class="register">HL</span>+=<a href="61336.html">Jump_Table</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="59014"></span>59014</td>
 <td class="instruction">ADD HL,DE</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="59015"></span>
+<div class="comments">
+<div class="paragraph">
+Fetch the address to jump and store it in <span class="register">HL</span>.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="address-1"><span id="59015"></span>59015</td>

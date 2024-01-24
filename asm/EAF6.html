@@ -58,7 +58,7 @@ Next: <a href="EC8A.html">EC8A</a>
 <tr>
 <td class="address-1"><span id="eafe"></span>EAFE</td>
 <td class="instruction">LD A,($D244)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="EAF6.html#eb2f">EB2F</a> if *<a href="D244.html">D244</a> is equal to 1C.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EAF6.html#eb2f">EB2F</a> if *<a href="D244.html">JumpTable_Pointer</a> is equal to 1C.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="eb01"></span>EB01</td>
@@ -336,7 +336,7 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 <tr>
 <td class="address-2"><span id="eb71"></span>EB71</td>
 <td class="instruction">LD A,($D3FF)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="EAF6.html#eb88">EB88</a> if *<a href="D3FE.html#d3ff">D3FF</a> is not zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EAF6.html#eb88">EB88</a> if *<a href="D3FF.html">D3FF</a> is not zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="eb74"></span>EB74</td>
@@ -425,7 +425,7 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 <tr>
 <td class="address-1"><span id="eb94"></span>EB94</td>
 <td class="instruction">LD A,($D3FF)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="EAF6.html#ebdd">EBDD</a> if *<a href="D3FE.html#d3ff">D3FF</a> is not zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EAF6.html#ebdd">EBDD</a> if *<a href="D3FF.html">D3FF</a> is not zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="eb97"></span>EB97</td>
@@ -490,7 +490,7 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 <tr>
 <td class="address-1"><span id="ebb7"></span>EBB7</td>
 <td class="instruction">LD A,($D244)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="EAF6.html#ebdd">EBDD</a> if *<a href="D244.html">D244</a> is equal to 1C.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EAF6.html#ebdd">EBDD</a> if *<a href="D244.html">JumpTable_Pointer</a> is equal to 1C.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ebba"></span>EBBA</td>
@@ -565,7 +565,7 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 <tr>
 <td class="address-2"><span id="ebdd"></span>EBDD</td>
 <td class="instruction">LD A,($D3FF)</td>
-<td class="comment-1" rowspan="3">Return if *<a href="D3FE.html#d3ff">D3FF</a> is not zero.</td>
+<td class="comment-1" rowspan="3">Return if *<a href="D3FF.html">D3FF</a> is not zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ebe0"></span>EBE0</td>
@@ -597,7 +597,7 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 <tr>
 <td class="address-1"><span id="ebe8"></span>EBE8</td>
 <td class="instruction">LD A,($D3FF)</td>
-<td class="comment-1" rowspan="3">Return if *<a href="D3FE.html#d3ff">D3FF</a> is not zero.</td>
+<td class="comment-1" rowspan="3">Return if *<a href="D3FF.html">D3FF</a> is not zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ebeb"></span>EBEB</td>
@@ -663,7 +663,7 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 <tr>
 <td class="address-1"><span id="ec0a"></span>EC0A</td>
 <td class="instruction">LD A,($D244)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="EAF6.html#ec30">EC30</a> if *<a href="D244.html">D244</a> is equal to 1C.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EAF6.html#ec30">EC30</a> if *<a href="D244.html">JumpTable_Pointer</a> is equal to 1C.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ec0d"></span>EC0D</td>
@@ -891,7 +891,7 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 <tr>
 <td class="address-1"><span id="ec73"></span>EC73</td>
 <td class="instruction">LD ($D244),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D244.html">D244</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ec76"></span>EC76</td>
@@ -909,7 +909,7 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 <tr>
 <td class="address-1"><span id="ec7e"></span>EC7E</td>
 <td class="instruction">LD A,$0B</td>
-<td class="comment-1" rowspan="2">Write 0B to *<a href="D244.html">D244</a>.</td>
+<td class="comment-1" rowspan="2">Write 0B to *<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ec80"></span>EC80</td>

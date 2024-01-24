@@ -203,7 +203,7 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <td class="asm-label">Handler_Helicopters_1</td>
 <td class="address-2"><span id="dc1c"></span>DC1C</td>
 <td class="instruction">LD A,($D3F6)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="DBE5.html#dc4d">Handler_Helicopters_2</a> if *<a href="D3F6.html">D3F6</a> is equal to 06.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="DBE5.html#dc4d">Handler_Helicopters_2</a> if *<a href="D3F6.html">NumberOnScreenHelicopters</a> is equal to 06.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -411,7 +411,7 @@ Loop to find an empty slot.
 <td class="asm-label"></td>
 <td class="address-1"><span id="dc58"></span>DC58</td>
 <td class="instruction">LD A,($D3F6)</td>
-<td class="comment-1" rowspan="3">Increment *<a href="D3F6.html">D3F6</a> by one.</td>
+<td class="comment-1" rowspan="3">Increment *<a href="D3F6.html">NumberOnScreenHelicopters</a> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -554,8 +554,8 @@ Loop to find an empty slot.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="dc8e"></span>DC8E</td>
-<td class="instruction">CALL <a href="D6C9.html">$D6C9</a></td>
-<td class="comment-1" rowspan="1">Call <a href="D6C9.html">D6C9</a>.</td>
+<td class="instruction">CALL <a href="D6C9.html">PrintSprite</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D6C9.html">PrintSprite</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
