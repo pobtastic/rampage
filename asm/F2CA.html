@@ -33,7 +33,7 @@ Next: <a href="F31C.html">F31C</a>
 </td>
 </tr>
 </table>
-<div class="description">F2CA: Handler: Energy</div>
+<div class="description">F2CA: Handler: Energy Bar</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,7 +45,21 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 </td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Energy</td>
+<td class="routine-comment" colspan="5">
+<span id="f2ca"></span>
+<div class="comments">
+<div class="paragraph">
+<table class="default">
+<tr>
+<td class="centre" colspan="1" rowspan="1"><img alt="energy-pixel" src="../images/scr/energy-pixel.png" /></td>
+</tr>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_EnergyBar</td>
 <td class="address-2"><span id="f2ca"></span>F2CA</td>
 <td class="instruction">LD HL,$5F20</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="5F00.html#5f20">5F20</a>.</td>
@@ -75,7 +89,7 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <td class="comment-1" rowspan="1"><span class="register">A</span>=FF.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Energy_0</td>
+<td class="asm-label">Handler_EnergyBar_0</td>
 <td class="address-2"><span id="f2d6"></span>F2D6</td>
 <td class="instruction">LD (HL),C</td>
 <td class="comment-1" rowspan="1">Write <span class="register">C</span> to *<span class="register">HL</span>.</td>
@@ -101,20 +115,35 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f2da"></span>F2DA</td>
-<td class="instruction">DJNZ <a href="F2CA.html#f2d6">Handler_Energy_0</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="F2CA.html#f2d6">Handler_Energy_0</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="F2CA.html#f2d6">Handler_EnergyBar_0</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="F2CA.html#f2d6">Handler_EnergyBar_0</a> until counter is zero.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="f2dc"></span>
+<div class="comments">
+<div class="paragraph">
+George:
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f2dc"></span>F2DC</td>
 <td class="instruction">LD C,$22</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=22.</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=horizontal co-ordinate (22).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f2de"></span>F2DE</td>
 <td class="instruction">LD H,$6A</td>
-<td class="comment-1" rowspan="1"><span class="register">H</span>=6A.</td>
+<td class="comment-1" rowspan="1"><span class="register">H</span>=INK:
+RED,
+PAPER:
+CYAN
+(BRIGHT)
+.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -125,20 +154,35 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f2e3"></span>F2E3</td>
-<td class="instruction">CALL <a href="F2CA.html#f2fb">Handler_Energy_1</a></td>
-<td class="comment-1" rowspan="1">Call <a href="F2CA.html#f2fb">Handler_Energy_1</a>.</td>
+<td class="instruction">CALL <a href="F2CA.html#f2fb">Handler_EnergyBar_1</a></td>
+<td class="comment-1" rowspan="1">Call <a href="F2CA.html#f2fb">Handler_EnergyBar_1</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="f2e6"></span>
+<div class="comments">
+<div class="paragraph">
+Lizzy:
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f2e6"></span>F2E6</td>
 <td class="instruction">LD C,$2C</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=2C.</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=horizontal co-ordinate (2C).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f2e8"></span>F2E8</td>
 <td class="instruction">LD H,$6C</td>
-<td class="comment-1" rowspan="1"><span class="register">H</span>=6C.</td>
+<td class="comment-1" rowspan="1"><span class="register">H</span>=INK:
+GREEN,
+PAPER:
+CYAN
+(BRIGHT)
+.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -149,20 +193,35 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f2ed"></span>F2ED</td>
-<td class="instruction">CALL <a href="F2CA.html#f2fb">Handler_Energy_1</a></td>
-<td class="comment-1" rowspan="1">Call <a href="F2CA.html#f2fb">Handler_Energy_1</a>.</td>
+<td class="instruction">CALL <a href="F2CA.html#f2fb">Handler_EnergyBar_1</a></td>
+<td class="comment-1" rowspan="1">Call <a href="F2CA.html#f2fb">Handler_EnergyBar_1</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="f2f0"></span>
+<div class="comments">
+<div class="paragraph">
+Ralph:
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f2f0"></span>F2F0</td>
 <td class="instruction">LD C,$36</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=36.</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=horizontal co-ordinate (36).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f2f2"></span>F2F2</td>
 <td class="instruction">LD H,$6F</td>
-<td class="comment-1" rowspan="1"><span class="register">H</span>=6F.</td>
+<td class="comment-1" rowspan="1"><span class="register">H</span>=INK:
+WHITE,
+PAPER:
+CYAN
+(BRIGHT)
+.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -173,8 +232,8 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f2f7"></span>F2F7</td>
-<td class="instruction">CALL <a href="F2CA.html#f2fb">Handler_Energy_1</a></td>
-<td class="comment-1" rowspan="1">Call <a href="F2CA.html#f2fb">Handler_Energy_1</a>.</td>
+<td class="instruction">CALL <a href="F2CA.html#f2fb">Handler_EnergyBar_1</a></td>
+<td class="comment-1" rowspan="1">Call <a href="F2CA.html#f2fb">Handler_EnergyBar_1</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -183,7 +242,7 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Energy_1</td>
+<td class="asm-label">Handler_EnergyBar_1</td>
 <td class="address-2"><span id="f2fb"></span>F2FB</td>
 <td class="instruction">LD B,$00</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=00.</td>
@@ -198,7 +257,7 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="f2fe"></span>F2FE</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="2">Return if <span class="register">A</span> is zero.</td>
+<td class="comment-1" rowspan="2">Return if the monsters energy is at zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -209,13 +268,13 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="f300"></span>F300</td>
 <td class="instruction">SUB $08</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>-=08.</td>
+<td class="comment-1" rowspan="1">Subtract 08 from the monsters energy held by <span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f302"></span>F302</td>
-<td class="instruction">JR C,<a href="F2CA.html#f30e">Handler_Energy_2</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="F2CA.html#f30e">Handler_Energy_2</a> if {} is lower.</td>
+<td class="instruction">JR C,<a href="F2CA.html#f30e">Handler_EnergyBar_2</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="F2CA.html#f30e">Handler_EnergyBar_2</a> if <span class="register">A</span> was lower than 08.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -239,7 +298,7 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="f30a"></span>F30A</td>
 <td class="instruction">EX AF,AF'</td>
-<td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
+<td class="comment-1" rowspan="1">Exchange the shadow <span class="register">AF</span> register back to the normal <span class="register">AF</span> register.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -250,11 +309,11 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="f30c"></span>F30C</td>
-<td class="instruction">JR <a href="F2CA.html#f2fb">Handler_Energy_1</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="F2CA.html#f2fb">Handler_Energy_1</a>.</td>
+<td class="instruction">JR <a href="F2CA.html#f2fb">Handler_EnergyBar_1</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="F2CA.html#f2fb">Handler_EnergyBar_1</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Energy_2</td>
+<td class="asm-label">Handler_EnergyBar_2</td>
 <td class="address-2"><span id="f30e"></span>F30E</td>
 <td class="instruction">ADD A,$08</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>+=08.</td>
@@ -324,7 +383,7 @@ Next: <a href="F31C.html">F31C</a>
 <div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
-<div><a href="asm/F2CA.html">Switch to decimal</a>.</div>
+<div><a href="../dec/asm/62154.html">Switch to decimal</a>.</div>
 </footer>
 </body>
 </html>

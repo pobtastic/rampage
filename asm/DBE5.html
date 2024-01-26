@@ -48,7 +48,7 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <td class="asm-label">Handler_Helicopters</td>
 <td class="address-2"><span id="dbe5"></span>DBE5</td>
 <td class="instruction">LD B,$06</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=06 (number of possible helicopters).</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=06 (maximum possible number of on-screen helicopters).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -60,7 +60,7 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="dbeb"></span>DBEB</td>
 <td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="2">Write 00 to *<a href="D247.html">Flag_VehicleOrientation</a>.</td>
+<td class="comment-1" rowspan="2">Write 00 to *<a href="D247.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -449,7 +449,7 @@ Loop to find an empty slot.
 <td class="asm-label"></td>
 <td class="address-1"><span id="dc68"></span>DC68</td>
 <td class="instruction">LD A,$01</td>
-<td class="comment-1" rowspan="2">Write 01 to *<a href="D247.html">Flag_VehicleOrientation</a>.</td>
+<td class="comment-1" rowspan="2">Write 01 to *<a href="D247.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -561,7 +561,7 @@ Loop to find an empty slot.
 <td class="asm-label"></td>
 <td class="address-1"><span id="dc91"></span>DC91</td>
 <td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="2">Write 00 to *<a href="D247.html">Flag_VehicleOrientation</a>.</td>
+<td class="comment-1" rowspan="2">Write 00 to *<a href="D247.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -625,7 +625,7 @@ Next: <a href="DCA1.html">DCA1</a>
 <div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
-<div><a href="asm/DBE5.html">Switch to decimal</a>.</div>
+<div><a href="../dec/asm/56293.html">Switch to decimal</a>.</div>
 </footer>
 </body>
 </html>

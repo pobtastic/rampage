@@ -30,6 +30,15 @@ gtag('config', 'G-75RERFCHBG');
 <th>Description</th>
 </tr>
 <tr>
+<td class="map-g"><span id="49569"></span><a href="../asm/49569.html">49569</a></td>
+<td class="map-length">1375</td>
+<td class="map-g-desc">
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/49569.html">Table: Sprite Information</a></div>
+<div class="map-entry-desc">
+</div>
+</td>
+</tr>
+<tr>
 <td class="map-g"><span id="51280"></span><a href="../asm/51280.html">51280</a></td>
 <td class="map-length">30</td>
 <td class="map-g-desc">
@@ -255,13 +264,13 @@ Counts up while the game plays, used as a random number generator (as it's never
 <td class="map-g"><span id="53831"></span><a href="../asm/53831.html">53831</a></td>
 <td class="map-length">1</td>
 <td class="map-g-desc">
-<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/53831.html">Vehicle Orientation Flag</a></div>
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/53831.html">Orientation Flag</a></div>
 <div class="map-entry-desc">
 <div class="paragraph">
 <table class="default">
 <tr>
 <th colspan="1" rowspan="1">Value</th>
-<th colspan="1" rowspan="1">Moving</th>
+<th colspan="1" rowspan="1">Facing</th>
 </tr>
 <tr>
 <td class="centre" colspan="1" rowspan="1">0</td>
@@ -350,19 +359,13 @@ Counts up while the game plays, used as a random number generator (as it's never
 </tr>
 <tr>
 <td class="map-g"><span id="53845"></span><a href="../asm/53845.html">53845</a></td>
-<td class="map-length">61</td>
+<td class="map-length">64</td>
 <td class="map-g-desc">
-<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/53845.html">Game status buffer entry at D255</a></div>
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/53845.html">Table: Humans</a></div>
 <div class="map-entry-desc">
+<div class="paragraph">
+See <a href="../asm/57949.html">Handler_Humans</a>.
 </div>
-</td>
-</tr>
-<tr>
-<td class="map-g"><span id="53906"></span><a href="../asm/53906.html">53906</a></td>
-<td class="map-length">3</td>
-<td class="map-g-desc">
-<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/53906.html">Game status buffer entry at D292</a></div>
-<div class="map-entry-desc">
 </div>
 </td>
 </tr>
@@ -383,6 +386,33 @@ See <a href="../asm/56293.html">Handler_Helicopters</a>.
 <td class="map-length">24</td>
 <td class="map-g-desc">
 <div class="map-entry-title-11"><a class="map-entry-title" href="../asm/53927.html">Table: Helicopter Something</a></div>
+<div class="map-entry-desc">
+</div>
+</td>
+</tr>
+<tr>
+<td class="map-g"><span id="53951"></span><a href="../asm/53951.html">53951</a></td>
+<td class="map-length">78</td>
+<td class="map-g-desc">
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/53951.html">Table: Bullets</a></div>
+<div class="map-entry-desc">
+</div>
+</td>
+</tr>
+<tr>
+<td class="map-g"><span id="54029"></span><a href="../asm/54029.html">54029</a></td>
+<td class="map-length">18</td>
+<td class="map-g-desc">
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/54029.html">Table: Projectiles</a></div>
+<div class="map-entry-desc">
+</div>
+</td>
+</tr>
+<tr>
+<td class="map-g"><span id="54175"></span><a href="../asm/54175.html">54175</a></td>
+<td class="map-length">84</td>
+<td class="map-g-desc">
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/54175.html">Table: Buildings</a></div>
 <div class="map-entry-desc">
 </div>
 </td>
@@ -486,6 +516,24 @@ Is it carpet? Awning? Unsure... <table class="default">
 </td>
 </tr>
 <tr>
+<td class="map-g"><span id="54273"></span><a href="../asm/54273.html">54273</a></td>
+<td class="map-length">4</td>
+<td class="map-g-desc">
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/54273.html">Table: Vehicle</a></div>
+<div class="map-entry-desc">
+</div>
+</td>
+</tr>
+<tr>
+<td class="map-g"><span id="54277"></span><a href="../asm/54277.html">54277</a></td>
+<td class="map-length">3</td>
+<td class="map-g-desc">
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/54277.html">Table: Train</a></div>
+<div class="map-entry-desc">
+</div>
+</td>
+</tr>
+<tr>
 <td class="map-g"><span id="57156"></span><a href="../asm/57156.html">57156</a></td>
 <td class="map-length">1</td>
 <td class="map-g-desc">
@@ -551,7 +599,7 @@ See <a href="../asm/64836.html">Print_Ticker</a>.
 <div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
-<div><a href="buffers/gbuffer.html">Switch to hexadecimal</a>.</div>
+<div><a href="../../buffers/gbuffer.html">Switch to hexadecimal</a>.</div>
 </footer>
 </body>
 </html>

@@ -33,7 +33,7 @@ Next: <a href="F352.html">F352</a>
 </td>
 </tr>
 </table>
-<div class="description">F31C: Routine at F31C</div>
+<div class="description">F31C: Handler: Energy Bar Attributes</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,145 +45,256 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f31c"></span>
+<div class="comments">
+<div class="paragraph">
+<table class="default">
+<tr>
+<td class="centre" colspan="1" rowspan="1"><img alt="energy" src="../images/scr/energy.png" /></td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+George:
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_EnergyBarAttributes</td>
 <td class="address-2"><span id="f31c"></span>F31C</td>
 <td class="instruction">LD C,$22</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=22.</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=horizontal co-ordinate (22).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f31e"></span>F31E</td>
 <td class="instruction">LD H,$6A</td>
-<td class="comment-1" rowspan="1"><span class="register">H</span>=6A.</td>
+<td class="comment-1" rowspan="1"><span class="register">H</span>=INK:
+RED,
+PAPER:
+CYAN
+(BRIGHT)
+.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f320"></span>F320</td>
 <td class="instruction">LD A,($CFDE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="CFD2.html#cfde">George_Energy</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f323"></span>F323</td>
-<td class="instruction">CALL <a href="F31C.html#f33b">$F33B</a></td>
-<td class="comment-1" rowspan="1">Call <a href="F31C.html#f33b">F33B</a>.</td>
+<td class="instruction">CALL <a href="F31C.html#f33b">WriteEnergyBar_AttributesLoop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="F31C.html#f33b">WriteEnergyBar_AttributesLoop</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f326"></span>
+<div class="comments">
+<div class="paragraph">
+Lizzy:
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f326"></span>F326</td>
 <td class="instruction">LD C,$2C</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=2C.</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=horizontal co-ordinate (2C).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f328"></span>F328</td>
 <td class="instruction">LD H,$6C</td>
-<td class="comment-1" rowspan="1"><span class="register">H</span>=6C.</td>
+<td class="comment-1" rowspan="1"><span class="register">H</span>=INK:
+GREEN,
+PAPER:
+CYAN
+(BRIGHT)
+.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f32a"></span>F32A</td>
 <td class="instruction">LD A,($D00D)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D001.html#d00d">Lizzy_Energy</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f32d"></span>F32D</td>
-<td class="instruction">CALL <a href="F31C.html#f33b">$F33B</a></td>
-<td class="comment-1" rowspan="1">Call <a href="F31C.html#f33b">F33B</a>.</td>
+<td class="instruction">CALL <a href="F31C.html#f33b">WriteEnergyBar_AttributesLoop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="F31C.html#f33b">WriteEnergyBar_AttributesLoop</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f330"></span>
+<div class="comments">
+<div class="paragraph">
+Ralph:
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f330"></span>F330</td>
 <td class="instruction">LD C,$36</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=36.</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=horizontal co-ordinate (36).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f332"></span>F332</td>
 <td class="instruction">LD H,$6F</td>
-<td class="comment-1" rowspan="1"><span class="register">H</span>=6F.</td>
+<td class="comment-1" rowspan="1"><span class="register">H</span>=INK:
+WHITE,
+PAPER:
+CYAN
+(BRIGHT)
+.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f334"></span>F334</td>
 <td class="instruction">LD A,($D03C)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D030.html#d03c">Ralph_Energy</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f337"></span>F337</td>
-<td class="instruction">CALL <a href="F31C.html#f33b">$F33B</a></td>
-<td class="comment-1" rowspan="1">Call <a href="F31C.html#f33b">F33B</a>.</td>
+<td class="instruction">CALL <a href="F31C.html#f33b">WriteEnergyBar_AttributesLoop</a></td>
+<td class="comment-1" rowspan="1">Call <a href="F31C.html#f33b">WriteEnergyBar_AttributesLoop</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f33a"></span>F33A</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f33b"></span>
+<div class="comments">
+<div class="paragraph">
+f
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">WriteEnergyBar_AttributesLoop</td>
 <td class="address-2"><span id="f33b"></span>F33B</td>
 <td class="instruction">LD B,$00</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=00.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f33d"></span>F33D</td>
 <td class="instruction">LD D,B</td>
 <td class="comment-1" rowspan="1"><span class="register">D</span>=<span class="register">B</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f33e"></span>F33E</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="2">Return if <span class="register">A</span> is zero.</td>
+<td class="comment-1" rowspan="2">Return if the monsters energy is at zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f33f"></span>F33F</td>
 <td class="instruction">RET Z</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f340"></span>F340</td>
 <td class="instruction">SUB $08</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>-=08.</td>
+<td class="comment-1" rowspan="1">Subtract 08 from the monsters energy held by <span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f342"></span>F342</td>
-<td class="instruction">JR C,<a href="F31C.html#f34c">$F34C</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="F31C.html#f34c">F34C</a> if {} is lower.</td>
+<td class="instruction">JR C,<a href="F31C.html#f34c">WriteEnergyBar_Attributes</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="F31C.html#f34c">WriteEnergyBar_Attributes</a> if <span class="register">A</span> was lower than 08.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f344"></span>
+<div class="comments">
+<div class="paragraph">
+Stash the monsters energy while <span class="register">A</span> is being used for writing to the buffer.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f344"></span>F344</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f345"></span>F345</td>
-<td class="instruction">CALL <a href="F31C.html#f34c">$F34C</a></td>
-<td class="comment-1" rowspan="1">Call <a href="F31C.html#f34c">F34C</a>.</td>
+<td class="instruction">CALL <a href="F31C.html#f34c">WriteEnergyBar_Attributes</a></td>
+<td class="comment-1" rowspan="1">Call <a href="F31C.html#f34c">WriteEnergyBar_Attributes</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f348"></span>F348</td>
 <td class="instruction">EX AF,AF'</td>
-<td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
+<td class="comment-1" rowspan="1">Exchange the shadow <span class="register">AF</span> register back to the normal <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f349"></span>F349</td>
 <td class="instruction">INC C</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
+<td class="comment-1" rowspan="1">Increment the horizontal co-ordinate by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f34a"></span>F34A</td>
-<td class="instruction">JR <a href="F31C.html#f33b">$F33B</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="F31C.html#f33b">F33B</a>.</td>
+<td class="instruction">JR <a href="F31C.html#f33b">WriteEnergyBar_AttributesLoop</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="F31C.html#f33b">WriteEnergyBar_AttributesLoop</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="f34c"></span>
+<div class="comments">
+<div class="paragraph">
+Write the energy bar to the buffer.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">WriteEnergyBar_Attributes</td>
 <td class="address-2"><span id="f34c"></span>F34C</td>
 <td class="instruction">LD D,$83</td>
-<td class="comment-1" rowspan="1"><span class="register">D</span>=83.</td>
+<td class="comment-1" rowspan="1"><span class="register">D</span>=vertical co-ordinate (83).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f34e"></span>F34E</td>
 <td class="instruction">LD E,C</td>
-<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">C</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">E</span>=horizontal co-ordinate for the current monster held in <span class="register">C</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f34f"></span>F34F</td>
 <td class="instruction">LD A,H</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">H</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=bar colour held in <span class="register">H</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f350"></span>F350</td>
 <td class="instruction">LD (DE),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="f351"></span>F351</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
@@ -205,7 +316,7 @@ Next: <a href="F352.html">F352</a>
 <div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
 <div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
-<div><a href="asm/F31C.html">Switch to decimal</a>.</div>
+<div><a href="../dec/asm/62236.html">Switch to decimal</a>.</div>
 </footer>
 </body>
 </html>
