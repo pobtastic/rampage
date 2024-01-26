@@ -45,7 +45,8 @@ b $9E00
 L $9E00,$08,$180
   $AB60,$10
 
-b $C1A1
+g $C1A1 Table: Sprite Information
+@ $C1A1 label=Table_SpriteInfo
 N $C1A1 #N($01+(#PC-$C1A1)/$04).
   $C1A1,$02
 W $C1A3,$02
@@ -793,9 +794,9 @@ g $D245
 
 g $D246
 
-g $D247 Vehicle Orientation Flag
-@ $D247 label=Flag_VehicleOrientation
-D $D247 #TABLE(default,centre,centre) { =h Value | =h Moving }
+g $D247 Orientation Flag
+@ $D247 label=Flag_Orientation
+D $D247 #TABLE(default,centre,centre) { =h Value | =h Facing }
 . { #N$00 | Left-to-right  }
 . { #N$01 | Right-to-left }
 . TABLE#
@@ -823,43 +824,49 @@ b $D252
 g $D253
 W $D253
 
-g $D255
-
-g $D292
+g $D255 Table: Humans
+@ $D255 label=Table_Humans
+D $D255 See #R$E25D.
+N $D255 Human ##N($01+(#PC-$D255)/$04).
+B $D255,$01 Type.
+B $D256,$01 Countdown.
+B $D257,$01 X position.
+B $D258,$01 Y position.
+L $D255,$04,$10
 
 g $D295 Table: Helicopters
 @ $D295 label=Table_Helicopters
 D $D295 See #R$DBE5.
 N $D295 Helicopter ##N($01+(#PC-$D295)/$03).
-  $D295,$01 State.
-  $D296,$01 X position.
-  $D297,$01 Y position.
+B $D295,$01 State.
+B $D296,$01 X position.
+B $D297,$01 Y position.
 L $D295,$03,$06
 
 g $D2A7 Table: Helicopter Something
 @ $D2A7 label=Table_SomethingHelicopters
 N $D2A7 Helicopter ##N($01+(#PC-$D2A7)/$04).
-  $D2A7,$01
-  $D2A8,$01
-  $D2A9,$01
-  $D2AA,$01
+B $D2A7,$01
+B $D2A8,$01
+B $D2A9,$01
+B $D2AA,$01
 L $D2A7,$04,$06
 
-b $D2BF Table: Bullets
+g $D2BF Table: Bullets
 @ $D2BF label=Table_Bullets
-  $D2BF,$03 ##N($01+(#PC-$D2BF)/$03).
+B $D2BF,$03 ##N($01+(#PC-$D2BF)/$03).
 L $D2BF,$03,$1A
 
-b $D30D Table: Projectiles
+g $D30D Table: Projectiles
 @ $D30D label=Table_Projectiles
-  $D30D,$03 ##N($01+(#PC-$D30D)/$03).
+B $D30D,$03 ##N($01+(#PC-$D30D)/$03).
 L $D30D,$03,$06
 
 b $D31F
 
-b $D39F Table: Buildings
+g $D39F Table: Buildings
 @ $D39F label=Table_Buildings
-  $D39F,$54,$0E
+B $D39F,$54,$0E
 
 g $D3F3 Number Of Buildings Remaining
 @ $D3F3 label=BuildingsRemainingCount
@@ -904,7 +911,7 @@ D $D3FE Is it carpet? Awning? Unsure...
 . { #N$00 | No carpet }
 . { #N$01 | Carpet }
 . TABLE#
-  $D3FE,$01
+B $D3FE,$01
 
 g $D3FF
 
@@ -912,38 +919,38 @@ g $D400 Scene Type
 @ $D400 label=Scene_Type
 B $D400,$01
 
-b $D401 Table: Vehicle
+g $D401 Table: Vehicle
 N $D401 See #R$FC39.
 @ $D401 label=VehicleCounter
-  $D401,$01 #TABLE(default,centre,centre) { =h Value | =h Meaning }
+B $D401,$01 #TABLE(default,centre,centre) { =h Value | =h Meaning }
 . { #N$00-#N$18 | Countdown until spawn }
 . { #N$FE | Spawning "off" }
 . { #N$FF | Vehicle is spawned }
 . TABLE#
 @ $D402 label=VehicleType
-  $D402,$01 #TABLE(default,centre,centre) { =h Value | =h Vehicle }
+B $D402,$01 #TABLE(default,centre,centre) { =h Value | =h Vehicle }
 . { #N$00 | Tank }
 . { #N$01 | Car }
 . { #N$02 | Police car }
 . { #N$03 | Destroyed }
 . TABLE#
 @ $D403 label=VehicleXPosition
-  $D403,$01 Vehicle horizontal position on the screen.
+B $D403,$01 Vehicle horizontal position on the screen.
 @ $D404 label=VehicleYPosition
-  $D404,$01 Vehicle vertical position on the screen.
+B $D404,$01 Vehicle vertical position on the screen.
 
-b $D405 Table: Train
+g $D405 Table: Train
 N $D405 See #R$FCB6.
 @ $D405 label=TrainState
-  $D405,$01 #TABLE(default,centre,centre) { =h Value | =h Meaning }
+B $D405,$01 #TABLE(default,centre,centre) { =h Value | =h Meaning }
 . { #N$00-#N$20 | Countdown until spawn }
 . { #N$FE | Spawning "off" }
 . { #N$FF | Train is spawned }
 . TABLE#
 @ $D406 label=TrainXPosition
-  $D406,$01 Train horizontal position on the screen.
+B $D406,$01 Train horizontal position on the screen.
 @ $D407 label=TrainYPosition
-  $D407,$01 Train vertical position on the screen.
+B $D407,$01 Train vertical position on the screen.
 
 b $D408
 
@@ -2001,10 +2008,12 @@ c $DA0F
   $DA19,$03 #REGix=#REGhl using the stack.
   $DA1C,$01 Return.
 
-c $DA1D
+c $DA1D Get Sprite Information
+@ $DA1D label=GetSpriteInfo
+R $DA1D A Sprite ID
+R $DA1D O:HL Pointer to sprite information for the given ID
   $DA1D,$01 Decrease #REGa by one.
-  $DA1E,$02 #REGh=#N$00.
-  $DA20,$01 #REGl=#REGa.
+  $DA1E,$03 Create an offset using #REGhl.
   $DA21,$06 #REGhl=#R$C1A1+(#REGhl*#N$04).
   $DA27,$01 Return.
 
@@ -2259,7 +2268,7 @@ R $DBD9 O:DE Pointer to Monster X Position
 
 c $DBE5 Handler: Helicopters
 @ $DBE5 label=Handler_Helicopters
-  $DBE5,$02 #REGb=#N$06 (number of possible helicopters).
+  $DBE5,$02 #REGb=#N$06 (maximum possible number of on-screen helicopters).
   $DBE7,$04 #REGix=#R$D295.
   $DBEB,$04 Write #N$00 to *#R$D247.
 @ $DBEF label=Handler_Helicopters_Loop
@@ -2975,7 +2984,8 @@ c $E0AD
   $E117,$01 #REGa=#N$00.
   $E118,$01 Return.
 
-c $E119
+c $E119 Print Monsters
+@ $E119 label=PrintMonsters
 N $E119 George:
   $E119,$03 #REGhl=#R$CFD2.
   $E11C,$03 Call #R$E16B.
@@ -3117,10 +3127,12 @@ M $E17F,$08 Write a random number between 0-31 to *#R$D217.
   $E24E,$01 Return.
 W $E24F
 
-c $E25D
-  $E25D,$02 #REGb=#N$10.
+c $E25D Handler: Humans
+@ $E25D label=Handler_Humans
+  $E25D,$02 #REGb=#N$10 (maximum possible number of on-screen humans).
   $E25F,$04 Write #N$00 to *#R$D247.
   $E263,$03 #REGhl=#R$D255.
+@ $E266 label=Handler_Humans_Loop
   $E266,$01 Stash #REGbc on the stack.
   $E267,$01 #REGa=*#REGhl.
   $E268,$01 Increment #REGhl by one.
@@ -3131,64 +3143,69 @@ c $E25D
   $E270,$01 #REGc=*#REGhl.
   $E271,$01 Increment #REGhl by one.
   $E272,$01 #REGb=*#REGhl.
-  $E273,$03 #REGde=#N($0108,$04,$04).
+  $E273,$03 #REGde=#N$0108.
   $E276,$03 Call #R$E0CF.
   $E279,$02 Jump to #R$E286 if {} is not zero.
   $E27B,$01 Restore #REGhl from the stack.
   $E27C,$01 Decrease #REGhl by one.
-  $E27D,$01 Reset the bits from #REGa.
-  $E27E,$01 Write #REGa to *#REGhl.
+  $E27D,$02 Write #N$00 to *#REGhl.
   $E27F,$04 Increment #REGhl by four.
   $E283,$03 Jump to #R$E550.
+N $E286 Convert the human type to an address from #R$E556 and jump to it.
+@ $E286 label=Controller_Humans
   $E286,$01 Exchange the #REGaf register with the shadow #REGaf register.
   $E287,$01 Decrease #REGa by one.
-  $E288,$01 #REGa+=#REGa.
-  $E289,$02 #REGd=#N$00.
-  $E28B,$01 #REGe=#REGa.
-  $E28C,$03 #REGhl=#R$E556.
-  $E28F,$01 #REGhl+=#REGde.
+  $E288,$01 #REGa*=#N$02.
+  $E289,$03 Create an offset using #REGde.
+  $E28C,$04 #REGhl=#R$E556+#REGde.
   $E290,$01 #REGa=*#REGhl.
   $E291,$01 Increment #REGhl by one.
   $E292,$01 #REGh=*#REGhl.
   $E293,$01 #REGl=#REGa.
   $E294,$01 Jump to *#REGhl.
+N $E295 Human #N$01: Hiding.
+@ $E295 label=Human_Hiding
   $E295,$01 Restore #REGhl from the stack.
-  $E296,$01 #REGa=*#REGhl.
-  $E297,$01 Decrease #REGa by one.
-  $E298,$01 Write #REGa to *#REGhl.
+N $E296 Decrease the counter and just skip this human while they're still hiding.
+  $E296,$03 Decrease *#REGhl by one.
   $E299,$03 Jump to #R$E54D until #REGa is zero.
-  $E29C,$02 Write #N$10 to *#REGhl.
+N $E29C Now the counter has expired.
+  $E29C,$02 Update the counter to #N$10.
   $E29E,$01 Decrease #REGhl by one.
-  $E29F,$02 Write #N$02 to *#REGhl.
+  $E29F,$02 Write human type #R$E2A5(#N$02) to *#REGhl.
   $E2A1,$01 Restore #REGbc from the stack.
   $E2A2,$03 Jump to #R$E266.
+N $E2A5 Human #N$02: Reappearing...
+@ $E2A5 label=Human_Reappearing
   $E2A5,$01 Restore #REGhl from the stack.
-  $E2A6,$01 #REGa=*#REGhl.
-  $E2A7,$01 Decrease #REGa by one.
-  $E2A8,$01 Write #REGa to *#REGhl.
+N $E2A6 Decrease the counter and just skip this human until they're "ready" to be generated.
+  $E2A6,$03 Decrease *#REGhl by one.
   $E2A9,$03 Jump to #R$E54D until #REGa is zero.
-  $E2AC,$02 Write #N$0E to *#REGhl.
+N $E2AC Choose a random human type...
+  $E2AC,$02 Update the counter to #N$0E.
   $E2AE,$01 Decrease #REGhl by one.
   $E2AF,$03 Call #R$DA28.
   $E2B2,$02,b$01 Keep only bits 0-3.
-M $E2AF,$05 Get a random number between 0-15.
+M $E2AF,$06 Get a random number between 1-16.
   $E2B4,$01 Increment #REGa by one.
-  $E2B5,$01 Write #REGa to *#REGhl.
+  $E2B5,$01 Write the random number to *#REGhl.
   $E2B6,$01 Restore #REGbc from the stack.
   $E2B7,$03 Jump to #R$E266.
   $E2BA,$03 Call #R$DA28.
   $E2BD,$03 Return if #REGa is higher than #N$08.
   $E2C0,$02 Write #N$CE to *#REGhl.
   $E2C2,$01 Return.
-  $E2C3,$02 Write #N$20 to *#REGhl.
+N $E2C3 Manages the human hiding/ ducking down so they're no longer visible.
+@ $E2C3 label=Handler_Human_Hide
+  $E2C3,$02 Update the counter to #N$20.
   $E2C5,$01 Decrease #REGhl by one.
-  $E2C6,$02 Write #N$01 to *#REGhl.
+  $E2C6,$02 Write human type #R$E295(#N$01) to *#REGhl.
   $E2C8,$01 Restore #REGbc from the stack.
   $E2C9,$03 Jump to #R$E266.
+N $E2CC Human #N$0D-#N$10: Throwing projectiles.
+@ $E2CC label=Human_Lobber
   $E2CC,$01 Restore #REGhl from the stack.
-  $E2CD,$01 #REGa=*#REGhl.
-  $E2CE,$01 Decrease #REGa by one.
-  $E2CF,$01 Write #REGa to *#REGhl.
+  $E2CD,$03 Decrease *#REGhl by one.
   $E2D0,$05 Jump to #R$E36B if #REGa is higher than #N$C8.
   $E2D5,$04 Jump to #R$E319 if #REGa is higher than #N$5A.
   $E2D9,$04 Jump to #R$E320 if #REGa is higher than #N$50.
@@ -3199,8 +3216,13 @@ M $E2AF,$05 Get a random number between 0-15.
   $E2ED,$04 Jump to #R$E34F if #REGa is higher than #N$1E.
   $E2F1,$04 Jump to #R$E35B if #REGa is higher than #N$14.
   $E2F5,$04 Jump to #R$E365 if #REGa is higher than #N$0A.
+@ $E2F9 label=Hmmmmmmm
   $E2F9,$01 Set flags.
-  $E2FA,$02 #REGa=#N$C2.
+N $E2FA #PUSHS #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C2 | #HUMAN$0D,$05(human-projectiles-C2) }
+. UDGTABLE# #POPS
+  $E2FA,$02 #REGa=sprite ID #N$C2.
   $E2FC,$02 Jump to #R$E33B if {} is not zero.
   $E2FE,$03 Call #R$E2BA.
   $E301,$02 Jump to #R$E2CD if {} is lower.
@@ -3228,10 +3250,11 @@ M $E2AF,$05 Get a random number between 0-15.
   $E32D,$03 Call #R$E375.
   $E330,$02 Write #N$3E to *#REGhl.
   $E332,$01 Set the bits from #REGa.
-  $E333,$02 #REGa=#N$C8.
+  $E333,$02 #REGa=sprite ID #N$C8.
   $E335,$02 Jump to #R$E33B if {} is not zero.
   $E337,$02 Write #N$14 to *#REGhl.
-  $E339,$02 #REGa=#N$C2.
+  $E339,$02 #REGa=sprite ID #N$C2.
+@ $E33B label=Alias_Draw_Human_Sprite
   $E33B,$03 Jump to #R$E541.
   $E33E,$02 Write #N$3A to *#REGhl.
   $E340,$01 Set the bits from #REGa.
@@ -3252,12 +3275,16 @@ M $E2AF,$05 Get a random number between 0-15.
   $E35B,$02 #REGa=#N$C8.
   $E35D,$02 Jump to #R$E372 if {} is not zero.
   $E35F,$02 Write #N$0A to *#REGhl.
-  $E361,$02 #REGa=#N$C2.
+  $E361,$02 #REGa=sprite ID #N$C2.
   $E363,$02 Jump to #R$E33B.
-  $E365,$02 #REGa=#N$C0.
-  $E367,$02 Jump to #R$E33B if {} is not zero.
+N $E365 #PUSHS #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C0 | #HUMAN$0D,$C0(human-projectiles-C0) }
+. UDGTABLE# #POPS
+  $E365,$02 #REGa=sprite ID #N$C0.
+  $E367,$02 Jump to #R$E33B if #REGa was not equal to #N$C8 on line #R$E2D0.
   $E369,$02 Jump to #R$E2F9.
-  $E36B,$02 #REGa=#N$C0.
+  $E36B,$02 #REGa=sprite ID #N$C0.
   $E36D,$02 Jump to #R$E33B if {} is not zero.
   $E36F,$03 Jump to #R$E2C3.
   $E372,$03 Jump to #R$E535.
@@ -3278,10 +3305,9 @@ M $E2AF,$05 Get a random number between 0-15.
   $E38A,$01 Write #REGc to *#REGhl.
   $E38B,$01 Restore #REGhl from the stack.
   $E38C,$01 Return.
+@ $E38D label=Human_Type_4
   $E38D,$01 Restore #REGhl from the stack.
-  $E38E,$01 #REGa=*#REGhl.
-  $E38F,$01 Decrease #REGa by one.
-  $E390,$01 Write #REGa to *#REGhl.
+  $E38E,$03 Decrease *#REGhl by one.
   $E391,$04 Jump to #R$E3D9 if #REGa is higher than #N$C8.
   $E395,$04 Jump to #R$E3B1 if #REGa is equal to #N$80.
   $E399,$02 Jump to #R$E3D5 if {} is lower.
@@ -3312,10 +3338,10 @@ M $E2AF,$05 Get a random number between 0-15.
   $E3D9,$02 #REGa=#N$C0.
   $E3DB,$03 Jump to #R$E541 if {} is not zero.
   $E3DE,$03 Jump to #R$E2C3.
+N $E3E1 Human #N$05: Waving arms in the air/ distressed human.
+@ $E3E1 label=Human_WavingOverHead
   $E3E1,$01 Restore #REGhl from the stack.
-  $E3E2,$01 #REGa=*#REGhl.
-  $E3E3,$01 Decrease #REGa by one.
-  $E3E4,$01 Write #REGa to *#REGhl.
+  $E3E2,$03 Decrease *#REGhl by one.
   $E3E5,$04 Jump to #R$E40C if #REGa is higher than #N$C8.
   $E3E9,$04 Jump to #R$E3F7 if #REGa is equal to #N$80.
   $E3ED,$02 Jump to #R$E408 if #REGa is lower than #N$80.
@@ -3333,10 +3359,10 @@ M $E2AF,$05 Get a random number between 0-15.
   $E40C,$02 #REGa=#N$C0.
   $E40E,$03 Jump to #R$E541 if {} is not zero.
   $E411,$03 Jump to #R$E2C3.
+N $E414 Human #N$06: Waving side-to-side/ distressed human.
+@ $E414 label=Human_WavingSideToSide
   $E414,$01 Restore #REGhl from the stack.
-  $E415,$01 #REGa=*#REGhl.
-  $E416,$01 Decrease #REGa by one.
-  $E417,$01 Write #REGa to *#REGhl.
+  $E415,$03 Decrease *#REGhl by one.
   $E418,$04 Jump to #R$E43F if #REGa is higher than #N$C8.
   $E41C,$04 Jump to #R$E42A if #REGa is equal to #N$80.
   $E420,$02 Jump to #R$E43B if {} is lower.
@@ -3354,10 +3380,10 @@ M $E2AF,$05 Get a random number between 0-15.
   $E43F,$02 #REGa=#N$C0.
   $E441,$03 Jump to #R$E541 if {} is not zero.
   $E444,$03 Jump to #R$E2C3.
+N $E447 Human #N$07-#N$0C: Human with rifle (shooter).
+@ $E447 label=Human_Shooter
   $E447,$01 Restore #REGhl from the stack.
-  $E448,$01 #REGa=*#REGhl.
-  $E449,$01 Decrease #REGa by one.
-  $E44A,$01 Write #REGa to *#REGhl.
+  $E448,$03 Decrease *#REGhl by one.
   $E44B,$05 Jump to #R$E4D6 if #REGa is higher than #N$C8.
   $E450,$04 Jump to #R$E4D2 if #REGa is lower than #N$14.
   $E454,$02,b$01 Keep only bits 0-4.
@@ -3479,6 +3505,7 @@ N $E52E #AUDIO(helicopter.wav)(#INCLUDE(Helicopter))
   $E53B,$03 Call #R$D7F6.
   $E53E,$01 Restore #REGhl from the stack.
   $E53F,$02 Jump to #R$E550.
+@ $E541 label=Draw_Human_Sprite
   $E541,$01 Increment #REGhl by one.
   $E542,$01 #REGc=*#REGhl.
   $E543,$01 Increment #REGhl by one.
@@ -3488,13 +3515,20 @@ N $E52E #AUDIO(helicopter.wav)(#INCLUDE(Helicopter))
   $E547,$03 Call #R$D6C9.
   $E54A,$01 Restore #REGhl from the stack.
   $E54B,$02 Jump to #R$E550.
-  $E54D,$03 Increment #REGhl by three.
-  $E550,$01 Restore #REGbc from the stack.
-  $E551,$01 Decrease #REGb by one.
-  $E552,$03 Jump to #R$E266 until #REGb is zero.
+@ $E54D label=Handler_Humans_Skip
+  $E54D,$03 Move onto the next human table data.
+@ $E550 label=Handler_Humans_Next
+  $E550,$01 Restore the human ID from the stack.
+  $E551,$01 Decrease the human ID by one.
+  $E552,$03 Jump to #R$E266 until all humans have been processed.
   $E555,$01 Return.
 
-w $E556 Jump Table
+w $E556 Jump Table: Human Types
+@ $E556 label=Table_HumanTypes
+D $E556 Randomly assigned human types which appear in buildings.
+N $E556 See #R$E25D.
+  $E556,$02 Type ID: #N($01+(#PC-$E556)/$02).
+L $E556,$02,$10,$02
 
 c $E576 Handler: Bullets
 @ $E576 label=Handler_Bullets
@@ -4821,8 +4855,15 @@ N $F2C2 Keep track of the number of active helicopters.
   $F2C2,$07 Increment *#R$D3F5 by one.
   $F2C9,$01 Return.
 
-c $F2CA Handler: Energy
-@ $F2CA label=Handler_Energy
+c $F2CA Handler: Energy Bar
+@ $F2CA label=Handler_EnergyBar
+N $F2CA #UDGTABLE(default,centre)
+. { #PUSHS
+. #SIM(start=$F916,stop=$F924)
+. #SIM(start=$DE80,stop=$DE86)
+. #SIM(start=$DEB0,stop=$DEB6) #SCR$02,$00,$00,$20,$07(energy-pixel)
+. #POPS }
+. UDGTABLE#
   $F2CA,$03 #REGhl=#R$5F20.
   $F2CD,$03 #REGde=#R$6820.
   $F2D0,$02 #REGb=#N$20.
@@ -4833,28 +4874,31 @@ c $F2CA Handler: Energy
   $F2D8,$01 Increment #REGl by one.
   $F2D9,$01 Increment #REGe by one.
   $F2DA,$02 Decrease counter by one and loop back to #R$F2D6 until counter is zero.
-  $F2DC,$02 #REGc=#N$22.
-  $F2DE,$02 #REGh=#N$6A.
+N $F2DC George:
+  $F2DC,$02 #REGc=horizontal co-ordinate (#N$22).
+  $F2DE,$02 #REGh=#COLOUR$6A.
   $F2E0,$03 #REGa=*#R$CFDE.
   $F2E3,$03 Call #R$F2FB.
-  $F2E6,$02 #REGc=#N$2C.
-  $F2E8,$02 #REGh=#N$6C.
+N $F2E6 Lizzy:
+  $F2E6,$02 #REGc=horizontal co-ordinate (#N$2C).
+  $F2E8,$02 #REGh=#COLOUR$6C.
   $F2EA,$03 #REGa=*#R$D00D.
   $F2ED,$03 Call #R$F2FB.
-  $F2F0,$02 #REGc=#N$36.
-  $F2F2,$02 #REGh=#N$6F.
+N $F2F0 Ralph:
+  $F2F0,$02 #REGc=horizontal co-ordinate (#N$36).
+  $F2F2,$02 #REGh=#COLOUR$6F.
   $F2F4,$03 #REGa=*#R$D03C.
   $F2F7,$03 Call #R$F2FB.
   $F2FA,$01 Return.
   $F2FB,$02 #REGb=#N$00.
   $F2FD,$01 #REGd=#REGb.
-  $F2FE,$02 Return if #REGa is zero.
-  $F300,$02 #REGa-=#N$08.
-  $F302,$02 Jump to #R$F30E if {} is lower.
+  $F2FE,$02 Return if the monsters energy is at zero.
+  $F300,$02 Subtract #N$08 from the monsters energy held by #REGa.
+  $F302,$02 Jump to #R$F30E if #REGa was lower than #N$08.
   $F304,$01 Exchange the #REGaf register with the shadow #REGaf register.
   $F305,$02 #REGe=#N$34.
   $F307,$03 Call #R$DA3D.
-  $F30A,$01 Exchange the #REGaf register with the shadow #REGaf register.
+  $F30A,$01 Exchange the shadow #REGaf register back to the normal #REGaf register.
   $F30B,$01 Increment #REGc by one.
   $F30C,$02 Jump to #R$F2FB.
   $F30E,$02 #REGa+=#N$08.
@@ -4867,33 +4911,49 @@ c $F2CA Handler: Energy
   $F31A,$01 Increment #REGc by one.
   $F31B,$01 Return.
 
-c $F31C
-  $F31C,$02 #REGc=#N$22.
-  $F31E,$02 #REGh=#N$6A.
+c $F31C Handler: Energy Bar Attributes
+@ $F31C label=Handler_EnergyBarAttributes
+N $F31C #UDGTABLE(default,centre)
+. { #PUSHS
+. #SIM(start=$F916,stop=$F924)
+. #SIM(start=$DE80,stop=$DE89)
+. #SIM(start=$DEB0,stop=$DEB6) #SCR$02,$00,$00,$20,$07(energy)
+. #POPS }
+. UDGTABLE#
+N $F31C George:
+  $F31C,$02 #REGc=horizontal co-ordinate (#N$22).
+  $F31E,$02 #REGh=#COLOUR$6A.
   $F320,$03 #REGa=*#R$CFDE.
   $F323,$03 Call #R$F33B.
-  $F326,$02 #REGc=#N$2C.
-  $F328,$02 #REGh=#N$6C.
+N $F326 Lizzy:
+  $F326,$02 #REGc=horizontal co-ordinate (#N$2C).
+  $F328,$02 #REGh=#COLOUR$6C.
   $F32A,$03 #REGa=*#R$D00D.
   $F32D,$03 Call #R$F33B.
-  $F330,$02 #REGc=#N$36.
-  $F332,$02 #REGh=#N$6F.
+N $F330 Ralph:
+  $F330,$02 #REGc=horizontal co-ordinate (#N$36).
+  $F332,$02 #REGh=#COLOUR$6F.
   $F334,$03 #REGa=*#R$D03C.
   $F337,$03 Call #R$F33B.
   $F33A,$01 Return.
+N $F33B f
+@ $F33B label=WriteEnergyBar_AttributesLoop
   $F33B,$02 #REGb=#N$00.
   $F33D,$01 #REGd=#REGb.
-  $F33E,$02 Return if #REGa is zero.
-  $F340,$02 #REGa-=#N$08.
-  $F342,$02 Jump to #R$F34C if {} is lower.
+  $F33E,$02 Return if the monsters energy is at zero.
+  $F340,$02 Subtract #N$08 from the monsters energy held by #REGa.
+  $F342,$02 Jump to #R$F34C if #REGa was lower than #N$08.
+N $F344 Stash the monsters energy while #REGa is being used for writing to the buffer.
   $F344,$01 Exchange the #REGaf register with the shadow #REGaf register.
   $F345,$03 Call #R$F34C.
-  $F348,$01 Exchange the #REGaf register with the shadow #REGaf register.
-  $F349,$01 Increment #REGc by one.
+  $F348,$01 Exchange the shadow #REGaf register back to the normal #REGaf register.
+  $F349,$01 Increment the horizontal co-ordinate by one.
   $F34A,$02 Jump to #R$F33B.
-  $F34C,$02 #REGd=#N$83.
-  $F34E,$01 #REGe=#REGc.
-  $F34F,$01 #REGa=#REGh.
+N $F34C Write the energy bar to the buffer.
+@ $F34C label=WriteEnergyBar_Attributes
+  $F34C,$02 #REGd=vertical co-ordinate (#N$83).
+  $F34E,$01 #REGe=horizontal co-ordinate for the current monster held in #REGc.
+  $F34F,$01 #REGa=bar colour held in #REGh.
   $F350,$01 Write #REGa to *#REGde.
   $F351,$01 Return.
 
@@ -5368,6 +5428,13 @@ N $F719 #AUDIO(projectile.wav)(#INCLUDE(Projectile))
 
 c $F726 Print Banner
 @ $F726 label=PrintBanner
+N $F726 #UDGTABLE(default,centre)
+. { #PUSHS #POKES$D030,$FF
+. #SIM(start=$F916,stop=$F924)
+. #SIM(start=$DE8C,stop=$DE8F)
+. #SIM(start=$DEB0,stop=$DEB6) #SCR$02,$00,$00,$20,$07(banner)
+. #POPS }
+. UDGTABLE#
 N $F726 Handle George.
 N $F726 Monster state #N$FF means the player is ("Game Over").
   $F726,$07 Jump to #R$F732 if *#R$CFD2 is not equal to #N$FF.
@@ -5743,19 +5810,25 @@ N $F9C4 Reset the control type for all monsters.
 N $F9CF Set up a count for how many players will be using the keyboard (see #R$FA53).
   $F9CF,$05 Write #N$03 to *#R$FB5A.
 N $F9D4 Create a "change controls" page for George:
-N $F9D4 #PUSHS #SIM(start=$F916,stop=$F924) #SIM(start=#PC,stop=$FA33) #SCR$02(controls-george) #POPS
+N $F9D4 #UDGTABLE(default,centre)
+. { #PUSHS #SIM(start=$F916,stop=$F924) #SIM(start=#PC,stop=$FA33) #SCR$02(controls-george) #POPS }
+. UDGTABLE#
   $F9D4,$03 Call #R$FB8E.
   $F9D7,$03 #REGhl=#R$D05F.
   $F9DA,$04 #REGix=#R$CFD2.
   $F9DE,$03 Call #R$F9FC.
 N $F9E1 Create a "change controls" page for Lizzy.
-N $F9E1 #PUSHS #SIM(start=$F916,stop=$F924) #SIM(start=#PC,stop=$FA33) #SCR$02(controls-lizzy) #POPS
+N $F9E1 #UDGTABLE(default,centre)
+. { #PUSHS #SIM(start=$F916,stop=$F924) #SIM(start=#PC,stop=$FA33) #SCR$02(controls-lizzy) #POPS }
+. UDGTABLE#
   $F9E1,$03 Call #R$FB8E.
   $F9E4,$04 #REGix=#R$D001.
   $F9E8,$03 #REGhl=#R$D06D.
   $F9EB,$03 Call #R$F9FC.
 N $F9EE Create a "change controls" page for Ralph.
-N $F9EE #PUSHS #SIM(start=$F916,stop=$F924) #SIM(start=#PC,stop=$FA33) #SCR$02(controls-ralph) #POPS
+N $F9EE #UDGTABLE(default,centre)
+. { #PUSHS #SIM(start=$F916,stop=$F924) #SIM(start=#PC,stop=$FA33) #SCR$02(controls-ralph) #POPS }
+. UDGTABLE#
   $F9EE,$03 Call #R$FB8E.
   $F9F1,$04 #REGix=#R$D030.
   $F9F5,$03 #REGhl=#R$D07B.

@@ -73,5 +73,11 @@ Sound=sound/sound.html
   #SIM(start=$F916,stop=$F91C)
   #SIM(start=$F964,stop=$F973,a=$id)
   #SCR$02(scene-$id)
-  #POPS
-)
+  #POPS)
+
+#DEF(#HUMAN(id,counter)
+  #POKES$D255,$id;$D256,$counter;$D257,$16;$D258,$05
+  #SIM(start=$F916,stop=$F924)
+  #SIM(start=$E25D,stop=$E555)
+  #SIM(start=$DEB0,stop=$DEB6)
+  #SCR$02,$11,$02,$09,$06)
