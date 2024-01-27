@@ -885,13 +885,17 @@ B $D3F6,$01
 
 b $D3F7
 
-b $D3F8
+g $D3F8 On-Screen Bullet Count
+@ $D3F8 label=NumberOnScreenBullets
+B $D3F8,$01
 
 b $D3F9
 
-b $D3FA
-  $D3FA
-  $D3FB
+g $D3FA On-Screen Projectile Count
+@ $D3FA label=NumberOnScreenProjectiles
+B $D3FA,$01
+
+b $D3FB
   $D3FC
 
 g $D3FD Game State
@@ -1614,7 +1618,8 @@ R $D6C9 BC Screen co-ordinates
   $D7F0,$03 Call #R$D986.
   $D7F3,$03 Jump to #R$D766.
 
-c $D7F6
+c $D7F6 Print Sprite Mirrored
+@ $D7F6 label=PrintSprite_Mirrored
   $D7F6,$03 Write #REGa to #R$D214.
   $D7F9,$01 Decrease #REGc by one.
   $D7FA,$01 Stash #REGbc on the stack.
@@ -3133,23 +3138,25 @@ c $E25D Handler: Humans
   $E25F,$04 Write #N$00 to *#R$D247.
   $E263,$03 #REGhl=#R$D255.
 @ $E266 label=Handler_Humans_Loop
-  $E266,$01 Stash #REGbc on the stack.
-  $E267,$01 #REGa=*#REGhl.
-  $E268,$01 Increment #REGhl by one.
-  $E269,$04 Jump to #R$E54D if #REGa is zero.
+  $E266,$01 Stash the countdown on the stack.
+  $E267,$01 #REGa=human type.
+  $E268,$01 Increment human table pointer by one.
+  $E269,$04 Jump to #R$E54D if the currently processed human is not in-use.
   $E26D,$01 Exchange the #REGaf register with the shadow #REGaf register.
-  $E26E,$01 Stash #REGhl on the stack.
-  $E26F,$01 Increment #REGhl by one.
+  $E26E,$01 Stash the human table pointer on the stack.
+N $E26F Fetch the humans screen co-ordinates and store them in #REGbc.
+  $E26F,$01 Increment human table pointer by one.
   $E270,$01 #REGc=*#REGhl.
-  $E271,$01 Increment #REGhl by one.
+  $E271,$01 Increment human table pointer by one.
   $E272,$01 #REGb=*#REGhl.
-  $E273,$03 #REGde=#N$0108.
+  $E273,$03 #REGde=#N$0108 (TODO; probably sprite size #N$01 byte by #N$08 lines).
   $E276,$03 Call #R$E0CF.
-  $E279,$02 Jump to #R$E286 if {} is not zero.
-  $E27B,$01 Restore #REGhl from the stack.
-  $E27C,$01 Decrease #REGhl by one.
-  $E27D,$02 Write #N$00 to *#REGhl.
-  $E27F,$04 Increment #REGhl by four.
+  $E279,$02 Jump to #R$E286 if this human is able to be processed (as in, is alive).
+N $E27B This human is no more (RIP) mark this position as no longer viable for holding human data.
+  $E27B,$01 Restore human table pointer from the stack.
+  $E27C,$01 Decrease the human table pointer by one (back to the "type").
+  $E27D,$02 Mark this human as no longer in-use.
+  $E27F,$04 Move the human table pointer to the next human.
   $E283,$03 Jump to #R$E550.
 N $E286 Convert the human type to an address from #R$E556 and jump to it.
 @ $E286 label=Controller_Humans
@@ -3163,69 +3170,77 @@ N $E286 Convert the human type to an address from #R$E556 and jump to it.
   $E292,$01 #REGh=*#REGhl.
   $E293,$01 #REGl=#REGa.
   $E294,$01 Jump to *#REGhl.
-N $E295 Human #N$01: Hiding.
+
+c $E295 Human #N$01: Hiding
 @ $E295 label=Human_Hiding
-  $E295,$01 Restore #REGhl from the stack.
-N $E296 Decrease the counter and just skip this human while they're still hiding.
-  $E296,$03 Decrease *#REGhl by one.
-  $E299,$03 Jump to #R$E54D until #REGa is zero.
-N $E29C Now the counter has expired.
-  $E29C,$02 Update the counter to #N$10.
-  $E29E,$01 Decrease #REGhl by one.
+  $E295,$01 Restore human table pointer from the stack.
+N $E296 Decrease the countdown and just skip this human while they're still hiding.
+  $E296,$03 Decrease the humans action countdown by one.
+  $E299,$03 Jump to #R$E54D until the countdown is zero.
+N $E29C Now the countdown has expired.
+  $E29C,$02 Update the countdown to #N$10.
+  $E29E,$01 Decrease the human table pointer by one (back to the "type").
   $E29F,$02 Write human type #R$E2A5(#N$02) to *#REGhl.
-  $E2A1,$01 Restore #REGbc from the stack.
+  $E2A1,$01 Restore the current human ID from the stack.
   $E2A2,$03 Jump to #R$E266.
-N $E2A5 Human #N$02: Reappearing...
+
+c $E2A5 Human #N$02: Reappearing
 @ $E2A5 label=Human_Reappearing
-  $E2A5,$01 Restore #REGhl from the stack.
-N $E2A6 Decrease the counter and just skip this human until they're "ready" to be generated.
-  $E2A6,$03 Decrease *#REGhl by one.
-  $E2A9,$03 Jump to #R$E54D until #REGa is zero.
+  $E2A5,$01 Restore human table pointer from the stack.
+N $E2A6 Decrease the countdown and just skip this human until they're "ready" to be generated.
+  $E2A6,$03 Decrease the humans action countdown by one.
+  $E2A9,$03 Jump to #R$E54D until the countdown is zero.
 N $E2AC Choose a random human type...
-  $E2AC,$02 Update the counter to #N$0E.
-  $E2AE,$01 Decrease #REGhl by one.
+  $E2AC,$02 Update the countdown to #N$0E.
+  $E2AE,$01 Decrease the human table pointer by one (back to the "type").
   $E2AF,$03 Call #R$DA28.
   $E2B2,$02,b$01 Keep only bits 0-3.
 M $E2AF,$06 Get a random number between 1-16.
   $E2B4,$01 Increment #REGa by one.
-  $E2B5,$01 Write the random number to *#REGhl.
-  $E2B6,$01 Restore #REGbc from the stack.
+  $E2B5,$01 Write the random number to the human type.
+  $E2B6,$01 Restore the current human ID from the stack.
   $E2B7,$03 Jump to #R$E266.
-  $E2BA,$03 Call #R$DA28.
-  $E2BD,$03 Return if #REGa is higher than #N$08.
-  $E2C0,$02 Write #N$CE to *#REGhl.
+
+c $E2BA Human: Should The Human Hide?
+@ $E2BA label=ShouldHumanHide
+  $E2BA,$03 #REGa=random number between #N$00-#N$FF.
+N $E2BD There's about a 96.48% chance of returning based on the random number.
+  $E2BD,$03 Return if the random number is higher than #N$08.
+  $E2C0,$02 Update the countdown to #N$CE.
   $E2C2,$01 Return.
-N $E2C3 Manages the human hiding/ ducking down so they're no longer visible.
+
+c $E2C3 Human: Manage Human Hiding
 @ $E2C3 label=Handler_Human_Hide
-  $E2C3,$02 Update the counter to #N$20.
-  $E2C5,$01 Decrease #REGhl by one.
+  $E2C3,$02 Update the countdown to #N$20.
+  $E2C5,$01 Decrease the human table pointer by one (back to the "type").
   $E2C6,$02 Write human type #R$E295(#N$01) to *#REGhl.
-  $E2C8,$01 Restore #REGbc from the stack.
+  $E2C8,$01 Restore the human ID from the stack.
   $E2C9,$03 Jump to #R$E266.
-N $E2CC Human #N$0D-#N$10: Throwing projectiles.
+
+c $E2CC Human #N$0D-#N$10: Throwing Projectiles
 @ $E2CC label=Human_Lobber
-  $E2CC,$01 Restore #REGhl from the stack.
-  $E2CD,$03 Decrease *#REGhl by one.
-  $E2D0,$05 Jump to #R$E36B if #REGa is higher than #N$C8.
-  $E2D5,$04 Jump to #R$E319 if #REGa is higher than #N$5A.
-  $E2D9,$04 Jump to #R$E320 if #REGa is higher than #N$50.
-  $E2DD,$04 Jump to #R$E327 if #REGa is higher than #N$46.
-  $E2E1,$04 Jump to #R$E333 if #REGa is higher than #N$3C.
-  $E2E5,$04 Jump to #R$E341 if #REGa is higher than #N$32.
-  $E2E9,$04 Jump to #R$E348 if #REGa is higher than #N$28.
-  $E2ED,$04 Jump to #R$E34F if #REGa is higher than #N$1E.
-  $E2F1,$04 Jump to #R$E35B if #REGa is higher than #N$14.
-  $E2F5,$04 Jump to #R$E365 if #REGa is higher than #N$0A.
+  $E2CC,$01 Restore human table pointer from the stack.
+@ $E2CD label=Lobber_DecreaseCountdown
+  $E2CD,$03 Decrease the humans action countdown by one.
+  $E2D0,$05 Jump to #R$E36B if the humans action countdown (#REGa) is higher than #N$C8.
+  $E2D5,$04 Jump to #R$E319 if the humans action countdown (#REGa) is higher than #N$5A.
+  $E2D9,$04 Jump to #R$E320 if the humans action countdown (#REGa) is higher than #N$50.
+  $E2DD,$04 Jump to #R$E327 if the humans action countdown (#REGa) is higher than #N$46.
+  $E2E1,$04 Jump to #R$E333 if the humans action countdown (#REGa) is higher than #N$3C.
+  $E2E5,$04 Jump to #R$E341 if the humans action countdown (#REGa) is higher than #N$32.
+  $E2E9,$04 Jump to #R$E348 if the humans action countdown (#REGa) is higher than #N$28.
+  $E2ED,$04 Jump to #R$E34F if the humans action countdown (#REGa) is higher than #N$1E.
+  $E2F1,$04 Jump to #R$E35B if the humans action countdown (#REGa) is higher than #N$14.
+  $E2F5,$04 Jump to #R$E365 if the humans action countdown (#REGa) is higher than #N$0A.
 @ $E2F9 label=Hmmmmmmm
   $E2F9,$01 Set flags.
-N $E2FA #PUSHS #UDGTABLE(default,centre,centre)
+  $E2FA,$02 #UDGTABLE(default,centre,centre)
 . { =h ID | =h Sprite }
-. { #N$C2 | #HUMAN$0D,$05(human-projectiles-C2) }
-. UDGTABLE# #POPS
-  $E2FA,$02 #REGa=sprite ID #N$C2.
+. { #N$C2 | #HUMAN$C2 }
+. UDGTABLE#
   $E2FC,$02 Jump to #R$E33B if {} is not zero.
   $E2FE,$03 Call #R$E2BA.
-  $E301,$02 Jump to #R$E2CD if {} is lower.
+  $E301,$02 Jump to #R$E2CD if the human is set to start hiding.
   $E303,$03 #REGa=*#R$D3FA.
   $E306,$01 Increment #REGa by one.
   $E307,$04 Jump to #R$E2CD if #REGa is equal to #N$07.
@@ -3236,56 +3251,90 @@ N $E2FA #PUSHS #UDGTABLE(default,centre,centre)
   $E313,$01 Decrease #REGhl by one.
   $E314,$03 Jump to #R$E33E if #REGa is higher than #REGb.
   $E317,$02 Write #N$62 to *#REGhl.
-  $E319,$02 #REGa=#N$C2.
+  $E319,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite | =h Sprite }
+. { #N$C2 | #HUMAN$C2 | #HUMAN$C2,$01 }
+. UDGTABLE#
   $E31B,$02 Jump to #R$E33B if {} is not zero.
   $E31D,$02 Write #N$55 to *#REGhl.
   $E31F,$01 Set the bits from #REGa.
-  $E320,$02 #REGa=#N$C4.
+  $E320,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C4 | #HUMAN$C4 }
+. UDGTABLE#
   $E322,$02 Jump to #R$E33B if {} is not zero.
   $E324,$02 Write #N$47 to *#REGhl.
   $E326,$01 Set the bits from #REGa.
-  $E327,$02 #REGa=#N$C6.
+  $E327,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C6 | #HUMAN$C6 }
+. UDGTABLE#
   $E329,$02 Jump to #R$E33B if {} is not zero.
   $E32B,$02 #REGa=#N$01.
   $E32D,$03 Call #R$E375.
   $E330,$02 Write #N$3E to *#REGhl.
   $E332,$01 Set the bits from #REGa.
-  $E333,$02 #REGa=sprite ID #N$C8.
+  $E333,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C8 | #HUMAN$C8 }
+. UDGTABLE#
   $E335,$02 Jump to #R$E33B if {} is not zero.
   $E337,$02 Write #N$14 to *#REGhl.
-  $E339,$02 #REGa=sprite ID #N$C2.
+  $E339,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C2 | #HUMAN$C2 }
+. UDGTABLE#
 @ $E33B label=Alias_Draw_Human_Sprite
   $E33B,$03 Jump to #R$E541.
   $E33E,$02 Write #N$3A to *#REGhl.
   $E340,$01 Set the bits from #REGa.
-  $E341,$02 #REGa=#N$C2.
+  $E341,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C2 | #HUMAN$C2 }
+. UDGTABLE#
   $E343,$02 Jump to #R$E372 if {} is not zero.
   $E345,$02 Write #N$2D to *#REGhl.
   $E347,$01 Set the bits from #REGa.
-  $E348,$02 #REGa=#N$C4.
+  $E348,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C4 | #HUMAN$C4 }
+. UDGTABLE#
   $E34A,$02 Jump to #R$E372 if {} is not zero.
   $E34C,$02 Write #N$1F to *#REGhl.
   $E34E,$01 Set the bits from #REGa.
-  $E34F,$02 #REGa=#N$C6.
+  $E34F,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C6 | #HUMAN$C6 }
+. UDGTABLE#
   $E351,$02 Jump to #R$E372 if {} is not zero.
   $E353,$02 #REGa=#N$41.
   $E355,$03 Call #R$E375.
   $E358,$02 Write #N$18 to *#REGhl.
   $E35A,$01 Set the bits from #REGa.
-  $E35B,$02 #REGa=#N$C8.
+  $E35B,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C8 | #HUMAN$C8 }
+. UDGTABLE#
   $E35D,$02 Jump to #R$E372 if {} is not zero.
   $E35F,$02 Write #N$0A to *#REGhl.
-  $E361,$02 #REGa=sprite ID #N$C2.
-  $E363,$02 Jump to #R$E33B.
-N $E365 #PUSHS #UDGTABLE(default,centre,centre)
+  $E361,$02 #UDGTABLE(default,centre,centre)
 . { =h ID | =h Sprite }
-. { #N$C0 | #HUMAN$0D,$C0(human-projectiles-C0) }
-. UDGTABLE# #POPS
-  $E365,$02 #REGa=sprite ID #N$C0.
+. { #N$C2 | #HUMAN$C2 }
+. UDGTABLE#
+  $E363,$02 Jump to #R$E33B.
+  $E365,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C0 | #HUMAN$C0 }
+. UDGTABLE#
   $E367,$02 Jump to #R$E33B if #REGa was not equal to #N$C8 on line #R$E2D0.
   $E369,$02 Jump to #R$E2F9.
-  $E36B,$02 #REGa=sprite ID #N$C0.
-  $E36D,$02 Jump to #R$E33B if {} is not zero.
+N $E36B The countdown between #N$CE-#N$C9 handles the delay before #N$C8 will hide the human.
+@ $E36B label=Lobber_AboutToHide
+  $E36B,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C0 | #HUMAN$C0 }
+. UDGTABLE#
+  $E36D,$02 Jump to #R$E33B until the countdown equals #N$C8 (from line #R$E2D0).
   $E36F,$03 Jump to #R$E2C3.
   $E372,$03 Jump to #R$E535.
   $E375,$01 Stash #REGhl on the stack.
@@ -3305,87 +3354,170 @@ N $E365 #PUSHS #UDGTABLE(default,centre,centre)
   $E38A,$01 Write #REGc to *#REGhl.
   $E38B,$01 Restore #REGhl from the stack.
   $E38C,$01 Return.
-@ $E38D label=Human_Type_4
-  $E38D,$01 Restore #REGhl from the stack.
-  $E38E,$03 Decrease *#REGhl by one.
-  $E391,$04 Jump to #R$E3D9 if #REGa is higher than #N$C8.
-  $E395,$04 Jump to #R$E3B1 if #REGa is equal to #N$80.
-  $E399,$02 Jump to #R$E3D5 if {} is lower.
+
+c $E38D Human #N$04: Full Wave
+@ $E38D label=Human_FullWave
+  $E38D,$01 Restore human table pointer from the stack.
+@ $E38E label=FullWave_DecreaseCountdown
+  $E38E,$03 Decrease the humans action countdown by one.
+  $E391,$04 Jump to #R$E3D9 if the humans action countdown (#REGa) is higher than #N$C8.
+  $E395,$04 Jump to #R$E3B1 if the humans action countdown (#REGa) is equal to #N$80.
+  $E399,$02 Jump to #R$E3D5 if the humans action countdown (#REGa) is lower than #N$80.
+N $E39B Ensure the number is between 0-63.
   $E39B,$02,b$01 Keep only bits 0-5.
   $E39D,$04 Jump to #R$E3A9 if #REGa is higher than #N$20.
+N $E3A1 Ensure the number is between 0-3.
   $E3A1,$02,b$01 Keep only bits 0-1.
   $E3A3,$04 Jump to #R$E3C1 if #REGa is lower than #N$02.
   $E3A7,$02 Jump to #R$E3C6.
+N $E3A9 Ensure the number is between 0-3.
+@ $E3A9 label=FullWave_Mirrored
   $E3A9,$02,b$01 Keep only bits 0-1.
   $E3AB,$04 Jump to #R$E3CB if #REGa is lower than #N$02.
   $E3AF,$02 Jump to #R$E3D0.
+N $E3B1 Handle the waving, but also give a small chance the human should hide.
+@ $E3B1 label=FullWave_Action
   $E3B1,$03 Call #R$E2BA.
-  $E3B4,$02 Jump to #R$E38E if {} is lower.
+  $E3B4,$02 Jump to #R$E38E if the human is set to start hiding.
   $E3B6,$03 Call #R$DA28.
-  $E3B9,$02 Write #N$C0 to *#REGhl.
+  $E3B9,$02 Update the countdown to #N$C0.
   $E3BB,$02,b$01 Keep only bit 0.
   $E3BD,$02 Jump to #R$E3CB if the result is zero.
+M $E3BB,$04 50/50 chance of jumping to #R$E3CB.
   $E3BF,$02 Write #N$A0 to *#REGhl.
-  $E3C1,$02 #REGa=#N$C4.
+N $E3C1 Print the "normal" waving sprite frame 1.
+@ $E3C1 label=FullWave_LeftFrame1
+  $E3C1,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C4 | #HUMAN$C4 }
+. UDGTABLE#
   $E3C3,$03 Jump to #R$E541.
-  $E3C6,$02 #REGa=#N$C8.
+N $E3C6 Print the "normal" waving sprite frame 2.
+@ $E3C6 label=FullWave_LeftFrame2
+  $E3C6,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C8 | #HUMAN$C8 }
+. UDGTABLE#
   $E3C8,$03 Jump to #R$E541.
-  $E3CB,$02 #REGa=#N$C4.
+N $E3CB Print the "mirrored" waving sprite frame 1.
+@ $E3CB label=FullWave_RightFrame1
+  $E3CB,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C4 | #HUMAN$C4,$01 }
+. UDGTABLE#
   $E3CD,$03 Jump to #R$E535.
-  $E3D0,$02 #REGa=#N$C8.
+N $E3D0 Print the "mirrored" waving sprite frame 2.
+@ $E3D0 label=FullWave_RightFrame2
+  $E3D0,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C8 | #HUMAN$C8,$01 }
+. UDGTABLE#
   $E3D2,$03 Jump to #R$E535.
+N $E3D5 When the countdown reaches #N$0A (from #N$80), jump to #R$E3B1 to start a new cycle.
+@ $E3D5 label=FullWave_EndCycle
   $E3D5,$04 Jump to #R$E3B1 if #REGa is equal to #N$0A.
-  $E3D9,$02 #REGa=#N$C0.
-  $E3DB,$03 Jump to #R$E541 if {} is not zero.
+N $E3D9 The countdown between #N$CE-#N$C9 handles the delay before #N$C8 will hide the human.
+@ $E3D9 label=FullWave_AboutToHide
+  $E3D9,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C0 | #HUMAN$C0 }
+. UDGTABLE#
+  $E3DB,$03 Jump to #R$E541 until the countdown equals #N$C8 (from line #R$E391).
   $E3DE,$03 Jump to #R$E2C3.
-N $E3E1 Human #N$05: Waving arms in the air/ distressed human.
+
+c $E3E1 Human #N$05: Waving Arms In The Air/ Distressed Human
 @ $E3E1 label=Human_WavingOverHead
-  $E3E1,$01 Restore #REGhl from the stack.
-  $E3E2,$03 Decrease *#REGhl by one.
-  $E3E5,$04 Jump to #R$E40C if #REGa is higher than #N$C8.
-  $E3E9,$04 Jump to #R$E3F7 if #REGa is equal to #N$80.
-  $E3ED,$02 Jump to #R$E408 if #REGa is lower than #N$80.
+  $E3E1,$01 Restore human table pointer from the stack.
+@ $E3E2 label=WavingOverHead_DecreaseCountdown
+  $E3E2,$03 Decrease the humans action countdown by one.
+  $E3E5,$04 Jump to #R$E40C if the humans action countdown (#REGa) is higher than #N$C8.
+  $E3E9,$04 Jump to #R$E3F7 if the humans action countdown (#REGa) is equal to #N$80.
+  $E3ED,$02 Jump to #R$E408 if the humans action countdown (#REGa) is lower than #N$80.
+N $E3EF Turn the countdown into a number between 0-3 - so it's two cycles left, two cycles right.
   $E3EF,$02,b$01 Keep only bits 0-1.
   $E3F1,$04 Jump to #R$E3FE if #REGa is lower than #N$02.
   $E3F5,$02 Jump to #R$E403.
+N $E3F7 Handle the waving, but also give a small chance the human should hide.
+@ $E3F7 label=WavingOverHead_Action
   $E3F7,$03 Call #R$E2BA.
-  $E3FA,$02 Jump to #R$E3E2 if {} is lower.
-  $E3FC,$02 Write #N$A0 to *#REGhl.
-  $E3FE,$02 #REGa=#N$C8.
+  $E3FA,$02 Jump to #R$E3E2 if the human is set to start hiding.
+  $E3FC,$02 Update the countdown to #N$A0.
+N $E3FE Print the "normal" waving sprite.
+@ $E3FE label=WavingOverHead_Left
+  $E3FE,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C8 | #HUMAN$C8 }
+. UDGTABLE#
   $E400,$03 Jump to #R$E541.
-  $E403,$02 #REGa=#N$C8.
+N $E403 Print the "mirrored" waving sprite.
+@ $E403 label=WavingOverHead_Right
+  $E403,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C8 | #HUMAN$C8,$01 }
+. UDGTABLE#
   $E405,$03 Jump to #R$E535.
+N $E408 When the countdown reaches #N$0A (from #N$80), jump to #R$E3F7 to start a new cycle.
+@ $E408 label=WavingOverHead_EndCycle
   $E408,$04 Jump to #R$E3F7 if #REGa is equal to #N$0A.
-  $E40C,$02 #REGa=#N$C0.
-  $E40E,$03 Jump to #R$E541 if {} is not zero.
+N $E40C The countdown between #N$CE-#N$C9 handles the delay before #N$C8 will hide the human.
+@ $E40C label=WavingOverHead_AboutToHide
+  $E40C,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C0 | #HUMAN$C0 }
+. UDGTABLE#
+  $E40E,$03 Jump to #R$E541 until the countdown equals #N$C8 (from line #R$E3E5).
   $E411,$03 Jump to #R$E2C3.
-N $E414 Human #N$06: Waving side-to-side/ distressed human.
+
+c $E414 Human #N$06: Waving Side-To-Side/ Distressed Human
 @ $E414 label=Human_WavingSideToSide
-  $E414,$01 Restore #REGhl from the stack.
-  $E415,$03 Decrease *#REGhl by one.
-  $E418,$04 Jump to #R$E43F if #REGa is higher than #N$C8.
-  $E41C,$04 Jump to #R$E42A if #REGa is equal to #N$80.
-  $E420,$02 Jump to #R$E43B if {} is lower.
+  $E414,$01 Restore human table pointer from the stack.
+@ $E415 label=WavingSideToSide_DecreaseCountdown
+  $E415,$03 Decrease the humans action countdown by one.
+  $E418,$04 Jump to #R$E43F if the humans action countdown (#REGa) is higher than #N$C8.
+  $E41C,$04 Jump to #R$E42A if the humans action countdown (#REGa) is equal to #N$80.
+  $E420,$02 Jump to #R$E43B if the humans action countdown (#REGa) is lower than #N$80.
+N $E422 Turn the countdown into a number between 0-7 - so it's four cycles left, four cycles right.
   $E422,$02,b$01 Keep only bits 0-2.
   $E424,$04 Jump to #R$E431 if #REGa is lower than #N$04.
   $E428,$02 Jump to #R$E436.
+N $E42A Handle the waving, but also give a small chance the human should hide.
+@ $E42A label=WavingSideToSide_Action
   $E42A,$03 Call #R$E2BA.
-  $E42D,$02 Jump to #R$E415 if {} is lower.
-  $E42F,$02 Write #N$C0 to *#REGhl.
-  $E431,$02 #REGa=#N$C4.
+  $E42D,$02 Jump to #R$E415 if the human is set to start hiding.
+  $E42F,$02 Update the countdown to #N$C0.
+N $E431 Print the "normal" waving sprite.
+@ $E431 label=WavingSideToSide_Left
+  $E431,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C4 | #HUMAN$C4 }
+. UDGTABLE#
   $E433,$03 Jump to #R$E541.
-  $E436,$02 #REGa=#N$C4.
+N $E436 Print the "mirrored" waving sprite.
+@ $E436 label=WavingSideToSide_Right
+  $E436,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C4 | #HUMAN$C4,$01 }
+. UDGTABLE#
   $E438,$03 Jump to #R$E535.
+N $E43B When the countdown reaches #N$0A (from #N$80), jump to #R$E42A to start a new cycle.
+@ $E43B label=WavingSideToSide_EndCycle
   $E43B,$04 Jump to #R$E42A if #REGa is equal to #N$0A.
-  $E43F,$02 #REGa=#N$C0.
-  $E441,$03 Jump to #R$E541 if {} is not zero.
+N $E43F The countdown between #N$CE-#N$C9 handles the delay before #N$C8 will hide the human.
+@ $E43F label=WavingSideToSide_AboutToHide
+  $E43F,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C0 | #HUMAN$C0 }
+. UDGTABLE#
+  $E441,$03 Jump to #R$E541 until the countdown equals #N$C8 (from line #R$E418).
   $E444,$03 Jump to #R$E2C3.
-N $E447 Human #N$07-#N$0C: Human with rifle (shooter).
+
+c $E447 Human #N$07-#N$0C: Human With Rifle (Shooter)
 @ $E447 label=Human_Shooter
-  $E447,$01 Restore #REGhl from the stack.
-  $E448,$03 Decrease *#REGhl by one.
-  $E44B,$05 Jump to #R$E4D6 if #REGa is higher than #N$C8.
-  $E450,$04 Jump to #R$E4D2 if #REGa is lower than #N$14.
+  $E447,$01 Restore human table pointer from the stack.
+@ $E448 label=Shooter_DecreaseCountdown
+  $E448,$03 Decrease the humans action countdown by one.
+  $E44B,$05 Jump to #R$E4D6 if the humans action countdown (#REGa) is higher than #N$C8.
+  $E450,$04 Jump to #R$E4D2 if the humans action countdown (#REGa) is lower than #N$14.
   $E454,$02,b$01 Keep only bits 0-4.
   $E456,$02 Jump to #R$E463 if the result is zero.
   $E458,$01 #REGa=*#REGhl.
@@ -3393,12 +3525,14 @@ N $E447 Human #N$07-#N$0C: Human with rifle (shooter).
   $E45C,$02,b$01 Keep only bits 0-1.
   $E45E,$03 Call #R$DBD9.
   $E461,$02 Jump to #R$E474.
+N $E463 Handle the action, but also give a small chance the human should hide.
+@ $E463 label=Shooter_Action
   $E463,$03 Call #R$E2BA.
-  $E466,$02 Jump to #R$E448 if {} is lower.
+  $E466,$02 Jump to #R$E448 if the human is set to start hiding.
   $E468,$03 Call #R$DB7E.
   $E46B,$01 Exchange the #REGaf register with the shadow #REGaf register.
   $E46C,$02,b$01 Keep only bits 0-1.
-  $E46E,$03 RRCA.
+  $E46E,$03 Rotate #REGa right three positions (bits 0 to 2 are now in positions 5 to 7).
   $E471,$02,b$01 Set bits 0-4.
   $E473,$01 Write #REGa to *#REGhl.
   $E474,$01 Increment #REGhl by one.
@@ -3417,13 +3551,25 @@ N $E447 Human #N$07-#N$0C: Human with rifle (shooter).
   $E48B,$03 Jump to #R$E4B5 if #REGa is equal to #REGc.
   $E48E,$02 Jump to #R$E4B1 if #REGa is lower than #REGc.
   $E490,$02 Jump to #R$E4B9.
-  $E492,$02 #REGb=#N$CA.
+  $E492,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$CA | #HUMAN$CA }
+. UDGTABLE#
   $E494,$02 Jump to #R$E4C1.
-  $E496,$02 #REGb=#N$CC.
+  $E496,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$CC | #HUMAN$CC }
+. UDGTABLE#
   $E498,$02 Jump to #R$E4A0.
-  $E49A,$02 #REGb=#N$CE.
+  $E49A,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$CE | #HUMAN$CE }
+. UDGTABLE#
   $E49C,$02 Jump to #R$E4A0.
-  $E49E,$02 #REGb=#N$D0.
+  $E49E,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$D0 | #HUMAN$D0 }
+. UDGTABLE#
   $E4A0,$03 Call #R$DA28.
   $E4A3,$02 Compare #REGa with #N$04.
   $E4A5,$01 #REGa=#REGb.
@@ -3431,13 +3577,25 @@ N $E447 Human #N$07-#N$0C: Human with rifle (shooter).
   $E4A9,$02 #REGc=#N$00.
   $E4AB,$03 Call #R$E4DE.
   $E4AE,$03 Jump to #R$E541.
-  $E4B1,$02 #REGb=#N$CC.
+  $E4B1,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$CC | #HUMAN$CC }
+. UDGTABLE#
   $E4B3,$02 Jump to #R$E4C1.
-  $E4B5,$02 #REGb=#N$CE.
+  $E4B5,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$CE | #HUMAN$CE }
+. UDGTABLE#
   $E4B7,$02 Jump to #R$E4C1.
-  $E4B9,$02 #REGb=#N$D0.
+  $E4B9,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$D0 | #HUMAN$D0 }
+. UDGTABLE#
   $E4BB,$02 Jump to #R$E4C1.
-  $E4BD,$02 #REGb=#N$D2.
+  $E4BD,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$D2 | #HUMAN$D2 }
+. UDGTABLE#
   $E4BF,$02 Jump to #R$E4A0.
   $E4C1,$03 Call #R$DA28.
   $E4C4,$02 Compare #REGa with #N$04...
@@ -3446,14 +3604,20 @@ N $E447 Human #N$07-#N$0C: Human with rifle (shooter).
   $E4CA,$02 #REGc=#N$80.
   $E4CC,$03 Call #R$E4DE.
   $E4CF,$03 Jump to #R$E535.
+N $E4D2 When the countdown reaches #N$0A (from #N$80), jump to #R$E463 to start a new cycle.
+@ $E4D2 label=Shooter_EndCycle
   $E4D2,$04 Jump to #R$E463 if #REGa is equal to #N$0A.
-  $E4D6,$02 #REGa=#N$C0.
-  $E4D8,$03 Jump to #R$E541 if {} is not zero.
+N $E4D6 The countdown between #N$CE-#N$C9 handles the delay before #N$C8 will hide the human.
+@ $E4D6 label=Shooter_AboutToHide
+  $E4D6,$02 #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$C0 | #HUMAN$C0 }
+. UDGTABLE#
+  $E4D8,$03 Jump to #R$E541 until the countdown equals #N$C8 (from line #R$E44B).
   $E4DB,$03 Jump to #R$E2C3.
-  $E4DE,$03 #REGa=*#R$D3F8.
-  $E4E1,$02 Compare #REGa with #N$08.
+  $E4DE,$05 Compare *#R$D3F8 with #N$08...
   $E4E3,$01 #REGa=#REGb.
-  $E4E4,$01 Return if {} is zero.
+  $E4E4,$01 Return if *#R$D3F8 is equal to #N$08 on line #R$E4E1.
   $E4E5,$03 #REGde=#R$D2BC.
   $E4E8,$01 Exchange the #REGaf register with the shadow #REGaf register.
   $E4E9,$03 Increment #REGde by three.
@@ -3483,40 +3647,45 @@ N $E447 Human #N$07-#N$0C: Human with rifle (shooter).
   $E519,$02,b$01 Keep only bits 0-1.
   $E51B,$04 Jump to #R$E520 if #REGa is not equal to #N$03.
   $E51F,$01 Increment #REGb by one.
-  $E520,$01 #REGa=#REGc.
-  $E521,$01 Write #REGa to *#REGde.
+  $E520,$02 Write #REGc to *#REGde.
   $E522,$01 Increment #REGde by one.
-  $E523,$01 #REGa=#REGb.
-  $E524,$01 Write #REGa to *#REGde.
+  $E523,$02 Write #REGb to *#REGde.
   $E525,$02 Decrease #REGhl by two.
-  $E527,$03 #REGa=*#R$D3F8.
-  $E52A,$01 Increment #REGa by one.
-  $E52B,$03 Write #REGa to *#R$D3F8.
+  $E527,$07 Increment *#R$D3F8 by one.
 N $E52E #AUDIO(helicopter.wav)(#INCLUDE(Helicopter))
   $E52E,$05 Write melody ID #N$02 to *#R$FF8D.
   $E533,$01 Exchange the #REGaf register with the shadow #REGaf register.
   $E534,$01 Return.
-  $E535,$01 Increment #REGhl by one.
+
+c $E535 Human: Draw Sprite
+N $E535 Fetch the humans screen co-ordinates and draw the sprite to the shadow buffer.
+@ $E535 label=Draw_Human_Sprite_Mirrored
+  $E535,$01 Increment human table pointer by one to fetch the screen co-ordinates.
   $E536,$01 #REGc=*#REGhl.
   $E537,$01 Increment #REGhl by one.
   $E538,$01 #REGb=*#REGhl.
   $E539,$01 Increment #REGhl by one.
-  $E53A,$01 Stash #REGhl on the stack.
+  $E53A,$01 Stash the human table pointer on the stack.
   $E53B,$03 Call #R$D7F6.
-  $E53E,$01 Restore #REGhl from the stack.
+  $E53E,$01 Restore the human table pointer from the stack.
   $E53F,$02 Jump to #R$E550.
+N $E541 Fetch the humans screen co-ordinates and draw the sprite to the shadow buffer.
 @ $E541 label=Draw_Human_Sprite
-  $E541,$01 Increment #REGhl by one.
+  $E541,$01 Increment human table pointer by one to fetch the screen co-ordinates.
   $E542,$01 #REGc=*#REGhl.
   $E543,$01 Increment #REGhl by one.
   $E544,$01 #REGb=*#REGhl.
   $E545,$01 Increment #REGhl by one.
-  $E546,$01 Stash #REGhl on the stack.
+  $E546,$01 Stash the human table pointer on the stack.
   $E547,$03 Call #R$D6C9.
-  $E54A,$01 Restore #REGhl from the stack.
+  $E54A,$01 Restore the human table pointer from the stack.
   $E54B,$02 Jump to #R$E550.
+
+c $E54D Human: Next Table Data
+N $E54D Move the human table table pointer to the next human.
 @ $E54D label=Handler_Humans_Skip
   $E54D,$03 Move onto the next human table data.
+N $E550 Shortcut for in-progress humans, no need to move the human table table pointer. Just update the counter.
 @ $E550 label=Handler_Humans_Next
   $E550,$01 Restore the human ID from the stack.
   $E551,$01 Decrease the human ID by one.
@@ -4819,7 +4988,7 @@ c $F28B Handler: Spawn Helicopters
 N $F28B Just return if the number of active helicopters is already at the maximum amount for this level.
   $F28B,$09 Return if *#R$D3F5 is equal to *#R$D212.
 N $F294 Add a hint of randomness to whether we proceed or not. Roughly 50% chance.
-  $F294,$03 #REGa=random number #N$00-#N$FF.
+  $F294,$03 #REGa=random number between #N$00-#N$FF.
   $F297,$03 Return if #REGa is higher than #N$80.
 N $F29A Loop to find an empty slot.
   $F29A,$03 #REGhl=#R$D292 (#R$D295-#N$03).
