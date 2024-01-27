@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at E2CC</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="E2C3.html">E2C3</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#e2cc">Map</a></td>
+<td class="next">
+Next: <a href="E38D.html">E38D</a>
+</td>
+</tr>
+</table>
+<div class="description">E2CC: Human 0D-10: Throwing Projectiles</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Lobber</td>
+<td class="address-2"><span id="e2cc"></span>E2CC</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore human table pointer from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label">Lobber_DecreaseCountdown</td>
+<td class="address-2"><span id="e2cd"></span>E2CD</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="3">Decrease the humans action countdown by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2ce"></span>E2CE</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2cf"></span>E2CF</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2d0"></span>E2D0</td>
+<td class="instruction">CP $C8</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E2CC.html#e36b">Lobber_AboutToHide</a> if the humans action countdown (<span class="register">A</span>) is higher than C8.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2d2"></span>E2D2</td>
+<td class="instruction">JP NC,<a href="E2CC.html#e36b">Lobber_AboutToHide</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2d5"></span>E2D5</td>
+<td class="instruction">CP $5A</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E2CC.html#e319">Human_Lobber_0</a> if the humans action countdown (<span class="register">A</span>) is higher than 5A.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2d7"></span>E2D7</td>
+<td class="instruction">JR NC,<a href="E2CC.html#e319">Human_Lobber_0</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2d9"></span>E2D9</td>
+<td class="instruction">CP $50</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E2CC.html#e320">Human_Lobber_1</a> if the humans action countdown (<span class="register">A</span>) is higher than 50.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2db"></span>E2DB</td>
+<td class="instruction">JR NC,<a href="E2CC.html#e320">Human_Lobber_1</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2dd"></span>E2DD</td>
+<td class="instruction">CP $46</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E2CC.html#e327">Human_Lobber_2</a> if the humans action countdown (<span class="register">A</span>) is higher than 46.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2df"></span>E2DF</td>
+<td class="instruction">JR NC,<a href="E2CC.html#e327">Human_Lobber_2</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2e1"></span>E2E1</td>
+<td class="instruction">CP $3C</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E2CC.html#e333">Human_Lobber_3</a> if the humans action countdown (<span class="register">A</span>) is higher than 3C.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2e3"></span>E2E3</td>
+<td class="instruction">JR NC,<a href="E2CC.html#e333">Human_Lobber_3</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2e5"></span>E2E5</td>
+<td class="instruction">CP $32</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E2CC.html#e341">Human_Lobber_5</a> if the humans action countdown (<span class="register">A</span>) is higher than 32.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2e7"></span>E2E7</td>
+<td class="instruction">JR NC,<a href="E2CC.html#e341">Human_Lobber_5</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2e9"></span>E2E9</td>
+<td class="instruction">CP $28</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E2CC.html#e348">Human_Lobber_6</a> if the humans action countdown (<span class="register">A</span>) is higher than 28.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2eb"></span>E2EB</td>
+<td class="instruction">JR NC,<a href="E2CC.html#e348">Human_Lobber_6</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2ed"></span>E2ED</td>
+<td class="instruction">CP $1E</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E2CC.html#e34f">Human_Lobber_7</a> if the humans action countdown (<span class="register">A</span>) is higher than 1E.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2ef"></span>E2EF</td>
+<td class="instruction">JR NC,<a href="E2CC.html#e34f">Human_Lobber_7</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2f1"></span>E2F1</td>
+<td class="instruction">CP $14</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E2CC.html#e35b">Human_Lobber_8</a> if the humans action countdown (<span class="register">A</span>) is higher than 14.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2f3"></span>E2F3</td>
+<td class="instruction">JR NC,<a href="E2CC.html#e35b">Human_Lobber_8</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2f5"></span>E2F5</td>
+<td class="instruction">CP $0A</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E2CC.html#e365">Human_Lobber_9</a> if the humans action countdown (<span class="register">A</span>) is higher than 0A.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2f7"></span>E2F7</td>
+<td class="instruction">JR NC,<a href="E2CC.html#e365">Human_Lobber_9</a></td>
+</tr>
+<tr>
+<td class="asm-label">Hmmmmmmm</td>
+<td class="address-2"><span id="e2f9"></span>E2F9</td>
+<td class="instruction">AND A</td>
+<td class="comment-1" rowspan="1">Set flags.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2fa"></span>E2FA</td>
+<td class="instruction">LD A,$C2</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">C2</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-194-left" src="../images/scr/human-194-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2fc"></span>E2FC</td>
+<td class="instruction">JR NZ,<a href="E2CC.html#e33b">Alias_Draw_Human_Sprite</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E2CC.html#e33b">Alias_Draw_Human_Sprite</a> if {} is not zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2fe"></span>E2FE</td>
+<td class="instruction">CALL <a href="E2BA.html">ShouldHumanHide</a></td>
+<td class="comment-1" rowspan="1">Call <a href="E2BA.html">ShouldHumanHide</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e301"></span>E301</td>
+<td class="instruction">JR C,<a href="E2CC.html#e2cd">Lobber_DecreaseCountdown</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E2CC.html#e2cd">Lobber_DecreaseCountdown</a> if the human is set to start hiding.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e303"></span>E303</td>
+<td class="instruction">LD A,($D3FA)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D3FA.html">NumberOnScreenProjectiles</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e306"></span>E306</td>
+<td class="instruction">INC A</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e307"></span>E307</td>
+<td class="instruction">CP $07</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E2CC.html#e2cd">Lobber_DecreaseCountdown</a> if <span class="register">A</span> is equal to 07.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e309"></span>E309</td>
+<td class="instruction">JR Z,<a href="E2CC.html#e2cd">Lobber_DecreaseCountdown</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e30b"></span>E30B</td>
+<td class="instruction">LD ($D3FA),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D3FA.html">NumberOnScreenProjectiles</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e30e"></span>E30E</td>
+<td class="instruction">CALL <a href="DB7E.html">$DB7E</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DB7E.html">DB7E</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e311"></span>E311</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e312"></span>E312</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e313"></span>E313</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-1" rowspan="1">Decrease <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e314"></span>E314</td>
+<td class="instruction">CP B</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E2CC.html#e33e">Human_Lobber_4</a> if <span class="register">A</span> is higher than <span class="register">B</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e315"></span>E315</td>
+<td class="instruction">JR NC,<a href="E2CC.html#e33e">Human_Lobber_4</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e317"></span>E317</td>
+<td class="instruction">LD (HL),$62</td>
+<td class="comment-1" rowspan="1">Write 62 to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Lobber_0</td>
+<td class="address-2"><span id="e319"></span>E319</td>
+<td class="instruction">LD A,$C2</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">C2</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-194-left" src="../images/scr/human-194-left.png" /></td>
+<td class="" colspan="1" rowspan="1"><img alt="human-194-right" src="../images/scr/human-194-right.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e31b"></span>E31B</td>
+<td class="instruction">JR NZ,<a href="E2CC.html#e33b">Alias_Draw_Human_Sprite</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E2CC.html#e33b">Alias_Draw_Human_Sprite</a> if {} is not zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e31d"></span>E31D</td>
+<td class="instruction">LD (HL),$55</td>
+<td class="comment-1" rowspan="1">Write 55 to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e31f"></span>E31F</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">Set the bits from <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Lobber_1</td>
+<td class="address-2"><span id="e320"></span>E320</td>
+<td class="instruction">LD A,$C4</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">C4</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-196-left" src="../images/scr/human-196-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e322"></span>E322</td>
+<td class="instruction">JR NZ,<a href="E2CC.html#e33b">Alias_Draw_Human_Sprite</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E2CC.html#e33b">Alias_Draw_Human_Sprite</a> if {} is not zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e324"></span>E324</td>
+<td class="instruction">LD (HL),$47</td>
+<td class="comment-1" rowspan="1">Write 47 to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e326"></span>E326</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">Set the bits from <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Lobber_2</td>
+<td class="address-2"><span id="e327"></span>E327</td>
+<td class="instruction">LD A,$C6</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">C6</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-198-left" src="../images/scr/human-198-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e329"></span>E329</td>
+<td class="instruction">JR NZ,<a href="E2CC.html#e33b">Alias_Draw_Human_Sprite</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E2CC.html#e33b">Alias_Draw_Human_Sprite</a> if {} is not zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e32b"></span>E32B</td>
+<td class="instruction">LD A,$01</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=01.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e32d"></span>E32D</td>
+<td class="instruction">CALL <a href="E2CC.html#e375">Human_Lobber_11</a></td>
+<td class="comment-1" rowspan="1">Call <a href="E2CC.html#e375">Human_Lobber_11</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e330"></span>E330</td>
+<td class="instruction">LD (HL),$3E</td>
+<td class="comment-1" rowspan="1">Write 3E to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e332"></span>E332</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">Set the bits from <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Lobber_3</td>
+<td class="address-2"><span id="e333"></span>E333</td>
+<td class="instruction">LD A,$C8</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">C8</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-200-left" src="../images/scr/human-200-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e335"></span>E335</td>
+<td class="instruction">JR NZ,<a href="E2CC.html#e33b">Alias_Draw_Human_Sprite</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E2CC.html#e33b">Alias_Draw_Human_Sprite</a> if {} is not zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e337"></span>E337</td>
+<td class="instruction">LD (HL),$14</td>
+<td class="comment-1" rowspan="1">Write 14 to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e339"></span>E339</td>
+<td class="instruction">LD A,$C2</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">C2</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-194-left" src="../images/scr/human-194-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label">Alias_Draw_Human_Sprite</td>
+<td class="address-2"><span id="e33b"></span>E33B</td>
+<td class="instruction">JP <a href="E535.html#e541">Draw_Human_Sprite</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E535.html#e541">Draw_Human_Sprite</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Lobber_4</td>
+<td class="address-2"><span id="e33e"></span>E33E</td>
+<td class="instruction">LD (HL),$3A</td>
+<td class="comment-1" rowspan="1">Write 3A to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e340"></span>E340</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">Set the bits from <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Lobber_5</td>
+<td class="address-2"><span id="e341"></span>E341</td>
+<td class="instruction">LD A,$C2</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">C2</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-194-left" src="../images/scr/human-194-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e343"></span>E343</td>
+<td class="instruction">JR NZ,<a href="E2CC.html#e372">Human_Lobber_10</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E2CC.html#e372">Human_Lobber_10</a> if {} is not zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e345"></span>E345</td>
+<td class="instruction">LD (HL),$2D</td>
+<td class="comment-1" rowspan="1">Write 2D to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e347"></span>E347</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">Set the bits from <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Lobber_6</td>
+<td class="address-2"><span id="e348"></span>E348</td>
+<td class="instruction">LD A,$C4</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">C4</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-196-left" src="../images/scr/human-196-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e34a"></span>E34A</td>
+<td class="instruction">JR NZ,<a href="E2CC.html#e372">Human_Lobber_10</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E2CC.html#e372">Human_Lobber_10</a> if {} is not zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e34c"></span>E34C</td>
+<td class="instruction">LD (HL),$1F</td>
+<td class="comment-1" rowspan="1">Write 1F to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e34e"></span>E34E</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">Set the bits from <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Lobber_7</td>
+<td class="address-2"><span id="e34f"></span>E34F</td>
+<td class="instruction">LD A,$C6</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">C6</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-198-left" src="../images/scr/human-198-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e351"></span>E351</td>
+<td class="instruction">JR NZ,<a href="E2CC.html#e372">Human_Lobber_10</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E2CC.html#e372">Human_Lobber_10</a> if {} is not zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e353"></span>E353</td>
+<td class="instruction">LD A,$41</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=41.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e355"></span>E355</td>
+<td class="instruction">CALL <a href="E2CC.html#e375">Human_Lobber_11</a></td>
+<td class="comment-1" rowspan="1">Call <a href="E2CC.html#e375">Human_Lobber_11</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e358"></span>E358</td>
+<td class="instruction">LD (HL),$18</td>
+<td class="comment-1" rowspan="1">Write 18 to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e35a"></span>E35A</td>
+<td class="instruction">OR A</td>
+<td class="comment-1" rowspan="1">Set the bits from <span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Lobber_8</td>
+<td class="address-2"><span id="e35b"></span>E35B</td>
+<td class="instruction">LD A,$C8</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">C8</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-200-left" src="../images/scr/human-200-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e35d"></span>E35D</td>
+<td class="instruction">JR NZ,<a href="E2CC.html#e372">Human_Lobber_10</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E2CC.html#e372">Human_Lobber_10</a> if {} is not zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e35f"></span>E35F</td>
+<td class="instruction">LD (HL),$0A</td>
+<td class="comment-1" rowspan="1">Write 0A to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e361"></span>E361</td>
+<td class="instruction">LD A,$C2</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">C2</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-194-left" src="../images/scr/human-194-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e363"></span>E363</td>
+<td class="instruction">JR <a href="E2CC.html#e33b">Alias_Draw_Human_Sprite</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E2CC.html#e33b">Alias_Draw_Human_Sprite</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Lobber_9</td>
+<td class="address-2"><span id="e365"></span>E365</td>
+<td class="instruction">LD A,$C0</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">C0</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-192-left" src="../images/scr/human-192-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e367"></span>E367</td>
+<td class="instruction">JR NZ,<a href="E2CC.html#e33b">Alias_Draw_Human_Sprite</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E2CC.html#e33b">Alias_Draw_Human_Sprite</a> if <span class="register">A</span> was not equal to C8 on line <a href="E2CC.html#e2d0">E2D0</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e369"></span>E369</td>
+<td class="instruction">JR <a href="E2CC.html#e2f9">Hmmmmmmm</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E2CC.html#e2f9">Hmmmmmmm</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e36b"></span>
+<div class="comments">
+<div class="paragraph">
+The countdown between CE-C9 handles the delay before C8 will hide the human.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Lobber_AboutToHide</td>
+<td class="address-2"><span id="e36b"></span>E36B</td>
+<td class="instruction">LD A,$C0</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">C0</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-192-left" src="../images/scr/human-192-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e36d"></span>E36D</td>
+<td class="instruction">JR NZ,<a href="E2CC.html#e33b">Alias_Draw_Human_Sprite</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E2CC.html#e33b">Alias_Draw_Human_Sprite</a> until the countdown equals C8 (from line <a href="E2CC.html#e2d0">E2D0</a>).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e36f"></span>E36F</td>
+<td class="instruction">JP <a href="E2C3.html">Handler_Human_Hide</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E2C3.html">Handler_Human_Hide</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Lobber_10</td>
+<td class="address-2"><span id="e372"></span>E372</td>
+<td class="instruction">JP <a href="E535.html">Draw_Human_Sprite_Mirrored</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E535.html">Draw_Human_Sprite_Mirrored</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Lobber_11</td>
+<td class="address-2"><span id="e375"></span>E375</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e376"></span>E376</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e377"></span>E377</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e378"></span>E378</td>
+<td class="instruction">LD C,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e379"></span>E379</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e37a"></span>E37A</td>
+<td class="instruction">LD B,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e37b"></span>E37B</td>
+<td class="instruction">LD HL,$D30A</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D2BF.html#d30a">D30A</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Lobber_12</td>
+<td class="address-2"><span id="e37e"></span>E37E</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="3">Increment <span class="register">HL</span> by three.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e37f"></span>E37F</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e380"></span>E380</td>
+<td class="instruction">INC HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e381"></span>E381</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="E2CC.html#e37e">Human_Lobber_12</a> if *<span class="register">HL</span> is not zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e382"></span>E382</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e383"></span>E383</td>
+<td class="instruction">JR NZ,<a href="E2CC.html#e37e">Human_Lobber_12</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e385"></span>E385</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e386"></span>E386</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e387"></span>E387</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e388"></span>E388</td>
+<td class="instruction">LD (HL),B</td>
+<td class="comment-1" rowspan="1">Write <span class="register">B</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e389"></span>E389</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e38a"></span>E38A</td>
+<td class="instruction">LD (HL),C</td>
+<td class="comment-1" rowspan="1">Write <span class="register">C</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e38b"></span>E38B</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e38c"></span>E38C</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="E2C3.html">E2C3</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#e2cc">Map</a></td>
+<td class="next">
+Next: <a href="E38D.html">E38D</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="../dec/asm/58060.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

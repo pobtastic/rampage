@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at E3E1</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="E38D.html">E38D</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#e3e1">Map</a></td>
+<td class="next">
+Next: <a href="E414.html">E414</a>
+</td>
+</tr>
+</table>
+<div class="description">E3E1: Human 05: Waving Arms In The Air/ Distressed Human</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Human_WavingOverHead</td>
+<td class="address-2"><span id="e3e1"></span>E3E1</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore human table pointer from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label">WavingOverHead_DecreaseCountdown</td>
+<td class="address-2"><span id="e3e2"></span>E3E2</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="3">Decrease the humans action countdown by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3e3"></span>E3E3</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3e4"></span>E3E4</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3e5"></span>E3E5</td>
+<td class="instruction">CP $C8</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E3E1.html#e40c">WavingOverHead_AboutToHide</a> if the humans action countdown (<span class="register">A</span>) is higher than C8.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3e7"></span>E3E7</td>
+<td class="instruction">JR NC,<a href="E3E1.html#e40c">WavingOverHead_AboutToHide</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3e9"></span>E3E9</td>
+<td class="instruction">CP $80</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E3E1.html#e3f7">WavingOverHead_Action</a> if the humans action countdown (<span class="register">A</span>) is equal to 80.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3eb"></span>E3EB</td>
+<td class="instruction">JR Z,<a href="E3E1.html#e3f7">WavingOverHead_Action</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3ed"></span>E3ED</td>
+<td class="instruction">JR C,<a href="E3E1.html#e408">WavingOverHead_EndCycle</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E3E1.html#e408">WavingOverHead_EndCycle</a> if the humans action countdown (<span class="register">A</span>) is lower than 80.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e3ef"></span>
+<div class="comments">
+<div class="paragraph">
+Turn the countdown into a number between 0-3 - so it's two cycles left, two cycles right.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3ef"></span>E3EF</td>
+<td class="instruction">AND %00000011</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-1.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3f1"></span>E3F1</td>
+<td class="instruction">CP $02</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E3E1.html#e3fe">WavingOverHead_Left</a> if <span class="register">A</span> is lower than 02.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3f3"></span>E3F3</td>
+<td class="instruction">JR C,<a href="E3E1.html#e3fe">WavingOverHead_Left</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3f5"></span>E3F5</td>
+<td class="instruction">JR <a href="E3E1.html#e403">WavingOverHead_Right</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E3E1.html#e403">WavingOverHead_Right</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e3f7"></span>
+<div class="comments">
+<div class="paragraph">
+Handle the waving, but also give a small chance the human should hide.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">WavingOverHead_Action</td>
+<td class="address-2"><span id="e3f7"></span>E3F7</td>
+<td class="instruction">CALL <a href="E2BA.html">ShouldHumanHide</a></td>
+<td class="comment-1" rowspan="1">Call <a href="E2BA.html">ShouldHumanHide</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3fa"></span>E3FA</td>
+<td class="instruction">JR C,<a href="E3E1.html#e3e2">WavingOverHead_DecreaseCountdown</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E3E1.html#e3e2">WavingOverHead_DecreaseCountdown</a> if the human is set to start hiding.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3fc"></span>E3FC</td>
+<td class="instruction">LD (HL),$A0</td>
+<td class="comment-1" rowspan="1">Update the countdown to A0.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e3fe"></span>
+<div class="comments">
+<div class="paragraph">
+Print the "normal" waving sprite.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">WavingOverHead_Left</td>
+<td class="address-2"><span id="e3fe"></span>E3FE</td>
+<td class="instruction">LD A,$C8</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">C8</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-200-left" src="../images/scr/human-200-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e400"></span>E400</td>
+<td class="instruction">JP <a href="E535.html#e541">Draw_Human_Sprite</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E535.html#e541">Draw_Human_Sprite</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e403"></span>
+<div class="comments">
+<div class="paragraph">
+Print the "mirrored" waving sprite.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">WavingOverHead_Right</td>
+<td class="address-2"><span id="e403"></span>E403</td>
+<td class="instruction">LD A,$C8</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">C8</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-200-right" src="../images/scr/human-200-right.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e405"></span>E405</td>
+<td class="instruction">JP <a href="E535.html">Draw_Human_Sprite_Mirrored</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E535.html">Draw_Human_Sprite_Mirrored</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e408"></span>
+<div class="comments">
+<div class="paragraph">
+When the countdown reaches 0A (from 80), jump to <a href="E3E1.html#e3f7">WavingOverHead_Action</a> to start a new cycle.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">WavingOverHead_EndCycle</td>
+<td class="address-2"><span id="e408"></span>E408</td>
+<td class="instruction">CP $0A</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E3E1.html#e3f7">WavingOverHead_Action</a> if <span class="register">A</span> is equal to 0A.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e40a"></span>E40A</td>
+<td class="instruction">JR Z,<a href="E3E1.html#e3f7">WavingOverHead_Action</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e40c"></span>
+<div class="comments">
+<div class="paragraph">
+The countdown between CE-C9 handles the delay before C8 will hide the human.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">WavingOverHead_AboutToHide</td>
+<td class="address-2"><span id="e40c"></span>E40C</td>
+<td class="instruction">LD A,$C0</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">C0</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-192-left" src="../images/scr/human-192-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e40e"></span>E40E</td>
+<td class="instruction">JP NZ,<a href="E535.html#e541">Draw_Human_Sprite</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E535.html#e541">Draw_Human_Sprite</a> until the countdown equals C8 (from line <a href="E3E1.html#e3e5">E3E5</a>).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e411"></span>E411</td>
+<td class="instruction">JP <a href="E2C3.html">Handler_Human_Hide</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E2C3.html">Handler_Human_Hide</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="E38D.html">E38D</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#e3e1">Map</a></td>
+<td class="next">
+Next: <a href="E414.html">E414</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="../dec/asm/58337.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

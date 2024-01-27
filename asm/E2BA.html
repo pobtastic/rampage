@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at E2BA</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="E2A5.html">E2A5</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#e2ba">Map</a></td>
+<td class="next">
+Next: <a href="E2C3.html">E2C3</a>
+</td>
+</tr>
+</table>
+<div class="description">E2BA: Human: Should The Human Hide?</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="E2CC.html">Human_Lobber</a>, <a href="E38D.html">Human_FullWave</a>, <a href="E3E1.html">Human_WavingOverHead</a>, <a href="E414.html">Human_WavingSideToSide</a> and <a href="E447.html">Human_Shooter</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">ShouldHumanHide</td>
+<td class="address-2"><span id="e2ba"></span>E2BA</td>
+<td class="instruction">CALL <a href="DA28.html">RandomNumber</a></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=random number between 00-FF.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e2bd"></span>
+<div class="comments">
+<div class="paragraph">
+There's about a 96.48% chance of returning based on the random number.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2bd"></span>E2BD</td>
+<td class="instruction">CP $08</td>
+<td class="comment-1" rowspan="2">Return if the random number is higher than 08.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2bf"></span>E2BF</td>
+<td class="instruction">RET NC</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2c0"></span>E2C0</td>
+<td class="instruction">LD (HL),$CE</td>
+<td class="comment-1" rowspan="1">Update the countdown to CE.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2c2"></span>E2C2</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="E2A5.html">E2A5</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#e2ba">Map</a></td>
+<td class="next">
+Next: <a href="E2C3.html">E2C3</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="../dec/asm/58042.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

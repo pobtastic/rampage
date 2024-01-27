@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at 58439</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="58388.html">58388</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#58439">Map</a></td>
+<td class="next">
+Next: <a href="58677.html">58677</a>
+</td>
+</tr>
+</table>
+<div class="description">58439: Human 7-12: Human With Rifle (Shooter)</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Shooter</td>
+<td class="address-2"><span id="58439"></span>58439</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore human table pointer from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label">Shooter_DecreaseCountdown</td>
+<td class="address-2"><span id="58440"></span>58440</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="3">Decrease the humans action countdown by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58441"></span>58441</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58442"></span>58442</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58443"></span>58443</td>
+<td class="instruction">CP 200</td>
+<td class="comment-1" rowspan="2">Jump to <a href="58439.html#58582">Shooter_AboutToHide</a> if the humans action countdown (<span class="register">A</span>) is higher than 200.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58445"></span>58445</td>
+<td class="instruction">JP NC,<a href="58439.html#58582">Shooter_AboutToHide</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58448"></span>58448</td>
+<td class="instruction">CP 20</td>
+<td class="comment-1" rowspan="2">Jump to <a href="58439.html#58578">Shooter_EndCycle</a> if the humans action countdown (<span class="register">A</span>) is lower than 20.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58450"></span>58450</td>
+<td class="instruction">JR C,<a href="58439.html#58578">Shooter_EndCycle</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58452"></span>58452</td>
+<td class="instruction">AND %00011111</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-4.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58454"></span>58454</td>
+<td class="instruction">JR Z,<a href="58439.html#58467">Shooter_Action</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58439.html#58467">Shooter_Action</a> if the result is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58456"></span>58456</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58457"></span>58457</td>
+<td class="instruction">RLCA</td>
+<td class="comment-1" rowspan="3">RLCA.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58458"></span>58458</td>
+<td class="instruction">RLCA</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58459"></span>58459</td>
+<td class="instruction">RLCA</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58460"></span>58460</td>
+<td class="instruction">AND %00000011</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-1.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58462"></span>58462</td>
+<td class="instruction">CALL <a href="56281.html">56281</a></td>
+<td class="comment-1" rowspan="1">Call <a href="56281.html">56281</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58465"></span>58465</td>
+<td class="instruction">JR <a href="58439.html#58484">Human_Shooter_0</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58439.html#58484">Human_Shooter_0</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="58467"></span>
+<div class="comments">
+<div class="paragraph">
+Handle the action, but also give a small chance the human should hide.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Shooter_Action</td>
+<td class="address-2"><span id="58467"></span>58467</td>
+<td class="instruction">CALL <a href="58042.html">ShouldHumanHide</a></td>
+<td class="comment-1" rowspan="1">Call <a href="58042.html">ShouldHumanHide</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58470"></span>58470</td>
+<td class="instruction">JR C,<a href="58439.html#58440">Shooter_DecreaseCountdown</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58439.html#58440">Shooter_DecreaseCountdown</a> if the human is set to start hiding.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58472"></span>58472</td>
+<td class="instruction">CALL <a href="56190.html">56190</a></td>
+<td class="comment-1" rowspan="1">Call <a href="56190.html">56190</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58475"></span>58475</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58476"></span>58476</td>
+<td class="instruction">AND %00000011</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-1.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58478"></span>58478</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="3">Rotate <span class="register">A</span> right three positions (bits 0 to 2 are now in positions 5 to 7).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58479"></span>58479</td>
+<td class="instruction">RRCA</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58480"></span>58480</td>
+<td class="instruction">RRCA</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58481"></span>58481</td>
+<td class="instruction">OR %00011111</td>
+<td class="comment-1" rowspan="1">Set bits 0-4.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58483"></span>58483</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Shooter_0</td>
+<td class="address-2"><span id="58484"></span>58484</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58485"></span>58485</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58486"></span>58486</td>
+<td class="instruction">CP B</td>
+<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with <span class="register">B</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58487"></span>58487</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58488"></span>58488</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58489"></span>58489</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-1" rowspan="2">Decrease <span class="register">HL</span> by two.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58490"></span>58490</td>
+<td class="instruction">DEC HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58491"></span>58491</td>
+<td class="instruction">JR Z,<a href="58439.html#58502">Human_Shooter_1</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58439.html#58502">Human_Shooter_1</a> if <span class="register">HL</span> is zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58493"></span>58493</td>
+<td class="instruction">JR NC,<a href="58439.html#58507">Human_Shooter_2</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58439.html#58507">Human_Shooter_2</a> if {} is higher.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58495"></span>58495</td>
+<td class="instruction">CP C</td>
+<td class="comment-1" rowspan="2">Jump to <a href="58439.html#58522">Human_Shooter_5</a> if <span class="register">A</span> is equal to <span class="register">C</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58496"></span>58496</td>
+<td class="instruction">JR Z,<a href="58439.html#58522">Human_Shooter_5</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58498"></span>58498</td>
+<td class="instruction">JR C,<a href="58439.html#58518">Human_Shooter_4</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58439.html#58518">Human_Shooter_4</a> if <span class="register">A</span> is lower than <span class="register">C</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58500"></span>58500</td>
+<td class="instruction">JR <a href="58439.html#58526">Human_Shooter_6</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58439.html#58526">Human_Shooter_6</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Shooter_1</td>
+<td class="address-2"><span id="58502"></span>58502</td>
+<td class="instruction">CP C</td>
+<td class="comment-1" rowspan="2">Jump to <a href="58439.html#58514">Human_Shooter_3</a> if <span class="register">A</span> is lower than <span class="register">C</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58503"></span>58503</td>
+<td class="instruction">JR C,<a href="58439.html#58514">Human_Shooter_3</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58505"></span>58505</td>
+<td class="instruction">JR <a href="58439.html#58557">Human_Shooter_11</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58439.html#58557">Human_Shooter_11</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Shooter_2</td>
+<td class="address-2"><span id="58507"></span>58507</td>
+<td class="instruction">CP C</td>
+<td class="comment-1" rowspan="2">Jump to <a href="58439.html#58549">Human_Shooter_9</a> if <span class="register">A</span> is equal to <span class="register">C</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58508"></span>58508</td>
+<td class="instruction">JR Z,<a href="58439.html#58549">Human_Shooter_9</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58510"></span>58510</td>
+<td class="instruction">JR C,<a href="58439.html#58545">Human_Shooter_8</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58439.html#58545">Human_Shooter_8</a> if <span class="register">A</span> is lower than <span class="register">C</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58512"></span>58512</td>
+<td class="instruction">JR <a href="58439.html#58553">Human_Shooter_10</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58439.html#58553">Human_Shooter_10</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Shooter_3</td>
+<td class="address-2"><span id="58514"></span>58514</td>
+<td class="instruction">LD B,202</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">202</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-202-left" src="../../images/scr/human-202-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58516"></span>58516</td>
+<td class="instruction">JR <a href="58439.html#58561">Human_Shooter_12</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58439.html#58561">Human_Shooter_12</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Shooter_4</td>
+<td class="address-2"><span id="58518"></span>58518</td>
+<td class="instruction">LD B,204</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">204</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-204-left" src="../../images/scr/human-204-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58520"></span>58520</td>
+<td class="instruction">JR <a href="58439.html#58528">Human_Shooter_7</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58439.html#58528">Human_Shooter_7</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Shooter_5</td>
+<td class="address-2"><span id="58522"></span>58522</td>
+<td class="instruction">LD B,206</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">206</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-206-left" src="../../images/scr/human-206-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58524"></span>58524</td>
+<td class="instruction">JR <a href="58439.html#58528">Human_Shooter_7</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58439.html#58528">Human_Shooter_7</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Shooter_6</td>
+<td class="address-2"><span id="58526"></span>58526</td>
+<td class="instruction">LD B,208</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">208</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-208-left" src="../../images/scr/human-208-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label">Human_Shooter_7</td>
+<td class="address-2"><span id="58528"></span>58528</td>
+<td class="instruction">CALL <a href="55848.html">RandomNumber</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55848.html">RandomNumber</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58531"></span>58531</td>
+<td class="instruction">CP 4</td>
+<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 4.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58533"></span>58533</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58534"></span>58534</td>
+<td class="instruction">JP NC,<a href="58677.html#58689">Draw_Human_Sprite</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58677.html#58689">Draw_Human_Sprite</a> if {} is higher.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58537"></span>58537</td>
+<td class="instruction">LD C,0</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=0.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58539"></span>58539</td>
+<td class="instruction">CALL <a href="58439.html#58590">Human_Shooter_13</a></td>
+<td class="comment-1" rowspan="1">Call <a href="58439.html#58590">Human_Shooter_13</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58542"></span>58542</td>
+<td class="instruction">JP <a href="58677.html#58689">Draw_Human_Sprite</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58677.html#58689">Draw_Human_Sprite</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Shooter_8</td>
+<td class="address-2"><span id="58545"></span>58545</td>
+<td class="instruction">LD B,204</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">204</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-204-left" src="../../images/scr/human-204-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58547"></span>58547</td>
+<td class="instruction">JR <a href="58439.html#58561">Human_Shooter_12</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58439.html#58561">Human_Shooter_12</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Shooter_9</td>
+<td class="address-2"><span id="58549"></span>58549</td>
+<td class="instruction">LD B,206</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">206</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-206-left" src="../../images/scr/human-206-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58551"></span>58551</td>
+<td class="instruction">JR <a href="58439.html#58561">Human_Shooter_12</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58439.html#58561">Human_Shooter_12</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Shooter_10</td>
+<td class="address-2"><span id="58553"></span>58553</td>
+<td class="instruction">LD B,208</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">208</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-208-left" src="../../images/scr/human-208-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58555"></span>58555</td>
+<td class="instruction">JR <a href="58439.html#58561">Human_Shooter_12</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58439.html#58561">Human_Shooter_12</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Shooter_11</td>
+<td class="address-2"><span id="58557"></span>58557</td>
+<td class="instruction">LD B,210</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">210</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-210-left" src="../../images/scr/human-210-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58559"></span>58559</td>
+<td class="instruction">JR <a href="58439.html#58528">Human_Shooter_7</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58439.html#58528">Human_Shooter_7</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Shooter_12</td>
+<td class="address-2"><span id="58561"></span>58561</td>
+<td class="instruction">CALL <a href="55848.html">RandomNumber</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55848.html">RandomNumber</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58564"></span>58564</td>
+<td class="instruction">CP 4</td>
+<td class="comment-1" rowspan="1">Compare <span class="register">A</span> with 4...</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58566"></span>58566</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58567"></span>58567</td>
+<td class="instruction">JP NC,<a href="58677.html">Draw_Human_Sprite_Mirrored</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58677.html">Draw_Human_Sprite_Mirrored</a> if <span class="register">A</span> is higher than 4.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58570"></span>58570</td>
+<td class="instruction">LD C,128</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=128.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58572"></span>58572</td>
+<td class="instruction">CALL <a href="58439.html#58590">Human_Shooter_13</a></td>
+<td class="comment-1" rowspan="1">Call <a href="58439.html#58590">Human_Shooter_13</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58575"></span>58575</td>
+<td class="instruction">JP <a href="58677.html">Draw_Human_Sprite_Mirrored</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58677.html">Draw_Human_Sprite_Mirrored</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="58578"></span>
+<div class="comments">
+<div class="paragraph">
+When the countdown reaches 10 (from 128), jump to <a href="58439.html#58467">Shooter_Action</a> to start a new cycle.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Shooter_EndCycle</td>
+<td class="address-2"><span id="58578"></span>58578</td>
+<td class="instruction">CP 10</td>
+<td class="comment-1" rowspan="2">Jump to <a href="58439.html#58467">Shooter_Action</a> if <span class="register">A</span> is equal to 10.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58580"></span>58580</td>
+<td class="instruction">JR Z,<a href="58439.html#58467">Shooter_Action</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="58582"></span>
+<div class="comments">
+<div class="paragraph">
+The countdown between 206-201 handles the delay before 200 will hide the human.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Shooter_AboutToHide</td>
+<td class="address-2"><span id="58582"></span>58582</td>
+<td class="instruction">LD A,192</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">192</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-192-left" src="../../images/scr/human-192-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58584"></span>58584</td>
+<td class="instruction">JP NZ,<a href="58677.html#58689">Draw_Human_Sprite</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58677.html#58689">Draw_Human_Sprite</a> until the countdown equals 200 (from line <a href="58439.html#58443">58443</a>).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58587"></span>58587</td>
+<td class="instruction">JP <a href="58051.html">Handler_Human_Hide</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58051.html">Handler_Human_Hide</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Shooter_13</td>
+<td class="address-2"><span id="58590"></span>58590</td>
+<td class="instruction">LD A,(54264)</td>
+<td class="comment-1" rowspan="2">Compare *<a href="54264.html">NumberOnScreenBullets</a> with 8...</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58593"></span>58593</td>
+<td class="instruction">CP 8</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58595"></span>58595</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58596"></span>58596</td>
+<td class="instruction">RET Z</td>
+<td class="comment-1" rowspan="1">Return if *<a href="54264.html">NumberOnScreenBullets</a> is equal to 8 on line <a href="58439.html#58593">58593</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58597"></span>58597</td>
+<td class="instruction">LD DE,53948</td>
+<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="53927.html#53948">53948</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58600"></span>58600</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Shooter_14</td>
+<td class="address-2"><span id="58601"></span>58601</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="3">Increment <span class="register">DE</span> by three.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58602"></span>58602</td>
+<td class="instruction">INC DE</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58603"></span>58603</td>
+<td class="instruction">INC DE</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58604"></span>58604</td>
+<td class="instruction">LD A,(DE)</td>
+<td class="comment-1" rowspan="3">Jump to <a href="58439.html#58601">Human_Shooter_14</a> if *<span class="register">DE</span> is not zero.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58605"></span>58605</td>
+<td class="instruction">AND A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58606"></span>58606</td>
+<td class="instruction">JR NZ,<a href="58439.html#58601">Human_Shooter_14</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58608"></span>58608</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58609"></span>58609</td>
+<td class="instruction">SUB 200</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>-=200.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58611"></span>58611</td>
+<td class="instruction">RRCA</td>
+<td class="comment-1" rowspan="1">RRCA.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58612"></span>58612</td>
+<td class="instruction">OR C</td>
+<td class="comment-1" rowspan="1">Set the bits from <span class="register">C</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58613"></span>58613</td>
+<td class="instruction">LD (DE),A</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58614"></span>58614</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58615"></span>58615</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58616"></span>58616</td>
+<td class="instruction">LD C,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58617"></span>58617</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58618"></span>58618</td>
+<td class="instruction">LD B,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58619"></span>58619</td>
+<td class="instruction">CP 4</td>
+<td class="comment-1" rowspan="2">Jump to <a href="58439.html#58626">Human_Shooter_15</a> if <span class="register">A</span> is not equal to 4.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58621"></span>58621</td>
+<td class="instruction">JR NZ,<a href="58439.html#58626">Human_Shooter_15</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58623"></span>58623</td>
+<td class="instruction">INC C</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58624"></span>58624</td>
+<td class="instruction">JR <a href="58439.html#58656">Human_Shooter_19</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58439.html#58656">Human_Shooter_19</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Shooter_15</td>
+<td class="address-2"><span id="58626"></span>58626</td>
+<td class="instruction">CP 130</td>
+<td class="comment-1" rowspan="2">Jump to <a href="58439.html#58633">Human_Shooter_16</a> if <span class="register">A</span> is not equal to 130.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58628"></span>58628</td>
+<td class="instruction">JR NZ,<a href="58439.html#58633">Human_Shooter_16</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58630"></span>58630</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58631"></span>58631</td>
+<td class="instruction">JR <a href="58439.html#58656">Human_Shooter_19</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58439.html#58656">Human_Shooter_19</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Shooter_16</td>
+<td class="address-2"><span id="58633"></span>58633</td>
+<td class="instruction">CP 2</td>
+<td class="comment-1" rowspan="2">Jump to <a href="58439.html#58645">Human_Shooter_17</a> if <span class="register">A</span> is equal to 2.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58635"></span>58635</td>
+<td class="instruction">JR Z,<a href="58439.html#58645">Human_Shooter_17</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58637"></span>58637</td>
+<td class="instruction">CP 1</td>
+<td class="comment-1" rowspan="2">Jump to <a href="58439.html#58645">Human_Shooter_17</a> if <span class="register">A</span> is equal to 1.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58639"></span>58639</td>
+<td class="instruction">JR Z,<a href="58439.html#58645">Human_Shooter_17</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58641"></span>58641</td>
+<td class="instruction">CP 133</td>
+<td class="comment-1" rowspan="2">Jump to <a href="58439.html#58649">Human_Shooter_18</a> if <span class="register">A</span> is not equal to 133.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58643"></span>58643</td>
+<td class="instruction">JR NZ,<a href="58439.html#58649">Human_Shooter_18</a></td>
+</tr>
+<tr>
+<td class="asm-label">Human_Shooter_17</td>
+<td class="address-2"><span id="58645"></span>58645</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58646"></span>58646</td>
+<td class="instruction">INC C</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58647"></span>58647</td>
+<td class="instruction">JR <a href="58439.html#58656">Human_Shooter_19</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58439.html#58656">Human_Shooter_19</a>.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Shooter_18</td>
+<td class="address-2"><span id="58649"></span>58649</td>
+<td class="instruction">AND %00000011</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-1.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58651"></span>58651</td>
+<td class="instruction">CP 3</td>
+<td class="comment-1" rowspan="2">Jump to <a href="58439.html#58656">Human_Shooter_19</a> if <span class="register">A</span> is not equal to 3.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58653"></span>58653</td>
+<td class="instruction">JR NZ,<a href="58439.html#58656">Human_Shooter_19</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58655"></span>58655</td>
+<td class="instruction">INC B</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Shooter_19</td>
+<td class="address-2"><span id="58656"></span>58656</td>
+<td class="instruction">LD A,C</td>
+<td class="comment-1" rowspan="2">Write <span class="register">C</span> to *<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58657"></span>58657</td>
+<td class="instruction">LD (DE),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58658"></span>58658</td>
+<td class="instruction">INC DE</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58659"></span>58659</td>
+<td class="instruction">LD A,B</td>
+<td class="comment-1" rowspan="2">Write <span class="register">B</span> to *<span class="register">DE</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58660"></span>58660</td>
+<td class="instruction">LD (DE),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58661"></span>58661</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-1" rowspan="2">Decrease <span class="register">HL</span> by two.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58662"></span>58662</td>
+<td class="instruction">DEC HL</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58663"></span>58663</td>
+<td class="instruction">LD A,(54264)</td>
+<td class="comment-1" rowspan="3">Increment *<a href="54264.html">NumberOnScreenBullets</a> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58666"></span>58666</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58667"></span>58667</td>
+<td class="instruction">LD (54264),A</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="58670"></span>
+<div class="comments">
+<div class="paragraph">
+<audio controls="" src="../../audio/helicopter.wav">
+<p>Your browser doesn't support HTML5 audio. Here is a <a href="../../audio/helicopter.wav">link to the audio</a> instead.</p>
+</audio>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58670"></span>58670</td>
+<td class="instruction">LD A,2</td>
+<td class="comment-1" rowspan="2">Write melody ID 2 to *<a href="65280.html#65421">MelodyID</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58672"></span>58672</td>
+<td class="instruction">LD (65421),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58675"></span>58675</td>
+<td class="instruction">EX AF,AF'</td>
+<td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58676"></span>58676</td>
+<td class="instruction">RET</td>
+<td class="comment-1" rowspan="1">Return.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="58388.html">58388</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#58439">Map</a></td>
+<td class="next">
+Next: <a href="58677.html">58677</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="../../asm/E447.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

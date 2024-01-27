@@ -33,43 +33,49 @@ Next: <a href="D986.html">D986</a>
 </td>
 </tr>
 </table>
-<div class="description">D7F6: Routine at D7F6</div>
+<div class="description">D7F6: Print Sprite Mirrored</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="E25D.html">Handler_Humans</a>, <a href="FC1A.html">Scene_DisplayCarpet</a> and <a href="FCB6.html">Handler_Train</a>.
+Used by the routines at <a href="E535.html">Draw_Human_Sprite_Mirrored</a>, <a href="FC1A.html">Scene_DisplayCarpet</a> and <a href="FCB6.html">Handler_Train</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">PrintSprite_Mirrored</td>
 <td class="address-2"><span id="d7f6"></span>D7F6</td>
 <td class="instruction">LD ($D214),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to <a href="D214.html">D214</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d7f9"></span>D7F9</td>
 <td class="instruction">DEC C</td>
 <td class="comment-1" rowspan="1">Decrease <span class="register">C</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d7fa"></span>D7FA</td>
 <td class="instruction">PUSH BC</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">BC</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d7fb"></span>D7FB</td>
 <td class="instruction">CALL <a href="D9A9.html">$D9A9</a></td>
 <td class="comment-1" rowspan="1">Call <a href="D9A9.html">D9A9</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d7fe"></span>D7FE</td>
 <td class="instruction">POP BC</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d7ff"></span>D7FF</td>
 <td class="instruction">LD D,A</td>
 <td class="comment-1" rowspan="1"><span class="register">D</span>=<span class="register">A</span>.</td>
@@ -85,1652 +91,1988 @@ This entry point is used by the routine at <a href="D6C9.html">PrintSprite</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">PrintSprite_Mirrored_0</td>
 <td class="address-2"><span id="d800"></span>D800</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d801"></span>D801</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d802"></span>D802</td>
 <td class="instruction">LD E,C</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">C</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d803"></span>D803</td>
 <td class="instruction">LD C,A</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d804"></span>D804</td>
 <td class="instruction">EXX</td>
 <td class="comment-1" rowspan="1">Switch to the shadow registers.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d805"></span>D805</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d806"></span>D806</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d807"></span>D807</td>
 <td class="instruction">LD H,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">H</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d808"></span>D808</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label">PrintSprite_Mirrored_1</td>
 <td class="address-2"><span id="d809"></span>D809</td>
 <td class="instruction">EXX</td>
 <td class="comment-1" rowspan="1">Switch to the shadow registers.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d80a"></span>D80A</td>
 <td class="instruction">LD A,C</td>
-<td class="comment-1" rowspan="3">Jump to <a href="D7F6.html#d824">D824</a> if <span class="register">C</span> is not equal to <span class="register">L</span>.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="D7F6.html#d824">PrintSprite_Mirrored_2</a> if <span class="register">C</span> is not equal to <span class="register">L</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d80b"></span>D80B</td>
 <td class="instruction">CP L</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d80c"></span>D80C</td>
-<td class="instruction">JP NZ,<a href="D7F6.html#d824">$D824</a></td>
+<td class="instruction">JP NZ,<a href="D7F6.html#d824">PrintSprite_Mirrored_2</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d80f"></span>D80F</td>
 <td class="instruction">LD A,B</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d810"></span>D810</td>
 <td class="instruction">AND %11111000</td>
 <td class="comment-1" rowspan="1">Keep only bits 3-7.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d812"></span>D812</td>
 <td class="instruction">ADD A,$6B</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>+=6B.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d814"></span>D814</td>
 <td class="instruction">LD H,A</td>
 <td class="comment-1" rowspan="1"><span class="register">H</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d815"></span>D815</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d816"></span>D816</td>
 <td class="instruction">LD A,B</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d817"></span>D817</td>
 <td class="instruction">AND %00000111</td>
 <td class="comment-1" rowspan="1">Keep only bits 0-2.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d819"></span>D819</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="3">RRCA.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d81a"></span>D81A</td>
 <td class="instruction">RRCA</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d81b"></span>D81B</td>
 <td class="instruction">RRCA</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d81c"></span>D81C</td>
 <td class="instruction">ADD A,C</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">C</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d81d"></span>D81D</td>
 <td class="instruction">EXX</td>
 <td class="comment-1" rowspan="1">Switch to the shadow registers.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d81e"></span>D81E</td>
 <td class="instruction">LD C,A</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d81f"></span>D81F</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d820"></span>D820</td>
 <td class="instruction">LD B,A</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d821"></span>D821</td>
-<td class="instruction">JP <a href="D7F6.html#d828">$D828</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="D7F6.html#d828">D828</a>.</td>
+<td class="instruction">JP <a href="D7F6.html#d828">PrintSprite_Mirrored_3</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="D7F6.html#d828">PrintSprite_Mirrored_3</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">PrintSprite_Mirrored_2</td>
 <td class="address-2"><span id="d824"></span>D824</td>
 <td class="instruction">LD A,H</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">H</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d825"></span>D825</td>
 <td class="instruction">EXX</td>
 <td class="comment-1" rowspan="1">Switch to the shadow registers.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d826"></span>D826</td>
 <td class="instruction">DEC C</td>
 <td class="comment-1" rowspan="1">Decrease <span class="register">C</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d827"></span>D827</td>
 <td class="instruction">LD B,A</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label">PrintSprite_Mirrored_3</td>
 <td class="address-2"><span id="d828"></span>D828</td>
 <td class="instruction">EXX</td>
 <td class="comment-1" rowspan="1">Switch to the shadow registers.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d829"></span>D829</td>
 <td class="instruction">LD A,C</td>
-<td class="comment-1" rowspan="3">Jump to <a href="D7F6.html#d8d8">D8D8</a> if <span class="register">C</span> is higher than 20.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="D7F6.html#d8d8">PrintSprite_Mirrored_6</a> if <span class="register">C</span> is higher than 20.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d82a"></span>D82A</td>
 <td class="instruction">CP $20</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d82c"></span>D82C</td>
-<td class="instruction">JP NC,<a href="D7F6.html#d8d8">$D8D8</a></td>
+<td class="instruction">JP NC,<a href="D7F6.html#d8d8">PrintSprite_Mirrored_6</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d82f"></span>D82F</td>
 <td class="instruction">LD A,B</td>
-<td class="comment-1" rowspan="3">Jump to <a href="D7F6.html#d8d8">D8D8</a> if <span class="register">B</span> is higher than 18.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="D7F6.html#d8d8">PrintSprite_Mirrored_6</a> if <span class="register">B</span> is higher than 18.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d830"></span>D830</td>
 <td class="instruction">CP $18</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d832"></span>D832</td>
-<td class="instruction">JP NC,<a href="D7F6.html#d8d8">$D8D8</a></td>
+<td class="instruction">JP NC,<a href="D7F6.html#d8d8">PrintSprite_Mirrored_6</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d835"></span>D835</td>
 <td class="instruction">EXX</td>
 <td class="comment-1" rowspan="1">Switch to the shadow registers.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d836"></span>D836</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="D7F6.html#d8fa">D8FA</a> if *<span class="register">HL</span> is equal to 36.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="D7F6.html#d8fa">PrintSprite_Mirrored_8</a> if *<span class="register">HL</span> is equal to 36.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d837"></span>D837</td>
 <td class="instruction">CP $36</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d839"></span>D839</td>
-<td class="instruction">JP Z,<a href="D7F6.html#d8fa">$D8FA</a></td>
+<td class="instruction">JP Z,<a href="D7F6.html#d8fa">PrintSprite_Mirrored_8</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d83c"></span>D83C</td>
 <td class="instruction">LD A,(DE)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="D7F6.html#d93b">D93B</a> if *<span class="register">DE</span> is equal to 36.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="D7F6.html#d93b">PrintSprite_Mirrored_9</a> if *<span class="register">DE</span> is equal to 36.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d83d"></span>D83D</td>
 <td class="instruction">CP $36</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d83f"></span>D83F</td>
-<td class="instruction">JP Z,<a href="D7F6.html#d93b">$D93B</a></td>
+<td class="instruction">JP Z,<a href="D7F6.html#d93b">PrintSprite_Mirrored_9</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d842"></span>D842</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d843"></span>D843</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d844"></span>D844</td>
 <td class="instruction">PUSH HL</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d845"></span>D845</td>
 <td class="instruction">LD A,(BC)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d846"></span>D846</td>
 <td class="instruction">LD L,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d847"></span>D847</td>
 <td class="instruction">LD H,$C6</td>
 <td class="comment-1" rowspan="1"><span class="register">H</span>=C6.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d849"></span>D849</td>
 <td class="instruction">AND (HL)</td>
 <td class="comment-1" rowspan="1">Merge the bits from *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d84a"></span>D84A</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d84b"></span>D84B</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d84c"></span>D84C</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d84d"></span>D84D</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d84e"></span>D84E</td>
 <td class="instruction">OR (HL)</td>
 <td class="comment-1" rowspan="1">Set the bits from *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d84f"></span>D84F</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d850"></span>D850</td>
 <td class="instruction">POP HL</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d851"></span>D851</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d852"></span>D852</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d853"></span>D853</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d854"></span>D854</td>
 <td class="instruction">PUSH HL</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d855"></span>D855</td>
 <td class="instruction">LD A,(BC)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d856"></span>D856</td>
 <td class="instruction">LD L,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d857"></span>D857</td>
 <td class="instruction">LD H,$C6</td>
 <td class="comment-1" rowspan="1"><span class="register">H</span>=C6.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d859"></span>D859</td>
 <td class="instruction">AND (HL)</td>
 <td class="comment-1" rowspan="1">Merge the bits from *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d85a"></span>D85A</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d85b"></span>D85B</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d85c"></span>D85C</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d85d"></span>D85D</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d85e"></span>D85E</td>
 <td class="instruction">OR (HL)</td>
 <td class="comment-1" rowspan="1">Set the bits from *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d85f"></span>D85F</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d860"></span>D860</td>
 <td class="instruction">POP HL</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d861"></span>D861</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d862"></span>D862</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d863"></span>D863</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d864"></span>D864</td>
 <td class="instruction">PUSH HL</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d865"></span>D865</td>
 <td class="instruction">LD A,(BC)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d866"></span>D866</td>
 <td class="instruction">LD L,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d867"></span>D867</td>
 <td class="instruction">LD H,$C6</td>
 <td class="comment-1" rowspan="1"><span class="register">H</span>=C6.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d869"></span>D869</td>
 <td class="instruction">AND (HL)</td>
 <td class="comment-1" rowspan="1">Merge the bits from *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d86a"></span>D86A</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d86b"></span>D86B</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d86c"></span>D86C</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d86d"></span>D86D</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d86e"></span>D86E</td>
 <td class="instruction">OR (HL)</td>
 <td class="comment-1" rowspan="1">Set the bits from *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d86f"></span>D86F</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d870"></span>D870</td>
 <td class="instruction">POP HL</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d871"></span>D871</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d872"></span>D872</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d873"></span>D873</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d874"></span>D874</td>
 <td class="instruction">PUSH HL</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d875"></span>D875</td>
 <td class="instruction">LD A,(BC)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d876"></span>D876</td>
 <td class="instruction">LD L,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d877"></span>D877</td>
 <td class="instruction">LD H,$C6</td>
 <td class="comment-1" rowspan="1"><span class="register">H</span>=C6.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d879"></span>D879</td>
 <td class="instruction">AND (HL)</td>
 <td class="comment-1" rowspan="1">Merge the bits from *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d87a"></span>D87A</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d87b"></span>D87B</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d87c"></span>D87C</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d87d"></span>D87D</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d87e"></span>D87E</td>
 <td class="instruction">OR (HL)</td>
 <td class="comment-1" rowspan="1">Set the bits from *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d87f"></span>D87F</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d880"></span>D880</td>
 <td class="instruction">POP HL</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d881"></span>D881</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d882"></span>D882</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d883"></span>D883</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d884"></span>D884</td>
 <td class="instruction">PUSH HL</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d885"></span>D885</td>
 <td class="instruction">LD A,(BC)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d886"></span>D886</td>
 <td class="instruction">LD L,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d887"></span>D887</td>
 <td class="instruction">LD H,$C6</td>
 <td class="comment-1" rowspan="1"><span class="register">H</span>=C6.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d889"></span>D889</td>
 <td class="instruction">AND (HL)</td>
 <td class="comment-1" rowspan="1">Merge the bits from *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d88a"></span>D88A</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d88b"></span>D88B</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d88c"></span>D88C</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d88d"></span>D88D</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d88e"></span>D88E</td>
 <td class="instruction">OR (HL)</td>
 <td class="comment-1" rowspan="1">Set the bits from *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d88f"></span>D88F</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d890"></span>D890</td>
 <td class="instruction">POP HL</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d891"></span>D891</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d892"></span>D892</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d893"></span>D893</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d894"></span>D894</td>
 <td class="instruction">PUSH HL</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d895"></span>D895</td>
 <td class="instruction">LD A,(BC)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d896"></span>D896</td>
 <td class="instruction">LD L,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d897"></span>D897</td>
 <td class="instruction">LD H,$C6</td>
 <td class="comment-1" rowspan="1"><span class="register">H</span>=C6.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d899"></span>D899</td>
 <td class="instruction">AND (HL)</td>
 <td class="comment-1" rowspan="1">Merge the bits from *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d89a"></span>D89A</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d89b"></span>D89B</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d89c"></span>D89C</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d89d"></span>D89D</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d89e"></span>D89E</td>
 <td class="instruction">OR (HL)</td>
 <td class="comment-1" rowspan="1">Set the bits from *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d89f"></span>D89F</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8a0"></span>D8A0</td>
 <td class="instruction">POP HL</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8a1"></span>D8A1</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8a2"></span>D8A2</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8a3"></span>D8A3</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8a4"></span>D8A4</td>
 <td class="instruction">PUSH HL</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8a5"></span>D8A5</td>
 <td class="instruction">LD A,(BC)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8a6"></span>D8A6</td>
 <td class="instruction">LD L,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8a7"></span>D8A7</td>
 <td class="instruction">LD H,$C6</td>
 <td class="comment-1" rowspan="1"><span class="register">H</span>=C6.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8a9"></span>D8A9</td>
 <td class="instruction">AND (HL)</td>
 <td class="comment-1" rowspan="1">Merge the bits from *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8aa"></span>D8AA</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8ab"></span>D8AB</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8ac"></span>D8AC</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8ad"></span>D8AD</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8ae"></span>D8AE</td>
 <td class="instruction">OR (HL)</td>
 <td class="comment-1" rowspan="1">Set the bits from *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8af"></span>D8AF</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8b0"></span>D8B0</td>
 <td class="instruction">POP HL</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8b1"></span>D8B1</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8b2"></span>D8B2</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8b3"></span>D8B3</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8b4"></span>D8B4</td>
 <td class="instruction">PUSH HL</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8b5"></span>D8B5</td>
 <td class="instruction">LD A,(BC)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8b6"></span>D8B6</td>
 <td class="instruction">LD L,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8b7"></span>D8B7</td>
 <td class="instruction">LD H,$C6</td>
 <td class="comment-1" rowspan="1"><span class="register">H</span>=C6.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8b9"></span>D8B9</td>
 <td class="instruction">AND (HL)</td>
 <td class="comment-1" rowspan="1">Merge the bits from *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8ba"></span>D8BA</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8bb"></span>D8BB</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8bc"></span>D8BC</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8bd"></span>D8BD</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8be"></span>D8BE</td>
 <td class="instruction">OR (HL)</td>
 <td class="comment-1" rowspan="1">Set the bits from *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8bf"></span>D8BF</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8c0"></span>D8C0</td>
 <td class="instruction">POP HL</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8c1"></span>D8C1</td>
 <td class="instruction">CALL <a href="D986.html">$D986</a></td>
 <td class="comment-1" rowspan="1">Call <a href="D986.html">D986</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">PrintSprite_Mirrored_4</td>
 <td class="address-2"><span id="d8c4"></span>D8C4</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8c5"></span>D8C5</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label">PrintSprite_Mirrored_5</td>
 <td class="address-2"><span id="d8c6"></span>D8C6</td>
 <td class="instruction">EXX</td>
 <td class="comment-1" rowspan="1">Switch to the shadow registers.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8c7"></span>D8C7</td>
 <td class="instruction">DEC C</td>
 <td class="comment-1" rowspan="1">Decrease <span class="register">C</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8c8"></span>D8C8</td>
 <td class="instruction">LD A,E</td>
 <td class="comment-1" rowspan="2">Compare <span class="register">E</span> with <span class="register">C</span>...</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8c9"></span>D8C9</td>
 <td class="instruction">CP C</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8ca"></span>D8CA</td>
 <td class="instruction">EXX</td>
 <td class="comment-1" rowspan="1">Switch to the shadow registers.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8cb"></span>D8CB</td>
-<td class="instruction">JP NZ,<a href="D7F6.html#d809">$D809</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="D7F6.html#d809">D809</a> if <span class="register">E</span> is not equal to <span class="register">C</span> on line <a href="D7F6.html#d8c8">D8C8</a>.</td>
+<td class="instruction">JP NZ,<a href="D7F6.html#d809">PrintSprite_Mirrored_1</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="D7F6.html#d809">PrintSprite_Mirrored_1</a> if <span class="register">E</span> is not equal to <span class="register">C</span> on line <a href="D7F6.html#d8c8">D8C8</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8ce"></span>D8CE</td>
 <td class="instruction">EXX</td>
 <td class="comment-1" rowspan="1">Switch to the shadow registers.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8cf"></span>D8CF</td>
 <td class="instruction">LD C,L</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">L</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8d0"></span>D8D0</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8d1"></span>D8D1</td>
 <td class="instruction">LD A,D</td>
 <td class="comment-1" rowspan="2">Compare <span class="register">D</span> with <span class="register">B</span>...</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8d2"></span>D8D2</td>
 <td class="instruction">CP B</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8d3"></span>D8D3</td>
 <td class="instruction">EXX</td>
 <td class="comment-1" rowspan="1">Switch to the shadow registers.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8d4"></span>D8D4</td>
-<td class="instruction">JP NZ,<a href="D7F6.html#d809">$D809</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="D7F6.html#d809">D809</a> if <span class="register">D</span> is not equal to <span class="register">B</span> on line <a href="D7F6.html#d8d1">D8D1</a>.</td>
+<td class="instruction">JP NZ,<a href="D7F6.html#d809">PrintSprite_Mirrored_1</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="D7F6.html#d809">PrintSprite_Mirrored_1</a> if <span class="register">D</span> is not equal to <span class="register">B</span> on line <a href="D7F6.html#d8d1">D8D1</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8d7"></span>D8D7</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
+<td class="asm-label">PrintSprite_Mirrored_6</td>
 <td class="address-2"><span id="d8d8"></span>D8D8</td>
 <td class="instruction">EXX</td>
 <td class="comment-1" rowspan="1">Switch to the shadow registers.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8d9"></span>D8D9</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8da"></span>D8DA</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8db"></span>D8DB</td>
 <td class="instruction">CP $36</td>
-<td class="comment-1" rowspan="2">Jump to <a href="D7F6.html#d8e8">D8E8</a> if <span class="register">A</span> is equal to 36.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="D7F6.html#d8e8">PrintSprite_Mirrored_7</a> if <span class="register">A</span> is equal to 36.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8dd"></span>D8DD</td>
-<td class="instruction">JP Z,<a href="D7F6.html#d8e8">$D8E8</a></td>
+<td class="instruction">JP Z,<a href="D7F6.html#d8e8">PrintSprite_Mirrored_7</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8e0"></span>D8E0</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="8">Increment <span class="register">DE</span> by eight.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8e1"></span>D8E1</td>
 <td class="instruction">INC DE</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8e2"></span>D8E2</td>
 <td class="instruction">INC DE</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8e3"></span>D8E3</td>
 <td class="instruction">INC DE</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8e4"></span>D8E4</td>
 <td class="instruction">INC DE</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8e5"></span>D8E5</td>
 <td class="instruction">INC DE</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8e6"></span>D8E6</td>
 <td class="instruction">INC DE</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8e7"></span>D8E7</td>
 <td class="instruction">INC DE</td>
 </tr>
 <tr>
+<td class="asm-label">PrintSprite_Mirrored_7</td>
 <td class="address-2"><span id="d8e8"></span>D8E8</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8e9"></span>D8E9</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8ea"></span>D8EA</td>
 <td class="instruction">CP $36</td>
-<td class="comment-1" rowspan="2">Jump to <a href="D7F6.html#d8c6">D8C6</a> if <span class="register">A</span> is equal to 36.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="D7F6.html#d8c6">PrintSprite_Mirrored_5</a> if <span class="register">A</span> is equal to 36.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8ec"></span>D8EC</td>
-<td class="instruction">JP Z,<a href="D7F6.html#d8c6">$D8C6</a></td>
+<td class="instruction">JP Z,<a href="D7F6.html#d8c6">PrintSprite_Mirrored_5</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8ef"></span>D8EF</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="8">Increment <span class="register">HL</span> by eight.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8f0"></span>D8F0</td>
 <td class="instruction">INC HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8f1"></span>D8F1</td>
 <td class="instruction">INC HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8f2"></span>D8F2</td>
 <td class="instruction">INC HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8f3"></span>D8F3</td>
 <td class="instruction">INC HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8f4"></span>D8F4</td>
 <td class="instruction">INC HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8f5"></span>D8F5</td>
 <td class="instruction">INC HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8f6"></span>D8F6</td>
 <td class="instruction">INC HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8f7"></span>D8F7</td>
-<td class="instruction">JP <a href="D7F6.html#d8c6">$D8C6</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="D7F6.html#d8c6">D8C6</a>.</td>
+<td class="instruction">JP <a href="D7F6.html#d8c6">PrintSprite_Mirrored_5</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="D7F6.html#d8c6">PrintSprite_Mirrored_5</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">PrintSprite_Mirrored_8</td>
 <td class="address-2"><span id="d8fa"></span>D8FA</td>
 <td class="instruction">LD A,(DE)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="D7F6.html#d8c4">D8C4</a> if *<span class="register">DE</span> is equal to 36.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="D7F6.html#d8c4">PrintSprite_Mirrored_4</a> if *<span class="register">DE</span> is equal to 36.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8fb"></span>D8FB</td>
 <td class="instruction">CP $36</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d8fd"></span>D8FD</td>
-<td class="instruction">JP Z,<a href="D7F6.html#d8c4">$D8C4</a></td>
+<td class="instruction">JP Z,<a href="D7F6.html#d8c4">PrintSprite_Mirrored_4</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d900"></span>D900</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d901"></span>D901</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d902"></span>D902</td>
 <td class="instruction">PUSH HL</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">HL</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d903"></span>D903</td>
 <td class="instruction">LD H,$C6</td>
 <td class="comment-1" rowspan="1"><span class="register">H</span>=C6.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d905"></span>D905</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d906"></span>D906</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d907"></span>D907</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d908"></span>D908</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d909"></span>D909</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d90a"></span>D90A</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d90b"></span>D90B</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d90c"></span>D90C</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d90d"></span>D90D</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d90e"></span>D90E</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d90f"></span>D90F</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d910"></span>D910</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d911"></span>D911</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d912"></span>D912</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d913"></span>D913</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d914"></span>D914</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d915"></span>D915</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d916"></span>D916</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d917"></span>D917</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d918"></span>D918</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d919"></span>D919</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d91a"></span>D91A</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d91b"></span>D91B</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d91c"></span>D91C</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d91d"></span>D91D</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d91e"></span>D91E</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d91f"></span>D91F</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d920"></span>D920</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d921"></span>D921</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d922"></span>D922</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d923"></span>D923</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d924"></span>D924</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d925"></span>D925</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d926"></span>D926</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d927"></span>D927</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d928"></span>D928</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d929"></span>D929</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d92a"></span>D92A</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d92b"></span>D92B</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d92c"></span>D92C</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d92d"></span>D92D</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d92e"></span>D92E</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d92f"></span>D92F</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d930"></span>D930</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d931"></span>D931</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d932"></span>D932</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d933"></span>D933</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d934"></span>D934</td>
 <td class="instruction">POP HL</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d935"></span>D935</td>
 <td class="instruction">CALL <a href="D986.html">$D986</a></td>
 <td class="comment-1" rowspan="1">Call <a href="D986.html">D986</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d938"></span>D938</td>
-<td class="instruction">JP <a href="D7F6.html#d8c6">$D8C6</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="D7F6.html#d8c6">D8C6</a>.</td>
+<td class="instruction">JP <a href="D7F6.html#d8c6">PrintSprite_Mirrored_5</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="D7F6.html#d8c6">PrintSprite_Mirrored_5</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">PrintSprite_Mirrored_9</td>
 <td class="address-2"><span id="d93b"></span>D93B</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d93c"></span>D93C</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d93d"></span>D93D</td>
 <td class="instruction">PUSH DE</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">DE</span> on the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d93e"></span>D93E</td>
 <td class="instruction">LD D,$C6</td>
 <td class="comment-1" rowspan="1"><span class="register">D</span>=C6.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d940"></span>D940</td>
 <td class="instruction">LD E,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d941"></span>D941</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d942"></span>D942</td>
 <td class="instruction">LD E,A</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d943"></span>D943</td>
 <td class="instruction">LD A,(BC)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d944"></span>D944</td>
 <td class="instruction">AND E</td>
 <td class="comment-1" rowspan="1">Merge the bits from <span class="register">E</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d945"></span>D945</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d946"></span>D946</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d947"></span>D947</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d948"></span>D948</td>
 <td class="instruction">LD E,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d949"></span>D949</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d94a"></span>D94A</td>
 <td class="instruction">LD E,A</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d94b"></span>D94B</td>
 <td class="instruction">LD A,(BC)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d94c"></span>D94C</td>
 <td class="instruction">AND E</td>
 <td class="comment-1" rowspan="1">Merge the bits from <span class="register">E</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d94d"></span>D94D</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d94e"></span>D94E</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d94f"></span>D94F</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d950"></span>D950</td>
 <td class="instruction">LD E,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d951"></span>D951</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d952"></span>D952</td>
 <td class="instruction">LD E,A</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d953"></span>D953</td>
 <td class="instruction">LD A,(BC)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d954"></span>D954</td>
 <td class="instruction">AND E</td>
 <td class="comment-1" rowspan="1">Merge the bits from <span class="register">E</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d955"></span>D955</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d956"></span>D956</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d957"></span>D957</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d958"></span>D958</td>
 <td class="instruction">LD E,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d959"></span>D959</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d95a"></span>D95A</td>
 <td class="instruction">LD E,A</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d95b"></span>D95B</td>
 <td class="instruction">LD A,(BC)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d95c"></span>D95C</td>
 <td class="instruction">AND E</td>
 <td class="comment-1" rowspan="1">Merge the bits from <span class="register">E</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d95d"></span>D95D</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d95e"></span>D95E</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d95f"></span>D95F</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d960"></span>D960</td>
 <td class="instruction">LD E,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d961"></span>D961</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d962"></span>D962</td>
 <td class="instruction">LD E,A</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d963"></span>D963</td>
 <td class="instruction">LD A,(BC)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d964"></span>D964</td>
 <td class="instruction">AND E</td>
 <td class="comment-1" rowspan="1">Merge the bits from <span class="register">E</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d965"></span>D965</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d966"></span>D966</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d967"></span>D967</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d968"></span>D968</td>
 <td class="instruction">LD E,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d969"></span>D969</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d96a"></span>D96A</td>
 <td class="instruction">LD E,A</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d96b"></span>D96B</td>
 <td class="instruction">LD A,(BC)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d96c"></span>D96C</td>
 <td class="instruction">AND E</td>
 <td class="comment-1" rowspan="1">Merge the bits from <span class="register">E</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d96d"></span>D96D</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d96e"></span>D96E</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d96f"></span>D96F</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d970"></span>D970</td>
 <td class="instruction">LD E,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d971"></span>D971</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d972"></span>D972</td>
 <td class="instruction">LD E,A</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d973"></span>D973</td>
 <td class="instruction">LD A,(BC)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d974"></span>D974</td>
 <td class="instruction">AND E</td>
 <td class="comment-1" rowspan="1">Merge the bits from <span class="register">E</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d975"></span>D975</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d976"></span>D976</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d977"></span>D977</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d978"></span>D978</td>
 <td class="instruction">LD E,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d979"></span>D979</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d97a"></span>D97A</td>
 <td class="instruction">LD E,A</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d97b"></span>D97B</td>
 <td class="instruction">LD A,(BC)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d97c"></span>D97C</td>
 <td class="instruction">AND E</td>
 <td class="comment-1" rowspan="1">Merge the bits from <span class="register">E</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d97d"></span>D97D</td>
 <td class="instruction">LD (BC),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">BC</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d97e"></span>D97E</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d97f"></span>D97F</td>
 <td class="instruction">POP DE</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">DE</span> from the stack.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d980"></span>D980</td>
 <td class="instruction">CALL <a href="D986.html">$D986</a></td>
 <td class="comment-1" rowspan="1">Call <a href="D986.html">D986</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d983"></span>D983</td>
-<td class="instruction">JP <a href="D7F6.html#d8c6">$D8C6</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="D7F6.html#d8c6">D8C6</a>.</td>
+<td class="instruction">JP <a href="D7F6.html#d8c6">PrintSprite_Mirrored_5</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="D7F6.html#d8c6">PrintSprite_Mirrored_5</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">

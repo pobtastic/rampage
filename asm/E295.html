@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at E295</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="E25D.html">E25D</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#e295">Map</a></td>
+<td class="next">
+Next: <a href="E2A5.html">E2A5</a>
+</td>
+</tr>
+</table>
+<div class="description">E295: Human 01: Hiding</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Hiding</td>
+<td class="address-2"><span id="e295"></span>E295</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore human table pointer from the stack.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e296"></span>
+<div class="comments">
+<div class="paragraph">
+Decrease the countdown and just skip this human while they're still hiding.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e296"></span>E296</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="3">Decrease the humans action countdown by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e297"></span>E297</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e298"></span>E298</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e299"></span>E299</td>
+<td class="instruction">JP NZ,<a href="E54D.html">Handler_Humans_Skip</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E54D.html">Handler_Humans_Skip</a> until the countdown is zero.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e29c"></span>
+<div class="comments">
+<div class="paragraph">
+Now the countdown has expired.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e29c"></span>E29C</td>
+<td class="instruction">LD (HL),$10</td>
+<td class="comment-1" rowspan="1">Update the countdown to 10.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e29e"></span>E29E</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-1" rowspan="1">Decrease the human table pointer by one (back to the "type").</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e29f"></span>E29F</td>
+<td class="instruction">LD (HL),$02</td>
+<td class="comment-1" rowspan="1">Write human type <a href="E2A5.html">02</a> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2a1"></span>E2A1</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore the current human ID from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2a2"></span>E2A2</td>
+<td class="instruction">JP <a href="E25D.html#e266">Handler_Humans_Loop</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e266">Handler_Humans_Loop</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="E25D.html">E25D</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#e295">Map</a></td>
+<td class="next">
+Next: <a href="E2A5.html">E2A5</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="../dec/asm/58005.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

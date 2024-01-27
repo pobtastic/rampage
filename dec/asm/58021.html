@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at 58021</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="58005.html">58005</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#58021">Map</a></td>
+<td class="next">
+Next: <a href="58042.html">58042</a>
+</td>
+</tr>
+</table>
+<div class="description">58021: Human 2: Reappearing</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Human_Reappearing</td>
+<td class="address-2"><span id="58021"></span>58021</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore human table pointer from the stack.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="58022"></span>
+<div class="comments">
+<div class="paragraph">
+Decrease the countdown and just skip this human until they're "ready" to be generated.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58022"></span>58022</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="3">Decrease the humans action countdown by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58023"></span>58023</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58024"></span>58024</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58025"></span>58025</td>
+<td class="instruction">JP NZ,<a href="58701.html">Handler_Humans_Skip</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58701.html">Handler_Humans_Skip</a> until the countdown is zero.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="58028"></span>
+<div class="comments">
+<div class="paragraph">
+Choose a random human type...
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58028"></span>58028</td>
+<td class="instruction">LD (HL),14</td>
+<td class="comment-1" rowspan="1">Update the countdown to 14.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58030"></span>58030</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-1" rowspan="1">Decrease the human table pointer by one (back to the "type").</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58031"></span>58031</td>
+<td class="instruction">CALL <a href="55848.html">RandomNumber</a></td>
+<td class="comment-1" rowspan="3">Get a random number between 1-16.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58034"></span>58034</td>
+<td class="instruction">AND %00001111</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58036"></span>58036</td>
+<td class="instruction">INC A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58037"></span>58037</td>
+<td class="instruction">LD (HL),A</td>
+<td class="comment-1" rowspan="1">Write the random number to the human type.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58038"></span>58038</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore the current human ID from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="58039"></span>58039</td>
+<td class="instruction">JP <a href="57949.html#57958">Handler_Humans_Loop</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="57949.html#57958">Handler_Humans_Loop</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="58005.html">58005</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#58021">Map</a></td>
+<td class="next">
+Next: <a href="58042.html">58042</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="../../asm/E2A5.html">Switch to hexadecimal</a>.</div>
+</footer>
+</body>
+</html>

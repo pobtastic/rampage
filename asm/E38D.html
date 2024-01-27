@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at E38D</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="E2CC.html">E2CC</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#e38d">Map</a></td>
+<td class="next">
+Next: <a href="E3E1.html">E3E1</a>
+</td>
+</tr>
+</table>
+<div class="description">E38D: Human 04: Full Wave</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Human_FullWave</td>
+<td class="address-2"><span id="e38d"></span>E38D</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore human table pointer from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label">FullWave_DecreaseCountdown</td>
+<td class="address-2"><span id="e38e"></span>E38E</td>
+<td class="instruction">LD A,(HL)</td>
+<td class="comment-1" rowspan="3">Decrease the humans action countdown by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e38f"></span>E38F</td>
+<td class="instruction">DEC A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e390"></span>E390</td>
+<td class="instruction">LD (HL),A</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e391"></span>E391</td>
+<td class="instruction">CP $C8</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E38D.html#e3d9">FullWave_AboutToHide</a> if the humans action countdown (<span class="register">A</span>) is higher than C8.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e393"></span>E393</td>
+<td class="instruction">JR NC,<a href="E38D.html#e3d9">FullWave_AboutToHide</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e395"></span>E395</td>
+<td class="instruction">CP $80</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E38D.html#e3b1">FullWave_Action</a> if the humans action countdown (<span class="register">A</span>) is equal to 80.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e397"></span>E397</td>
+<td class="instruction">JR Z,<a href="E38D.html#e3b1">FullWave_Action</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e399"></span>E399</td>
+<td class="instruction">JR C,<a href="E38D.html#e3d5">FullWave_EndCycle</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E38D.html#e3d5">FullWave_EndCycle</a> if the humans action countdown (<span class="register">A</span>) is lower than 80.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e39b"></span>
+<div class="comments">
+<div class="paragraph">
+Ensure the number is between 0-63.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e39b"></span>E39B</td>
+<td class="instruction">AND %00111111</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-5.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e39d"></span>E39D</td>
+<td class="instruction">CP $20</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E38D.html#e3a9">FullWave_Mirrored</a> if <span class="register">A</span> is higher than 20.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e39f"></span>E39F</td>
+<td class="instruction">JR NC,<a href="E38D.html#e3a9">FullWave_Mirrored</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e3a1"></span>
+<div class="comments">
+<div class="paragraph">
+Ensure the number is between 0-3.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3a1"></span>E3A1</td>
+<td class="instruction">AND %00000011</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-1.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3a3"></span>E3A3</td>
+<td class="instruction">CP $02</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E38D.html#e3c1">FullWave_LeftFrame1</a> if <span class="register">A</span> is lower than 02.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3a5"></span>E3A5</td>
+<td class="instruction">JR C,<a href="E38D.html#e3c1">FullWave_LeftFrame1</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3a7"></span>E3A7</td>
+<td class="instruction">JR <a href="E38D.html#e3c6">FullWave_LeftFrame2</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E38D.html#e3c6">FullWave_LeftFrame2</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e3a9"></span>
+<div class="comments">
+<div class="paragraph">
+Ensure the number is between 0-3.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">FullWave_Mirrored</td>
+<td class="address-2"><span id="e3a9"></span>E3A9</td>
+<td class="instruction">AND %00000011</td>
+<td class="comment-1" rowspan="1">Keep only bits 0-1.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3ab"></span>E3AB</td>
+<td class="instruction">CP $02</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E38D.html#e3cb">FullWave_RightFrame1</a> if <span class="register">A</span> is lower than 02.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3ad"></span>E3AD</td>
+<td class="instruction">JR C,<a href="E38D.html#e3cb">FullWave_RightFrame1</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3af"></span>E3AF</td>
+<td class="instruction">JR <a href="E38D.html#e3d0">FullWave_RightFrame2</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E38D.html#e3d0">FullWave_RightFrame2</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e3b1"></span>
+<div class="comments">
+<div class="paragraph">
+Handle the waving, but also give a small chance the human should hide.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">FullWave_Action</td>
+<td class="address-2"><span id="e3b1"></span>E3B1</td>
+<td class="instruction">CALL <a href="E2BA.html">ShouldHumanHide</a></td>
+<td class="comment-1" rowspan="1">Call <a href="E2BA.html">ShouldHumanHide</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3b4"></span>E3B4</td>
+<td class="instruction">JR C,<a href="E38D.html#e38e">FullWave_DecreaseCountdown</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E38D.html#e38e">FullWave_DecreaseCountdown</a> if the human is set to start hiding.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3b6"></span>E3B6</td>
+<td class="instruction">CALL <a href="DA28.html">RandomNumber</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DA28.html">RandomNumber</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3b9"></span>E3B9</td>
+<td class="instruction">LD (HL),$C0</td>
+<td class="comment-1" rowspan="1">Update the countdown to C0.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3bb"></span>E3BB</td>
+<td class="instruction">AND %00000001</td>
+<td class="comment-1" rowspan="2">50/50 chance of jumping to <a href="E38D.html#e3cb">FullWave_RightFrame1</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3bd"></span>E3BD</td>
+<td class="instruction">JR Z,<a href="E38D.html#e3cb">FullWave_RightFrame1</a></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3bf"></span>E3BF</td>
+<td class="instruction">LD (HL),$A0</td>
+<td class="comment-1" rowspan="1">Write A0 to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e3c1"></span>
+<div class="comments">
+<div class="paragraph">
+Print the "normal" waving sprite frame 1.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">FullWave_LeftFrame1</td>
+<td class="address-2"><span id="e3c1"></span>E3C1</td>
+<td class="instruction">LD A,$C4</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">C4</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-196-left" src="../images/scr/human-196-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3c3"></span>E3C3</td>
+<td class="instruction">JP <a href="E535.html#e541">Draw_Human_Sprite</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E535.html#e541">Draw_Human_Sprite</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e3c6"></span>
+<div class="comments">
+<div class="paragraph">
+Print the "normal" waving sprite frame 2.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">FullWave_LeftFrame2</td>
+<td class="address-2"><span id="e3c6"></span>E3C6</td>
+<td class="instruction">LD A,$C8</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">C8</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-200-left" src="../images/scr/human-200-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3c8"></span>E3C8</td>
+<td class="instruction">JP <a href="E535.html#e541">Draw_Human_Sprite</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E535.html#e541">Draw_Human_Sprite</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e3cb"></span>
+<div class="comments">
+<div class="paragraph">
+Print the "mirrored" waving sprite frame 1.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">FullWave_RightFrame1</td>
+<td class="address-2"><span id="e3cb"></span>E3CB</td>
+<td class="instruction">LD A,$C4</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">C4</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-196-right" src="../images/scr/human-196-right.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3cd"></span>E3CD</td>
+<td class="instruction">JP <a href="E535.html">Draw_Human_Sprite_Mirrored</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E535.html">Draw_Human_Sprite_Mirrored</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e3d0"></span>
+<div class="comments">
+<div class="paragraph">
+Print the "mirrored" waving sprite frame 2.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">FullWave_RightFrame2</td>
+<td class="address-2"><span id="e3d0"></span>E3D0</td>
+<td class="instruction">LD A,$C8</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">C8</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-200-right" src="../images/scr/human-200-right.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3d2"></span>E3D2</td>
+<td class="instruction">JP <a href="E535.html">Draw_Human_Sprite_Mirrored</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E535.html">Draw_Human_Sprite_Mirrored</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e3d5"></span>
+<div class="comments">
+<div class="paragraph">
+When the countdown reaches 0A (from 80), jump to <a href="E38D.html#e3b1">FullWave_Action</a> to start a new cycle.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">FullWave_EndCycle</td>
+<td class="address-2"><span id="e3d5"></span>E3D5</td>
+<td class="instruction">CP $0A</td>
+<td class="comment-1" rowspan="2">Jump to <a href="E38D.html#e3b1">FullWave_Action</a> if <span class="register">A</span> is equal to 0A.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3d7"></span>E3D7</td>
+<td class="instruction">JR Z,<a href="E38D.html#e3b1">FullWave_Action</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e3d9"></span>
+<div class="comments">
+<div class="paragraph">
+The countdown between CE-C9 handles the delay before C8 will hide the human.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">FullWave_AboutToHide</td>
+<td class="address-2"><span id="e3d9"></span>E3D9</td>
+<td class="instruction">LD A,$C0</td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">C0</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="human-192-left" src="../images/scr/human-192-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3db"></span>E3DB</td>
+<td class="instruction">JP NZ,<a href="E535.html#e541">Draw_Human_Sprite</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E535.html#e541">Draw_Human_Sprite</a> until the countdown equals C8 (from line <a href="E38D.html#e391">E391</a>).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e3de"></span>E3DE</td>
+<td class="instruction">JP <a href="E2C3.html">Handler_Human_Hide</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E2C3.html">Handler_Human_Hide</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="E2CC.html">E2CC</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#e38d">Map</a></td>
+<td class="next">
+Next: <a href="E3E1.html">E3E1</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="../dec/asm/58253.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

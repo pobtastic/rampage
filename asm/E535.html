@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at E535</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="E447.html">E447</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#e535">Map</a></td>
+<td class="next">
+Next: <a href="E54D.html">E54D</a>
+</td>
+</tr>
+</table>
+<div class="description">E535: Human: Draw Sprite</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="E2CC.html">Human_Lobber</a>, <a href="E38D.html">Human_FullWave</a>, <a href="E3E1.html">Human_WavingOverHead</a>, <a href="E414.html">Human_WavingSideToSide</a> and <a href="E447.html">Human_Shooter</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e535"></span>
+<div class="comments">
+<div class="paragraph">
+Fetch the humans screen co-ordinates and draw the sprite to the shadow buffer.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Draw_Human_Sprite_Mirrored</td>
+<td class="address-2"><span id="e535"></span>E535</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment human table pointer by one to fetch the screen co-ordinates.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e536"></span>E536</td>
+<td class="instruction">LD C,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e537"></span>E537</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e538"></span>E538</td>
+<td class="instruction">LD B,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e539"></span>E539</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e53a"></span>E53A</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Stash the human table pointer on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e53b"></span>E53B</td>
+<td class="instruction">CALL <a href="D7F6.html">PrintSprite_Mirrored</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D7F6.html">PrintSprite_Mirrored</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e53e"></span>E53E</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the human table pointer from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e53f"></span>E53F</td>
+<td class="instruction">JR <a href="E54D.html#e550">Handler_Humans_Next</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E54D.html#e550">Handler_Humans_Next</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e541"></span>
+<div class="comments">
+<div class="paragraph">
+Fetch the humans screen co-ordinates and draw the sprite to the shadow buffer.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Draw_Human_Sprite</td>
+<td class="address-2"><span id="e541"></span>E541</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment human table pointer by one to fetch the screen co-ordinates.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e542"></span>E542</td>
+<td class="instruction">LD C,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">C</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e543"></span>E543</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e544"></span>E544</td>
+<td class="instruction">LD B,(HL)</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e545"></span>E545</td>
+<td class="instruction">INC HL</td>
+<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e546"></span>E546</td>
+<td class="instruction">PUSH HL</td>
+<td class="comment-1" rowspan="1">Stash the human table pointer on the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e547"></span>E547</td>
+<td class="instruction">CALL <a href="D6C9.html">PrintSprite</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D6C9.html">PrintSprite</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e54a"></span>E54A</td>
+<td class="instruction">POP HL</td>
+<td class="comment-1" rowspan="1">Restore the human table pointer from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e54b"></span>E54B</td>
+<td class="instruction">JR <a href="E54D.html#e550">Handler_Humans_Next</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E54D.html#e550">Handler_Humans_Next</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="E447.html">E447</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#e535">Map</a></td>
+<td class="next">
+Next: <a href="E54D.html">E54D</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="../dec/asm/58677.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rampage: Routine at E2C3</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../skoolkit.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
+<link rel="stylesheet" type="text/css" href="../skoolkit-wide.css" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-75RERFCHBG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-75RERFCHBG');
+</script>
+</head>
+<body class="Asm-c">
+<table class="header">
+<tr>
+<td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
+<td class="page-header">Routines</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="E2BA.html">E2BA</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#e2c3">Map</a></td>
+<td class="next">
+Next: <a href="E2CC.html">E2CC</a>
+</td>
+</tr>
+</table>
+<div class="description">E2C3: Human: Manage Human Hiding</div>
+<table class="disassembly">
+<tr>
+<td class="routine-comment" colspan="5">
+<div class="details">
+<div class="paragraph">
+Used by the routines at <a href="E2CC.html">Human_Lobber</a>, <a href="E38D.html">Human_FullWave</a>, <a href="E3E1.html">Human_WavingOverHead</a>, <a href="E414.html">Human_WavingSideToSide</a> and <a href="E447.html">Human_Shooter</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_Human_Hide</td>
+<td class="address-2"><span id="e2c3"></span>E2C3</td>
+<td class="instruction">LD (HL),$20</td>
+<td class="comment-1" rowspan="1">Update the countdown to 20.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2c5"></span>E2C5</td>
+<td class="instruction">DEC HL</td>
+<td class="comment-1" rowspan="1">Decrease the human table pointer by one (back to the "type").</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2c6"></span>E2C6</td>
+<td class="instruction">LD (HL),$01</td>
+<td class="comment-1" rowspan="1">Write human type <a href="E295.html">01</a> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2c8"></span>E2C8</td>
+<td class="instruction">POP BC</td>
+<td class="comment-1" rowspan="1">Restore the human ID from the stack.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="e2c9"></span>E2C9</td>
+<td class="instruction">JP <a href="E25D.html#e266">Handler_Humans_Loop</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E25D.html#e266">Handler_Humans_Loop</a>.</td>
+</tr>
+</table>
+<table class="asm-navigation">
+<tr>
+<td class="prev">
+Prev: <a href="E2BA.html">E2BA</a>
+</td>
+<td class="up">Up: <a href="../maps/all.html#e2c3">Map</a></td>
+<td class="next">
+Next: <a href="E2CC.html">E2CC</a>
+</td>
+</tr>
+</table>
+<footer>
+<div class="release"></div>
+<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
+<div><a href="../dec/asm/58051.html">Switch to decimal</a>.</div>
+</footer>
+</body>
+</html>
