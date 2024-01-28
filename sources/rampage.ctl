@@ -729,7 +729,9 @@ g $D210
 D $D210 Defaults to #N$80 (see #R$DEC9).
 B $D210,$01
 
-b $D211
+g $D211 Maximum Number Humans (TODO)
+@ $D211 label=MaxHumansCount
+B $D211,$01
 
 g $D212 Maximum Number Helicopters
 @ $D212 label=MaxHelicopterCount
@@ -873,7 +875,9 @@ g $D3F3 Number Of Buildings Remaining
 D $D3F3 Number of buildings remaining standing on the current level.
 B $D3F3,$01
 
-b $D3F4
+g $D3F4 Human Count (TODO)
+@ $D3F4 label=NumberHumans
+B $D3F4,$01
 
 g $D3F5 Active Helicopter Count
 @ $D3F5 label=NumberActiveHelicopters
@@ -885,14 +889,14 @@ B $D3F6,$01
 
 b $D3F7
 
-g $D3F8 On-Screen Bullet Count
-@ $D3F8 label=NumberOnScreenBullets
+g $D3F8 Bullet Count
+@ $D3F8 label=NumberBullets
 B $D3F8,$01
 
 b $D3F9
 
-g $D3FA On-Screen Projectile Count
-@ $D3FA label=NumberOnScreenProjectiles
+g $D3FA Projectile Count
+@ $D3FA label=NumberProjectiles
 B $D3FA,$01
 
 b $D3FB
@@ -2351,7 +2355,8 @@ M $DC46,$05 Get a random number between 0-3.
   $DC9D,$03 Jump to #R$DBEF until all helicopters have been processed.
   $DCA0,$01 Return.
 
-c $DCA1
+c $DCA1 Handler: Spawn Humans
+@ $DCA1 label=Handler_SpawnHumans
   $DCA1,$04 #REGb=*#R$D3F4.
   $DCA5,$05 Return if *#R$D211 is equal to #REGb.
   $DCAA,$04 #REGb=random number.
@@ -2405,19 +2410,20 @@ c $DCA1
   $DD02,$01 Increment #REGc by one.
   $DD03,$01 Write #REGa to *#REGbc.
   $DD04,$01 Exchange the #REGde and #REGhl registers.
-  $DD05,$03 #REGa=*#R$D3F4.
-  $DD08,$01 Increment #REGa by one.
-  $DD09,$03 Write #REGa to *#R$D3F4.
-  $DD0C,$03 #REGhl=#R$D251.
+  $DD05,$07 Increment *#R$D3F4 by one.
+N $DD0C Loop to find an empty slot.
+  $DD0C,$03 #REGhl=#R$D251 (#R$D255-#N$04).
+@ $DD0F label=Handler_Humans_FindSlot
   $DD0F,$04 Increment #REGhl by four.
   $DD13,$04 Jump to #R$DD0F if *#REGhl is not zero.
-  $DD17,$02 Write #N$01 to *#REGhl.
+N $DD17 Found an empty slot.
+  $DD17,$02 Write human type #R$E295(#N$01) to *#REGhl.
   $DD19,$01 Increment #REGhl by one.
   $DD1A,$03 Call #R$DA28.
   $DD1D,$02,b$01 Keep only bits 0-4.
-M $DD1A,$05 Get a random number between 0-31.
+M $DD1A,$07 Get a random number between #N$1F-#N$3E.
   $DD1F,$02 #REGa+=#N$1F.
-  $DD21,$01 Write #REGa to *#REGhl.
+  $DD21,$01 Write #REGa as the countdown to *#REGhl.
   $DD22,$01 Increment #REGhl by one.
   $DD23,$01 Restore #REGbc from the stack.
   $DD24,$01 #REGa=#REGc.

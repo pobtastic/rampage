@@ -3786,8 +3786,9 @@ b$D198 DEFB $43,$46,$46,$46,$46,$46,$46,$46
 ; Defaults to #N$80 (see #R$DEC9).
 g$D210 DEFB $00
 
-; Data block at D211
-b$D211 DEFB $00
+; Maximum Number Humans (TODO)
+@label=MaxHumansCount
+g$D211 DEFB $00
 
 ; Maximum Number Helicopters
 @label=MaxHelicopterCount
@@ -4155,8 +4156,9 @@ g$D39F DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
 @label=BuildingsRemainingCount
 g$D3F3 DEFB $00
 
-; Data block at D3F4
-b$D3F4 DEFB $00
+; Human Count (TODO)
+@label=NumberHumans
+g$D3F4 DEFB $00
 
 ; Active Helicopter Count
 @label=NumberActiveHelicopters
@@ -4169,15 +4171,15 @@ g$D3F6 DEFB $00
 ; Data block at D3F7
 b$D3F7 DEFB $00
 
-; On-Screen Bullet Count
-@label=NumberOnScreenBullets
+; Bullet Count
+@label=NumberBullets
 g$D3F8 DEFB $00
 
 ; Data block at D3F9
 b$D3F9 DEFB $00
 
-; On-Screen Projectile Count
-@label=NumberOnScreenProjectiles
+; Projectile Count
+@label=NumberProjectiles
 g$D3FA DEFB $00
 
 ; Data block at D3FB
@@ -5990,9 +5992,10 @@ c$DBE5 LD B,$06        ; #REGb=#N$06 (maximum possible number of on-screen
                        ; processed.
  $DCA0 RET             ; Return.
 
-; Routine at DCA1
+; Handler: Spawn Humans
 ;
 ; Used by the routine at #R$DE77.
+@label=Handler_SpawnHumans
 c$DCA1 LD A,($D3F4)  ; {#REGb=*#R$D3F4.
  $DCA4 LD B,A        ; }
  $DCA5 LD A,($D211)  ; {Return if *#R$D211 is equal to #REGb.
@@ -6064,10 +6067,12 @@ c$DCA1 LD A,($D3F4)  ; {#REGb=*#R$D3F4.
  $DD02 INC C         ; Increment #REGc by one.
  $DD03 LD (BC),A     ; Write #REGa to *#REGbc.
  $DD04 EX DE,HL      ; Exchange the #REGde and #REGhl registers.
- $DD05 LD A,($D3F4)  ; #REGa=*#R$D3F4.
- $DD08 INC A         ; Increment #REGa by one.
- $DD09 LD ($D3F4),A  ; Write #REGa to *#R$D3F4.
- $DD0C LD HL,$D251   ; #REGhl=#R$D251.
+ $DD05 LD A,($D3F4)  ; {Increment *#R$D3F4 by one.
+ $DD08 INC A         ;
+ $DD09 LD ($D3F4),A  ; }
+; Loop to find an empty slot.
+ $DD0C LD HL,$D251   ; #REGhl=#R$D251 (#R$D255-#N$04).
+@label=Handler_Humans_FindSlot
 *$DD0F INC HL        ; {Increment #REGhl by four.
  $DD10 INC HL        ;
  $DD11 INC HL        ;
@@ -6075,12 +6080,13 @@ c$DCA1 LD A,($D3F4)  ; {#REGb=*#R$D3F4.
  $DD13 LD A,(HL)     ; {Jump to #R$DD0F if *#REGhl is not zero.
  $DD14 AND A         ;
  $DD15 JR NZ,$DD0F   ; }
- $DD17 LD (HL),$01   ; Write #N$01 to *#REGhl.
+; Found an empty slot.
+ $DD17 LD (HL),$01   ; Write human type #R$E295(#N$01) to *#REGhl.
  $DD19 INC HL        ; Increment #REGhl by one.
- $DD1A CALL $DA28    ; {Get a random number between 0-31.
- $DD1D AND %00011111 ; }
- $DD1F ADD A,$1F     ; #REGa+=#N$1F.
- $DD21 LD (HL),A     ; Write #REGa to *#REGhl.
+ $DD1A CALL $DA28    ; {Get a random number between #N$1F-#N$3E.
+ $DD1D AND %00011111 ;
+ $DD1F ADD A,$1F     ; }
+ $DD21 LD (HL),A     ; Write #REGa as the countdown to *#REGhl.
  $DD22 INC HL        ; Increment #REGhl by one.
  $DD23 POP BC        ; Restore #REGbc from the stack.
  $DD24 LD A,C        ; #REGa=#REGc.
