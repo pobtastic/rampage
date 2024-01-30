@@ -17,8 +17,10 @@ b $5F00
 b $6200
   $6200,$0300,$20
 
-b $6500
-  $6500,$0300,$20
+g $6500 Building Buffer?
+@ $6500 label=BuildingBuffer
+D $6500 TODO: Seems to be larger than this single block. Maybe also #R$6200 as well, will test.
+B $6500,$0300,$20
 
 b $6800
   $6800,$0300,$20
@@ -790,6 +792,7 @@ B $D241,$03,$01
 
 g $D244 Jump Table Pointer
 @ $D244 label=JumpTable_Pointer
+D $D244 See #R$E67C.
 B $D244,$01
 
 g $D245
@@ -810,16 +813,30 @@ g $D249
 
 g $D24A
 
-g $D24B
+g $D24B Temporary Monster Action Countdown
+@ $D24B label=Temp_MonsterActionCountdown
+B $D24B,$01
 
 g $D24C
 
-g $D24D
-  $D24D,$02,$01
+g $D24D Temporary Monster Co-ordinates
+@ $D24D label=Temp_MonsterXPosition
+@ $D24E label=Temp_MonsterYPosition
+B $D24D,$02,$01
 
 g $D24F
 
-b $D251
+g $D251 Monster Sprite Modifier
+@ $D251 label=MonsterSpriteModifier
+D $D251 When monster frames are drawn, this is used with an OR to set a bit which changes the sprite to the appropriate
+.       character. See #R$D9BB.
+. #TABLE(default,centre,centre,centre)
+. { =h Byte | =h Bit | =h Monster }
+. { #N$00 | #EVAL($00,$02,$08) | George }
+. { #N$40 | #EVAL($40,$02,$08) | Lizzy }
+. { #N$80 | #EVAL($80,$02,$08) | Ralph }
+. TABLE#
+B $D251,$01
 
 b $D252
 
@@ -1957,7 +1974,10 @@ c $D986
   $D9A7,$01 Switch back to the normal registers.
   $D9A8,$01 Return.
 
-c $D9A9
+c $D9A9 Initialise Sprite
+@ $D9A9 label=InitSprite
+R $D9A9 A Sprite ID
+R $D9A9 BC Screen co-ordinates
   $D9A9,$03 Call #R$DA1D.
   $D9AC,$01 #REGa=#REGc.
   $D9AD,$01 #REGa+=*#REGhl.
@@ -1973,7 +1993,8 @@ c $D9A9
   $D9B9,$01 Switch to the shadow registers.
   $D9BA,$01 Return.
 
-c $D9BB
+c $D9BB Draw Monster Sprite
+@ $D9BB label=DrawMonsterSprite
   $D9BB,$01 #REGl=#REGa.
   $D9BC,$03 #REGa=*#R$D251.
   $D9BF,$01 Set the bits from #REGl.
@@ -2061,19 +2082,23 @@ c $DA3D
   $DA4F,$01 Restore #REGde from the stack.
   $DA50,$01 Return.
 
-c $DA51
+c $DA51 Handler: Increment Monster X Position
+@ $DA51 label=Handler_IncrementMonsterXPosition
   $DA51,$07 Increment *#R$D24D by one.
   $DA58,$01 Return.
 
-c $DA59
+c $DA59 Handler: Increment Monster Y Position
+@ $DA59 label=Handler_IncrementMonsterYPosition
   $DA59,$07 Increment *#R$D24E by one.
   $DA60,$01 Return.
 
-c $DA61
+c $DA61 Handler: Decrease Monster X Position
+@ $DA61 label=Handler_DecreaseMonsterXPosition
   $DA61,$07 Decrease *#R$D24D by one.
   $DA68,$01 Return.
 
-c $DA69
+c $DA69 Handler: Decrease Monster Y Position
+@ $DA69 label=Handler_DecreaseMonsterYPosition
   $DA69,$07 Decrease *#R$D24E by one.
   $DA70,$01 Return.
 
@@ -2201,25 +2226,33 @@ W $DB52,$02
   $DB79,$04 #REGde=*#R$D253.
   $DB7D,$01 Return.
 
-c $DB7E
+c $DB7E Target A Monster
+@ $DB7E label=TargetMonster
   $DB7E,$04 Write #N$00 to *#R$D214.
 M $DB82,$05 Get a random number between 0-3.
-  $DB85,$02,b$01
+  $DB85,$02,b$01 Keep only bits 0-1.
+N $DB87 Note; #R$DBB4 increments #REGa on entry.
+@ $DB87 label=ConvertToMonsterId
   $DB87,$03 Call #R$DBB4.
-  $DB8A,$04 Jump to #R$DB96 if #REGa is lower than #N$C8.
+@ $DB8A label=CheckIfMonsterIsAlive
+  $DB8A,$04 Jump to #R$DB96 if the monster state is lower than #N$C8.
   $DB8E,$05 Write #N$80 to *#R$D214.
-  $DB93,$01 #REGa=#REGb.
+N $DB93 The monster ID e.g. #N$01 - George, #N$02 - Lizzy and #N$03 Ralph.
+  $DB93,$01 #REGa=the selected monster ID.
+N $DB94 Try again with the next monster in sequence.
   $DB94,$02 Jump to #R$DB87.
+@ $DB96 label=SetTargetedMonster_XPos
   $DB96,$03 #REGa=*#R$D214.
   $DB99,$01 Set the bits from #REGb.
   $DB9A,$01 Exchange the #REGaf register with the shadow #REGaf register.
-  $DB9B,$01 #REGa=*#REGde.
+  $DB9B,$01 #REGa=the targeted monsters X position.
   $DB9C,$02 Increment #REGa by two.
   $DB9E,$01 #REGb=#REGa.
   $DB9F,$04 Jump to #R$DBA5 if #REGa is lower than #N$64.
   $DBA3,$02 #REGb=#N$00.
+@ $DBA5 label=SetTargetedMonster_YPos
   $DBA5,$01 Increment #REGde by one.
-  $DBA6,$01 #REGa=*#REGde.
+  $DBA6,$01 #REGa=the targeted monsters y position.
   $DBA7,$01 Increment #REGa by one.
   $DBA8,$01 #REGc=#REGa.
   $DBA9,$04 Jump to #R$DBAF if #REGa is lower than #N$64.
@@ -2357,28 +2390,32 @@ M $DC46,$05 Get a random number between 0-3.
 
 c $DCA1 Handler: Spawn Humans
 @ $DCA1 label=Handler_SpawnHumans
+N $DCA1 Just return if the number of active humans is already at the maximum amount for this level.
   $DCA1,$04 #REGb=*#R$D3F4.
   $DCA5,$05 Return if *#R$D211 is equal to #REGb.
+M $DCA1,$09 Return if *#R$D3F4 is equal to *#R$D211.
+N $DCAA Add a hint of randomness to whether we proceed or not. Roughly 50% chance.
   $DCAA,$04 #REGb=random number.
-  $DCAE,$03 #REGa=*#R$D210.
+  $DCAE,$03 #REGa=*#R$D210 (this appears to only ever be set to #N$80).
   $DCB1,$02 Return if #REGa is lower than #REGb.
+N $DCB3 Creates a random number between #N($0000,$04,$04)-#N$02FD.
   $DCB3,$03 Call #R$DA28.
-  $DCB6,$02 #REGh=#N$00.
-  $DCB8,$01 #REGl=#REGa.
+  $DCB6,$03 #REGhl=random number between #N($0000,$04,$04)-#N($00FF,$04,$04).
   $DCB9,$03 Call #R$DA28.
-  $DCBC,$01 #REGb=#REGh.
-  $DCBD,$01 #REGc=#REGa.
+  $DCBC,$02 #REGbc=random number between #N($0000,$04,$04)-#N($00FF,$04,$04).
   $DCBE,$03 Call #R$DA28.
-  $DCC1,$01 #REGd=#REGh.
-  $DCC2,$01 #REGe=#REGa.
-  $DCC3,$01 #REGhl+=#REGde.
-  $DCC4,$01 #REGhl+=#REGbc.
-  $DCC5,$01 #REGb=#REGh.
-  $DCC6,$01 #REGc=#REGl.
+  $DCC1,$02 #REGde=random number between #N($0000,$04,$04)-#N($00FF,$04,$04).
+  $DCC3,$02 Add them all together: #REGhl=#REGhl+#REGde+#REGbc.
+  $DCC5,$02 #REGbc=#REGhl.
+N $DCC7 Adding #N$65 to #REGh gives an address range of anywhere between #R$6500(#N$6500)-#N$67FD.
   $DCC7,$04 #REGh+=#N$65.
   $DCCB,$04 Jump to #R$DCD5 if *#REGhl is not zero.
+N $DCCF The address in the buffer isn't compatible with containing a human, so have one more try...
   $DCCF,$03 Decrease #REGh by three.
+N $DCD2 Just give up here if we still haven't found a building to land on.
   $DCD2,$03 Return if *#REGhl is zero.
+N $DCD5 The routine has found "something" but we still need to check that it's compatible with containing a human.
+@ $DCD5 label=FoundSolidMatter
   $DCD5,$02,b$01 Keep only bit 6.
   $DCD7,$01 #REGd=#REGa.
   $DCD8,$01 #REGa=*#REGhl.
@@ -2410,6 +2447,7 @@ c $DCA1 Handler: Spawn Humans
   $DD02,$01 Increment #REGc by one.
   $DD03,$01 Write #REGa to *#REGbc.
   $DD04,$01 Exchange the #REGde and #REGhl registers.
+N $DD05 Register that a new human has been created.
   $DD05,$07 Increment *#R$D3F4 by one.
 N $DD0C Loop to find an empty slot.
   $DD0C,$03 #REGhl=#R$D251 (#R$D255-#N$04).
@@ -2417,7 +2455,9 @@ N $DD0C Loop to find an empty slot.
   $DD0F,$04 Increment #REGhl by four.
   $DD13,$04 Jump to #R$DD0F if *#REGhl is not zero.
 N $DD17 Found an empty slot.
+N $DD17 All humans start as type #R$E295(#N$01).
   $DD17,$02 Write human type #R$E295(#N$01) to *#REGhl.
+N $DD19 Set a random countdown value.
   $DD19,$01 Increment #REGhl by one.
   $DD1A,$03 Call #R$DA28.
   $DD1D,$02,b$01 Keep only bits 0-4.
@@ -2431,10 +2471,10 @@ M $DD1A,$07 Get a random number between #N$1F-#N$3E.
   $DD27,$01 Write #REGa to *#REGhl.
   $DD28,$01 Increment #REGhl by one.
   $DD29,$01 #REGa=#REGb.
-  $DD2A,$03 RLCA.
-  $DD2D,$01 #REGb=#REGa.
+  $DD2A,$03 Rotate #REGa left three positions (bits 5 to 7 are now in positions 0 to 2).
+  $DD2D,$01 Store the result in #REGb.
   $DD2E,$01 #REGa=#REGc.
-  $DD2F,$03 RLCA.
+  $DD2F,$03 Rotate #REGa left three positions (bits 5 to 7 are now in positions 0 to 2).
   $DD32,$02,b$01 Keep only bits 0-2.
   $DD34,$01 Set the bits from #REGb.
   $DD35,$01 Decrease #REGa by one.
@@ -3035,8 +3075,9 @@ N $E146 Ralph:
   $E176,$02 LDIR.
   $E178,$01 Return.
 
-c $E179 Controls?
+c $E179 Controls
 @ $E179 label=Controls
+R $E179 O:A Byte representing the intended action
   $E179,$06 Jump to #R$E1CE if *#R$D252 is not zero.
   $E17F,$03 Call #R$DA28.
   $E182,$02,b$01 Keep only bits 0-4.
@@ -3070,11 +3111,11 @@ M $E17F,$08 Write a random number between 0-31 to *#R$D217.
   $E1C8,$02 Reset bit 4 of #REGa.
   $E1CA,$03 Write #REGa to *#R$D217.
   $E1CD,$01 Return.
-  $E1CE,$01 #REGa+=#REGa.
-  $E1CF,$02 #REGh=#N$00.
-  $E1D1,$01 #REGl=#REGa.
-  $E1D2,$03 #REGde=#R$E24F.
-  $E1D5,$01 #REGhl+=#REGde.
+@ $E1CE label=Controls_FetchSet
+  $E1CE,$01 #REGa*=#N$02.
+  $E1CF,$03 Create an offset using #REGhl.
+  $E1D2,$04 #REGhl+=#R$E24F.
+N $E1D6 Load the address into #REGhl and jump to it.
   $E1D6,$01 #REGa=*#REGhl.
   $E1D7,$01 Increment #REGhl by one.
   $E1D8,$01 #REGh=*#REGhl.
@@ -3095,7 +3136,8 @@ M $E17F,$08 Write a random number between 0-31 to *#R$D217.
   $E1F5,$02,b$01 Flip bits 0-5 and 7.
   $E1F7,$02,b$01 Keep only bits 0-4.
   $E1F9,$03 Jump to #R$E243.
-  $E1FC,$02
+@ $E1FC label=Controls_ReadKempston
+  $E1FC,$02 Read Kempston Joystick input.
   $E1FE,$02,b$01 Keep only bits 0-4.
   $E200,$03 Jump to #R$E243 if the result is zero.
   $E203,$01 #REGb=#REGa.
@@ -3105,10 +3147,16 @@ M $E17F,$08 Write a random number between 0-31 to *#R$D217.
   $E20A,$02,b$01 Flip bits 0-1.
   $E20C,$01 Set the bits from #REGa.
   $E20D,$03 Jump to #R$E243.
+N $E210 Use user-defined keys set 1.
+@ $E210 label=Controls_Set1
   $E210,$03 #REGhl=#R$C850.
   $E213,$02 Jump to #R$E21D.
+N $E215 Use user-defined keys set 2.
+@ $E215 label=Controls_Set2
   $E215,$03 #REGhl=#R$C85A.
   $E218,$02 Jump to #R$E21D.
+N $E21A Use user-defined keys set 3.
+@ $E21A label=Controls_Set3
   $E21A,$03 #REGhl=#R$C864.
   $E21D,$02 #REGc=#N$00.
   $E21F,$03 Call #R$E248.
@@ -3130,12 +3178,14 @@ M $E17F,$08 Write a random number between 0-31 to *#R$D217.
   $E243,$01 Set flags.
   $E244,$03 Write #REGa to *#R$D217.
   $E247,$01 Return.
+@ $E248 label=Controls_ReadKeyboard
   $E248,$01 #REGa=*#REGhl.
-  $E249,$02
+  $E249,$02 Read from the keyboard.
   $E24B,$01 Increment #REGhl by one.
   $E24C,$01 Merge the bits from *#REGhl.
   $E24D,$01 Increment #REGhl by one.
   $E24E,$01 Return.
+@ $E24F label=JumpTable_Controls
 W $E24F
 
 c $E25D Handler: Humans
@@ -3774,6 +3824,10 @@ N $E5EC Take off one hit point from the monsters energy.
   $E5F6,$01 Decrease #REGhl by one.
   $E5F7,$01 Write #REGc to *#REGhl.
   $E5F8,$02 #REGa=#N$F4.
+. #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$F4 | #SPRITE$F4 }
+. UDGTABLE#
   $E5FA,$03 Call #R$D6C9.
   $E5FD,$01 Restore #REGhl from the stack.
   $E5FE,$02 Jump to #R$E626.
@@ -3790,6 +3844,10 @@ N $E5EC Take off one hit point from the monsters energy.
   $E618,$01 Restore #REGhl from the stack.
   $E619,$02 Jump to #R$E626.
   $E61B,$02 #REGa=#N$73.
+. #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$73 | #SPRITE$73 }
+. UDGTABLE#
   $E61D,$01 Stash #REGhl on the stack.
   $E61E,$03 Call #R$D6C9.
   $E621,$01 Restore #REGhl from the stack.
@@ -3843,10 +3901,13 @@ N $E687 Fetch the address to jump and store it in #REGhl.
   $E68A,$01 #REGl=#REGa.
   $E68B,$01 Jump to the address held by *#REGhl.
 
-c $E68C
+c $E68C Handler: Controls
+@ $E68C label=Handler_Controls
   $E68C,$03 Call #R$E179.
-  $E68F,$04 Jump to #R$E950 if #REGa is zero.
-  $E693,$05 Jump to #R$E6C5 if bit 4 of #REGa is not set.
+  $E68F,$04 Jump to #R$E950 if no keys are currently being pressed.
+N $E693 Controls: Jump/ Punch.
+@ $E693 label=Controls_JumpPunch
+  $E693,$05 Jump to #R$E6C5 if the key for jump/ punch is not being pressed.
   $E698,$02,b$01 Flip bit 4.
   $E69A,$02 Jump to #R$E6A9 if the result is not zero.
   $E69C,$05 Write #N$0A to *#R$D244.
@@ -3858,7 +3919,9 @@ c $E68C
   $E6B7,$06 Jump to #R$E69C if *#R$D252 is zero.
   $E6BD,$05 Write #N$0E to *#R$D244.
   $E6C2,$03 Jump to #R$E67C.
-  $E6C5,$05 Jump to #R$E7DE if bit 3 of #REGa is not set.
+N $E6C5 Controls: Up.
+@ $E6C5 label=Controls_Up
+  $E6C5,$05 Jump to #R$E7DE if the key for up is not being pressed.
   $E6CA,$03 #REGa=*#R$D247.
   $E6CD,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $E6CE,$02 Jump to #R$E6E4 if the carry flag is set.
@@ -3953,7 +4016,9 @@ c $E68C
   $E7CF,$04 Write #N$01 to *#R$D246.
   $E7D3,$08 Write #N$03 to: #LIST { *#R$D244 } { *#R$D245 } LIST#
   $E7DB,$03 Jump to #R$E67C.
-  $E7DE,$05 Jump to #R$E8E7 if bit 2 of #REGa is not set.
+N $E7DE Controls: Down.
+@ $E7DE label=Controls_Down
+  $E7DE,$05 Jump to #R$E8E7 if the key for down is not being pressed.
   $E7E3,$08 Jump to #R$E8CF if *#R$D24E is equal to #N$10.
   $E7EB,$03 #REGa=*#R$D247.
   $E7EE,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
@@ -4042,7 +4107,9 @@ c $E68C
   $E8DD,$03 Call #R$DA61 if the carry flag is not set.
   $E8E0,$04 Write #N$00 to *#R$D246.
   $E8E4,$03 Jump to #R$E67C.
-  $E8E7,$04 Jump to #R$E91C if bit 0 of #REGa is not set.
+N $E8E7 Controls: Left.
+@ $E8E7 label=Controls_Left
+  $E8E7,$04 Jump to #R$E91C if the key for left is not being pressed.
   $E8EB,$03 #REGa=*#R$D246.
   $E8EE,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $E8EF,$03 Jump to #R$EF86 if the carry flag is set.
@@ -4057,7 +4124,9 @@ c $E68C
   $E90E,$04 Write #N$01 to *#R$D247.
   $E912,$07 Write #N$02 to: #LIST { *#REGix+#N$00 } { *#R$D244 } LIST#
   $E919,$03 Jump to #R$E67C.
-  $E91C,$04 Jump to #R$E950 if bit 1 of #REGa is not set.
+N $E91C Controls: Right.
+@ $E91C label=Controls_Right
+  $E91C,$04 Jump to #R$E950 if the key for right is not being pressed.
   $E920,$03 #REGa=*#R$D246.
   $E923,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $E924,$03 Jump to #R$EF86 if the carry flag is set.
@@ -4071,9 +4140,7 @@ c $E68C
   $E93F,$07 Write #N$00 to: #LIST { *#REGix+#N$05 } { *#R$D247 } LIST#
   $E946,$07 Write #N$01 to: #LIST { *#REGix+#N$00 } { *#R$D244 } LIST#
   $E94D,$03 Jump to #R$E67C.
-  $E950,$03 #REGa=*#R$D249.
-  $E953,$01 Decrease #REGa by one.
-  $E954,$03 Write #REGa to *#R$D249.
+  $E950,$07 Decrease *#R$D249 by one.
   $E957,$03 Jump to #R$EF86 if #REGa is not zero.
   $E95A,$05 Write #N$19 to *#R$D249.
   $E95F,$05 Write #N$05 to *#R$D244.
@@ -4173,34 +4240,50 @@ c $EA18
   $EA3B,$05 Write #N$08 to *#R$D244.
   $EA40,$03 Jump to #R$E67C.
 
-c $EA43
-  $EA43,$02 #REGa=#N$19.
-  $EA45,$04 #REGbc=*#R$D24D.
+c $EA43 Animate: Falling
+@ $EA43 label=Animate_Falling
+N $EA43 Select the "Oh No" head sprite, the routine at #R$D9BB handles which monster to display.
+  $EA43,$02 #REGa=sprite ID #N$19.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$19 | #SPRITE$19 | #N$59 | #SPRITE$59 | #N$99 | #SPRITE$99 }
+. UDGTABLE#
+N $EA45 Set the co-ordinates for where to draw.
+  $EA45,$04 #REGbc=*#R$D24D/#R$D24E.
   $EA49,$03 Call #R$D9BB.
-  $EA4C,$04 #REGbc=*#R$D24D.
-  $EA50,$02 Increment #REGb by two.
-  $EA52,$02 #REGa=#N$23.
+N $EA4C Again, set the co-ordinates for where to draw.
+  $EA4C,$04 #REGbc=*#R$D24D/#R$D24E.
+  $EA50,$02 Increment the Y position by two to draw the lower section of the monsters body.
+  $EA52,$02 #REGa=sprite ID #N$23.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$23 | #SPRITE$23 | #N$63 | #SPRITE$63 | #N$A3 | #SPRITE$A3 }
+. UDGTABLE#
   $EA54,$03 Call #R$D9BB.
+N $EA57 Apply gravity.
   $EA57,$03 Call #R$DA59.
-  $EA5A,$04 Jump to #R$EA6E if #REGa is equal to #N$12.
-  $EA5E,$03 #REGa=*#R$D24B.
-  $EA61,$01 Decrease #REGa by one.
-  $EA62,$03 Write #REGa to *#R$D24B.
-  $EA65,$03 Return if #REGa is higher than #N$12.
+  $EA5A,$04 Jump to #R$EA6E if monster Y position is equal to #N$12.
+  $EA5E,$07 Decrease *#R$D24B by one.
+  $EA65,$03 Return if *#R$D24B is higher than #N$12.
   $EA68,$03 Call #R$DA59.
   $EA6B,$03 Return if #REGa is not equal to #N$12.
   $EA6E,$05 Write #N$12 to *#R$D24E.
   $EA73,$05 Write #N$0C to *#R$D24B.
   $EA78,$04 Write #N$00 to *#R$D246.
   $EA7C,$07 Jump to #R$EA88 if *#R$D244 is not equal to #N$20.
-  $EA83,$02 #REGa=#N$21.
+  $EA83,$02 #REGa=#R$EFDA(#N$21).
   $EA85,$03 Jump to #R$E67C.
-  $EA88,$05 Write #N$09 to *#R$D244.
+N $EA88 Monster is now at ground level.
+@ $EA88 label=Animate_HitTheFloor
+  $EA88,$05 Write #R$EFAA(#N$09) to *#R$D244.
   $EA8D,$04 #REGiy=#R$D244.
 N $EA91 Take off four hit points from the monsters energy.
   $EA91,$02 #REGa=#N$04.
   $EA93,$03 Call #R$DD6C.
-N $EA96 #AUDIO(projectile.wav)(#INCLUDE(Projectile))
+N $EA96 Make the splat sound.
+. #AUDIO(projectile.wav)(#INCLUDE(Projectile))
   $EA96,$05 Write melody ID #N$05 to *#R$FF8D.
   $EA9B,$01 Return.
 
@@ -4218,17 +4301,27 @@ c $EA9C
   $EABE,$03 Call #R$DA61 if the carry flag is not set.
   $EAC1,$0A Write #N$00 to: #LIST { *#R$D244 } { *#R$D246 } { *#R$D248 } LIST#
   $EACB,$03 Jump to #R$E67C.
-  $EACE,$02 #REGa=#N$07.
-  $EAD0,$04 #REGbc=*#R$D24D.
+  $EACE,$02 #REGa=sprite ID #N$07.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$07 | #SPRITE$07,$00,$0416 | #N$47 | #SPRITE$47,$00,$0416 | #N$87 | #SPRITE$87,$00,$0416 }
+. UDGTABLE#
+  $EAD0,$04 #REGbc=*#R$D24D/#R$D24E.
   $EAD4,$03 Call #R$D9BB.
-  $EAD7,$04 #REGbc=*#R$D24D.
+  $EAD7,$04 #REGbc=*#R$D24D/#R$D24E.
   $EADB,$02 Increment #REGb by two.
   $EADD,$01 Increment #REGc by one.
   $EADE,$03 #REGa=*#R$D247.
   $EAE1,$02,b$01 Flip bit 0.
   $EAE3,$01 #REGa+=#REGc.
   $EAE4,$01 #REGc=#REGa.
-  $EAE5,$02 #REGa=#N$1B.
+  $EAE5,$02 #REGa=sprite ID #N$1B.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$1B | #SPRITE$1B | #N$5B | #SPRITE$5B | #N$9B | #SPRITE$9B }
+. UDGTABLE#
   $EAE7,$03 Call #R$D9BB.
   $EAEA,$06 Return if *#R$D244 is not equal to #N$20.
   $EAF0,$05 Write #N$21 to *#R$D244.
@@ -4374,7 +4467,12 @@ c $EC8A
   $EC98,$04 Jump to #R$ECA3 if *#R$D24B is higher than #N$12.
   $EC9C,$03 Call #R$DA59.
   $EC9F,$04 Jump to #R$ECC0 if #REGa is equal to #N$12.
-  $ECA3,$02 #REGa=#N$09.
+  $ECA3,$02 #REGa=sprite ID #N$09.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$09 | #SPRITE$09 | #N$49 | #SPRITE$49 | #N$89 | #SPRITE$89 }
+. UDGTABLE#
   $ECA5,$04 #REGbc=*#R$D24D.
   $ECA9,$01 Stash #REGbc on the stack.
   $ECAA,$03 Call #R$D9BB.
@@ -4385,7 +4483,12 @@ c $EC8A
   $ECB3,$02,b$01 Flip bit 0.
   $ECB5,$01 #REGa+=#REGc.
   $ECB6,$01 #REGc=#REGa.
-  $ECB7,$02 #REGa=#N$17.
+  $ECB7,$02 #REGa=sprite ID #N$17.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$17 | #SPRITE$17 | #N$57 | #SPRITE$57 | #N$97 | #SPRITE$97 }
+. UDGTABLE#
   $ECB9,$03 Call #R$D9BB.
   $ECBC,$03 Call #R$DA59.
   $ECBF,$01 Return.
@@ -4409,11 +4512,21 @@ c $ECE0
   $ECF2,$03 Call #R$F352.
   $ECF5,$04 #REGbc=*#R$D24D.
   $ECF9,$02 Decrease #REGb by two.
-  $ECFB,$02 #REGa=#N$25.
+  $ECFB,$02 #REGa=sprite ID #N$25.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$25 | #SPRITE$25 | #N$65 | #SPRITE$65 | #N$A5 | #SPRITE$A5 }
+. UDGTABLE#
   $ECFD,$03 Call #R$D9BB.
   $ED00,$04 #REGbc=*#R$D24D.
   $ED04,$02 Increment #REGb by two.
-  $ED06,$02 #REGa=#N$23.
+  $ED06,$02 #REGa=sprite ID #N$23.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$23 | #SPRITE$23 | #N$63 | #SPRITE$63 | #N$A3 | #SPRITE$A3 }
+. UDGTABLE#
   $ED08,$03 Call #R$D9BB.
   $ED0B,$01 Return.
   $ED0C,$03 #REGhl=#N$0103.
@@ -4421,12 +4534,22 @@ c $ECE0
   $ED12,$03 Call #R$F352.
   $ED15,$04 #REGbc=*#R$D24D.
   $ED19,$02 Increment #REGb by two.
-  $ED1B,$02 #REGa=#N$23.
+  $ED1B,$02 #REGa=sprite ID #N$23.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$23 | #SPRITE$23 | #N$63 | #SPRITE$63 | #N$A3 | #SPRITE$A3 }
+. UDGTABLE#
   $ED1D,$03 Call #R$D9BB.
   $ED20,$04 #REGbc=*#R$D24D.
   $ED24,$04 #REGh=*#R$D247.
   $ED28,$03 #REGc-=#REGh.
-  $ED2B,$02 #REGa=#N$1D.
+  $ED2B,$02 #REGa=sprite ID #N$1D.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$1D | #SPRITE$1D | #N$5D | #SPRITE$5D | #N$9D | #SPRITE$9D }
+. UDGTABLE#
   $ED2D,$03 Call #R$D9BB.
   $ED30,$01 Return.
 
@@ -4562,41 +4685,90 @@ c $EDC2
   $EE6C,$03 Call #R$D9BB.
   $EE6F,$01 Return.
 
-c $EE70
+c $EE70 Animate: Grabbing
+@ $EE70 label=Animate_Grabbing
+N $EE70 *#R$D24B is set to #N$04 at ????. This is used as a countdown to display this sprite four frames.
   $EE70,$07 Decrease *#R$D24B by one.
-  $EE77,$02 Jump to #R$EE8E if *#R$D24B is zero.
-  $EE79,$02 #REGa=#N$21.
-  $EE7B,$04 #REGbc=*#R$D24D.
-  $EE7F,$02 Increment #REGb by two.
+  $EE77,$02 Jump to #R$EE8E if the animation is finished.
+N $EE79 Select the "climbing" monster sprite bottom half, the routine at #R$D9BB handles which monster to display.
+  $EE79,$02 #REGa=sprite ID #N$21.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$21 | #SPRITE$21 | #N$61 | #SPRITE$61 | #N$A1 | #SPRITE$A1 }
+. UDGTABLE#
+N $EE7B Set the co-ordinates for where to draw.
+  $EE7B,$04 #REGbc=*#R$D24D/#R$D24E.
+  $EE7F,$02 Increment the Y position by two to draw the lower section of the monsters body.
   $EE81,$03 Call #R$D9BB.
-  $EE84,$04 #REGbc=*#R$D24D.
-  $EE88,$02 #REGa=#N$03.
+N $EE84 Again, set the co-ordinates for where to draw.
+  $EE84,$04 #REGbc=*#R$D24D/#R$D24E.
+N $EE88 Select the monster eating head sprite, the routine at #R$D9BB handles which monster to display.
+  $EE88,$02 #REGa=sprite ID #N$03.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$03 | #SPRITE$03 | #N$43 | #SPRITE$43 | #N$83 | #SPRITE$83 }
+. UDGTABLE#
   $EE8A,$03 Call #R$D9BB.
   $EE8D,$01 Return.
-  $EE8E,$05 Write #N$1B to *#R$D244.
-  $EE93,$05 Write #N$06 to *#R$D24B.
+N $EE8E The animation is complete.
+@ $EE8E label=Animate_Grabbing_Finished
+  $EE8E,$05 Write #R$EFCE(#N$1B) to *#R$D244, this will set up #R$EE9B being called next.
+  $EE93,$05 Write a new countdown of #N$06 to *#R$D24B.
   $EE98,$03 Jump to #R$E67C.
 
-c $EE9B
+c $EE9B Animate: Eating
+@ $EE9B label=Animate_Eating
+N $EE9B *#R$D24B is set to #N$06 at #R$EE93. This is used as a countdown to display six frames of animation.
   $EE9B,$03 #REGa=*#R$D24B.
   $EE9E,$01 Decrease #REGa by one.
-  $EE9F,$04 Jump to #R$EECA if #REGa is equal to #N$FF.
-  $EEA3,$03 Write #REGa to *#R$D24B.
-  $EEA6,$02 #REGa=#N$09.
-  $EEA8,$04 #REGbc=*#R$D24D.
+  $EE9F,$04 Jump to #R$EECA if the animation is finished.
+  $EEA3,$03 Update the countdown at *#R$D24B.
+N $EEA6 Select the "climbing" monster sprite, the routine at #R$D9BB handles which monster to display.
+  $EEA6,$02 #REGa=sprite ID #N$09.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$09 | #SPRITE$09 | #N$49 | #SPRITE$49 | #N$89 | #SPRITE$89 }
+. UDGTABLE#
+N $EEA8 Set the co-ordinates for where to draw.
+  $EEA8,$04 #REGbc=*#R$D24D/#R$D24E.
   $EEAC,$03 Call #R$D9BB.
-  $EEAF,$04 #REGbc=*#R$D24D.
-  $EEB3,$02 #REGa=#N$0D.
+N $EEAF Again, set the co-ordinates for where to draw.
+  $EEAF,$04 #REGbc=*#R$D24D/#R$D24E.
+N $EEB3 Select the monster head sprite, the routine at #R$D9BB handles which monster to display.
+  $EEB3,$02 #REGa=sprite ID #N$0D.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$0D | #SPRITE$0D | #N$4D | #SPRITE$4D | #N$8D | #SPRITE$8D }
+. UDGTABLE#
   $EEB5,$03 Call #R$D9BB.
-  $EEB8,$04 #REGbc=*#R$D24D.
-  $EEBC,$01 Increment #REGb by one.
-  $EEBD,$01 Increment #REGc by one.
+N $EEB8 Now, set the co-ordinates for where to draw the mouth.
+  $EEB8,$04 #REGbc=*#R$D24D/#R$D24E.
+  $EEBC,$02 Increment both the X and Y positions by one to target drawing the mouth animation.
+M $EEBE,$05 Using *#R$D24B, sequentially choose a frame between #N$00-#N$03.
   $EEBE,$03 #REGa=*#R$D24B.
   $EEC1,$02,b$01 Keep only bits 0-1.
-  $EEC3,$01 #REGa+=#REGa.
+N $EEC3 Calculate the sprite ID.
+  $EEC3,$01 #REGa*=#N$02.
   $EEC4,$02 #REGa+=#N$2B.
+. #UDGTABLE(default,centre,centre,,centre,centre,centre,centre,centre,centre)
+. { =h,c8 George }
+. { =h ID | =h Frame 1 | =h ID | =h Frame 2 | =h ID | =h Frame 3 | =h ID | =h Frame 4 }
+. { #N$2B | #SPRITE$2B | #N$2D | #SPRITE$2D | #N$2F | #SPRITE$2F | #N$31 | #SPRITE$31 }
+. { =h,c8 Lizzy }
+. { =h ID | =h Frame 1 | =h ID | =h Frame 2 | =h ID | =h Frame 3 | =h ID | =h Frame 4 }
+. { #N$6B | #SPRITE$6B | #N$6D | #SPRITE$6D | #N$6F | #SPRITE$6F | #N$71 | #SPRITE$71 }
+. { =h,c8 Ralph }
+. { =h ID | =h Frame 1 | =h ID | =h Frame 2 | =h ID | =h Frame 3 | =h ID | =h Frame 4 }
+. { #N$AB | #SPRITE$AB | #N$AD | #SPRITE$AD | #N$AF | #SPRITE$AF | #N$B1 | #SPRITE$B1 }
+. UDGTABLE#
   $EEC6,$03 Call #R$D9BB.
   $EEC9,$01 Return.
+N $EECA The animation is complete.
+@ $EECA label=Animate_Eating_Finished
   $EECA,$04 Write #N$00 to *#R$D244.
   $EECE,$05 Write #N$19 to *#R$D24B.
   $EED3,$03 Jump to #R$E67C.
@@ -4606,6 +4778,10 @@ c $EED6
   $EEDA,$01 Increment #REGb by one.
   $EEDB,$01 Increment #REGc by one.
   $EEDC,$02 #REGa=explosion sprite (#N$77).
+. #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$77 | #SPRITE$77 }
+. UDGTABLE#
   $EEDE,$03 Call #R$D6C9.
   $EEE1,$05 Write #N$22 to *#R$D244.
   $EEE6,$04 Write #N$00 to *#R$D249.
@@ -4620,6 +4796,10 @@ c $EEEB
   $EEFD,$03 Write #REGa to *#R$D24E.
   $EF00,$04 #REGbc=*#R$D24D.
   $EF04,$02 #REGa=#N$35.
+. #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$35 | #SPRITE$35 }
+. UDGTABLE#
   $EF06,$03 Call #R$D6C9.
   $EF09,$01 Return.
 
@@ -4631,12 +4811,20 @@ c $EF0A
   $EF15,$03 Write #REGa to *#R$D249.
   $EF18,$02 Jump to #R$EF20 if #REGa is not zero.
   $EF1A,$02 #REGa=#N$37.
+. #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$37 | #SPRITE$37 }
+. UDGTABLE#
   $EF1C,$03 Call #R$D6C9.
   $EF1F,$01 Return.
   $EF20,$07 Increment *#R$D24D by one.
   $EF27,$04 Jump to #R$EF32 if #REGa is equal to #N$28.
   $EF2B,$01 Increment #REGc by one.
   $EF2C,$02 #REGa=#N$35.
+. #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$35 | #SPRITE$35 }
+. UDGTABLE#
   $EF2E,$03 Call #R$D6C9.
   $EF31,$01 Return.
   $EF32,$05 Write #N$FF to *#R$D244.
@@ -4685,7 +4873,9 @@ c $EF86
   $EF97,$01 Return.
 
 w $EF98 Jump Table
-@ $EF98 label=Jump_Table
+@ $EF98 label=JumpTable
+  $EF98,$02 ID: #N((#PC-$EF98)/$02).
+L $EF98,$02,$24
 
 c $EFE0 Handler: Buildings
 @ $EFE0 label=Handler_Buildings
@@ -5391,7 +5581,7 @@ c $F4E6
   $F56A,$01 #REGa=#REGe.
   $F56B,$04 Jump to #R$F572 if #REGa is not equal to #N$01.
   $F56F,$03 Write #REGa to *#R$D219.
-  $F572,$04 Jump to #R$F59E if #REGa is noot equal to #N$04.
+  $F572,$04 Jump to #R$F59E if #REGa is not equal to #N$04.
   $F576,$06 Jump to #R$F59E if *#R$D219 is zero.
   $F57C,$06 Jump to #R$F59E if *#R$D3FC is not zero.
   $F582,$01 Stash #REGde on the stack.
@@ -5573,19 +5763,26 @@ N $F6F3 Take off two hit points from the monsters energy.
   $F6F3,$02 #REGa=#N$02 (damage).
   $F6F5,$03 Call #R$DD6C.
   $F6F8,$02 Jump to #R$F719.
+N $F6FA Draw the projectile to the buffer.
+@ $F6FA label=DrawProjectile
   $F6FA,$01 Restore #REGhl from the stack.
-  $F6FB,$01 Write #REGb to *#REGhl.
-  $F6FC,$01 Increment #REGhl by one.
-  $F6FD,$01 Write #REGc to *#REGhl.
+  $F6FB,$03 Update the co-ordinates in the projectile table data.
   $F6FE,$01 Stash #REGhl on the stack.
-  $F6FF,$02 #REGa=#N$F6.
+  $F6FF,$02 #REGa=sprite ID #N$F6.
+. #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$F6 | #SPRITE$F6 }
+. UDGTABLE#
   $F701,$03 Call #R$D6C9.
   $F704,$01 Restore #REGhl from the stack.
   $F705,$02 Jump to #R$F713.
+N $F707 The projectile has either made a hit, or not, either way the journey is over - so remove it.
+@ $F707 label=RemoveProjectile
   $F707,$01 Decrease #REGhl by one.
-  $F708,$02 Write #N$00 to *#REGhl.
+  $F708,$02 Write #N$00 to the projectile state.
   $F70A,$07 Decrease *#R$D3FA by one.
 @ $F711 label=Collision_Projectiles_Next
+@ $F713 label=Collision_Projectiles_Skip
   $F711,$03 Move onto the next projectile table data.
   $F714,$01 Restore projectile ID from the stack.
   $F715,$01 Decrease projectile ID by one.
@@ -5597,6 +5794,10 @@ N $F719 #AUDIO(projectile.wav)(#INCLUDE(Projectile))
 @ $F719 label=Audio_Projectiles_Hit
   $F719,$05 Write melody ID #N$05 to *#R$FF8D.
   $F71E,$02 #REGa=#N$75.
+. #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$75 | #SPRITE$75 }
+. UDGTABLE#
   $F720,$03 Call #R$D6C9.
   $F723,$01 Restore #REGhl from the stack.
   $F724,$02 Jump to #R$F707.
@@ -5737,6 +5938,10 @@ N $F808 Handles when a vehicle has been punched.
   $F81A,$01 #REGb=#REGa.
   $F81B,$04 #REGc=*#R$D403.
   $F81F,$02 #REGa=explosion sprite (#N$77).
+. #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$77 | #SPRITE$77 }
+. UDGTABLE#
   $F821,$03 Call #R$D6C9.
 N $F824 #AUDIO(punched.wav)(#INCLUDE(Punched))
   $F824,$05 Write melody ID #N$06 to *#R$FF8D.
@@ -5799,6 +6004,10 @@ N $F8A8 Set #REGbc to the screen co-ordinates for the explosion.
 N $F8AB Displays an explosion sprite.
 @ $F8AB label=Handler_Helicopter_Explosion
   $F8AB,$02 #REGa=explosion sprite (#N$77).
+. #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$77 | #SPRITE$77 }
+. UDGTABLE#
   $F8AD,$03 Call #R$D6C9.
 N $F8B0 #AUDIO(punched.wav)(#INCLUDE(Punched))
   $F8B0,$05 Write melody ID #N$06 to *#R$FF8D.
@@ -6361,14 +6570,25 @@ c $FC1A Scene: Display Carpet
 N $FC1A Return if this scene doesn't contain the carpet.
   $FC1A,$05 Return if *#R$D3FE is #N$00.
   $FC1F,$03 #REGbc=#N$1506 (screen co-ordinates).
+N $FC22 The carpet, or whatever it is, has two different positions.
   $FC22,$04 Jump to #R$FC28 if *#R$D3FE is #N$01.
-  $FC26,$02 #REGc=#N$16.
-  $FC28,$02 #REGa=#N$7F.
-  $FC2A,$01 Stash #REGbc on the stack.
+  $FC26,$02 Update the X position to #N$16.
+N $FC28 Draw the carpet to the buffer.
+@ $FC28 label=DrawCarpet
+  $FC28,$02 #REGa=sprite ID #N$7F.
+. #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$7F | #SPRITE$7F }
+. UDGTABLE#
+  $FC2A,$01 Stash co-ordinates on the stack.
   $FC2B,$03 Call #R$D6C9.
-  $FC2E,$01 Restore #REGbc from the stack.
-  $FC2F,$04 #REGc+=#N$04.
-  $FC33,$02 #REGa=#N$7F.
+  $FC2E,$01 Restore co-ordinates from the stack.
+  $FC2F,$04 Add #N$04 to the X position to draw the next section of the carpet.
+  $FC33,$02 #REGa=sprite ID #N$7F.
+. #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$7F | #SPRITE$7F,$01 }
+. UDGTABLE#
   $FC35,$03 Call #R$D7F6.
   $FC38,$01 Return.
 
@@ -6468,32 +6688,51 @@ N $FCDD Bit 7 signifies that this train moves from right-to-left.
 @ $FCE7 label=Handler_Train_Movement
   $FCE7,$03 #REGa=*#R$D407.
   $FCEA,$02,b$01 Keep only bit 6.
-  $FCEC,$02 Rotate #REGa left twice, moving bit 6 to bit 0.
+N $FCEC Set the carry flag according to bit 6.
+  $FCEC,$02 Rotate #REGa left twice, moving bit 6 to bit 0 and setting the carry flag if bit 0 was set.
   $FCEE,$01 #REGc=#REGa.
-  $FCEF,$07 Jump to #R$FD21 if *#R$D407 is higher than #N$80.
-  $FCF6,$02,b$01 Keep only bits 0-5.
-  $FCF8,$01 #REGb=train X position.
+N $FCEF Which direction should the train be moving in?
+  $FCEF,$07 Jump to #R$FD21 if *#R$D407 is higher than #N$80 (bit 7 is set).
+N $FCF6 Handles moving the train from the left-to-right hand side of the play area.
+  $FCF6,$02,b$01 Strip off the right-to-left flag.
+  $FCF8,$01 #REGb=train Y position.
   $FCF9,$03 #REGa=*#R$D406.
   $FCFC,$01 Increment #REGa by one.
   $FCFD,$01 #REGa+=#REGc.
-@ $FCFE label=Handler_Train_SetXPos
+N $FCFE Draw the train.
+@ $FCFE label=DrawTrain
   $FCFE,$03 Write #REGa to *#R$D406.
   $FD01,$01 #REGc=train X position.
-  $FD02,$02 #REGa=#N$79.
-  $FD04,$01 Stash #REGbc on the stack.
+  $FD02,$02 #REGa=sprite ID #N$79.
+. #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$79 | #SPRITE$79 }
+. UDGTABLE#
+  $FD04,$01 Stash the train position on the stack.
   $FD05,$03 Call #R$D6C9.
-  $FD08,$01 Restore #REGbc from the stack.
-  $FD09,$02 #REGa=#N$03.
-  $FD0B,$01 Stash #REGaf on the stack.
-  $FD0C,$02 Increment #REGc by two.
-  $FD0E,$02 #REGa=#N$7B.
-  $FD10,$01 Stash #REGbc on the stack.
+  $FD08,$01 Restore the train position from the stack.
+N $FD09 Draws the centre sprite of the train three times.
+  $FD09,$02 #REGa=#N$03 (counter).
+@ $FD0B label=DrawTrain_Loop
+  $FD0B,$01 Stash the counter on the stack.
+  $FD0C,$02 Increment the X position by two to draw the next section of the train.
+  $FD0E,$02 #REGa=sprite ID #N$7B.
+. #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$7B | #SPRITE$7B }
+. UDGTABLE#
+  $FD10,$01 Stash the train position on the stack.
   $FD11,$03 Call #R$D6C9.
-  $FD14,$02 Restore #REGbc and #REGaf from the stack.
-  $FD16,$01 Decrease #REGa by one.
-  $FD17,$02 Jump to #R$FD0B until #REGa is zero.
-  $FD19,$02 Increment #REGc by two.
-  $FD1B,$02 #REGa=#N$79.
+  $FD14,$02 Restore the train position and counter from the stack.
+  $FD16,$01 Decrease the counter held by #REGa by one.
+  $FD17,$02 Jump to #R$FD0B until all centre sprites have been drawn.
+N $FD19 Now draw the rear section of the train.
+  $FD19,$02 Increment the X position by two to draw the next section of the train.
+  $FD1B,$02 #REGa=sprite ID #N$79.
+. #UDGTABLE(default,centre,centre)
+. { =h ID | =h Sprite }
+. { #N$79 | #SPRITE$79,$01 }
+. UDGTABLE#
   $FD1D,$03 Call #R$D7F6.
   $FD20,$01 Return.
 N $FD21 Handles moving the train from the right-to-left hand side of the play area.

@@ -85,3 +85,15 @@ Sound=sound/sound.html
   #SIM(start=$DEB0,stop=$DEB6)
   #SCR$02,$11,$02,$09,$06(human-$id-#IF($facing==$00)(left,right))
   #POPS)
+
+#DEF(#SPRITE(id,facing=$00,bc=$0516)
+  #PUSHS
+  #SIM(start=$F916,stop=$F91C)
+  #SIM(start=$F921,stop=$F924)
+  #IF($facing==$00)(
+    #SIM(start=$D6C9,stop=$D777,a=$id,bc=$bc),
+    #SIM(start=$D7F6,stop=$D8D7,a=$id,bc=$bc)
+  )
+  #SIM(start=$DEB0,stop=$DEB6)
+  #SCR$02,$15,$04,$05,$06(sprite-$id-#IF($facing==$00)(left,right))
+  #POPS)
