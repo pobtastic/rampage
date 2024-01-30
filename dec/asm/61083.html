@@ -33,7 +33,7 @@ Next: <a href="61142.html">61142</a>
 </td>
 </tr>
 </table>
-<div class="description">61083: Routine at EE9B</div>
+<div class="description">61083: Animate: Eating</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,123 +42,340 @@ Next: <a href="61142.html">61142</a>
 </td>
 </tr>
 <tr>
-<td class="address-2"><span id="61083"></span>61083</td>
-<td class="instruction">LD A,(53835)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53835.html">53835</a>.</td>
+<td class="routine-comment" colspan="5">
+<span id="61083"></span>
+<div class="comments">
+<div class="paragraph">
+*<a href="53835.html">Temp_MonsterActionCountdown</a> is set to 6 at <a href="61040.html#61075">61075</a>. This is used as a countdown to display six frames of animation.
+</div>
+</div>
+</td>
 </tr>
 <tr>
+<td class="asm-label">Animate_Eating</td>
+<td class="address-2"><span id="61083"></span>61083</td>
+<td class="instruction">LD A,(53835)</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53835.html">Temp_MonsterActionCountdown</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61086"></span>61086</td>
 <td class="instruction">DEC A</td>
 <td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61087"></span>61087</td>
 <td class="instruction">CP 255</td>
-<td class="comment-1" rowspan="2">Jump to <a href="61083.html#61130">61130</a> if <span class="register">A</span> is equal to 255.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="61083.html#61130">Animate_Eating_Finished</a> if the animation is finished.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61089"></span>61089</td>
-<td class="instruction">JR Z,<a href="61083.html#61130">61130</a></td>
+<td class="instruction">JR Z,<a href="61083.html#61130">Animate_Eating_Finished</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61091"></span>61091</td>
 <td class="instruction">LD (53835),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53835.html">53835</a>.</td>
+<td class="comment-1" rowspan="1">Update the countdown at *<a href="53835.html">Temp_MonsterActionCountdown</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="61094"></span>
+<div class="comments">
+<div class="paragraph">
+Select the "climbing" monster sprite, the routine at <a href="55739.html">DrawMonsterSprite</a> handles which monster to display.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61094"></span>61094</td>
 <td class="instruction">LD A,9</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=9.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 9. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
 </tr>
 <tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">9</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-9-left" src="../../images/scr/sprite-9-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">73</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-73-left" src="../../images/scr/sprite-73-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">137</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-137-left" src="../../images/scr/sprite-137-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="61096"></span>
+<div class="comments">
+<div class="paragraph">
+Set the co-ordinates for where to draw.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61096"></span>61096</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">53837</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Temp_MonsterXPosition</a>/<a href="53837.html#53838">Temp_MonsterYPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61100"></span>61100</td>
-<td class="instruction">CALL <a href="55739.html">55739</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55739.html">55739</a>.</td>
+<td class="instruction">CALL <a href="55739.html">DrawMonsterSprite</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55739.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="61103"></span>
+<div class="comments">
+<div class="paragraph">
+Again, set the co-ordinates for where to draw.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61103"></span>61103</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">53837</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Temp_MonsterXPosition</a>/<a href="53837.html#53838">Temp_MonsterYPosition</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="61107"></span>
+<div class="comments">
+<div class="paragraph">
+Select the monster head sprite, the routine at <a href="55739.html">DrawMonsterSprite</a> handles which monster to display.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61107"></span>61107</td>
 <td class="instruction">LD A,13</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=13.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 13. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
 </tr>
 <tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">13</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-13-left" src="../../images/scr/sprite-13-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">77</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-77-left" src="../../images/scr/sprite-77-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">141</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-141-left" src="../../images/scr/sprite-141-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61109"></span>61109</td>
-<td class="instruction">CALL <a href="55739.html">55739</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55739.html">55739</a>.</td>
+<td class="instruction">CALL <a href="55739.html">DrawMonsterSprite</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55739.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="61112"></span>
+<div class="comments">
+<div class="paragraph">
+Now, set the co-ordinates for where to draw the mouth.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61112"></span>61112</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">53837</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Temp_MonsterXPosition</a>/<a href="53837.html#53838">Temp_MonsterYPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61116"></span>61116</td>
 <td class="instruction">INC B</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
+<td class="comment-1" rowspan="2">Increment both the X and Y positions by one to target drawing the mouth animation.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61117"></span>61117</td>
 <td class="instruction">INC C</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61118"></span>61118</td>
 <td class="instruction">LD A,(53835)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53835.html">53835</a>.</td>
+<td class="comment-1" rowspan="2">Using *<a href="53835.html">Temp_MonsterActionCountdown</a>, sequentially choose a frame between 0-3.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61121"></span>61121</td>
 <td class="instruction">AND %00000011</td>
-<td class="comment-1" rowspan="1">Keep only bits 0-1.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="61123"></span>
+<div class="comments">
+<div class="paragraph">
+Calculate the sprite ID.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61123"></span>61123</td>
 <td class="instruction">ADD A,A</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">A</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>*=2.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61124"></span>61124</td>
 <td class="instruction">ADD A,43</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=43.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>+=43. <table class="default">
+<tr>
+<th colspan="8" rowspan="1">George</th>
 </tr>
 <tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Frame 1</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Frame 2</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Frame 3</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Frame 4</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">43</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-43-left" src="../../images/scr/sprite-43-left.png" /></td>
+<td class="" colspan="1" rowspan="1">45</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-45-left" src="../../images/scr/sprite-45-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">47</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-47-left" src="../../images/scr/sprite-47-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">49</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-49-left" src="../../images/scr/sprite-49-left.png" /></td>
+</tr>
+<tr>
+<th colspan="8" rowspan="1">Lizzy</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Frame 1</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Frame 2</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Frame 3</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Frame 4</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">107</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-107-left" src="../../images/scr/sprite-107-left.png" /></td>
+<td class="" colspan="1" rowspan="1">109</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-109-left" src="../../images/scr/sprite-109-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">111</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-111-left" src="../../images/scr/sprite-111-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">113</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-113-left" src="../../images/scr/sprite-113-left.png" /></td>
+</tr>
+<tr>
+<th colspan="8" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Frame 1</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Frame 2</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Frame 3</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Frame 4</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">171</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-171-left" src="../../images/scr/sprite-171-left.png" /></td>
+<td class="" colspan="1" rowspan="1">173</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-173-left" src="../../images/scr/sprite-173-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">175</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-175-left" src="../../images/scr/sprite-175-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">177</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-177-left" src="../../images/scr/sprite-177-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61126"></span>61126</td>
-<td class="instruction">CALL <a href="55739.html">55739</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55739.html">55739</a>.</td>
+<td class="instruction">CALL <a href="55739.html">DrawMonsterSprite</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55739.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61129"></span>61129</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="61130"></span>
+<div class="comments">
+<div class="paragraph">
+The animation is complete.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Animate_Eating_Finished</td>
 <td class="address-2"><span id="61130"></span>61130</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="2">Write 0 to *<a href="53828.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61131"></span>61131</td>
 <td class="instruction">LD (53828),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61134"></span>61134</td>
 <td class="instruction">LD A,25</td>
-<td class="comment-1" rowspan="2">Write 25 to *<a href="53835.html">53835</a>.</td>
+<td class="comment-1" rowspan="2">Write 25 to *<a href="53835.html">Temp_MonsterActionCountdown</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61136"></span>61136</td>
 <td class="instruction">LD (53835),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61139"></span>61139</td>
 <td class="instruction">JP <a href="58925.html#59004">59004</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">59004</a>.</td>

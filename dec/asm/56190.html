@@ -33,7 +33,7 @@ Next: <a href="56244.html">56244</a>
 </td>
 </tr>
 </table>
-<div class="description">56190: Routine at DB7E</div>
+<div class="description">56190: Target A Monster</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,24 +45,39 @@ Used by the routines at <a href="58060.html">Human_Lobber</a> and <a href="58439
 </td>
 </tr>
 <tr>
+<td class="asm-label">TargetMonster</td>
 <td class="address-2"><span id="56190"></span>56190</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="2">Write 0 to *<a href="53780.html">53780</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56191"></span>56191</td>
 <td class="instruction">LD (53780),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56194"></span>56194</td>
 <td class="instruction">CALL <a href="55848.html">RandomNumber</a></td>
 <td class="comment-1" rowspan="2">Get a random number between 0-3.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56197"></span>56197</td>
 <td class="instruction">AND %00000011</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="56199"></span>
+<div class="comments">
+<div class="paragraph">
+Note; <a href="56244.html">CharacterPicker</a> increments <span class="register">A</span> on entry.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">ConvertToMonsterId</td>
 <td class="address-2"><span id="56199"></span>56199</td>
 <td class="instruction">CALL <a href="56244.html">CharacterPicker</a></td>
 <td class="comment-1" rowspan="1">Call <a href="56244.html">CharacterPicker</a>.</td>
@@ -78,125 +93,171 @@ This entry point is used by the routine at <a href="56281.html">56281</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">CheckIfMonsterIsAlive</td>
 <td class="address-2"><span id="56202"></span>56202</td>
 <td class="instruction">CP 200</td>
-<td class="comment-1" rowspan="2">Jump to <a href="56190.html#56214">56214</a> if <span class="register">A</span> is lower than 200.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="56190.html#56214">SetTargetedMonster_XPos</a> if the monster state is lower than 200.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56204"></span>56204</td>
-<td class="instruction">JR C,<a href="56190.html#56214">56214</a></td>
+<td class="instruction">JR C,<a href="56190.html#56214">SetTargetedMonster_XPos</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56206"></span>56206</td>
 <td class="instruction">LD A,128</td>
 <td class="comment-1" rowspan="2">Write 128 to *<a href="53780.html">53780</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56208"></span>56208</td>
 <td class="instruction">LD (53780),A</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="56211"></span>
+<div class="comments">
+<div class="paragraph">
+The monster ID e.g. 1 - George, 2 - Lizzy and 3 Ralph.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56211"></span>56211</td>
 <td class="instruction">LD A,B</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=the selected monster ID.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="56212"></span>
+<div class="comments">
+<div class="paragraph">
+Try again with the next monster in sequence.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56212"></span>56212</td>
-<td class="instruction">JR <a href="56190.html#56199">56199</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="56190.html#56199">56199</a>.</td>
+<td class="instruction">JR <a href="56190.html#56199">ConvertToMonsterId</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="56190.html#56199">ConvertToMonsterId</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">SetTargetedMonster_XPos</td>
 <td class="address-2"><span id="56214"></span>56214</td>
 <td class="instruction">LD A,(53780)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53780.html">53780</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56217"></span>56217</td>
 <td class="instruction">OR B</td>
 <td class="comment-1" rowspan="1">Set the bits from <span class="register">B</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56218"></span>56218</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56219"></span>56219</td>
 <td class="instruction">LD A,(DE)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=the targeted monsters X position.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56220"></span>56220</td>
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="2">Increment <span class="register">A</span> by two.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56221"></span>56221</td>
 <td class="instruction">INC A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56222"></span>56222</td>
 <td class="instruction">LD B,A</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56223"></span>56223</td>
 <td class="instruction">CP 100</td>
-<td class="comment-1" rowspan="2">Jump to <a href="56190.html#56229">56229</a> if <span class="register">A</span> is lower than 100.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="56190.html#56229">SetTargetedMonster_YPos</a> if <span class="register">A</span> is lower than 100.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56225"></span>56225</td>
-<td class="instruction">JR C,<a href="56190.html#56229">56229</a></td>
+<td class="instruction">JR C,<a href="56190.html#56229">SetTargetedMonster_YPos</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56227"></span>56227</td>
 <td class="instruction">LD B,0</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=0.</td>
 </tr>
 <tr>
+<td class="asm-label">SetTargetedMonster_YPos</td>
 <td class="address-2"><span id="56229"></span>56229</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56230"></span>56230</td>
 <td class="instruction">LD A,(DE)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=the targeted monsters y position.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56231"></span>56231</td>
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56232"></span>56232</td>
 <td class="instruction">LD C,A</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56233"></span>56233</td>
 <td class="instruction">CP 100</td>
-<td class="comment-1" rowspan="2">Jump to <a href="56190.html#56239">56239</a> if <span class="register">A</span> is lower than 100.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="56190.html#56239">TargetMonster_0</a> if <span class="register">A</span> is lower than 100.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56235"></span>56235</td>
-<td class="instruction">JR C,<a href="56190.html#56239">56239</a></td>
+<td class="instruction">JR C,<a href="56190.html#56239">TargetMonster_0</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56237"></span>56237</td>
 <td class="instruction">LD C,0</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=0.</td>
 </tr>
 <tr>
+<td class="asm-label">TargetMonster_0</td>
 <td class="address-2"><span id="56239"></span>56239</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="2">Write 0 to *<a href="53780.html">53780</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56240"></span>56240</td>
 <td class="instruction">LD (53780),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="56243"></span>56243</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

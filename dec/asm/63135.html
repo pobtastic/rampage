@@ -250,12 +250,12 @@ This projectile is active so let's process it.
 <td class="asm-label"></td>
 <td class="address-1"><span id="63189"></span>63189</td>
 <td class="instruction">CP 32</td>
-<td class="comment-1" rowspan="2">Jump to <a href="63135.html#63239">Handler_Projectiles_4</a> if <span class="register">A</span> is higher than 32.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="63135.html#63239">RemoveProjectile</a> if <span class="register">A</span> is higher than 32.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63191"></span>63191</td>
-<td class="instruction">JR NC,<a href="63135.html#63239">Handler_Projectiles_4</a></td>
+<td class="instruction">JR NC,<a href="63135.html#63239">RemoveProjectile</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -267,12 +267,12 @@ This projectile is active so let's process it.
 <td class="asm-label"></td>
 <td class="address-1"><span id="63194"></span>63194</td>
 <td class="instruction">CP 24</td>
-<td class="comment-1" rowspan="2">Jump to <a href="63135.html#63239">Handler_Projectiles_4</a> if <span class="register">A</span> is higher than 24.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="63135.html#63239">RemoveProjectile</a> if <span class="register">A</span> is higher than 24.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63196"></span>63196</td>
-<td class="instruction">JR NC,<a href="63135.html#63239">Handler_Projectiles_4</a></td>
+<td class="instruction">JR NC,<a href="63135.html#63239">RemoveProjectile</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -290,23 +290,23 @@ This projectile is active so let's process it.
 <td class="asm-label"></td>
 <td class="address-1"><span id="63202"></span>63202</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="2">Jump to <a href="63135.html#63226">Handler_Projectiles_3</a> if <span class="register">A</span> is zero.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="63135.html#63226">DrawProjectile</a> if <span class="register">A</span> is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63203"></span>63203</td>
-<td class="instruction">JR Z,<a href="63135.html#63226">Handler_Projectiles_3</a></td>
+<td class="instruction">JR Z,<a href="63135.html#63226">DrawProjectile</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63205"></span>63205</td>
 <td class="instruction">CP 193</td>
-<td class="comment-1" rowspan="2">Jump to <a href="63135.html#63226">Handler_Projectiles_3</a> if <span class="register">A</span> is higher than 193.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="63135.html#63226">DrawProjectile</a> if <span class="register">A</span> is higher than 193.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63207"></span>63207</td>
-<td class="instruction">JR NC,<a href="63135.html#63226">Handler_Projectiles_3</a></td>
+<td class="instruction">JR NC,<a href="63135.html#63226">DrawProjectile</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -318,12 +318,12 @@ This projectile is active so let's process it.
 <td class="asm-label"></td>
 <td class="address-1"><span id="63211"></span>63211</td>
 <td class="instruction">CP 50</td>
-<td class="comment-1" rowspan="2">Jump to <a href="63135.html#63226">Handler_Projectiles_3</a> if <span class="register">A</span> is higher than 50.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="63135.html#63226">DrawProjectile</a> if <span class="register">A</span> is higher than 50.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63213"></span>63213</td>
-<td class="instruction">JR NC,<a href="63135.html#63226">Handler_Projectiles_3</a></td>
+<td class="instruction">JR NC,<a href="63135.html#63226">DrawProjectile</a></td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -376,7 +376,17 @@ Take off two hit points from the monsters energy.
 <td class="comment-1" rowspan="1">Jump to <a href="63257.html">Audio_Projectiles_Hit</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Projectiles_3</td>
+<td class="routine-comment" colspan="5">
+<span id="63226"></span>
+<div class="comments">
+<div class="paragraph">
+Draw the projectile to the buffer.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">DrawProjectile</td>
 <td class="address-2"><span id="63226"></span>63226</td>
 <td class="instruction">POP HL</td>
 <td class="comment-1" rowspan="1">Restore <span class="register">HL</span> from the stack.</td>
@@ -385,19 +395,17 @@ Take off two hit points from the monsters energy.
 <td class="asm-label"></td>
 <td class="address-1"><span id="63227"></span>63227</td>
 <td class="instruction">LD (HL),B</td>
-<td class="comment-1" rowspan="1">Write <span class="register">B</span> to *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="3">Update the co-ordinates in the projectile table data.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63228"></span>63228</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63229"></span>63229</td>
 <td class="instruction">LD (HL),C</td>
-<td class="comment-1" rowspan="1">Write <span class="register">C</span> to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -409,7 +417,16 @@ Take off two hit points from the monsters energy.
 <td class="asm-label"></td>
 <td class="address-1"><span id="63231"></span>63231</td>
 <td class="instruction">LD A,246</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=246.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 246. <table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">246</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-246-left" src="../../images/scr/sprite-246-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -426,21 +443,21 @@ Take off two hit points from the monsters energy.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63237"></span>63237</td>
-<td class="instruction">JR <a href="63135.html#63251">Handler_Projectiles_5</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="63135.html#63251">Handler_Projectiles_5</a>.</td>
+<td class="instruction">JR <a href="63135.html#63251">Collision_Projectiles_Skip</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="63135.html#63251">Collision_Projectiles_Skip</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
 <span id="63239"></span>
 <div class="comments">
 <div class="paragraph">
-This entry point is used by the routine at <a href="63257.html">Audio_Projectiles_Hit</a>.
+The projectile has either made a hit, or not, either way the journey is over - so remove it.
 </div>
 </div>
 </td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Projectiles_4</td>
+<td class="asm-label">RemoveProjectile</td>
 <td class="address-2"><span id="63239"></span>63239</td>
 <td class="instruction">DEC HL</td>
 <td class="comment-1" rowspan="1">Decrease <span class="register">HL</span> by one.</td>
@@ -449,7 +466,7 @@ This entry point is used by the routine at <a href="63257.html">Audio_Projectile
 <td class="asm-label"></td>
 <td class="address-1"><span id="63240"></span>63240</td>
 <td class="instruction">LD (HL),0</td>
-<td class="comment-1" rowspan="1">Write 0 to *<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Write 0 to the projectile state.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -479,7 +496,7 @@ This entry point is used by the routine at <a href="63257.html">Audio_Projectile
 <td class="instruction">INC HL</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Projectiles_5</td>
+<td class="asm-label">Collision_Projectiles_Skip</td>
 <td class="address-2"><span id="63251"></span>63251</td>
 <td class="instruction">INC HL</td>
 </tr>

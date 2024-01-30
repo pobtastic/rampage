@@ -33,31 +33,35 @@ Next: <a href="DA69.html">DA69</a>
 </td>
 </tr>
 </table>
-<div class="description">DA61: Routine at DA61</div>
+<div class="description">DA61: Handler: Decrease Monster X Position</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="E68C.html">E68C</a>, <a href="EA9C.html">EA9C</a>, <a href="EAF6.html">EAF6</a> and <a href="EC8A.html">EC8A</a>.
+Used by the routines at <a href="E68C.html">Handler_Controls</a>, <a href="EA9C.html">EA9C</a>, <a href="EAF6.html">EAF6</a> and <a href="EC8A.html">EC8A</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Handler_DecreaseMonsterXPosition</td>
 <td class="address-2"><span id="da61"></span>DA61</td>
 <td class="instruction">LD A,($D24D)</td>
-<td class="comment-1" rowspan="3">Decrease *<a href="D24D.html">D24D</a> by one.</td>
+<td class="comment-1" rowspan="3">Decrease *<a href="D24D.html">Temp_MonsterXPosition</a> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="da64"></span>DA64</td>
 <td class="instruction">DEC A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="da65"></span>DA65</td>
 <td class="instruction">LD ($D24D),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="da68"></span>DA68</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

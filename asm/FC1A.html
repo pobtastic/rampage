@@ -77,33 +77,62 @@ Return if this scene doesn't contain the carpet.
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=1506 (screen co-ordinates).</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="fc22"></span>
+<div class="comments">
+<div class="paragraph">
+The carpet, or whatever it is, has two different positions.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fc22"></span>FC22</td>
 <td class="instruction">CP $01</td>
-<td class="comment-1" rowspan="2">Jump to <a href="FC1A.html#fc28">Scene_DisplayCarpet_0</a> if *<a href="D3FE.html">Scene_Carpet</a> is 01.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="FC1A.html#fc28">DrawCarpet</a> if *<a href="D3FE.html">Scene_Carpet</a> is 01.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fc24"></span>FC24</td>
-<td class="instruction">JR Z,<a href="FC1A.html#fc28">Scene_DisplayCarpet_0</a></td>
+<td class="instruction">JR Z,<a href="FC1A.html#fc28">DrawCarpet</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fc26"></span>FC26</td>
 <td class="instruction">LD C,$16</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=16.</td>
+<td class="comment-1" rowspan="1">Update the X position to 16.</td>
 </tr>
 <tr>
-<td class="asm-label">Scene_DisplayCarpet_0</td>
+<td class="routine-comment" colspan="5">
+<span id="fc28"></span>
+<div class="comments">
+<div class="paragraph">
+Draw the carpet to the buffer.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">DrawCarpet</td>
 <td class="address-2"><span id="fc28"></span>FC28</td>
 <td class="instruction">LD A,$7F</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=7F.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 7F. <table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">7F</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-127-left" src="../images/scr/sprite-127-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fc2a"></span>FC2A</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-1" rowspan="1">Stash <span class="register">BC</span> on the stack.</td>
+<td class="comment-1" rowspan="1">Stash co-ordinates on the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -115,13 +144,13 @@ Return if this scene doesn't contain the carpet.
 <td class="asm-label"></td>
 <td class="address-1"><span id="fc2e"></span>FC2E</td>
 <td class="instruction">POP BC</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
+<td class="comment-1" rowspan="1">Restore co-ordinates from the stack.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="fc2f"></span>FC2F</td>
 <td class="instruction">LD A,C</td>
-<td class="comment-1" rowspan="3"><span class="register">C</span>+=04.</td>
+<td class="comment-1" rowspan="3">Add 04 to the X position to draw the next section of the carpet.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -137,7 +166,16 @@ Return if this scene doesn't contain the carpet.
 <td class="asm-label"></td>
 <td class="address-1"><span id="fc33"></span>FC33</td>
 <td class="instruction">LD A,$7F</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=7F.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 7F. <table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">7F</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-127-right" src="../images/scr/sprite-127-right.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="asm-label"></td>

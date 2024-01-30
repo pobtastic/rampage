@@ -33,33 +33,37 @@ Next: <a href="55747.html">55747</a>
 </td>
 </tr>
 </table>
-<div class="description">55739: Routine at D9BB</div>
+<div class="description">55739: Draw Monster Sprite</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="59803.html">59803</a>, <a href="59928.html">59928</a>, <a href="59971.html">59971</a>, <a href="60060.html">60060</a>, <a href="60150.html">60150</a>, <a href="60554.html">60554</a>, <a href="60640.html">60640</a>, <a href="60721.html">60721</a>, <a href="60866.html">60866</a>, <a href="61040.html">61040</a> and <a href="61083.html">61083</a>.
+Used by the routines at <a href="59803.html">59803</a>, <a href="59928.html">59928</a>, <a href="59971.html">Animate_Falling</a>, <a href="60060.html">60060</a>, <a href="60150.html">60150</a>, <a href="60554.html">60554</a>, <a href="60640.html">60640</a>, <a href="60721.html">60721</a>, <a href="60866.html">60866</a>, <a href="61040.html">Animate_Grabbing</a> and <a href="61083.html">Animate_Eating</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">DrawMonsterSprite</td>
 <td class="address-2"><span id="55739"></span>55739</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="55740"></span>55740</td>
 <td class="instruction">LD A,(53841)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53841.html">53841</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53841.html">MonsterSpriteModifier</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="55743"></span>55743</td>
 <td class="instruction">OR L</td>
 <td class="comment-1" rowspan="1">Set the bits from <span class="register">L</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="55744"></span>55744</td>
 <td class="instruction">JP <a href="54985.html">PrintSprite</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="54985.html">PrintSprite</a>.</td>

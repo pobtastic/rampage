@@ -33,7 +33,7 @@ Next: <a href="DBB4.html">DBB4</a>
 </td>
 </tr>
 </table>
-<div class="description">DB7E: Routine at DB7E</div>
+<div class="description">DB7E: Target A Monster</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,24 +45,39 @@ Used by the routines at <a href="E2CC.html">Human_Lobber</a> and <a href="E447.h
 </td>
 </tr>
 <tr>
+<td class="asm-label">TargetMonster</td>
 <td class="address-2"><span id="db7e"></span>DB7E</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="2">Write 00 to *<a href="D214.html">D214</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="db7f"></span>DB7F</td>
 <td class="instruction">LD ($D214),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="db82"></span>DB82</td>
 <td class="instruction">CALL <a href="DA28.html">RandomNumber</a></td>
 <td class="comment-1" rowspan="2">Get a random number between 0-3.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="db85"></span>DB85</td>
 <td class="instruction">AND %00000011</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="db87"></span>
+<div class="comments">
+<div class="paragraph">
+Note; <a href="DBB4.html">CharacterPicker</a> increments <span class="register">A</span> on entry.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">ConvertToMonsterId</td>
 <td class="address-2"><span id="db87"></span>DB87</td>
 <td class="instruction">CALL <a href="DBB4.html">CharacterPicker</a></td>
 <td class="comment-1" rowspan="1">Call <a href="DBB4.html">CharacterPicker</a>.</td>
@@ -78,125 +93,171 @@ This entry point is used by the routine at <a href="DBD9.html">DBD9</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">CheckIfMonsterIsAlive</td>
 <td class="address-2"><span id="db8a"></span>DB8A</td>
 <td class="instruction">CP $C8</td>
-<td class="comment-1" rowspan="2">Jump to <a href="DB7E.html#db96">DB96</a> if <span class="register">A</span> is lower than C8.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="DB7E.html#db96">SetTargetedMonster_XPos</a> if the monster state is lower than C8.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="db8c"></span>DB8C</td>
-<td class="instruction">JR C,<a href="DB7E.html#db96">$DB96</a></td>
+<td class="instruction">JR C,<a href="DB7E.html#db96">SetTargetedMonster_XPos</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="db8e"></span>DB8E</td>
 <td class="instruction">LD A,$80</td>
 <td class="comment-1" rowspan="2">Write 80 to *<a href="D214.html">D214</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="db90"></span>DB90</td>
 <td class="instruction">LD ($D214),A</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="db93"></span>
+<div class="comments">
+<div class="paragraph">
+The monster ID e.g. 01 - George, 02 - Lizzy and 03 Ralph.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="db93"></span>DB93</td>
 <td class="instruction">LD A,B</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=the selected monster ID.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="db94"></span>
+<div class="comments">
+<div class="paragraph">
+Try again with the next monster in sequence.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="db94"></span>DB94</td>
-<td class="instruction">JR <a href="DB7E.html#db87">$DB87</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="DB7E.html#db87">DB87</a>.</td>
+<td class="instruction">JR <a href="DB7E.html#db87">ConvertToMonsterId</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="DB7E.html#db87">ConvertToMonsterId</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">SetTargetedMonster_XPos</td>
 <td class="address-2"><span id="db96"></span>DB96</td>
 <td class="instruction">LD A,($D214)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D214.html">D214</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="db99"></span>DB99</td>
 <td class="instruction">OR B</td>
 <td class="comment-1" rowspan="1">Set the bits from <span class="register">B</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="db9a"></span>DB9A</td>
 <td class="instruction">EX AF,AF'</td>
 <td class="comment-1" rowspan="1">Exchange the <span class="register">AF</span> register with the shadow <span class="register">AF</span> register.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="db9b"></span>DB9B</td>
 <td class="instruction">LD A,(DE)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=the targeted monsters X position.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="db9c"></span>DB9C</td>
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="2">Increment <span class="register">A</span> by two.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="db9d"></span>DB9D</td>
 <td class="instruction">INC A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="db9e"></span>DB9E</td>
 <td class="instruction">LD B,A</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="db9f"></span>DB9F</td>
 <td class="instruction">CP $64</td>
-<td class="comment-1" rowspan="2">Jump to <a href="DB7E.html#dba5">DBA5</a> if <span class="register">A</span> is lower than 64.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="DB7E.html#dba5">SetTargetedMonster_YPos</a> if <span class="register">A</span> is lower than 64.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dba1"></span>DBA1</td>
-<td class="instruction">JR C,<a href="DB7E.html#dba5">$DBA5</a></td>
+<td class="instruction">JR C,<a href="DB7E.html#dba5">SetTargetedMonster_YPos</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dba3"></span>DBA3</td>
 <td class="instruction">LD B,$00</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=00.</td>
 </tr>
 <tr>
+<td class="asm-label">SetTargetedMonster_YPos</td>
 <td class="address-2"><span id="dba5"></span>DBA5</td>
 <td class="instruction">INC DE</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">DE</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dba6"></span>DBA6</td>
 <td class="instruction">LD A,(DE)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=the targeted monsters y position.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dba7"></span>DBA7</td>
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dba8"></span>DBA8</td>
 <td class="instruction">LD C,A</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dba9"></span>DBA9</td>
 <td class="instruction">CP $64</td>
-<td class="comment-1" rowspan="2">Jump to <a href="DB7E.html#dbaf">DBAF</a> if <span class="register">A</span> is lower than 64.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="DB7E.html#dbaf">TargetMonster_0</a> if <span class="register">A</span> is lower than 64.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dbab"></span>DBAB</td>
-<td class="instruction">JR C,<a href="DB7E.html#dbaf">$DBAF</a></td>
+<td class="instruction">JR C,<a href="DB7E.html#dbaf">TargetMonster_0</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dbad"></span>DBAD</td>
 <td class="instruction">LD C,$00</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=00.</td>
 </tr>
 <tr>
+<td class="asm-label">TargetMonster_0</td>
 <td class="address-2"><span id="dbaf"></span>DBAF</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="2">Write 00 to *<a href="D214.html">D214</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dbb0"></span>DBB0</td>
 <td class="instruction">LD ($D214),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dbb3"></span>DBB3</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

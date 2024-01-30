@@ -44,7 +44,7 @@ Next: <a href="60150.html">60150</a>
 <tr>
 <td class="address-2"><span id="60060"></span>60060</td>
 <td class="instruction">LD A,(53835)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="60060.html#60084">60084</a> if *<a href="53835.html">53835</a> is equal to 25.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="60060.html#60084">60084</a> if *<a href="53835.html">Temp_MonsterActionCountdown</a> is equal to 25.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60063"></span>60063</td>
@@ -62,7 +62,7 @@ Next: <a href="60150.html">60150</a>
 <tr>
 <td class="address-1"><span id="60068"></span>60068</td>
 <td class="instruction">LD (53835),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53835.html">53835</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53835.html">Temp_MonsterActionCountdown</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60071"></span>60071</td>
@@ -72,7 +72,7 @@ Next: <a href="60150.html">60150</a>
 <tr>
 <td class="address-1"><span id="60073"></span>60073</td>
 <td class="instruction">LD A,25</td>
-<td class="comment-1" rowspan="2">Write 25 to *<a href="53835.html">53835</a>.</td>
+<td class="comment-1" rowspan="2">Write 25 to *<a href="53835.html">Temp_MonsterActionCountdown</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60075"></span>60075</td>
@@ -117,8 +117,8 @@ Next: <a href="60150.html">60150</a>
 </tr>
 <tr>
 <td class="address-1"><span id="60094"></span>60094</td>
-<td class="instruction">CALL NC,<a href="55905.html">55905</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55905.html">55905</a> if the carry flag is not set.</td>
+<td class="instruction">CALL NC,<a href="55905.html">Handler_DecreaseMonsterXPosition</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55905.html">Handler_DecreaseMonsterXPosition</a> if the carry flag is not set.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60097"></span>60097</td>
@@ -149,22 +149,44 @@ Next: <a href="60150.html">60150</a>
 <tr>
 <td class="address-2"><span id="60110"></span>60110</td>
 <td class="instruction">LD A,7</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=7.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 7. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">7</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-7-left" src="../../images/scr/sprite-7-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">71</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-71-left" src="../../images/scr/sprite-71-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">135</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-135-left" src="../../images/scr/sprite-135-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="60112"></span>60112</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">53837</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Temp_MonsterXPosition</a>/<a href="53837.html#53838">Temp_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60116"></span>60116</td>
-<td class="instruction">CALL <a href="55739.html">55739</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55739.html">55739</a>.</td>
+<td class="instruction">CALL <a href="55739.html">DrawMonsterSprite</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55739.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60119"></span>60119</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">53837</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Temp_MonsterXPosition</a>/<a href="53837.html#53838">Temp_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60123"></span>60123</td>
@@ -203,12 +225,34 @@ Next: <a href="60150.html">60150</a>
 <tr>
 <td class="address-1"><span id="60133"></span>60133</td>
 <td class="instruction">LD A,27</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=27.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 27. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">27</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-27-left" src="../../images/scr/sprite-27-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">91</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-91-left" src="../../images/scr/sprite-91-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">155</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-155-left" src="../../images/scr/sprite-155-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="60135"></span>60135</td>
-<td class="instruction">CALL <a href="55739.html">55739</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55739.html">55739</a>.</td>
+<td class="instruction">CALL <a href="55739.html">DrawMonsterSprite</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55739.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60138"></span>60138</td>

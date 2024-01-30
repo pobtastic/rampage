@@ -33,31 +33,35 @@ Next: <a href="55921.html">55921</a>
 </td>
 </tr>
 </table>
-<div class="description">55913: Routine at DA69</div>
+<div class="description">55913: Handler: Decrease Monster Y Position</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routine at <a href="59020.html">59020</a>.
+Used by the routine at <a href="59020.html">Handler_Controls</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Handler_DecreaseMonsterYPosition</td>
 <td class="address-2"><span id="55913"></span>55913</td>
 <td class="instruction">LD A,(53838)</td>
-<td class="comment-1" rowspan="3">Decrease *<a href="53837.html#53838">53838</a> by one.</td>
+<td class="comment-1" rowspan="3">Decrease *<a href="53837.html#53838">Temp_MonsterYPosition</a> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="55916"></span>55916</td>
 <td class="instruction">DEC A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="55917"></span>55917</td>
 <td class="instruction">LD (53838),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="55920"></span>55920</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

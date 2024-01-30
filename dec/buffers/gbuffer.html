@@ -30,6 +30,18 @@ gtag('config', 'G-75RERFCHBG');
 <th>Description</th>
 </tr>
 <tr>
+<td class="map-g"><span id="25856"></span><a href="../asm/25856.html">25856</a></td>
+<td class="map-length">768</td>
+<td class="map-g-desc">
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/25856.html">Building Buffer?</a></div>
+<div class="map-entry-desc">
+<div class="paragraph">
+TODO: Seems to be larger than this single block. Maybe also <a href="../asm/25088.html">25088</a> as well, will test.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="map-g"><span id="49569"></span><a href="../asm/49569.html">49569</a></td>
 <td class="map-length">1375</td>
 <td class="map-g-desc">
@@ -248,6 +260,9 @@ Counts up while the game plays, used as a random number generator (as it's never
 <td class="map-g-desc">
 <div class="map-entry-title-11"><a class="map-entry-title" href="../asm/53828.html">Jump Table Pointer</a></div>
 <div class="map-entry-desc">
+<div class="paragraph">
+See <a href="../asm/58925.html#59004">59004</a>.
+</div>
 </div>
 </td>
 </tr>
@@ -325,7 +340,7 @@ Counts up while the game plays, used as a random number generator (as it's never
 <td class="map-g"><span id="53835"></span><a href="../asm/53835.html">53835</a></td>
 <td class="map-length">1</td>
 <td class="map-g-desc">
-<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/53835.html">Game status buffer entry at D24B</a></div>
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/53835.html">Temporary Monster Action Countdown</a></div>
 <div class="map-entry-desc">
 </div>
 </td>
@@ -343,7 +358,7 @@ Counts up while the game plays, used as a random number generator (as it's never
 <td class="map-g"><span id="53837"></span><a href="../asm/53837.html">53837</a></td>
 <td class="map-length">2</td>
 <td class="map-g-desc">
-<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/53837.html">Game status buffer entry at D24D</a></div>
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/53837.html">Temporary Monster Co-ordinates</a></div>
 <div class="map-entry-desc">
 </div>
 </td>
@@ -354,6 +369,39 @@ Counts up while the game plays, used as a random number generator (as it's never
 <td class="map-g-desc">
 <div class="map-entry-title-11"><a class="map-entry-title" href="../asm/53839.html">Game status buffer entry at D24F</a></div>
 <div class="map-entry-desc">
+</div>
+</td>
+</tr>
+<tr>
+<td class="map-g"><span id="53841"></span><a href="../asm/53841.html">53841</a></td>
+<td class="map-length">1</td>
+<td class="map-g-desc">
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/53841.html">Monster Sprite Modifier</a></div>
+<div class="map-entry-desc">
+<div class="paragraph">
+When monster frames are drawn, this is used with an OR to set a bit which changes the sprite to the appropriate character. See <a href="../asm/55739.html">DrawMonsterSprite</a>. <table class="default">
+<tr>
+<th colspan="1" rowspan="1">Byte</th>
+<th colspan="1" rowspan="1">Bit</th>
+<th colspan="1" rowspan="1">Monster</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">0</td>
+<td class="centre" colspan="1" rowspan="1">00000000</td>
+<td class="centre" colspan="1" rowspan="1">George</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">64</td>
+<td class="centre" colspan="1" rowspan="1">01000000</td>
+<td class="centre" colspan="1" rowspan="1">Lizzy</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">128</td>
+<td class="centre" colspan="1" rowspan="1">10000000</td>
+<td class="centre" colspan="1" rowspan="1">Ralph</td>
+</tr>
+</table>
+</div>
 </div>
 </td>
 </tr>

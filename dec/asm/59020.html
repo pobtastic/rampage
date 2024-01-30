@@ -33,7 +33,7 @@ Next: <a href="59751.html">59751</a>
 </td>
 </tr>
 </table>
-<div class="description">59020: Routine at E68C</div>
+<div class="description">59020: Handler: Controls</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,121 +42,145 @@ Next: <a href="59751.html">59751</a>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls</td>
 <td class="address-2"><span id="59020"></span>59020</td>
 <td class="instruction">CALL <a href="57721.html">Controls</a></td>
 <td class="comment-1" rowspan="1">Call <a href="57721.html">Controls</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59023"></span>59023</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="2">Jump to <a href="59020.html#59728">59728</a> if <span class="register">A</span> is zero.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="59020.html#59728">Handler_Controls_23</a> if no keys are currently being pressed.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59024"></span>59024</td>
-<td class="instruction">JP Z,<a href="59020.html#59728">59728</a></td>
+<td class="instruction">JP Z,<a href="59020.html#59728">Handler_Controls_23</a></td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
 <span id="59027"></span>
 <div class="comments">
 <div class="paragraph">
-This entry point is used by the routine at <a href="59803.html">59803</a>.
+Controls: Jump/ Punch.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Controls_JumpPunch</td>
 <td class="address-2"><span id="59027"></span>59027</td>
 <td class="instruction">BIT 4,A</td>
-<td class="comment-1" rowspan="2">Jump to <a href="59020.html#59077">59077</a> if bit 4 of <span class="register">A</span> is not set.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="59020.html#59077">Controls_Up</a> if the key for jump/ punch is not being pressed.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59029"></span>59029</td>
-<td class="instruction">JP Z,<a href="59020.html#59077">59077</a></td>
+<td class="instruction">JP Z,<a href="59020.html#59077">Controls_Up</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59032"></span>59032</td>
 <td class="instruction">XOR %00010000</td>
 <td class="comment-1" rowspan="1">Flip bit 4.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59034"></span>59034</td>
-<td class="instruction">JR NZ,<a href="59020.html#59049">59049</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59049">59049</a> if the result is not zero.</td>
+<td class="instruction">JR NZ,<a href="59020.html#59049">Handler_Controls_1</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59049">Handler_Controls_1</a> if the result is not zero.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_0</td>
 <td class="address-2"><span id="59036"></span>59036</td>
 <td class="instruction">LD A,10</td>
 <td class="comment-1" rowspan="2">Write 10 to *<a href="53828.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59038"></span>59038</td>
 <td class="instruction">LD (53828),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59041"></span>59041</td>
 <td class="instruction">LD A,1</td>
 <td class="comment-1" rowspan="2">Write 1 to *<a href="53832.html">53832</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59043"></span>59043</td>
 <td class="instruction">LD (53832),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59046"></span>59046</td>
 <td class="instruction">JP <a href="58925.html#59004">59004</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">59004</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_1</td>
 <td class="address-2"><span id="59049"></span>59049</td>
 <td class="instruction">LD A,(53830)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="59020.html#59063">59063</a> if *<a href="53830.html">53830</a> is zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="59020.html#59063">Handler_Controls_2</a> if *<a href="53830.html">53830</a> is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59052"></span>59052</td>
 <td class="instruction">AND A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59053"></span>59053</td>
-<td class="instruction">JR Z,<a href="59020.html#59063">59063</a></td>
+<td class="instruction">JR Z,<a href="59020.html#59063">Handler_Controls_2</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59055"></span>59055</td>
 <td class="instruction">LD A,13</td>
 <td class="comment-1" rowspan="2">Write 13 to *<a href="53828.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59057"></span>59057</td>
 <td class="instruction">LD (53828),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59060"></span>59060</td>
 <td class="instruction">JP <a href="58925.html#59004">59004</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">59004</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_2</td>
 <td class="address-2"><span id="59063"></span>59063</td>
 <td class="instruction">LD A,(53842)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="59020.html#59036">59036</a> if *<a href="53842.html">53842</a> is zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="59020.html#59036">Handler_Controls_0</a> if *<a href="53842.html">53842</a> is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59066"></span>59066</td>
 <td class="instruction">AND A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59067"></span>59067</td>
-<td class="instruction">JR Z,<a href="59020.html#59036">59036</a></td>
+<td class="instruction">JR Z,<a href="59020.html#59036">Handler_Controls_0</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59069"></span>59069</td>
 <td class="instruction">LD A,14</td>
 <td class="comment-1" rowspan="2">Write 14 to *<a href="53828.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59071"></span>59071</td>
 <td class="instruction">LD (53828),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59074"></span>59074</td>
 <td class="instruction">JP <a href="58925.html#59004">59004</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">59004</a>.</td>
@@ -166,131 +190,156 @@ This entry point is used by the routine at <a href="59803.html">59803</a>.
 <span id="59077"></span>
 <div class="comments">
 <div class="paragraph">
-This entry point is used by the routine at <a href="60150.html">60150</a>.
+Controls: Up.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Controls_Up</td>
 <td class="address-2"><span id="59077"></span>59077</td>
 <td class="instruction">BIT 3,A</td>
-<td class="comment-1" rowspan="2">Jump to <a href="59020.html#59358">59358</a> if bit 3 of <span class="register">A</span> is not set.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="59020.html#59358">Controls_Down</a> if the key for up is not being pressed.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59079"></span>59079</td>
-<td class="instruction">JP Z,<a href="59020.html#59358">59358</a></td>
+<td class="instruction">JP Z,<a href="59020.html#59358">Controls_Down</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59082"></span>59082</td>
 <td class="instruction">LD A,(53831)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53831.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59085"></span>59085</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59086"></span>59086</td>
-<td class="instruction">JR C,<a href="59020.html#59108">59108</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59108">59108</a> if the carry flag is set.</td>
+<td class="instruction">JR C,<a href="59020.html#59108">Handler_Controls_3</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59108">Handler_Controls_3</a> if the carry flag is set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59088"></span>59088</td>
 <td class="instruction">LD BC,258</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=258.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59091"></span>59091</td>
 <td class="instruction">LD DE,2319</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=2319.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59094"></span>59094</td>
 <td class="instruction">CALL <a href="57517.html">57517</a></td>
 <td class="comment-1" rowspan="1">Call <a href="57517.html">57517</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59097"></span>59097</td>
-<td class="instruction">JR Z,<a href="59020.html#59154">59154</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59154">59154</a> if {} is zero.</td>
+<td class="instruction">JR Z,<a href="59020.html#59154">Handler_Controls_5</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59154">Handler_Controls_5</a> if {} is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59099"></span>59099</td>
 <td class="instruction">LD A,(53832)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53832.html">53832</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59102"></span>59102</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59103"></span>59103</td>
-<td class="instruction">JP C,<a href="59020.html#59285">59285</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59285">59285</a> if the carry flag is set.</td>
+<td class="instruction">JP C,<a href="59020.html#59285">Handler_Controls_13</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59285">Handler_Controls_13</a> if the carry flag is set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59106"></span>59106</td>
-<td class="instruction">JR <a href="59020.html#59129">59129</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59129">59129</a>.</td>
+<td class="instruction">JR <a href="59020.html#59129">Handler_Controls_4</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59129">Handler_Controls_4</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_3</td>
 <td class="address-2"><span id="59108"></span>59108</td>
 <td class="instruction">LD BC,257</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=257.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59111"></span>59111</td>
 <td class="instruction">LD DE,2319</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=2319.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59114"></span>59114</td>
 <td class="instruction">CALL <a href="57517.html">57517</a></td>
 <td class="comment-1" rowspan="1">Call <a href="57517.html">57517</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59117"></span>59117</td>
-<td class="instruction">JR Z,<a href="59020.html#59206">59206</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59206">59206</a> if {} is zero.</td>
+<td class="instruction">JR Z,<a href="59020.html#59206">Handler_Controls_9</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59206">Handler_Controls_9</a> if {} is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59119"></span>59119</td>
 <td class="instruction">LD A,(53832)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53832.html">53832</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59122"></span>59122</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59123"></span>59123</td>
-<td class="instruction">JP C,<a href="59020.html#59285">59285</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59285">59285</a> if the carry flag is set.</td>
+<td class="instruction">JP C,<a href="59020.html#59285">Handler_Controls_13</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59285">Handler_Controls_13</a> if the carry flag is set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59126"></span>59126</td>
-<td class="instruction">CALL <a href="55905.html">55905</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55905.html">55905</a>.</td>
+<td class="instruction">CALL <a href="55905.html">Handler_DecreaseMonsterXPosition</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55905.html">Handler_DecreaseMonsterXPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_4</td>
 <td class="address-2"><span id="59129"></span>59129</td>
 <td class="instruction">LD A,(53838)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53837.html#53838">53838</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53837.html#53838">Temp_MonsterYPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59132"></span>59132</td>
 <td class="instruction">SUB 4</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>-=4.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59134"></span>59134</td>
 <td class="instruction">LD (53838),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53837.html#53838">53838</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53837.html#53838">Temp_MonsterYPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59137"></span>59137</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="4">Write 0 to: <ul class="">
@@ -300,234 +349,282 @@ This entry point is used by the routine at <a href="60150.html">60150</a>.
 </ul></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59138"></span>59138</td>
 <td class="instruction">LD (53832),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59141"></span>59141</td>
 <td class="instruction">LD (53830),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59144"></span>59144</td>
 <td class="instruction">LD (53836),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59147"></span>59147</td>
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="2">Write 1 to *<a href="53828.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59148"></span>59148</td>
 <td class="instruction">LD (53828),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59151"></span>59151</td>
 <td class="instruction">JP <a href="58925.html#59004">59004</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">59004</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_5</td>
 <td class="address-2"><span id="59154"></span>59154</td>
 <td class="instruction">LD BC,514</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=514.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59157"></span>59157</td>
 <td class="instruction">LD DE,4371</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=4371.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59160"></span>59160</td>
 <td class="instruction">LD A,(53830)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">53830</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59163"></span>59163</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59164"></span>59164</td>
-<td class="instruction">JR C,<a href="59020.html#59177">59177</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59177">59177</a> if the carry flag is set.</td>
+<td class="instruction">JR C,<a href="59020.html#59177">Handler_Controls_7</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59177">Handler_Controls_7</a> if the carry flag is set.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_6</td>
 <td class="address-2"><span id="59166"></span>59166</td>
 <td class="instruction">INC C</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59167"></span>59167</td>
 <td class="instruction">CALL <a href="57517.html">57517</a></td>
 <td class="comment-1" rowspan="1">Call <a href="57517.html">57517</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59170"></span>59170</td>
-<td class="instruction">JR Z,<a href="59020.html#59188">59188</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59188">59188</a> if {} is zero.</td>
+<td class="instruction">JR Z,<a href="59020.html#59188">Handler_Controls_8</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59188">Handler_Controls_8</a> if {} is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59172"></span>59172</td>
-<td class="instruction">CALL <a href="55889.html">55889</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55889.html">55889</a>.</td>
+<td class="instruction">CALL <a href="55889.html">Handler_IncrementMonsterXPosition</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55889.html">Handler_IncrementMonsterXPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59175"></span>59175</td>
-<td class="instruction">JR <a href="59020.html#59235">59235</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59235">59235</a>.</td>
+<td class="instruction">JR <a href="59020.html#59235">Handler_Controls_10</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59235">Handler_Controls_10</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_7</td>
 <td class="address-2"><span id="59177"></span>59177</td>
 <td class="instruction">LD A,(53832)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53832.html">53832</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59180"></span>59180</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59181"></span>59181</td>
-<td class="instruction">JR C,<a href="59020.html#59166">59166</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59166">59166</a> if the carry flag is set.</td>
+<td class="instruction">JR C,<a href="59020.html#59166">Handler_Controls_6</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59166">Handler_Controls_6</a> if the carry flag is set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59183"></span>59183</td>
 <td class="instruction">CALL <a href="57517.html">57517</a></td>
 <td class="comment-1" rowspan="1">Call <a href="57517.html">57517</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59186"></span>59186</td>
-<td class="instruction">JR NZ,<a href="59020.html#59235">59235</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59235">59235</a> if {} is not zero.</td>
+<td class="instruction">JR NZ,<a href="59020.html#59235">Handler_Controls_10</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59235">Handler_Controls_10</a> if {} is not zero.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_8</td>
 <td class="address-2"><span id="59188"></span>59188</td>
 <td class="instruction">LD BC,514</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=514.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59191"></span>59191</td>
 <td class="instruction">LD DE,5142</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=5142.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59194"></span>59194</td>
 <td class="instruction">CALL <a href="57517.html">57517</a></td>
 <td class="comment-1" rowspan="1">Call <a href="57517.html">57517</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59197"></span>59197</td>
-<td class="instruction">JR Z,<a href="59020.html#59269">59269</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59269">59269</a> if {} is zero.</td>
+<td class="instruction">JR Z,<a href="59020.html#59269">Handler_Controls_12</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59269">Handler_Controls_12</a> if {} is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59199"></span>59199</td>
 <td class="instruction">LD A,1</td>
 <td class="comment-1" rowspan="2">Write 1 to *<a href="53831.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59201"></span>59201</td>
 <td class="instruction">LD (53831),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59204"></span>59204</td>
-<td class="instruction">JR <a href="59020.html#59235">59235</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59235">59235</a>.</td>
+<td class="instruction">JR <a href="59020.html#59235">Handler_Controls_10</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59235">Handler_Controls_10</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_9</td>
 <td class="address-2"><span id="59206"></span>59206</td>
 <td class="instruction">LD BC,514</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=514.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59209"></span>59209</td>
 <td class="instruction">LD DE,5142</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=5142.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59212"></span>59212</td>
 <td class="instruction">CALL <a href="57517.html">57517</a></td>
 <td class="comment-1" rowspan="1">Call <a href="57517.html">57517</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59215"></span>59215</td>
-<td class="instruction">JR NZ,<a href="59020.html#59235">59235</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59235">59235</a> if {} is not zero.</td>
+<td class="instruction">JR NZ,<a href="59020.html#59235">Handler_Controls_10</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59235">Handler_Controls_10</a> if {} is not zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59217"></span>59217</td>
 <td class="instruction">LD BC,515</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=515.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59220"></span>59220</td>
 <td class="instruction">LD DE,4371</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=4371.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59223"></span>59223</td>
 <td class="instruction">CALL <a href="57517.html">57517</a></td>
 <td class="comment-1" rowspan="1">Call <a href="57517.html">57517</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59226"></span>59226</td>
-<td class="instruction">JR Z,<a href="59020.html#59269">59269</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59269">59269</a> if {} is zero.</td>
+<td class="instruction">JR Z,<a href="59020.html#59269">Handler_Controls_12</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59269">Handler_Controls_12</a> if {} is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59228"></span>59228</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="2">Write 0 to *<a href="53831.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59229"></span>59229</td>
 <td class="instruction">LD (53831),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59232"></span>59232</td>
-<td class="instruction">CALL <a href="55889.html">55889</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55889.html">55889</a>.</td>
+<td class="instruction">CALL <a href="55889.html">Handler_IncrementMonsterXPosition</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55889.html">Handler_IncrementMonsterXPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_10</td>
 <td class="address-2"><span id="59235"></span>59235</td>
 <td class="instruction">LD A,(53830)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">53830</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59238"></span>59238</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59239"></span>59239</td>
-<td class="instruction">JR C,<a href="59020.html#59306">59306</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59306">59306</a> if the carry flag is set.</td>
+<td class="instruction">JR C,<a href="59020.html#59306">Handler_Controls_14</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59306">Handler_Controls_14</a> if the carry flag is set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59241"></span>59241</td>
 <td class="instruction">LD A,(53838)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53837.html#53838">53838</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53837.html#53838">Temp_MonsterYPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59244"></span>59244</td>
 <td class="instruction">CP 18</td>
-<td class="comment-1" rowspan="2">Jump to <a href="59020.html#59253">59253</a> if <span class="register">A</span> is no equal to 18.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="59020.html#59253">Handler_Controls_11</a> if <span class="register">A</span> is no equal to 18.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59246"></span>59246</td>
-<td class="instruction">JR NZ,<a href="59020.html#59253">59253</a></td>
+<td class="instruction">JR NZ,<a href="59020.html#59253">Handler_Controls_11</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59248"></span>59248</td>
 <td class="instruction">SUB 2</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>-=2.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59250"></span>59250</td>
 <td class="instruction">LD (53838),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53837.html#53838">53838</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53837.html#53838">Temp_MonsterYPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_11</td>
 <td class="address-2"><span id="59253"></span>59253</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="3">Write 0 to: <ul class="">
@@ -536,47 +633,57 @@ This entry point is used by the routine at <a href="60150.html">60150</a>.
 </ul></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59254"></span>59254</td>
 <td class="instruction">LD (53832),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59257"></span>59257</td>
 <td class="instruction">LD (53836),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59260"></span>59260</td>
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="2">Write 1 to *<a href="53830.html">53830</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59261"></span>59261</td>
 <td class="instruction">LD (53830),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59264"></span>59264</td>
 <td class="instruction">LD A,3</td>
 <td class="comment-1" rowspan="2">Write 3 to *<a href="53839.html">53839</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59266"></span>59266</td>
 <td class="instruction">LD (53839),A</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_12</td>
 <td class="address-2"><span id="59269"></span>59269</td>
 <td class="instruction">LD A,(53832)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53832.html">53832</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59272"></span>59272</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59273"></span>59273</td>
-<td class="instruction">JR C,<a href="59020.html#59285">59285</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59285">59285</a> if the carry flag is set.</td>
+<td class="instruction">JR C,<a href="59020.html#59285">Handler_Controls_13</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59285">Handler_Controls_13</a> if the carry flag is set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59275"></span>59275</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="3">Write 0 to: <ul class="">
@@ -585,122 +692,147 @@ This entry point is used by the routine at <a href="60150.html">60150</a>.
 </ul></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59276"></span>59276</td>
 <td class="instruction">LD (53832),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59279"></span>59279</td>
 <td class="instruction">LD (53836),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59282"></span>59282</td>
 <td class="instruction">JP <a href="61318.html">61318</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="61318.html">61318</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_13</td>
 <td class="address-2"><span id="59285"></span>59285</td>
 <td class="instruction">LD HL,53831</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="53831.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59288"></span>59288</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59289"></span>59289</td>
 <td class="instruction">XOR %00000001</td>
 <td class="comment-1" rowspan="1">Flip bit 0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59291"></span>59291</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59292"></span>59292</td>
 <td class="instruction">AND (HL)</td>
 <td class="comment-1" rowspan="1">Merge the bits from *<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59293"></span>59293</td>
-<td class="instruction">CALL NZ,<a href="55889.html">55889</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55889.html">55889</a> not zero.</td>
+<td class="instruction">CALL NZ,<a href="55889.html">Handler_IncrementMonsterXPosition</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55889.html">Handler_IncrementMonsterXPosition</a> not zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59296"></span>59296</td>
 <td class="instruction">LD A,(53830)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">53830</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59299"></span>59299</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59300"></span>59300</td>
-<td class="instruction">CALL C,<a href="55913.html">55913</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55913.html">55913</a> if the carry flag is set.</td>
+<td class="instruction">CALL C,<a href="55913.html">Handler_DecreaseMonsterYPosition</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55913.html">Handler_DecreaseMonsterYPosition</a> if the carry flag is set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59303"></span>59303</td>
 <td class="instruction">JP <a href="60150.html#60207">60207</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="60150.html#60207">60207</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_14</td>
 <td class="address-2"><span id="59306"></span>59306</td>
 <td class="instruction">LD A,3</td>
 <td class="comment-1" rowspan="2">Write 3 to *<a href="53839.html">53839</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59308"></span>59308</td>
 <td class="instruction">LD (53839),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59311"></span>59311</td>
 <td class="instruction">LD DE,(53843)</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=*<a href="53843.html">53843</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59315"></span>59315</td>
 <td class="instruction">CALL <a href="55823.html">55823</a></td>
 <td class="comment-1" rowspan="1">Call <a href="55823.html">55823</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59318"></span>59318</td>
 <td class="instruction">LD A,(53829)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53829.html">53829</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59321"></span>59321</td>
 <td class="instruction">AND %00000001</td>
 <td class="comment-1" rowspan="1">Keep only bit 0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59323"></span>59323</td>
 <td class="instruction">XOR %00000001</td>
 <td class="comment-1" rowspan="1">Flip bit 0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59325"></span>59325</td>
 <td class="instruction">LD (IX+5),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">IX</span>+5.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59328"></span>59328</td>
-<td class="instruction">CALL Z,<a href="55913.html">55913</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55913.html">55913</a> zero.</td>
+<td class="instruction">CALL Z,<a href="55913.html">Handler_DecreaseMonsterYPosition</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55913.html">Handler_DecreaseMonsterYPosition</a> zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59331"></span>59331</td>
 <td class="instruction">LD A,8</td>
 <td class="comment-1" rowspan="2">Write 8 to *<span class="register">IX</span>+0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59333"></span>59333</td>
 <td class="instruction">LD (IX+0),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59336"></span>59336</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="3">Write 0 to: <ul class="">
@@ -709,23 +841,28 @@ This entry point is used by the routine at <a href="60150.html">60150</a>.
 </ul></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59337"></span>59337</td>
 <td class="instruction">LD (53832),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59340"></span>59340</td>
 <td class="instruction">LD (53836),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59343"></span>59343</td>
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="2">Write 1 to *<a href="53830.html">53830</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59344"></span>59344</td>
 <td class="instruction">LD (53830),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59347"></span>59347</td>
 <td class="instruction">LD A,3</td>
 <td class="comment-1" rowspan="3">Write 3 to: <ul class="">
@@ -734,290 +871,359 @@ This entry point is used by the routine at <a href="60150.html">60150</a>.
 </ul></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59349"></span>59349</td>
 <td class="instruction">LD (53828),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59352"></span>59352</td>
 <td class="instruction">LD (53829),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59355"></span>59355</td>
 <td class="instruction">JP <a href="58925.html#59004">59004</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">59004</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="59358"></span>
+<div class="comments">
+<div class="paragraph">
+Controls: Down.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Controls_Down</td>
 <td class="address-2"><span id="59358"></span>59358</td>
 <td class="instruction">BIT 2,A</td>
-<td class="comment-1" rowspan="2">Jump to <a href="59020.html#59623">59623</a> if bit 2 of <span class="register">A</span> is not set.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="59020.html#59623">Controls_Left</a> if the key for down is not being pressed.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59360"></span>59360</td>
-<td class="instruction">JP Z,<a href="59020.html#59623">59623</a></td>
+<td class="instruction">JP Z,<a href="59020.html#59623">Controls_Left</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59363"></span>59363</td>
 <td class="instruction">LD A,(53838)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="59020.html#59599">59599</a> if *<a href="53837.html#53838">53838</a> is equal to 16.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="59020.html#59599">Handler_Controls_22</a> if *<a href="53837.html#53838">Temp_MonsterYPosition</a> is equal to 16.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59366"></span>59366</td>
 <td class="instruction">CP 16</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59368"></span>59368</td>
-<td class="instruction">JP Z,<a href="59020.html#59599">59599</a></td>
+<td class="instruction">JP Z,<a href="59020.html#59599">Handler_Controls_22</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59371"></span>59371</td>
 <td class="instruction">LD A,(53831)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53831.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59374"></span>59374</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59375"></span>59375</td>
-<td class="instruction">JR C,<a href="59020.html#59423">59423</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59423">59423</a> if the carry flag is set.</td>
+<td class="instruction">JR C,<a href="59020.html#59423">Handler_Controls_16</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59423">Handler_Controls_16</a> if the carry flag is set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59377"></span>59377</td>
 <td class="instruction">LD BC,1282</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=1282.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59380"></span>59380</td>
 <td class="instruction">LD DE,2319</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=2319.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59383"></span>59383</td>
 <td class="instruction">CALL <a href="57517.html">57517</a></td>
 <td class="comment-1" rowspan="1">Call <a href="57517.html">57517</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59386"></span>59386</td>
 <td class="instruction">LD C,2</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=2.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59388"></span>59388</td>
-<td class="instruction">JR Z,<a href="59020.html#59473">59473</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59473">59473</a> if {} is zero.</td>
+<td class="instruction">JR Z,<a href="59020.html#59473">Handler_Controls_18</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59473">Handler_Controls_18</a> if {} is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59390"></span>59390</td>
 <td class="instruction">LD BC,1538</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=1538.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59393"></span>59393</td>
 <td class="instruction">LD DE,5142</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=5142.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59396"></span>59396</td>
 <td class="instruction">CALL <a href="57517.html">57517</a></td>
 <td class="comment-1" rowspan="1">Call <a href="57517.html">57517</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59399"></span>59399</td>
-<td class="instruction">JR Z,<a href="59020.html#59406">59406</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59406">59406</a> if {} is zero.</td>
+<td class="instruction">JR Z,<a href="59020.html#59406">Handler_Controls_15</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59406">Handler_Controls_15</a> if {} is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59401"></span>59401</td>
 <td class="instruction">LD A,1</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=1.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59403"></span>59403</td>
-<td class="instruction">JP <a href="59020.html#59572">59572</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59572">59572</a>.</td>
+<td class="instruction">JP <a href="59020.html#59572">Handler_Controls_21</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59572">Handler_Controls_21</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_15</td>
 <td class="address-2"><span id="59406"></span>59406</td>
 <td class="instruction">LD BC,1538</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=1538.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59409"></span>59409</td>
 <td class="instruction">LD DE,4371</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=4371.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59412"></span>59412</td>
 <td class="instruction">CALL <a href="57517.html">57517</a></td>
 <td class="comment-1" rowspan="1">Call <a href="57517.html">57517</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59415"></span>59415</td>
 <td class="instruction">LD C,2</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=2.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59417"></span>59417</td>
-<td class="instruction">JR Z,<a href="59020.html#59473">59473</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59473">59473</a> if {} is zero.</td>
+<td class="instruction">JR Z,<a href="59020.html#59473">Handler_Controls_18</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59473">Handler_Controls_18</a> if {} is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59419"></span>59419</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59420"></span>59420</td>
-<td class="instruction">JP <a href="59020.html#59572">59572</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59572">59572</a>.</td>
+<td class="instruction">JP <a href="59020.html#59572">Handler_Controls_21</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59572">Handler_Controls_21</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_16</td>
 <td class="address-2"><span id="59423"></span>59423</td>
 <td class="instruction">LD BC,1283</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=1283.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59426"></span>59426</td>
 <td class="instruction">LD DE,2319</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=2319.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59429"></span>59429</td>
 <td class="instruction">CALL <a href="57517.html">57517</a></td>
 <td class="comment-1" rowspan="1">Call <a href="57517.html">57517</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59432"></span>59432</td>
 <td class="instruction">LD C,3</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=3.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59434"></span>59434</td>
-<td class="instruction">JR Z,<a href="59020.html#59473">59473</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59473">59473</a> if {} is zero.</td>
+<td class="instruction">JR Z,<a href="59020.html#59473">Handler_Controls_18</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59473">Handler_Controls_18</a> if {} is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59436"></span>59436</td>
 <td class="instruction">LD BC,1539</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=1539.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59439"></span>59439</td>
 <td class="instruction">LD DE,4371</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=4371.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59442"></span>59442</td>
 <td class="instruction">CALL <a href="57517.html">57517</a></td>
 <td class="comment-1" rowspan="1">Call <a href="57517.html">57517</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59445"></span>59445</td>
-<td class="instruction">JR Z,<a href="59020.html#59453">59453</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59453">59453</a> if {} is zero.</td>
+<td class="instruction">JR Z,<a href="59020.html#59453">Handler_Controls_17</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59453">Handler_Controls_17</a> if {} is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59447"></span>59447</td>
-<td class="instruction">CALL <a href="55889.html">55889</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55889.html">55889</a>.</td>
+<td class="instruction">CALL <a href="55889.html">Handler_IncrementMonsterXPosition</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55889.html">Handler_IncrementMonsterXPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59450"></span>59450</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59451"></span>59451</td>
-<td class="instruction">JR <a href="59020.html#59572">59572</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59572">59572</a>.</td>
+<td class="instruction">JR <a href="59020.html#59572">Handler_Controls_21</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59572">Handler_Controls_21</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_17</td>
 <td class="address-2"><span id="59453"></span>59453</td>
 <td class="instruction">LD BC,1539</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=1539.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59456"></span>59456</td>
 <td class="instruction">LD DE,5142</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=5142.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59459"></span>59459</td>
 <td class="instruction">CALL <a href="57517.html">57517</a></td>
 <td class="comment-1" rowspan="1">Call <a href="57517.html">57517</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59462"></span>59462</td>
 <td class="instruction">LD C,3</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=3.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59464"></span>59464</td>
-<td class="instruction">JR Z,<a href="59020.html#59473">59473</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59473">59473</a> if {} is zero.</td>
+<td class="instruction">JR Z,<a href="59020.html#59473">Handler_Controls_18</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59473">Handler_Controls_18</a> if {} is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59466"></span>59466</td>
-<td class="instruction">CALL <a href="55889.html">55889</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55889.html">55889</a>.</td>
+<td class="instruction">CALL <a href="55889.html">Handler_IncrementMonsterXPosition</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55889.html">Handler_IncrementMonsterXPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59469"></span>59469</td>
 <td class="instruction">LD A,1</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=1.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59471"></span>59471</td>
-<td class="instruction">JR <a href="59020.html#59572">59572</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59572">59572</a>.</td>
+<td class="instruction">JR <a href="59020.html#59572">Handler_Controls_21</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59572">Handler_Controls_21</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_18</td>
 <td class="address-2"><span id="59473"></span>59473</td>
 <td class="instruction">LD A,(53830)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">53830</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59476"></span>59476</td>
 <td class="instruction">XOR %00000001</td>
 <td class="comment-1" rowspan="1">Flip bit 0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59478"></span>59478</td>
 <td class="instruction">ADD A,5</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>+=5.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59480"></span>59480</td>
 <td class="instruction">LD B,A</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59481"></span>59481</td>
 <td class="instruction">LD DE,2319</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=2319.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59484"></span>59484</td>
 <td class="instruction">CALL <a href="57517.html">57517</a></td>
 <td class="comment-1" rowspan="1">Call <a href="57517.html">57517</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59487"></span>59487</td>
-<td class="instruction">JR Z,<a href="59020.html#59510">59510</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59510">59510</a> if {} is zero.</td>
+<td class="instruction">JR Z,<a href="59020.html#59510">Handler_Controls_19</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59510">Handler_Controls_19</a> if {} is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59489"></span>59489</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="2">Write 0 to *<a href="53830.html">53830</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59490"></span>59490</td>
 <td class="instruction">LD (53830),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59493"></span>59493</td>
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="3">Write 1 to: <ul class="">
@@ -1026,123 +1232,148 @@ This entry point is used by the routine at <a href="60150.html">60150</a>.
 </ul></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59494"></span>59494</td>
 <td class="instruction">LD (53828),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59497"></span>59497</td>
 <td class="instruction">LD (53839),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59500"></span>59500</td>
 <td class="instruction">LD A,(53831)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53831.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59503"></span>59503</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59504"></span>59504</td>
-<td class="instruction">CALL NC,<a href="55905.html">55905</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55905.html">55905</a> if the carry flag is not set.</td>
+<td class="instruction">CALL NC,<a href="55905.html">Handler_DecreaseMonsterXPosition</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55905.html">Handler_DecreaseMonsterXPosition</a> if the carry flag is not set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59507"></span>59507</td>
 <td class="instruction">JP <a href="61318.html">61318</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="61318.html">61318</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_19</td>
 <td class="address-2"><span id="59510"></span>59510</td>
 <td class="instruction">LD A,(53830)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">53830</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59513"></span>59513</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59514"></span>59514</td>
 <td class="instruction">JP NC,<a href="61318.html">61318</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="61318.html">61318</a> if the carry flag is not set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59517"></span>59517</td>
 <td class="instruction">LD BC,1026</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=1026.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59520"></span>59520</td>
 <td class="instruction">LD DE,4371</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=4371.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59523"></span>59523</td>
 <td class="instruction">LD A,(53831)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53831.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59526"></span>59526</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59527"></span>59527</td>
-<td class="instruction">JR NC,<a href="59020.html#59532">59532</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59532">59532</a> if the carry flag is not set.</td>
+<td class="instruction">JR NC,<a href="59020.html#59532">Handler_Controls_20</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59532">Handler_Controls_20</a> if the carry flag is not set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59529"></span>59529</td>
 <td class="instruction">LD DE,5142</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=5142.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_20</td>
 <td class="address-2"><span id="59532"></span>59532</td>
 <td class="instruction">CALL <a href="57517.html">57517</a></td>
 <td class="comment-1" rowspan="1">Call <a href="57517.html">57517</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59535"></span>59535</td>
 <td class="instruction">JP Z,<a href="61318.html">61318</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="61318.html">61318</a> if {} is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59538"></span>59538</td>
 <td class="instruction">LD A,2</td>
 <td class="comment-1" rowspan="2">Write 2 to *<a href="53839.html">53839</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59540"></span>59540</td>
 <td class="instruction">LD (53839),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59543"></span>59543</td>
 <td class="instruction">LD DE,(53843)</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=*<a href="53843.html">53843</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59547"></span>59547</td>
 <td class="instruction">CALL <a href="55823.html">55823</a></td>
 <td class="comment-1" rowspan="1">Call <a href="55823.html">55823</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59550"></span>59550</td>
 <td class="instruction">LD A,(53829)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53829.html">53829</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59553"></span>59553</td>
 <td class="instruction">AND %00000001</td>
 <td class="comment-1" rowspan="1">Keep only bit 0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59555"></span>59555</td>
 <td class="instruction">LD (IX+5),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">IX</span>+5.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59558"></span>59558</td>
 <td class="instruction">LD A,4</td>
 <td class="comment-1" rowspan="4">Write 4 to: <ul class="">
@@ -1152,43 +1383,52 @@ This entry point is used by the routine at <a href="60150.html">60150</a>.
 </ul></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59560"></span>59560</td>
 <td class="instruction">LD (IX+0),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59563"></span>59563</td>
 <td class="instruction">LD (53828),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59566"></span>59566</td>
 <td class="instruction">LD (53829),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59569"></span>59569</td>
 <td class="instruction">JP <a href="58925.html#59004">59004</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">59004</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_21</td>
 <td class="address-2"><span id="59572"></span>59572</td>
 <td class="instruction">LD (53831),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53831.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59575"></span>59575</td>
 <td class="instruction">LD A,(53838)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53837.html#53838">53838</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53837.html#53838">Temp_MonsterYPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59578"></span>59578</td>
 <td class="instruction">ADD A,4</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>+=4.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59580"></span>59580</td>
 <td class="instruction">LD (53838),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53837.html#53838">53838</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53837.html#53838">Temp_MonsterYPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59583"></span>59583</td>
 <td class="instruction">LD A,3</td>
 <td class="comment-1" rowspan="3">Write 3 to: <ul class="">
@@ -1197,160 +1437,204 @@ This entry point is used by the routine at <a href="60150.html">60150</a>.
 </ul></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59585"></span>59585</td>
 <td class="instruction">LD (53828),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59588"></span>59588</td>
 <td class="instruction">LD (53839),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59591"></span>59591</td>
 <td class="instruction">LD A,1</td>
 <td class="comment-1" rowspan="2">Write 1 to *<a href="53830.html">53830</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59593"></span>59593</td>
 <td class="instruction">LD (53830),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59596"></span>59596</td>
 <td class="instruction">JP <a href="58925.html#59004">59004</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">59004</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_22</td>
 <td class="address-2"><span id="59599"></span>59599</td>
 <td class="instruction">LD A,18</td>
-<td class="comment-1" rowspan="2">Write 18 to *<a href="53837.html#53838">53838</a>.</td>
+<td class="comment-1" rowspan="2">Write 18 to *<a href="53837.html#53838">Temp_MonsterYPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59601"></span>59601</td>
 <td class="instruction">LD (53838),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59604"></span>59604</td>
 <td class="instruction">LD A,1</td>
 <td class="comment-1" rowspan="2">Write 1 to *<a href="53828.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59606"></span>59606</td>
 <td class="instruction">LD (53828),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59609"></span>59609</td>
 <td class="instruction">LD A,(53831)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53831.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59612"></span>59612</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59613"></span>59613</td>
-<td class="instruction">CALL NC,<a href="55905.html">55905</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55905.html">55905</a> if the carry flag is not set.</td>
+<td class="instruction">CALL NC,<a href="55905.html">Handler_DecreaseMonsterXPosition</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55905.html">Handler_DecreaseMonsterXPosition</a> if the carry flag is not set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59616"></span>59616</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="2">Write 0 to *<a href="53830.html">53830</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59617"></span>59617</td>
 <td class="instruction">LD (53830),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59620"></span>59620</td>
 <td class="instruction">JP <a href="58925.html#59004">59004</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">59004</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="59623"></span>
+<div class="comments">
+<div class="paragraph">
+Controls: Left.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Controls_Left</td>
 <td class="address-2"><span id="59623"></span>59623</td>
 <td class="instruction">BIT 0,A</td>
-<td class="comment-1" rowspan="2">Jump to <a href="59020.html#59676">59676</a> if bit 0 of <span class="register">A</span> is not set.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="59020.html#59676">Controls_Right</a> if the key for left is not being pressed.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59625"></span>59625</td>
-<td class="instruction">JR Z,<a href="59020.html#59676">59676</a></td>
+<td class="instruction">JR Z,<a href="59020.html#59676">Controls_Right</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59627"></span>59627</td>
 <td class="instruction">LD A,(53830)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">53830</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59630"></span>59630</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59631"></span>59631</td>
 <td class="instruction">JP C,<a href="61318.html">61318</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="61318.html">61318</a> if the carry flag is set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59634"></span>59634</td>
 <td class="instruction">LD A,1</td>
 <td class="comment-1" rowspan="2">Write 1 to *<a href="53839.html">53839</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59636"></span>59636</td>
 <td class="instruction">LD (53839),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59639"></span>59639</td>
 <td class="instruction">LD DE,(53843)</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=*<a href="53843.html">53843</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59643"></span>59643</td>
 <td class="instruction">CALL <a href="55823.html">55823</a></td>
 <td class="comment-1" rowspan="1">Call <a href="55823.html">55823</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59646"></span>59646</td>
 <td class="instruction">LD A,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53837.html">53837</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53837.html">Temp_MonsterXPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59649"></span>59649</td>
 <td class="instruction">DEC A</td>
 <td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59650"></span>59650</td>
 <td class="instruction">CP 252</td>
 <td class="comment-1" rowspan="2">Jump to <a href="61318.html">61318</a> if <span class="register">A</span> is equal to 252.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59652"></span>59652</td>
 <td class="instruction">JP Z,<a href="61318.html">61318</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59655"></span>59655</td>
 <td class="instruction">LD (53837),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53837.html">53837</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53837.html">Temp_MonsterXPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59658"></span>59658</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="2">Write 0 to *<span class="register">IX</span>+5.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59659"></span>59659</td>
 <td class="instruction">LD (IX+5),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59662"></span>59662</td>
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="2">Write 1 to *<a href="53831.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59663"></span>59663</td>
 <td class="instruction">LD (53831),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59666"></span>59666</td>
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="3">Write 2 to: <ul class="">
@@ -1359,86 +1643,114 @@ This entry point is used by the routine at <a href="60150.html">60150</a>.
 </ul></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59667"></span>59667</td>
 <td class="instruction">LD (IX+0),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59670"></span>59670</td>
 <td class="instruction">LD (53828),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59673"></span>59673</td>
 <td class="instruction">JP <a href="58925.html#59004">59004</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">59004</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="59676"></span>
+<div class="comments">
+<div class="paragraph">
+Controls: Right.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Controls_Right</td>
 <td class="address-2"><span id="59676"></span>59676</td>
 <td class="instruction">BIT 1,A</td>
-<td class="comment-1" rowspan="2">Jump to <a href="59020.html#59728">59728</a> if bit 1 of <span class="register">A</span> is not set.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="59020.html#59728">Handler_Controls_23</a> if the key for right is not being pressed.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59678"></span>59678</td>
-<td class="instruction">JR Z,<a href="59020.html#59728">59728</a></td>
+<td class="instruction">JR Z,<a href="59020.html#59728">Handler_Controls_23</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59680"></span>59680</td>
 <td class="instruction">LD A,(53830)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">53830</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59683"></span>59683</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59684"></span>59684</td>
 <td class="instruction">JP C,<a href="61318.html">61318</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="61318.html">61318</a> if the carry flag is set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59687"></span>59687</td>
 <td class="instruction">LD A,1</td>
 <td class="comment-1" rowspan="2">Write 1 to *<a href="53839.html">53839</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59689"></span>59689</td>
 <td class="instruction">LD (53839),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59692"></span>59692</td>
 <td class="instruction">LD DE,(53843)</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=*<a href="53843.html">53843</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59696"></span>59696</td>
 <td class="instruction">CALL <a href="55823.html">55823</a></td>
 <td class="comment-1" rowspan="1">Call <a href="55823.html">55823</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59699"></span>59699</td>
 <td class="instruction">LD A,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53837.html">53837</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53837.html">Temp_MonsterXPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59702"></span>59702</td>
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59703"></span>59703</td>
 <td class="instruction">CP 30</td>
 <td class="comment-1" rowspan="2">Jump to <a href="61318.html">61318</a> if <span class="register">A</span> is equal to 30.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59705"></span>59705</td>
 <td class="instruction">JP Z,<a href="61318.html">61318</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59708"></span>59708</td>
 <td class="instruction">LD (53837),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53837.html">53837</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53837.html">Temp_MonsterXPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59711"></span>59711</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="3">Write 0 to: <ul class="">
@@ -1447,14 +1759,17 @@ This entry point is used by the routine at <a href="60150.html">60150</a>.
 </ul></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59712"></span>59712</td>
 <td class="instruction">LD (IX+5),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59715"></span>59715</td>
 <td class="instruction">LD (53831),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59718"></span>59718</td>
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="3">Write 1 to: <ul class="">
@@ -1463,57 +1778,67 @@ This entry point is used by the routine at <a href="60150.html">60150</a>.
 </ul></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59719"></span>59719</td>
 <td class="instruction">LD (IX+0),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59722"></span>59722</td>
 <td class="instruction">LD (53828),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59725"></span>59725</td>
 <td class="instruction">JP <a href="58925.html#59004">59004</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">59004</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Handler_Controls_23</td>
 <td class="address-2"><span id="59728"></span>59728</td>
 <td class="instruction">LD A,(53833)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53833.html">53833</a>.</td>
+<td class="comment-1" rowspan="3">Decrease *<a href="53833.html">53833</a> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59731"></span>59731</td>
 <td class="instruction">DEC A</td>
-<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59732"></span>59732</td>
 <td class="instruction">LD (53833),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53833.html">53833</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59735"></span>59735</td>
 <td class="instruction">JP NZ,<a href="61318.html">61318</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="61318.html">61318</a> if <span class="register">A</span> is not zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59738"></span>59738</td>
 <td class="instruction">LD A,25</td>
 <td class="comment-1" rowspan="2">Write 25 to *<a href="53833.html">53833</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59740"></span>59740</td>
 <td class="instruction">LD (53833),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59743"></span>59743</td>
 <td class="instruction">LD A,5</td>
 <td class="comment-1" rowspan="2">Write 5 to *<a href="53828.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59745"></span>59745</td>
 <td class="instruction">LD (53828),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59748"></span>59748</td>
 <td class="instruction">JP <a href="58925.html#59004">59004</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">59004</a>.</td>

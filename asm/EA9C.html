@@ -44,7 +44,7 @@ Next: <a href="EAF6.html">EAF6</a>
 <tr>
 <td class="address-2"><span id="ea9c"></span>EA9C</td>
 <td class="instruction">LD A,($D24B)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="EA9C.html#eab4">EAB4</a> if *<a href="D24B.html">D24B</a> is equal to 19.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EA9C.html#eab4">EAB4</a> if *<a href="D24B.html">Temp_MonsterActionCountdown</a> is equal to 19.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ea9f"></span>EA9F</td>
@@ -62,7 +62,7 @@ Next: <a href="EAF6.html">EAF6</a>
 <tr>
 <td class="address-1"><span id="eaa4"></span>EAA4</td>
 <td class="instruction">LD ($D24B),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D24B.html">D24B</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D24B.html">Temp_MonsterActionCountdown</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="eaa7"></span>EAA7</td>
@@ -72,7 +72,7 @@ Next: <a href="EAF6.html">EAF6</a>
 <tr>
 <td class="address-1"><span id="eaa9"></span>EAA9</td>
 <td class="instruction">LD A,$19</td>
-<td class="comment-1" rowspan="2">Write 19 to *<a href="D24B.html">D24B</a>.</td>
+<td class="comment-1" rowspan="2">Write 19 to *<a href="D24B.html">Temp_MonsterActionCountdown</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="eaab"></span>EAAB</td>
@@ -117,8 +117,8 @@ Next: <a href="EAF6.html">EAF6</a>
 </tr>
 <tr>
 <td class="address-1"><span id="eabe"></span>EABE</td>
-<td class="instruction">CALL NC,<a href="DA61.html">$DA61</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DA61.html">DA61</a> if the carry flag is not set.</td>
+<td class="instruction">CALL NC,<a href="DA61.html">Handler_DecreaseMonsterXPosition</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DA61.html">Handler_DecreaseMonsterXPosition</a> if the carry flag is not set.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="eac1"></span>EAC1</td>
@@ -149,22 +149,44 @@ Next: <a href="EAF6.html">EAF6</a>
 <tr>
 <td class="address-2"><span id="eace"></span>EACE</td>
 <td class="instruction">LD A,$07</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=07.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 07. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">07</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-7-left" src="../images/scr/sprite-7-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">47</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-71-left" src="../images/scr/sprite-71-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">87</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-135-left" src="../images/scr/sprite-135-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="ead0"></span>EAD0</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">D24D</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Temp_MonsterXPosition</a>/<a href="D24D.html#d24e">Temp_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ead4"></span>EAD4</td>
-<td class="instruction">CALL <a href="D9BB.html">$D9BB</a></td>
-<td class="comment-1" rowspan="1">Call <a href="D9BB.html">D9BB</a>.</td>
+<td class="instruction">CALL <a href="D9BB.html">DrawMonsterSprite</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D9BB.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ead7"></span>EAD7</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">D24D</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Temp_MonsterXPosition</a>/<a href="D24D.html#d24e">Temp_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="eadb"></span>EADB</td>
@@ -203,12 +225,34 @@ Next: <a href="EAF6.html">EAF6</a>
 <tr>
 <td class="address-1"><span id="eae5"></span>EAE5</td>
 <td class="instruction">LD A,$1B</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=1B.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 1B. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">1B</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-27-left" src="../images/scr/sprite-27-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">5B</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-91-left" src="../images/scr/sprite-91-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">9B</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-155-left" src="../images/scr/sprite-155-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="eae7"></span>EAE7</td>
-<td class="instruction">CALL <a href="D9BB.html">$D9BB</a></td>
-<td class="comment-1" rowspan="1">Call <a href="D9BB.html">D9BB</a>.</td>
+<td class="instruction">CALL <a href="D9BB.html">DrawMonsterSprite</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D9BB.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="eaea"></span>EAEA</td>

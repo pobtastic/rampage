@@ -44,7 +44,7 @@ Next: <a href="EF0A.html">EF0A</a>
 <tr>
 <td class="address-2"><span id="eeeb"></span>EEEB</td>
 <td class="instruction">LD A,($D24E)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="EEEB.html#eefc">EEFC</a> if *<a href="D24D.html#d24e">D24E</a> is not equal to 14.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EEEB.html#eefc">EEFC</a> if *<a href="D24D.html#d24e">Temp_MonsterYPosition</a> is not equal to 14.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="eeee"></span>EEEE</td>
@@ -85,17 +85,26 @@ Next: <a href="EF0A.html">EF0A</a>
 <tr>
 <td class="address-1"><span id="eefd"></span>EEFD</td>
 <td class="instruction">LD ($D24E),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D24D.html#d24e">D24E</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D24D.html#d24e">Temp_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ef00"></span>EF00</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">D24D</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Temp_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ef04"></span>EF04</td>
 <td class="instruction">LD A,$35</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=35.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=35. <table class="default">
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">35</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-53-left" src="../images/scr/sprite-53-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="ef06"></span>EF06</td>

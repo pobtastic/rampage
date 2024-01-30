@@ -91,7 +91,7 @@ Used by the routine at <a href="EAF6.html">EAF6</a>.
 <tr>
 <td class="address-1"><span id="ecf5"></span>ECF5</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">D24D</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Temp_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ecf9"></span>ECF9</td>
@@ -105,17 +105,39 @@ Used by the routine at <a href="EAF6.html">EAF6</a>.
 <tr>
 <td class="address-1"><span id="ecfb"></span>ECFB</td>
 <td class="instruction">LD A,$25</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=25.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 25. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">25</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-37-left" src="../images/scr/sprite-37-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">65</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-101-left" src="../images/scr/sprite-101-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">A5</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-165-left" src="../images/scr/sprite-165-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="ecfd"></span>ECFD</td>
-<td class="instruction">CALL <a href="D9BB.html">$D9BB</a></td>
-<td class="comment-1" rowspan="1">Call <a href="D9BB.html">D9BB</a>.</td>
+<td class="instruction">CALL <a href="D9BB.html">DrawMonsterSprite</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D9BB.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ed00"></span>ED00</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">D24D</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Temp_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ed04"></span>ED04</td>
@@ -129,12 +151,34 @@ Used by the routine at <a href="EAF6.html">EAF6</a>.
 <tr>
 <td class="address-1"><span id="ed06"></span>ED06</td>
 <td class="instruction">LD A,$23</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=23.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 23. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">23</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-35-left" src="../images/scr/sprite-35-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">63</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-99-left" src="../images/scr/sprite-99-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">A3</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-163-left" src="../images/scr/sprite-163-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="ed08"></span>ED08</td>
-<td class="instruction">CALL <a href="D9BB.html">$D9BB</a></td>
-<td class="comment-1" rowspan="1">Call <a href="D9BB.html">D9BB</a>.</td>
+<td class="instruction">CALL <a href="D9BB.html">DrawMonsterSprite</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D9BB.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ed0b"></span>ED0B</td>
@@ -159,7 +203,7 @@ Used by the routine at <a href="EAF6.html">EAF6</a>.
 <tr>
 <td class="address-1"><span id="ed15"></span>ED15</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">D24D</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Temp_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ed19"></span>ED19</td>
@@ -173,17 +217,39 @@ Used by the routine at <a href="EAF6.html">EAF6</a>.
 <tr>
 <td class="address-1"><span id="ed1b"></span>ED1B</td>
 <td class="instruction">LD A,$23</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=23.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 23. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">23</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-35-left" src="../images/scr/sprite-35-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">63</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-99-left" src="../images/scr/sprite-99-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">A3</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-163-left" src="../images/scr/sprite-163-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="ed1d"></span>ED1D</td>
-<td class="instruction">CALL <a href="D9BB.html">$D9BB</a></td>
-<td class="comment-1" rowspan="1">Call <a href="D9BB.html">D9BB</a>.</td>
+<td class="instruction">CALL <a href="D9BB.html">DrawMonsterSprite</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D9BB.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ed20"></span>ED20</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">D24D</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Temp_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ed24"></span>ED24</td>
@@ -210,12 +276,34 @@ Used by the routine at <a href="EAF6.html">EAF6</a>.
 <tr>
 <td class="address-1"><span id="ed2b"></span>ED2B</td>
 <td class="instruction">LD A,$1D</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=1D.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 1D. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">1D</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-29-left" src="../images/scr/sprite-29-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">5D</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-93-left" src="../images/scr/sprite-93-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">9D</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-157-left" src="../images/scr/sprite-157-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="ed2d"></span>ED2D</td>
-<td class="instruction">CALL <a href="D9BB.html">$D9BB</a></td>
-<td class="comment-1" rowspan="1">Call <a href="D9BB.html">D9BB</a>.</td>
+<td class="instruction">CALL <a href="D9BB.html">DrawMonsterSprite</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D9BB.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ed30"></span>ED30</td>

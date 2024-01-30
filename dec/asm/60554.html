@@ -44,7 +44,7 @@ Next: <a href="60640.html">60640</a>
 <tr>
 <td class="address-2"><span id="60554"></span>60554</td>
 <td class="instruction">LD A,(53838)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="60554.html#60608">60608</a> if *<a href="53837.html#53838">53838</a> is equal to 18.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="60554.html#60608">60608</a> if *<a href="53837.html#53838">Temp_MonsterYPosition</a> is equal to 18.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60557"></span>60557</td>
@@ -57,7 +57,7 @@ Next: <a href="60640.html">60640</a>
 <tr>
 <td class="address-1"><span id="60561"></span>60561</td>
 <td class="instruction">LD A,(53835)</td>
-<td class="comment-1" rowspan="3">Decrease *<a href="53835.html">53835</a> by one.</td>
+<td class="comment-1" rowspan="3">Decrease *<a href="53835.html">Temp_MonsterActionCountdown</a> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60564"></span>60564</td>
@@ -70,7 +70,7 @@ Next: <a href="60640.html">60640</a>
 <tr>
 <td class="address-1"><span id="60568"></span>60568</td>
 <td class="instruction">CP 18</td>
-<td class="comment-1" rowspan="2">Jump to <a href="60554.html#60579">60579</a> if *<a href="53835.html">53835</a> is higher than 18.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="60554.html#60579">60579</a> if *<a href="53835.html">Temp_MonsterActionCountdown</a> is higher than 18.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60570"></span>60570</td>
@@ -78,8 +78,8 @@ Next: <a href="60640.html">60640</a>
 </tr>
 <tr>
 <td class="address-1"><span id="60572"></span>60572</td>
-<td class="instruction">CALL <a href="55897.html">55897</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55897.html">55897</a>.</td>
+<td class="instruction">CALL <a href="55897.html">Handler_IncrementMonsterYPosition</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55897.html">Handler_IncrementMonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60575"></span>60575</td>
@@ -93,12 +93,34 @@ Next: <a href="60640.html">60640</a>
 <tr>
 <td class="address-2"><span id="60579"></span>60579</td>
 <td class="instruction">LD A,9</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=9.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 9. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">9</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-9-left" src="../../images/scr/sprite-9-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">73</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-73-left" src="../../images/scr/sprite-73-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">137</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-137-left" src="../../images/scr/sprite-137-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="60581"></span>60581</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">53837</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Temp_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60585"></span>60585</td>
@@ -107,8 +129,8 @@ Next: <a href="60640.html">60640</a>
 </tr>
 <tr>
 <td class="address-1"><span id="60586"></span>60586</td>
-<td class="instruction">CALL <a href="55739.html">55739</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55739.html">55739</a>.</td>
+<td class="instruction">CALL <a href="55739.html">DrawMonsterSprite</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55739.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60589"></span>60589</td>
@@ -148,17 +170,39 @@ Next: <a href="60640.html">60640</a>
 <tr>
 <td class="address-1"><span id="60599"></span>60599</td>
 <td class="instruction">LD A,23</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=23.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 23. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">23</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-23-left" src="../../images/scr/sprite-23-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">87</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-87-left" src="../../images/scr/sprite-87-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">151</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-151-left" src="../../images/scr/sprite-151-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="60601"></span>60601</td>
-<td class="instruction">CALL <a href="55739.html">55739</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55739.html">55739</a>.</td>
+<td class="instruction">CALL <a href="55739.html">DrawMonsterSprite</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55739.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60604"></span>60604</td>
-<td class="instruction">CALL <a href="55897.html">55897</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55897.html">55897</a>.</td>
+<td class="instruction">CALL <a href="55897.html">Handler_IncrementMonsterYPosition</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55897.html">Handler_IncrementMonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60607"></span>60607</td>
@@ -177,13 +221,13 @@ Next: <a href="60640.html">60640</a>
 </tr>
 <tr>
 <td class="address-1"><span id="60612"></span>60612</td>
-<td class="instruction">CALL NC,<a href="55905.html">55905</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55905.html">55905</a> if the carry flag is not set.</td>
+<td class="instruction">CALL NC,<a href="55905.html">Handler_DecreaseMonsterXPosition</a></td>
+<td class="comment-1" rowspan="1">Call <a href="55905.html">Handler_DecreaseMonsterXPosition</a> if the carry flag is not set.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60615"></span>60615</td>
 <td class="instruction">LD A,18</td>
-<td class="comment-1" rowspan="2">Write 18 to *<a href="53837.html#53838">53838</a>.</td>
+<td class="comment-1" rowspan="2">Write 18 to *<a href="53837.html#53838">Temp_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60617"></span>60617</td>
@@ -192,7 +236,7 @@ Next: <a href="60640.html">60640</a>
 <tr>
 <td class="address-1"><span id="60620"></span>60620</td>
 <td class="instruction">LD A,25</td>
-<td class="comment-1" rowspan="2">Write 25 to *<a href="53835.html">53835</a>.</td>
+<td class="comment-1" rowspan="2">Write 25 to *<a href="53835.html">Temp_MonsterActionCountdown</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60622"></span>60622</td>

@@ -33,33 +33,37 @@ Next: <a href="D9C3.html">D9C3</a>
 </td>
 </tr>
 </table>
-<div class="description">D9BB: Routine at D9BB</div>
+<div class="description">D9BB: Draw Monster Sprite</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="E99B.html">E99B</a>, <a href="EA18.html">EA18</a>, <a href="EA43.html">EA43</a>, <a href="EA9C.html">EA9C</a>, <a href="EAF6.html">EAF6</a>, <a href="EC8A.html">EC8A</a>, <a href="ECE0.html">ECE0</a>, <a href="ED31.html">ED31</a>, <a href="EDC2.html">EDC2</a>, <a href="EE70.html">EE70</a> and <a href="EE9B.html">EE9B</a>.
+Used by the routines at <a href="E99B.html">E99B</a>, <a href="EA18.html">EA18</a>, <a href="EA43.html">Animate_Falling</a>, <a href="EA9C.html">EA9C</a>, <a href="EAF6.html">EAF6</a>, <a href="EC8A.html">EC8A</a>, <a href="ECE0.html">ECE0</a>, <a href="ED31.html">ED31</a>, <a href="EDC2.html">EDC2</a>, <a href="EE70.html">Animate_Grabbing</a> and <a href="EE9B.html">Animate_Eating</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">DrawMonsterSprite</td>
 <td class="address-2"><span id="d9bb"></span>D9BB</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d9bc"></span>D9BC</td>
 <td class="instruction">LD A,($D251)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D251.html">D251</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D251.html">MonsterSpriteModifier</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d9bf"></span>D9BF</td>
 <td class="instruction">OR L</td>
 <td class="comment-1" rowspan="1">Set the bits from <span class="register">L</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="d9c0"></span>D9C0</td>
 <td class="instruction">JP <a href="D6C9.html">PrintSprite</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="D6C9.html">PrintSprite</a>.</td>

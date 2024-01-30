@@ -45,10 +45,20 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="56481"></span>
+<div class="comments">
+<div class="paragraph">
+Just return if the number of active humans is already at the maximum amount for this level.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label">Handler_SpawnHumans</td>
 <td class="address-2"><span id="56481"></span>56481</td>
 <td class="instruction">LD A,(54260)</td>
-<td class="comment-1" rowspan="2"><span class="register">B</span>=*<a href="54260.html">NumberHumans</a>.</td>
+<td class="comment-1" rowspan="5">Return if *<a href="54260.html">NumberHumans</a> is equal to *<a href="53777.html">MaxHumansCount</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -59,7 +69,6 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="56485"></span>56485</td>
 <td class="instruction">LD A,(53777)</td>
-<td class="comment-1" rowspan="3">Return if *<a href="53777.html">MaxHumansCount</a> is equal to <span class="register">B</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -70,6 +79,16 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="56489"></span>56489</td>
 <td class="instruction">RET Z</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56490"></span>
+<div class="comments">
+<div class="paragraph">
+Add a hint of randomness to whether we proceed or not. Roughly 50% chance.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -86,7 +105,7 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="56494"></span>56494</td>
 <td class="instruction">LD A,(53776)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53776.html">53776</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53776.html">53776</a> (this appears to only ever be set to 128).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -100,6 +119,16 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <td class="instruction">RET C</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="56499"></span>
+<div class="comments">
+<div class="paragraph">
+Creates a random number between 0000-765.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56499"></span>56499</td>
 <td class="instruction">CALL <a href="55848.html">RandomNumber</a></td>
@@ -109,13 +138,12 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="56502"></span>56502</td>
 <td class="instruction">LD H,0</td>
-<td class="comment-1" rowspan="1"><span class="register">H</span>=0.</td>
+<td class="comment-1" rowspan="2"><span class="register">HL</span>=random number between 0000-0255.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56504"></span>56504</td>
 <td class="instruction">LD L,A</td>
-<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -127,13 +155,12 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="56508"></span>56508</td>
 <td class="instruction">LD B,H</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">H</span>.</td>
+<td class="comment-1" rowspan="2"><span class="register">BC</span>=random number between 0000-0255.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56509"></span>56509</td>
 <td class="instruction">LD C,A</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -145,37 +172,44 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="56513"></span>56513</td>
 <td class="instruction">LD D,H</td>
-<td class="comment-1" rowspan="1"><span class="register">D</span>=<span class="register">H</span>.</td>
+<td class="comment-1" rowspan="2"><span class="register">DE</span>=random number between 0000-0255.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56514"></span>56514</td>
 <td class="instruction">LD E,A</td>
-<td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56515"></span>56515</td>
 <td class="instruction">ADD HL,DE</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">DE</span>.</td>
+<td class="comment-1" rowspan="2">Add them all together: <span class="register">HL</span>=<span class="register">HL</span>+<span class="register">DE</span>+<span class="register">BC</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56516"></span>56516</td>
 <td class="instruction">ADD HL,BC</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">BC</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56517"></span>56517</td>
 <td class="instruction">LD B,H</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">H</span>.</td>
+<td class="comment-1" rowspan="2"><span class="register">BC</span>=<span class="register">HL</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56518"></span>56518</td>
 <td class="instruction">LD C,L</td>
-<td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">L</span>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56519"></span>
+<div class="comments">
+<div class="paragraph">
+Adding 101 to <span class="register">H</span> gives an address range of anywhere between <a href="25856.html">25856</a>-26621.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -197,7 +231,7 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="56523"></span>56523</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="56481.html#56533">Handler_SpawnHumans_0</a> if *<span class="register">HL</span> is not zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="56481.html#56533">FoundSolidMatter</a> if *<span class="register">HL</span> is not zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -207,7 +241,17 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56525"></span>56525</td>
-<td class="instruction">JR NZ,<a href="56481.html#56533">Handler_SpawnHumans_0</a></td>
+<td class="instruction">JR NZ,<a href="56481.html#56533">FoundSolidMatter</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56527"></span>
+<div class="comments">
+<div class="paragraph">
+The address in the buffer isn't compatible with containing a human, so have one more try...
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -226,6 +270,16 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <td class="instruction">DEC H</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="56530"></span>
+<div class="comments">
+<div class="paragraph">
+Just give up here if we still haven't found a building to land on.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56530"></span>56530</td>
 <td class="instruction">LD A,(HL)</td>
@@ -242,7 +296,17 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <td class="instruction">RET Z</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_SpawnHumans_0</td>
+<td class="routine-comment" colspan="5">
+<span id="56533"></span>
+<div class="comments">
+<div class="paragraph">
+The routine has found "something" but we still need to check that it's compatible with containing a human.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">FoundSolidMatter</td>
 <td class="address-2"><span id="56533"></span>56533</td>
 <td class="instruction">AND %01000000</td>
 <td class="comment-1" rowspan="1">Keep only bit 6.</td>
@@ -290,8 +354,8 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56545"></span>56545</td>
-<td class="instruction">JR Z,<a href="56481.html#56559">Handler_SpawnHumans_1</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="56481.html#56559">Handler_SpawnHumans_1</a> if the result is zero.</td>
+<td class="instruction">JR Z,<a href="56481.html#56559">Handler_SpawnHumans_0</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="56481.html#56559">Handler_SpawnHumans_0</a> if the result is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -344,11 +408,11 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56557"></span>56557</td>
-<td class="instruction">JR <a href="56481.html#56570">Handler_SpawnHumans_2</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="56481.html#56570">Handler_SpawnHumans_2</a>.</td>
+<td class="instruction">JR <a href="56481.html#56570">Handler_SpawnHumans_1</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="56481.html#56570">Handler_SpawnHumans_1</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_SpawnHumans_1</td>
+<td class="asm-label">Handler_SpawnHumans_0</td>
 <td class="address-2"><span id="56559"></span>56559</td>
 <td class="instruction">LD A,8</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=8.</td>
@@ -402,7 +466,7 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <td class="comment-1" rowspan="1">Decrease <span class="register">C</span> by one.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_SpawnHumans_2</td>
+<td class="asm-label">Handler_SpawnHumans_1</td>
 <td class="address-2"><span id="56570"></span>56570</td>
 <td class="instruction">PUSH BC</td>
 <td class="comment-1" rowspan="1">Stash <span class="register">BC</span> on the stack.</td>
@@ -453,6 +517,16 @@ Used by the routine at <a href="56951.html">RunHandlers</a>.
 <td class="comment-1" rowspan="1">Exchange the <span class="register">DE</span> and <span class="register">HL</span> registers.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="56581"></span>
+<div class="comments">
+<div class="paragraph">
+Register that a new human has been created.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="56581"></span>56581</td>
 <td class="instruction">LD A,(54260)</td>
@@ -482,7 +556,7 @@ Loop to find an empty slot.
 <td class="asm-label"></td>
 <td class="address-1"><span id="56588"></span>56588</td>
 <td class="instruction">LD HL,53841</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="53841.html">53841</a> (<a href="53845.html">Table_Humans</a>-4).</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="53841.html">MonsterSpriteModifier</a> (<a href="53845.html">Table_Humans</a>-4).</td>
 </tr>
 <tr>
 <td class="asm-label">Handler_Humans_FindSlot</td>
@@ -528,6 +602,9 @@ Loop to find an empty slot.
 <div class="paragraph">
 Found an empty slot.
 </div>
+<div class="paragraph">
+All humans start as type <a href="58005.html">1</a>.
+</div>
 </div>
 </td>
 </tr>
@@ -536,6 +613,16 @@ Found an empty slot.
 <td class="address-1"><span id="56599"></span>56599</td>
 <td class="instruction">LD (HL),1</td>
 <td class="comment-1" rowspan="1">Write human type <a href="58005.html">1</a> to *<span class="register">HL</span>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="56601"></span>
+<div class="comments">
+<div class="paragraph">
+Set a random countdown value.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -611,7 +698,7 @@ Found an empty slot.
 <td class="asm-label"></td>
 <td class="address-1"><span id="56618"></span>56618</td>
 <td class="instruction">RLCA</td>
-<td class="comment-1" rowspan="3">RLCA.</td>
+<td class="comment-1" rowspan="3">Rotate <span class="register">A</span> left three positions (bits 5 to 7 are now in positions 0 to 2).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -627,7 +714,7 @@ Found an empty slot.
 <td class="asm-label"></td>
 <td class="address-1"><span id="56621"></span>56621</td>
 <td class="instruction">LD B,A</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
+<td class="comment-1" rowspan="1">Store the result in <span class="register">B</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -639,7 +726,7 @@ Found an empty slot.
 <td class="asm-label"></td>
 <td class="address-1"><span id="56623"></span>56623</td>
 <td class="instruction">RLCA</td>
-<td class="comment-1" rowspan="3">RLCA.</td>
+<td class="comment-1" rowspan="3">Rotate <span class="register">A</span> left three positions (bits 5 to 7 are now in positions 0 to 2).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

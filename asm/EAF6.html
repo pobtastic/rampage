@@ -71,7 +71,7 @@ Next: <a href="EC8A.html">EC8A</a>
 <tr>
 <td class="address-1"><span id="eb06"></span>EB06</td>
 <td class="instruction">LD A,($D24E)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="EAF6.html#eb2f">EB2F</a> if *<a href="D24D.html#d24e">D24E</a> is higher than 11.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EAF6.html#eb2f">EB2F</a> if *<a href="D24D.html#d24e">Temp_MonsterYPosition</a> is higher than 11.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="eb09"></span>EB09</td>
@@ -84,7 +84,7 @@ Next: <a href="EC8A.html">EC8A</a>
 <tr>
 <td class="address-1"><span id="eb0d"></span>EB0D</td>
 <td class="instruction">LD A,($D24D)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="EAF6.html#eb18">EB18</a> if *<a href="D24D.html">D24D</a> is equal to FF.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EAF6.html#eb18">EB18</a> if *<a href="D24D.html">Temp_MonsterXPosition</a> is equal to FF.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="eb10"></span>EB10</td>
@@ -97,7 +97,7 @@ Next: <a href="EC8A.html">EC8A</a>
 <tr>
 <td class="address-1"><span id="eb14"></span>EB14</td>
 <td class="instruction">CP $1D</td>
-<td class="comment-1" rowspan="2">Jump to <a href="EAF6.html#eb2f">EB2F</a> if *<a href="D24D.html">D24D</a> is higher than 1D.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="EAF6.html#eb2f">EB2F</a> if *<a href="D24D.html">Temp_MonsterXPosition</a> is higher than 1D.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="eb16"></span>EB16</td>
@@ -130,8 +130,8 @@ Next: <a href="EC8A.html">EC8A</a>
 </tr>
 <tr>
 <td class="address-1"><span id="eb20"></span>EB20</td>
-<td class="instruction">CALL NZ,<a href="DA61.html">$DA61</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DA61.html">DA61</a> not zero.</td>
+<td class="instruction">CALL NZ,<a href="DA61.html">Handler_DecreaseMonsterXPosition</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DA61.html">Handler_DecreaseMonsterXPosition</a> not zero.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="eb23"></span>EB23</td>
@@ -145,8 +145,8 @@ Next: <a href="EC8A.html">EC8A</a>
 </tr>
 <tr>
 <td class="address-1"><span id="eb27"></span>EB27</td>
-<td class="instruction">CALL C,<a href="DA59.html">$DA59</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DA59.html">DA59</a> if the carry flag is set.</td>
+<td class="instruction">CALL C,<a href="DA59.html">Handler_IncrementMonsterYPosition</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DA59.html">Handler_IncrementMonsterYPosition</a> if the carry flag is set.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="eb2a"></span>EB2A</td>
@@ -155,15 +155,15 @@ Next: <a href="EC8A.html">EC8A</a>
 </tr>
 <tr>
 <td class="address-1"><span id="eb2c"></span>EB2C</td>
-<td class="instruction">JP <a href="E68C.html#e6c5">$E6C5</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E68C.html#e6c5">E6C5</a>.</td>
+<td class="instruction">JP <a href="E68C.html#e6c5">Controls_Up</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E68C.html#e6c5">Controls_Up</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
 <span id="eb2f"></span>
 <div class="comments">
 <div class="paragraph">
-This entry point is used by the routine at <a href="E68C.html">E68C</a>.
+This entry point is used by the routine at <a href="E68C.html">Handler_Controls</a>.
 </div>
 </div>
 </td>
@@ -241,7 +241,7 @@ This entry point is used by the routine at <a href="E68C.html">E68C</a>.
 <tr>
 <td class="address-2"><span id="eb4f"></span>EB4F</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">D24D</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Temp_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="eb53"></span>EB53</td>
@@ -451,7 +451,7 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 <tr>
 <td class="address-1"><span id="eba0"></span>EBA0</td>
 <td class="instruction">LD A,B</td>
-<td class="comment-1" rowspan="2">Write <span class="register">B</span> to *<a href="D24D.html#d24e">D24E</a>.</td>
+<td class="comment-1" rowspan="2">Write <span class="register">B</span> to *<a href="D24D.html#d24e">Temp_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="eba1"></span>EBA1</td>
@@ -628,7 +628,7 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 <tr>
 <td class="address-1"><span id="ebf3"></span>EBF3</td>
 <td class="instruction">LD ($D24E),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D24D.html#d24e">D24E</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D24D.html#d24e">Temp_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ebf6"></span>EBF6</td>
@@ -738,7 +738,7 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 <tr>
 <td class="address-2"><span id="ec30"></span>EC30</td>
 <td class="instruction">LD ($D24D),BC</td>
-<td class="comment-1" rowspan="1">Write <span class="register">BC</span> to *<a href="D24D.html">D24D</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">BC</span> to *<a href="D24D.html">Temp_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ec34"></span>EC34</td>
@@ -765,8 +765,8 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 </tr>
 <tr>
 <td class="address-1"><span id="ec3f"></span>EC3F</td>
-<td class="instruction">CALL <a href="D9BB.html">$D9BB</a></td>
-<td class="comment-1" rowspan="1">Call <a href="D9BB.html">D9BB</a>.</td>
+<td class="instruction">CALL <a href="D9BB.html">DrawMonsterSprite</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D9BB.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ec42"></span>EC42</td>
@@ -810,8 +810,8 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 </tr>
 <tr>
 <td class="address-1"><span id="ec4e"></span>EC4E</td>
-<td class="instruction">CALL <a href="D9BB.html">$D9BB</a></td>
-<td class="comment-1" rowspan="1">Call <a href="D9BB.html">D9BB</a>.</td>
+<td class="instruction">CALL <a href="D9BB.html">DrawMonsterSprite</a></td>
+<td class="comment-1" rowspan="1">Call <a href="D9BB.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ec51"></span>EC51</td>
@@ -821,7 +821,7 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 <tr>
 <td class="address-2"><span id="ec52"></span>EC52</td>
 <td class="instruction">LD ($D24D),BC</td>
-<td class="comment-1" rowspan="1">Write <span class="register">BC</span> to *<a href="D24D.html">D24D</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">BC</span> to *<a href="D24D.html">Temp_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ec56"></span>EC56</td>
@@ -835,8 +835,8 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 </tr>
 <tr>
 <td class="address-1"><span id="ec5a"></span>EC5A</td>
-<td class="instruction">CALL NC,<a href="DA61.html">$DA61</a></td>
-<td class="comment-1" rowspan="1">Call <a href="DA61.html">DA61</a> if the carry flag is not set.</td>
+<td class="instruction">CALL NC,<a href="DA61.html">Handler_DecreaseMonsterXPosition</a></td>
+<td class="comment-1" rowspan="1">Call <a href="DA61.html">Handler_DecreaseMonsterXPosition</a> if the carry flag is not set.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ec5d"></span>EC5D</td>
@@ -896,7 +896,7 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 <tr>
 <td class="address-1"><span id="ec76"></span>EC76</td>
 <td class="instruction">LD A,($D24E)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="EF86.html">EF86</a> if *<a href="D24D.html#d24e">D24E</a> is equal to 12.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EF86.html">EF86</a> if *<a href="D24D.html#d24e">Temp_MonsterYPosition</a> is equal to 12.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ec79"></span>EC79</td>
@@ -918,7 +918,7 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 <tr>
 <td class="address-1"><span id="ec83"></span>EC83</td>
 <td class="instruction">LD A,B</td>
-<td class="comment-1" rowspan="2">Write <span class="register">B</span> to *<a href="D24D.html#d24e">D24E</a>.</td>
+<td class="comment-1" rowspan="2">Write <span class="register">B</span> to *<a href="D24D.html#d24e">Temp_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ec84"></span>EC84</td>

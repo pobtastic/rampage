@@ -158,7 +158,7 @@ Used by the routine at <a href="57625.html">PrintMonsters</a>.
 <tr>
 <td class="address-2"><span id="58968"></span>58968</td>
 <td class="instruction">LD A,(53838)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="58925.html#59004">59004</a> if *<a href="53837.html#53838">53838</a> is equal to 18.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="58925.html#59004">59004</a> if *<a href="53837.html#53838">Temp_MonsterYPosition</a> is equal to 18.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="58971"></span>58971</td>
@@ -233,7 +233,7 @@ Used by the routine at <a href="57625.html">PrintMonsters</a>.
 <span id="59004"></span>
 <div class="comments">
 <div class="paragraph">
-This entry point is used by the routines at <a href="59020.html">59020</a>, <a href="59908.html">59908</a>, <a href="59928.html">59928</a>, <a href="59971.html">59971</a>, <a href="60060.html">60060</a>, <a href="60150.html">60150</a>, <a href="61040.html">61040</a>, <a href="61083.html">61083</a> and <a href="61264.html">61264</a>.
+This entry point is used by the routines at <a href="59020.html">Handler_Controls</a>, <a href="59908.html">59908</a>, <a href="59928.html">59928</a>, <a href="59971.html">Animate_Falling</a>, <a href="60060.html">60060</a>, <a href="60150.html">60150</a>, <a href="61040.html">Animate_Grabbing</a>, <a href="61083.html">Animate_Eating</a> and <a href="61264.html">61264</a>.
 </div>
 </div>
 </td>
@@ -270,7 +270,7 @@ Create an offset using <span class="register">HL</span>.
 <tr>
 <td class="address-1"><span id="59011"></span>59011</td>
 <td class="instruction">LD DE,61336</td>
-<td class="comment-1" rowspan="2"><span class="register">HL</span>+=<a href="61336.html">Jump_Table</a>.</td>
+<td class="comment-1" rowspan="2"><span class="register">HL</span>+=<a href="61336.html">JumpTable</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="59014"></span>59014</td>

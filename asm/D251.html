@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Rampage: Data at D251</title>
+<title>Rampage: Game status buffer entry at D251</title>
 <meta charset="utf-8" />
 <link rel="stylesheet" type="text/css" href="../skoolkit.css" />
 <link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
@@ -15,11 +15,11 @@ gtag('js', new Date());
 gtag('config', 'G-75RERFCHBG');
 </script>
 </head>
-<body class="Asm-b">
+<body class="Asm-g">
 <table class="header">
 <tr>
 <td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
-<td class="page-header">Data</td>
+<td class="page-header">Game status buffer</td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -33,15 +33,40 @@ Next: <a href="D252.html">D252</a>
 </td>
 </tr>
 </table>
-<div class="description">D251: Data block at D251</div>
+<div class="description">D251: Monster Sprite Modifier</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
+<div class="paragraph">
+When monster frames are drawn, this is used with an OR to set a bit which changes the sprite to the appropriate character. See <a href="D9BB.html">DrawMonsterSprite</a>. <table class="default">
+<tr>
+<th colspan="1" rowspan="1">Byte</th>
+<th colspan="1" rowspan="1">Bit</th>
+<th colspan="1" rowspan="1">Monster</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">00</td>
+<td class="centre" colspan="1" rowspan="1">00000000</td>
+<td class="centre" colspan="1" rowspan="1">George</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">40</td>
+<td class="centre" colspan="1" rowspan="1">01000000</td>
+<td class="centre" colspan="1" rowspan="1">Lizzy</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">80</td>
+<td class="centre" colspan="1" rowspan="1">10000000</td>
+<td class="centre" colspan="1" rowspan="1">Ralph</td>
+</tr>
+</table>
+</div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">MonsterSpriteModifier</td>
 <td class="address-1"><span id="d251"></span>D251</td>
 <td class="instruction">DEFB $00</td>
 <td class="comment-0" rowspan="1"></td>
