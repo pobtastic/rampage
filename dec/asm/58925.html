@@ -39,171 +39,225 @@ Next: <a href="59020.html">59020</a>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routine at <a href="57625.html">PrintMonsters</a>.
+Used by the routine at <a href="57625.html">Handler_Monsters</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="58925"></span>
+<div class="comments">
+<div class="paragraph">
+Just instantly return if the monster is already "game over".
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-2"><span id="58925"></span>58925</td>
 <td class="instruction">LD A,(53828)</td>
 <td class="comment-1" rowspan="3">Return if *<a href="53828.html">JumpTable_Pointer</a> is equal to 255.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58928"></span>58928</td>
 <td class="instruction">CP 255</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58930"></span>58930</td>
 <td class="instruction">RET Z</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="58931"></span>
+<div class="comments">
+<div class="paragraph">
+Any states higher than 32 mean the monster is in the process of turning back into a human (pre-"game over").
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58931"></span>58931</td>
 <td class="instruction">CP 32</td>
-<td class="comment-1" rowspan="2">Jump to <a href="58925.html#59004">59004</a> if *<a href="53828.html">JumpTable_Pointer</a> is higher than 32.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="58925.html#59004">Action_JumpTable</a> if *<a href="53828.html">JumpTable_Pointer</a> is higher than 32.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58933"></span>58933</td>
-<td class="instruction">JR NC,<a href="58925.html#59004">59004</a></td>
+<td class="instruction">JR NC,<a href="58925.html#59004">Action_JumpTable</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58935"></span>58935</td>
 <td class="instruction">LD A,(53832)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53832.html">53832</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58938"></span>58938</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right; bit 0 moves to the carry flag (and to bit 7).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58939"></span>58939</td>
-<td class="instruction">JR C,<a href="58925.html#59004">59004</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">59004</a> if the carry flag is set (if bit 0 was set).</td>
+<td class="instruction">JR C,<a href="58925.html#59004">Action_JumpTable</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">Action_JumpTable</a> if the carry flag is set (if bit 0 was set).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58941"></span>58941</td>
 <td class="instruction">LD A,(53830)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">53830</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58944"></span>58944</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right; bit 0 moves to the carry flag (and to bit 7).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58945"></span>58945</td>
 <td class="instruction">JR NC,<a href="58925.html#58968">58968</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="58925.html#58968">58968</a> if the carry flag is not set (if bit 0 was unset).</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58947"></span>58947</td>
 <td class="instruction">LD DE,33022</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=33022.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58950"></span>58950</td>
 <td class="instruction">LD B,3</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=3.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58952"></span>58952</td>
 <td class="instruction">LD A,(53831)</td>
 <td class="comment-1" rowspan="2"><span class="register">C</span>=*<a href="53831.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58955"></span>58955</td>
 <td class="instruction">LD C,A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58956"></span>58956</td>
 <td class="instruction">LD A,B</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58957"></span>58957</td>
 <td class="instruction">SUB C</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>-=<span class="register">C</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58958"></span>58958</td>
 <td class="instruction">SUB C</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>-=<span class="register">C</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58959"></span>58959</td>
 <td class="instruction">SUB C</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>-=<span class="register">C</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58960"></span>58960</td>
 <td class="instruction">LD C,A</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58961"></span>58961</td>
 <td class="instruction">CALL <a href="57517.html">57517</a></td>
 <td class="comment-1" rowspan="1">Call <a href="57517.html">57517</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58964"></span>58964</td>
-<td class="instruction">JR Z,<a href="58925.html#59004">59004</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">59004</a> if {} is zero.</td>
+<td class="instruction">JR Z,<a href="58925.html#59004">Action_JumpTable</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">Action_JumpTable</a> if {} is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58966"></span>58966</td>
 <td class="instruction">JR <a href="58925.html#58991">58991</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="58925.html#58991">58991</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-2"><span id="58968"></span>58968</td>
 <td class="instruction">LD A,(53838)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="58925.html#59004">59004</a> if *<a href="53837.html#53838">Temp_MonsterYPosition</a> is equal to 18.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="58925.html#59004">Action_JumpTable</a> if *<a href="53837.html#53838">Active_MonsterYPosition</a> is equal to 18.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58971"></span>58971</td>
 <td class="instruction">CP 18</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58973"></span>58973</td>
-<td class="instruction">JR Z,<a href="58925.html#59004">59004</a></td>
+<td class="instruction">JR Z,<a href="58925.html#59004">Action_JumpTable</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58975"></span>58975</td>
 <td class="instruction">LD B,5</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=5.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58977"></span>58977</td>
 <td class="instruction">LD A,(53831)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53831.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58980"></span>58980</td>
 <td class="instruction">ADD A,2</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>+=2.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58982"></span>58982</td>
 <td class="instruction">LD C,A</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58983"></span>58983</td>
 <td class="instruction">LD DE,2319</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=2319.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58986"></span>58986</td>
 <td class="instruction">CALL <a href="57517.html">57517</a></td>
 <td class="comment-1" rowspan="1">Call <a href="57517.html">57517</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58989"></span>58989</td>
-<td class="instruction">JR NZ,<a href="58925.html#59004">59004</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">59004</a> if {} is not zero.</td>
+<td class="instruction">JR NZ,<a href="58925.html#59004">Action_JumpTable</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">Action_JumpTable</a> if {} is not zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-2"><span id="58991"></span>58991</td>
 <td class="instruction">LD A,6</td>
 <td class="comment-1" rowspan="3">Write 6 to: <ul class="">
@@ -212,19 +266,23 @@ Used by the routine at <a href="57625.html">PrintMonsters</a>.
 </ul></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58993"></span>58993</td>
 <td class="instruction">LD (53828),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58996"></span>58996</td>
 <td class="instruction">LD (53834),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="58999"></span>58999</td>
 <td class="instruction">LD A,1</td>
 <td class="comment-1" rowspan="2">Write 1 to *<a href="53832.html">53832</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59001"></span>59001</td>
 <td class="instruction">LD (53832),A</td>
 </tr>
@@ -233,17 +291,19 @@ Used by the routine at <a href="57625.html">PrintMonsters</a>.
 <span id="59004"></span>
 <div class="comments">
 <div class="paragraph">
-This entry point is used by the routines at <a href="59020.html">Handler_Controls</a>, <a href="59908.html">59908</a>, <a href="59928.html">59928</a>, <a href="59971.html">Animate_Falling</a>, <a href="60060.html">60060</a>, <a href="60150.html">60150</a>, <a href="61040.html">Animate_Grabbing</a>, <a href="61083.html">Animate_Eating</a> and <a href="61264.html">61264</a>.
+Using the value held in *<a href="53828.html">JumpTable_Pointer</a> jump to the correlated address from <a href="61336.html">JumpTable</a>.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Action_JumpTable</td>
 <td class="address-2"><span id="59004"></span>59004</td>
 <td class="instruction">LD A,(53828)</td>
 <td class="comment-1" rowspan="2"><span class="register">A</span>=*<a href="53828.html">JumpTable_Pointer</a>*2.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59007"></span>59007</td>
 <td class="instruction">ADD A,A</td>
 </tr>
@@ -258,21 +318,25 @@ Create an offset using <span class="register">HL</span>.
 </td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59008"></span>59008</td>
 <td class="instruction">LD H,0</td>
 <td class="comment-1" rowspan="1"><span class="register">H</span>=0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59010"></span>59010</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59011"></span>59011</td>
 <td class="instruction">LD DE,61336</td>
 <td class="comment-1" rowspan="2"><span class="register">HL</span>+=<a href="61336.html">JumpTable</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59014"></span>59014</td>
 <td class="instruction">ADD HL,DE</td>
 </tr>
@@ -287,26 +351,31 @@ Fetch the address to jump and store it in <span class="register">HL</span>.
 </td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59015"></span>59015</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59016"></span>59016</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59017"></span>59017</td>
 <td class="instruction">LD H,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">H</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59018"></span>59018</td>
 <td class="instruction">LD L,A</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59019"></span>59019</td>
 <td class="instruction">JP (HL)</td>
 <td class="comment-1" rowspan="1">Jump to the address held by *<span class="register">HL</span>.</td>

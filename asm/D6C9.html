@@ -39,7 +39,7 @@ Next: <a href="D7F6.html">D7F6</a>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Used by the routines at <a href="D9BB.html">DrawMonsterSprite</a>, <a href="D9C3.html">D9C3</a>, <a href="DBE5.html">Handler_Helicopters</a>, <a href="E535.html">Draw_Human_Sprite_Mirrored</a>, <a href="E576.html">Handler_Bullets</a>, <a href="EED6.html">EED6</a>, <a href="EEEB.html">EEEB</a>, <a href="EF0A.html">EF0A</a>, <a href="F10E.html">Something_Helicopter</a>, <a href="F69F.html">Handler_Projectiles</a>, <a href="F719.html">Audio_Projectiles_Hit</a>, <a href="F795.html">Handler_Monsters</a>, <a href="FC1A.html">Scene_DisplayCarpet</a>, <a href="FC39.html">Handler_Vehicle</a> and <a href="FCB6.html">Handler_Train</a>.
+Used by the routines at <a href="D9BB.html">DrawMonsterSprite</a>, <a href="D9C3.html">D9C3</a>, <a href="DBE5.html">Handler_Helicopters</a>, <a href="E535.html">Draw_Human_Sprite_Mirrored</a>, <a href="E576.html">Handler_Bullets</a>, <a href="EED6.html">Animate_TransformExplosion</a>, <a href="EEEB.html">Animate_TurnIntoHuman</a>, <a href="EF0A.html">Animate_ExitStageRight</a>, <a href="F10E.html">Something_Helicopter</a>, <a href="F69F.html">Handler_Projectiles</a>, <a href="F719.html">Audio_Projectiles_Hit</a>, <a href="F795.html">Handler_CollisionMonsters</a>, <a href="FC1A.html">Scene_DisplayCarpet</a>, <a href="FC39.html">Handler_Vehicle</a> and <a href="FCB6.html">Handler_Train</a>.
 </div>
 </div>
 <table class="input">
@@ -92,6 +92,16 @@ Used by the routines at <a href="D9BB.html">DrawMonsterSprite</a>, <a href="D9C3
 <td class="address-1"><span id="d6d2"></span>D6D2</td>
 <td class="instruction">LD A,($D247)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D247.html">Flag_Orientation</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="d6d5"></span>
+<div class="comments">
+<div class="paragraph">
+Moves the orientation flag into the carry flag.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

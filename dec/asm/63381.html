@@ -64,13 +64,13 @@ Used by the routine at <a href="63368.html">63368</a>.
 </td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Monsters</td>
+<td class="asm-label">Handler_CollisionMonsters</td>
 <td class="address-2"><span id="63381"></span>63381</td>
 <td class="instruction">LD B,3</td>
 <td class="comment-1" rowspan="1"><span class="register">B</span>=3 (total number of monsters/ players).</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Monsters_Loop</td>
+<td class="asm-label">Handler_CollisionMonsters_Loop</td>
 <td class="address-2"><span id="63383"></span>63383</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
@@ -79,23 +79,23 @@ Used by the routine at <a href="63368.html">63368</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="63384"></span>63384</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="2">Jump to <a href="63381.html#63450">Handler_Monsters_Next</a> if <span class="register">A</span> is zero.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="63381.html#63450">Handler_CollisionMonsters_Next</a> if <span class="register">A</span> is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63385"></span>63385</td>
-<td class="instruction">JR Z,<a href="63381.html#63450">Handler_Monsters_Next</a></td>
+<td class="instruction">JR Z,<a href="63381.html#63450">Handler_CollisionMonsters_Next</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63387"></span>63387</td>
 <td class="instruction">CP 193</td>
-<td class="comment-1" rowspan="2">Jump to <a href="63381.html#63454">Handler_Monsters_0</a> if <span class="register">A</span> is higher than 193.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="63381.html#63454">Handler_CollisionMonsters_0</a> if <span class="register">A</span> is higher than 193.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63389"></span>63389</td>
-<td class="instruction">JR NC,<a href="63381.html#63454">Handler_Monsters_0</a></td>
+<td class="instruction">JR NC,<a href="63381.html#63454">Handler_CollisionMonsters_0</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -107,12 +107,12 @@ Used by the routine at <a href="63368.html">63368</a>.
 <td class="asm-label"></td>
 <td class="address-1"><span id="63393"></span>63393</td>
 <td class="instruction">CP 50</td>
-<td class="comment-1" rowspan="2">Jump to <a href="63381.html#63454">Handler_Monsters_0</a> if <span class="register">A</span> is higher than 50.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="63381.html#63454">Handler_CollisionMonsters_0</a> if <span class="register">A</span> is higher than 50.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63395"></span>63395</td>
-<td class="instruction">JR NC,<a href="63381.html#63454">Handler_Monsters_0</a></td>
+<td class="instruction">JR NC,<a href="63381.html#63454">Handler_CollisionMonsters_0</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -173,18 +173,18 @@ Is the action targeting the currently processed monster?
 <td class="asm-label"></td>
 <td class="address-1"><span id="63409"></span>63409</td>
 <td class="instruction">CP B</td>
-<td class="comment-1" rowspan="2">Jump to <a href="63381.html#63450">Handler_Monsters_Next</a> if the action is for the monster currently being processed.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="63381.html#63450">Handler_CollisionMonsters_Next</a> if the action is for the monster currently being processed.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63410"></span>63410</td>
-<td class="instruction">JR Z,<a href="63381.html#63450">Handler_Monsters_Next</a></td>
+<td class="instruction">JR Z,<a href="63381.html#63450">Handler_CollisionMonsters_Next</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63412"></span>63412</td>
 <td class="instruction">LD A,(IY+2)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="63381.html#63432">Handler_Monsters_Punched</a> if *<span class="register">IY</span>+2 is not zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="63381.html#63432">Handler_CollisionMonsters_Punched</a> if *<span class="register">IY</span>+2 is not zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -194,7 +194,7 @@ Is the action targeting the currently processed monster?
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63416"></span>63416</td>
-<td class="instruction">JR NZ,<a href="63381.html#63432">Handler_Monsters_Punched</a></td>
+<td class="instruction">JR NZ,<a href="63381.html#63432">Handler_CollisionMonsters_Punched</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -211,8 +211,8 @@ Is the action targeting the currently processed monster?
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63424"></span>63424</td>
-<td class="instruction">JR Z,<a href="63381.html#63432">Handler_Monsters_Punched</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="63381.html#63432">Handler_Monsters_Punched</a> if the result is zero.</td>
+<td class="instruction">JR Z,<a href="63381.html#63432">Handler_CollisionMonsters_Punched</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="63381.html#63432">Handler_CollisionMonsters_Punched</a> if the result is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -227,7 +227,7 @@ Is the action targeting the currently processed monster?
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">IY</span>+3.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Monsters_Punched</td>
+<td class="asm-label">Handler_CollisionMonsters_Punched</td>
 <td class="address-2"><span id="63432"></span>63432</td>
 <td class="instruction">LD (IY+0),10</td>
 <td class="comment-1" rowspan="1">Write 10 to *<span class="register">IY</span>+0.</td>
@@ -284,7 +284,7 @@ Take off two hit points from the monsters energy.
 <td class="instruction">LD (65421),A</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Monsters_Next</td>
+<td class="asm-label">Handler_CollisionMonsters_Next</td>
 <td class="address-2"><span id="63450"></span>63450</td>
 <td class="instruction">DEC HL</td>
 <td class="comment-1" rowspan="1">Decrease <span class="register">HL</span> by one.</td>
@@ -292,8 +292,8 @@ Take off two hit points from the monsters energy.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63451"></span>63451</td>
-<td class="instruction">DJNZ <a href="63381.html#63383">Handler_Monsters_Loop</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="63381.html#63383">Handler_Monsters_Loop</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="63381.html#63383">Handler_CollisionMonsters_Loop</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="63381.html#63383">Handler_CollisionMonsters_Loop</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -302,7 +302,7 @@ Take off two hit points from the monsters energy.
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Monsters_0</td>
+<td class="asm-label">Handler_CollisionMonsters_0</td>
 <td class="address-2"><span id="63454"></span>63454</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
@@ -322,12 +322,12 @@ Take off two hit points from the monsters energy.
 <td class="asm-label"></td>
 <td class="address-1"><span id="63457"></span>63457</td>
 <td class="instruction">CP 5</td>
-<td class="comment-1" rowspan="2">Jump to <a href="63381.html#63492">Housekeeping_Monsters_Next</a> if <span class="register">A</span> is equal to 5.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a> if <span class="register">A</span> is equal to 5.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63459"></span>63459</td>
-<td class="instruction">JR Z,<a href="63381.html#63492">Housekeeping_Monsters_Next</a></td>
+<td class="instruction">JR Z,<a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -344,67 +344,67 @@ Take off two hit points from the monsters energy.
 <td class="asm-label"></td>
 <td class="address-1"><span id="63465"></span>63465</td>
 <td class="instruction">CP 121</td>
-<td class="comment-1" rowspan="2">Jump to <a href="63381.html#63531">Handler_Monsters_1</a> if <span class="register">A</span> is equal to 121.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="63381.html#63531">Handler_CollisionMonsters_1</a> if <span class="register">A</span> is equal to 121.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63467"></span>63467</td>
-<td class="instruction">JR Z,<a href="63381.html#63531">Handler_Monsters_1</a></td>
+<td class="instruction">JR Z,<a href="63381.html#63531">Handler_CollisionMonsters_1</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63469"></span>63469</td>
 <td class="instruction">CP 123</td>
-<td class="comment-1" rowspan="2">Jump to <a href="63381.html#63492">Housekeeping_Monsters_Next</a> if <span class="register">A</span> is equal to 123.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a> if <span class="register">A</span> is equal to 123.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63471"></span>63471</td>
-<td class="instruction">JR Z,<a href="63381.html#63492">Housekeeping_Monsters_Next</a></td>
+<td class="instruction">JR Z,<a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63473"></span>63473</td>
 <td class="instruction">CP 127</td>
-<td class="comment-1" rowspan="2">Jump to <a href="63381.html#63492">Housekeeping_Monsters_Next</a> if <span class="register">A</span> is equal to 127.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a> if <span class="register">A</span> is equal to 127.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63475"></span>63475</td>
-<td class="instruction">JR Z,<a href="63381.html#63492">Housekeeping_Monsters_Next</a></td>
+<td class="instruction">JR Z,<a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63477"></span>63477</td>
 <td class="instruction">CP 117</td>
-<td class="comment-1" rowspan="2">Jump to <a href="63381.html#63492">Housekeeping_Monsters_Next</a> if <span class="register">A</span> is equal to 117.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a> if <span class="register">A</span> is equal to 117.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63479"></span>63479</td>
-<td class="instruction">JR Z,<a href="63381.html#63492">Housekeeping_Monsters_Next</a></td>
+<td class="instruction">JR Z,<a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63481"></span>63481</td>
 <td class="instruction">CP 119</td>
-<td class="comment-1" rowspan="2">Jump to <a href="63381.html#63492">Housekeeping_Monsters_Next</a> if <span class="register">A</span> is equal to 119.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a> if <span class="register">A</span> is equal to 119.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63483"></span>63483</td>
-<td class="instruction">JR Z,<a href="63381.html#63492">Housekeeping_Monsters_Next</a></td>
+<td class="instruction">JR Z,<a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63485"></span>63485</td>
 <td class="instruction">CP 221</td>
-<td class="comment-1" rowspan="2">Jump to <a href="63381.html#63569">Handler_Monsters_3</a> if <span class="register">A</span> is lower than 221.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="63381.html#63569">Handler_CollisionMonsters_3</a> if <span class="register">A</span> is lower than 221.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63487"></span>63487</td>
-<td class="instruction">JR C,<a href="63381.html#63569">Handler_Monsters_3</a></td>
+<td class="instruction">JR C,<a href="63381.html#63569">Handler_CollisionMonsters_3</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -423,7 +423,7 @@ Tidies the stack before moving onto the next monster.
 </td>
 </tr>
 <tr>
-<td class="asm-label">Housekeeping_Monsters_Next</td>
+<td class="asm-label">Housekeeping_CollisionMonsters_Next</td>
 <td class="address-2"><span id="63492"></span>63492</td>
 <td class="instruction">POP BC</td>
 <td class="comment-1" rowspan="2">Restore <span class="register">BC</span> and <span class="register">HL</span> from the stack.</td>
@@ -436,8 +436,8 @@ Tidies the stack before moving onto the next monster.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63494"></span>63494</td>
-<td class="instruction">JR <a href="63381.html#63450">Handler_Monsters_Next</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="63381.html#63450">Handler_Monsters_Next</a>.</td>
+<td class="instruction">JR <a href="63381.html#63450">Handler_CollisionMonsters_Next</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="63381.html#63450">Handler_CollisionMonsters_Next</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -560,11 +560,11 @@ Handles when a vehicle has been punched.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63529"></span>63529</td>
-<td class="instruction">JR <a href="63381.html#63492">Housekeeping_Monsters_Next</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="63381.html#63492">Housekeeping_Monsters_Next</a>.</td>
+<td class="instruction">JR <a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Monsters_1</td>
+<td class="asm-label">Handler_CollisionMonsters_1</td>
 <td class="address-2"><span id="63531"></span>63531</td>
 <td class="instruction">LD A,B</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
@@ -602,8 +602,8 @@ Handles when a vehicle has been punched.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63546"></span>63546</td>
-<td class="instruction">JR NC,<a href="63381.html#63550">Handler_Monsters_2</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="63381.html#63550">Handler_Monsters_2</a> if {} is higher.</td>
+<td class="instruction">JR NC,<a href="63381.html#63550">Handler_CollisionMonsters_2</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="63381.html#63550">Handler_CollisionMonsters_2</a> if {} is higher.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -612,7 +612,7 @@ Handles when a vehicle has been punched.
 <td class="comment-1" rowspan="1">Flip bit 7.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Monsters_2</td>
+<td class="asm-label">Handler_CollisionMonsters_2</td>
 <td class="address-2"><span id="63550"></span>63550</td>
 <td class="instruction">OR %01000000</td>
 <td class="comment-1" rowspan="1">Set bit 6.</td>
@@ -667,11 +667,11 @@ Handles when a vehicle has been punched.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63567"></span>63567</td>
-<td class="instruction">JR <a href="63381.html#63492">Housekeeping_Monsters_Next</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="63381.html#63492">Housekeeping_Monsters_Next</a>.</td>
+<td class="instruction">JR <a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Monsters_3</td>
+<td class="asm-label">Handler_CollisionMonsters_3</td>
 <td class="address-2"><span id="63569"></span>63569</td>
 <td class="instruction">LD A,B</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">B</span>.</td>
@@ -686,7 +686,7 @@ Handles when a vehicle has been punched.
 <td class="asm-label"></td>
 <td class="address-1"><span id="63573"></span>63573</td>
 <td class="instruction">LD A,(IY+4)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="63381.html#63492">Housekeeping_Monsters_Next</a> if *<span class="register">IY</span>+4 is not zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a> if *<span class="register">IY</span>+4 is not zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -696,13 +696,13 @@ Handles when a vehicle has been punched.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63577"></span>63577</td>
-<td class="instruction">JR NZ,<a href="63381.html#63492">Housekeeping_Monsters_Next</a></td>
+<td class="instruction">JR NZ,<a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63579"></span>63579</td>
 <td class="instruction">LD A,(IY+2)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="63381.html#63492">Housekeeping_Monsters_Next</a> if *<span class="register">IY</span>+2 is zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a> if *<span class="register">IY</span>+2 is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -712,7 +712,7 @@ Handles when a vehicle has been punched.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63583"></span>63583</td>
-<td class="instruction">JR Z,<a href="63381.html#63492">Housekeeping_Monsters_Next</a></td>
+<td class="instruction">JR Z,<a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -776,8 +776,8 @@ Handles when a vehicle has been punched.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63606"></span>63606</td>
-<td class="instruction">JR <a href="63381.html#63492">Housekeeping_Monsters_Next</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="63381.html#63492">Housekeeping_Monsters_Next</a>.</td>
+<td class="instruction">JR <a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -869,7 +869,7 @@ Handles when a helicopter has been punched.
 <td class="asm-label"></td>
 <td class="address-1"><span id="63629"></span>63629</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="63381.html#63492">Housekeeping_Monsters_Next</a> if *<span class="register">HL</span> is zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a> if *<span class="register">HL</span> is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -879,7 +879,7 @@ Handles when a helicopter has been punched.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63631"></span>63631</td>
-<td class="instruction">JP Z,<a href="63381.html#63492">Housekeeping_Monsters_Next</a></td>
+<td class="instruction">JP Z,<a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1034,8 +1034,8 @@ Displays an explosion sprite.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="63669"></span>63669</td>
-<td class="instruction">JP <a href="63381.html#63492">Housekeeping_Monsters_Next</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="63381.html#63492">Housekeeping_Monsters_Next</a>.</td>
+<td class="instruction">JP <a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="63381.html#63492">Housekeeping_CollisionMonsters_Next</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">

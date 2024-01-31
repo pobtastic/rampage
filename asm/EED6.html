@@ -33,7 +33,7 @@ Next: <a href="EEEB.html">EEEB</a>
 </td>
 </tr>
 </table>
-<div class="description">EED6: Routine at EED6</div>
+<div class="description">EED6: Animate: Transform Explosion</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,21 +42,25 @@ Next: <a href="EEEB.html">EEEB</a>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Animate_TransformExplosion</td>
 <td class="address-2"><span id="eed6"></span>EED6</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Active_MonsterXPosition</a>/<a href="D24D.html#d24e">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="eeda"></span>EEDA</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="eedb"></span>EEDB</td>
 <td class="instruction">INC C</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="eedc"></span>EEDC</td>
 <td class="instruction">LD A,$77</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=explosion sprite (77). <table class="default">
@@ -71,29 +75,35 @@ Next: <a href="EEEB.html">EEEB</a>
 </table></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="eede"></span>EEDE</td>
 <td class="instruction">CALL <a href="D6C9.html">PrintSprite</a></td>
 <td class="comment-1" rowspan="1">Call <a href="D6C9.html">PrintSprite</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="eee1"></span>EEE1</td>
 <td class="instruction">LD A,$22</td>
-<td class="comment-1" rowspan="2">Write 22 to *<a href="D244.html">JumpTable_Pointer</a>.</td>
+<td class="comment-1" rowspan="2">Write <a href="EF98.html#efdc">22</a> to *<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="eee3"></span>EEE3</td>
 <td class="instruction">LD ($D244),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="eee6"></span>EEE6</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="2">Write 00 to *<a href="D249.html">D249</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="eee7"></span>EEE7</td>
 <td class="instruction">LD ($D249),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="eeea"></span>EEEA</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

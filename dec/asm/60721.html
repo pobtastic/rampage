@@ -80,6 +80,16 @@ Next: <a href="60866.html">60866</a>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53831.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="60739"></span>
+<div class="comments">
+<div class="paragraph">
+Moves the orientation flag into the carry flag.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="address-1"><span id="60739"></span>60739</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
@@ -135,7 +145,7 @@ Next: <a href="60866.html">60866</a>
 <tr>
 <td class="address-1"><span id="60765"></span>60765</td>
 <td class="instruction">LD A,18</td>
-<td class="comment-1" rowspan="2">Write 18 to *<a href="53828.html">JumpTable_Pointer</a>.</td>
+<td class="comment-1" rowspan="2">Write <a href="61336.html#61372">18</a> to *<a href="53828.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60767"></span>60767</td>
@@ -144,7 +154,7 @@ Next: <a href="60866.html">60866</a>
 <tr>
 <td class="address-1"><span id="60770"></span>60770</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60774"></span>60774</td>
@@ -158,7 +168,29 @@ Next: <a href="60866.html">60866</a>
 <tr>
 <td class="address-1"><span id="60776"></span>60776</td>
 <td class="instruction">LD A,37</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=37.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 37. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">37</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-37-left" src="../../images/scr/sprite-37-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">101</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-101-left" src="../../images/scr/sprite-101-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">165</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-165-left" src="../../images/scr/sprite-165-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="60778"></span>60778</td>
@@ -168,7 +200,7 @@ Next: <a href="60866.html">60866</a>
 <tr>
 <td class="address-1"><span id="60781"></span>60781</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60785"></span>60785</td>
@@ -182,7 +214,29 @@ Next: <a href="60866.html">60866</a>
 <tr>
 <td class="address-1"><span id="60787"></span>60787</td>
 <td class="instruction">LD A,33</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=33.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 33. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">33</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-33-left" src="../../images/scr/sprite-33-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">97</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-97-left" src="../../images/scr/sprite-97-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">161</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-161-left" src="../../images/scr/sprite-161-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="60789"></span>60789</td>
@@ -212,7 +266,7 @@ Next: <a href="60866.html">60866</a>
 <tr>
 <td class="address-1"><span id="60802"></span>60802</td>
 <td class="instruction">LD A,19</td>
-<td class="comment-1" rowspan="2">Write 19 to *<a href="53828.html">JumpTable_Pointer</a>.</td>
+<td class="comment-1" rowspan="2">Write <a href="61336.html#61374">19</a> to *<a href="53828.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60804"></span>60804</td>
@@ -221,7 +275,7 @@ Next: <a href="60866.html">60866</a>
 <tr>
 <td class="address-1"><span id="60807"></span>60807</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60811"></span>60811</td>
@@ -235,7 +289,29 @@ Next: <a href="60866.html">60866</a>
 <tr>
 <td class="address-1"><span id="60813"></span>60813</td>
 <td class="instruction">LD A,33</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=33.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 33. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">33</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-33-left" src="../../images/scr/sprite-33-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">97</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-97-left" src="../../images/scr/sprite-97-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">161</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-161-left" src="../../images/scr/sprite-161-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="60815"></span>60815</td>
@@ -245,7 +321,7 @@ Next: <a href="60866.html">60866</a>
 <tr>
 <td class="address-1"><span id="60818"></span>60818</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60822"></span>60822</td>
@@ -275,7 +351,29 @@ Next: <a href="60866.html">60866</a>
 <tr>
 <td class="address-1"><span id="60829"></span>60829</td>
 <td class="instruction">LD A,29</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=29.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 29. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">29</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-29-left" src="../../images/scr/sprite-29-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">93</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-93-left" src="../../images/scr/sprite-93-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">157</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-157-left" src="../../images/scr/sprite-157-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="60831"></span>60831</td>
@@ -305,7 +403,7 @@ Next: <a href="60866.html">60866</a>
 <tr>
 <td class="address-1"><span id="60844"></span>60844</td>
 <td class="instruction">LD A,21</td>
-<td class="comment-1" rowspan="2">Write 21 to *<a href="53828.html">JumpTable_Pointer</a>.</td>
+<td class="comment-1" rowspan="2">Write <a href="61336.html#61378">21</a> to *<a href="53828.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60846"></span>60846</td>
@@ -314,7 +412,7 @@ Next: <a href="60866.html">60866</a>
 <tr>
 <td class="address-1"><span id="60849"></span>60849</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60853"></span>60853</td>
@@ -344,7 +442,29 @@ Next: <a href="60866.html">60866</a>
 <tr>
 <td class="address-1"><span id="60860"></span>60860</td>
 <td class="instruction">LD A,41</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=41.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 41. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">41</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-41-left" src="../../images/scr/sprite-41-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">105</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-105-left" src="../../images/scr/sprite-105-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">169</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-169-left" src="../../images/scr/sprite-169-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="60862"></span>60862</td>

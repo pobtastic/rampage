@@ -93,7 +93,7 @@ Set the co-ordinates for where to draw.
 <td class="asm-label"></td>
 <td class="address-1"><span id="59973"></span>59973</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Temp_MonsterXPosition</a>/<a href="53837.html#53838">Temp_MonsterYPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>/<a href="53837.html#53838">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -115,7 +115,7 @@ Again, set the co-ordinates for where to draw.
 <td class="asm-label"></td>
 <td class="address-1"><span id="59980"></span>59980</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Temp_MonsterXPosition</a>/<a href="53837.html#53838">Temp_MonsterYPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>/<a href="53837.html#53838">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -193,7 +193,7 @@ Apply gravity.
 <td class="asm-label"></td>
 <td class="address-1"><span id="59998"></span>59998</td>
 <td class="instruction">LD A,(53835)</td>
-<td class="comment-1" rowspan="3">Decrease *<a href="53835.html">Temp_MonsterActionCountdown</a> by one.</td>
+<td class="comment-1" rowspan="3">Decrease *<a href="53835.html">Active_MonsterActionCountdown</a> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -209,7 +209,7 @@ Apply gravity.
 <td class="asm-label"></td>
 <td class="address-1"><span id="60005"></span>60005</td>
 <td class="instruction">CP 18</td>
-<td class="comment-1" rowspan="2">Return if *<a href="53835.html">Temp_MonsterActionCountdown</a> is higher than 18.</td>
+<td class="comment-1" rowspan="2">Return if *<a href="53835.html">Active_MonsterActionCountdown</a> is higher than 18.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -237,7 +237,7 @@ Apply gravity.
 <td class="asm-label">Animate_Falling_0</td>
 <td class="address-2"><span id="60014"></span>60014</td>
 <td class="instruction">LD A,18</td>
-<td class="comment-1" rowspan="2">Write 18 to *<a href="53837.html#53838">Temp_MonsterYPosition</a>.</td>
+<td class="comment-1" rowspan="2">Write 18 to *<a href="53837.html#53838">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -248,7 +248,7 @@ Apply gravity.
 <td class="asm-label"></td>
 <td class="address-1"><span id="60019"></span>60019</td>
 <td class="instruction">LD A,12</td>
-<td class="comment-1" rowspan="2">Write 12 to *<a href="53835.html">Temp_MonsterActionCountdown</a>.</td>
+<td class="comment-1" rowspan="2">Write 12 to *<a href="53835.html">Active_MonsterActionCountdown</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -291,8 +291,8 @@ Apply gravity.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="60037"></span>60037</td>
-<td class="instruction">JP <a href="58925.html#59004">59004</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">59004</a>.</td>
+<td class="instruction">JP <a href="58925.html#59004">Action_JumpTable</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">Action_JumpTable</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">

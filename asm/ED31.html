@@ -80,6 +80,16 @@ Next: <a href="EDC2.html">EDC2</a>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D247.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="ed43"></span>
+<div class="comments">
+<div class="paragraph">
+Moves the orientation flag into the carry flag.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="address-1"><span id="ed43"></span>ED43</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
@@ -135,7 +145,7 @@ Next: <a href="EDC2.html">EDC2</a>
 <tr>
 <td class="address-1"><span id="ed5d"></span>ED5D</td>
 <td class="instruction">LD A,$12</td>
-<td class="comment-1" rowspan="2">Write 12 to *<a href="D244.html">JumpTable_Pointer</a>.</td>
+<td class="comment-1" rowspan="2">Write <a href="EF98.html#efbc">12</a> to *<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ed5f"></span>ED5F</td>
@@ -144,7 +154,7 @@ Next: <a href="EDC2.html">EDC2</a>
 <tr>
 <td class="address-1"><span id="ed62"></span>ED62</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ed66"></span>ED66</td>
@@ -158,7 +168,29 @@ Next: <a href="EDC2.html">EDC2</a>
 <tr>
 <td class="address-1"><span id="ed68"></span>ED68</td>
 <td class="instruction">LD A,$25</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=25.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 25. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">25</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-37-left" src="../images/scr/sprite-37-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">65</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-101-left" src="../images/scr/sprite-101-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">A5</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-165-left" src="../images/scr/sprite-165-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="ed6a"></span>ED6A</td>
@@ -168,7 +200,7 @@ Next: <a href="EDC2.html">EDC2</a>
 <tr>
 <td class="address-1"><span id="ed6d"></span>ED6D</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ed71"></span>ED71</td>
@@ -182,7 +214,29 @@ Next: <a href="EDC2.html">EDC2</a>
 <tr>
 <td class="address-1"><span id="ed73"></span>ED73</td>
 <td class="instruction">LD A,$21</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=21.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 21. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">21</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-33-left" src="../images/scr/sprite-33-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">61</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-97-left" src="../images/scr/sprite-97-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">A1</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-161-left" src="../images/scr/sprite-161-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="ed75"></span>ED75</td>
@@ -212,7 +266,7 @@ Next: <a href="EDC2.html">EDC2</a>
 <tr>
 <td class="address-1"><span id="ed82"></span>ED82</td>
 <td class="instruction">LD A,$13</td>
-<td class="comment-1" rowspan="2">Write 13 to *<a href="D244.html">JumpTable_Pointer</a>.</td>
+<td class="comment-1" rowspan="2">Write <a href="EF98.html#efbe">13</a> to *<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ed84"></span>ED84</td>
@@ -221,7 +275,7 @@ Next: <a href="EDC2.html">EDC2</a>
 <tr>
 <td class="address-1"><span id="ed87"></span>ED87</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ed8b"></span>ED8B</td>
@@ -235,7 +289,29 @@ Next: <a href="EDC2.html">EDC2</a>
 <tr>
 <td class="address-1"><span id="ed8d"></span>ED8D</td>
 <td class="instruction">LD A,$21</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=21.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 21. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">21</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-33-left" src="../images/scr/sprite-33-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">61</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-97-left" src="../images/scr/sprite-97-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">A1</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-161-left" src="../images/scr/sprite-161-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="ed8f"></span>ED8F</td>
@@ -245,7 +321,7 @@ Next: <a href="EDC2.html">EDC2</a>
 <tr>
 <td class="address-1"><span id="ed92"></span>ED92</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ed96"></span>ED96</td>
@@ -275,7 +351,29 @@ Next: <a href="EDC2.html">EDC2</a>
 <tr>
 <td class="address-1"><span id="ed9d"></span>ED9D</td>
 <td class="instruction">LD A,$1D</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=1D.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 1D. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">1D</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-29-left" src="../images/scr/sprite-29-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">5D</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-93-left" src="../images/scr/sprite-93-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">9D</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-157-left" src="../images/scr/sprite-157-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="ed9f"></span>ED9F</td>
@@ -305,7 +403,7 @@ Next: <a href="EDC2.html">EDC2</a>
 <tr>
 <td class="address-1"><span id="edac"></span>EDAC</td>
 <td class="instruction">LD A,$15</td>
-<td class="comment-1" rowspan="2">Write 15 to *<a href="D244.html">JumpTable_Pointer</a>.</td>
+<td class="comment-1" rowspan="2">Write <a href="EF98.html#efc2">15</a> to *<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="edae"></span>EDAE</td>
@@ -314,7 +412,7 @@ Next: <a href="EDC2.html">EDC2</a>
 <tr>
 <td class="address-1"><span id="edb1"></span>EDB1</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="edb5"></span>EDB5</td>
@@ -344,7 +442,29 @@ Next: <a href="EDC2.html">EDC2</a>
 <tr>
 <td class="address-1"><span id="edbc"></span>EDBC</td>
 <td class="instruction">LD A,$29</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=29.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 29. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">29</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-41-left" src="../images/scr/sprite-41-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">69</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-105-left" src="../images/scr/sprite-105-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">A9</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-169-left" src="../images/scr/sprite-169-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="edbe"></span>EDBE</td>

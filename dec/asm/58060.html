@@ -724,10 +724,10 @@ The countdown between 206-201 handles the delay before 200 will hide the human.
 <td class="asm-label"></td>
 <td class="address-1"><span id="58235"></span>58235</td>
 <td class="instruction">LD HL,54026</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="53951.html#54026">54026</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="53951.html#54026">54026</a> (<a href="54029.html">Table_Projectiles</a>-3).</td>
 </tr>
 <tr>
-<td class="asm-label">Human_Lobber_12</td>
+<td class="asm-label">Lobber_FindSlot</td>
 <td class="address-2"><span id="58238"></span>58238</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="3">Increment <span class="register">HL</span> by three.</td>
@@ -746,7 +746,7 @@ The countdown between 206-201 handles the delay before 200 will hide the human.
 <td class="asm-label"></td>
 <td class="address-1"><span id="58241"></span>58241</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="58060.html#58238">Human_Lobber_12</a> if *<span class="register">HL</span> is not zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="58060.html#58238">Lobber_FindSlot</a> if *<span class="register">HL</span> is not zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -756,7 +756,7 @@ The countdown between 206-201 handles the delay before 200 will hide the human.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="58243"></span>58243</td>
-<td class="instruction">JR NZ,<a href="58060.html#58238">Human_Lobber_12</a></td>
+<td class="instruction">JR NZ,<a href="58060.html#58238">Lobber_FindSlot</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>

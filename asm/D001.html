@@ -45,7 +45,7 @@ Next: <a href="D030.html">D030</a>
 <td class="asm-label">Lizzy_State</td>
 <td class="address-1"><span id="d001"></span>D001</td>
 <td class="instruction">DEFB $00</td>
-<td class="comment-1" rowspan="1"><table class="default">
+<td class="comment-1" rowspan="1">Relates to: <a href="D244.html">JumpTable_Pointer</a>. <table class="default">
 <tr>
 <th colspan="1" rowspan="1">Value</th>
 <th colspan="1" rowspan="1">Meaning</th>
@@ -86,18 +86,18 @@ Next: <a href="D030.html">D030</a>
 <td class="asm-label">Lizzy_Direction</td>
 <td class="address-1"><span id="d004"></span>D004</td>
 <td class="instruction">DEFB $00</td>
-<td class="comment-1" rowspan="1"><table class="default">
+<td class="comment-1" rowspan="1">Relates to: <a href="D247.html">Flag_Orientation</a>. <table class="default">
 <tr>
 <th colspan="1" rowspan="1">Value</th>
 <th colspan="1" rowspan="1">Meaning</th>
 </tr>
 <tr>
 <td class="centre" colspan="1" rowspan="1">00</td>
-<td class="centre" colspan="1" rowspan="1">Right</td>
+<td class="centre" colspan="1" rowspan="1">Left-to-Right</td>
 </tr>
 <tr>
 <td class="centre" colspan="1" rowspan="1">01</td>
-<td class="centre" colspan="1" rowspan="1">Left</td>
+<td class="centre" colspan="1" rowspan="1">Right-to-Left</td>
 </tr>
 </table></td>
 </tr>
@@ -108,7 +108,7 @@ Next: <a href="D030.html">D030</a>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
-<td class="asm-label">Lizzy_Countdown</td>
+<td class="asm-label">Lizzy_Count</td>
 <td class="address-1"><span id="d006"></span>D006</td>
 <td class="instruction">DEFB $14</td>
 <td class="comment-1" rowspan="1"></td>
@@ -116,7 +116,19 @@ Next: <a href="D030.html">D030</a>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="d007"></span>D007</td>
-<td class="instruction">DEFB $03,$19,$00</td>
+<td class="instruction">DEFB $03</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label">Lizzy_Countdown</td>
+<td class="address-1"><span id="d008"></span>D008</td>
+<td class="instruction">DEFB $19</td>
+<td class="comment-1" rowspan="1">Relates to: <a href="D24B.html">Active_MonsterActionCountdown</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d009"></span>D009</td>
+<td class="instruction">DEFB $00</td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
@@ -144,10 +156,20 @@ Next: <a href="D030.html">D030</a>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
-<td class="asm-label">Lizzy_Banner_Counter</td>
+<td class="routine-comment" colspan="5">
+<span id="d00e"></span>
+<div class="comments">
+<div class="paragraph">
+When monster frames are drawn, this is used with an OR to set a bit which changes the sprite to the appropriate character. See <a href="D251.html">MonsterSpriteModifier</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Lizzy_Sprite_Offset</td>
 <td class="address-1"><span id="d00e"></span>D00E</td>
 <td class="instruction">DEFB $40</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">For Lizzy bit 6 is set: 01000000.</td>
 </tr>
 <tr>
 <td class="asm-label">Lizzy_Control_Type</td>

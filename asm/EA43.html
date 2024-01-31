@@ -93,7 +93,7 @@ Set the co-ordinates for where to draw.
 <td class="asm-label"></td>
 <td class="address-1"><span id="ea45"></span>EA45</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Temp_MonsterXPosition</a>/<a href="D24D.html#d24e">Temp_MonsterYPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Active_MonsterXPosition</a>/<a href="D24D.html#d24e">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -115,7 +115,7 @@ Again, set the co-ordinates for where to draw.
 <td class="asm-label"></td>
 <td class="address-1"><span id="ea4c"></span>EA4C</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Temp_MonsterXPosition</a>/<a href="D24D.html#d24e">Temp_MonsterYPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Active_MonsterXPosition</a>/<a href="D24D.html#d24e">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -193,7 +193,7 @@ Apply gravity.
 <td class="asm-label"></td>
 <td class="address-1"><span id="ea5e"></span>EA5E</td>
 <td class="instruction">LD A,($D24B)</td>
-<td class="comment-1" rowspan="3">Decrease *<a href="D24B.html">Temp_MonsterActionCountdown</a> by one.</td>
+<td class="comment-1" rowspan="3">Decrease *<a href="D24B.html">Active_MonsterActionCountdown</a> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -209,7 +209,7 @@ Apply gravity.
 <td class="asm-label"></td>
 <td class="address-1"><span id="ea65"></span>EA65</td>
 <td class="instruction">CP $12</td>
-<td class="comment-1" rowspan="2">Return if *<a href="D24B.html">Temp_MonsterActionCountdown</a> is higher than 12.</td>
+<td class="comment-1" rowspan="2">Return if *<a href="D24B.html">Active_MonsterActionCountdown</a> is higher than 12.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -237,7 +237,7 @@ Apply gravity.
 <td class="asm-label">Animate_Falling_0</td>
 <td class="address-2"><span id="ea6e"></span>EA6E</td>
 <td class="instruction">LD A,$12</td>
-<td class="comment-1" rowspan="2">Write 12 to *<a href="D24D.html#d24e">Temp_MonsterYPosition</a>.</td>
+<td class="comment-1" rowspan="2">Write 12 to *<a href="D24D.html#d24e">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -248,7 +248,7 @@ Apply gravity.
 <td class="asm-label"></td>
 <td class="address-1"><span id="ea73"></span>EA73</td>
 <td class="instruction">LD A,$0C</td>
-<td class="comment-1" rowspan="2">Write 0C to *<a href="D24B.html">Temp_MonsterActionCountdown</a>.</td>
+<td class="comment-1" rowspan="2">Write 0C to *<a href="D24B.html">Active_MonsterActionCountdown</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -291,8 +291,8 @@ Apply gravity.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ea85"></span>EA85</td>
-<td class="instruction">JP <a href="E62D.html#e67c">$E67C</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">E67C</a>.</td>
+<td class="instruction">JP <a href="E62D.html#e67c">Action_JumpTable</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">Action_JumpTable</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">

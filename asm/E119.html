@@ -33,7 +33,7 @@ Next: <a href="E179.html">E179</a>
 </td>
 </tr>
 </table>
-<div class="description">E119: Print Monsters</div>
+<div class="description">E119: Handler: Monsters</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -51,11 +51,14 @@ Used by the routine at <a href="DE77.html">RunHandlers</a>.
 <div class="paragraph">
 George:
 </div>
+<div class="paragraph">
+Copy Georges states/ flags to the active states/ flags.
+</div>
 </div>
 </td>
 </tr>
 <tr>
-<td class="asm-label">PrintMonsters</td>
+<td class="asm-label">Handler_Monsters</td>
 <td class="address-2"><span id="e119"></span>E119</td>
 <td class="instruction">LD HL,$CFD2</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="CFD2.html">George_State</a>.</td>
@@ -63,8 +66,8 @@ George:
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e11c"></span>E11C</td>
-<td class="instruction">CALL <a href="E119.html#e16b">PrintMonsters_0</a></td>
-<td class="comment-1" rowspan="1">Call <a href="E119.html#e16b">PrintMonsters_0</a>.</td>
+<td class="instruction">CALL <a href="E119.html#e16b">CopyToActiveFlags</a></td>
+<td class="comment-1" rowspan="1">Call <a href="E119.html#e16b">CopyToActiveFlags</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -79,6 +82,16 @@ George:
 <td class="comment-1" rowspan="1">Call <a href="F3CA.html">F3CA</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="e125"></span>
+<div class="comments">
+<div class="paragraph">
+Copy the active states/ flags back to Georges data.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e125"></span>E125</td>
 <td class="instruction">LD DE,$CFD2</td>
@@ -87,8 +100,8 @@ George:
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e128"></span>E128</td>
-<td class="instruction">CALL <a href="E119.html#e170">PrintMonsters_1</a></td>
-<td class="comment-1" rowspan="1">Call <a href="E119.html#e170">PrintMonsters_1</a>.</td>
+<td class="instruction">CALL <a href="E119.html#e170">CopyFromActiveFlags</a></td>
+<td class="comment-1" rowspan="1">Call <a href="E119.html#e170">CopyFromActiveFlags</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -96,6 +109,9 @@ George:
 <div class="comments">
 <div class="paragraph">
 Lizzy:
+</div>
+<div class="paragraph">
+Copy Lizzys states/ flags to the active states/ flags.
 </div>
 </div>
 </td>
@@ -109,8 +125,8 @@ Lizzy:
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e12e"></span>E12E</td>
-<td class="instruction">CALL <a href="E119.html#e16b">PrintMonsters_0</a></td>
-<td class="comment-1" rowspan="1">Call <a href="E119.html#e16b">PrintMonsters_0</a>.</td>
+<td class="instruction">CALL <a href="E119.html#e16b">CopyToActiveFlags</a></td>
+<td class="comment-1" rowspan="1">Call <a href="E119.html#e16b">CopyToActiveFlags</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -143,6 +159,16 @@ Lizzy:
 <td class="comment-1" rowspan="1">Call <a href="F3CA.html">F3CA</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="e140"></span>
+<div class="comments">
+<div class="paragraph">
+Copy the active states/ flags back to Lizzys data.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e140"></span>E140</td>
 <td class="instruction">LD DE,$D001</td>
@@ -151,8 +177,8 @@ Lizzy:
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e143"></span>E143</td>
-<td class="instruction">CALL <a href="E119.html#e170">PrintMonsters_1</a></td>
-<td class="comment-1" rowspan="1">Call <a href="E119.html#e170">PrintMonsters_1</a>.</td>
+<td class="instruction">CALL <a href="E119.html#e170">CopyFromActiveFlags</a></td>
+<td class="comment-1" rowspan="1">Call <a href="E119.html#e170">CopyFromActiveFlags</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -160,6 +186,9 @@ Lizzy:
 <div class="comments">
 <div class="paragraph">
 Ralph:
+</div>
+<div class="paragraph">
+Copy Ralphs states/ flags to the active states/ flags.
 </div>
 </div>
 </td>
@@ -173,8 +202,8 @@ Ralph:
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e149"></span>E149</td>
-<td class="instruction">CALL <a href="E119.html#e16b">PrintMonsters_0</a></td>
-<td class="comment-1" rowspan="1">Call <a href="E119.html#e16b">PrintMonsters_0</a>.</td>
+<td class="instruction">CALL <a href="E119.html#e16b">CopyToActiveFlags</a></td>
+<td class="comment-1" rowspan="1">Call <a href="E119.html#e16b">CopyToActiveFlags</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -225,6 +254,16 @@ Ralph:
 <td class="comment-1" rowspan="1">Call <a href="F3CA.html">F3CA</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="e164"></span>
+<div class="comments">
+<div class="paragraph">
+Copy the active states/ flags back to Ralphs data.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e164"></span>E164</td>
 <td class="instruction">LD DE,$D030</td>
@@ -233,8 +272,8 @@ Ralph:
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e167"></span>E167</td>
-<td class="instruction">CALL <a href="E119.html#e170">PrintMonsters_1</a></td>
-<td class="comment-1" rowspan="1">Call <a href="E119.html#e170">PrintMonsters_1</a>.</td>
+<td class="instruction">CALL <a href="E119.html#e170">CopyFromActiveFlags</a></td>
+<td class="comment-1" rowspan="1">Call <a href="E119.html#e170">CopyFromActiveFlags</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -243,7 +282,17 @@ Ralph:
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
-<td class="asm-label">PrintMonsters_0</td>
+<td class="routine-comment" colspan="5">
+<span id="e16b"></span>
+<div class="comments">
+<div class="paragraph">
+Sets up copying TO the active flags <a href="D244.html">D244</a>-<a href="D255.html">D255</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">CopyToActiveFlags</td>
 <td class="address-2"><span id="e16b"></span>E16B</td>
 <td class="instruction">LD DE,$D244</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="D244.html">JumpTable_Pointer</a>.</td>
@@ -251,26 +300,35 @@ Ralph:
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e16e"></span>E16E</td>
-<td class="instruction">JR <a href="E119.html#e173">PrintMonsters_2</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E119.html#e173">PrintMonsters_2</a>.</td>
+<td class="instruction">JR <a href="E119.html#e173">Copy17Bytes</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E119.html#e173">Copy17Bytes</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">PrintMonsters_1</td>
+<td class="routine-comment" colspan="5">
+<span id="e170"></span>
+<div class="comments">
+<div class="paragraph">
+Sets up copying FROM the active flags back to the monsters states.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">CopyFromActiveFlags</td>
 <td class="address-2"><span id="e170"></span>E170</td>
 <td class="instruction">LD HL,$D244</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">PrintMonsters_2</td>
+<td class="asm-label">Copy17Bytes</td>
 <td class="address-2"><span id="e173"></span>E173</td>
 <td class="instruction">LD BC,$0011</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=0011.</td>
+<td class="comment-1" rowspan="2">Copy 11 bytes from *<span class="register">HL</span> to *<span class="register">DE</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e176"></span>E176</td>
 <td class="instruction">LDIR</td>
-<td class="comment-1" rowspan="1">LDIR.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

@@ -261,7 +261,7 @@ Counts up while the game plays, used as a random number generator (as it's never
 <div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D244.html">Jump Table Pointer</a></div>
 <div class="map-entry-desc">
 <div class="paragraph">
-See <a href="../asm/E62D.html#e67c">E67C</a>.
+See <a href="../asm/E62D.html#e67c">Action_JumpTable</a>.
 </div>
 </div>
 </td>
@@ -288,10 +288,14 @@ See <a href="../asm/E62D.html#e67c">E67C</a>.
 <td class="map-g"><span id="d247"></span><a href="../asm/D247.html">D247</a></td>
 <td class="map-length">1</td>
 <td class="map-g-desc">
-<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D247.html">Orientation Flag</a></div>
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D247.html">Active Monster Orientation Flag</a></div>
 <div class="map-entry-desc">
 <div class="paragraph">
-<table class="default">
+Relates to: <ul class="">
+<li><a href="../asm/CFD2.html#cfd5">George_Direction</a></li>
+<li><a href="../asm/D001.html#d004">Lizzy_Direction</a></li>
+<li><a href="../asm/D030.html#d033">Ralph_Direction</a></li>
+</ul> <table class="default">
 <tr>
 <th colspan="1" rowspan="1">Value</th>
 <th colspan="1" rowspan="1">Facing</th>
@@ -340,8 +344,15 @@ See <a href="../asm/E62D.html#e67c">E67C</a>.
 <td class="map-g"><span id="d24b"></span><a href="../asm/D24B.html">D24B</a></td>
 <td class="map-length">1</td>
 <td class="map-g-desc">
-<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D24B.html">Temporary Monster Action Countdown</a></div>
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D24B.html">Active Monster Action Countdown</a></div>
 <div class="map-entry-desc">
+<div class="paragraph">
+Relates to: <ul class="">
+<li><a href="../asm/CFD2.html#cfd9">George_Countdown</a></li>
+<li><a href="../asm/D001.html#d008">Lizzy_Countdown</a></li>
+<li><a href="../asm/D030.html#d037">Ralph_Countdown</a></li>
+</ul>
+</div>
 </div>
 </td>
 </tr>
@@ -358,17 +369,40 @@ See <a href="../asm/E62D.html#e67c">E67C</a>.
 <td class="map-g"><span id="d24d"></span><a href="../asm/D24D.html">D24D</a></td>
 <td class="map-length">2</td>
 <td class="map-g-desc">
-<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D24D.html">Temporary Monster Co-ordinates</a></div>
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D24D.html">Active Monster Co-ordinates</a></div>
 <div class="map-entry-desc">
+<div class="paragraph">
+Relates to: <ul class="">
+<li><a href="../asm/CFD2.html#cfdb">George_X_Position</a>/ <a href="../asm/CFD2.html#cfdc">George_Y_Position</a></li>
+<li><a href="../asm/D001.html#d00a">Lizzy_X_Position</a>/ <a href="../asm/D001.html#d00b">Lizzy_Y_Position</a></li>
+<li><a href="../asm/D030.html#d039">Ralph_X_Position</a>/ <a href="../asm/D030.html#d03a">Ralph_Y_Position</a></li>
+</ul>
+</div>
 </div>
 </td>
 </tr>
 <tr>
 <td class="map-g"><span id="d24f"></span><a href="../asm/D24F.html">D24F</a></td>
-<td class="map-length">2</td>
+<td class="map-length">1</td>
 <td class="map-g-desc">
 <div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D24F.html">Game status buffer entry at D24F</a></div>
 <div class="map-entry-desc">
+</div>
+</td>
+</tr>
+<tr>
+<td class="map-g"><span id="d250"></span><a href="../asm/D250.html">D250</a></td>
+<td class="map-length">1</td>
+<td class="map-g-desc">
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D250.html">Active Monster Energy</a></div>
+<div class="map-entry-desc">
+<div class="paragraph">
+Seem to be unused. Relates to: <ul class="">
+<li><a href="../asm/CFD2.html#cfde">George_Energy</a></li>
+<li><a href="../asm/D001.html#d00d">Lizzy_Energy</a></li>
+<li><a href="../asm/D030.html#d03c">Ralph_Energy</a></li>
+</ul>
+</div>
 </div>
 </td>
 </tr>

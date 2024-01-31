@@ -44,7 +44,7 @@ Next: <a href="60640.html">60640</a>
 <tr>
 <td class="address-2"><span id="60554"></span>60554</td>
 <td class="instruction">LD A,(53838)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="60554.html#60608">60608</a> if *<a href="53837.html#53838">Temp_MonsterYPosition</a> is equal to 18.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="60554.html#60608">60608</a> if *<a href="53837.html#53838">Active_MonsterYPosition</a> is equal to 18.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60557"></span>60557</td>
@@ -57,7 +57,7 @@ Next: <a href="60640.html">60640</a>
 <tr>
 <td class="address-1"><span id="60561"></span>60561</td>
 <td class="instruction">LD A,(53835)</td>
-<td class="comment-1" rowspan="3">Decrease *<a href="53835.html">Temp_MonsterActionCountdown</a> by one.</td>
+<td class="comment-1" rowspan="3">Decrease *<a href="53835.html">Active_MonsterActionCountdown</a> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60564"></span>60564</td>
@@ -70,7 +70,7 @@ Next: <a href="60640.html">60640</a>
 <tr>
 <td class="address-1"><span id="60568"></span>60568</td>
 <td class="instruction">CP 18</td>
-<td class="comment-1" rowspan="2">Jump to <a href="60554.html#60579">60579</a> if *<a href="53835.html">Temp_MonsterActionCountdown</a> is higher than 18.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="60554.html#60579">60579</a> if *<a href="53835.html">Active_MonsterActionCountdown</a> is higher than 18.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60570"></span>60570</td>
@@ -120,7 +120,7 @@ Next: <a href="60640.html">60640</a>
 <tr>
 <td class="address-1"><span id="60581"></span>60581</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60585"></span>60585</td>
@@ -215,6 +215,16 @@ Next: <a href="60640.html">60640</a>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53831.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="60611"></span>
+<div class="comments">
+<div class="paragraph">
+Moves the orientation flag into the carry flag.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="address-1"><span id="60611"></span>60611</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
@@ -227,7 +237,7 @@ Next: <a href="60640.html">60640</a>
 <tr>
 <td class="address-1"><span id="60615"></span>60615</td>
 <td class="instruction">LD A,18</td>
-<td class="comment-1" rowspan="2">Write 18 to *<a href="53837.html#53838">Temp_MonsterYPosition</a>.</td>
+<td class="comment-1" rowspan="2">Write 18 to *<a href="53837.html#53838">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60617"></span>60617</td>
@@ -236,7 +246,7 @@ Next: <a href="60640.html">60640</a>
 <tr>
 <td class="address-1"><span id="60620"></span>60620</td>
 <td class="instruction">LD A,25</td>
-<td class="comment-1" rowspan="2">Write 25 to *<a href="53835.html">Temp_MonsterActionCountdown</a>.</td>
+<td class="comment-1" rowspan="2">Write 25 to *<a href="53835.html">Active_MonsterActionCountdown</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60622"></span>60622</td>

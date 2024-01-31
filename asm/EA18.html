@@ -62,12 +62,34 @@ Next: <a href="EA43.html">EA43</a>
 <tr>
 <td class="address-1"><span id="ea21"></span>EA21</td>
 <td class="instruction">LD A,$19</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=19.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 19. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">19</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-25-left" src="../images/scr/sprite-25-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">59</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-89-left" src="../images/scr/sprite-89-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">99</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-153-left" src="../images/scr/sprite-153-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="ea23"></span>EA23</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ea27"></span>EA27</td>
@@ -77,7 +99,7 @@ Next: <a href="EA43.html">EA43</a>
 <tr>
 <td class="address-1"><span id="ea2a"></span>EA2A</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ea2e"></span>EA2E</td>
@@ -91,7 +113,29 @@ Next: <a href="EA43.html">EA43</a>
 <tr>
 <td class="address-1"><span id="ea30"></span>EA30</td>
 <td class="instruction">LD A,$23</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=23.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 23. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">23</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-35-left" src="../images/scr/sprite-35-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">63</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-99-left" src="../images/scr/sprite-99-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">A3</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-163-left" src="../images/scr/sprite-163-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="ea32"></span>EA32</td>
@@ -115,7 +159,7 @@ Next: <a href="EA43.html">EA43</a>
 <tr>
 <td class="address-1"><span id="ea3b"></span>EA3B</td>
 <td class="instruction">LD A,$08</td>
-<td class="comment-1" rowspan="2">Write 08 to *<a href="D244.html">JumpTable_Pointer</a>.</td>
+<td class="comment-1" rowspan="2">Write <a href="EF98.html#efa8">08</a> to *<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ea3d"></span>EA3D</td>
@@ -123,8 +167,8 @@ Next: <a href="EA43.html">EA43</a>
 </tr>
 <tr>
 <td class="address-1"><span id="ea40"></span>EA40</td>
-<td class="instruction">JP <a href="E62D.html#e67c">$E67C</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">E67C</a>.</td>
+<td class="instruction">JP <a href="E62D.html#e67c">Action_JumpTable</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">Action_JumpTable</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">

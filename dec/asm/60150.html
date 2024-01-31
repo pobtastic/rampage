@@ -71,7 +71,7 @@ Next: <a href="60554.html">60554</a>
 <tr>
 <td class="address-1"><span id="60166"></span>60166</td>
 <td class="instruction">LD A,(53838)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="60150.html#60207">60207</a> if *<a href="53837.html#53838">Temp_MonsterYPosition</a> is higher than 17.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="60150.html#60207">60207</a> if *<a href="53837.html#53838">Active_MonsterYPosition</a> is higher than 17.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60169"></span>60169</td>
@@ -84,7 +84,7 @@ Next: <a href="60554.html">60554</a>
 <tr>
 <td class="address-1"><span id="60173"></span>60173</td>
 <td class="instruction">LD A,(53837)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="60150.html#60184">60184</a> if *<a href="53837.html">Temp_MonsterXPosition</a> is equal to 255.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="60150.html#60184">60184</a> if *<a href="53837.html">Active_MonsterXPosition</a> is equal to 255.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60176"></span>60176</td>
@@ -97,7 +97,7 @@ Next: <a href="60554.html">60554</a>
 <tr>
 <td class="address-1"><span id="60180"></span>60180</td>
 <td class="instruction">CP 29</td>
-<td class="comment-1" rowspan="2">Jump to <a href="60150.html#60207">60207</a> if *<a href="53837.html">Temp_MonsterXPosition</a> is higher than 29.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="60150.html#60207">60207</a> if *<a href="53837.html">Active_MonsterXPosition</a> is higher than 29.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60182"></span>60182</td>
@@ -194,6 +194,16 @@ This entry point is used by the routine at <a href="59020.html">Handler_Controls
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53831.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="60219"></span>
+<div class="comments">
+<div class="paragraph">
+Moves the orientation flag into the carry flag.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="address-1"><span id="60219"></span>60219</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
@@ -224,6 +234,16 @@ This entry point is used by the routine at <a href="59020.html">Handler_Controls
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53831.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="60233"></span>
+<div class="comments">
+<div class="paragraph">
+Moves the orientation flag into the carry flag.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="address-1"><span id="60233"></span>60233</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
@@ -241,7 +261,7 @@ This entry point is used by the routine at <a href="59020.html">Handler_Controls
 <tr>
 <td class="address-2"><span id="60239"></span>60239</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60243"></span>60243</td>
@@ -451,7 +471,7 @@ This entry point is used by the routine at <a href="63135.html">Handler_Projecti
 <tr>
 <td class="address-1"><span id="60320"></span>60320</td>
 <td class="instruction">LD A,B</td>
-<td class="comment-1" rowspan="2">Write <span class="register">B</span> to *<a href="53837.html#53838">Temp_MonsterYPosition</a>.</td>
+<td class="comment-1" rowspan="2">Write <span class="register">B</span> to *<a href="53837.html#53838">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60321"></span>60321</td>
@@ -628,7 +648,7 @@ This entry point is used by the routine at <a href="63135.html">Handler_Projecti
 <tr>
 <td class="address-1"><span id="60403"></span>60403</td>
 <td class="instruction">LD (53838),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53837.html#53838">Temp_MonsterYPosition</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="53837.html#53838">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60406"></span>60406</td>
@@ -738,7 +758,7 @@ This entry point is used by the routine at <a href="63135.html">Handler_Projecti
 <tr>
 <td class="address-2"><span id="60464"></span>60464</td>
 <td class="instruction">LD (53837),BC</td>
-<td class="comment-1" rowspan="1">Write <span class="register">BC</span> to *<a href="53837.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">BC</span> to *<a href="53837.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60468"></span>60468</td>
@@ -756,7 +776,29 @@ This entry point is used by the routine at <a href="63135.html">Handler_Projecti
 <tr>
 <td class="address-1"><span id="60476"></span>60476</td>
 <td class="instruction">LD A,9</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=9.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 9. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">9</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-9-left" src="../../images/scr/sprite-9-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">73</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-73-left" src="../../images/scr/sprite-73-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">137</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-137-left" src="../../images/scr/sprite-137-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="60478"></span>60478</td>
@@ -806,7 +848,29 @@ This entry point is used by the routine at <a href="63135.html">Handler_Projecti
 <tr>
 <td class="address-1"><span id="60492"></span>60492</td>
 <td class="instruction">LD A,23</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=23.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 23. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
+</tr>
+<tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">23</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-23-left" src="../../images/scr/sprite-23-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">87</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-87-left" src="../../images/scr/sprite-87-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">151</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-151-left" src="../../images/scr/sprite-151-left.png" /></td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="address-1"><span id="60494"></span>60494</td>
@@ -821,12 +885,22 @@ This entry point is used by the routine at <a href="63135.html">Handler_Projecti
 <tr>
 <td class="address-2"><span id="60498"></span>60498</td>
 <td class="instruction">LD (53837),BC</td>
-<td class="comment-1" rowspan="1">Write <span class="register">BC</span> to *<a href="53837.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">BC</span> to *<a href="53837.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60502"></span>60502</td>
 <td class="instruction">LD A,(53831)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53831.html">Flag_Orientation</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="60505"></span>
+<div class="comments">
+<div class="paragraph">
+Moves the orientation flag into the carry flag.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60505"></span>60505</td>
@@ -896,7 +970,7 @@ This entry point is used by the routine at <a href="63135.html">Handler_Projecti
 <tr>
 <td class="address-1"><span id="60534"></span>60534</td>
 <td class="instruction">LD A,(53838)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="61318.html">61318</a> if *<a href="53837.html#53838">Temp_MonsterYPosition</a> is equal to 18.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="61318.html">61318</a> if *<a href="53837.html#53838">Active_MonsterYPosition</a> is equal to 18.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60537"></span>60537</td>
@@ -909,7 +983,7 @@ This entry point is used by the routine at <a href="63135.html">Handler_Projecti
 <tr>
 <td class="address-1"><span id="60542"></span>60542</td>
 <td class="instruction">LD A,11</td>
-<td class="comment-1" rowspan="2">Write 11 to *<a href="53828.html">JumpTable_Pointer</a>.</td>
+<td class="comment-1" rowspan="2">Write <a href="61336.html#61358">11</a> to *<a href="53828.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60544"></span>60544</td>
@@ -918,7 +992,7 @@ This entry point is used by the routine at <a href="63135.html">Handler_Projecti
 <tr>
 <td class="address-1"><span id="60547"></span>60547</td>
 <td class="instruction">LD A,B</td>
-<td class="comment-1" rowspan="2">Write <span class="register">B</span> to *<a href="53837.html#53838">Temp_MonsterYPosition</a>.</td>
+<td class="comment-1" rowspan="2">Write <span class="register">B</span> to *<a href="53837.html#53838">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60548"></span>60548</td>
@@ -926,8 +1000,8 @@ This entry point is used by the routine at <a href="63135.html">Handler_Projecti
 </tr>
 <tr>
 <td class="address-1"><span id="60551"></span>60551</td>
-<td class="instruction">JP <a href="58925.html#59004">59004</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">59004</a>.</td>
+<td class="instruction">JP <a href="58925.html#59004">Action_JumpTable</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">Action_JumpTable</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">

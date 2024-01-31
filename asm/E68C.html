@@ -95,7 +95,7 @@ Controls: Jump/ Punch.
 <td class="asm-label">Handler_Controls_0</td>
 <td class="address-2"><span id="e69c"></span>E69C</td>
 <td class="instruction">LD A,$0A</td>
-<td class="comment-1" rowspan="2">Write 0A to *<a href="D244.html">JumpTable_Pointer</a>.</td>
+<td class="comment-1" rowspan="2">Write <a href="EF98.html#efac">0A</a> to *<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -116,8 +116,8 @@ Controls: Jump/ Punch.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e6a6"></span>E6A6</td>
-<td class="instruction">JP <a href="E62D.html#e67c">$E67C</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">E67C</a>.</td>
+<td class="instruction">JP <a href="E62D.html#e67c">Action_JumpTable</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">Action_JumpTable</a>.</td>
 </tr>
 <tr>
 <td class="asm-label">Handler_Controls_1</td>
@@ -139,7 +139,7 @@ Controls: Jump/ Punch.
 <td class="asm-label"></td>
 <td class="address-1"><span id="e6af"></span>E6AF</td>
 <td class="instruction">LD A,$0D</td>
-<td class="comment-1" rowspan="2">Write 0D to *<a href="D244.html">JumpTable_Pointer</a>.</td>
+<td class="comment-1" rowspan="2">Write <a href="EF98.html#efb2">0D</a> to *<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -149,8 +149,8 @@ Controls: Jump/ Punch.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e6b4"></span>E6B4</td>
-<td class="instruction">JP <a href="E62D.html#e67c">$E67C</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">E67C</a>.</td>
+<td class="instruction">JP <a href="E62D.html#e67c">Action_JumpTable</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">Action_JumpTable</a>.</td>
 </tr>
 <tr>
 <td class="asm-label">Handler_Controls_2</td>
@@ -172,7 +172,7 @@ Controls: Jump/ Punch.
 <td class="asm-label"></td>
 <td class="address-1"><span id="e6bd"></span>E6BD</td>
 <td class="instruction">LD A,$0E</td>
-<td class="comment-1" rowspan="2">Write 0E to *<a href="D244.html">JumpTable_Pointer</a>.</td>
+<td class="comment-1" rowspan="2">Write <a href="EF98.html#efb4">0E</a> to *<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -182,8 +182,8 @@ Controls: Jump/ Punch.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e6c2"></span>E6C2</td>
-<td class="instruction">JP <a href="E62D.html#e67c">$E67C</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">E67C</a>.</td>
+<td class="instruction">JP <a href="E62D.html#e67c">Action_JumpTable</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">Action_JumpTable</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -211,6 +211,16 @@ Controls: Up.
 <td class="address-1"><span id="e6ca"></span>E6CA</td>
 <td class="instruction">LD A,($D247)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D247.html">Flag_Orientation</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e6cd"></span>
+<div class="comments">
+<div class="paragraph">
+Moves the orientation flag into the carry flag.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -324,7 +334,7 @@ Controls: Up.
 <td class="asm-label">Handler_Controls_4</td>
 <td class="address-2"><span id="e6f9"></span>E6F9</td>
 <td class="instruction">LD A,($D24E)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D24D.html#d24e">Temp_MonsterYPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D24D.html#d24e">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -336,7 +346,7 @@ Controls: Up.
 <td class="asm-label"></td>
 <td class="address-1"><span id="e6fe"></span>E6FE</td>
 <td class="instruction">LD ($D24E),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D24D.html#d24e">Temp_MonsterYPosition</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D24D.html#d24e">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -367,7 +377,7 @@ Controls: Up.
 <td class="asm-label"></td>
 <td class="address-1"><span id="e70b"></span>E70B</td>
 <td class="instruction">INC A</td>
-<td class="comment-1" rowspan="2">Write 01 to *<a href="D244.html">JumpTable_Pointer</a>.</td>
+<td class="comment-1" rowspan="2">Write <a href="EF98.html#ef9a">01</a> to *<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -377,8 +387,8 @@ Controls: Up.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e70f"></span>E70F</td>
-<td class="instruction">JP <a href="E62D.html#e67c">$E67C</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">E67C</a>.</td>
+<td class="instruction">JP <a href="E62D.html#e67c">Action_JumpTable</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">Action_JumpTable</a>.</td>
 </tr>
 <tr>
 <td class="asm-label">Handler_Controls_5</td>
@@ -598,7 +608,7 @@ Controls: Up.
 <td class="asm-label"></td>
 <td class="address-1"><span id="e769"></span>E769</td>
 <td class="instruction">LD A,($D24E)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D24D.html#d24e">Temp_MonsterYPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D24D.html#d24e">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -621,7 +631,7 @@ Controls: Up.
 <td class="asm-label"></td>
 <td class="address-1"><span id="e772"></span>E772</td>
 <td class="instruction">LD ($D24E),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D24D.html#d24e">Temp_MonsterYPosition</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D24D.html#d24e">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label">Handler_Controls_11</td>
@@ -883,8 +893,8 @@ Controls: Up.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e7db"></span>E7DB</td>
-<td class="instruction">JP <a href="E62D.html#e67c">$E67C</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">E67C</a>.</td>
+<td class="instruction">JP <a href="E62D.html#e67c">Action_JumpTable</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">Action_JumpTable</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -911,7 +921,7 @@ Controls: Down.
 <td class="asm-label"></td>
 <td class="address-1"><span id="e7e3"></span>E7E3</td>
 <td class="instruction">LD A,($D24E)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="E68C.html#e8cf">Handler_Controls_22</a> if *<a href="D24D.html#d24e">Temp_MonsterYPosition</a> is equal to 10.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="E68C.html#e8cf">Handler_Controls_22</a> if *<a href="D24D.html#d24e">Active_MonsterYPosition</a> is equal to 10.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -928,6 +938,16 @@ Controls: Down.
 <td class="address-1"><span id="e7eb"></span>E7EB</td>
 <td class="instruction">LD A,($D247)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D247.html">Flag_Orientation</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e7ee"></span>
+<div class="comments">
+<div class="paragraph">
+Moves the orientation flag into the carry flag.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1248,6 +1268,16 @@ Controls: Down.
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D247.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="e86f"></span>
+<div class="comments">
+<div class="paragraph">
+Moves the orientation flag into the carry flag.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e86f"></span>E86F</td>
 <td class="instruction">RRCA</td>
@@ -1300,6 +1330,16 @@ Controls: Down.
 <td class="address-1"><span id="e883"></span>E883</td>
 <td class="instruction">LD A,($D247)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D247.html">Flag_Orientation</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e886"></span>
+<div class="comments">
+<div class="paragraph">
+Moves the orientation flag into the carry flag.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1400,8 +1440,8 @@ Controls: Down.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e8b1"></span>E8B1</td>
-<td class="instruction">JP <a href="E62D.html#e67c">$E67C</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">E67C</a>.</td>
+<td class="instruction">JP <a href="E62D.html#e67c">Action_JumpTable</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">Action_JumpTable</a>.</td>
 </tr>
 <tr>
 <td class="asm-label">Handler_Controls_21</td>
@@ -1413,7 +1453,7 @@ Controls: Down.
 <td class="asm-label"></td>
 <td class="address-1"><span id="e8b7"></span>E8B7</td>
 <td class="instruction">LD A,($D24E)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D24D.html#d24e">Temp_MonsterYPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D24D.html#d24e">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1425,7 +1465,7 @@ Controls: Down.
 <td class="asm-label"></td>
 <td class="address-1"><span id="e8bc"></span>E8BC</td>
 <td class="instruction">LD ($D24E),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D24D.html#d24e">Temp_MonsterYPosition</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D24D.html#d24e">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1460,14 +1500,14 @@ Controls: Down.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e8cc"></span>E8CC</td>
-<td class="instruction">JP <a href="E62D.html#e67c">$E67C</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">E67C</a>.</td>
+<td class="instruction">JP <a href="E62D.html#e67c">Action_JumpTable</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">Action_JumpTable</a>.</td>
 </tr>
 <tr>
 <td class="asm-label">Handler_Controls_22</td>
 <td class="address-2"><span id="e8cf"></span>E8CF</td>
 <td class="instruction">LD A,$12</td>
-<td class="comment-1" rowspan="2">Write 12 to *<a href="D24D.html#d24e">Temp_MonsterYPosition</a>.</td>
+<td class="comment-1" rowspan="2">Write 12 to *<a href="D24D.html#d24e">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1478,7 +1518,7 @@ Controls: Down.
 <td class="asm-label"></td>
 <td class="address-1"><span id="e8d4"></span>E8D4</td>
 <td class="instruction">LD A,$01</td>
-<td class="comment-1" rowspan="2">Write 01 to *<a href="D244.html">JumpTable_Pointer</a>.</td>
+<td class="comment-1" rowspan="2">Write <a href="EF98.html#ef9a">01</a> to *<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1490,6 +1530,16 @@ Controls: Down.
 <td class="address-1"><span id="e8d9"></span>E8D9</td>
 <td class="instruction">LD A,($D247)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D247.html">Flag_Orientation</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="e8dc"></span>
+<div class="comments">
+<div class="paragraph">
+Moves the orientation flag into the carry flag.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1517,8 +1567,8 @@ Controls: Down.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e8e4"></span>E8E4</td>
-<td class="instruction">JP <a href="E62D.html#e67c">$E67C</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">E67C</a>.</td>
+<td class="instruction">JP <a href="E62D.html#e67c">Action_JumpTable</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">Action_JumpTable</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -1586,7 +1636,7 @@ Controls: Left.
 <td class="asm-label"></td>
 <td class="address-1"><span id="e8fe"></span>E8FE</td>
 <td class="instruction">LD A,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D24D.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D24D.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1609,7 +1659,7 @@ Controls: Left.
 <td class="asm-label"></td>
 <td class="address-1"><span id="e907"></span>E907</td>
 <td class="instruction">LD ($D24D),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D24D.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D24D.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1655,8 +1705,8 @@ Controls: Left.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e919"></span>E919</td>
-<td class="instruction">JP <a href="E62D.html#e67c">$E67C</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">E67C</a>.</td>
+<td class="instruction">JP <a href="E62D.html#e67c">Action_JumpTable</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">Action_JumpTable</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -1724,7 +1774,7 @@ Controls: Right.
 <td class="asm-label"></td>
 <td class="address-1"><span id="e933"></span>E933</td>
 <td class="instruction">LD A,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D24D.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D24D.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1747,7 +1797,7 @@ Controls: Right.
 <td class="asm-label"></td>
 <td class="address-1"><span id="e93c"></span>E93C</td>
 <td class="instruction">LD ($D24D),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D24D.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D24D.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1790,8 +1840,8 @@ Controls: Right.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e94d"></span>E94D</td>
-<td class="instruction">JP <a href="E62D.html#e67c">$E67C</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">E67C</a>.</td>
+<td class="instruction">JP <a href="E62D.html#e67c">Action_JumpTable</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">Action_JumpTable</a>.</td>
 </tr>
 <tr>
 <td class="asm-label">Handler_Controls_23</td>
@@ -1830,7 +1880,7 @@ Controls: Right.
 <td class="asm-label"></td>
 <td class="address-1"><span id="e95f"></span>E95F</td>
 <td class="instruction">LD A,$05</td>
-<td class="comment-1" rowspan="2">Write 05 to *<a href="D244.html">JumpTable_Pointer</a>.</td>
+<td class="comment-1" rowspan="2">Write <a href="EF98.html#efa2">05</a> to *<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1840,8 +1890,8 @@ Controls: Right.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e964"></span>E964</td>
-<td class="instruction">JP <a href="E62D.html#e67c">$E67C</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">E67C</a>.</td>
+<td class="instruction">JP <a href="E62D.html#e67c">Action_JumpTable</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">Action_JumpTable</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">

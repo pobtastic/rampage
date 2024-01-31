@@ -33,7 +33,7 @@ Next: <a href="EF38.html">EF38</a>
 </td>
 </tr>
 </table>
-<div class="description">EF0A: Routine at EF0A</div>
+<div class="description">EF0A: Animate: Exit Stage Right</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,36 +42,43 @@ Next: <a href="EF38.html">EF38</a>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Animate_ExitStageRight</td>
 <td class="address-2"><span id="ef0a"></span>EF0A</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Active_MonsterXPosition</a>/<a href="D24D.html#d24e">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef0e"></span>EF0E</td>
 <td class="instruction">LD A,($D249)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D249.html">D249</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef11"></span>EF11</td>
 <td class="instruction">AND %00000001</td>
 <td class="comment-1" rowspan="1">Keep only bit 0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef13"></span>EF13</td>
 <td class="instruction">XOR %00000001</td>
 <td class="comment-1" rowspan="1">Flip bit 0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef15"></span>EF15</td>
 <td class="instruction">LD ($D249),A</td>
 <td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D249.html">D249</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef18"></span>EF18</td>
-<td class="instruction">JR NZ,<a href="EF0A.html#ef20">$EF20</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="EF0A.html#ef20">EF20</a> if <span class="register">A</span> is not zero.</td>
+<td class="instruction">JR NZ,<a href="EF0A.html#ef20">Animate_ExitStageRight_0</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="EF0A.html#ef20">Animate_ExitStageRight_0</a> if <span class="register">A</span> is not zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef1a"></span>EF1A</td>
 <td class="instruction">LD A,$37</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=37. <table class="default">
@@ -86,43 +93,52 @@ Next: <a href="EF38.html">EF38</a>
 </table></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef1c"></span>EF1C</td>
 <td class="instruction">CALL <a href="D6C9.html">PrintSprite</a></td>
 <td class="comment-1" rowspan="1">Call <a href="D6C9.html">PrintSprite</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef1f"></span>EF1F</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
+<td class="asm-label">Animate_ExitStageRight_0</td>
 <td class="address-2"><span id="ef20"></span>EF20</td>
 <td class="instruction">LD A,($D24D)</td>
-<td class="comment-1" rowspan="3">Increment *<a href="D24D.html">Temp_MonsterXPosition</a> by one.</td>
+<td class="comment-1" rowspan="3">Increment *<a href="D24D.html">Active_MonsterXPosition</a> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef23"></span>EF23</td>
 <td class="instruction">INC A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef24"></span>EF24</td>
 <td class="instruction">LD ($D24D),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef27"></span>EF27</td>
 <td class="instruction">CP $28</td>
-<td class="comment-1" rowspan="2">Jump to <a href="EF0A.html#ef32">EF32</a> if <span class="register">A</span> is equal to 28.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="EF0A.html#ef32">Animate_ExitStageRight_1</a> if <span class="register">A</span> is equal to 28.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef29"></span>EF29</td>
-<td class="instruction">JR Z,<a href="EF0A.html#ef32">$EF32</a></td>
+<td class="instruction">JR Z,<a href="EF0A.html#ef32">Animate_ExitStageRight_1</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef2b"></span>EF2B</td>
 <td class="instruction">INC C</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef2c"></span>EF2C</td>
 <td class="instruction">LD A,$35</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=35. <table class="default">
@@ -137,25 +153,30 @@ Next: <a href="EF38.html">EF38</a>
 </table></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef2e"></span>EF2E</td>
 <td class="instruction">CALL <a href="D6C9.html">PrintSprite</a></td>
 <td class="comment-1" rowspan="1">Call <a href="D6C9.html">PrintSprite</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef31"></span>EF31</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
+<td class="asm-label">Animate_ExitStageRight_1</td>
 <td class="address-2"><span id="ef32"></span>EF32</td>
 <td class="instruction">LD A,$FF</td>
 <td class="comment-1" rowspan="2">Write FF to *<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef34"></span>EF34</td>
 <td class="instruction">LD ($D244),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef37"></span>EF37</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>

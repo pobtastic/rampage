@@ -33,7 +33,7 @@ Next: <a href="59908.html">59908</a>
 </td>
 </tr>
 </table>
-<div class="description">59803: Routine at E99B</div>
+<div class="description">59803: Animate: Waiting</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,232 +42,413 @@ Next: <a href="59908.html">59908</a>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Animate_Waiting</td>
 <td class="address-2"><span id="59803"></span>59803</td>
 <td class="instruction">CALL <a href="57721.html">Controls</a></td>
 <td class="comment-1" rowspan="1">Call <a href="57721.html">Controls</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59806"></span>59806</td>
 <td class="instruction">AND A</td>
 <td class="comment-1" rowspan="1">Set flags.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59807"></span>59807</td>
 <td class="instruction">JP NZ,<a href="59020.html#59027">Controls_JumpPunch</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="59020.html#59027">Controls_JumpPunch</a> if {} is not zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59810"></span>59810</td>
 <td class="instruction">LD A,(53842)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="59803.html#59822">59822</a> if *<a href="53842.html">53842</a> is not zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="59803.html#59822">Animate_Waiting_0</a> if *<a href="53842.html">53842</a> is not zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59813"></span>59813</td>
 <td class="instruction">AND A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59814"></span>59814</td>
-<td class="instruction">JR NZ,<a href="59803.html#59822">59822</a></td>
+<td class="instruction">JR NZ,<a href="59803.html#59822">Animate_Waiting_0</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59816"></span>59816</td>
 <td class="instruction">CALL <a href="55848.html">RandomNumber</a></td>
 <td class="comment-1" rowspan="1">Call <a href="55848.html">RandomNumber</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59819"></span>59819</td>
 <td class="instruction">JP <a href="59020.html#59027">Controls_JumpPunch</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="59020.html#59027">Controls_JumpPunch</a>.</td>
 </tr>
 <tr>
+<td class="asm-label">Animate_Waiting_0</td>
 <td class="address-2"><span id="59822"></span>59822</td>
 <td class="instruction">LD A,(53830)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">53830</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59825"></span>59825</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59826"></span>59826</td>
-<td class="instruction">JP C,<a href="59803.html#59882">59882</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59803.html#59882">59882</a> if the carry flag is set.</td>
+<td class="instruction">JP C,<a href="59803.html#59882">Animate_Waiting_1</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59803.html#59882">Animate_Waiting_1</a> if the carry flag is set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59829"></span>59829</td>
 <td class="instruction">LD A,5</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=5.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite id 5. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
 </tr>
 <tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">5</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-5-left" src="../../images/scr/sprite-5-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">69</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-69-left" src="../../images/scr/sprite-69-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">133</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-133-left" src="../../images/scr/sprite-133-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59831"></span>59831</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>/<a href="53837.html#53838">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59835"></span>59835</td>
 <td class="instruction">CALL <a href="55739.html">DrawMonsterSprite</a></td>
 <td class="comment-1" rowspan="1">Call <a href="55739.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59838"></span>59838</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>/<a href="53837.html#53838">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59842"></span>59842</td>
 <td class="instruction">LD A,(53831)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53831.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59845"></span>59845</td>
 <td class="instruction">XOR %00000001</td>
 <td class="comment-1" rowspan="1">Flip bit 0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59847"></span>59847</td>
 <td class="instruction">ADD A,C</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">C</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59848"></span>59848</td>
 <td class="instruction">LD C,A</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59849"></span>59849</td>
 <td class="instruction">LD A,15</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=15.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 15. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
 </tr>
 <tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">15</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-15-left" src="../../images/scr/sprite-15-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">79</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-79-left" src="../../images/scr/sprite-79-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">143</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-143-left" src="../../images/scr/sprite-143-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59851"></span>59851</td>
 <td class="instruction">CALL <a href="55739.html">DrawMonsterSprite</a></td>
 <td class="comment-1" rowspan="1">Call <a href="55739.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59854"></span>59854</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59858"></span>59858</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59859"></span>59859</td>
 <td class="instruction">INC C</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59860"></span>59860</td>
 <td class="instruction">LD A,(53831)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53831.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59863"></span>59863</td>
 <td class="instruction">XOR %00000001</td>
 <td class="comment-1" rowspan="1">Flip bit 0.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59865"></span>59865</td>
 <td class="instruction">ADD A,C</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">C</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59866"></span>59866</td>
 <td class="instruction">LD C,A</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
-<td class="address-2"><span id="59867"></span>59867</td>
-<td class="instruction">CALL <a href="55848.html">RandomNumber</a></td>
-<td class="comment-1" rowspan="1">Call <a href="55848.html">RandomNumber</a>.</td>
+<td class="routine-comment" colspan="5">
+<span id="59867"></span>
+<div class="comments">
+<div class="paragraph">
+Choose a frame randomly for the mouth sprite.
+</div>
+</div>
+</td>
 </tr>
 <tr>
+<td class="asm-label">DrawMonsterMouth</td>
+<td class="address-2"><span id="59867"></span>59867</td>
+<td class="instruction">CALL <a href="55848.html">RandomNumber</a></td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=random number between 0-2.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59870"></span>59870</td>
 <td class="instruction">AND %00000011</td>
 <td class="comment-1" rowspan="1">Keep only bits 0-1.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59872"></span>59872</td>
-<td class="instruction">JR Z,<a href="59803.html#59867">59867</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59803.html#59867">59867</a> if the result is zero.</td>
+<td class="instruction">JR Z,<a href="59803.html#59867">DrawMonsterMouth</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59803.html#59867">DrawMonsterMouth</a> if the result is zero.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59874"></span>59874</td>
 <td class="instruction">DEC A</td>
 <td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59875"></span>59875</td>
 <td class="instruction">ADD A,A</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">A</span>.</td>
+<td class="comment-1" rowspan="2"><span class="register">A</span>=17+(<span class="register">A</span>*2). <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
 </tr>
 <tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">17</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-17-left" src="../../images/scr/sprite-17-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">81</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-81-left" src="../../images/scr/sprite-81-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">145</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-145-left" src="../../images/scr/sprite-145-left.png" /></td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">19</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-19-left" src="../../images/scr/sprite-19-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">83</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-83-left" src="../../images/scr/sprite-83-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">147</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-147-left" src="../../images/scr/sprite-147-left.png" /></td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">21</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-21-left" src="../../images/scr/sprite-21-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">85</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-85-left" src="../../images/scr/sprite-85-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">149</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-149-left" src="../../images/scr/sprite-149-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59876"></span>59876</td>
 <td class="instruction">ADD A,17</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=17.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59878"></span>59878</td>
 <td class="instruction">CALL <a href="55739.html">DrawMonsterSprite</a></td>
 <td class="comment-1" rowspan="1">Call <a href="55739.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59881"></span>59881</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
+<td class="asm-label">Animate_Waiting_1</td>
 <td class="address-2"><span id="59882"></span>59882</td>
 <td class="instruction">LD A,9</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=9.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 9. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
 </tr>
 <tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">9</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-9-left" src="../../images/scr/sprite-9-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">73</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-73-left" src="../../images/scr/sprite-73-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">137</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-137-left" src="../../images/scr/sprite-137-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59884"></span>59884</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59888"></span>59888</td>
 <td class="instruction">CALL <a href="55739.html">DrawMonsterSprite</a></td>
 <td class="comment-1" rowspan="1">Call <a href="55739.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59891"></span>59891</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59895"></span>59895</td>
 <td class="instruction">LD A,13</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=13.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 13. <table class="default">
+<tr>
+<th colspan="2" rowspan="1">George</th>
+<th colspan="2" rowspan="1">Lizzy</th>
+<th colspan="2" rowspan="1">Ralph</th>
 </tr>
 <tr>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+<th colspan="1" rowspan="1">ID</th>
+<th colspan="1" rowspan="1">Sprite</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">13</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-13-left" src="../../images/scr/sprite-13-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">77</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-77-left" src="../../images/scr/sprite-77-left.png" /></td>
+<td class="centre" colspan="1" rowspan="1">141</td>
+<td class="centre" colspan="1" rowspan="1"><img alt="sprite-141-left" src="../../images/scr/sprite-141-left.png" /></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59897"></span>59897</td>
 <td class="instruction">CALL <a href="55739.html">DrawMonsterSprite</a></td>
 <td class="comment-1" rowspan="1">Call <a href="55739.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59900"></span>59900</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59904"></span>59904</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59905"></span>59905</td>
 <td class="instruction">INC C</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59906"></span>59906</td>
-<td class="instruction">JR <a href="59803.html#59867">59867</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59803.html#59867">59867</a>.</td>
+<td class="instruction">JR <a href="59803.html#59867">DrawMonsterMouth</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59803.html#59867">DrawMonsterMouth</a>.</td>
 </tr>
 </table>
 <table class="asm-navigation">

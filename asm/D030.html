@@ -45,30 +45,38 @@ Next: <a href="D05F.html">D05F</a>
 <td class="asm-label">Ralph_State</td>
 <td class="address-1"><span id="d030"></span>D030</td>
 <td class="instruction">DEFB $00</td>
-<td class="comment-1" rowspan="1"><table class="default">
+<td class="comment-1" rowspan="1">Relates to: <a href="D244.html">JumpTable_Pointer</a>. <table class="default">
 <tr>
 <th colspan="1" rowspan="1">Value</th>
 <th colspan="1" rowspan="1">Meaning</th>
 </tr>
 <tr>
-<td class="centre" colspan="1" rowspan="1">05</td>
+<td class="centre" colspan="1" rowspan="1"><a href="EF98.html#efa2">05</a></td>
 <td class="centre" colspan="1" rowspan="1">Waiting</td>
 </tr>
 <tr>
-<td class="centre" colspan="1" rowspan="1">1A</td>
-<td class="centre" colspan="1" rowspan="1">Eating</td>
-</tr>
-<tr>
-<td class="centre" colspan="1" rowspan="1">1C</td>
+<td class="centre" colspan="1" rowspan="1"><a href="EF98.html#efa8">08</a></td>
 <td class="centre" colspan="1" rowspan="1">Falling</td>
 </tr>
 <tr>
-<td class="centre" colspan="1" rowspan="1">21</td>
-<td class="centre" colspan="1" rowspan="1">Explosion</td>
+<td class="centre" colspan="1" rowspan="1"><a href="EF98.html#efcc">1A</a></td>
+<td class="centre" colspan="1" rowspan="1">Grabbing</td>
 </tr>
 <tr>
-<td class="centre" colspan="1" rowspan="1">23</td>
-<td class="centre" colspan="1" rowspan="1">Human</td>
+<td class="centre" colspan="1" rowspan="1"><a href="EF98.html#efce">1B</a></td>
+<td class="centre" colspan="1" rowspan="1">Eating</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="EF98.html#efda">21</a></td>
+<td class="centre" colspan="1" rowspan="1">Transform Explosion</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="EF98.html#efdc">22</a></td>
+<td class="centre" colspan="1" rowspan="1">Turn Into Human</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="EF98.html#efde">23</a></td>
+<td class="centre" colspan="1" rowspan="1">Exit Stage Right</td>
 </tr>
 <tr>
 <td class="centre" colspan="1" rowspan="1">FF</td>
@@ -86,18 +94,18 @@ Next: <a href="D05F.html">D05F</a>
 <td class="asm-label">Ralph_Direction</td>
 <td class="address-1"><span id="d033"></span>D033</td>
 <td class="instruction">DEFB $00</td>
-<td class="comment-1" rowspan="1"><table class="default">
+<td class="comment-1" rowspan="1">Relates to: <a href="D247.html">Flag_Orientation</a>. <table class="default">
 <tr>
 <th colspan="1" rowspan="1">Value</th>
 <th colspan="1" rowspan="1">Meaning</th>
 </tr>
 <tr>
 <td class="centre" colspan="1" rowspan="1">00</td>
-<td class="centre" colspan="1" rowspan="1">Right</td>
+<td class="centre" colspan="1" rowspan="1">Left-to-Right</td>
 </tr>
 <tr>
 <td class="centre" colspan="1" rowspan="1">01</td>
-<td class="centre" colspan="1" rowspan="1">Left</td>
+<td class="centre" colspan="1" rowspan="1">Right-to-Left</td>
 </tr>
 </table></td>
 </tr>
@@ -108,7 +116,7 @@ Next: <a href="D05F.html">D05F</a>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
-<td class="asm-label">Ralph_Countdown</td>
+<td class="asm-label">Ralph_Count</td>
 <td class="address-1"><span id="d035"></span>D035</td>
 <td class="instruction">DEFB $0F</td>
 <td class="comment-1" rowspan="1"></td>
@@ -116,7 +124,19 @@ Next: <a href="D05F.html">D05F</a>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="d036"></span>D036</td>
-<td class="instruction">DEFB $03,$19,$00</td>
+<td class="instruction">DEFB $03</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label">Ralph_Countdown</td>
+<td class="address-1"><span id="d037"></span>D037</td>
+<td class="instruction">DEFB $19</td>
+<td class="comment-1" rowspan="1">Relates to: <a href="D24B.html">Active_MonsterActionCountdown</a>.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d038"></span>D038</td>
+<td class="instruction">DEFB $00</td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
@@ -144,10 +164,20 @@ Next: <a href="D05F.html">D05F</a>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
-<td class="asm-label">Ralph_Banner_Counter</td>
+<td class="routine-comment" colspan="5">
+<span id="d03d"></span>
+<div class="comments">
+<div class="paragraph">
+When monster frames are drawn, this is used with an OR to set a bit which changes the sprite to the appropriate character. See <a href="D251.html">MonsterSpriteModifier</a>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Ralph_Sprite_Offset</td>
 <td class="address-1"><span id="d03d"></span>D03D</td>
 <td class="instruction">DEFB $80</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">For Ralph bit 7 is set: 10000000.</td>
 </tr>
 <tr>
 <td class="asm-label">Ralph_Control_Type</td>

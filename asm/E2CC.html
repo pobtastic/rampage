@@ -724,10 +724,10 @@ The countdown between CE-C9 handles the delay before C8 will hide the human.
 <td class="asm-label"></td>
 <td class="address-1"><span id="e37b"></span>E37B</td>
 <td class="instruction">LD HL,$D30A</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D2BF.html#d30a">D30A</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="D2BF.html#d30a">D30A</a> (<a href="D30D.html">Table_Projectiles</a>-03).</td>
 </tr>
 <tr>
-<td class="asm-label">Human_Lobber_12</td>
+<td class="asm-label">Lobber_FindSlot</td>
 <td class="address-2"><span id="e37e"></span>E37E</td>
 <td class="instruction">INC HL</td>
 <td class="comment-1" rowspan="3">Increment <span class="register">HL</span> by three.</td>
@@ -746,7 +746,7 @@ The countdown between CE-C9 handles the delay before C8 will hide the human.
 <td class="asm-label"></td>
 <td class="address-1"><span id="e381"></span>E381</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="E2CC.html#e37e">Human_Lobber_12</a> if *<span class="register">HL</span> is not zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="E2CC.html#e37e">Lobber_FindSlot</a> if *<span class="register">HL</span> is not zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -756,7 +756,7 @@ The countdown between CE-C9 handles the delay before C8 will hide the human.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="e383"></span>E383</td>
-<td class="instruction">JR NZ,<a href="E2CC.html#e37e">Human_Lobber_12</a></td>
+<td class="instruction">JR NZ,<a href="E2CC.html#e37e">Lobber_FindSlot</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>

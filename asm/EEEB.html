@@ -33,7 +33,7 @@ Next: <a href="EF0A.html">EF0A</a>
 </td>
 </tr>
 </table>
-<div class="description">EEEB: Routine at EEEB</div>
+<div class="description">EEEB: Animate: Turn Into Human</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,57 +42,69 @@ Next: <a href="EF0A.html">EF0A</a>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Animate_TurnIntoHuman</td>
 <td class="address-2"><span id="eeeb"></span>EEEB</td>
 <td class="instruction">LD A,($D24E)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="EEEB.html#eefc">EEFC</a> if *<a href="D24D.html#d24e">Temp_MonsterYPosition</a> is not equal to 14.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EEEB.html#eefc">Animate_TurnIntoHuman_0</a> if *<a href="D24D.html#d24e">Active_MonsterYPosition</a> is not equal to 14.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="eeee"></span>EEEE</td>
 <td class="instruction">CP $14</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="eef0"></span>EEF0</td>
-<td class="instruction">JR NZ,<a href="EEEB.html#eefc">$EEFC</a></td>
+<td class="instruction">JR NZ,<a href="EEEB.html#eefc">Animate_TurnIntoHuman_0</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="eef2"></span>EEF2</td>
 <td class="instruction">LD A,$23</td>
-<td class="comment-1" rowspan="2">Write 23 to *<a href="D244.html">JumpTable_Pointer</a>.</td>
+<td class="comment-1" rowspan="2">Write <a href="EF98.html#efde">23</a> to *<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="eef4"></span>EEF4</td>
 <td class="instruction">LD ($D244),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="eef7"></span>EEF7</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="2">Write 00 to *<a href="D249.html">D249</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="eef8"></span>EEF8</td>
 <td class="instruction">LD ($D249),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="eefb"></span>EEFB</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
+<td class="asm-label">Animate_TurnIntoHuman_0</td>
 <td class="address-2"><span id="eefc"></span>EEFC</td>
 <td class="instruction">INC A</td>
 <td class="comment-1" rowspan="1">Increment <span class="register">A</span> by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="eefd"></span>EEFD</td>
 <td class="instruction">LD ($D24E),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D24D.html#d24e">Temp_MonsterYPosition</a>.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<a href="D24D.html#d24e">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef00"></span>EF00</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Temp_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef04"></span>EF04</td>
 <td class="instruction">LD A,$35</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=35. <table class="default">
@@ -107,11 +119,13 @@ Next: <a href="EF0A.html">EF0A</a>
 </table></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef06"></span>EF06</td>
 <td class="instruction">CALL <a href="D6C9.html">PrintSprite</a></td>
 <td class="comment-1" rowspan="1">Call <a href="D6C9.html">PrintSprite</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef09"></span>EF09</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
