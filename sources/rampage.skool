@@ -3538,26 +3538,36 @@ b$CDE2 DEFB $FF                             ; Terminator.
 @label=George_State
 g$CFD2 DEFB $00         ; Relates to: #R$D244.
                         ; #TABLE(default,centre,centre)
-                        ; { =h Value | =h Meaning }
-                        ; { #N$05 | Waiting }
-                        ; { #N$1A | Eating }
-                        ; { #N$1C | Falling }
-                        ; { #N$21 | Explosion }
-                        ; { #N$23 | Human }
+                        ; { =h Byte | =h Meaning }
+                        ; { #R$EFA2(#N$05) | Waiting }
+                        ; { #R$EFA8(#N$08) | Falling }
+                        ; { #R$EFCC(#N$1A) | Grabbing }
+                        ; { #R$EFCE(#N$1B) | Eating }
+                        ; { #R$EFDA(#N$21) | Transform Explosion }
+                        ; { #R$EFDC(#N$22) | Turn Into Human }
+                        ; { #R$EFDE(#N$23) | Exit Stage Right }
                         ; { #N$FF | Game Over }
                         ; TABLE#
- $CFD3 DEFB $00,$00
+ $CFD3 DEFB $00
+@label=George_Climbing
+ $CFD4 DEFB $00         ; Relates to: #R$D246.
+                        ; #TABLE(default,centre,centre)
+                        ; { =h Byte | =h Meaning }
+                        ; { #N$00 | Not Climbing }
+                        ; { #N$01 | Climbing }
+                        ; TABLE#
 @label=George_Direction
  $CFD5 DEFB $00         ; Relates to: #R$D247.
                         ; #TABLE(default,centre,centre)
-                        ; { =h Value | =h Meaning }
+                        ; { =h Byte | =h Meaning }
                         ; { #N$00 | Left-to-Right }
                         ; { #N$01 | Right-to-Left }
                         ; TABLE#
  $CFD6 DEFB $00
 @label=George_Count
- $CFD7 DEFB $19
- $CFD8 DEFB $03
+ $CFD7 DEFB $19         ; Relates to: #R$D249.
+@label=George_AboutToFallCountdown
+ $CFD8 DEFB $03         ; Relates to: #R$D24A.
 @label=George_Countdown
  $CFD9 DEFB $19         ; Relates to: #R$D24B.
  $CFDA DEFB $00
@@ -3574,7 +3584,8 @@ g$CFD2 DEFB $00         ; Relates to: #R$D244.
  $CFDF DEFB $00         ; For George no bits are set:
                         ; #EVAL(#PEEK(#PC),$02,$08).
 @label=George_Control_Type
- $CFE0 DEFB $04         ; #TABLE(default,centre,centre) { =h Value | =h Meaning }
+ $CFE0 DEFB $04         ; #TABLE(default,centre,centre)
+                        ; { =h Byte | =h Meaning }
                         ; { #N$00 | Computer Controlled }
                         ; { #N$01 | Sinclair Interface 2 (port 2) }
                         ; { #N$02 | Sinclair Interface 2 (port 1) }
@@ -3600,26 +3611,36 @@ g$CFD2 DEFB $00         ; Relates to: #R$D244.
 @label=Lizzy_State
 g$D001 DEFB $00                             ; Relates to: #R$D244.
                                             ; #TABLE(default,centre,centre)
-                                            ; { =h Value | =h Meaning }
-                                            ; { #N$05 | Waiting }
-                                            ; { #N$1A | Eating }
-                                            ; { #N$1C | Falling }
-                                            ; { #N$21 | Explosion }
-                                            ; { #N$23 | Human }
+                                            ; { =h Byte | =h Meaning }
+                                            ; { #R$EFA2(#N$05) | Waiting }
+                                            ; { #R$EFA8(#N$08) | Falling }
+                                            ; { #R$EFCC(#N$1A) | Grabbing }
+                                            ; { #R$EFCE(#N$1B) | Eating }
+                                            ; { #R$EFDA(#N$21) | Transform Explosion }
+                                            ; { #R$EFDC(#N$22) | Turn Into Human }
+                                            ; { #R$EFDE(#N$23) | Exit Stage Right }
                                             ; { #N$FF | Game Over }
                                             ; TABLE#
- $D002 DEFB $00,$00
+ $D002 DEFB $00
+@label=Lizzy_Climbing
+ $D003 DEFB $00                             ; Relates to: #R$D246.
+                                            ; #TABLE(default,centre,centre)
+                                            ; { =h Byte | =h Meaning }
+                                            ; { #N$00 | Not Climbing }
+                                            ; { #N$01 | Climbing }
+                                            ; TABLE#
 @label=Lizzy_Direction
  $D004 DEFB $00                             ; Relates to: #R$D247.
                                             ; #TABLE(default,centre,centre)
-                                            ; { =h Value | =h Meaning }
+                                            ; { =h Byte | =h Meaning }
                                             ; { #N$00 | Left-to-Right }
                                             ; { #N$01 | Right-to-Left }
                                             ; TABLE#
  $D005 DEFB $00
 @label=Lizzy_Count
- $D006 DEFB $14
- $D007 DEFB $03
+ $D006 DEFB $14                             ; Relates to: #R$D249.
+@label=Lizzy_AboutToFallCountdown
+ $D007 DEFB $03                             ; Relates to: #R$D24A.
 @label=Lizzy_Countdown
  $D008 DEFB $19                             ; Relates to: #R$D24B.
  $D009 DEFB $00
@@ -3636,7 +3657,8 @@ g$D001 DEFB $00                             ; Relates to: #R$D244.
  $D00E DEFB $40                             ; For Lizzy bit 6 is set:
                                             ; #EVAL(#PEEK(#PC),$02,$08).
 @label=Lizzy_Control_Type
- $D00F DEFB $00                             ; #TABLE(default,centre,centre) { =h Value | =h Meaning }
+ $D00F DEFB $00                             ; #TABLE(default,centre,centre)
+                                            ; { =h Byte | =h Meaning }
                                             ; { #N$00 | Computer Controlled }
                                             ; { #N$01 | Sinclair Interface 2 (port 2) }
                                             ; { #N$02 | Sinclair Interface 2 (port 1) }
@@ -3656,7 +3678,7 @@ g$D001 DEFB $00                             ; Relates to: #R$D244.
 @label=Ralph_State
 g$D030 DEFB $00                             ; Relates to: #R$D244.
                                             ; #TABLE(default,centre,centre)
-                                            ; { =h Value | =h Meaning }
+                                            ; { =h Byte | =h Meaning }
                                             ; { #R$EFA2(#N$05) | Waiting }
                                             ; { #R$EFA8(#N$08) | Falling }
                                             ; { #R$EFCC(#N$1A) | Grabbing }
@@ -3666,18 +3688,26 @@ g$D030 DEFB $00                             ; Relates to: #R$D244.
                                             ; { #R$EFDE(#N$23) | Exit Stage Right }
                                             ; { #N$FF | Game Over }
                                             ; TABLE#
- $D031 DEFB $00,$00
+ $D031 DEFB $00
+@label=Ralph_Climbing
+ $D032 DEFB $00                             ; Relates to: #R$D246.
+                                            ; #TABLE(default,centre,centre)
+                                            ; { =h Byte | =h Meaning }
+                                            ; { #N$00 | Not Climbing }
+                                            ; { #N$01 | Climbing }
+                                            ; TABLE#
 @label=Ralph_Direction
  $D033 DEFB $00                             ; Relates to: #R$D247.
                                             ; #TABLE(default,centre,centre)
-                                            ; { =h Value | =h Meaning }
+                                            ; { =h Byte | =h Meaning }
                                             ; { #N$00 | Left-to-Right }
                                             ; { #N$01 | Right-to-Left }
                                             ; TABLE#
  $D034 DEFB $00
 @label=Ralph_Count
  $D035 DEFB $0F
- $D036 DEFB $03
+@label=Ralph_AboutToFallCountdown
+ $D036 DEFB $03                             ; Relates to: #R$D24A.
 @label=Ralph_Countdown
  $D037 DEFB $19                             ; Relates to: #R$D24B.
  $D038 DEFB $00
@@ -3694,7 +3724,8 @@ g$D030 DEFB $00                             ; Relates to: #R$D244.
  $D03D DEFB $80                             ; For Ralph bit 7 is set:
                                             ; #EVAL(#PEEK(#PC),$02,$08).
 @label=Ralph_Control_Type
- $D03E DEFB $00                             ; #TABLE(default,centre,centre) { =h Value | =h Meaning }
+ $D03E DEFB $00                             ; #TABLE(default,centre,centre)
+                                            ; { =h Byte | =h Meaning }
                                             ; { #N$00 | Computer Controlled }
                                             ; { #N$01 | Sinclair Interface 2 (port 2) }
                                             ; { #N$02 | Sinclair Interface 2 (port 1) }
@@ -3916,13 +3947,20 @@ g$D244 DEFB $00
 ; Game status buffer entry at D245
 g$D245 DEFB $00
 
-; Game status buffer entry at D246
+; Active Monster Climbing Flag
+;
+; Relates to: #LIST { #R$CFD4 } { #R$D003 } { #R$D032 } LIST#
+; #TABLE(default,centre,centre) { =h Byte | =h Meaning }
+; { #N$00 | No  }
+; { #N$01 | Yes }
+; TABLE#
+@label=Flag_MonsterClimbing
 g$D246 DEFB $00
 
 ; Active Monster Orientation Flag
 ;
 ; Relates to: #LIST { #R$CFD5 } { #R$D004 } { #R$D033 } LIST#
-; #TABLE(default,centre,centre) { =h Value | =h Facing }
+; #TABLE(default,centre,centre) { =h Byte | =h Facing }
 ; { #N$00 | Left-to-right  }
 ; { #N$01 | Right-to-left }
 ; TABLE#
@@ -3935,7 +3973,19 @@ g$D248 DEFB $00
 ; Game status buffer entry at D249
 g$D249 DEFB $00
 
-; Game status buffer entry at D24A
+; Active Monster About-To-Fall Countdown
+;
+; Used by the routine at #R$EA18.
+;
+; .
+;
+; Relates to:
+; #LIST
+; { #R$CFD8 }
+; { #R$D007 }
+; { #R$D036 }
+; LIST#
+@label=Active_MonsterAboutToFallCountdown
 g$D24A DEFB $00
 
 ; Active Monster Action Countdown
@@ -3979,7 +4029,7 @@ g$D24F DEFB $00
 @label=Active_MonsterEnergy
 g$D250 DEFB $00
 
-; Monster Sprite Modifier
+; Active Monster Sprite Modifier
 ;
 ; When monster frames are drawn, this is used with an OR to set a bit which changes the sprite to the appropriate
 ;       character. See #R$D9BB.
@@ -3992,8 +4042,26 @@ g$D250 DEFB $00
 @label=MonsterSpriteModifier
 g$D251 DEFB $00
 
-; Data block at D252
-b$D252 DEFB $00
+; Active Monster Control Type
+;
+; ID: #N$0E. See #R$F9BF, relates to:
+; #LIST
+; { #R$CFE0 }
+; { #R$D00F }
+; { #R$D03E }
+; LIST#
+@label=Active_MonsterControlType
+g$D252 DEFB $00      ; #TABLE(default,centre,centre)
+                     ; { =h Byte | =h Meaning }
+                     ; { #N$00 | Computer Controlled }
+                     ; { #N$01 | Sinclair Interface 2 (port 2) }
+                     ; { #N$02 | Sinclair Interface 2 (port 1) }
+                     ; { #N$03 | Kempston Joystick }
+                     ; { #N$04 | Keyboard (set 1) }
+                     ; { #N$05 | Keyboard (set 2) }
+                     ; { #N$06 | Keyboard (set 3 }
+                     ; { #N$FF | Not set }
+                     ; TABLE#
 
 ; Game status buffer entry at D253
 g$D253 DEFW $0000
@@ -4260,7 +4328,7 @@ b$D3FB DEFB $00
 ; Game State
 ;
 ; #TABLE(default,centre,centre)
-; { =h Value | =h Meaning }
+; { =h Byte | =h Meaning }
 ; { #N$00 | In-Play }
 ; { #N$01 | Game Over }
 ; TABLE#
@@ -4271,7 +4339,7 @@ g$D3FD DEFB $00
 ;
 ; Is it carpet? Awning? Unsure...
 ; #TABLE(default,centre,centre)
-; { =h Value | =h Meaning }
+; { =h Byte | =h Meaning }
 ; { #N$00 | No carpet }
 ; { #N$01 | Carpet }
 ; TABLE#
@@ -4293,13 +4361,13 @@ g$D400 DEFB $00
 ;
 ; See #R$FC39.
 @label=VehicleCounter
-g$D401 DEFB $00      ; #TABLE(default,centre,centre) { =h Value | =h Meaning }
+g$D401 DEFB $00      ; #TABLE(default,centre,centre) { =h Byte | =h Meaning }
                      ; { #N$00-#N$18 | Countdown until spawn }
                      ; { #N$FE | Spawning "off" }
                      ; { #N$FF | Vehicle is spawned }
                      ; TABLE#
 @label=VehicleType
- $D402 DEFB $00      ; #TABLE(default,centre,centre) { =h Value | =h Vehicle }
+ $D402 DEFB $00      ; #TABLE(default,centre,centre) { =h Byte | =h Vehicle }
                      ; { #N$00 | Tank }
                      ; { #N$01 | Car }
                      ; { #N$02 | Police car }
@@ -4318,7 +4386,7 @@ g$D401 DEFB $00      ; #TABLE(default,centre,centre) { =h Value | =h Meaning }
 ;
 ; See #R$FCB6.
 @label=TrainState
-g$D405 DEFB $00      ; #TABLE(default,centre,centre) { =h Value | =h Meaning }
+g$D405 DEFB $00      ; #TABLE(default,centre,centre) { =h Byte | =h Meaning }
                      ; { #N$00-#N$20 | Countdown until spawn }
                      ; { #N$FE | Spawning "off" }
                      ; { #N$FF | Train is spawned }
@@ -4402,7 +4470,7 @@ c$D409 LD BC,$0000   ; #REGbc=#N($0000,$04,$04).
  $D46E JP NC,$D49A   ; }
  $D471 CALL $D4E8    ; Call #R$D4E8.
 ; The value here is self-modified at:
-; #TABLE(default,centre,centre) { =h Location | =h Value Set }
+; #TABLE(default,centre,centre) { =h Location | =h Byte Set }
 ; { #R$D40C | #N$6B } { #R$D417 | #N$73 } { #R$D422 | #N$7B }
 ; TABLE#
  $D474 LD D,$00      ; #REGd=#N$00 (as above).
@@ -4464,7 +4532,7 @@ c$D409 LD BC,$0000   ; #REGbc=#N($0000,$04,$04).
  $D4B3 EXX           ; Switch back to the normal registers.
  $D4B4 POP BC        ; Restore #REGbc from the stack.
 ; The value here is self-modified at:
-; #TABLE(default,centre,centre) { =h Location | =h Value Set }
+; #TABLE(default,centre,centre) { =h Location | =h Byte Set }
 ; { #R$D40C | #N$6B } { #R$D417 | #N$73 } { #R$D422 | #N$7B }
 ; TABLE#
  $D4B5 LD D,$00      ; #REGd=#N$00 (as above).
@@ -7032,8 +7100,8 @@ c$E119 LD HL,$CFD2   ; #REGhl=#R$CFD2.
 ;
 ; O:A Byte representing the intended action
 @label=Controls
-c$E179 LD A,($D252)  ; {Jump to #R$E1CE if *#R$D252 is not zero.
- $E17C AND A         ;
+c$E179 LD A,($D252)  ; {Jump to #R$E1CE if *#R$D252 is not set to "computer
+ $E17C AND A         ; controlled".
  $E17D JR NZ,$E1CE   ; }
 *$E17F CALL $DA28    ; {Write a random number between 0-31 to *#R$D217.
  $E182 AND %00011111 ;
@@ -8104,8 +8172,8 @@ c$E68C CALL $E179    ; Call #R$E179.
  $E6AF LD A,$0D      ; {Write #R$EFB2(#N$0D) to *#R$D244.
  $E6B1 LD ($D244),A  ; }
  $E6B4 JP $E67C      ; Jump to #R$E67C.
-*$E6B7 LD A,($D252)  ; {Jump to #R$E69C if *#R$D252 is zero.
- $E6BA AND A         ;
+*$E6B7 LD A,($D252)  ; {Jump to #R$E69C if *#R$D252 is set to "computer
+ $E6BA AND A         ; controlled".
  $E6BB JR Z,$E69C    ; }
  $E6BD LD A,$0E      ; {Write #R$EFB4(#N$0E) to *#R$D244.
  $E6BF LD ($D244),A  ; }
@@ -8444,30 +8512,39 @@ c$E982 CALL $DB54    ; Call #R$DB54.
 ; Animate: Waiting
 @label=Animate_Waiting
 c$E99B CALL $E179    ; Call #R$E179.
- $E99E AND A         ; Set flags.
- $E99F JP NZ,$E693   ; Jump to #R$E693 if {} is not zero.
- $E9A2 LD A,($D252)  ; {Jump to #R$E9AE if *#R$D252 is not zero.
- $E9A5 AND A         ;
+ $E99E AND A         ; {Jump to #R$E693 if any monster control has been
+ $E99F JP NZ,$E693   ; pressed.}
+ $E9A2 LD A,($D252)  ; {Jump to #R$E9AE if *#R$D252 is not set to "computer
+ $E9A5 AND A         ; controlled".
  $E9A6 JR NZ,$E9AE   ; }
+; The monster is being controlled by the computer, so rather than wait - pick a completely random number between
+;       #N$00-#N$FF and use this as the control byte.
  $E9A8 CALL $DA28    ; Call #R$DA28.
  $E9AB JP $E693      ; Jump to #R$E693.
+; The monster is player controlled so start the action.
+@label=Waiting_Action
 *$E9AE LD A,($D246)  ; #REGa=*#R$D246.
- $E9B1 RRCA          ; Rotate #REGa right one position, setting the carry flag
-                     ; if bit 0 was set.
+ $E9B1 RRCA          ; Set the carry flag if the monster is currently
+                     ; "climbing".
  $E9B2 JP C,$E9EA    ; Jump to #R$E9EA if the carry flag is set.
+; The monster is on the ground so select the normal body sprite.
  $E9B5 LD A,$05      ; #REGa=sprite id #N$05.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
                      ; { #N$05 | #SPRITE$05,$00,$0515 | #N$45 | #SPRITE$45,$00,$0515 | #N$85 | #SPRITE$85,$00,$0515 }
                      ; UDGTABLE#
+; Set the co-ordinates for where to draw.
  $E9B7 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $E9BB CALL $D9BB    ; Call #R$D9BB.
+; Again, set the co-ordinates for where to draw.
  $E9BE LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $E9C2 LD A,($D247)  ; #REGa=*#R$D247.
  $E9C5 XOR %00000001 ; Flip bit 0.
  $E9C7 ADD A,C       ; #REGa+=#REGc.
  $E9C8 LD C,A        ; #REGc=#REGa.
+; Overwrite the head section, as the monster turns to face the camera to
+; "speak".
  $E9C9 LD A,$0F      ; #REGa=sprite ID #N$0F.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -8475,19 +8552,20 @@ c$E99B CALL $E179    ; Call #R$E179.
                      ; { #N$0F | #SPRITE$0F | #N$4F | #SPRITE$4F | #N$8F | #SPRITE$8F }
                      ; UDGTABLE#
  $E9CB CALL $D9BB    ; Call #R$D9BB.
- $E9CE LD BC,($D24D) ; #REGbc=*#R$D24D.
- $E9D2 INC B         ; Increment #REGb by one.
- $E9D3 INC C         ; Increment #REGc by one.
+; Set the co-ordinates for where to draw.
+ $E9CE LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
+ $E9D2 INC B         ; {Increment both the X and Y positions by one to target
+ $E9D3 INC C         ; drawing the mouth animation.}
  $E9D4 LD A,($D247)  ; #REGa=*#R$D247.
  $E9D7 XOR %00000001 ; Flip bit 0.
  $E9D9 ADD A,C       ; #REGa+=#REGc.
  $E9DA LD C,A        ; #REGc=#REGa.
 ; Choose a frame randomly for the mouth sprite.
 @label=DrawMonsterMouth
-*$E9DB CALL $DA28    ; #REGa=random number between #N$00-#N$02.
- $E9DE AND %00000011 ; Keep only bits 0-1.
- $E9E0 JR Z,$E9DB    ; Jump to #R$E9DB if the result is zero.
- $E9E2 DEC A         ; Decrease #REGa by one.
+*$E9DB CALL $DA28    ; {#REGa=random number between #N$00-#N$02.
+ $E9DE AND %00000011 ;
+ $E9E0 JR Z,$E9DB    ;
+ $E9E2 DEC A         ; }
  $E9E3 ADD A,A       ; {#REGa=#N$11+(#REGa*#N$02).
  $E9E4 ADD A,$11     ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -8498,15 +8576,19 @@ c$E99B CALL $E179    ; Call #R$E179.
                      ; UDGTABLE#}
  $E9E6 CALL $D9BB    ; Call #R$D9BB.
  $E9E9 RET           ; Return.
+; The monster is currently climbing so use the correct body sprite.
+@label=Climbing_Waiting
 *$E9EA LD A,$09      ; #REGa=sprite ID #N$09.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
                      ; { #N$09 | #SPRITE$09 | #N$49 | #SPRITE$49 | #N$89 | #SPRITE$89 }
                      ; UDGTABLE#
- $E9EC LD BC,($D24D) ; #REGbc=*#R$D24D.
+; Set the co-ordinates for where to draw.
+ $E9EC LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $E9F0 CALL $D9BB    ; Call #R$D9BB.
- $E9F3 LD BC,($D24D) ; #REGbc=*#R$D24D.
+; Again, set the co-ordinates for where to draw.
+ $E9F3 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $E9F7 LD A,$0D      ; #REGa=sprite ID #N$0D.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -8514,9 +8596,10 @@ c$E99B CALL $E179    ; Call #R$E179.
                      ; { #N$0D | #SPRITE$0D | #N$4D | #SPRITE$4D | #N$8D | #SPRITE$8D }
                      ; UDGTABLE#
  $E9F9 CALL $D9BB    ; Call #R$D9BB.
- $E9FC LD BC,($D24D) ; #REGbc=*#R$D24D.
- $EA00 INC B         ; Increment #REGb by one.
- $EA01 INC C         ; Increment #REGc by one.
+; Set the co-ordinates for where to draw.
+ $E9FC LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
+ $EA00 INC B         ; {Increment both the X and Y positions by one to target
+ $EA01 INC C         ; drawing the mouth animation.}
  $EA02 JR $E9DB      ; Jump to #R$E9DB.
 
 ; Routine at EA04
@@ -8531,22 +8614,32 @@ c$EA04 LD A,$06      ; {Write #N$06 to *#R$D24A.
  $EA12 CALL NC,$DA51 ; Call #R$DA51 if the carry flag is not set.
  $EA15 JP $E67C      ; Jump to #R$E67C.
 
-; Routine at EA18
+; Action: Falling
+;
+; This isn't the entire falling animation rather the "comedy" part - where the monster realises they are about to
+;       fall, and cartoon-ishly they hover in the air for a few frames before falling.
+@label=Action_Falling
 c$EA18 LD A,($D24A)  ; {Decrease *#R$D24A by one.
  $EA1B DEC A         ;
  $EA1C LD ($D24A),A  ; }
  $EA1F JR Z,$EA36    ; Jump to #R$EA36 if *#R$D24A is zero.
+; The animation is in-progress so select the "Oh No" head sprite.
+; .
+; The routine at #R$D9BB handles which monster to display.
  $EA21 LD A,$19      ; #REGa=sprite ID #N$19.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
                      ; { #N$19 | #SPRITE$19 | #N$59 | #SPRITE$59 | #N$99 | #SPRITE$99 }
                      ; UDGTABLE#
- $EA23 LD BC,($D24D) ; #REGbc=*#R$D24D.
+; Set the co-ordinates for where to draw.
+ $EA23 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $EA27 CALL $D9BB    ; Call #R$D9BB.
- $EA2A LD BC,($D24D) ; #REGbc=*#R$D24D.
- $EA2E INC B         ; {Increment #REGb by two.
- $EA2F INC B         ; }
+; Again, set the co-ordinates for where to draw.
+ $EA2A LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
+ $EA2E INC B         ; {Increment the Y position by two to draw the lower
+ $EA2F INC B         ; section of the monsters body.}
+; The routine at #R$D9BB handles which monster to display.
  $EA30 LD A,$23      ; #REGa=sprite ID #N$23.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -8555,6 +8648,8 @@ c$EA18 LD A,($D24A)  ; {Decrease *#R$D24A by one.
                      ; UDGTABLE#
  $EA32 CALL $D9BB    ; Call #R$D9BB.
  $EA35 RET           ; Return.
+; The hovering-in-the-air animation is done so progress to the next state.
+@label=Action_Falling_Finished
 *$EA36 LD A,$03      ; {Write #N$03 to *#R$D24A.
  $EA38 LD ($D24A),A  ; }
  $EA3B LD A,$08      ; {Write #R$EFA8(#N$08) to *#R$D244.
@@ -8567,8 +8662,9 @@ c$EA18 LD A,($D24A)  ; {Decrease *#R$D24A by one.
 ;
 ; .
 ;
-; Select the "Oh No" head sprite, the routine at #R$D9BB handles which monster
-; to display.
+; Select the "Oh No" head sprite.
+; .
+; The routine at #R$D9BB handles which monster to display.
 @label=Animate_Falling
 c$EA43 LD A,$19      ; #REGa=sprite ID #N$19.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
@@ -8583,6 +8679,7 @@ c$EA43 LD A,$19      ; #REGa=sprite ID #N$19.
  $EA4C LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $EA50 INC B         ; {Increment the Y position by two to draw the lower
  $EA51 INC B         ; section of the monsters body.}
+; The routine at #R$D9BB handles which monster to display.
  $EA52 LD A,$23      ; #REGa=sprite ID #N$23.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -8622,6 +8719,7 @@ c$EA43 LD A,$19      ; #REGa=sprite ID #N$19.
  $EA91 LD A,$04      ; #REGa=#N$04.
  $EA93 CALL $DD6C    ; Call #R$DD6C.
 ; Make the splat sound.
+; .
 ; #AUDIO(projectile.wav)(#INCLUDE(Projectile))
  $EA96 LD A,$05      ; {Write melody ID #N$05 to *#R$FF8D.
  $EA98 LD ($FF8D),A  ; }
@@ -8636,8 +8734,8 @@ c$EA9C LD A,($D24B)  ; {Jump to #R$EAB4 if *#R$D24B is equal to #N$19.
  $EAA7 JR NZ,$EACE   ; Jump to #R$EACE if #REGa is not zero.
  $EAA9 LD A,$19      ; {Write #N$19 to *#R$D24B.
  $EAAB LD ($D24B),A  ; }
- $EAAE LD A,($D252)  ; {Jump to #R$EABA if *#R$D252 is zero.
- $EAB1 AND A         ;
+ $EAAE LD A,($D252)  ; {Jump to #R$EABA if *#R$D252 is set to "computer
+ $EAB1 AND A         ; controlled".
  $EAB2 JR Z,$EABA    ; }
 *$EAB4 CALL $E179    ; Call #R$E179.
  $EAB7 AND A         ; {Jump to #R$EACE if #REGa is zero.
@@ -8652,14 +8750,17 @@ c$EA9C LD A,($D24B)  ; {Jump to #R$EAB4 if *#R$D24B is equal to #N$19.
  $EAC5 LD ($D246),A  ;
  $EAC8 LD ($D248),A  ; }
  $EACB JP $E67C      ; Jump to #R$E67C.
+; The routine at #R$D9BB handles which monster to display.
 *$EACE LD A,$07      ; #REGa=sprite ID #N$07.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
                      ; { #N$07 | #SPRITE$07,$00,$0416 | #N$47 | #SPRITE$47,$00,$0416 | #N$87 | #SPRITE$87,$00,$0416 }
                      ; UDGTABLE#
+; Set the co-ordinates for where to draw.
  $EAD0 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $EAD4 CALL $D9BB    ; Call #R$D9BB.
+; Again, set the co-ordinates for where to draw.
  $EAD7 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $EADB INC B         ; {Increment #REGb by two.
  $EADC INC B         ; }
@@ -8668,6 +8769,7 @@ c$EA9C LD A,($D24B)  ; {Jump to #R$EAB4 if *#R$D24B is equal to #N$19.
  $EAE1 XOR %00000001 ; Flip bit 0.
  $EAE3 ADD A,C       ; #REGa+=#REGc.
  $EAE4 LD C,A        ; #REGc=#REGa.
+; The routine at #R$D9BB handles which monster to display.
  $EAE5 LD A,$1B      ; #REGa=sprite ID #N$1B.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -8729,7 +8831,7 @@ c$EAF6 CALL $E179    ; Call #R$E179.
                      ; if bit 0 was set.
  $EB4A JR NC,$EB4F   ; Jump to #R$EB4F if the carry flag is not set.
  $EB4C LD HL,$C882   ; #REGhl=#R$C882.
-*$EB4F LD BC,($D24D) ; #REGbc=*#R$D24D.
+*$EB4F LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $EB53 LD A,($D24C)  ; {Increment *#R$D24C by one.
  $EB56 INC A         ;
  $EB57 LD ($D24C),A  ; }
@@ -8842,6 +8944,7 @@ c$EAF6 CALL $E179    ; Call #R$E179.
  $EC34 LD A,($D217)  ; {Jump to #R$ECE0 if *#R$D217 is higher than #N$11.
  $EC37 CP $11        ;
  $EC39 JP NC,$ECE0   ; }
+; The routine at #R$D9BB handles which monster to display.
  $EC3C LD A,$09      ; #REGa=sprite ID #N$09.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -8857,6 +8960,7 @@ c$EAF6 CALL $E179    ; Call #R$E179.
  $EC48 XOR %00000001 ; Flip bit 0.
  $EC4A ADD A,C       ; #REGa+=#REGc.
  $EC4B LD C,A        ; #REGc=#REGa.
+; The routine at #R$D9BB handles which monster to display.
  $EC4C LD A,$17      ; #REGa=sprite ID #N$17.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -8903,13 +9007,15 @@ c$EC8A LD A,($D24E)  ; {Jump to #R$ECC0 if *#R$D24E is equal to #N$12.
  $EC9C CALL $DA59    ; Call #R$DA59.
  $EC9F CP $12        ; {Jump to #R$ECC0 if #REGa is equal to #N$12.
  $ECA1 JR Z,$ECC0    ; }
+; The routine at #R$D9BB handles which monster to display.
 *$ECA3 LD A,$09      ; #REGa=sprite ID #N$09.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
                      ; { #N$09 | #SPRITE$09 | #N$49 | #SPRITE$49 | #N$89 | #SPRITE$89 }
                      ; UDGTABLE#
- $ECA5 LD BC,($D24D) ; #REGbc=*#R$D24D.
+; Set the co-ordinates for where to draw.
+ $ECA5 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $ECA9 PUSH BC       ; Stash #REGbc on the stack.
  $ECAA CALL $D9BB    ; Call #R$D9BB.
  $ECAD POP BC        ; Restore #REGbc from the stack.
@@ -8919,6 +9025,7 @@ c$EC8A LD A,($D24E)  ; {Jump to #R$ECC0 if *#R$D24E is equal to #N$12.
  $ECB3 XOR %00000001 ; Flip bit 0.
  $ECB5 ADD A,C       ; #REGa+=#REGc.
  $ECB6 LD C,A        ; #REGc=#REGa.
+; The routine at #R$D9BB handles which monster to display.
  $ECB7 LD A,$17      ; #REGa=sprite ID #N$17.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -8956,9 +9063,11 @@ c$ECE0 LD A,($D217)  ; #REGa=*#R$D217.
 *$ECEC LD HL,$FE00   ; #REGhl=#R$FE00.
  $ECEF LD DE,$FE03   ; #REGde=#N$FE03.
  $ECF2 CALL $F352    ; Call #R$F352.
- $ECF5 LD BC,($D24D) ; #REGbc=*#R$D24D.
+; Set the co-ordinates for where to draw.
+ $ECF5 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $ECF9 DEC B         ; {Decrease #REGb by two.
  $ECFA DEC B         ; }
+; The routine at #R$D9BB handles which monster to display.
  $ECFB LD A,$25      ; #REGa=sprite ID #N$25.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -8966,9 +9075,11 @@ c$ECE0 LD A,($D217)  ; #REGa=*#R$D217.
                      ; { #N$25 | #SPRITE$25 | #N$65 | #SPRITE$65 | #N$A5 | #SPRITE$A5 }
                      ; UDGTABLE#
  $ECFD CALL $D9BB    ; Call #R$D9BB.
- $ED00 LD BC,($D24D) ; #REGbc=*#R$D24D.
+; Again, set the co-ordinates for where to draw.
+ $ED00 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $ED04 INC B         ; {Increment #REGb by two.
  $ED05 INC B         ; }
+; The routine at #R$D9BB handles which monster to display.
  $ED06 LD A,$23      ; #REGa=sprite ID #N$23.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -8980,9 +9091,11 @@ c$ECE0 LD A,($D217)  ; #REGa=*#R$D217.
 *$ED0C LD HL,$0103   ; #REGhl=#N$0103.
  $ED0F LD DE,$0100   ; #REGde=#N$0100.
  $ED12 CALL $F352    ; Call #R$F352.
- $ED15 LD BC,($D24D) ; #REGbc=*#R$D24D.
+; Set the co-ordinates for where to draw.
+ $ED15 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $ED19 INC B         ; {Increment #REGb by two.
  $ED1A INC B         ; }
+; The routine at #R$D9BB handles which monster to display.
  $ED1B LD A,$23      ; #REGa=sprite ID #N$23.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -8990,12 +9103,14 @@ c$ECE0 LD A,($D217)  ; #REGa=*#R$D217.
                      ; { #N$23 | #SPRITE$23 | #N$63 | #SPRITE$63 | #N$A3 | #SPRITE$A3 }
                      ; UDGTABLE#
  $ED1D CALL $D9BB    ; Call #R$D9BB.
- $ED20 LD BC,($D24D) ; #REGbc=*#R$D24D.
+; Again, set the co-ordinates for where to draw.
+ $ED20 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $ED24 LD A,($D247)  ; {#REGh=*#R$D247.
  $ED27 LD H,A        ; }
  $ED28 LD A,C        ; {#REGc-=#REGh.
  $ED29 SUB H         ;
  $ED2A LD C,A        ; }
+; The routine at #R$D9BB handles which monster to display.
  $ED2B LD A,$1D      ; #REGa=sprite ID #N$1D.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -9029,9 +9144,11 @@ c$ED31 LD A,($D217)  ; #REGa=*#R$D217.
  $ED5A CALL $F352    ; Call #R$F352.
  $ED5D LD A,$12      ; {Write #R$EFBC(#N$12) to *#R$D244.
  $ED5F LD ($D244),A  ; }
- $ED62 LD BC,($D24D) ; #REGbc=*#R$D24D.
+; Set the co-ordinates for where to draw.
+ $ED62 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $ED66 DEC B         ; {Decrease #REGb by two.
  $ED67 DEC B         ; }
+; The routine at #R$D9BB handles which monster to display.
  $ED68 LD A,$25      ; #REGa=sprite ID #N$25.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -9039,9 +9156,11 @@ c$ED31 LD A,($D217)  ; #REGa=*#R$D217.
                      ; { #N$25 | #SPRITE$25 | #N$65 | #SPRITE$65 | #N$A5 | #SPRITE$A5 }
                      ; UDGTABLE#
  $ED6A CALL $D9BB    ; Call #R$D9BB.
- $ED6D LD BC,($D24D) ; #REGbc=*#R$D24D.
+; Again, set the co-ordinates for where to draw.
+ $ED6D LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $ED71 INC B         ; {Increment #REGb by two.
  $ED72 INC B         ; }
+; The routine at #R$D9BB handles which monster to display.
  $ED73 LD A,$21      ; #REGa=sprite ID #N$21.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -9055,9 +9174,11 @@ c$ED31 LD A,($D217)  ; #REGa=*#R$D217.
  $ED7F CALL $F352    ; Call #R$F352.
  $ED82 LD A,$13      ; {Write #R$EFBE(#N$13) to *#R$D244.
  $ED84 LD ($D244),A  ; }
- $ED87 LD BC,($D24D) ; #REGbc=*#R$D24D.
+; Set the co-ordinates for where to draw.
+ $ED87 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $ED8B INC B         ; {Increment #REGb by two.
  $ED8C INC B         ; }
+; The routine at #R$D9BB handles which monster to display.
  $ED8D LD A,$21      ; #REGa=sprite ID #N$21.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -9065,12 +9186,14 @@ c$ED31 LD A,($D217)  ; #REGa=*#R$D217.
                      ; { #N$21 | #SPRITE$21 | #N$61 | #SPRITE$61 | #N$A1 | #SPRITE$A1 }
                      ; UDGTABLE#
  $ED8F CALL $D9BB    ; Call #R$D9BB.
- $ED92 LD BC,($D24D) ; #REGbc=*#R$D24D.
+; Again, set the co-ordinates for where to draw.
+ $ED92 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $ED96 LD A,($D247)  ; #REGa=*#R$D247.
  $ED99 SUB C         ; #REGa-=#REGc.
  $ED9A CPL           ; Invert the bits in #REGa.
  $ED9B INC A         ; Increment #REGa by one.
  $ED9C LD C,A        ; #REGc=#REGa.
+; The routine at #R$D9BB handles which monster to display.
  $ED9D LD A,$1D      ; #REGa=sprite ID #N$1D.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -9084,12 +9207,14 @@ c$ED31 LD A,($D217)  ; #REGa=*#R$D217.
  $EDA9 CALL $F352    ; Call #R$F352.
  $EDAC LD A,$15      ; {Write #R$EFC2(#N$15) to *#R$D244.
  $EDAE LD ($D244),A  ; }
- $EDB1 LD BC,($D24D) ; #REGbc=*#R$D24D.
+; Set the co-ordinates for where to draw.
+ $EDB1 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $EDB5 LD A,($D247)  ; #REGa=*#R$D247.
  $EDB8 SUB C         ; #REGa-=#REGc.
  $EDB9 CPL           ; Invert the bits in #REGa.
  $EDBA INC A         ; Increment #REGa by one.
  $EDBB LD C,A        ; #REGc=#REGa.
+; The routine at #R$D9BB handles which monster to display.
  $EDBC LD A,$29      ; #REGa=sprite ID #N$29.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -9128,6 +9253,7 @@ c$EDC2 LD A,($D217)  ; #REGa=*#R$D217.
  $EDF6 LD L,$01      ; #REGl=#N$01.
  $EDF8 LD E,$00      ; #REGe=#N$00.
  $EDFA CALL $EF38    ; Call #R$EF38.
+; The routine at #R$D9BB handles which monster to display.
  $EDFD LD A,$25      ; #REGa=sprite ID #N$25.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -9140,6 +9266,7 @@ c$EDC2 LD A,($D217)  ; #REGa=*#R$D217.
  $EE06 LD D,H        ; #REGd=#REGh.
  $EE07 LD E,$00      ; #REGe=#N$00.
  $EE09 CALL $EF38    ; Call #R$EF38.
+; The routine at #R$D9BB handles which monster to display.
  $EE0C LD A,$1F      ; #REGa=sprite ID #N$1F.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -9153,13 +9280,15 @@ c$EDC2 LD A,($D217)  ; #REGa=*#R$D217.
  $EE18 CALL $F352    ; Call #R$F352.
  $EE1B LD A,$17      ; {Write #R$EFC6(#N$17) to *#R$D244.
  $EE1D LD ($D244),A  ; }
- $EE20 LD BC,($D24D) ; #REGbc=*#R$D24D.
+; Set the co-ordinates for where to draw.
+ $EE20 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $EE24 INC B         ; {Increment #REGb by two.
  $EE25 INC B         ; }
  $EE26 LD A,($D247)  ; #REGa=*#R$D247.
  $EE29 XOR %00000001 ; Flip bit 0.
  $EE2B ADD A,C       ; #REGa+=#REGc.
  $EE2C LD C,A        ; #REGc=#REGa.
+; The routine at #R$D9BB handles which monster to display.
  $EE2D LD A,$1F      ; #REGa=sprite ID #N$1F.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -9167,7 +9296,8 @@ c$EDC2 LD A,($D217)  ; #REGa=*#R$D217.
                      ; { #N$1F | #SPRITE$1F | #N$5F | #SPRITE$5F | #N$9F | #SPRITE$9F }
                      ; UDGTABLE#
  $EE2F CALL $D9BB    ; Call #R$D9BB.
- $EE32 LD BC,($D24D) ; #REGbc=*#R$D24D.
+; Again, set the co-ordinates for where to draw.
+ $EE32 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $EE36 LD A,($D247)  ; #REGa=*#R$D247.
  $EE39 SUB C         ; #REGa-=#REGc.
  $EE3A CPL           ; Invert the bits in #REGa.
@@ -9177,6 +9307,7 @@ c$EDC2 LD A,($D217)  ; #REGa=*#R$D217.
  $EE40 XOR %00000001 ; Flip bit 0.
  $EE42 ADD A,C       ; #REGa+=#REGc.
  $EE43 LD C,A        ; #REGc=#REGa.
+; The routine at #R$D9BB handles which monster to display.
  $EE44 LD A,$1D      ; #REGa=sprite ID #N$1D.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -9190,7 +9321,8 @@ c$EDC2 LD A,($D217)  ; #REGa=*#R$D217.
  $EE50 CALL $F352    ; Call #R$F352.
  $EE53 LD A,$19      ; {Write #R$EFCA(#N$19) to *#R$D244.
  $EE55 LD ($D244),A  ; }
- $EE58 LD BC,($D24D) ; #REGbc=*#R$D24D.
+; Set the co-ordinates for where to draw.
+ $EE58 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $EE5C LD A,($D247)  ; #REGa=*#R$D247.
  $EE5F SUB C         ; #REGa-=#REGc.
  $EE60 CPL           ; Invert the bits in #REGa.
@@ -9200,6 +9332,7 @@ c$EDC2 LD A,($D217)  ; #REGa=*#R$D217.
  $EE66 XOR %00000001 ; Flip bit 0.
  $EE68 ADD A,C       ; #REGa+=#REGc.
  $EE69 LD C,A        ; #REGc=#REGa.
+; The routine at #R$D9BB handles which monster to display.
  $EE6A LD A,$0B      ; #REGa=sprite ID #N$0B.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -9222,8 +9355,9 @@ c$EE70 LD A,($D24B)  ; {Decrease *#R$D24B by one.
  $EE73 DEC A         ;
  $EE74 LD ($D24B),A  ; }
  $EE77 JR Z,$EE8E    ; Jump to #R$EE8E if the animation is finished.
-; Select the "climbing" monster sprite bottom half, the routine at #R$D9BB
-; handles which monster to display.
+; Select the "climbing" monster sprite bottom half.
+; .
+; The routine at #R$D9BB handles which monster to display.
  $EE79 LD A,$21      ; #REGa=sprite ID #N$21.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -9237,8 +9371,9 @@ c$EE70 LD A,($D24B)  ; {Decrease *#R$D24B by one.
  $EE81 CALL $D9BB    ; Call #R$D9BB.
 ; Again, set the co-ordinates for where to draw.
  $EE84 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
-; Select the monster eating head sprite, the routine at #R$D9BB handles which
-; monster to display.
+; Select the monster eating head sprite.
+; .
+; The routine at #R$D9BB handles which monster to display.
  $EE88 LD A,$03      ; #REGa=sprite ID #N$03.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -9269,8 +9404,9 @@ c$EE9B LD A,($D24B)  ; #REGa=*#R$D24B.
  $EE9F CP $FF        ; {Jump to #R$EECA if the animation is finished.
  $EEA1 JR Z,$EECA    ; }
  $EEA3 LD ($D24B),A  ; Update the countdown at *#R$D24B.
-; Select the "climbing" monster sprite, the routine at #R$D9BB handles which
-; monster to display.
+; Select the "climbing" monster sprite.
+; .
+; The routine at #R$D9BB handles which monster to display.
  $EEA6 LD A,$09      ; #REGa=sprite ID #N$09.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -9282,8 +9418,9 @@ c$EE9B LD A,($D24B)  ; #REGa=*#R$D24B.
  $EEAC CALL $D9BB    ; Call #R$D9BB.
 ; Again, set the co-ordinates for where to draw.
  $EEAF LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
-; Select the monster head sprite, the routine at #R$D9BB handles which monster
-; to display.
+; Select the monster head sprite.
+; .
+; The routine at #R$D9BB handles which monster to display.
  $EEB3 LD A,$0D      ; #REGa=sprite ID #N$0D.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -9319,6 +9456,12 @@ c$EE9B LD A,($D24B)  ; #REGa=*#R$D24B.
  $EED3 JP $E67C      ; Jump to #R$E67C.
 
 ; Animate: Transform Explosion
+;
+; .
+;
+; .
+;
+; Set the co-ordinates for where to draw.
 @label=Animate_TransformExplosion
 c$EED6 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $EEDA INC B         ; Increment #REGb by one.
@@ -9347,7 +9490,8 @@ c$EEEB LD A,($D24E)  ; {Jump to #R$EEFC if *#R$D24E is not equal to #N$14.
  $EEFB RET           ; Return.
 *$EEFC INC A         ; Increment #REGa by one.
  $EEFD LD ($D24E),A  ; Write #REGa to *#R$D24E.
- $EF00 LD BC,($D24D) ; #REGbc=*#R$D24D.
+; Set the co-ordinates for where to draw.
+ $EF00 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $EF04 LD A,$35      ; #REGa=#N$35.
                      ; #UDGTABLE(default,centre,centre)
                      ; { =h ID | =h Sprite }
@@ -9357,6 +9501,12 @@ c$EEEB LD A,($D24E)  ; {Jump to #R$EEFC if *#R$D24E is not equal to #N$14.
  $EF09 RET           ; Return.
 
 ; Animate: Exit Stage Right
+;
+; .
+;
+; .
+;
+; Set the co-ordinates for where to draw.
 @label=Animate_ExitStageRight
 c$EF0A LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $EF0E LD A,($D249)  ; #REGa=*#R$D249.
@@ -9391,7 +9541,11 @@ c$EF0A LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
 ; Routine at EF38
 ;
 ; Used by the routines at #R$EDC2 and #R$F352.
-c$EF38 LD BC,($D24D) ; #REGbc=*#R$D24D.
+;
+; .
+;
+; Set the co-ordinates for where to draw.
+c$EF38 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $EF3C LD A,($D247)  ; #REGa=*#R$D247 (will be #N$00 or #N$01).
 ; Moves the orientation flag into the carry flag.
  $EF3F RRCA          ; Rotate #REGa right one position, setting the carry flag
@@ -9659,7 +9813,7 @@ c$EFE0 XOR A           ; #REGa=#N$00 (building data offset).
  $F0DA ADD A,A         ; }
  $F0DB ADD A,$44       ; #REGa+=#N$44.
 ; #HTML(The value here is self-modified at:
-; #TABLE(default,centre,centre,centre) { =h Location | =h Value Set | =h Code }
+; #TABLE(default,centre,centre,centre) { =h Location | =h Byte Set | =h Code }
 ; { #R$F0AB | #N$00 | <code>NOP</code> } { #R$F0BF | #N$AF | <code>XOR #REGa</code> }
 ; TABLE#)
 *$F0DD NOP             ; No operation OR #REGa=#N$00 depending on the above.
