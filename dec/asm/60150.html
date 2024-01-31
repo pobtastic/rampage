@@ -136,7 +136,7 @@ Next: <a href="60554.html">60554</a>
 <tr>
 <td class="address-1"><span id="60195"></span>60195</td>
 <td class="instruction">LD A,(53830)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">53830</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60198"></span>60198</td>
@@ -171,7 +171,7 @@ This entry point is used by the routine at <a href="59020.html">Handler_Controls
 <tr>
 <td class="address-2"><span id="60207"></span>60207</td>
 <td class="instruction">LD A,(53830)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">53830</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60210"></span>60210</td>
@@ -261,7 +261,7 @@ Moves the orientation flag into the carry flag.
 <tr>
 <td class="address-2"><span id="60239"></span>60239</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>/<a href="53837.html#53838">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60243"></span>60243</td>
@@ -523,7 +523,7 @@ This entry point is used by the routine at <a href="63135.html">Handler_Projecti
 <tr>
 <td class="address-1"><span id="60350"></span>60350</td>
 <td class="instruction">LD A,(53830)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">53830</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60353"></span>60353</td>
@@ -696,7 +696,7 @@ This entry point is used by the routine at <a href="63135.html">Handler_Projecti
 <tr>
 <td class="address-1"><span id="60434"></span>60434</td>
 <td class="instruction">LD A,(53830)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">53830</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60437"></span>60437</td>
@@ -774,6 +774,16 @@ This entry point is used by the routine at <a href="63135.html">Handler_Projecti
 <td class="instruction">JP NC,<a href="60640.html">60640</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="60476"></span>
+<div class="comments">
+<div class="paragraph">
+The routine at <a href="55739.html">DrawMonsterSprite</a> handles which monster to display.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="address-1"><span id="60476"></span>60476</td>
 <td class="instruction">LD A,9</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 9. <table class="default">
@@ -844,6 +854,16 @@ This entry point is used by the routine at <a href="63135.html">Handler_Projecti
 <td class="address-1"><span id="60491"></span>60491</td>
 <td class="instruction">LD C,A</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="60492"></span>
+<div class="comments">
+<div class="paragraph">
+The routine at <a href="55739.html">DrawMonsterSprite</a> handles which monster to display.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60492"></span>60492</td>
@@ -917,7 +937,7 @@ Moves the orientation flag into the carry flag.
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="4">Write 0 to: <ul class="">
 <li>*<a href="53836.html">53836</a></li>
-<li>*<a href="53830.html">53830</a></li>
+<li>*<a href="53830.html">Flag_MonsterClimbing</a></li>
 <li>*<a href="53832.html">53832</a></li>
 </ul></td>
 </tr>

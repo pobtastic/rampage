@@ -57,7 +57,7 @@ Used by the routines at <a href="59020.html">Handler_Controls</a>, <a href="5980
 <td class="asm-label">Controls</td>
 <td class="address-2"><span id="57721"></span>57721</td>
 <td class="instruction">LD A,(53842)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="57721.html#57806">Controls_FetchSet</a> if *<a href="53842.html">53842</a> is not zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="57721.html#57806">Controls_FetchSet</a> if *<a href="53842.html">Active_MonsterControlType</a> is not set to "computer controlled".</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -124,7 +124,7 @@ Used by the routines at <a href="59020.html">Handler_Controls</a>, <a href="5980
 <td class="asm-label">Controls_1</td>
 <td class="address-2"><span id="57747"></span>57747</td>
 <td class="instruction">LD A,(53830)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">53830</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

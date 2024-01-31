@@ -279,8 +279,28 @@ See <a href="../asm/E62D.html#e67c">Action_JumpTable</a>.
 <td class="map-g"><span id="d246"></span><a href="../asm/D246.html">D246</a></td>
 <td class="map-length">1</td>
 <td class="map-g-desc">
-<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D246.html">Game status buffer entry at D246</a></div>
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D246.html">Active Monster Climbing Flag</a></div>
 <div class="map-entry-desc">
+<div class="paragraph">
+Relates to: <ul class="">
+<li><a href="../asm/CFD2.html#cfd4">George_Climbing</a></li>
+<li><a href="../asm/D001.html#d003">Lizzy_Climbing</a></li>
+<li><a href="../asm/D030.html#d032">Ralph_Climbing</a></li>
+</ul> <table class="default">
+<tr>
+<th colspan="1" rowspan="1">Byte</th>
+<th colspan="1" rowspan="1">Meaning</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">00</td>
+<td class="centre" colspan="1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">01</td>
+<td class="centre" colspan="1" rowspan="1">Yes</td>
+</tr>
+</table>
+</div>
 </div>
 </td>
 </tr>
@@ -297,7 +317,7 @@ Relates to: <ul class="">
 <li><a href="../asm/D030.html#d033">Ralph_Direction</a></li>
 </ul> <table class="default">
 <tr>
-<th colspan="1" rowspan="1">Value</th>
+<th colspan="1" rowspan="1">Byte</th>
 <th colspan="1" rowspan="1">Facing</th>
 </tr>
 <tr>
@@ -335,8 +355,11 @@ Relates to: <ul class="">
 <td class="map-g"><span id="d24a"></span><a href="../asm/D24A.html">D24A</a></td>
 <td class="map-length">1</td>
 <td class="map-g-desc">
-<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D24A.html">Game status buffer entry at D24A</a></div>
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D24A.html">Active Monster About-To-Fall Countdown</a></div>
 <div class="map-entry-desc">
+<div class="paragraph">
+Used by the routine at <a href="../asm/EA18.html">Action_Falling</a>.
+</div>
 </div>
 </td>
 </tr>
@@ -410,7 +433,7 @@ Seem to be unused. Relates to: <ul class="">
 <td class="map-g"><span id="d251"></span><a href="../asm/D251.html">D251</a></td>
 <td class="map-length">1</td>
 <td class="map-g-desc">
-<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D251.html">Monster Sprite Modifier</a></div>
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D251.html">Active Monster Sprite Modifier</a></div>
 <div class="map-entry-desc">
 <div class="paragraph">
 When monster frames are drawn, this is used with an OR to set a bit which changes the sprite to the appropriate character. See <a href="../asm/D9BB.html">DrawMonsterSprite</a>. <table class="default">
@@ -435,6 +458,22 @@ When monster frames are drawn, this is used with an OR to set a bit which change
 <td class="centre" colspan="1" rowspan="1">Ralph</td>
 </tr>
 </table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="map-g"><span id="d252"></span><a href="../asm/D252.html">D252</a></td>
+<td class="map-length">1</td>
+<td class="map-g-desc">
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D252.html">Active Monster Control Type</a></div>
+<div class="map-entry-desc">
+<div class="paragraph">
+ID: 0E. See <a href="../asm/F9BF.html">ChangeControls</a>, relates to: <ul class="">
+<li><a href="../asm/CFD2.html#cfe0">George_Control_Type</a></li>
+<li><a href="../asm/D001.html#d00f">Lizzy_Control_Type</a></li>
+<li><a href="../asm/D030.html#d03e">Ralph_Control_Type</a></li>
+</ul>
 </div>
 </div>
 </td>
@@ -574,7 +613,7 @@ Number of buildings remaining standing on the current level.
 <div class="paragraph">
 <table class="default">
 <tr>
-<th colspan="1" rowspan="1">Value</th>
+<th colspan="1" rowspan="1">Byte</th>
 <th colspan="1" rowspan="1">Meaning</th>
 </tr>
 <tr>
@@ -599,7 +638,7 @@ Number of buildings remaining standing on the current level.
 <div class="paragraph">
 Is it carpet? Awning? Unsure... <table class="default">
 <tr>
-<th colspan="1" rowspan="1">Value</th>
+<th colspan="1" rowspan="1">Byte</th>
 <th colspan="1" rowspan="1">Meaning</th>
 </tr>
 <tr>

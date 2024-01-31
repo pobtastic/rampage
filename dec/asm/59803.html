@@ -51,19 +51,18 @@ Next: <a href="59908.html">59908</a>
 <td class="asm-label"></td>
 <td class="address-1"><span id="59806"></span>59806</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="1">Set flags.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="59020.html#59027">Controls_JumpPunch</a> if any monster control has been pressed.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="59807"></span>59807</td>
 <td class="instruction">JP NZ,<a href="59020.html#59027">Controls_JumpPunch</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59020.html#59027">Controls_JumpPunch</a> if {} is not zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="59810"></span>59810</td>
 <td class="instruction">LD A,(53842)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="59803.html#59822">Animate_Waiting_0</a> if *<a href="53842.html">53842</a> is not zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="59803.html#59822">Waiting_Action</a> if *<a href="53842.html">Active_MonsterControlType</a> is not set to "computer controlled".</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -73,7 +72,17 @@ Next: <a href="59908.html">59908</a>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="59814"></span>59814</td>
-<td class="instruction">JR NZ,<a href="59803.html#59822">Animate_Waiting_0</a></td>
+<td class="instruction">JR NZ,<a href="59803.html#59822">Waiting_Action</a></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="59816"></span>
+<div class="comments">
+<div class="paragraph">
+The monster is being controlled by the computer, so rather than wait - pick a completely random number between 0-255 and use this as the control byte.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -88,22 +97,42 @@ Next: <a href="59908.html">59908</a>
 <td class="comment-1" rowspan="1">Jump to <a href="59020.html#59027">Controls_JumpPunch</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Animate_Waiting_0</td>
+<td class="routine-comment" colspan="5">
+<span id="59822"></span>
+<div class="comments">
+<div class="paragraph">
+The monster is player controlled so start the action.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Waiting_Action</td>
 <td class="address-2"><span id="59822"></span>59822</td>
 <td class="instruction">LD A,(53830)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">53830</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="59825"></span>59825</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
+<td class="comment-1" rowspan="1">Set the carry flag if the monster is currently "climbing".</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="59826"></span>59826</td>
-<td class="instruction">JP C,<a href="59803.html#59882">Animate_Waiting_1</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59803.html#59882">Animate_Waiting_1</a> if the carry flag is set.</td>
+<td class="instruction">JP C,<a href="59803.html#59882">Climbing_Waiting</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="59803.html#59882">Climbing_Waiting</a> if the carry flag is set.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="59829"></span>
+<div class="comments">
+<div class="paragraph">
+The monster is on the ground so select the normal body sprite.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -134,6 +163,16 @@ Next: <a href="59908.html">59908</a>
 </table></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="59831"></span>
+<div class="comments">
+<div class="paragraph">
+Set the co-ordinates for where to draw.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="59831"></span>59831</td>
 <td class="instruction">LD BC,(53837)</td>
@@ -144,6 +183,16 @@ Next: <a href="59908.html">59908</a>
 <td class="address-1"><span id="59835"></span>59835</td>
 <td class="instruction">CALL <a href="55739.html">DrawMonsterSprite</a></td>
 <td class="comment-1" rowspan="1">Call <a href="55739.html">DrawMonsterSprite</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="59838"></span>
+<div class="comments">
+<div class="paragraph">
+Again, set the co-ordinates for where to draw.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -174,6 +223,16 @@ Next: <a href="59908.html">59908</a>
 <td class="address-1"><span id="59848"></span>59848</td>
 <td class="instruction">LD C,A</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="59849"></span>
+<div class="comments">
+<div class="paragraph">
+Overwrite the head section, as the monster turns to face the camera to "speak".
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -210,22 +269,31 @@ Next: <a href="59908.html">59908</a>
 <td class="comment-1" rowspan="1">Call <a href="55739.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="59854"></span>
+<div class="comments">
+<div class="paragraph">
+Set the co-ordinates for where to draw.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="59854"></span>59854</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>/<a href="53837.html#53838">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="59858"></span>59858</td>
 <td class="instruction">INC B</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
+<td class="comment-1" rowspan="2">Increment both the X and Y positions by one to target drawing the mouth animation.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="59859"></span>59859</td>
 <td class="instruction">INC C</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -265,25 +333,22 @@ Choose a frame randomly for the mouth sprite.
 <td class="asm-label">DrawMonsterMouth</td>
 <td class="address-2"><span id="59867"></span>59867</td>
 <td class="instruction">CALL <a href="55848.html">RandomNumber</a></td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=random number between 0-2.</td>
+<td class="comment-1" rowspan="4"><span class="register">A</span>=random number between 0-2.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="59870"></span>59870</td>
 <td class="instruction">AND %00000011</td>
-<td class="comment-1" rowspan="1">Keep only bits 0-1.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="59872"></span>59872</td>
 <td class="instruction">JR Z,<a href="59803.html#59867">DrawMonsterMouth</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="59803.html#59867">DrawMonsterMouth</a> if the result is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="59874"></span>59874</td>
 <td class="instruction">DEC A</td>
-<td class="comment-1" rowspan="1">Decrease <span class="register">A</span> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -347,7 +412,17 @@ Choose a frame randomly for the mouth sprite.
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
-<td class="asm-label">Animate_Waiting_1</td>
+<td class="routine-comment" colspan="5">
+<span id="59882"></span>
+<div class="comments">
+<div class="paragraph">
+The monster is currently climbing so use the correct body sprite.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Climbing_Waiting</td>
 <td class="address-2"><span id="59882"></span>59882</td>
 <td class="instruction">LD A,9</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 9. <table class="default">
@@ -375,10 +450,20 @@ Choose a frame randomly for the mouth sprite.
 </table></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="59884"></span>
+<div class="comments">
+<div class="paragraph">
+Set the co-ordinates for where to draw.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="59884"></span>59884</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>/<a href="53837.html#53838">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -387,10 +472,20 @@ Choose a frame randomly for the mouth sprite.
 <td class="comment-1" rowspan="1">Call <a href="55739.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="59891"></span>
+<div class="comments">
+<div class="paragraph">
+Again, set the co-ordinates for where to draw.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="59891"></span>59891</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>/<a href="53837.html#53838">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -427,22 +522,31 @@ Choose a frame randomly for the mouth sprite.
 <td class="comment-1" rowspan="1">Call <a href="55739.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="59900"></span>
+<div class="comments">
+<div class="paragraph">
+Set the co-ordinates for where to draw.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="59900"></span>59900</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>/<a href="53837.html#53838">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="59904"></span>59904</td>
 <td class="instruction">INC B</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
+<td class="comment-1" rowspan="2">Increment both the X and Y positions by one to target drawing the mouth animation.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="59905"></span>59905</td>
 <td class="instruction">INC C</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

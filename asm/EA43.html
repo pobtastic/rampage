@@ -46,7 +46,10 @@ Next: <a href="EA9C.html">EA9C</a>
 <span id="ea43"></span>
 <div class="comments">
 <div class="paragraph">
-Select the "Oh No" head sprite, the routine at <a href="D9BB.html">DrawMonsterSprite</a> handles which monster to display.
+Select the "Oh No" head sprite.
+</div>
+<div class="paragraph">
+The routine at <a href="D9BB.html">DrawMonsterSprite</a> handles which monster to display.
 </div>
 </div>
 </td>
@@ -127,6 +130,16 @@ Again, set the co-ordinates for where to draw.
 <td class="asm-label"></td>
 <td class="address-1"><span id="ea51"></span>EA51</td>
 <td class="instruction">INC B</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="ea52"></span>
+<div class="comments">
+<div class="paragraph">
+The routine at <a href="D9BB.html">DrawMonsterSprite</a> handles which monster to display.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -259,7 +272,7 @@ Apply gravity.
 <td class="asm-label"></td>
 <td class="address-1"><span id="ea78"></span>EA78</td>
 <td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="2">Write 00 to *<a href="D246.html">D246</a>.</td>
+<td class="comment-1" rowspan="2">Write 00 to *<a href="D246.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -348,7 +361,10 @@ Take off four hit points from the monsters energy.
 <span id="ea96"></span>
 <div class="comments">
 <div class="paragraph">
-Make the splat sound. <audio controls="" src="../audio/projectile.wav">
+Make the splat sound.
+</div>
+<div class="paragraph">
+<audio controls="" src="../audio/projectile.wav">
 <p>Your browser doesn't support HTML5 audio. Here is a <a href="../audio/projectile.wav">link to the audio</a> instead.</p>
 </audio>
 </div>

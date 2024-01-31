@@ -81,7 +81,7 @@ Next: <a href="60150.html">60150</a>
 <tr>
 <td class="address-1"><span id="60078"></span>60078</td>
 <td class="instruction">LD A,(53842)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="60060.html#60090">60090</a> if *<a href="53842.html">53842</a> is zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="60060.html#60090">60090</a> if *<a href="53842.html">Active_MonsterControlType</a> is set to "computer controlled".</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60081"></span>60081</td>
@@ -135,7 +135,7 @@ Moves the orientation flag into the carry flag.
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="4">Write 0 to: <ul class="">
 <li>*<a href="53828.html">JumpTable_Pointer</a></li>
-<li>*<a href="53830.html">53830</a></li>
+<li>*<a href="53830.html">Flag_MonsterClimbing</a></li>
 <li>*<a href="53832.html">53832</a></li>
 </ul></td>
 </tr>
@@ -155,6 +155,16 @@ Moves the orientation flag into the carry flag.
 <td class="address-1"><span id="60107"></span>60107</td>
 <td class="instruction">JP <a href="58925.html#59004">Action_JumpTable</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">Action_JumpTable</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="60110"></span>
+<div class="comments">
+<div class="paragraph">
+The routine at <a href="55739.html">DrawMonsterSprite</a> handles which monster to display.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="address-2"><span id="60110"></span>60110</td>
@@ -184,6 +194,16 @@ Moves the orientation flag into the carry flag.
 </table></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="60112"></span>
+<div class="comments">
+<div class="paragraph">
+Set the co-ordinates for where to draw.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="address-1"><span id="60112"></span>60112</td>
 <td class="instruction">LD BC,(53837)</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>/<a href="53837.html#53838">Active_MonsterYPosition</a>.</td>
@@ -192,6 +212,16 @@ Moves the orientation flag into the carry flag.
 <td class="address-1"><span id="60116"></span>60116</td>
 <td class="instruction">CALL <a href="55739.html">DrawMonsterSprite</a></td>
 <td class="comment-1" rowspan="1">Call <a href="55739.html">DrawMonsterSprite</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="60119"></span>
+<div class="comments">
+<div class="paragraph">
+Again, set the co-ordinates for where to draw.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60119"></span>60119</td>
@@ -231,6 +261,16 @@ Moves the orientation flag into the carry flag.
 <td class="address-1"><span id="60132"></span>60132</td>
 <td class="instruction">LD C,A</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="60133"></span>
+<div class="comments">
+<div class="paragraph">
+The routine at <a href="55739.html">DrawMonsterSprite</a> handles which monster to display.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60133"></span>60133</td>

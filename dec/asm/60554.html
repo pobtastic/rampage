@@ -91,6 +91,16 @@ Next: <a href="60640.html">60640</a>
 <td class="instruction">JR Z,<a href="60554.html#60608">60608</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="60579"></span>
+<div class="comments">
+<div class="paragraph">
+The routine at <a href="55739.html">DrawMonsterSprite</a> handles which monster to display.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="address-2"><span id="60579"></span>60579</td>
 <td class="instruction">LD A,9</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 9. <table class="default">
@@ -118,9 +128,19 @@ Next: <a href="60640.html">60640</a>
 </table></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="60581"></span>
+<div class="comments">
+<div class="paragraph">
+Set the co-ordinates for where to draw.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="address-1"><span id="60581"></span>60581</td>
 <td class="instruction">LD BC,(53837)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>/<a href="53837.html#53838">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60585"></span>60585</td>
@@ -166,6 +186,16 @@ Next: <a href="60640.html">60640</a>
 <td class="address-1"><span id="60598"></span>60598</td>
 <td class="instruction">LD C,A</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="60599"></span>
+<div class="comments">
+<div class="paragraph">
+The routine at <a href="55739.html">DrawMonsterSprite</a> handles which monster to display.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60599"></span>60599</td>
@@ -256,7 +286,7 @@ Moves the orientation flag into the carry flag.
 <td class="address-1"><span id="60625"></span>60625</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="3">Write 0 to: <ul class="">
-<li>*<a href="53830.html">53830</a></li>
+<li>*<a href="53830.html">Flag_MonsterClimbing</a></li>
 <li>*<a href="53832.html">53832</a></li>
 </ul></td>
 </tr>

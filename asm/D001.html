@@ -47,28 +47,36 @@ Next: <a href="D030.html">D030</a>
 <td class="instruction">DEFB $00</td>
 <td class="comment-1" rowspan="1">Relates to: <a href="D244.html">JumpTable_Pointer</a>. <table class="default">
 <tr>
-<th colspan="1" rowspan="1">Value</th>
+<th colspan="1" rowspan="1">Byte</th>
 <th colspan="1" rowspan="1">Meaning</th>
 </tr>
 <tr>
-<td class="centre" colspan="1" rowspan="1">05</td>
+<td class="centre" colspan="1" rowspan="1"><a href="EF98.html#efa2">05</a></td>
 <td class="centre" colspan="1" rowspan="1">Waiting</td>
 </tr>
 <tr>
-<td class="centre" colspan="1" rowspan="1">1A</td>
-<td class="centre" colspan="1" rowspan="1">Eating</td>
-</tr>
-<tr>
-<td class="centre" colspan="1" rowspan="1">1C</td>
+<td class="centre" colspan="1" rowspan="1"><a href="EF98.html#efa8">08</a></td>
 <td class="centre" colspan="1" rowspan="1">Falling</td>
 </tr>
 <tr>
-<td class="centre" colspan="1" rowspan="1">21</td>
-<td class="centre" colspan="1" rowspan="1">Explosion</td>
+<td class="centre" colspan="1" rowspan="1"><a href="EF98.html#efcc">1A</a></td>
+<td class="centre" colspan="1" rowspan="1">Grabbing</td>
 </tr>
 <tr>
-<td class="centre" colspan="1" rowspan="1">23</td>
-<td class="centre" colspan="1" rowspan="1">Human</td>
+<td class="centre" colspan="1" rowspan="1"><a href="EF98.html#efce">1B</a></td>
+<td class="centre" colspan="1" rowspan="1">Eating</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="EF98.html#efda">21</a></td>
+<td class="centre" colspan="1" rowspan="1">Transform Explosion</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="EF98.html#efdc">22</a></td>
+<td class="centre" colspan="1" rowspan="1">Turn Into Human</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1"><a href="EF98.html#efde">23</a></td>
+<td class="centre" colspan="1" rowspan="1">Exit Stage Right</td>
 </tr>
 <tr>
 <td class="centre" colspan="1" rowspan="1">FF</td>
@@ -79,8 +87,27 @@ Next: <a href="D030.html">D030</a>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="d002"></span>D002</td>
-<td class="instruction">DEFB $00,$00</td>
+<td class="instruction">DEFB $00</td>
 <td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label">Lizzy_Climbing</td>
+<td class="address-1"><span id="d003"></span>D003</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">Relates to: <a href="D246.html">Flag_MonsterClimbing</a>. <table class="default">
+<tr>
+<th colspan="1" rowspan="1">Byte</th>
+<th colspan="1" rowspan="1">Meaning</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">00</td>
+<td class="centre" colspan="1" rowspan="1">Not Climbing</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">01</td>
+<td class="centre" colspan="1" rowspan="1">Climbing</td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="asm-label">Lizzy_Direction</td>
@@ -88,7 +115,7 @@ Next: <a href="D030.html">D030</a>
 <td class="instruction">DEFB $00</td>
 <td class="comment-1" rowspan="1">Relates to: <a href="D247.html">Flag_Orientation</a>. <table class="default">
 <tr>
-<th colspan="1" rowspan="1">Value</th>
+<th colspan="1" rowspan="1">Byte</th>
 <th colspan="1" rowspan="1">Meaning</th>
 </tr>
 <tr>
@@ -111,13 +138,13 @@ Next: <a href="D030.html">D030</a>
 <td class="asm-label">Lizzy_Count</td>
 <td class="address-1"><span id="d006"></span>D006</td>
 <td class="instruction">DEFB $14</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Relates to: <a href="D249.html">D249</a>.</td>
 </tr>
 <tr>
-<td class="asm-label"></td>
+<td class="asm-label">Lizzy_AboutToFallCountdown</td>
 <td class="address-1"><span id="d007"></span>D007</td>
 <td class="instruction">DEFB $03</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Relates to: <a href="D24A.html">Active_MonsterAboutToFallCountdown</a>.</td>
 </tr>
 <tr>
 <td class="asm-label">Lizzy_Countdown</td>
@@ -177,7 +204,7 @@ When monster frames are drawn, this is used with an OR to set a bit which change
 <td class="instruction">DEFB $00</td>
 <td class="comment-1" rowspan="1"><table class="default">
 <tr>
-<th colspan="1" rowspan="1">Value</th>
+<th colspan="1" rowspan="1">Byte</th>
 <th colspan="1" rowspan="1">Meaning</th>
 </tr>
 <tr>

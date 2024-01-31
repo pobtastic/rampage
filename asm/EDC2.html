@@ -177,6 +177,16 @@ Moves the orientation flag into the carry flag.
 <td class="comment-1" rowspan="1">Call <a href="EF38.html">EF38</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="edfd"></span>
+<div class="comments">
+<div class="paragraph">
+The routine at <a href="D9BB.html">DrawMonsterSprite</a> handles which monster to display.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="address-1"><span id="edfd"></span>EDFD</td>
 <td class="instruction">LD A,$25</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 25. <table class="default">
@@ -232,6 +242,16 @@ Moves the orientation flag into the carry flag.
 <td class="address-1"><span id="ee09"></span>EE09</td>
 <td class="instruction">CALL <a href="EF38.html">$EF38</a></td>
 <td class="comment-1" rowspan="1">Call <a href="EF38.html">EF38</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="ee0c"></span>
+<div class="comments">
+<div class="paragraph">
+The routine at <a href="D9BB.html">DrawMonsterSprite</a> handles which monster to display.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ee0c"></span>EE0C</td>
@@ -295,9 +315,19 @@ Moves the orientation flag into the carry flag.
 <td class="instruction">LD ($D244),A</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="ee20"></span>
+<div class="comments">
+<div class="paragraph">
+Set the co-ordinates for where to draw.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="address-1"><span id="ee20"></span>EE20</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Active_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Active_MonsterXPosition</a>/<a href="D24D.html#d24e">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ee24"></span>EE24</td>
@@ -327,6 +357,16 @@ Moves the orientation flag into the carry flag.
 <td class="address-1"><span id="ee2c"></span>EE2C</td>
 <td class="instruction">LD C,A</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="ee2d"></span>
+<div class="comments">
+<div class="paragraph">
+The routine at <a href="D9BB.html">DrawMonsterSprite</a> handles which monster to display.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ee2d"></span>EE2D</td>
@@ -361,9 +401,19 @@ Moves the orientation flag into the carry flag.
 <td class="comment-1" rowspan="1">Call <a href="D9BB.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="ee32"></span>
+<div class="comments">
+<div class="paragraph">
+Again, set the co-ordinates for where to draw.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="address-1"><span id="ee32"></span>EE32</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Active_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Active_MonsterXPosition</a>/<a href="D24D.html#d24e">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ee36"></span>EE36</td>
@@ -409,6 +459,16 @@ Moves the orientation flag into the carry flag.
 <td class="address-1"><span id="ee43"></span>EE43</td>
 <td class="instruction">LD C,A</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="ee44"></span>
+<div class="comments">
+<div class="paragraph">
+The routine at <a href="D9BB.html">DrawMonsterSprite</a> handles which monster to display.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ee44"></span>EE44</td>
@@ -472,9 +532,19 @@ Moves the orientation flag into the carry flag.
 <td class="instruction">LD ($D244),A</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="ee58"></span>
+<div class="comments">
+<div class="paragraph">
+Set the co-ordinates for where to draw.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="address-1"><span id="ee58"></span>EE58</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Active_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Active_MonsterXPosition</a>/<a href="D24D.html#d24e">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ee5c"></span>EE5C</td>
@@ -520,6 +590,16 @@ Moves the orientation flag into the carry flag.
 <td class="address-1"><span id="ee69"></span>EE69</td>
 <td class="instruction">LD C,A</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="ee6a"></span>
+<div class="comments">
+<div class="paragraph">
+The routine at <a href="D9BB.html">DrawMonsterSprite</a> handles which monster to display.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ee6a"></span>EE6A</td>

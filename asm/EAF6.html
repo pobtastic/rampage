@@ -136,7 +136,7 @@ Next: <a href="EC8A.html">EC8A</a>
 <tr>
 <td class="address-1"><span id="eb23"></span>EB23</td>
 <td class="instruction">LD A,($D246)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D246.html">D246</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D246.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="eb26"></span>EB26</td>
@@ -171,7 +171,7 @@ This entry point is used by the routine at <a href="E68C.html">Handler_Controls<
 <tr>
 <td class="address-2"><span id="eb2f"></span>EB2F</td>
 <td class="instruction">LD A,($D246)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D246.html">D246</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D246.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="eb32"></span>EB32</td>
@@ -261,7 +261,7 @@ Moves the orientation flag into the carry flag.
 <tr>
 <td class="address-2"><span id="eb4f"></span>EB4F</td>
 <td class="instruction">LD BC,($D24D)</td>
-<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Active_MonsterXPosition</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="D24D.html">Active_MonsterXPosition</a>/<a href="D24D.html#d24e">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="eb53"></span>EB53</td>
@@ -523,7 +523,7 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 <tr>
 <td class="address-1"><span id="ebbe"></span>EBBE</td>
 <td class="instruction">LD A,($D246)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D246.html">D246</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D246.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ebc1"></span>EBC1</td>
@@ -696,7 +696,7 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 <tr>
 <td class="address-1"><span id="ec12"></span>EC12</td>
 <td class="instruction">LD A,($D246)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D246.html">D246</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D246.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ec15"></span>EC15</td>
@@ -774,6 +774,16 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 <td class="instruction">JP NC,<a href="ECE0.html">$ECE0</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="ec3c"></span>
+<div class="comments">
+<div class="paragraph">
+The routine at <a href="D9BB.html">DrawMonsterSprite</a> handles which monster to display.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="address-1"><span id="ec3c"></span>EC3C</td>
 <td class="instruction">LD A,$09</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 09. <table class="default">
@@ -844,6 +854,16 @@ This entry point is used by the routine at <a href="F69F.html">Handler_Projectil
 <td class="address-1"><span id="ec4b"></span>EC4B</td>
 <td class="instruction">LD C,A</td>
 <td class="comment-1" rowspan="1"><span class="register">C</span>=<span class="register">A</span>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="ec4c"></span>
+<div class="comments">
+<div class="paragraph">
+The routine at <a href="D9BB.html">DrawMonsterSprite</a> handles which monster to display.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="address-1"><span id="ec4c"></span>EC4C</td>
@@ -917,7 +937,7 @@ Moves the orientation flag into the carry flag.
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="4">Write 00 to: <ul class="">
 <li>*<a href="D24C.html">D24C</a></li>
-<li>*<a href="D246.html">D246</a></li>
+<li>*<a href="D246.html">Flag_MonsterClimbing</a></li>
 <li>*<a href="D248.html">D248</a></li>
 </ul></td>
 </tr>

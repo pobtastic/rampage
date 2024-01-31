@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Rampage: Data at D252</title>
+<title>Rampage: Game status buffer entry at D252</title>
 <meta charset="utf-8" />
 <link rel="stylesheet" type="text/css" href="../skoolkit.css" />
 <link rel="stylesheet" type="text/css" href="../skoolkit-dark.css" />
@@ -15,11 +15,11 @@ gtag('js', new Date());
 gtag('config', 'G-75RERFCHBG');
 </script>
 </head>
-<body class="Asm-b">
+<body class="Asm-g">
 <table class="header">
 <tr>
 <td class="logo"><a href="../index.html"><img alt="logo" src="../images/logo.png" /></a></td>
-<td class="page-header">Data</td>
+<td class="page-header">Game status buffer</td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -33,18 +33,63 @@ Next: <a href="D253.html">D253</a>
 </td>
 </tr>
 </table>
-<div class="description">D252: Data block at D252</div>
+<div class="description">D252: Active Monster Control Type</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
+<div class="paragraph">
+ID: 0E. See <a href="F9BF.html">ChangeControls</a>, relates to: <ul class="">
+<li><a href="CFD2.html#cfe0">George_Control_Type</a></li>
+<li><a href="D001.html#d00f">Lizzy_Control_Type</a></li>
+<li><a href="D030.html#d03e">Ralph_Control_Type</a></li>
+</ul>
+</div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Active_MonsterControlType</td>
 <td class="address-1"><span id="d252"></span>D252</td>
 <td class="instruction">DEFB $00</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1"><table class="default">
+<tr>
+<th colspan="1" rowspan="1">Byte</th>
+<th colspan="1" rowspan="1">Meaning</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">00</td>
+<td class="centre" colspan="1" rowspan="1">Computer Controlled</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">01</td>
+<td class="centre" colspan="1" rowspan="1">Sinclair Interface 2 (port 2)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">02</td>
+<td class="centre" colspan="1" rowspan="1">Sinclair Interface 2 (port 1)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">03</td>
+<td class="centre" colspan="1" rowspan="1">Kempston Joystick</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">04</td>
+<td class="centre" colspan="1" rowspan="1">Keyboard (set 1)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">05</td>
+<td class="centre" colspan="1" rowspan="1">Keyboard (set 2)</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">06</td>
+<td class="centre" colspan="1" rowspan="1">Keyboard (set 3</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">FF</td>
+<td class="centre" colspan="1" rowspan="1">Not set</td>
+</tr>
+</table></td>
 </tr>
 </table>
 <table class="asm-navigation">

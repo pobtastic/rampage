@@ -123,7 +123,7 @@ Controls: Jump/ Punch.
 <td class="asm-label">Handler_Controls_1</td>
 <td class="address-2"><span id="59049"></span>59049</td>
 <td class="instruction">LD A,(53830)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="59020.html#59063">Handler_Controls_2</a> if *<a href="53830.html">53830</a> is zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="59020.html#59063">Handler_Controls_2</a> if *<a href="53830.html">Flag_MonsterClimbing</a> is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -156,7 +156,7 @@ Controls: Jump/ Punch.
 <td class="asm-label">Handler_Controls_2</td>
 <td class="address-2"><span id="59063"></span>59063</td>
 <td class="instruction">LD A,(53842)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="59020.html#59036">Handler_Controls_0</a> if *<a href="53842.html">53842</a> is zero.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="59020.html#59036">Handler_Controls_0</a> if *<a href="53842.html">Active_MonsterControlType</a> is set to "computer controlled".</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -354,7 +354,7 @@ Moves the orientation flag into the carry flag.
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="4">Write 0 to: <ul class="">
 <li>*<a href="53832.html">53832</a></li>
-<li>*<a href="53830.html">53830</a></li>
+<li>*<a href="53830.html">Flag_MonsterClimbing</a></li>
 <li>*<a href="53836.html">53836</a></li>
 </ul></td>
 </tr>
@@ -406,7 +406,7 @@ Moves the orientation flag into the carry flag.
 <td class="asm-label"></td>
 <td class="address-1"><span id="59160"></span>59160</td>
 <td class="instruction">LD A,(53830)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">53830</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -590,7 +590,7 @@ Moves the orientation flag into the carry flag.
 <td class="asm-label">Handler_Controls_10</td>
 <td class="address-2"><span id="59235"></span>59235</td>
 <td class="instruction">LD A,(53830)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">53830</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -656,7 +656,7 @@ Moves the orientation flag into the carry flag.
 <td class="asm-label"></td>
 <td class="address-1"><span id="59260"></span>59260</td>
 <td class="instruction">INC A</td>
-<td class="comment-1" rowspan="2">Write 1 to *<a href="53830.html">53830</a>.</td>
+<td class="comment-1" rowspan="2">Write 1 to *<a href="53830.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -757,7 +757,7 @@ Moves the orientation flag into the carry flag.
 <td class="asm-label"></td>
 <td class="address-1"><span id="59296"></span>59296</td>
 <td class="instruction">LD A,(53830)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">53830</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -864,7 +864,7 @@ Moves the orientation flag into the carry flag.
 <td class="asm-label"></td>
 <td class="address-1"><span id="59343"></span>59343</td>
 <td class="instruction">INC A</td>
-<td class="comment-1" rowspan="2">Write 1 to *<a href="53830.html">53830</a>.</td>
+<td class="comment-1" rowspan="2">Write 1 to *<a href="53830.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1193,7 +1193,7 @@ Moves the orientation flag into the carry flag.
 <td class="asm-label">Handler_Controls_18</td>
 <td class="address-2"><span id="59473"></span>59473</td>
 <td class="instruction">LD A,(53830)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">53830</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1235,7 +1235,7 @@ Moves the orientation flag into the carry flag.
 <td class="asm-label"></td>
 <td class="address-1"><span id="59489"></span>59489</td>
 <td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="2">Write 0 to *<a href="53830.html">53830</a>.</td>
+<td class="comment-1" rowspan="2">Write 0 to *<a href="53830.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1299,7 +1299,7 @@ Moves the orientation flag into the carry flag.
 <td class="asm-label">Handler_Controls_19</td>
 <td class="address-2"><span id="59510"></span>59510</td>
 <td class="instruction">LD A,(53830)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">53830</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1490,7 +1490,7 @@ Moves the orientation flag into the carry flag.
 <td class="asm-label"></td>
 <td class="address-1"><span id="59591"></span>59591</td>
 <td class="instruction">LD A,1</td>
-<td class="comment-1" rowspan="2">Write 1 to *<a href="53830.html">53830</a>.</td>
+<td class="comment-1" rowspan="2">Write 1 to *<a href="53830.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1557,7 +1557,7 @@ Moves the orientation flag into the carry flag.
 <td class="asm-label"></td>
 <td class="address-1"><span id="59616"></span>59616</td>
 <td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="2">Write 0 to *<a href="53830.html">53830</a>.</td>
+<td class="comment-1" rowspan="2">Write 0 to *<a href="53830.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1595,7 +1595,7 @@ Controls: Left.
 <td class="asm-label"></td>
 <td class="address-1"><span id="59627"></span>59627</td>
 <td class="instruction">LD A,(53830)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">53830</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1733,7 +1733,7 @@ Controls: Right.
 <td class="asm-label"></td>
 <td class="address-1"><span id="59680"></span>59680</td>
 <td class="instruction">LD A,(53830)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">53830</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

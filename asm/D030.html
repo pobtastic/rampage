@@ -47,7 +47,7 @@ Next: <a href="D05F.html">D05F</a>
 <td class="instruction">DEFB $00</td>
 <td class="comment-1" rowspan="1">Relates to: <a href="D244.html">JumpTable_Pointer</a>. <table class="default">
 <tr>
-<th colspan="1" rowspan="1">Value</th>
+<th colspan="1" rowspan="1">Byte</th>
 <th colspan="1" rowspan="1">Meaning</th>
 </tr>
 <tr>
@@ -87,8 +87,27 @@ Next: <a href="D05F.html">D05F</a>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="d031"></span>D031</td>
-<td class="instruction">DEFB $00,$00</td>
+<td class="instruction">DEFB $00</td>
 <td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label">Ralph_Climbing</td>
+<td class="address-1"><span id="d032"></span>D032</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">Relates to: <a href="D246.html">Flag_MonsterClimbing</a>. <table class="default">
+<tr>
+<th colspan="1" rowspan="1">Byte</th>
+<th colspan="1" rowspan="1">Meaning</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">00</td>
+<td class="centre" colspan="1" rowspan="1">Not Climbing</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">01</td>
+<td class="centre" colspan="1" rowspan="1">Climbing</td>
+</tr>
+</table></td>
 </tr>
 <tr>
 <td class="asm-label">Ralph_Direction</td>
@@ -96,7 +115,7 @@ Next: <a href="D05F.html">D05F</a>
 <td class="instruction">DEFB $00</td>
 <td class="comment-1" rowspan="1">Relates to: <a href="D247.html">Flag_Orientation</a>. <table class="default">
 <tr>
-<th colspan="1" rowspan="1">Value</th>
+<th colspan="1" rowspan="1">Byte</th>
 <th colspan="1" rowspan="1">Meaning</th>
 </tr>
 <tr>
@@ -122,10 +141,10 @@ Next: <a href="D05F.html">D05F</a>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
-<td class="asm-label"></td>
+<td class="asm-label">Ralph_AboutToFallCountdown</td>
 <td class="address-1"><span id="d036"></span>D036</td>
 <td class="instruction">DEFB $03</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Relates to: <a href="D24A.html">Active_MonsterAboutToFallCountdown</a>.</td>
 </tr>
 <tr>
 <td class="asm-label">Ralph_Countdown</td>
@@ -185,7 +204,7 @@ When monster frames are drawn, this is used with an OR to set a bit which change
 <td class="instruction">DEFB $00</td>
 <td class="comment-1" rowspan="1"><table class="default">
 <tr>
-<th colspan="1" rowspan="1">Value</th>
+<th colspan="1" rowspan="1">Byte</th>
 <th colspan="1" rowspan="1">Meaning</th>
 </tr>
 <tr>
