@@ -521,7 +521,8 @@ N $CFC3 Scene #N$28.
 
 g $CFD2 Data: George
 @ $CFD2 label=George_State
-  $CFD2,$01 #TABLE(default,centre,centre)
+  $CFD2,$01 Relates to: #R$D244.
+. #TABLE(default,centre,centre)
 . { =h Value | =h Meaning }
 . { #N$05 | Waiting }
 . { #N$1A | Eating }
@@ -531,21 +532,26 @@ g $CFD2 Data: George
 . { #N$FF | Game Over }
 . TABLE#
 @ $CFD5 label=George_Direction
-  $CFD5,$01 #TABLE(default,centre,centre)
+  $CFD5,$01 Relates to: #R$D247.
+. #TABLE(default,centre,centre)
 . { =h Value | =h Meaning }
-. { #N$00 | Right }
-. { #N$01 | Left }
+. { #N$00 | Left-to-Right }
+. { #N$01 | Right-to-Left }
 . TABLE#
-@ $CFD7 label=George_Countdown
+@ $CFD7 label=George_Count
   $CFD7,$01
+@ $CFD9 label=George_Countdown
+  $CFD9,$01 Relates to: #R$D24B.
 @ $CFDB label=George_X_Position
   $CFDB,$01
 @ $CFDC label=George_Y_Position
   $CFDC,$01
 @ $CFDE label=George_Energy
   $CFDE,$01
-@ $CFDF label=George_Banner_Counter
-  $CFDF,$01
+N $CFDF When monster frames are drawn, this is used with an OR to set a bit which changes the sprite to the appropriate
+.       character. See #R$D251.
+@ $CFDF label=George_Sprite_Offset
+  $CFDF,$01 For George no bits are set: #EVAL(#PEEK(#PC),$02,$08).
 @ $CFE0 label=George_Control_Type
   $CFE0,$01 #TABLE(default,centre,centre) { =h Value | =h Meaning }
 . { #N$00 | Computer Controlled }
@@ -562,7 +568,8 @@ W $CFE1,$02
 
 g $D001 Data: Lizzy
 @ $D001 label=Lizzy_State
-  $D001,$01 #TABLE(default,centre,centre)
+  $D001,$01 Relates to: #R$D244.
+. #TABLE(default,centre,centre)
 . { =h Value | =h Meaning }
 . { #N$05 | Waiting }
 . { #N$1A | Eating }
@@ -572,21 +579,26 @@ g $D001 Data: Lizzy
 . { #N$FF | Game Over }
 . TABLE#
 @ $D004 label=Lizzy_Direction
-  $D004,$01 #TABLE(default,centre,centre)
+  $D004,$01 Relates to: #R$D247.
+. #TABLE(default,centre,centre)
 . { =h Value | =h Meaning }
-. { #N$00 | Right }
-. { #N$01 | Left }
+. { #N$00 | Left-to-Right }
+. { #N$01 | Right-to-Left }
 . TABLE#
-@ $D006 label=Lizzy_Countdown
+@ $D006 label=Lizzy_Count
   $D006,$01
+@ $D008 label=Lizzy_Countdown
+  $D008,$01 Relates to: #R$D24B.
 @ $D00A label=Lizzy_X_Position
   $D00A,$01
 @ $D00B label=Lizzy_Y_Position
   $D00B,$01
 @ $D00D label=Lizzy_Energy
   $D00D,$01
-@ $D00E label=Lizzy_Banner_Counter
-  $D00E,$01
+N $D00E When monster frames are drawn, this is used with an OR to set a bit which changes the sprite to the appropriate
+.       character. See #R$D251.
+@ $D00E label=Lizzy_Sprite_Offset
+  $D00E,$01 For Lizzy bit 6 is set: #EVAL(#PEEK(#PC),$02,$08).
 @ $D00F label=Lizzy_Control_Type
   $D00F,$01 #TABLE(default,centre,centre) { =h Value | =h Meaning }
 . { #N$00 | Computer Controlled }
@@ -602,31 +614,39 @@ W $D010,$02
 
 g $D030 Data: Ralph
 @ $D030 label=Ralph_State
-  $D030,$01 #TABLE(default,centre,centre)
+  $D030,$01 Relates to: #R$D244.
+. #TABLE(default,centre,centre)
 . { =h Value | =h Meaning }
-. { #N$05 | Waiting }
-. { #N$1A | Eating }
-. { #N$1C | Falling }
-. { #N$21 | Explosion }
-. { #N$23 | Human }
+. { #R$EFA2(#N$05) | Waiting }
+. { #R$EFA8(#N$08) | Falling }
+. { #R$EFCC(#N$1A) | Grabbing }
+. { #R$EFCE(#N$1B) | Eating }
+. { #R$EFDA(#N$21) | Transform Explosion }
+. { #R$EFDC(#N$22) | Turn Into Human }
+. { #R$EFDE(#N$23) | Exit Stage Right }
 . { #N$FF | Game Over }
 . TABLE#
 @ $D033 label=Ralph_Direction
-  $D033,$01 #TABLE(default,centre,centre)
+  $D033,$01 Relates to: #R$D247.
+. #TABLE(default,centre,centre)
 . { =h Value | =h Meaning }
-. { #N$00 | Right }
-. { #N$01 | Left }
+. { #N$00 | Left-to-Right }
+. { #N$01 | Right-to-Left }
 . TABLE#
-@ $D035 label=Ralph_Countdown
+@ $D035 label=Ralph_Count
   $D035,$01
+@ $D037 label=Ralph_Countdown
+  $D037,$01 Relates to: #R$D24B.
 @ $D039 label=Ralph_X_Position
   $D039,$01
 @ $D03A label=Ralph_Y_Position
   $D03A,$01
 @ $D03C label=Ralph_Energy
   $D03C,$01
-@ $D03D label=Ralph_Banner_Counter
-  $D03D,$01
+N $D03D When monster frames are drawn, this is used with an OR to set a bit which changes the sprite to the appropriate
+.       character. See #R$D251.
+@ $D03D label=Ralph_Sprite_Offset
+  $D03D,$01 For Ralph bit 7 is set: #EVAL(#PEEK(#PC),$02,$08).
 @ $D03E label=Ralph_Control_Type
   $D03E,$01 #TABLE(default,centre,centre) { =h Value | =h Meaning }
 . { #N$00 | Computer Controlled }
@@ -799,9 +819,10 @@ g $D245
 
 g $D246
 
-g $D247 Orientation Flag
+g $D247 Active Monster Orientation Flag
 @ $D247 label=Flag_Orientation
-D $D247 #TABLE(default,centre,centre) { =h Value | =h Facing }
+D $D247 Relates to: #LIST { #R$CFD5 } { #R$D004 } { #R$D033 } LIST#
+. #TABLE(default,centre,centre) { =h Value | =h Facing }
 . { #N$00 | Left-to-right  }
 . { #N$01 | Right-to-left }
 . TABLE#
@@ -813,18 +834,25 @@ g $D249
 
 g $D24A
 
-g $D24B Temporary Monster Action Countdown
-@ $D24B label=Temp_MonsterActionCountdown
+g $D24B Active Monster Action Countdown
+@ $D24B label=Active_MonsterActionCountdown
+D $D24B Relates to: #LIST { #R$CFD9 } { #R$D008 } { #R$D037 } LIST#
 B $D24B,$01
 
 g $D24C
 
-g $D24D Temporary Monster Co-ordinates
-@ $D24D label=Temp_MonsterXPosition
-@ $D24E label=Temp_MonsterYPosition
+g $D24D Active Monster Co-ordinates
+D $D24D Relates to: #LIST { #R$CFDB/ #R$CFDC } { #R$D00A/ #R$D00B } { #R$D039/ #R$D03A } LIST#
+@ $D24D label=Active_MonsterXPosition
+@ $D24E label=Active_MonsterYPosition
 B $D24D,$02,$01
 
 g $D24F
+
+g $D250 Active Monster Energy
+@ $D250 label=Active_MonsterEnergy
+D $D250 Seem to be unused. Relates to: #LIST { #R$CFDE } { #R$D00D } { #R$D03C } LIST#
+B $D250,$01
 
 g $D251 Monster Sprite Modifier
 @ $D251 label=MonsterSpriteModifier
@@ -1425,6 +1453,7 @@ R $D6C9 BC Screen co-ordinates
   $D6D0,$01 Restore #REGbc from the stack.
   $D6D1,$01 #REGd=#REGa.
   $D6D2,$03 #REGa=*#R$D247.
+N $D6D5 Moves the orientation flag into the carry flag.
   $D6D5,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $D6D6,$03 Jump to #R$D800 if the carry flag is set.
   $D6D9,$01 Exchange the #REGaf register with the shadow #REGaf register.
@@ -2767,7 +2796,7 @@ c $DF1F Set Monster States
 @ $DF1F label=SetMonsterStates
 R $DF1F A Default for
 N $DF1F See: #R$CFD2, #R$D001, #R$D030.
-  $DF1F,$04 Write #N$1C (falling) to monster state (#REGiy+#N$00).
+  $DF1F,$04 Write #R$EFD0(#N$1C) (falling) to monster state (#REGiy+#N$00).
   $DF23,$09 Write #REGa to: #LIST { #REGiy+#N$02 } { monster direction (#REGiy+#N$03) } { #REGiy+#N$08 } LIST#
   $DF2C,$04 Write #N$01 to #REGiy+#N$04.
   $DF30,$04 Write #N$FE to monster Y position (#REGiy+#N$0A).
@@ -3035,16 +3064,19 @@ c $E0AD
   $E117,$01 #REGa=#N$00.
   $E118,$01 Return.
 
-c $E119 Print Monsters
-@ $E119 label=PrintMonsters
+c $E119 Handler: Monsters
+@ $E119 label=Handler_Monsters
 N $E119 George:
+N $E119 Copy Georges states/ flags to the active states/ flags.
   $E119,$03 #REGhl=#R$CFD2.
   $E11C,$03 Call #R$E16B.
   $E11F,$03 Call #R$E62D.
   $E122,$03 Call #R$F3CA.
+N $E125 Copy the active states/ flags back to Georges data.
   $E125,$03 #REGde=#R$CFD2.
   $E128,$03 Call #R$E170.
 N $E12B Lizzy:
+N $E12B Copy Lizzys states/ flags to the active states/ flags.
   $E12B,$03 #REGhl=#R$D001.
   $E12E,$03 Call #R$E16B.
   $E131,$03 Call #R$E62D.
@@ -3052,9 +3084,11 @@ N $E12B Lizzy:
   $E137,$03 #REGde=#R$D23E.
   $E13A,$03 Call #R$F41A.
   $E13D,$03 Call #R$F3CA.
+N $E140 Copy the active states/ flags back to Lizzys data.
   $E140,$03 #REGde=#R$D001.
   $E143,$03 Call #R$E170.
 N $E146 Ralph:
+N $E146 Copy Ralphs states/ flags to the active states/ flags.
   $E146,$03 #REGhl=#R$D030.
   $E149,$03 Call #R$E16B.
   $E14C,$03 Call #R$E62D.
@@ -3065,14 +3099,19 @@ N $E146 Ralph:
   $E15B,$03 #REGde=#R$D23F.
   $E15E,$03 Call #R$F41A.
   $E161,$03 Call #R$F3CA.
+N $E164 Copy the active states/ flags back to Ralphs data.
   $E164,$03 #REGde=#R$D030.
   $E167,$03 Call #R$E170.
   $E16A,$01 Return.
+N $E16B Sets up copying TO the active flags #R$D244(#N$D244)-#R$D255(#N$D255).
+@ $E16B label=CopyToActiveFlags
   $E16B,$03 #REGde=#R$D244.
   $E16E,$02 Jump to #R$E173.
+N $E170 Sets up copying FROM the active flags back to the monsters states.
+@ $E170 label=CopyFromActiveFlags
   $E170,$03 #REGhl=#R$D244.
-  $E173,$03 #REGbc=#N($0011,$04,$04).
-  $E176,$02 LDIR.
+@ $E173 label=Copy17Bytes
+  $E173,$05 Copy #N$11 bytes from *#REGhl to *#REGde.
   $E178,$01 Return.
 
 c $E179 Controls
@@ -3399,7 +3438,8 @@ N $E36B The countdown between #N$CE-#N$C9 handles the delay before #N$C8 will hi
   $E378,$01 #REGc=*#REGhl.
   $E379,$01 Increment #REGhl by one.
   $E37A,$01 #REGb=*#REGhl.
-  $E37B,$03 #REGhl=#R$D30A.
+  $E37B,$03 #REGhl=#R$D30A (#R$D30D-#N$03).
+@ $E37E label=Lobber_FindSlot
   $E37E,$03 Increment #REGhl by three.
   $E381,$04 Jump to #R$E37E if *#REGhl is not zero.
   $E385,$01 Exchange the #REGaf register with the shadow #REGaf register.
@@ -3834,9 +3874,7 @@ N $E5EC Take off one hit point from the monsters energy.
   $E600,$02 Decrease #REGhl by two.
   $E602,$02 Write #N$00 to *#REGhl.
   $E604,$06 Jump to #R$E614 if *#R$D3F8 is not zero.
-  $E60A,$03 #REGa=*#R$D3F9.
-  $E60D,$01 Decrease #REGa by one.
-  $E60E,$03 Write #REGa to *#R$D3F9.
+  $E60A,$07 Decrease *#R$D3F9 by one.
   $E611,$01 Restore #REGhl from the stack.
   $E612,$02 Jump to #R$E626.
   $E614,$01 Decrease #REGa by one.
@@ -3860,7 +3898,9 @@ N $E5EC Take off one hit point from the monsters energy.
   $E62C,$01 Return.
 
 c $E62D
+N $E62D Just instantly return if the monster is already "game over".
   $E62D,$06 Return if *#R$D244 is equal to #N$FF.
+N $E633 Any states higher than #N$20 mean the monster is in the process of turning back into a human (pre-"game over").
   $E633,$04 Jump to #R$E67C if *#R$D244 is higher than #N$20.
   $E637,$03 #REGa=*#R$D248.
   $E63A,$01 Rotate #REGa right; bit 0 moves to the carry flag (and to bit 7).
@@ -3889,6 +3929,8 @@ c $E62D
   $E66D,$02 Jump to #R$E67C if {} is not zero.
   $E66F,$08 Write #N$06 to: #LIST { *#R$D244 } { *#R$D24A } LIST#
   $E677,$05 Write #N$01 to *#R$D248.
+N $E67C Using the value held in *#R$D244 jump to the correlated address from #R$EF98.
+@ $E67C label=Action_JumpTable
   $E67C,$04 #REGa=*#R$D244*#N$02.
 N $E680 Create an offset using #REGhl.
   $E680,$02 #REGh=#N$00.
@@ -3910,19 +3952,20 @@ N $E693 Controls: Jump/ Punch.
   $E693,$05 Jump to #R$E6C5 if the key for jump/ punch is not being pressed.
   $E698,$02,b$01 Flip bit 4.
   $E69A,$02 Jump to #R$E6A9 if the result is not zero.
-  $E69C,$05 Write #N$0A to *#R$D244.
+  $E69C,$05 Write #R$EFAC(#N$0A) to *#R$D244.
   $E6A1,$05 Write #N$01 to *#R$D248.
   $E6A6,$03 Jump to #R$E67C.
   $E6A9,$06 Jump to #R$E6B7 if *#R$D246 is zero.
-  $E6AF,$05 Write #N$0D to *#R$D244.
+  $E6AF,$05 Write #R$EFB2(#N$0D) to *#R$D244.
   $E6B4,$03 Jump to #R$E67C.
   $E6B7,$06 Jump to #R$E69C if *#R$D252 is zero.
-  $E6BD,$05 Write #N$0E to *#R$D244.
+  $E6BD,$05 Write #R$EFB4(#N$0E) to *#R$D244.
   $E6C2,$03 Jump to #R$E67C.
 N $E6C5 Controls: Up.
 @ $E6C5 label=Controls_Up
   $E6C5,$05 Jump to #R$E7DE if the key for up is not being pressed.
   $E6CA,$03 #REGa=*#R$D247.
+N $E6CD Moves the orientation flag into the carry flag.
   $E6CD,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $E6CE,$02 Jump to #R$E6E4 if the carry flag is set.
   $E6D0,$03 #REGbc=#N$0102.
@@ -3945,7 +3988,7 @@ N $E6C5 Controls: Up.
   $E6FC,$02 #REGa-=#N$04.
   $E6FE,$03 Write #REGa to *#R$D24E.
   $E701,$0A Write #N$00 to: #LIST { *#R$D248 } { *#R$D246 } { *#R$D24C } LIST#
-  $E70B,$04 Write #N$01 to *#R$D244.
+  $E70B,$04 Write #R$EF9A(#N$01) to *#R$D244.
   $E70F,$03 Jump to #R$E67C.
   $E712,$03 #REGbc=#N$0202.
   $E715,$03 #REGde=#N$1113.
@@ -4021,6 +4064,7 @@ N $E7DE Controls: Down.
   $E7DE,$05 Jump to #R$E8E7 if the key for down is not being pressed.
   $E7E3,$08 Jump to #R$E8CF if *#R$D24E is equal to #N$10.
   $E7EB,$03 #REGa=*#R$D247.
+N $E7EE Moves the orientation flag into the carry flag.
   $E7EE,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $E7EF,$02 Jump to #R$E81F if the carry flag is set.
   $E7F1,$03 #REGbc=#N$0502.
@@ -4071,6 +4115,7 @@ N $E7DE Controls: Down.
   $E861,$04 Write #N$00 to *#R$D246.
   $E865,$07 Write #N$01 to: #LIST { *#R$D244 } { *#R$D24F } LIST#
   $E86C,$03 #REGa=*#R$D247.
+N $E86F Moves the orientation flag into the carry flag.
   $E86F,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $E870,$03 Call #R$DA61 if the carry flag is not set.
   $E873,$03 Jump to #R$EF86.
@@ -4080,6 +4125,7 @@ N $E7DE Controls: Down.
   $E87D,$03 #REGbc=#N$0402.
   $E880,$03 #REGde=#N$1113.
   $E883,$03 #REGa=*#R$D247.
+N $E886 Moves the orientation flag into the carry flag.
   $E886,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $E887,$02 Jump to #R$E88C if the carry flag is not set.
   $E889,$03 #REGde=#N$1416.
@@ -4101,8 +4147,9 @@ N $E7DE Controls: Down.
   $E8C7,$05 Write #N$01 to *#R$D246.
   $E8CC,$03 Jump to #R$E67C.
   $E8CF,$05 Write #N$12 to *#R$D24E.
-  $E8D4,$05 Write #N$01 to *#R$D244.
+  $E8D4,$05 Write #R$EF9A(#N$01) to *#R$D244.
   $E8D9,$03 #REGa=*#R$D247.
+N $E8DC Moves the orientation flag into the carry flag.
   $E8DC,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $E8DD,$03 Call #R$DA61 if the carry flag is not set.
   $E8E0,$04 Write #N$00 to *#R$D246.
@@ -4143,7 +4190,7 @@ N $E91C Controls: Right.
   $E950,$07 Decrease *#R$D249 by one.
   $E957,$03 Jump to #R$EF86 if #REGa is not zero.
   $E95A,$05 Write #N$19 to *#R$D249.
-  $E95F,$05 Write #N$05 to *#R$D244.
+  $E95F,$05 Write #R$EFA2(#N$05) to *#R$D244.
   $E964,$03 Jump to #R$E67C.
 
 c $E967
@@ -4157,7 +4204,7 @@ c $E971
   $E976,$03 Call #R$DA0F.
   $E979,$03 Call #R$D9C3.
   $E97C,$01 Return if {} is not zero.
-  $E97D,$04 Write #N$00 to *#R$D244.
+  $E97D,$04 Write #R$EF98(#N$00) to *#R$D244.
   $E981,$01 Return.
 
 c $E982
@@ -4168,10 +4215,11 @@ c $E982
   $E98D,$01 Return if {} is not zero.
   $E98E,$03 Call #R$DA59.
   $E991,$05 Write #N$03 to *#R$D24F.
-  $E996,$04 Write #N$00 to *#R$D244.
+  $E996,$04 Write #R$EF98(#N$00) to *#R$D244.
   $E99A,$01 Return.
 
-c $E99B
+c $E99B Animate: Waiting
+@ $E99B label=Animate_Waiting
   $E99B,$03 Call #R$E179.
   $E99E,$01 Set flags.
   $E99F,$03 Jump to #R$E693 if {} is not zero.
@@ -4181,15 +4229,25 @@ c $E99B
   $E9AE,$03 #REGa=*#R$D246.
   $E9B1,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $E9B2,$03 Jump to #R$E9EA if the carry flag is set.
-  $E9B5,$02 #REGa=#N$05.
-  $E9B7,$04 #REGbc=*#R$D24D.
+  $E9B5,$02 #REGa=sprite id #N$05.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$05 | #SPRITE$05,$00,$0515 | #N$45 | #SPRITE$45,$00,$0515 | #N$85 | #SPRITE$85,$00,$0515 }
+. UDGTABLE#
+  $E9B7,$04 #REGbc=*#R$D24D/#R$D24E.
   $E9BB,$03 Call #R$D9BB.
-  $E9BE,$04 #REGbc=*#R$D24D.
+  $E9BE,$04 #REGbc=*#R$D24D/#R$D24E.
   $E9C2,$03 #REGa=*#R$D247.
   $E9C5,$02,b$01 Flip bit 0.
   $E9C7,$01 #REGa+=#REGc.
   $E9C8,$01 #REGc=#REGa.
-  $E9C9,$02 #REGa=#N$0F.
+  $E9C9,$02 #REGa=sprite ID #N$0F.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$0F | #SPRITE$0F | #N$4F | #SPRITE$4F | #N$8F | #SPRITE$8F }
+. UDGTABLE#
   $E9CB,$03 Call #R$D9BB.
   $E9CE,$04 #REGbc=*#R$D24D.
   $E9D2,$01 Increment #REGb by one.
@@ -4198,19 +4256,38 @@ c $E99B
   $E9D7,$02,b$01 Flip bit 0.
   $E9D9,$01 #REGa+=#REGc.
   $E9DA,$01 #REGc=#REGa.
+N $E9DB Choose a frame randomly for the mouth sprite.
+@ $E9DB label=DrawMonsterMouth
   $E9DB,$03 Call #R$DA28.
   $E9DE,$02,b$01 Keep only bits 0-1.
   $E9E0,$02 Jump to #R$E9DB if the result is zero.
   $E9E2,$01 Decrease #REGa by one.
-  $E9E3,$01 #REGa+=#REGa.
-  $E9E4,$02 #REGa+=#N$11.
+M $E9DB,$01 #REGa=random number between #N$00-#N$02.
+  $E9E3,$03 #REGa=#N$11+(#REGa*#N$02).
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$11 | #SPRITE$11 | #N$51 | #SPRITE$51 | #N$91 | #SPRITE$91 }
+. { #N$13 | #SPRITE$13 | #N$53 | #SPRITE$53 | #N$93 | #SPRITE$93 }
+. { #N$15 | #SPRITE$15 | #N$55 | #SPRITE$55 | #N$95 | #SPRITE$95 }
+. UDGTABLE#
   $E9E6,$03 Call #R$D9BB.
   $E9E9,$01 Return.
-  $E9EA,$02 #REGa=#N$09.
+  $E9EA,$02 #REGa=sprite ID #N$09.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$09 | #SPRITE$09 | #N$49 | #SPRITE$49 | #N$89 | #SPRITE$89 }
+. UDGTABLE#
   $E9EC,$04 #REGbc=*#R$D24D.
   $E9F0,$03 Call #R$D9BB.
   $E9F3,$04 #REGbc=*#R$D24D.
-  $E9F7,$02 #REGa=#N$0D.
+  $E9F7,$02 #REGa=sprite ID #N$0D.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$0D | #SPRITE$0D | #N$4D | #SPRITE$4D | #N$8D | #SPRITE$8D }
+. UDGTABLE#
   $E9F9,$03 Call #R$D9BB.
   $E9FC,$04 #REGbc=*#R$D24D.
   $EA00,$01 Increment #REGb by one.
@@ -4219,8 +4296,9 @@ c $E99B
 
 c $EA04
   $EA04,$05 Write #N$06 to *#R$D24A.
-  $EA09,$05 Write #N$07 to *#R$D244.
+  $EA09,$05 Write #R$EFA6(#N$07) to *#R$D244.
   $EA0E,$03 #REGa=*#R$D247.
+N $EA11 Moves the orientation flag into the carry flag.
   $EA11,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $EA12,$03 Call #R$DA51 if the carry flag is not set.
   $EA15,$03 Jump to #R$E67C.
@@ -4228,16 +4306,26 @@ c $EA04
 c $EA18
   $EA18,$07 Decrease *#R$D24A by one.
   $EA1F,$02 Jump to #R$EA36 if *#R$D24A is zero.
-  $EA21,$02 #REGa=#N$19.
+  $EA21,$02 #REGa=sprite ID #N$19.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$19 | #SPRITE$19 | #N$59 | #SPRITE$59 | #N$99 | #SPRITE$99 }
+. UDGTABLE#
   $EA23,$04 #REGbc=*#R$D24D.
   $EA27,$03 Call #R$D9BB.
   $EA2A,$04 #REGbc=*#R$D24D.
   $EA2E,$02 Increment #REGb by two.
-  $EA30,$02 #REGa=#N$23.
+  $EA30,$02 #REGa=sprite ID #N$23.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$23 | #SPRITE$23 | #N$63 | #SPRITE$63 | #N$A3 | #SPRITE$A3 }
+. UDGTABLE#
   $EA32,$03 Call #R$D9BB.
   $EA35,$01 Return.
   $EA36,$05 Write #N$03 to *#R$D24A.
-  $EA3B,$05 Write #N$08 to *#R$D244.
+  $EA3B,$05 Write #R$EFA8(#N$08) to *#R$D244.
   $EA40,$03 Jump to #R$E67C.
 
 c $EA43 Animate: Falling
@@ -4297,6 +4385,7 @@ c $EA9C
   $EAB4,$03 Call #R$E179.
   $EAB7,$03 Jump to #R$EACE if #REGa is zero.
   $EABA,$03 #REGa=*#R$D247.
+N $EABD Moves the orientation flag into the carry flag.
   $EABD,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $EABE,$03 Call #R$DA61 if the carry flag is not set.
   $EAC1,$0A Write #N$00 to: #LIST { *#R$D244 } { *#R$D246 } { *#R$D248 } LIST#
@@ -4324,7 +4413,7 @@ c $EA9C
 . UDGTABLE#
   $EAE7,$03 Call #R$D9BB.
   $EAEA,$06 Return if *#R$D244 is not equal to #N$20.
-  $EAF0,$05 Write #N$21 to *#R$D244.
+  $EAF0,$05 Write #R$EFDA(#N$21) to *#R$D244.
   $EAF5,$01 Return.
 
 c $EAF6
@@ -4350,12 +4439,14 @@ c $EAF6
   $EB33,$02 Jump to #R$EB43 if the carry flag is not set.
   $EB35,$03 #REGhl=#R$C896.
   $EB38,$03 #REGa=*#R$D247.
+N $EB3B Moves the orientation flag into the carry flag.
   $EB3B,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $EB3C,$02 Jump to #R$EB4F if the carry flag is not set.
   $EB3E,$03 #REGhl=#R$C8A9.
   $EB41,$02 Jump to #R$EB4F.
   $EB43,$03 #REGhl=#R$C86E.
   $EB46,$03 #REGa=*#R$D247.
+N $EB49 Moves the orientation flag into the carry flag.
   $EB49,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $EB4A,$02 Jump to #R$EB4F if the carry flag is not set.
   $EB4C,$03 #REGhl=#R$C882.
@@ -4432,7 +4523,12 @@ c $EAF6
   $EC2E,$02 Jump to #R$EC52 if {} is not zero.
   $EC30,$04 Write #REGbc to *#R$D24D.
   $EC34,$08 Jump to #R$ECE0 if *#R$D217 is higher than #N$11.
-  $EC3C,$02 #REGa=#N$09.
+  $EC3C,$02 #REGa=sprite ID #N$09.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$09 | #SPRITE$09 | #N$49 | #SPRITE$49 | #N$89 | #SPRITE$89 }
+. UDGTABLE#
   $EC3E,$01 Stash #REGbc on the stack.
   $EC3F,$03 Call #R$D9BB.
   $EC42,$01 Restore #REGbc from the stack.
@@ -4442,11 +4538,17 @@ c $EAF6
   $EC48,$02,b$01 Flip bit 0.
   $EC4A,$01 #REGa+=#REGc.
   $EC4B,$01 #REGc=#REGa.
-  $EC4C,$02 #REGa=#N$17.
+  $EC4C,$02 #REGa=sprite ID #N$17.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$17 | #SPRITE$17 | #N$57 | #SPRITE$57 | #N$97 | #SPRITE$97 }
+. UDGTABLE#
   $EC4E,$03 Call #R$D9BB.
   $EC51,$01 Return.
   $EC52,$04 Write #REGbc to *#R$D24D.
   $EC56,$03 #REGa=*#R$D247.
+N $EC59 Moves the orientation flag into the carry flag.
   $EC59,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $EC5A,$03 Call #R$DA61 if the carry flag is not set.
   $EC5D,$0A Write #N$00 to: #LIST { *#R$D24C } { *#R$D246 } { *#R$D248 } LIST#
@@ -4457,7 +4559,7 @@ c $EAF6
   $EC72,$01 Increment #REGa by one.
   $EC73,$03 Write #REGa to *#R$D244.
   $EC76,$08 Jump to #R$EF86 if *#R$D24E is equal to #N$12.
-  $EC7E,$05 Write #N$0B to *#R$D244.
+  $EC7E,$05 Write #R$EFAE(#N$0B) to *#R$D244.
   $EC83,$04 Write #REGb to *#R$D24E.
   $EC87,$03 Jump to #R$E67C.
 
@@ -4493,6 +4595,7 @@ c $EC8A
   $ECBC,$03 Call #R$DA59.
   $ECBF,$01 Return.
   $ECC0,$03 #REGa=*#R$D247.
+N $ECC3 Moves the orientation flag into the carry flag.
   $ECC3,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $ECC4,$03 Call #R$DA61 if the carry flag is not set.
   $ECC7,$05 Write #N$12 to *#R$D24E.
@@ -4548,7 +4651,7 @@ c $ECE0
 . #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
 . { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
 . { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
-. { #N$1D | #SPRITE$1D | #N$5D | #SPRITE$5D | #N$9D | #SPRITE$9D }
+. { #N$1D | #SPRITE$1D,$00,$0515 | #N$5D | #SPRITE$5D,$00,$0515 | #N$9D | #SPRITE$9D,$00,$0515 }
 . UDGTABLE#
   $ED2D,$03 Call #R$D9BB.
   $ED30,$01 Return.
@@ -4560,6 +4663,7 @@ c $ED31
   $ED37,$05 Jump to #R$EDA3 if bit 2 of #REGb is set.
   $ED3C,$04 Jump to #R$ED54 if bit 3 of #REGb is set.
   $ED40,$03 #REGa=*#R$D247.
+N $ED43 Moves the orientation flag into the carry flag.
   $ED43,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $ED44,$02 Jump to #R$ED4D if the carry flag is set.
   $ED46,$04 Jump to #R$ED79 if bit 1 of #REGb is set.
@@ -4569,23 +4673,38 @@ c $ED31
   $ED54,$03 #REGhl=#R$FE00.
   $ED57,$03 #REGde=#N$FE03.
   $ED5A,$03 Call #R$F352.
-  $ED5D,$05 Write #N$12 to *#R$D244.
+  $ED5D,$05 Write #R$EFBC(#N$12) to *#R$D244.
   $ED62,$04 #REGbc=*#R$D24D.
   $ED66,$02 Decrease #REGb by two.
-  $ED68,$02 #REGa=#N$25.
+  $ED68,$02 #REGa=sprite ID #N$25.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$25 | #SPRITE$25 | #N$65 | #SPRITE$65 | #N$A5 | #SPRITE$A5 }
+. UDGTABLE#
   $ED6A,$03 Call #R$D9BB.
   $ED6D,$04 #REGbc=*#R$D24D.
   $ED71,$02 Increment #REGb by two.
-  $ED73,$02 #REGa=#N$21.
+  $ED73,$02 #REGa=sprite ID #N$21.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$21 | #SPRITE$21 | #N$61 | #SPRITE$61 | #N$A1 | #SPRITE$A1 }
+. UDGTABLE#
   $ED75,$03 Call #R$D9BB.
   $ED78,$01 Return.
   $ED79,$03 #REGhl=#N$0103.
   $ED7C,$03 #REGde=#N$0100.
   $ED7F,$03 Call #R$F352.
-  $ED82,$05 Write #N$13 to *#R$D244.
+  $ED82,$05 Write #R$EFBE(#N$13) to *#R$D244.
   $ED87,$04 #REGbc=*#R$D24D.
   $ED8B,$02 Increment #REGb by two.
-  $ED8D,$02 #REGa=#N$21.
+  $ED8D,$02 #REGa=sprite ID #N$21.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$21 | #SPRITE$21 | #N$61 | #SPRITE$61 | #N$A1 | #SPRITE$A1 }
+. UDGTABLE#
   $ED8F,$03 Call #R$D9BB.
   $ED92,$04 #REGbc=*#R$D24D.
   $ED96,$03 #REGa=*#R$D247.
@@ -4593,20 +4712,30 @@ c $ED31
   $ED9A,$01 Invert the bits in #REGa.
   $ED9B,$01 Increment #REGa by one.
   $ED9C,$01 #REGc=#REGa.
-  $ED9D,$02 #REGa=#N$1D.
+  $ED9D,$02 #REGa=sprite ID #N$1D.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$1D | #SPRITE$1D | #N$5D | #SPRITE$5D | #N$9D | #SPRITE$9D }
+. UDGTABLE#
   $ED9F,$03 Call #R$D9BB.
   $EDA2,$01 Return.
   $EDA3,$03 #REGhl=#N$0302.
   $EDA6,$03 #REGde=#N$0301.
   $EDA9,$03 Call #R$F352.
-  $EDAC,$05 Write #N$15 to *#R$D244.
+  $EDAC,$05 Write #R$EFC2(#N$15) to *#R$D244.
   $EDB1,$04 #REGbc=*#R$D24D.
   $EDB5,$03 #REGa=*#R$D247.
   $EDB8,$01 #REGa-=#REGc.
   $EDB9,$01 Invert the bits in #REGa.
   $EDBA,$01 Increment #REGa by one.
   $EDBB,$01 #REGc=#REGa.
-  $EDBC,$02 #REGa=#N$29.
+  $EDBC,$02 #REGa=sprite ID #N$29.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$29 | #SPRITE$29 | #N$69 | #SPRITE$69 | #N$A9 | #SPRITE$A9 }
+. UDGTABLE#
   $EDBE,$03 Call #R$D9BB.
   $EDC1,$01 Return.
 
@@ -4617,6 +4746,7 @@ c $EDC2
   $EDC8,$04 Jump to #R$EDE5 if bit 3 of #REGb is set.
   $EDCC,$05 Jump to #R$EE4A if bit 2 of #REGb is set.
   $EDD1,$03 #REGa=*#R$D247.
+N $EDD4 Moves the orientation flag into the carry flag.
   $EDD4,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $EDD5,$02 Jump to #R$EDDE if the carry flag is set.
   $EDD7,$04 Jump to #R$EE12 if bit 1 of #REGb is set.
@@ -4626,33 +4756,48 @@ c $EDC2
   $EDE5,$03 #REGhl=#N$FE01.
   $EDE8,$03 #REGde=#N$FE03.
   $EDEB,$03 Call #R$F352.
-  $EDEE,$05 Write #N$16 to *#R$D244.
+  $EDEE,$05 Write #R$EFC4(#N$16) to *#R$D244.
   $EDF3,$02 #REGh=#N$FE.
   $EDF5,$01 #REGd=#REGh.
   $EDF6,$02 #REGl=#N$01.
   $EDF8,$02 #REGe=#N$00.
   $EDFA,$03 Call #R$EF38.
-  $EDFD,$02 #REGa=#N$25.
+  $EDFD,$02 #REGa=sprite ID #N$25.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$25 | #SPRITE$25 | #N$65 | #SPRITE$65 | #N$A5 | #SPRITE$A5 }
+. UDGTABLE#
   $EDFF,$03 Call #R$D9BB.
   $EE02,$02 #REGh=#N$02.
   $EE04,$02 #REGl=#N$01.
   $EE06,$01 #REGd=#REGh.
   $EE07,$02 #REGe=#N$00.
   $EE09,$03 Call #R$EF38.
-  $EE0C,$02 #REGa=#N$1F.
+  $EE0C,$02 #REGa=sprite ID #N$1F.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$1F | #SPRITE$1F | #N$5F | #SPRITE$5F | #N$9F | #SPRITE$9F }
+. UDGTABLE#
   $EE0E,$03 Call #R$D9BB.
   $EE11,$01 Return.
   $EE12,$03 #REGhl=#N$0104.
   $EE15,$03 #REGde=#N$0100.
   $EE18,$03 Call #R$F352.
-  $EE1B,$05 Write #N$17 to *#R$D244.
+  $EE1B,$05 Write #R$EFC6(#N$17) to *#R$D244.
   $EE20,$04 #REGbc=*#R$D24D.
   $EE24,$02 Increment #REGb by two.
   $EE26,$03 #REGa=*#R$D247.
   $EE29,$02,b$01 Flip bit 0.
   $EE2B,$01 #REGa+=#REGc.
   $EE2C,$01 #REGc=#REGa.
-  $EE2D,$02 #REGa=#N$1F.
+  $EE2D,$02 #REGa=sprite ID #N$1F.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$1F | #SPRITE$1F | #N$5F | #SPRITE$5F | #N$9F | #SPRITE$9F }
+. UDGTABLE#
   $EE2F,$03 Call #R$D9BB.
   $EE32,$04 #REGbc=*#R$D24D.
   $EE36,$03 #REGa=*#R$D247.
@@ -4664,13 +4809,18 @@ c $EDC2
   $EE40,$02,b$01 Flip bit 0.
   $EE42,$01 #REGa+=#REGc.
   $EE43,$01 #REGc=#REGa.
-  $EE44,$02 #REGa=#N$1D.
+  $EE44,$02 #REGa=sprite ID #N$1D.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$1D | #SPRITE$1D | #N$5D | #SPRITE$5D | #N$9D | #SPRITE$9D }
+. UDGTABLE#
   $EE46,$03 Call #R$D9BB.
   $EE49,$01 Return.
   $EE4A,$03 #REGhl=#N$0303.
   $EE4D,$03 #REGde=#N$0301.
   $EE50,$03 Call #R$F352.
-  $EE53,$05 Write #N$19 to *#R$D244.
+  $EE53,$05 Write #R$EFCA(#N$19) to *#R$D244.
   $EE58,$04 #REGbc=*#R$D24D.
   $EE5C,$03 #REGa=*#R$D247.
   $EE5F,$01 #REGa-=#REGc.
@@ -4681,7 +4831,12 @@ c $EDC2
   $EE66,$02,b$01 Flip bit 0.
   $EE68,$01 #REGa+=#REGc.
   $EE69,$01 #REGc=#REGa.
-  $EE6A,$02 #REGa=#N$0B.
+  $EE6A,$02 #REGa=sprite ID #N$0B.
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$0B | #SPRITE$0B | #N$4B | #SPRITE$4B | #N$8B | #SPRITE$8B }
+. UDGTABLE#
   $EE6C,$03 Call #R$D9BB.
   $EE6F,$01 Return.
 
@@ -4754,27 +4909,25 @@ M $EEBE,$05 Using *#R$D24B, sequentially choose a frame between #N$00-#N$03.
 N $EEC3 Calculate the sprite ID.
   $EEC3,$01 #REGa*=#N$02.
   $EEC4,$02 #REGa+=#N$2B.
-. #UDGTABLE(default,centre,centre,,centre,centre,centre,centre,centre,centre)
-. { =h,c8 George }
-. { =h ID | =h Frame 1 | =h ID | =h Frame 2 | =h ID | =h Frame 3 | =h ID | =h Frame 4 }
-. { #N$2B | #SPRITE$2B | #N$2D | #SPRITE$2D | #N$2F | #SPRITE$2F | #N$31 | #SPRITE$31 }
-. { =h,c8 Lizzy }
-. { =h ID | =h Frame 1 | =h ID | =h Frame 2 | =h ID | =h Frame 3 | =h ID | =h Frame 4 }
-. { #N$6B | #SPRITE$6B | #N$6D | #SPRITE$6D | #N$6F | #SPRITE$6F | #N$71 | #SPRITE$71 }
-. { =h,c8 Ralph }
-. { =h ID | =h Frame 1 | =h ID | =h Frame 2 | =h ID | =h Frame 3 | =h ID | =h Frame 4 }
-. { #N$AB | #SPRITE$AB | #N$AD | #SPRITE$AD | #N$AF | #SPRITE$AF | #N$B1 | #SPRITE$B1 }
+. #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
+. { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
+. { #N$2B | #SPRITE$2B | #N$6B | #SPRITE$6B | #N$AB | #SPRITE$AB }
+. { #N$2D | #SPRITE$2D | #N$6D | #SPRITE$6D | #N$AD | #SPRITE$AD }
+. { #N$2F | #SPRITE$2F | #N$6F | #SPRITE$6F | #N$AF | #SPRITE$AF }
+. { #N$31 | #SPRITE$31 | #N$71 | #SPRITE$71 | #N$B1 | #SPRITE$B1 }
 . UDGTABLE#
   $EEC6,$03 Call #R$D9BB.
   $EEC9,$01 Return.
 N $EECA The animation is complete.
 @ $EECA label=Animate_Eating_Finished
-  $EECA,$04 Write #N$00 to *#R$D244.
+  $EECA,$04 Write #R$EF98(#N$00) to *#R$D244.
   $EECE,$05 Write #N$19 to *#R$D24B.
   $EED3,$03 Jump to #R$E67C.
 
-c $EED6
-  $EED6,$04 #REGbc=*#R$D24D.
+c $EED6 Animate: Transform Explosion
+@ $EED6 label=Animate_TransformExplosion
+  $EED6,$04 #REGbc=*#R$D24D/#R$D24E.
   $EEDA,$01 Increment #REGb by one.
   $EEDB,$01 Increment #REGc by one.
   $EEDC,$02 #REGa=explosion sprite (#N$77).
@@ -4783,13 +4936,14 @@ c $EED6
 . { #N$77 | #SPRITE$77 }
 . UDGTABLE#
   $EEDE,$03 Call #R$D6C9.
-  $EEE1,$05 Write #N$22 to *#R$D244.
+  $EEE1,$05 Write #R$EFDC(#N$22) to *#R$D244.
   $EEE6,$04 Write #N$00 to *#R$D249.
   $EEEA,$01 Return.
 
-c $EEEB
+c $EEEB Animate: Turn Into Human
+@ $EEEB label=Animate_TurnIntoHuman
   $EEEB,$07 Jump to #R$EEFC if *#R$D24E is not equal to #N$14.
-  $EEF2,$05 Write #N$23 to *#R$D244.
+  $EEF2,$05 Write #R$EFDE(#N$23) to *#R$D244.
   $EEF7,$04 Write #N$00 to *#R$D249.
   $EEFB,$01 Return.
   $EEFC,$01 Increment #REGa by one.
@@ -4803,8 +4957,9 @@ c $EEEB
   $EF06,$03 Call #R$D6C9.
   $EF09,$01 Return.
 
-c $EF0A
-  $EF0A,$04 #REGbc=*#R$D24D.
+c $EF0A Animate: Exit Stage Right
+@ $EF0A label=Animate_ExitStageRight
+  $EF0A,$04 #REGbc=*#R$D24D/#R$D24E.
   $EF0E,$03 #REGa=*#R$D249.
   $EF11,$02,b$01 Keep only bit 0.
   $EF13,$02,b$01 Flip bit 0.
@@ -4847,7 +5002,7 @@ c $EF50
   $EF50,$03 Call #R$E179.
   $EF53,$02,b$01 Keep only bit 4.
   $EF55,$02 Jump to #R$EF5E if the result is not zero.
-  $EF57,$04 Write #N$00 to *#R$D244.
+  $EF57,$04 Write #R$EF98(#N$00) to *#R$D244.
   $EF5B,$03 Jump to #R$E67C.
   $EF5E,$03 #REGa=*#R$D244.
   $EF61,$02 #REGa-=#N$0F.
@@ -4869,7 +5024,7 @@ c $EF86
   $EF8C,$03 Call #R$DA0F.
   $EF8F,$03 Call #R$D9C3.
   $EF92,$01 Return if {} is not zero.
-  $EF93,$04 Write #N$00 to *#R$D244.
+  $EF93,$04 Write #R$EF98(#N$00) to *#R$D244.
   $EF97,$01 Return.
 
 w $EF98 Jump Table
@@ -5875,11 +6030,11 @@ c $F788
   $F794,$01 Return.
 
 c $F795 Handler: Collision Monsters?
-@ $F795 label=Handler_Monsters
+@ $F795 label=Handler_CollisionMonsters
 R $F795 HL Either #R$D243 or #R$D240
 N $F795 #REGb is used as the "currently processed monster ID"; we work backwards from Ralph, to Lizzy and last George.
   $F795,$02 #REGb=#N$03 (total number of monsters/ players).
-@ $F797 label=Handler_Monsters_Loop
+@ $F797 label=Handler_CollisionMonsters_Loop
   $F797,$01 #REGa=*#REGhl.
   $F798,$03 Jump to #R$F7DA if #REGa is zero.
   $F79B,$04 Jump to #R$F7DE if #REGa is higher than #N$C1.
@@ -5899,7 +6054,7 @@ N $F7B1 Is the action targeting the currently processed monster?
   $F7C0,$02 Jump to #R$F7C8 if the result is zero.
   $F7C2,$03 #REGa=*#REGix+#N$03.
   $F7C5,$03 Write #REGa to *#REGiy+#N$03.
-@ $F7C8 label=Handler_Monsters_Punched
+@ $F7C8 label=Handler_CollisionMonsters_Punched
   $F7C8,$04 Write #N$0A to *#REGiy+#N$00.
   $F7CC,$04 Write #N$01 to *#REGiy+#N$04.
 N $F7D0 Take off two hit points from the monsters energy.
@@ -5907,7 +6062,7 @@ N $F7D0 Take off two hit points from the monsters energy.
   $F7D2,$03 Call #R$DD6C.
 N $F7D5 #AUDIO(punched.wav)(#INCLUDE(Punched))
   $F7D5,$05 Write melody ID #N$06 to *#R$FF8D.
-@ $F7DA label=Handler_Monsters_Next
+@ $F7DA label=Handler_CollisionMonsters_Next
   $F7DA,$01 Decrease #REGhl by one.
   $F7DB,$02 Decrease counter by one and loop back to #R$F797 until counter is zero.
   $F7DD,$01 Return.
@@ -5923,7 +6078,7 @@ N $F7D5 #AUDIO(punched.wav)(#INCLUDE(Punched))
   $F7FD,$04 Jump to #R$F851 if #REGa is lower than #N$DD.
   $F801,$03 Jump to #R$F878.
 N $F804 Tidies the stack before moving onto the next monster.
-@ $F804 label=Housekeeping_Monsters_Next
+@ $F804 label=Housekeeping_CollisionMonsters_Next
   $F804,$02 Restore #REGbc and #REGhl from the stack.
   $F806,$02 Jump to #R$F7DA.
 N $F808 Handles when a vehicle has been punched.
