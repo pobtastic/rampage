@@ -49,12 +49,13 @@ L $9E00,$08,$180
 
 g $C1A1 Table: Sprite Information
 @ $C1A1 label=Table_SpriteInfo
-N $C1A1 #N($01+(#PC-$C1A1)/$04).
-  $C1A1,$02
+N $C1A1 #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+M $C1A1,$08 #SPRITE({sprite})
+B $C1A1,$02
 W $C1A3,$02
-  $C1A5,$02
+B $C1A5,$02
 W $C1A7,$02
-L $C1A1,$08,$40
+L $C1A1,$08,$7D
 
 b $C700
 
@@ -547,6 +548,13 @@ g $CFD2 Data: George
 . { #N$00 | Left-to-Right }
 . { #N$01 | Right-to-Left }
 . TABLE#
+@ $CFD6 label=George_Jumping
+  $CFD6,$01 Relates to: #R$D248.
+. #TABLE(default,centre,centre)
+. { =h Byte | =h Meaning }
+. { #N$00 | Not Jumping }
+. { #N$01 | Jumping }
+. TABLE#
 @ $CFD7 label=George_Count
   $CFD7,$01 Relates to: #R$D249.
 @ $CFD8 label=George_AboutToFallCountdown
@@ -606,6 +614,13 @@ g $D001 Data: Lizzy
 . { #N$00 | Left-to-Right }
 . { #N$01 | Right-to-Left }
 . TABLE#
+@ $D005 label=Lizzy_Jumping
+  $D005,$01 Relates to: #R$D248.
+. #TABLE(default,centre,centre)
+. { =h Byte | =h Meaning }
+. { #N$00 | Not Jumping }
+. { #N$01 | Jumping }
+. TABLE#
 @ $D006 label=Lizzy_Count
   $D006,$01 Relates to: #R$D249.
 @ $D007 label=Lizzy_AboutToFallCountdown
@@ -663,6 +678,13 @@ g $D030 Data: Ralph
 . { =h Byte | =h Meaning }
 . { #N$00 | Left-to-Right }
 . { #N$01 | Right-to-Left }
+. TABLE#
+@ $D034 label=Ralph_Jumping
+  $D034,$01 Relates to: #R$D248.
+. #TABLE(default,centre,centre)
+. { =h Byte | =h Meaning }
+. { #N$00 | Not Jumping }
+. { #N$01 | Jumping }
 . TABLE#
 @ $D035 label=Ralph_Count
   $D035,$01
@@ -777,12 +799,15 @@ t $D18F Messaging: Game Over
 
 b $D198 Graphics: Ticker
 @ $D198 label=Graphics_Ticker
-D $D198 See #R$FD44.
+D $D198 #PUSHS #SIM(start=$FD2B,stop=$FD7F) #SCR$02,$00,$10,$20,$08(ticker) #POPS
+N $D198 See #R$FD44.
   $D198,$08
-L $D198,$08,$0F
+L $D198,$08,$0F,$02
 
-g $D210
-D $D210 Defaults to #N$80 (see #R$DEC9).
+g $D210 Human Generator Limiter
+@ $D210 label=HumanGeneratorLimiter
+D $D210 Defaults to #N$80 (see #R$DEC9) is used for limiting the generation of humans. Humans are only generated when a
+.       generated random number between #N$00-#N$FF is below the number set here.
 B $D210,$01
 
 g $D211 Maximum Number Humans (TODO)
@@ -869,7 +894,14 @@ D $D247 Relates to: #LIST { #R$CFD5 } { #R$D004 } { #R$D033 } LIST#
 . TABLE#
 B $D247,$01
 
-g $D248
+g $D248 Active Monster Jumping Flag
+@ $D248 label=Flag_MonsterJumping
+D $D248 Relates to: #LIST { #R$CFD6 } { #R$D005 } { #R$D034 } LIST#
+. #TABLE(default,centre,centre) { =h Byte | =h Meaning }
+. { #N$00 | No  }
+. { #N$01 | Yes }
+. TABLE#
+B $D246,$01
 
 g $D249
 
@@ -2044,7 +2076,7 @@ c $D986
   $D986,$01 Switch to the shadow registers.
   $D987,$01 Stash #REGhl on the stack.
   $D988,$01 #REGa=#REGb.
-  $D989,$03 RRCA.
+  $D989,$03 Rotate #REGa left three positions (bits 5 to 7 are now in positions 0 to 2).
   $D98C,$01 #REGl=#REGa.
   $D98D,$02,b$01 Keep only bits 0-2.
   $D98F,$02 #REGa+=#N$68.
@@ -2062,7 +2094,7 @@ c $D986
   $D9A8,$01 Return.
 
 c $D9A9 Initialise Sprite
-@ $D9A9 label=InitSprite
+@ $D9A9 label=InitialiseSprite
 R $D9A9 A Sprite ID
 R $D9A9 BC Screen co-ordinates
   $D9A9,$03 Call #R$DA1D.
@@ -2082,6 +2114,12 @@ R $D9A9 BC Screen co-ordinates
 
 c $D9BB Draw Monster Sprite
 @ $D9BB label=DrawMonsterSprite
+R $D9BB A Sprite ID
+R $D9BB BC Screen co-ordinates
+N $D9BB This is a wrapper around #R$D6C9 which simply takes the given sprite ID
+.       and applies a "modifier" if the monster is either Lizzy or Ralph. This
+.       then alters the sprite ID to be the correct value for the active
+.       monster; bit 6 for Lizzy, bit 7 for Ralph.
   $D9BB,$01 #REGl=#REGa.
   $D9BC,$03 #REGa=*#R$D251.
   $D9BF,$01 Set the bits from #REGl.
@@ -3921,7 +3959,7 @@ N $E5EC Take off one hit point from the monsters energy.
   $E5F5,$01 Write #REGb to *#REGhl.
   $E5F6,$01 Decrease #REGhl by one.
   $E5F7,$01 Write #REGc to *#REGhl.
-  $E5F8,$02 #REGa=#N$F4.
+  $E5F8,$02 #REGa=sprite ID #N$F4.
 . #UDGTABLE(default,centre,centre)
 . { =h ID | =h Sprite }
 . { #N$F4 | #SPRITE$F4 }
@@ -3939,7 +3977,7 @@ N $E5EC Take off one hit point from the monsters energy.
   $E615,$03 Write #REGa to *#R$D3F8.
   $E618,$01 Restore #REGhl from the stack.
   $E619,$02 Jump to #R$E626.
-  $E61B,$02 #REGa=#N$73.
+  $E61B,$02 #REGa=sprite ID #N$73.
 . #UDGTABLE(default,centre,centre)
 . { =h ID | =h Sprite }
 . { #N$73 | #SPRITE$73 }
@@ -3960,11 +3998,15 @@ N $E62D Just instantly return if the monster is already "game over".
   $E62D,$06 Return if *#R$D244 is equal to #N$FF.
 N $E633 Any states higher than #N$20 mean the monster is in the process of turning back into a human (pre-"game over").
   $E633,$04 Jump to #R$E67C if *#R$D244 is higher than #N$20.
+N $E637 Handle if the monster is currently jumping.
   $E637,$03 #REGa=*#R$D248.
-  $E63A,$01 Rotate #REGa right; bit 0 moves to the carry flag (and to bit 7).
+N $E63A Moves the monster-is-jumping flag into the carry flag.
+  $E63A,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $E63B,$02 Jump to #R$E67C if the carry flag is set (if bit 0 was set).
+N $E63D Handle if the monster is currently climbing.
   $E63D,$03 #REGa=*#R$D246.
-  $E640,$01 Rotate #REGa right; bit 0 moves to the carry flag (and to bit 7).
+N $E640 Moves the monster-is-climbing flag into the carry flag.
+  $E640,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $E641,$02 Jump to #R$E658 if the carry flag is not set (if bit 0 was unset).
   $E643,$03 #REGde=#N$80FE.
   $E646,$02 #REGb=#N$03.
@@ -4087,7 +4129,7 @@ N $E6CD Moves the orientation flag into the carry flag.
   $E770,$02 #REGa-=#N$02.
   $E772,$03 Write #REGa to *#R$D24E.
   $E775,$07 Write #N$00 to: #LIST { *#R$D248 } { *#R$D24C } LIST#
-  $E77C,$04 Write #N$01 to *#R$D246.
+  $E77C,$04 Set *#R$D246 to "climbing" (#N$01).
   $E780,$05 Write #N$03 to *#R$D24F.
   $E785,$03 #REGa=*#R$D248.
   $E788,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
@@ -4114,7 +4156,7 @@ N $E6CD Moves the orientation flag into the carry flag.
   $E7C0,$03 Call #R$DA69 zero.
   $E7C3,$05 Write #N$08 to *#REGix+#N$00.
   $E7C8,$07 Write #N$00 to: #LIST { *#R$D248 } { *#R$D24C } LIST#
-  $E7CF,$04 Write #N$01 to *#R$D246.
+  $E7CF,$04 Set *#R$D246 to "climbing" (#N$01).
   $E7D3,$08 Write #N$03 to: #LIST { *#R$D244 } { *#R$D245 } LIST#
   $E7DB,$03 Jump to #R$E67C.
 N $E7DE Controls: Down.
@@ -4170,7 +4212,7 @@ N $E7EE Moves the orientation flag into the carry flag.
   $E859,$03 #REGde=#N$090F.
   $E85C,$03 Call #R$E0AD.
   $E85F,$02 Jump to #R$E876 if {} is zero.
-  $E861,$04 Write #N$00 to *#R$D246.
+  $E861,$04 Set *#R$D246 to "not climbing" (#N$00).
   $E865,$07 Write #N$01 to: #LIST { *#R$D244 } { *#R$D24F } LIST#
   $E86C,$03 #REGa=*#R$D247.
 N $E86F Moves the orientation flag into the carry flag.
@@ -4202,7 +4244,7 @@ N $E886 Moves the orientation flag into the carry flag.
   $E8BA,$02 #REGa+=#N$04.
   $E8BC,$03 Write #REGa to *#R$D24E.
   $E8BF,$08 Write #N$03 to: #LIST { *#R$D244 } { *#R$D24F } LIST#
-  $E8C7,$05 Write #N$01 to *#R$D246.
+  $E8C7,$05 Set *#R$D246 to "climbing" (#N$01).
   $E8CC,$03 Jump to #R$E67C.
   $E8CF,$05 Write #N$12 to *#R$D24E.
   $E8D4,$05 Write #R$EF9A(#N$01) to *#R$D244.
@@ -4210,7 +4252,7 @@ N $E886 Moves the orientation flag into the carry flag.
 N $E8DC Moves the orientation flag into the carry flag.
   $E8DC,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $E8DD,$03 Call #R$DA61 if the carry flag is not set.
-  $E8E0,$04 Write #N$00 to *#R$D246.
+  $E8E0,$04 Set *#R$D246 to "not climbing" (#N$00).
   $E8E4,$03 Jump to #R$E67C.
 N $E8E7 Controls: Left.
 @ $E8E7 label=Controls_Left
@@ -4363,9 +4405,11 @@ N $E9FC Set the co-ordinates for where to draw.
   $EA00,$02 Increment both the X and Y positions by one to target drawing the mouth animation.
   $EA02,$02 Jump to #R$E9DB.
 
-c $EA04
+c $EA04 Initialise Falling
+@ $EA04 label=Initialise_Falling
   $EA04,$05 Write #N$06 to *#R$D24A.
   $EA09,$05 Write #R$EFA6(#N$07) to *#R$D244.
+N $EA0E Check which direction the monster is currently facing.
   $EA0E,$03 #REGa=*#R$D247.
 N $EA11 Moves the orientation flag into the carry flag.
   $EA11,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
@@ -4438,14 +4482,16 @@ N $EA57 Apply gravity.
   $EA65,$03 Return if *#R$D24B is higher than #N$12.
   $EA68,$03 Call #R$DA59.
   $EA6B,$03 Return if #REGa is not equal to #N$12.
+N $EA6E Monster is now at ground level.
+@ $EA6E label=Animate_HitTheFloor
   $EA6E,$05 Write #N$12 to *#R$D24E.
   $EA73,$05 Write #N$0C to *#R$D24B.
-  $EA78,$04 Write #N$00 to *#R$D246.
+  $EA78,$04 Set *#R$D246 to "not climbing" (#N$00).
   $EA7C,$07 Jump to #R$EA88 if *#R$D244 is not equal to #N$20.
   $EA83,$02 #REGa=#R$EFDA(#N$21).
   $EA85,$03 Jump to #R$E67C.
-N $EA88 Monster is now at ground level.
-@ $EA88 label=Animate_HitTheFloor
+N $EA88 The monster still has energy, so finish this animation sequence.
+@ $EA88 label=HitTheFloor_Finished
   $EA88,$05 Write #R$EFAA(#N$09) to *#R$D244.
   $EA8D,$04 #REGiy=#R$D244.
 N $EA91 Take off four hit points from the monsters energy.
@@ -5071,7 +5117,7 @@ c $EEEB Animate: Turn Into Human
   $EEFD,$03 Write #REGa to *#R$D24E.
 N $EF00 Set the co-ordinates for where to draw.
   $EF00,$04 #REGbc=*#R$D24D/#R$D24E.
-  $EF04,$02 #REGa=#N$35.
+  $EF04,$02 #REGa=sprite ID #N$35.
 . #UDGTABLE(default,centre,centre)
 . { =h ID | =h Sprite }
 . { #N$35 | #SPRITE$35 }
@@ -5088,7 +5134,7 @@ N $EF0A Set the co-ordinates for where to draw.
   $EF13,$02,b$01 Flip bit 0.
   $EF15,$03 Write #REGa to *#R$D249.
   $EF18,$02 Jump to #R$EF20 if #REGa is not zero.
-  $EF1A,$02 #REGa=#N$37.
+  $EF1A,$02 #REGa=sprite ID #N$37.
 . #UDGTABLE(default,centre,centre)
 . { =h ID | =h Sprite }
 . { #N$37 | #SPRITE$37 }
@@ -5098,7 +5144,7 @@ N $EF0A Set the co-ordinates for where to draw.
   $EF20,$07 Increment *#R$D24D by one.
   $EF27,$04 Jump to #R$EF32 if #REGa is equal to #N$28.
   $EF2B,$01 Increment #REGc by one.
-  $EF2C,$02 #REGa=#N$35.
+  $EF2C,$02 #REGa=sprite ID #N$35.
 . #UDGTABLE(default,centre,centre)
 . { =h ID | =h Sprite }
 . { #N$35 | #SPRITE$35 }
@@ -5630,8 +5676,7 @@ c $F352
   $F380,$04 Jump to #R$F38B if #REGa is higher than #N$32.
   $F384,$01 #REGa=*#REGhl.
   $F385,$02,b$01 Keep only bits 6-7.
-  $F387,$01 RLCA.
-  $F388,$01 RLCA.
+  $F387,$02 Rotate #REGa left two positions (bits 6 to 7 are now in positions 0 to 1).
   $F389,$01 Increment #REGa by one.
   $F38A,$01 #REGc=#REGa.
   $F38B,$03 Call #R$F3AF.
@@ -5655,8 +5700,7 @@ c $F352
   $F3B9,$04 Jump to #R$F3C5 if #REGc is zero.
   $F3BD,$01 #REGa=*#REGhl.
   $F3BE,$02,b$01 Keep only bits 6-7.
-  $F3C0,$01 RLCA.
-  $F3C1,$01 RLCA.
+  $F3C0,$02 Rotate #REGa left two positions (bits 6 to 7 are now in positions 0 to 1).
   $F3C2,$01 Increment #REGa by one.
   $F3C3,$02 Return if #REGa is equal to #REGc.
   $F3C5,$01 Restore #REGde from the stack.
@@ -6072,7 +6116,7 @@ c $F719 Sounds: Projectile "Hit"
 N $F719 #AUDIO(projectile.wav)(#INCLUDE(Projectile))
 @ $F719 label=Audio_Projectiles_Hit
   $F719,$05 Write melody ID #N$05 to *#R$FF8D.
-  $F71E,$02 #REGa=#N$75.
+  $F71E,$02 #REGa=sprite ID #N$75.
 . #UDGTABLE(default,centre,centre)
 . { =h ID | =h Sprite }
 . { #N$75 | #SPRITE$75 }
@@ -6918,7 +6962,13 @@ N $FC81 Check if the vehicle is off-screen.
 N $FC86 Has the vehicle been destroyed?
   $FC86,$03 #REGa=*#R$D402.
   $FC89,$03 Return if the vehicle has been destroyed (*#R$D402 is equal to #N$03).
-  $FC8C,$03 #REGa*=#N$02+#N$3B.
+  $FC8C,$03 #REGa=#N$3B+(#REGa*#N$02).
+. #UDGTABLE(default,centre,centre,centre)
+. { =h Vehicle Type | =h Vehicle | =h Sprite ID | =h Sprite }
+. { #N$00 | Tank | #N$3B | #SPRITE$3B }
+. { #N$01 | Car | #N$3D | #SPRITE$3D }
+. { #N$02 | Police car | #N$3F | #SPRITE$3F }
+. UDGTABLE#
   $FC8F,$03 Call #R$D6C9.
   $FC92,$04 Write #N$00 to *#R$D247.
   $FC96,$01 Return.
