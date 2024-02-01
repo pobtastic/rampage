@@ -522,7 +522,7 @@ N $CFC3 Scene #N$28.
 
 g $CFD2 Data: George
 @ $CFD2 label=George_State
-  $CFD2,$01 Relates to: #R$D244.
+B $CFD2,$01 Relates to: #R$D244.
 . #TABLE(default,centre,centre)
 . { =h Byte | =h Meaning }
 . { #R$EFA2(#N$05) | Waiting }
@@ -534,43 +534,46 @@ g $CFD2 Data: George
 . { #R$EFDE(#N$23) | Exit Stage Right }
 . { #N$FF | Game Over }
 . TABLE#
+B $CFD3,$01 Relates to: #R$D245.
 @ $CFD4 label=George_Climbing
-  $CFD4,$01 Relates to: #R$D246.
+B $CFD4,$01 Relates to: #R$D246.
 . #TABLE(default,centre,centre)
 . { =h Byte | =h Meaning }
 . { #N$00 | Not Climbing }
 . { #N$01 | Climbing }
 . TABLE#
 @ $CFD5 label=George_Direction
-  $CFD5,$01 Relates to: #R$D247.
+B $CFD5,$01 Relates to: #R$D247.
 . #TABLE(default,centre,centre)
 . { =h Byte | =h Meaning }
 . { #N$00 | Left-to-Right }
 . { #N$01 | Right-to-Left }
 . TABLE#
 @ $CFD6 label=George_Jumping
-  $CFD6,$01 Relates to: #R$D248.
+B $CFD6,$01 Relates to: #R$D248.
 . #TABLE(default,centre,centre)
 . { =h Byte | =h Meaning }
 . { #N$00 | Not Jumping }
 . { #N$01 | Jumping }
 . TABLE#
-@ $CFD7 label=George_Count
-  $CFD7,$01 Relates to: #R$D249.
+@ $CFD7 label=George_IdleCountdown
+B $CFD7,$01 Relates to: #R$D249.
 @ $CFD8 label=George_AboutToFallCountdown
-  $CFD8,$01 Relates to: #R$D24A.
+B $CFD8,$01 Relates to: #R$D24A.
 @ $CFD9 label=George_Countdown
-  $CFD9,$01 Relates to: #R$D24B.
+B $CFD9,$01 Relates to: #R$D24B.
+B $CFDA,$01 Relates to: #R$D24C.
 @ $CFDB label=George_X_Position
-  $CFDB,$01
+B $CFDB,$01 Relates to: #R$D24D.
 @ $CFDC label=George_Y_Position
-  $CFDC,$01
+B $CFDC,$01 Relates to: #R$D24E.
+B $CFDD,$01 Relates to: #R$D24F.
 @ $CFDE label=George_Energy
-  $CFDE,$01
+B $CFDE,$01 Relates to: #R$D250.
 N $CFDF When monster frames are drawn, this is used with an OR to set a bit which changes the sprite to the appropriate
 .       character. See #R$D251.
 @ $CFDF label=George_Sprite_Offset
-  $CFDF,$01 For George no bits are set: #EVAL(#PEEK(#PC),$02,$08).
+B $CFDF,$01 For George no bits are set: #EVAL(#PEEK(#PC),$02,$08).
 @ $CFE0 label=George_Control_Type
   $CFE0,$01 #TABLE(default,centre,centre)
 . { =h Byte | =h Meaning }
@@ -584,11 +587,11 @@ N $CFDF When monster frames are drawn, this is used with an OR to set a bit whic
 . { #N$FF | Not set }
 . TABLE#
 W $CFE1,$02
-  $CFE3,$1B,$03
+B $CFE3,$1B,$03
 
 g $D001 Data: Lizzy
 @ $D001 label=Lizzy_State
-  $D001,$01 Relates to: #R$D244.
+B $D001,$01 Relates to: #R$D244.
 . #TABLE(default,centre,centre)
 . { =h Byte | =h Meaning }
 . { #R$EFA2(#N$05) | Waiting }
@@ -600,43 +603,46 @@ g $D001 Data: Lizzy
 . { #R$EFDE(#N$23) | Exit Stage Right }
 . { #N$FF | Game Over }
 . TABLE#
+B $D002,$01 Relates to: #R$D245.
 @ $D003 label=Lizzy_Climbing
-  $D003,$01 Relates to: #R$D246.
+B $D003,$01 Relates to: #R$D246.
 . #TABLE(default,centre,centre)
 . { =h Byte | =h Meaning }
 . { #N$00 | Not Climbing }
 . { #N$01 | Climbing }
 . TABLE#
 @ $D004 label=Lizzy_Direction
-  $D004,$01 Relates to: #R$D247.
+B $D004,$01 Relates to: #R$D247.
 . #TABLE(default,centre,centre)
 . { =h Byte | =h Meaning }
 . { #N$00 | Left-to-Right }
 . { #N$01 | Right-to-Left }
 . TABLE#
 @ $D005 label=Lizzy_Jumping
-  $D005,$01 Relates to: #R$D248.
+B $D005,$01 Relates to: #R$D248.
 . #TABLE(default,centre,centre)
 . { =h Byte | =h Meaning }
 . { #N$00 | Not Jumping }
 . { #N$01 | Jumping }
 . TABLE#
-@ $D006 label=Lizzy_Count
-  $D006,$01 Relates to: #R$D249.
+@ $D006 label=Lizzy_IdleCountdown
+B $D006,$01 Relates to: #R$D249.
 @ $D007 label=Lizzy_AboutToFallCountdown
-  $D007,$01 Relates to: #R$D24A.
+B $D007,$01 Relates to: #R$D24A.
 @ $D008 label=Lizzy_Countdown
-  $D008,$01 Relates to: #R$D24B.
+B $D008,$01 Relates to: #R$D24B.
+B $D009,$01 Relates to: #R$D24C.
 @ $D00A label=Lizzy_X_Position
-  $D00A,$01
+B $D00A,$01 Relates to: #R$D24D.
 @ $D00B label=Lizzy_Y_Position
-  $D00B,$01
+B $D00B,$01 Relates to: #R$D24E.
+B $D00C,$01 Relates to: #R$D24F.
 @ $D00D label=Lizzy_Energy
-  $D00D,$01
+B $D00D,$01 Relates to: #R$D250.
 N $D00E When monster frames are drawn, this is used with an OR to set a bit which changes the sprite to the appropriate
 .       character. See #R$D251.
 @ $D00E label=Lizzy_Sprite_Offset
-  $D00E,$01 For Lizzy bit 6 is set: #EVAL(#PEEK(#PC),$02,$08).
+B $D00E,$01 For Lizzy bit 6 is set: #EVAL(#PEEK(#PC),$02,$08).
 @ $D00F label=Lizzy_Control_Type
   $D00F,$01 #TABLE(default,centre,centre)
 . { =h Byte | =h Meaning }
@@ -650,10 +656,11 @@ N $D00E When monster frames are drawn, this is used with an OR to set a bit whic
 . { #N$FF | Not set }
 . TABLE#
 W $D010,$02
+B $D012,$1B,$03
 
 g $D030 Data: Ralph
 @ $D030 label=Ralph_State
-  $D030,$01 Relates to: #R$D244.
+B $D030,$01 Relates to: #R$D244.
 . #TABLE(default,centre,centre)
 . { =h Byte | =h Meaning }
 . { #R$EFA2(#N$05) | Waiting }
@@ -665,45 +672,48 @@ g $D030 Data: Ralph
 . { #R$EFDE(#N$23) | Exit Stage Right }
 . { #N$FF | Game Over }
 . TABLE#
+B $D031,$01 Relates to: #R$D245.
 @ $D032 label=Ralph_Climbing
-  $D032,$01 Relates to: #R$D246.
+B $D032,$01 Relates to: #R$D246.
 . #TABLE(default,centre,centre)
 . { =h Byte | =h Meaning }
 . { #N$00 | Not Climbing }
 . { #N$01 | Climbing }
 . TABLE#
 @ $D033 label=Ralph_Direction
-  $D033,$01 Relates to: #R$D247.
+B $D033,$01 Relates to: #R$D247.
 . #TABLE(default,centre,centre)
 . { =h Byte | =h Meaning }
 . { #N$00 | Left-to-Right }
 . { #N$01 | Right-to-Left }
 . TABLE#
 @ $D034 label=Ralph_Jumping
-  $D034,$01 Relates to: #R$D248.
+B $D034,$01 Relates to: #R$D248.
 . #TABLE(default,centre,centre)
 . { =h Byte | =h Meaning }
 . { #N$00 | Not Jumping }
 . { #N$01 | Jumping }
 . TABLE#
-@ $D035 label=Ralph_Count
-  $D035,$01
+@ $D035 label=Ralph_IdleCountdown
+B $D035,$01 Relates to: #R$D249.
 @ $D036 label=Ralph_AboutToFallCountdown
-  $D036,$01 Relates to: #R$D24A.
+B $D036,$01 Relates to: #R$D24A.
 @ $D037 label=Ralph_Countdown
-  $D037,$01 Relates to: #R$D24B.
+B $D037,$01 Relates to: #R$D24B.
+B $D038,$01 Relates to: #R$D24C.
 @ $D039 label=Ralph_X_Position
-  $D039,$01
+B $D039,$01 Relates to: #R$D24D.
 @ $D03A label=Ralph_Y_Position
-  $D03A,$01
+B $D03A,$01 Relates to: #R$D24E.
+B $D03B,$01 Relates to: #R$D24F.
 @ $D03C label=Ralph_Energy
-  $D03C,$01
+B $D03C,$01 Relates to: #R$D250.
 N $D03D When monster frames are drawn, this is used with an OR to set a bit which changes the sprite to the appropriate
 .       character. See #R$D251.
 @ $D03D label=Ralph_Sprite_Offset
-  $D03D,$01 For Ralph bit 7 is set: #EVAL(#PEEK(#PC),$02,$08).
+B $D03D,$01 For Ralph bit 7 is set: #EVAL(#PEEK(#PC),$02,$08).
 @ $D03E label=Ralph_Control_Type
-  $D03E,$01 #TABLE(default,centre,centre)
+B $D03E,$01 #TABLE(default,centre,centre)
 . { =h Byte | =h Meaning }
 . { #N$00 | Computer Controlled }
 . { #N$01 | Sinclair Interface 2 (port 2) }
@@ -715,6 +725,7 @@ N $D03D When monster frames are drawn, this is used with an OR to set a bit whic
 . { #N$FF | Not set }
 . TABLE#
 W $D03F,$02
+B $D041,$1B,$03
 
 t $D05F Messaging: George
 @ $D05F label=Messaging_George
@@ -903,7 +914,11 @@ D $D248 Relates to: #LIST { #R$CFD6 } { #R$D005 } { #R$D034 } LIST#
 . TABLE#
 B $D246,$01
 
-g $D249
+g $D249 Active Monster Idle Countdown
+@ $D249 label=Active_MonsterIdleCountdown
+D $D249 Used by the routines at #R$E68C, #R$EED6, #R$EEEB and #R$EF0A.
+N $D249 Relates to: #LIST { #R$CFD7 } { #R$D006 } { #R$D035 } LIST#
+B $D249,$01 Counts down from #N$19 and launches #R$E99B when finished.
 
 g $D24A Active Monster About-To-Fall Countdown
 @ $D24A label=Active_MonsterAboutToFallCountdown
@@ -4287,10 +4302,13 @@ N $E91C Controls: Right.
   $E93F,$07 Write #N$00 to: #LIST { *#REGix+#N$05 } { *#R$D247 } LIST#
   $E946,$07 Write #N$01 to: #LIST { *#REGix+#N$00 } { *#R$D244 } LIST#
   $E94D,$03 Jump to #R$E67C.
+N $E950 No keys are being pressed so decrease the waiting countdown.
+@ $E950 label=Monster_Idle
   $E950,$07 Decrease *#R$D249 by one.
-  $E957,$03 Jump to #R$EF86 if #REGa is not zero.
+  $E957,$03 Jump to #R$EF86 if *#R$D249 is not yet zero.
+N $E95A The idle countdown is finished, so reset the countdown and mark the action event.
   $E95A,$05 Write #N$19 to *#R$D249.
-  $E95F,$05 Write #R$EFA2(#N$05) to *#R$D244.
+  $E95F,$05 Write "waiting" (#R$EFA2(#N$05)) to *#R$D244.
   $E964,$03 Jump to #R$E67C.
 
 c $E967
@@ -4487,7 +4505,7 @@ N $EA6E Monster is now at ground level.
   $EA6E,$05 Write #N$12 to *#R$D24E.
   $EA73,$05 Write #N$0C to *#R$D24B.
   $EA78,$04 Set *#R$D246 to "not climbing" (#N$00).
-  $EA7C,$07 Jump to #R$EA88 if *#R$D244 is not equal to #N$20.
+  $EA7C,$07 Jump to #R$EA88 if *#R$D244 is not equal to #R$EFD8(#N$20).
   $EA83,$02 #REGa=#R$EFDA(#N$21).
   $EA85,$03 Jump to #R$E67C.
 N $EA88 The monster still has energy, so finish this animation sequence.
@@ -4502,22 +4520,35 @@ N $EA96 #AUDIO(projectile.wav)(#INCLUDE(Projectile))
   $EA96,$05 Write melody ID #N$05 to *#R$FF8D.
   $EA9B,$01 Return.
 
-c $EA9C
+c $EA9C Event: Landed?
+@ $EA9C label=Event_Landed
   $EA9C,$07 Jump to #R$EAB4 if *#R$D24B is equal to #N$19.
-  $EAA3,$01 Decrease #REGa by one.
-  $EAA4,$03 Write #REGa to *#R$D24B.
-  $EAA7,$02 Jump to #R$EACE if #REGa is not zero.
-  $EAA9,$05 Write #N$19 to *#R$D24B.
+  $EAA3,$04 Decrease *#R$D24B by one.
+  $EAA7,$02 Jump to #R$EACE if *#R$D24B is not yet zero.
+N $EAA9 Not sure if this is a bug or not but this is why the player monster continually "sits down" after landing if you
+.       don't touch the controls. Then again, maybe it's intentional given #R$EA9C(#N$EA9C) checks if this is #N$19.
+  $EAA9,$05 Reset *#R$D24B to #N$19.
   $EAAE,$06 Jump to #R$EABA if *#R$D252 is set to "computer controlled".
+N $EAB4 This monster isn't computer controlled so check if any controls have been pressed.
+@ $EAB4 label=Landed_CheckControls
   $EAB4,$03 Call #R$E179.
-  $EAB7,$03 Jump to #R$EACE if #REGa is zero.
+  $EAB7,$03 Jump to #R$EACE if no controls are being pressed.
+N $EABA Either a monster player control has been pressed, or this is a computer controlled monster.
+@ $EABA label=Landed_GetUp
   $EABA,$03 #REGa=*#R$D247.
 N $EABD Moves the orientation flag into the carry flag.
   $EABD,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
   $EABE,$03 Call #R$DA61 if the carry flag is not set.
-  $EAC1,$0A Write #N$00 to: #LIST { *#R$D244 } { *#R$D246 } { *#R$D248 } LIST#
+N $EAC1 Restart the actions jump table back to the beginning.
+  $EAC1,$01 #REGa=#N$00.
+  $EAC2,$03 Reset *#R$D244 back to #N$00.
+N $EAC5 Set the monster flags back to "normal" states.
+  $EAC5,$03 Write "not climbing" (#N$00) to *#R$D246.
+  $EAC8,$03 Write "not jumping" (#N$00) to *#R$D248.
   $EACB,$03 Jump to #R$E67C.
+N $EACE No controls are being pressed and *#R$D24B is not yet zero, so the monster is still flat on their ass.
 N $EACE The routine at #R$D9BB handles which monster to display.
+@ $EACE label=Landed_OnAss
   $EACE,$02 #REGa=sprite ID #N$07.
 . #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
 . { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
@@ -4529,8 +4560,8 @@ N $EAD0 Set the co-ordinates for where to draw.
   $EAD4,$03 Call #R$D9BB.
 N $EAD7 Again, set the co-ordinates for where to draw.
   $EAD7,$04 #REGbc=*#R$D24D/#R$D24E.
-  $EADB,$02 Increment #REGb by two.
-  $EADD,$01 Increment #REGc by one.
+  $EADB,$03 Increment the Y position by two and the X position by one, to target drawing the mouth/ fist section.
+N $EADE Adjust the Y position for which way the monster is facing.
   $EADE,$03 #REGa=*#R$D247.
   $EAE1,$02,b$01 Flip bit 0.
   $EAE3,$01 #REGa+=#REGc.
@@ -4543,7 +4574,7 @@ N $EAE5 The routine at #R$D9BB handles which monster to display.
 . { #N$1B | #SPRITE$1B | #N$5B | #SPRITE$5B | #N$9B | #SPRITE$9B }
 . UDGTABLE#
   $EAE7,$03 Call #R$D9BB.
-  $EAEA,$06 Return if *#R$D244 is not equal to #N$20.
+  $EAEA,$06 Return if *#R$D244 is not equal to #R$EFD8(#N$20).
   $EAF0,$05 Write #R$EFDA(#N$21) to *#R$D244.
   $EAF5,$01 Return.
 
@@ -4661,11 +4692,10 @@ N $EC3C The routine at #R$D9BB handles which monster to display.
 . { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
 . { #N$09 | #SPRITE$09 | #N$49 | #SPRITE$49 | #N$89 | #SPRITE$89 }
 . UDGTABLE#
-  $EC3E,$01 Stash #REGbc on the stack.
+  $EC3E,$01 Stash the co-ordinates on the stack.
   $EC3F,$03 Call #R$D9BB.
-  $EC42,$01 Restore #REGbc from the stack.
-  $EC43,$01 Increment #REGb by one.
-  $EC44,$01 Increment #REGc by one.
+  $EC42,$01 Restore the co-ordinates from the stack.
+  $EC43,$02 Increment both the X and Y positions by one to target drawing the mouth section.
   $EC45,$03 #REGa=*#R$D247.
   $EC48,$02,b$01 Flip bit 0.
   $EC4A,$01 #REGa+=#REGc.
@@ -4711,11 +4741,10 @@ N $ECA3 The routine at #R$D9BB handles which monster to display.
 . UDGTABLE#
 N $ECA5 Set the co-ordinates for where to draw.
   $ECA5,$04 #REGbc=*#R$D24D/#R$D24E.
-  $ECA9,$01 Stash #REGbc on the stack.
+  $ECA9,$01 Stash the co-ordinates on the stack.
   $ECAA,$03 Call #R$D9BB.
-  $ECAD,$01 Restore #REGbc from the stack.
-  $ECAE,$01 Increment #REGb by one.
-  $ECAF,$01 Increment #REGc by one.
+  $ECAD,$01 Restore the co-ordinates from the stack.
+  $ECAE,$02 Increment both the X and Y positions by one to target drawing the mouth section.
   $ECB0,$03 #REGa=*#R$D247.
   $ECB3,$02,b$01 Flip bit 0.
   $ECB5,$01 #REGa+=#REGc.
@@ -4762,7 +4791,7 @@ N $ECFB The routine at #R$D9BB handles which monster to display.
   $ECFD,$03 Call #R$D9BB.
 N $ED00 Again, set the co-ordinates for where to draw.
   $ED00,$04 #REGbc=*#R$D24D/#R$D24E.
-  $ED04,$02 Increment #REGb by two.
+  $ED04,$02 Increment the Y position by two to draw the lower section of the monsters body.
 N $ED06 The routine at #R$D9BB handles which monster to display.
   $ED06,$02 #REGa=sprite ID #N$23.
 . #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
@@ -4777,7 +4806,7 @@ N $ED06 The routine at #R$D9BB handles which monster to display.
   $ED12,$03 Call #R$F352.
 N $ED15 Set the co-ordinates for where to draw.
   $ED15,$04 #REGbc=*#R$D24D/#R$D24E.
-  $ED19,$02 Increment #REGb by two.
+  $ED19,$02 Increment the Y position by two to draw the lower section of the monsters body.
 N $ED1B The routine at #R$D9BB handles which monster to display.
   $ED1B,$02 #REGa=sprite ID #N$23.
 . #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
