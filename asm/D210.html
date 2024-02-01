@@ -33,18 +33,19 @@ Next: <a href="D211.html">D211</a>
 </td>
 </tr>
 </table>
-<div class="description">D210: Game status buffer entry at D210</div>
+<div class="description">D210: Human Generator Limiter</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
 <div class="paragraph">
-Defaults to 80 (see <a href="DEC6.html#dec9">DEC9</a>).
+Defaults to 80 (see <a href="DEC6.html#dec9">DEC9</a>) is used for limiting the generation of humans. Humans are only generated when a generated random number between 00-FF is below the number set here.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">HumanGeneratorLimiter</td>
 <td class="address-1"><span id="d210"></span>D210</td>
 <td class="instruction">DEFB $00</td>
 <td class="comment-0" rowspan="1"></td>

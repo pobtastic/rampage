@@ -96,10 +96,10 @@ For instance; if George and Lizzy are computer controlled and Ralph uses the key
 <td class="map-g"><span id="d210"></span><a href="../asm/D210.html">D210</a></td>
 <td class="map-length">1</td>
 <td class="map-g-desc">
-<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D210.html">Game status buffer entry at D210</a></div>
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D210.html">Human Generator Limiter</a></div>
 <div class="map-entry-desc">
 <div class="paragraph">
-Defaults to 80 (see <a href="../asm/DEC6.html#dec9">DEC9</a>).
+Defaults to 80 (see <a href="../asm/DEC6.html#dec9">DEC9</a>) is used for limiting the generation of humans. Humans are only generated when a generated random number between 00-FF is below the number set here.
 </div>
 </div>
 </td>
@@ -337,8 +337,28 @@ Relates to: <ul class="">
 <td class="map-g"><span id="d248"></span><a href="../asm/D248.html">D248</a></td>
 <td class="map-length">1</td>
 <td class="map-g-desc">
-<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D248.html">Game status buffer entry at D248</a></div>
+<div class="map-entry-title-11"><a class="map-entry-title" href="../asm/D248.html">Active Monster Jumping Flag</a></div>
 <div class="map-entry-desc">
+<div class="paragraph">
+Relates to: <ul class="">
+<li><a href="../asm/CFD2.html#cfd6">George_Jumping</a></li>
+<li><a href="../asm/D001.html#d005">Lizzy_Jumping</a></li>
+<li><a href="../asm/D030.html#d034">Ralph_Jumping</a></li>
+</ul> <table class="default">
+<tr>
+<th colspan="1" rowspan="1">Byte</th>
+<th colspan="1" rowspan="1">Meaning</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">00</td>
+<td class="centre" colspan="1" rowspan="1">No</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">01</td>
+<td class="centre" colspan="1" rowspan="1">Yes</td>
+</tr>
+</table>
+</div>
 </div>
 </td>
 </tr>

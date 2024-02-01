@@ -42,6 +42,29 @@ Next: <a href="55747.html">55747</a>
 Used by the routines at <a href="59803.html">Animate_Waiting</a>, <a href="59928.html">Action_Falling</a>, <a href="59971.html">Animate_Falling</a>, <a href="60060.html">60060</a>, <a href="60150.html">60150</a>, <a href="60554.html">60554</a>, <a href="60640.html">60640</a>, <a href="60721.html">60721</a>, <a href="60866.html">60866</a>, <a href="61040.html">Animate_Grabbing</a> and <a href="61083.html">Animate_Eating</a>.
 </div>
 </div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Sprite ID</td>
+</tr>
+<tr>
+<td class="register">BC</td>
+<td class="register-desc">Screen co-ordinates</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="55739"></span>
+<div class="comments">
+<div class="paragraph">
+This is a wrapper around <a href="54985.html">PrintSprite</a> which simply takes the given sprite ID and applies a "modifier" if the monster is either Lizzy or Ralph. This then alters the sprite ID to be the correct value for the active monster; bit 6 for Lizzy, bit 7 for Ralph.
+</div>
+</div>
 </td>
 </tr>
 <tr>

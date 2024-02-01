@@ -92,16 +92,36 @@ Any states higher than 32 mean the monster is in the process of turning back int
 <td class="instruction">JR NC,<a href="58925.html#59004">Action_JumpTable</a></td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="58935"></span>
+<div class="comments">
+<div class="paragraph">
+Handle if the monster is currently jumping.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="58935"></span>58935</td>
 <td class="instruction">LD A,(53832)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53832.html">53832</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53832.html">Flag_MonsterJumping</a>.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="58938"></span>
+<div class="comments">
+<div class="paragraph">
+Moves the monster-is-jumping flag into the carry flag.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="58938"></span>58938</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right; bit 0 moves to the carry flag (and to bit 7).</td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -110,16 +130,36 @@ Any states higher than 32 mean the monster is in the process of turning back int
 <td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">Action_JumpTable</a> if the carry flag is set (if bit 0 was set).</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="58941"></span>
+<div class="comments">
+<div class="paragraph">
+Handle if the monster is currently climbing.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="58941"></span>58941</td>
 <td class="instruction">LD A,(53830)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53830.html">Flag_MonsterClimbing</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="58944"></span>
+<div class="comments">
+<div class="paragraph">
+Moves the monster-is-climbing flag into the carry flag.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="58944"></span>58944</td>
 <td class="instruction">RRCA</td>
-<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right; bit 0 moves to the carry flag (and to bit 7).</td>
+<td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -279,7 +319,7 @@ Any states higher than 32 mean the monster is in the process of turning back int
 <td class="asm-label"></td>
 <td class="address-1"><span id="58999"></span>58999</td>
 <td class="instruction">LD A,1</td>
-<td class="comment-1" rowspan="2">Write 1 to *<a href="53832.html">53832</a>.</td>
+<td class="comment-1" rowspan="2">Write 1 to *<a href="53832.html">Flag_MonsterJumping</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

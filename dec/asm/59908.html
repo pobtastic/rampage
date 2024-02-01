@@ -33,7 +33,7 @@ Next: <a href="59928.html">59928</a>
 </td>
 </tr>
 </table>
-<div class="description">59908: Routine at EA04</div>
+<div class="description">59908: Initialise Falling</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,24 +42,39 @@ Next: <a href="59928.html">59928</a>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Initialise_Falling</td>
 <td class="address-2"><span id="59908"></span>59908</td>
 <td class="instruction">LD A,6</td>
 <td class="comment-1" rowspan="2">Write 6 to *<a href="53834.html">Active_MonsterAboutToFallCountdown</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59910"></span>59910</td>
 <td class="instruction">LD (53834),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59913"></span>59913</td>
 <td class="instruction">LD A,7</td>
 <td class="comment-1" rowspan="2">Write <a href="61336.html#61350">7</a> to *<a href="53828.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59915"></span>59915</td>
 <td class="instruction">LD (53828),A</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="59918"></span>
+<div class="comments">
+<div class="paragraph">
+Check which direction the monster is currently facing.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59918"></span>59918</td>
 <td class="instruction">LD A,(53831)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53831.html">Flag_Orientation</a>.</td>
@@ -75,16 +90,19 @@ Moves the orientation flag into the carry flag.
 </td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59921"></span>59921</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59922"></span>59922</td>
 <td class="instruction">CALL NC,<a href="55889.html">Handler_IncrementMonsterXPosition</a></td>
 <td class="comment-1" rowspan="1">Call <a href="55889.html">Handler_IncrementMonsterXPosition</a> if the carry flag is not set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="59925"></span>59925</td>
 <td class="instruction">JP <a href="58925.html#59004">Action_JumpTable</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">Action_JumpTable</a>.</td>

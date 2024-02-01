@@ -195,12 +195,12 @@ Apply gravity.
 <td class="asm-label"></td>
 <td class="address-1"><span id="ea5a"></span>EA5A</td>
 <td class="instruction">CP $12</td>
-<td class="comment-1" rowspan="2">Jump to <a href="EA43.html#ea6e">Animate_Falling_0</a> if monster Y position is equal to 12.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="EA43.html#ea6e">Animate_HitTheFloor</a> if monster Y position is equal to 12.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ea5c"></span>EA5C</td>
-<td class="instruction">JR Z,<a href="EA43.html#ea6e">Animate_Falling_0</a></td>
+<td class="instruction">JR Z,<a href="EA43.html#ea6e">Animate_HitTheFloor</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -247,7 +247,17 @@ Apply gravity.
 <td class="instruction">RET NZ</td>
 </tr>
 <tr>
-<td class="asm-label">Animate_Falling_0</td>
+<td class="routine-comment" colspan="5">
+<span id="ea6e"></span>
+<div class="comments">
+<div class="paragraph">
+Monster is now at ground level.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Animate_HitTheFloor</td>
 <td class="address-2"><span id="ea6e"></span>EA6E</td>
 <td class="instruction">LD A,$12</td>
 <td class="comment-1" rowspan="2">Write 12 to *<a href="D24D.html#d24e">Active_MonsterYPosition</a>.</td>
@@ -272,7 +282,7 @@ Apply gravity.
 <td class="asm-label"></td>
 <td class="address-1"><span id="ea78"></span>EA78</td>
 <td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="2">Write 00 to *<a href="D246.html">Flag_MonsterClimbing</a>.</td>
+<td class="comment-1" rowspan="2">Set *<a href="D246.html">Flag_MonsterClimbing</a> to "not climbing" (00).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -283,7 +293,7 @@ Apply gravity.
 <td class="asm-label"></td>
 <td class="address-1"><span id="ea7c"></span>EA7C</td>
 <td class="instruction">LD A,($D244)</td>
-<td class="comment-1" rowspan="3">Jump to <a href="EA43.html#ea88">Animate_HitTheFloor</a> if *<a href="D244.html">JumpTable_Pointer</a> is not equal to 20.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EA43.html#ea88">HitTheFloor_Finished</a> if *<a href="D244.html">JumpTable_Pointer</a> is not equal to 20.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -293,7 +303,7 @@ Apply gravity.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="ea81"></span>EA81</td>
-<td class="instruction">JR NZ,<a href="EA43.html#ea88">Animate_HitTheFloor</a></td>
+<td class="instruction">JR NZ,<a href="EA43.html#ea88">HitTheFloor_Finished</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -312,13 +322,13 @@ Apply gravity.
 <span id="ea88"></span>
 <div class="comments">
 <div class="paragraph">
-Monster is now at ground level.
+The monster still has energy, so finish this animation sequence.
 </div>
 </div>
 </td>
 </tr>
 <tr>
-<td class="asm-label">Animate_HitTheFloor</td>
+<td class="asm-label">HitTheFloor_Finished</td>
 <td class="address-2"><span id="ea88"></span>EA88</td>
 <td class="instruction">LD A,$09</td>
 <td class="comment-1" rowspan="2">Write <a href="EF98.html#efaa">09</a> to *<a href="D244.html">JumpTable_Pointer</a>.</td>
