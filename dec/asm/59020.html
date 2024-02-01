@@ -51,12 +51,12 @@ Next: <a href="59751.html">59751</a>
 <td class="asm-label"></td>
 <td class="address-1"><span id="59023"></span>59023</td>
 <td class="instruction">AND A</td>
-<td class="comment-1" rowspan="2">Jump to <a href="59020.html#59728">Handler_Controls_23</a> if no keys are currently being pressed.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="59020.html#59728">Monster_Idle</a> if no keys are currently being pressed.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="59024"></span>59024</td>
-<td class="instruction">JP Z,<a href="59020.html#59728">Handler_Controls_23</a></td>
+<td class="instruction">JP Z,<a href="59020.html#59728">Monster_Idle</a></td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -1722,12 +1722,12 @@ Controls: Right.
 <td class="asm-label">Controls_Right</td>
 <td class="address-2"><span id="59676"></span>59676</td>
 <td class="instruction">BIT 1,A</td>
-<td class="comment-1" rowspan="2">Jump to <a href="59020.html#59728">Handler_Controls_23</a> if the key for right is not being pressed.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="59020.html#59728">Monster_Idle</a> if the key for right is not being pressed.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="59678"></span>59678</td>
-<td class="instruction">JR Z,<a href="59020.html#59728">Handler_Controls_23</a></td>
+<td class="instruction">JR Z,<a href="59020.html#59728">Monster_Idle</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1844,10 +1844,20 @@ Controls: Right.
 <td class="comment-1" rowspan="1">Jump to <a href="58925.html#59004">Action_JumpTable</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Controls_23</td>
+<td class="routine-comment" colspan="5">
+<span id="59728"></span>
+<div class="comments">
+<div class="paragraph">
+No keys are being pressed so decrease the waiting countdown.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Monster_Idle</td>
 <td class="address-2"><span id="59728"></span>59728</td>
 <td class="instruction">LD A,(53833)</td>
-<td class="comment-1" rowspan="3">Decrease *<a href="53833.html">53833</a> by one.</td>
+<td class="comment-1" rowspan="3">Decrease *<a href="53833.html">Active_MonsterIdleCountdown</a> by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1863,13 +1873,23 @@ Controls: Right.
 <td class="asm-label"></td>
 <td class="address-1"><span id="59735"></span>59735</td>
 <td class="instruction">JP NZ,<a href="61318.html">61318</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="61318.html">61318</a> if <span class="register">A</span> is not zero.</td>
+<td class="comment-1" rowspan="1">Jump to <a href="61318.html">61318</a> if *<a href="53833.html">Active_MonsterIdleCountdown</a> is not yet zero.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="59738"></span>
+<div class="comments">
+<div class="paragraph">
+The idle countdown is finished, so reset the countdown and mark the action event.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="59738"></span>59738</td>
 <td class="instruction">LD A,25</td>
-<td class="comment-1" rowspan="2">Write 25 to *<a href="53833.html">53833</a>.</td>
+<td class="comment-1" rowspan="2">Write 25 to *<a href="53833.html">Active_MonsterIdleCountdown</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1880,7 +1900,7 @@ Controls: Right.
 <td class="asm-label"></td>
 <td class="address-1"><span id="59743"></span>59743</td>
 <td class="instruction">LD A,5</td>
-<td class="comment-1" rowspan="2">Write <a href="61336.html#61346">5</a> to *<a href="53828.html">JumpTable_Pointer</a>.</td>
+<td class="comment-1" rowspan="2">Write "waiting" (<a href="61336.html#61346">5</a>) to *<a href="53828.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>

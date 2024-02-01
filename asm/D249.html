@@ -33,18 +33,36 @@ Next: <a href="D24A.html">D24A</a>
 </td>
 </tr>
 </table>
-<div class="description">D249: Game status buffer entry at D249</div>
+<div class="description">D249: Active Monster Idle Countdown</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
+<div class="paragraph">
+Used by the routines at <a href="E68C.html">Handler_Controls</a>, <a href="EED6.html">Animate_TransformExplosion</a>, <a href="EEEB.html">Animate_TurnIntoHuman</a> and <a href="EF0A.html">Animate_ExitStageRight</a>.
+</div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="d249"></span>
+<div class="comments">
+<div class="paragraph">
+Relates to: <ul class="">
+<li><a href="CFD2.html#cfd7">George_IdleCountdown</a></li>
+<li><a href="D001.html#d006">Lizzy_IdleCountdown</a></li>
+<li><a href="D030.html#d035">Ralph_IdleCountdown</a></li>
+</ul>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Active_MonsterIdleCountdown</td>
 <td class="address-1"><span id="d249"></span>D249</td>
 <td class="instruction">DEFB $00</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Counts down from 19 and launches <a href="E99B.html">Animate_Waiting</a> when finished.</td>
 </tr>
 </table>
 <table class="asm-navigation">

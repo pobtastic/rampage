@@ -813,7 +813,7 @@ The routine at <a href="55739.html">DrawMonsterSprite</a> handles which monster 
 <tr>
 <td class="address-1"><span id="60478"></span>60478</td>
 <td class="instruction">PUSH BC</td>
-<td class="comment-1" rowspan="1">Stash <span class="register">BC</span> on the stack.</td>
+<td class="comment-1" rowspan="1">Stash the co-ordinates on the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60479"></span>60479</td>
@@ -823,17 +823,16 @@ The routine at <a href="55739.html">DrawMonsterSprite</a> handles which monster 
 <tr>
 <td class="address-1"><span id="60482"></span>60482</td>
 <td class="instruction">POP BC</td>
-<td class="comment-1" rowspan="1">Restore <span class="register">BC</span> from the stack.</td>
+<td class="comment-1" rowspan="1">Restore the co-ordinates from the stack.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60483"></span>60483</td>
 <td class="instruction">INC B</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">B</span> by one.</td>
+<td class="comment-1" rowspan="2">Increment both the X and Y positions by one to target drawing the mouth section.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60484"></span>60484</td>
 <td class="instruction">INC C</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">C</span> by one.</td>
 </tr>
 <tr>
 <td class="address-1"><span id="60485"></span>60485</td>

@@ -88,7 +88,7 @@ Next: <a href="53343.html">53343</a>
 <td class="asm-label"></td>
 <td class="address-1"><span id="53297"></span>53297</td>
 <td class="instruction">DEFB 0</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Relates to: <a href="53829.html">53829</a>.</td>
 </tr>
 <tr>
 <td class="asm-label">Ralph_Climbing</td>
@@ -148,10 +148,10 @@ Next: <a href="53343.html">53343</a>
 </table></td>
 </tr>
 <tr>
-<td class="asm-label">Ralph_Count</td>
+<td class="asm-label">Ralph_IdleCountdown</td>
 <td class="address-1"><span id="53301"></span>53301</td>
 <td class="instruction">DEFB 15</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Relates to: <a href="53833.html">Active_MonsterIdleCountdown</a>.</td>
 </tr>
 <tr>
 <td class="asm-label">Ralph_AboutToFallCountdown</td>
@@ -169,31 +169,31 @@ Next: <a href="53343.html">53343</a>
 <td class="asm-label"></td>
 <td class="address-1"><span id="53304"></span>53304</td>
 <td class="instruction">DEFB 0</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Relates to: <a href="53836.html">53836</a>.</td>
 </tr>
 <tr>
 <td class="asm-label">Ralph_X_Position</td>
 <td class="address-1"><span id="53305"></span>53305</td>
 <td class="instruction">DEFB 20</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Relates to: <a href="53837.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label">Ralph_Y_Position</td>
 <td class="address-1"><span id="53306"></span>53306</td>
 <td class="instruction">DEFB 18</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Relates to: <a href="53837.html#53838">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="53307"></span>53307</td>
 <td class="instruction">DEFB 1</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Relates to: <a href="53839.html">53839</a>.</td>
 </tr>
 <tr>
 <td class="asm-label">Ralph_Energy</td>
 <td class="address-1"><span id="53308"></span>53308</td>
 <td class="instruction">DEFB 64</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Relates to: <a href="53840.html">Active_MonsterEnergy</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -263,25 +263,61 @@ When monster frames are drawn, this is used with an OR to set a bit which change
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="53313"></span>53313</td>
-<td class="instruction">DEFB 1,20,20,18,2,2,129,133</td>
+<td class="instruction">DEFB 1,20,20</td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
-<td class="address-1"><span id="53321"></span>53321</td>
-<td class="instruction">DEFB 0,0,4,20,20,18,2,2</td>
+<td class="address-1"><span id="53316"></span>53316</td>
+<td class="instruction">DEFB 18,2,2</td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
-<td class="address-1"><span id="53329"></span>53329</td>
-<td class="instruction">DEFB 137,135,0,0,8,20,20,18</td>
+<td class="address-1"><span id="53319"></span>53319</td>
+<td class="instruction">DEFB 129,133,0</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="53322"></span>53322</td>
+<td class="instruction">DEFB 0,4,20</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="53325"></span>53325</td>
+<td class="instruction">DEFB 20,18,2</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="53328"></span>53328</td>
+<td class="instruction">DEFB 2,137,135</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="53331"></span>53331</td>
+<td class="instruction">DEFB 0,0,8</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="53334"></span>53334</td>
+<td class="instruction">DEFB 20,20,18</td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="53337"></span>53337</td>
-<td class="instruction">DEFB 2,2,135,137,0,0</td>
+<td class="instruction">DEFB 2,2,135</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="53340"></span>53340</td>
+<td class="instruction">DEFB 137,0,0</td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 </table>

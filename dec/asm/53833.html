@@ -33,18 +33,36 @@ Next: <a href="53834.html">53834</a>
 </td>
 </tr>
 </table>
-<div class="description">53833: Game status buffer entry at D249</div>
+<div class="description">53833: Active Monster Idle Countdown</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
 <div class="details">
+<div class="paragraph">
+Used by the routines at <a href="59020.html">Handler_Controls</a>, <a href="61142.html">Animate_TransformExplosion</a>, <a href="61163.html">Animate_TurnIntoHuman</a> and <a href="61194.html">Animate_ExitStageRight</a>.
+</div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="53833"></span>
+<div class="comments">
+<div class="paragraph">
+Relates to: <ul class="">
+<li><a href="53202.html#53207">George_IdleCountdown</a></li>
+<li><a href="53249.html#53254">Lizzy_IdleCountdown</a></li>
+<li><a href="53296.html#53301">Ralph_IdleCountdown</a></li>
+</ul>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Active_MonsterIdleCountdown</td>
 <td class="address-1"><span id="53833"></span>53833</td>
 <td class="instruction">DEFB 0</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Counts down from 25 and launches <a href="59803.html">Animate_Waiting</a> when finished.</td>
 </tr>
 </table>
 <table class="asm-navigation">

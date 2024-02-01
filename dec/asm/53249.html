@@ -88,7 +88,7 @@ Next: <a href="53296.html">53296</a>
 <td class="asm-label"></td>
 <td class="address-1"><span id="53250"></span>53250</td>
 <td class="instruction">DEFB 0</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Relates to: <a href="53829.html">53829</a>.</td>
 </tr>
 <tr>
 <td class="asm-label">Lizzy_Climbing</td>
@@ -148,10 +148,10 @@ Next: <a href="53296.html">53296</a>
 </table></td>
 </tr>
 <tr>
-<td class="asm-label">Lizzy_Count</td>
+<td class="asm-label">Lizzy_IdleCountdown</td>
 <td class="address-1"><span id="53254"></span>53254</td>
 <td class="instruction">DEFB 20</td>
-<td class="comment-1" rowspan="1">Relates to: <a href="53833.html">53833</a>.</td>
+<td class="comment-1" rowspan="1">Relates to: <a href="53833.html">Active_MonsterIdleCountdown</a>.</td>
 </tr>
 <tr>
 <td class="asm-label">Lizzy_AboutToFallCountdown</td>
@@ -169,31 +169,31 @@ Next: <a href="53296.html">53296</a>
 <td class="asm-label"></td>
 <td class="address-1"><span id="53257"></span>53257</td>
 <td class="instruction">DEFB 0</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Relates to: <a href="53836.html">53836</a>.</td>
 </tr>
 <tr>
 <td class="asm-label">Lizzy_X_Position</td>
 <td class="address-1"><span id="53258"></span>53258</td>
 <td class="instruction">DEFB 2</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Relates to: <a href="53837.html">Active_MonsterXPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label">Lizzy_Y_Position</td>
 <td class="address-1"><span id="53259"></span>53259</td>
 <td class="instruction">DEFB 18</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Relates to: <a href="53837.html#53838">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="53260"></span>53260</td>
 <td class="instruction">DEFB 1</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Relates to: <a href="53839.html">53839</a>.</td>
 </tr>
 <tr>
 <td class="asm-label">Lizzy_Energy</td>
 <td class="address-1"><span id="53261"></span>53261</td>
 <td class="instruction">DEFB 64</td>
-<td class="comment-1" rowspan="1"></td>
+<td class="comment-1" rowspan="1">Relates to: <a href="53840.html">Active_MonsterEnergy</a>.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -263,25 +263,61 @@ When monster frames are drawn, this is used with an OR to set a bit which change
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="53266"></span>53266</td>
-<td class="instruction">DEFB 1,2,2,18,2,2,65,69</td>
+<td class="instruction">DEFB 1,2,2</td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
-<td class="address-1"><span id="53274"></span>53274</td>
-<td class="instruction">DEFB 0,0,4,2,2,18,2,2</td>
+<td class="address-1"><span id="53269"></span>53269</td>
+<td class="instruction">DEFB 18,2,2</td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
-<td class="address-1"><span id="53282"></span>53282</td>
-<td class="instruction">DEFB 73,71,0,0,8,2,2,18</td>
+<td class="address-1"><span id="53272"></span>53272</td>
+<td class="instruction">DEFB 65,69,0</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="53275"></span>53275</td>
+<td class="instruction">DEFB 0,4,2</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="53278"></span>53278</td>
+<td class="instruction">DEFB 2,18,2</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="53281"></span>53281</td>
+<td class="instruction">DEFB 2,73,71</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="53284"></span>53284</td>
+<td class="instruction">DEFB 0,0,8</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="53287"></span>53287</td>
+<td class="instruction">DEFB 2,2,18</td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="53290"></span>53290</td>
-<td class="instruction">DEFB 2,2,71,73,0,0</td>
+<td class="instruction">DEFB 2,2,71</td>
+<td class="comment-1" rowspan="1"></td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="53293"></span>53293</td>
+<td class="instruction">DEFB 73,0,0</td>
 <td class="comment-1" rowspan="1"></td>
 </tr>
 </table>
