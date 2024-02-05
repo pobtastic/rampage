@@ -436,8 +436,9 @@ g$6500 DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,
  $67C0 DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
  $67E0 DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
 
-; Data block at 6800
-b$6800 DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
+; Game Buffer?
+@label=GameBuffer
+g$6800 DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
  $6820 DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
  $6840 DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
  $6860 DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
@@ -464,7 +465,7 @@ b$6800 DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,
 
 ; Shadow Buffer
 @label=ShadowScreenBuffer
-b$6B00 DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00 ; {Pixels.
+g$6B00 DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00 ; {Pixels.
  $6B20 DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$03,$F0,$07,$FF,$E0,$00,$00,$00,$00,$00,$00,$00,$00 ;
  $6B40 DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$1F,$C7,$FF,$E3,$FF,$FE,$00,$00,$00,$00,$00,$00,$00,$00 ;
  $6B60 DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$7F,$FF,$E1,$CF,$FF,$FF,$E0,$00,$00,$00,$00,$00,$00,$00 ;
@@ -2429,629 +2430,754 @@ b$9E00 DEFB $60,$90,$28,$08,$10,$28,$36,$38 ; #UDGTABLE { #UDG(#PC) } UDGTABLE#
 ; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
 @label=Table_SpriteInfo
 g$C1A1 DEFB $05,$05                         ; {#SPRITE({sprite})
- $C1A3 DEFW $8D80                           ;
- $C1A5 DEFB $05,$05                         ;
+ $C1A3 DEFW $8D80                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C1A5 DEFB $05,$05                         ; {#SPRITE({sprite}+$01)
  $C1A7 DEFW $8E29                           ; }
 ; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C1A9 DEFB $04,$03
- $C1AB DEFW $8E9A
- $C1AD DEFB $04,$03
- $C1AF DEFW $8EFE
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C1B1 DEFB $05,$05
- $C1B3 DEFW $8F4A
- $C1B5 DEFB $05,$05
- $C1B7 DEFW $8FF3
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C1B9 DEFB $04,$06
- $C1BB DEFW $906C
- $C1BD DEFB $04,$06
- $C1BF DEFW $9124
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C1C1 DEFB $04,$06
- $C1C3 DEFW $91B4
- $C1C5 DEFB $04,$06
- $C1C7 DEFW $925C
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C1C9 DEFB $05,$05
- $C1CB DEFW $92EC
- $C1CD DEFB $05,$05
- $C1CF DEFW $93A5
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C1D1 DEFB $04,$03
- $C1D3 DEFW $941E
- $C1D5 DEFB $04,$03
- $C1D7 DEFW $945A
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C1D9 DEFB $04,$03
- $C1DB DEFW $948E
- $C1DD DEFB $04,$03
- $C1DF DEFW $94CA
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C1E1 DEFB $02,$01
- $C1E3 DEFW $94FE
- $C1E5 DEFB $02,$01
- $C1E7 DEFW $9510
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C1E9 DEFB $02,$01
- $C1EB DEFW $9512
- $C1ED DEFB $02,$01
- $C1EF DEFW $9524
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C1F1 DEFB $02,$01
- $C1F3 DEFW $9526
- $C1F5 DEFB $02,$01
- $C1F7 DEFW $9538
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C1F9 DEFB $01,$02
- $C1FB DEFW $953A
- $C1FD DEFB $01,$02
- $C1FF DEFW $954C
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C201 DEFB $04,$02
- $C203 DEFW $954E
- $C205 DEFB $04,$02
- $C207 DEFW $9596
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C209 DEFB $01,$02
- $C20B DEFW $95CE
- $C20D DEFB $01,$02
- $C20F DEFW $95E0
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C211 DEFB $05,$03
- $C213 DEFW $95E2
- $C215 DEFB $05,$03
- $C217 DEFW $9651
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C219 DEFB $04,$03
- $C21B DEFW $96B0
- $C21D DEFB $04,$03
- $C21F DEFW $971C
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C221 DEFB $04,$03
- $C223 DEFW $9760
- $C225 DEFB $04,$03
- $C227 DEFW $97C4
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C229 DEFB $04,$03
- $C22B DEFW $9818
- $C22D DEFB $04,$03
- $C22F DEFW $987C
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C231 DEFB $04,$04
- $C233 DEFW $98C8
- $C235 DEFB $04,$04
- $C237 DEFW $9938
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C239 DEFB $00,$00
- $C23B DEFW $9998
- $C23D DEFB $00,$00
- $C23F DEFW $9998
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C241 DEFB $05,$05
- $C243 DEFW $9998
- $C245 DEFB $05,$05
- $C247 DEFW $9A49
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C249 DEFB $02,$01
- $C24B DEFW $9ADA
- $C24D DEFB $02,$01
- $C24F DEFW $9AEC
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C251 DEFB $02,$01
- $C253 DEFW $9AEE
- $C255 DEFB $02,$01
- $C257 DEFW $9B00
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C259 DEFB $02,$01
- $C25B DEFW $9B02
- $C25D DEFB $02,$01
- $C25F DEFW $9B14
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C261 DEFB $02,$01
- $C263 DEFW $9B16
- $C265 DEFB $02,$01
- $C267 DEFW $9B28
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C269 DEFB $00,$00
- $C26B DEFW $9B2A
- $C26D DEFB $00,$00
- $C26F DEFW $9B2A
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C271 DEFB $02,$03
- $C273 DEFW $9B2A
- $C275 DEFB $02,$03
- $C277 DEFW $9B40
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C279 DEFB $02,$03
- $C27B DEFW $9B5E
- $C27D DEFB $02,$03
- $C27F DEFW $9B94
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C281 DEFB $00,$00
- $C283 DEFW $9BCA
- $C285 DEFB $00,$00
- $C287 DEFW $9BCA
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C289 DEFB $03,$03
- $C28B DEFW $9BCA
- $C28D DEFB $03,$03
- $C28F DEFW $9C1B
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C291 DEFB $03,$03
- $C293 DEFW $9C6C
- $C295 DEFB $03,$03
- $C297 DEFW $9CBD
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C299 DEFB $03,$03
- $C29B DEFW $9D0E
- $C29D DEFB $03,$03
- $C29F DEFW $9D5F
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C2A1 DEFB $05,$05
- $C2A3 DEFW $9DB0
- $C2A5 DEFB $05,$05
- $C2A7 DEFW $9E51
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C2A9 DEFB $04,$03
- $C2AB DEFW $9EBA
- $C2AD DEFB $04,$03
- $C2AF DEFW $9F1E
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C2B1 DEFB $05,$05
- $C2B3 DEFW $9F6A
- $C2B5 DEFB $05,$05
- $C2B7 DEFW $A013
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C2B9 DEFB $04,$06
- $C2BB DEFW $A08C
- $C2BD DEFB $04,$06
- $C2BF DEFW $A144
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C2C1 DEFB $04,$06
- $C2C3 DEFW $A1DC
- $C2C5 DEFB $04,$06
- $C2C7 DEFW $A27C
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C2C9 DEFB $05,$05
- $C2CB DEFW $A304
- $C2CD DEFB $05,$05
- $C2CF DEFW $A3AD
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C2D1 DEFB $04,$03
- $C2D3 DEFW $A436
- $C2D5 DEFB $04,$03
- $C2D7 DEFW $A46A
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C2D9 DEFB $04,$03
- $C2DB DEFW $A49E
- $C2DD DEFB $04,$03
- $C2DF DEFW $A4DA
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C2E1 DEFB $02,$01
- $C2E3 DEFW $A516
- $C2E5 DEFB $02,$01
- $C2E7 DEFW $A528
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C2E9 DEFB $02,$01
- $C2EB DEFW $A52A
- $C2ED DEFB $02,$01
- $C2EF DEFW $A53C
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C2F1 DEFB $02,$01
- $C2F3 DEFW $A53E
- $C2F5 DEFB $02,$01
- $C2F7 DEFW $A550
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C2F9 DEFB $01,$02
- $C2FB DEFW $A552
- $C2FD DEFB $01,$02
- $C2FF DEFW $A564
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C301 DEFB $04,$02
- $C303 DEFW $A576
- $C305 DEFB $04,$02
- $C307 DEFW $A5B6
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C309 DEFB $01,$02
- $C30B DEFW $A5E6
- $C30D DEFB $01,$02
- $C30F DEFW $A5F8
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C311 DEFB $05,$03
- $C313 DEFW $A60A
- $C315 DEFB $05,$03
- $C317 DEFW $A679
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C319 DEFB $04,$03
- $C31B DEFW $A6D0
- $C31D DEFB $04,$03
- $C31F DEFW $A734
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C321 DEFB $04,$03
- $C323 DEFW $A780
- $C325 DEFB $04,$03
- $C327 DEFW $A7E4
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C329 DEFB $04,$03
- $C32B DEFW $A838
- $C32D DEFB $04,$03
- $C32F DEFW $A89C
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C331 DEFB $04,$04
- $C333 DEFW $A8F0
- $C335 DEFB $04,$04
- $C337 DEFW $A960
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C339 DEFB $00,$00
- $C33B DEFW $A9C0
- $C33D DEFB $00,$00
- $C33F DEFW $A9C0
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C341 DEFB $05,$05
- $C343 DEFW $A9C0
- $C345 DEFB $05,$05
- $C347 DEFW $AA61
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C349 DEFB $02,$01
- $C34B DEFW $AAE2
- $C34D DEFB $02,$01
- $C34F DEFW $AAF4
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C351 DEFB $02,$01
- $C353 DEFW $AAF6
- $C355 DEFB $02,$01
- $C357 DEFW $AB08
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C359 DEFB $02,$01
- $C35B DEFW $AB0A
- $C35D DEFB $02,$01
- $C35F DEFW $AB1C
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C361 DEFB $02,$01
- $C363 DEFW $AB1E
- $C365 DEFB $02,$01
- $C367 DEFW $AB30
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C369 DEFB $01,$01
- $C36B DEFW $AB32
- $C36D DEFB $01,$01
- $C36F DEFW $AB3B
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C371 DEFB $02,$02
- $C373 DEFW $AB3C
- $C375 DEFB $02,$02
- $C377 DEFW $AB60
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C379 DEFB $03,$03
- $C37B DEFW $AB64
- $C37D DEFB $03,$03
- $C37F DEFW $ABB5
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C381 DEFB $02,$04
- $C383 DEFW $ABBE
- $C385 DEFB $02,$04
- $C387 DEFW $AC06
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C389 DEFB $02,$04
- $C38B DEFW $AC2E
- $C38D DEFB $02,$04
- $C38F DEFW $AC76
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C391 DEFB $00,$00
- $C393 DEFW $AC9E
- $C395 DEFB $00,$00
- $C397 DEFW $AC9E
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C399 DEFB $04,$02
- $C39B DEFW $AC9E
- $C39D DEFB $04,$02
- $C39F DEFW $ACDE
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C3A1 DEFB $05,$05
- $C3A3 DEFW $AD1E
- $C3A5 DEFB $05,$05
- $C3A7 DEFW $ADBF
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C3A9 DEFB $04,$03
- $C3AB DEFW $AE30
- $C3AD DEFB $04,$03
- $C3AF DEFW $AE94
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C3B1 DEFB $05,$05
- $C3B3 DEFW $AEE0
- $C3B5 DEFB $05,$05
- $C3B7 DEFW $AF89
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C3B9 DEFB $04,$06
- $C3BB DEFW $B012
- $C3BD DEFB $04,$06
- $C3BF DEFW $B0CA
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C3C1 DEFB $04,$06
- $C3C3 DEFW $B162
- $C3C5 DEFB $04,$06
- $C3C7 DEFW $B212
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C3C9 DEFB $05,$05
- $C3CB DEFW $B2AA
- $C3CD DEFB $05,$05
- $C3CF DEFW $B35B
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C3D1 DEFB $04,$03
- $C3D3 DEFW $B3DC
- $C3D5 DEFB $04,$03
- $C3D7 DEFW $B410
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C3D9 DEFB $04,$03
- $C3DB DEFW $B444
- $C3DD DEFB $04,$03
- $C3DF DEFW $B470
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C3E1 DEFB $02,$01
- $C3E3 DEFW $B49C
- $C3E5 DEFB $02,$01
- $C3E7 DEFW $B4AE
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C3E9 DEFB $02,$01
- $C3EB DEFW $B4B0
- $C3ED DEFB $02,$01
- $C3EF DEFW $B4C2
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C3F1 DEFB $02,$01
- $C3F3 DEFW $B4C4
- $C3F5 DEFB $02,$01
- $C3F7 DEFW $B4D6
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C3F9 DEFB $01,$02
- $C3FB DEFW $B4D8
- $C3FD DEFB $01,$02
- $C3FF DEFW $B4EA
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C401 DEFB $04,$02
- $C403 DEFW $B4FC
- $C405 DEFB $04,$02
- $C407 DEFW $B544
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C409 DEFB $01,$02
- $C40B DEFW $B57C
- $C40D DEFB $01,$02
- $C40F DEFW $B58E
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C411 DEFB $05,$03
- $C413 DEFW $B5A0
- $C415 DEFB $05,$03
- $C417 DEFW $B617
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C419 DEFB $04,$03
- $C41B DEFW $B676
- $C41D DEFB $04,$03
- $C41F DEFW $B6DA
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C421 DEFB $04,$03
- $C423 DEFW $B726
- $C425 DEFB $04,$03
- $C427 DEFW $B78A
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C429 DEFB $04,$03
- $C42B DEFW $B7D6
- $C42D DEFB $04,$03
- $C42F DEFW $B83A
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C431 DEFB $04,$04
- $C433 DEFW $B88E
- $C435 DEFB $04,$04
- $C437 DEFW $B8FE
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C439 DEFB $00,$00
- $C43B DEFW $B95E
- $C43D DEFB $00,$00
- $C43F DEFW $B95E
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C441 DEFB $05,$05
- $C443 DEFW $B95E
- $C445 DEFB $05,$05
- $C447 DEFW $BA07
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C449 DEFB $02,$01
- $C44B DEFW $BA90
- $C44D DEFB $02,$01
- $C44F DEFW $BAA2
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C451 DEFB $02,$01
- $C453 DEFW $BAA4
- $C455 DEFB $02,$01
- $C457 DEFW $BAB6
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C459 DEFB $02,$01
- $C45B DEFW $BAB8
- $C45D DEFB $02,$01
- $C45F DEFW $BACA
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C461 DEFB $02,$01
- $C463 DEFW $BACC
- $C465 DEFB $02,$01
- $C467 DEFW $BADE
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C469 DEFB $00,$00
- $C46B DEFW $BAE0
- $C46D DEFB $00,$00
- $C46F DEFW $BAE0
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C471 DEFB $00,$00
- $C473 DEFW $BAE0
- $C475 DEFB $00,$00
- $C477 DEFW $BAE0
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C479 DEFB $00,$00
- $C47B DEFW $BAE0
- $C47D DEFB $00,$00
- $C47F DEFW $BAE0
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C481 DEFB $00,$00
- $C483 DEFW $BAE0
- $C485 DEFB $00,$00
- $C487 DEFW $BAE0
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C489 DEFB $00,$00
- $C48B DEFW $BAE0
- $C48D DEFB $00,$00
- $C48F DEFW $BAE0
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C491 DEFB $00,$00
- $C493 DEFW $BAE0
- $C495 DEFB $00,$00
- $C497 DEFW $BAE0
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C499 DEFB $00,$00
- $C49B DEFW $BAE0
- $C49D DEFB $02,$02
- $C49F DEFW $BAE0
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C4A1 DEFB $02,$02
- $C4A3 DEFW $BAE4
- $C4A5 DEFB $02,$02
- $C4A7 DEFW $BAF8
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C4A9 DEFB $02,$02
- $C4AB DEFW $BB1C
- $C4AD DEFB $02,$02
- $C4AF DEFW $BB40
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C4B1 DEFB $02,$02
- $C4B3 DEFW $BB64
- $C4B5 DEFB $02,$02
- $C4B7 DEFW $BB88
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C4B9 DEFB $02,$02
- $C4BB DEFW $BBAC
- $C4BD DEFB $02,$02
- $C4BF DEFW $BBD0
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C4C1 DEFB $02,$02
- $C4C3 DEFW $BBF4
- $C4C5 DEFB $02,$02
- $C4C7 DEFW $BC18
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C4C9 DEFB $02,$02
- $C4CB DEFW $BC3C
- $C4CD DEFB $02,$02
- $C4CF DEFW $BC60
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C4D1 DEFB $02,$02
- $C4D3 DEFW $BC84
- $C4D5 DEFB $02,$02
- $C4D7 DEFW $BCA8
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C4D9 DEFB $02,$02
- $C4DB DEFW $BCCC
- $C4DD DEFB $02,$02
- $C4DF DEFW $BCF0
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C4E1 DEFB $02,$02
- $C4E3 DEFW $BD14
- $C4E5 DEFB $02,$02
- $C4E7 DEFW $BD38
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C4E9 DEFB $02,$02
- $C4EB DEFW $BD5C
- $C4ED DEFB $00,$00
- $C4EF DEFW $BD80
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C4F1 DEFB $00,$00
- $C4F3 DEFW $BD80
- $C4F5 DEFB $00,$00
- $C4F7 DEFW $BD80
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C4F9 DEFB $00,$00
- $C4FB DEFW $BD80
- $C4FD DEFB $00,$00
- $C4FF DEFW $BD80
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C501 DEFB $00,$00
- $C503 DEFW $BD80
- $C505 DEFB $00,$00
- $C507 DEFW $BD80
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C509 DEFB $00,$00
- $C50B DEFW $BD80
- $C50D DEFB $00,$00
- $C50F DEFW $BD80
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C511 DEFB $00,$00
- $C513 DEFW $BD80
- $C515 DEFB $02,$01
- $C517 DEFW $BD80
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C519 DEFB $02,$01
- $C51B DEFW $BD92
- $C51D DEFB $02,$01
- $C51F DEFW $BDA4
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C521 DEFB $02,$01
- $C523 DEFW $BDB6
- $C525 DEFB $02,$01
- $C527 DEFW $BDC8
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C529 DEFB $02,$01
- $C52B DEFW $BDDA
- $C52D DEFB $02,$01
- $C52F DEFW $BDEC
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C531 DEFB $02,$01
- $C533 DEFW $BDFE
- $C535 DEFB $05,$02
- $C537 DEFW $BE10
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C539 DEFB $05,$02
- $C53B DEFW $BE5A
- $C53D DEFB $05,$02
- $C53F DEFW $BEA4
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C541 DEFB $05,$02
- $C543 DEFW $BEFE
- $C545 DEFB $03,$03
- $C547 DEFW $BF58
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C549 DEFB $03,$03
- $C54B DEFW $BFA9
- $C54D DEFB $03,$03
- $C54F DEFW $BFFA
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C551 DEFB $03,$03
- $C553 DEFW $C04B
- $C555 DEFB $04,$03
- $C557 DEFW $C09C
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C559 DEFB $04,$03
- $C55B DEFW $C108
- $C55D DEFB $00,$00
- $C55F DEFW $C174
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C561 DEFB $00,$00
- $C563 DEFW $C174
- $C565 DEFB $00,$00
- $C567 DEFW $C174
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C569 DEFB $00,$00
- $C56B DEFW $C174
- $C56D DEFB $01,$01
- $C56F DEFW $C174
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C571 DEFB $01,$01
- $C573 DEFW $C17D
- $C575 DEFB $01,$01
- $C577 DEFW $C186
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C579 DEFB $01,$01
- $C57B DEFW $C18F
- $C57D DEFB $00,$00
- $C57F DEFW $C198
-; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
- $C581 DEFB $00,$00
- $C583 DEFW $C198
- $C585 DEFB $01,$01
- $C587 DEFW $C198
+ $C1A9 DEFB $04,$03                         ; {#SPRITE({sprite})
+ $C1AB DEFW $8E9A                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C1AD DEFB $04,$03                         ; {#SPRITE({sprite}+$01)
+ $C1AF DEFW $8EFE                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C1B1 DEFB $05,$05                         ; {#SPRITE({sprite})
+ $C1B3 DEFW $8F4A                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C1B5 DEFB $05,$05                         ; {#SPRITE({sprite}+$01)
+ $C1B7 DEFW $8FF3                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C1B9 DEFB $04,$06                         ; {#SPRITE({sprite})
+ $C1BB DEFW $906C                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C1BD DEFB $04,$06                         ; {#SPRITE({sprite}+$01)
+ $C1BF DEFW $9124                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C1C1 DEFB $04,$06                         ; {#SPRITE({sprite})
+ $C1C3 DEFW $91B4                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C1C5 DEFB $04,$06                         ; {#SPRITE({sprite}+$01)
+ $C1C7 DEFW $925C                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C1C9 DEFB $05,$05                         ; {#SPRITE({sprite})
+ $C1CB DEFW $92EC                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C1CD DEFB $05,$05                         ; {#SPRITE({sprite}+$01)
+ $C1CF DEFW $93A5                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C1D1 DEFB $04,$03                         ; {#SPRITE({sprite})
+ $C1D3 DEFW $941E                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C1D5 DEFB $04,$03                         ; {#SPRITE({sprite}+$01)
+ $C1D7 DEFW $945A                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C1D9 DEFB $04,$03                         ; {#SPRITE({sprite})
+ $C1DB DEFW $948E                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C1DD DEFB $04,$03                         ; {#SPRITE({sprite}+$01)
+ $C1DF DEFW $94CA                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C1E1 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C1E3 DEFW $94FE                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C1E5 DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C1E7 DEFW $9510                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C1E9 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C1EB DEFW $9512                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C1ED DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C1EF DEFW $9524                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C1F1 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C1F3 DEFW $9526                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C1F5 DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C1F7 DEFW $9538                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C1F9 DEFB $01,$02                         ; {#SPRITE({sprite})
+ $C1FB DEFW $953A                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C1FD DEFB $01,$02                         ; {#SPRITE({sprite}+$01)
+ $C1FF DEFW $954C                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C201 DEFB $04,$02                         ; {#SPRITE({sprite})
+ $C203 DEFW $954E                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C205 DEFB $04,$02                         ; {#SPRITE({sprite}+$01)
+ $C207 DEFW $9596                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C209 DEFB $01,$02                         ; {#SPRITE({sprite})
+ $C20B DEFW $95CE                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C20D DEFB $01,$02                         ; {#SPRITE({sprite}+$01)
+ $C20F DEFW $95E0                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C211 DEFB $05,$03                         ; {#SPRITE({sprite})
+ $C213 DEFW $95E2                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C215 DEFB $05,$03                         ; {#SPRITE({sprite}+$01)
+ $C217 DEFW $9651                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C219 DEFB $04,$03                         ; {#SPRITE({sprite})
+ $C21B DEFW $96B0                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C21D DEFB $04,$03                         ; {#SPRITE({sprite}+$01)
+ $C21F DEFW $971C                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C221 DEFB $04,$03                         ; {#SPRITE({sprite})
+ $C223 DEFW $9760                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C225 DEFB $04,$03                         ; {#SPRITE({sprite}+$01)
+ $C227 DEFW $97C4                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C229 DEFB $04,$03                         ; {#SPRITE({sprite})
+ $C22B DEFW $9818                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C22D DEFB $04,$03                         ; {#SPRITE({sprite}+$01)
+ $C22F DEFW $987C                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C231 DEFB $04,$04                         ; {#SPRITE({sprite})
+ $C233 DEFW $98C8                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C235 DEFB $04,$04                         ; {#SPRITE({sprite}+$01)
+ $C237 DEFW $9938                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C239 DEFB $00,$00                         ; {#SPRITE({sprite})
+ $C23B DEFW $9998                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C23D DEFB $00,$00                         ; {#SPRITE({sprite}+$01)
+ $C23F DEFW $9998                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C241 DEFB $05,$05                         ; {#SPRITE({sprite})
+ $C243 DEFW $9998                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C245 DEFB $05,$05                         ; {#SPRITE({sprite}+$01)
+ $C247 DEFW $9A49                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C249 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C24B DEFW $9ADA                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C24D DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C24F DEFW $9AEC                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C251 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C253 DEFW $9AEE                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C255 DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C257 DEFW $9B00                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C259 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C25B DEFW $9B02                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C25D DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C25F DEFW $9B14                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C261 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C263 DEFW $9B16                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C265 DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C267 DEFW $9B28                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C269 DEFB $00,$00                         ; {#SPRITE({sprite})
+ $C26B DEFW $9B2A                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C26D DEFB $00,$00                         ; {#SPRITE({sprite}+$01)
+ $C26F DEFW $9B2A                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C271 DEFB $02,$03                         ; {#SPRITE({sprite})
+ $C273 DEFW $9B2A                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C275 DEFB $02,$03                         ; {#SPRITE({sprite}+$01)
+ $C277 DEFW $9B40                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C279 DEFB $02,$03                         ; {#SPRITE({sprite})
+ $C27B DEFW $9B5E                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C27D DEFB $02,$03                         ; {#SPRITE({sprite}+$01)
+ $C27F DEFW $9B94                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C281 DEFB $00,$00                         ; {#SPRITE({sprite})
+ $C283 DEFW $9BCA                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C285 DEFB $00,$00                         ; {#SPRITE({sprite}+$01)
+ $C287 DEFW $9BCA                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C289 DEFB $03,$03                         ; {#SPRITE({sprite})
+ $C28B DEFW $9BCA                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C28D DEFB $03,$03                         ; {#SPRITE({sprite}+$01)
+ $C28F DEFW $9C1B                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C291 DEFB $03,$03                         ; {#SPRITE({sprite})
+ $C293 DEFW $9C6C                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C295 DEFB $03,$03                         ; {#SPRITE({sprite}+$01)
+ $C297 DEFW $9CBD                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C299 DEFB $03,$03                         ; {#SPRITE({sprite})
+ $C29B DEFW $9D0E                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C29D DEFB $03,$03                         ; {#SPRITE({sprite}+$01)
+ $C29F DEFW $9D5F                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C2A1 DEFB $05,$05                         ; {#SPRITE({sprite})
+ $C2A3 DEFW $9DB0                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C2A5 DEFB $05,$05                         ; {#SPRITE({sprite}+$01)
+ $C2A7 DEFW $9E51                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C2A9 DEFB $04,$03                         ; {#SPRITE({sprite})
+ $C2AB DEFW $9EBA                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C2AD DEFB $04,$03                         ; {#SPRITE({sprite}+$01)
+ $C2AF DEFW $9F1E                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C2B1 DEFB $05,$05                         ; {#SPRITE({sprite})
+ $C2B3 DEFW $9F6A                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C2B5 DEFB $05,$05                         ; {#SPRITE({sprite}+$01)
+ $C2B7 DEFW $A013                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C2B9 DEFB $04,$06                         ; {#SPRITE({sprite})
+ $C2BB DEFW $A08C                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C2BD DEFB $04,$06                         ; {#SPRITE({sprite}+$01)
+ $C2BF DEFW $A144                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C2C1 DEFB $04,$06                         ; {#SPRITE({sprite})
+ $C2C3 DEFW $A1DC                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C2C5 DEFB $04,$06                         ; {#SPRITE({sprite}+$01)
+ $C2C7 DEFW $A27C                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C2C9 DEFB $05,$05                         ; {#SPRITE({sprite})
+ $C2CB DEFW $A304                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C2CD DEFB $05,$05                         ; {#SPRITE({sprite}+$01)
+ $C2CF DEFW $A3AD                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C2D1 DEFB $04,$03                         ; {#SPRITE({sprite})
+ $C2D3 DEFW $A436                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C2D5 DEFB $04,$03                         ; {#SPRITE({sprite}+$01)
+ $C2D7 DEFW $A46A                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C2D9 DEFB $04,$03                         ; {#SPRITE({sprite})
+ $C2DB DEFW $A49E                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C2DD DEFB $04,$03                         ; {#SPRITE({sprite}+$01)
+ $C2DF DEFW $A4DA                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C2E1 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C2E3 DEFW $A516                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C2E5 DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C2E7 DEFW $A528                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C2E9 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C2EB DEFW $A52A                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C2ED DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C2EF DEFW $A53C                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C2F1 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C2F3 DEFW $A53E                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C2F5 DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C2F7 DEFW $A550                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C2F9 DEFB $01,$02                         ; {#SPRITE({sprite})
+ $C2FB DEFW $A552                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C2FD DEFB $01,$02                         ; {#SPRITE({sprite}+$01)
+ $C2FF DEFW $A564                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C301 DEFB $04,$02                         ; {#SPRITE({sprite})
+ $C303 DEFW $A576                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C305 DEFB $04,$02                         ; {#SPRITE({sprite}+$01)
+ $C307 DEFW $A5B6                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C309 DEFB $01,$02                         ; {#SPRITE({sprite})
+ $C30B DEFW $A5E6                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C30D DEFB $01,$02                         ; {#SPRITE({sprite}+$01)
+ $C30F DEFW $A5F8                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C311 DEFB $05,$03                         ; {#SPRITE({sprite})
+ $C313 DEFW $A60A                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C315 DEFB $05,$03                         ; {#SPRITE({sprite}+$01)
+ $C317 DEFW $A679                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C319 DEFB $04,$03                         ; {#SPRITE({sprite})
+ $C31B DEFW $A6D0                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C31D DEFB $04,$03                         ; {#SPRITE({sprite}+$01)
+ $C31F DEFW $A734                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C321 DEFB $04,$03                         ; {#SPRITE({sprite})
+ $C323 DEFW $A780                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C325 DEFB $04,$03                         ; {#SPRITE({sprite}+$01)
+ $C327 DEFW $A7E4                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C329 DEFB $04,$03                         ; {#SPRITE({sprite})
+ $C32B DEFW $A838                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C32D DEFB $04,$03                         ; {#SPRITE({sprite}+$01)
+ $C32F DEFW $A89C                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C331 DEFB $04,$04                         ; {#SPRITE({sprite})
+ $C333 DEFW $A8F0                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C335 DEFB $04,$04                         ; {#SPRITE({sprite}+$01)
+ $C337 DEFW $A960                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C339 DEFB $00,$00                         ; {#SPRITE({sprite})
+ $C33B DEFW $A9C0                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C33D DEFB $00,$00                         ; {#SPRITE({sprite}+$01)
+ $C33F DEFW $A9C0                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C341 DEFB $05,$05                         ; {#SPRITE({sprite})
+ $C343 DEFW $A9C0                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C345 DEFB $05,$05                         ; {#SPRITE({sprite}+$01)
+ $C347 DEFW $AA61                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C349 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C34B DEFW $AAE2                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C34D DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C34F DEFW $AAF4                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C351 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C353 DEFW $AAF6                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C355 DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C357 DEFW $AB08                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C359 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C35B DEFW $AB0A                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C35D DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C35F DEFW $AB1C                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C361 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C363 DEFW $AB1E                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C365 DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C367 DEFW $AB30                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C369 DEFB $01,$01                         ; {#SPRITE({sprite})
+ $C36B DEFW $AB32                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C36D DEFB $01,$01                         ; {#SPRITE({sprite}+$01)
+ $C36F DEFW $AB3B                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C371 DEFB $02,$02                         ; {#SPRITE({sprite})
+ $C373 DEFW $AB3C                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C375 DEFB $02,$02                         ; {#SPRITE({sprite}+$01)
+ $C377 DEFW $AB60                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C379 DEFB $03,$03                         ; {#SPRITE({sprite})
+ $C37B DEFW $AB64                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C37D DEFB $03,$03                         ; {#SPRITE({sprite}+$01)
+ $C37F DEFW $ABB5                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C381 DEFB $02,$04                         ; {#SPRITE({sprite})
+ $C383 DEFW $ABBE                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C385 DEFB $02,$04                         ; {#SPRITE({sprite}+$01)
+ $C387 DEFW $AC06                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C389 DEFB $02,$04                         ; {#SPRITE({sprite})
+ $C38B DEFW $AC2E                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C38D DEFB $02,$04                         ; {#SPRITE({sprite}+$01)
+ $C38F DEFW $AC76                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C391 DEFB $00,$00                         ; {#SPRITE({sprite})
+ $C393 DEFW $AC9E                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C395 DEFB $00,$00                         ; {#SPRITE({sprite}+$01)
+ $C397 DEFW $AC9E                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C399 DEFB $04,$02                         ; {#SPRITE({sprite})
+ $C39B DEFW $AC9E                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C39D DEFB $04,$02                         ; {#SPRITE({sprite}+$01)
+ $C39F DEFW $ACDE                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C3A1 DEFB $05,$05                         ; {#SPRITE({sprite})
+ $C3A3 DEFW $AD1E                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C3A5 DEFB $05,$05                         ; {#SPRITE({sprite}+$01)
+ $C3A7 DEFW $ADBF                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C3A9 DEFB $04,$03                         ; {#SPRITE({sprite})
+ $C3AB DEFW $AE30                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C3AD DEFB $04,$03                         ; {#SPRITE({sprite}+$01)
+ $C3AF DEFW $AE94                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C3B1 DEFB $05,$05                         ; {#SPRITE({sprite})
+ $C3B3 DEFW $AEE0                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C3B5 DEFB $05,$05                         ; {#SPRITE({sprite}+$01)
+ $C3B7 DEFW $AF89                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C3B9 DEFB $04,$06                         ; {#SPRITE({sprite})
+ $C3BB DEFW $B012                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C3BD DEFB $04,$06                         ; {#SPRITE({sprite}+$01)
+ $C3BF DEFW $B0CA                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C3C1 DEFB $04,$06                         ; {#SPRITE({sprite})
+ $C3C3 DEFW $B162                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C3C5 DEFB $04,$06                         ; {#SPRITE({sprite}+$01)
+ $C3C7 DEFW $B212                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C3C9 DEFB $05,$05                         ; {#SPRITE({sprite})
+ $C3CB DEFW $B2AA                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C3CD DEFB $05,$05                         ; {#SPRITE({sprite}+$01)
+ $C3CF DEFW $B35B                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C3D1 DEFB $04,$03                         ; {#SPRITE({sprite})
+ $C3D3 DEFW $B3DC                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C3D5 DEFB $04,$03                         ; {#SPRITE({sprite}+$01)
+ $C3D7 DEFW $B410                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C3D9 DEFB $04,$03                         ; {#SPRITE({sprite})
+ $C3DB DEFW $B444                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C3DD DEFB $04,$03                         ; {#SPRITE({sprite}+$01)
+ $C3DF DEFW $B470                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C3E1 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C3E3 DEFW $B49C                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C3E5 DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C3E7 DEFW $B4AE                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C3E9 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C3EB DEFW $B4B0                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C3ED DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C3EF DEFW $B4C2                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C3F1 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C3F3 DEFW $B4C4                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C3F5 DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C3F7 DEFW $B4D6                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C3F9 DEFB $01,$02                         ; {#SPRITE({sprite})
+ $C3FB DEFW $B4D8                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C3FD DEFB $01,$02                         ; {#SPRITE({sprite}+$01)
+ $C3FF DEFW $B4EA                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C401 DEFB $04,$02                         ; {#SPRITE({sprite})
+ $C403 DEFW $B4FC                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C405 DEFB $04,$02                         ; {#SPRITE({sprite}+$01)
+ $C407 DEFW $B544                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C409 DEFB $01,$02                         ; {#SPRITE({sprite})
+ $C40B DEFW $B57C                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C40D DEFB $01,$02                         ; {#SPRITE({sprite}+$01)
+ $C40F DEFW $B58E                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C411 DEFB $05,$03                         ; {#SPRITE({sprite})
+ $C413 DEFW $B5A0                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C415 DEFB $05,$03                         ; {#SPRITE({sprite}+$01)
+ $C417 DEFW $B617                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C419 DEFB $04,$03                         ; {#SPRITE({sprite})
+ $C41B DEFW $B676                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C41D DEFB $04,$03                         ; {#SPRITE({sprite}+$01)
+ $C41F DEFW $B6DA                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C421 DEFB $04,$03                         ; {#SPRITE({sprite})
+ $C423 DEFW $B726                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C425 DEFB $04,$03                         ; {#SPRITE({sprite}+$01)
+ $C427 DEFW $B78A                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C429 DEFB $04,$03                         ; {#SPRITE({sprite})
+ $C42B DEFW $B7D6                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C42D DEFB $04,$03                         ; {#SPRITE({sprite}+$01)
+ $C42F DEFW $B83A                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C431 DEFB $04,$04                         ; {#SPRITE({sprite})
+ $C433 DEFW $B88E                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C435 DEFB $04,$04                         ; {#SPRITE({sprite}+$01)
+ $C437 DEFW $B8FE                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C439 DEFB $00,$00                         ; {#SPRITE({sprite})
+ $C43B DEFW $B95E                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C43D DEFB $00,$00                         ; {#SPRITE({sprite}+$01)
+ $C43F DEFW $B95E                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C441 DEFB $05,$05                         ; {#SPRITE({sprite})
+ $C443 DEFW $B95E                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C445 DEFB $05,$05                         ; {#SPRITE({sprite}+$01)
+ $C447 DEFW $BA07                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C449 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C44B DEFW $BA90                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C44D DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C44F DEFW $BAA2                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C451 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C453 DEFW $BAA4                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C455 DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C457 DEFW $BAB6                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C459 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C45B DEFW $BAB8                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C45D DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C45F DEFW $BACA                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C461 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C463 DEFW $BACC                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C465 DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C467 DEFW $BADE                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C469 DEFB $00,$00                         ; {#SPRITE({sprite})
+ $C46B DEFW $BAE0                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C46D DEFB $00,$00                         ; {#SPRITE({sprite}+$01)
+ $C46F DEFW $BAE0                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C471 DEFB $00,$00                         ; {#SPRITE({sprite})
+ $C473 DEFW $BAE0                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C475 DEFB $00,$00                         ; {#SPRITE({sprite}+$01)
+ $C477 DEFW $BAE0                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C479 DEFB $00,$00                         ; {#SPRITE({sprite})
+ $C47B DEFW $BAE0                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C47D DEFB $00,$00                         ; {#SPRITE({sprite}+$01)
+ $C47F DEFW $BAE0                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C481 DEFB $00,$00                         ; {#SPRITE({sprite})
+ $C483 DEFW $BAE0                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C485 DEFB $00,$00                         ; {#SPRITE({sprite}+$01)
+ $C487 DEFW $BAE0                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C489 DEFB $00,$00                         ; {#SPRITE({sprite})
+ $C48B DEFW $BAE0                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C48D DEFB $00,$00                         ; {#SPRITE({sprite}+$01)
+ $C48F DEFW $BAE0                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C491 DEFB $00,$00                         ; {#SPRITE({sprite})
+ $C493 DEFW $BAE0                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C495 DEFB $00,$00                         ; {#SPRITE({sprite}+$01)
+ $C497 DEFW $BAE0                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C499 DEFB $00,$00                         ; {#SPRITE({sprite})
+ $C49B DEFW $BAE0                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C49D DEFB $02,$02                         ; {#SPRITE({sprite}+$01)
+ $C49F DEFW $BAE0                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C4A1 DEFB $02,$02                         ; {#SPRITE({sprite})
+ $C4A3 DEFW $BAE4                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C4A5 DEFB $02,$02                         ; {#SPRITE({sprite}+$01)
+ $C4A7 DEFW $BAF8                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C4A9 DEFB $02,$02                         ; {#SPRITE({sprite})
+ $C4AB DEFW $BB1C                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C4AD DEFB $02,$02                         ; {#SPRITE({sprite}+$01)
+ $C4AF DEFW $BB40                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C4B1 DEFB $02,$02                         ; {#SPRITE({sprite})
+ $C4B3 DEFW $BB64                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C4B5 DEFB $02,$02                         ; {#SPRITE({sprite}+$01)
+ $C4B7 DEFW $BB88                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C4B9 DEFB $02,$02                         ; {#SPRITE({sprite})
+ $C4BB DEFW $BBAC                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C4BD DEFB $02,$02                         ; {#SPRITE({sprite}+$01)
+ $C4BF DEFW $BBD0                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C4C1 DEFB $02,$02                         ; {#SPRITE({sprite})
+ $C4C3 DEFW $BBF4                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C4C5 DEFB $02,$02                         ; {#SPRITE({sprite}+$01)
+ $C4C7 DEFW $BC18                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C4C9 DEFB $02,$02                         ; {#SPRITE({sprite})
+ $C4CB DEFW $BC3C                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C4CD DEFB $02,$02                         ; {#SPRITE({sprite}+$01)
+ $C4CF DEFW $BC60                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C4D1 DEFB $02,$02                         ; {#SPRITE({sprite})
+ $C4D3 DEFW $BC84                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C4D5 DEFB $02,$02                         ; {#SPRITE({sprite}+$01)
+ $C4D7 DEFW $BCA8                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C4D9 DEFB $02,$02                         ; {#SPRITE({sprite})
+ $C4DB DEFW $BCCC                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C4DD DEFB $02,$02                         ; {#SPRITE({sprite}+$01)
+ $C4DF DEFW $BCF0                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C4E1 DEFB $02,$02                         ; {#SPRITE({sprite})
+ $C4E3 DEFW $BD14                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C4E5 DEFB $02,$02                         ; {#SPRITE({sprite}+$01)
+ $C4E7 DEFW $BD38                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C4E9 DEFB $02,$02                         ; {#SPRITE({sprite})
+ $C4EB DEFW $BD5C                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C4ED DEFB $00,$00                         ; {#SPRITE({sprite}+$01)
+ $C4EF DEFW $BD80                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C4F1 DEFB $00,$00                         ; {#SPRITE({sprite})
+ $C4F3 DEFW $BD80                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C4F5 DEFB $00,$00                         ; {#SPRITE({sprite}+$01)
+ $C4F7 DEFW $BD80                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C4F9 DEFB $00,$00                         ; {#SPRITE({sprite})
+ $C4FB DEFW $BD80                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C4FD DEFB $00,$00                         ; {#SPRITE({sprite}+$01)
+ $C4FF DEFW $BD80                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C501 DEFB $00,$00                         ; {#SPRITE({sprite})
+ $C503 DEFW $BD80                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C505 DEFB $00,$00                         ; {#SPRITE({sprite}+$01)
+ $C507 DEFW $BD80                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C509 DEFB $00,$00                         ; {#SPRITE({sprite})
+ $C50B DEFW $BD80                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C50D DEFB $00,$00                         ; {#SPRITE({sprite}+$01)
+ $C50F DEFW $BD80                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C511 DEFB $00,$00                         ; {#SPRITE({sprite})
+ $C513 DEFW $BD80                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C515 DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C517 DEFW $BD80                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C519 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C51B DEFW $BD92                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C51D DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C51F DEFW $BDA4                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C521 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C523 DEFW $BDB6                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C525 DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C527 DEFW $BDC8                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C529 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C52B DEFW $BDDA                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C52D DEFB $02,$01                         ; {#SPRITE({sprite}+$01)
+ $C52F DEFW $BDEC                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C531 DEFB $02,$01                         ; {#SPRITE({sprite})
+ $C533 DEFW $BDFE                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C535 DEFB $05,$02                         ; {#SPRITE({sprite}+$01)
+ $C537 DEFW $BE10                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C539 DEFB $05,$02                         ; {#SPRITE({sprite})
+ $C53B DEFW $BE5A                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C53D DEFB $05,$02                         ; {#SPRITE({sprite}+$01)
+ $C53F DEFW $BEA4                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C541 DEFB $05,$02                         ; {#SPRITE({sprite})
+ $C543 DEFW $BEFE                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C545 DEFB $03,$03                         ; {#SPRITE({sprite}+$01)
+ $C547 DEFW $BF58                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C549 DEFB $03,$03                         ; {#SPRITE({sprite})
+ $C54B DEFW $BFA9                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C54D DEFB $03,$03                         ; {#SPRITE({sprite}+$01)
+ $C54F DEFW $BFFA                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C551 DEFB $03,$03                         ; {#SPRITE({sprite})
+ $C553 DEFW $C04B                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C555 DEFB $04,$03                         ; {#SPRITE({sprite}+$01)
+ $C557 DEFW $C09C                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C559 DEFB $04,$03                         ; {#SPRITE({sprite})
+ $C55B DEFW $C108                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C55D DEFB $00,$00                         ; {#SPRITE({sprite}+$01)
+ $C55F DEFW $C174                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C561 DEFB $00,$00                         ; {#SPRITE({sprite})
+ $C563 DEFW $C174                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C565 DEFB $00,$00                         ; {#SPRITE({sprite}+$01)
+ $C567 DEFW $C174                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C569 DEFB $00,$00                         ; {#SPRITE({sprite})
+ $C56B DEFW $C174                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C56D DEFB $01,$01                         ; {#SPRITE({sprite}+$01)
+ $C56F DEFW $C174                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C571 DEFB $01,$01                         ; {#SPRITE({sprite})
+ $C573 DEFW $C17D                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C575 DEFB $01,$01                         ; {#SPRITE({sprite}+$01)
+ $C577 DEFW $C186                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C579 DEFB $01,$01                         ; {#SPRITE({sprite})
+ $C57B DEFW $C18F                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C57D DEFB $00,$00                         ; {#SPRITE({sprite}+$01)
+ $C57F DEFW $C198                           ; }
+; #LET(sprite=$01+(#PC-$C1A1)/$04) Sprite ID: #N({sprite}).
+ $C581 DEFB $00,$00                         ; {#SPRITE({sprite})
+ $C583 DEFW $C198                           ; }
+; Mask ID: #N({sprite}+$01).
+ $C585 DEFB $01,$01                         ; {#SPRITE({sprite}+$01)
+ $C587 DEFW $C198                           ; }
  $C589 DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $C591 DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $C599 DEFB $00,$00,$00,$00,$00,$00,$00,$00
@@ -4579,13 +4705,156 @@ b$D31F DEFB $00,$00,$00,$00,$00,$00,$00,$00
  $D397 DEFB $00,$00,$00,$00,$00,$00,$00,$00
 
 ; Table: Buildings
+;
+; .
+;
+; .
+;
+; Building ID: #N($01+(#PC-$D39F)/$0E).
 @label=Table_Buildings
-g$D39F DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
- $D3AD DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
- $D3BB DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
- $D3C9 DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
- $D3D7 DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
- $D3E5 DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
+g$D39F DEFB $00      ; #N$00: State:
+                     ; #TABLE(default,centre,centre,centre)
+                     ; { =h Byte | =h State | =h Meaning }
+                     ; { #N$00 | N/A | Not in use }
+                     ; { #N$01 | Normal | I'm just a building }
+                     ; { #N$02 | Crumbling | The cracking animation }
+                     ; { #N$03 | Collapsing | When the building falls down }
+                     ; { #N$04 | Rubble | The one character block rubble animation }
+                     ; { #N$05 | Gone | No Building }
+                     ; TABLE#
+; X/Y co-ordinates are targeting the top-left corner of the building.
+ $D3A0 DEFB $00      ; #N$01 X co-ordinate.
+ $D3A1 DEFB $00      ; #N$02 Y co-ordinate.
+ $D3A2 DEFW $0000    ; #N$03 Pointer to building in buffer?
+ $D3A4 DEFB $00      ; #N$05
+ $D3A5 DEFB $00      ; #N$06 Width (in bytes).
+ $D3A6 DEFB $00      ; #N$07
+ $D3A7 DEFB $00      ; #N$08
+ $D3A8 DEFB $00      ; #N$09
+ $D3A9 DEFB $00      ; #N$0A Height countdown for crumbling animation.
+ $D3AA DEFB $00      ; #N$0B Height countdown for collapsing animation.
+ $D3AB DEFB $00      ; #N$0C Entire collapsing sequence countdown.
+ $D3AC DEFB $00      ; #N$0D Sound modifier; either #N$01 or #N$02.
+; Building ID: #N($01+(#PC-$D39F)/$0E).
+ $D3AD DEFB $00      ; #N$00: State:
+                     ; #TABLE(default,centre,centre,centre)
+                     ; { =h Byte | =h State | =h Meaning }
+                     ; { #N$00 | N/A | Not in use }
+                     ; { #N$01 | Normal | I'm just a building }
+                     ; { #N$02 | Crumbling | The cracking animation }
+                     ; { #N$03 | Collapsing | When the building falls down }
+                     ; { #N$04 | Rubble | The one character block rubble animation }
+                     ; { #N$05 | Gone | No Building }
+                     ; TABLE#
+; X/Y co-ordinates are targeting the top-left corner of the building.
+ $D3AE DEFB $00      ; #N$01 X co-ordinate.
+ $D3AF DEFB $00      ; #N$02 Y co-ordinate.
+ $D3B0 DEFW $0000    ; #N$03 Pointer to building in buffer?
+ $D3B2 DEFB $00      ; #N$05
+ $D3B3 DEFB $00      ; #N$06 Width (in bytes).
+ $D3B4 DEFB $00      ; #N$07
+ $D3B5 DEFB $00      ; #N$08
+ $D3B6 DEFB $00      ; #N$09
+ $D3B7 DEFB $00      ; #N$0A Height countdown for crumbling animation.
+ $D3B8 DEFB $00      ; #N$0B Height countdown for collapsing animation.
+ $D3B9 DEFB $00      ; #N$0C Entire collapsing sequence countdown.
+ $D3BA DEFB $00      ; #N$0D Sound modifier; either #N$01 or #N$02.
+; Building ID: #N($01+(#PC-$D39F)/$0E).
+ $D3BB DEFB $00      ; #N$00: State:
+                     ; #TABLE(default,centre,centre,centre)
+                     ; { =h Byte | =h State | =h Meaning }
+                     ; { #N$00 | N/A | Not in use }
+                     ; { #N$01 | Normal | I'm just a building }
+                     ; { #N$02 | Crumbling | The cracking animation }
+                     ; { #N$03 | Collapsing | When the building falls down }
+                     ; { #N$04 | Rubble | The one character block rubble animation }
+                     ; { #N$05 | Gone | No Building }
+                     ; TABLE#
+; X/Y co-ordinates are targeting the top-left corner of the building.
+ $D3BC DEFB $00      ; #N$01 X co-ordinate.
+ $D3BD DEFB $00      ; #N$02 Y co-ordinate.
+ $D3BE DEFW $0000    ; #N$03 Pointer to building in buffer?
+ $D3C0 DEFB $00      ; #N$05
+ $D3C1 DEFB $00      ; #N$06 Width (in bytes).
+ $D3C2 DEFB $00      ; #N$07
+ $D3C3 DEFB $00      ; #N$08
+ $D3C4 DEFB $00      ; #N$09
+ $D3C5 DEFB $00      ; #N$0A Height countdown for crumbling animation.
+ $D3C6 DEFB $00      ; #N$0B Height countdown for collapsing animation.
+ $D3C7 DEFB $00      ; #N$0C Entire collapsing sequence countdown.
+ $D3C8 DEFB $00      ; #N$0D Sound modifier; either #N$01 or #N$02.
+; Building ID: #N($01+(#PC-$D39F)/$0E).
+ $D3C9 DEFB $00      ; #N$00: State:
+                     ; #TABLE(default,centre,centre,centre)
+                     ; { =h Byte | =h State | =h Meaning }
+                     ; { #N$00 | N/A | Not in use }
+                     ; { #N$01 | Normal | I'm just a building }
+                     ; { #N$02 | Crumbling | The cracking animation }
+                     ; { #N$03 | Collapsing | When the building falls down }
+                     ; { #N$04 | Rubble | The one character block rubble animation }
+                     ; { #N$05 | Gone | No Building }
+                     ; TABLE#
+; X/Y co-ordinates are targeting the top-left corner of the building.
+ $D3CA DEFB $00      ; #N$01 X co-ordinate.
+ $D3CB DEFB $00      ; #N$02 Y co-ordinate.
+ $D3CC DEFW $0000    ; #N$03 Pointer to building in buffer?
+ $D3CE DEFB $00      ; #N$05
+ $D3CF DEFB $00      ; #N$06 Width (in bytes).
+ $D3D0 DEFB $00      ; #N$07
+ $D3D1 DEFB $00      ; #N$08
+ $D3D2 DEFB $00      ; #N$09
+ $D3D3 DEFB $00      ; #N$0A Height countdown for crumbling animation.
+ $D3D4 DEFB $00      ; #N$0B Height countdown for collapsing animation.
+ $D3D5 DEFB $00      ; #N$0C Entire collapsing sequence countdown.
+ $D3D6 DEFB $00      ; #N$0D Sound modifier; either #N$01 or #N$02.
+; Building ID: #N($01+(#PC-$D39F)/$0E).
+ $D3D7 DEFB $00      ; #N$00: State:
+                     ; #TABLE(default,centre,centre,centre)
+                     ; { =h Byte | =h State | =h Meaning }
+                     ; { #N$00 | N/A | Not in use }
+                     ; { #N$01 | Normal | I'm just a building }
+                     ; { #N$02 | Crumbling | The cracking animation }
+                     ; { #N$03 | Collapsing | When the building falls down }
+                     ; { #N$04 | Rubble | The one character block rubble animation }
+                     ; { #N$05 | Gone | No Building }
+                     ; TABLE#
+; X/Y co-ordinates are targeting the top-left corner of the building.
+ $D3D8 DEFB $00      ; #N$01 X co-ordinate.
+ $D3D9 DEFB $00      ; #N$02 Y co-ordinate.
+ $D3DA DEFW $0000    ; #N$03 Pointer to building in buffer?
+ $D3DC DEFB $00      ; #N$05
+ $D3DD DEFB $00      ; #N$06 Width (in bytes).
+ $D3DE DEFB $00      ; #N$07
+ $D3DF DEFB $00      ; #N$08
+ $D3E0 DEFB $00      ; #N$09
+ $D3E1 DEFB $00      ; #N$0A Height countdown for crumbling animation.
+ $D3E2 DEFB $00      ; #N$0B Height countdown for collapsing animation.
+ $D3E3 DEFB $00      ; #N$0C Entire collapsing sequence countdown.
+ $D3E4 DEFB $00      ; #N$0D Sound modifier; either #N$01 or #N$02.
+; Building ID: #N($01+(#PC-$D39F)/$0E).
+ $D3E5 DEFB $00      ; #N$00: State:
+                     ; #TABLE(default,centre,centre,centre)
+                     ; { =h Byte | =h State | =h Meaning }
+                     ; { #N$00 | N/A | Not in use }
+                     ; { #N$01 | Normal | I'm just a building }
+                     ; { #N$02 | Crumbling | The cracking animation }
+                     ; { #N$03 | Collapsing | When the building falls down }
+                     ; { #N$04 | Rubble | The one character block rubble animation }
+                     ; { #N$05 | Gone | No Building }
+                     ; TABLE#
+; X/Y co-ordinates are targeting the top-left corner of the building.
+ $D3E6 DEFB $00      ; #N$01 X co-ordinate.
+ $D3E7 DEFB $00      ; #N$02 Y co-ordinate.
+ $D3E8 DEFW $0000    ; #N$03 Pointer to building in buffer?
+ $D3EA DEFB $00      ; #N$05
+ $D3EB DEFB $00      ; #N$06 Width (in bytes).
+ $D3EC DEFB $00      ; #N$07
+ $D3ED DEFB $00      ; #N$08
+ $D3EE DEFB $00      ; #N$09
+ $D3EF DEFB $00      ; #N$0A Height countdown for crumbling animation.
+ $D3F0 DEFB $00      ; #N$0B Height countdown for collapsing animation.
+ $D3F1 DEFB $00      ; #N$0C Entire collapsing sequence countdown.
+ $D3F2 DEFB $00      ; #N$0D Sound modifier; either #N$01 or #N$02.
 
 ; Number Of Buildings Remaining
 ;
@@ -6591,23 +6860,36 @@ c$DCA1 LD A,($D3F4)  ; {Return if *#R$D3F4 is equal to *#R$D211.
  $DD36 LD (HL),A     ; Write #REGa to *#REGhl.
  $DD37 RET           ; Return.
 
-; Routine at DD38
+; Get Sprite ID?
 ;
 ; Used by the routines at #R$E576, #R$F352 and #R$F69F.
+;
+;   BC Screen co-ordinates
+; O:A Sprite ID
+; O:HL Buffer address of the sprite
+;
+; Creates an offset in #REGhl using #REGb.
+@label=GetSpriteID
 c$DD38 LD H,$00      ; #REGh=#N$00.
  $DD3A LD L,B        ; #REGl=#REGb.
- $DD3B LD D,H        ; #REGd=#REGh.
+; Creates an offset in #REGde using #REGc.
+ $DD3B LD D,H        ; #REGd=#N$00.
  $DD3C LD E,C        ; #REGe=#REGc.
+; Position Y * #N$20 to find the row + position X to find the column.
  $DD3D ADD HL,HL     ; {#REGhl*=#N$20+#REGde.
  $DD3E ADD HL,HL     ;
  $DD3F ADD HL,HL     ;
  $DD40 ADD HL,HL     ;
  $DD41 ADD HL,HL     ;
  $DD42 ADD HL,DE     ; }
- $DD43 LD A,H        ; #REGa=#REGh.
- $DD44 ADD A,$68     ; #REGa+=#N$68.
- $DD46 LD H,A        ; #REGh=#REGa.
+; The game buffer begins at #R$6800(#N$6800)-#N$6AFF which is #N$0300 screen
+; locations (#N$20x#N$18).
+ $DD43 LD A,H        ; {#REGh+=#N$68.
+ $DD44 ADD A,$68     ;
+ $DD46 LD H,A        ; }
+; Fetch the sprite ID from this location.
  $DD47 LD A,(HL)     ; #REGa=*#REGhl.
+; Never return with #N$FF instead use #N$00.
  $DD48 CP $FF        ; {Return if #REGa is not equal to #N$FF.
  $DD4A RET NZ        ; }
  $DD4B XOR A         ; #REGa=#N$00.
@@ -8348,10 +8630,10 @@ c$E576 LD B,$1A      ; #REGb=#N$1A (number of possible bullets).
  $E5F5 LD (HL),B     ; Write #REGb to *#REGhl.
  $E5F6 DEC HL        ; Decrease #REGhl by one.
  $E5F7 LD (HL),C     ; Write #REGc to *#REGhl.
- $E5F8 LD A,$F4      ; #REGa=sprite ID #N$F4.
+ $E5F8 LD A,$F4      ; #REGa=sprite ID #SPRITEID$F4.
                      ; #UDGTABLE(default,centre,centre)
                      ; { =h ID | =h Sprite }
-                     ; { #N$F4 | #SPRITE$F4 }
+                     ; { #SPRITEID$F4 | #SPRITE$F4 }
                      ; UDGTABLE#
  $E5FA CALL $D6C9    ; Call #R$D6C9.
  $E5FD POP HL        ; Restore #REGhl from the stack.
@@ -8371,10 +8653,10 @@ c$E576 LD B,$1A      ; #REGb=#N$1A (number of possible bullets).
  $E615 LD ($D3F8),A  ; Write #REGa to *#R$D3F8.
  $E618 POP HL        ; Restore #REGhl from the stack.
  $E619 JR $E626      ; Jump to #R$E626.
-*$E61B LD A,$73      ; #REGa=sprite ID #N$73.
+*$E61B LD A,$73      ; #REGa=sprite ID #SPRITEID$73.
                      ; #UDGTABLE(default,centre,centre)
                      ; { =h ID | =h Sprite }
-                     ; { #N$73 | #SPRITE$73 }
+                     ; { #SPRITEID$73 | #SPRITE$73 }
                      ; UDGTABLE#
  $E61D PUSH HL       ; Stash #REGhl on the stack.
  $E61E CALL $D6C9    ; Call #R$D6C9.
@@ -8842,7 +9124,7 @@ c$E99B CALL $E179    ; Call #R$E179.
                      ; "climbing".
  $E9B2 JP C,$E9EA    ; Jump to #R$E9EA if the carry flag is set.
 ; The monster is on the ground so select the normal body sprite.
- $E9B5 LD A,$05      ; #REGa=sprite id #N$05.
+ $E9B5 LD A,$05      ; #REGa=sprite ID #SPRITEID$05.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -8859,7 +9141,7 @@ c$E99B CALL $E179    ; Call #R$E179.
  $E9C8 LD C,A        ; #REGc=#REGa.
 ; Overwrite the head section, as the monster turns to face the camera to
 ; "speak".
- $E9C9 LD A,$0F      ; #REGa=sprite ID #N$0F.
+ $E9C9 LD A,$0F      ; #REGa=sprite ID #SPRITEID$0F.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -8892,7 +9174,7 @@ c$E99B CALL $E179    ; Call #R$E179.
  $E9E9 RET           ; Return.
 ; The monster is currently climbing so use the correct body sprite.
 @label=Climbing_Waiting
-*$E9EA LD A,$09      ; #REGa=sprite ID #N$09.
+*$E9EA LD A,$09      ; #REGa=sprite ID #SPRITEID$09.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -8903,7 +9185,7 @@ c$E99B CALL $E179    ; Call #R$E179.
  $E9F0 CALL $D9BB    ; Call #R$D9BB.
 ; Again, set the co-ordinates for where to draw.
  $E9F3 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
- $E9F7 LD A,$0D      ; #REGa=sprite ID #N$0D.
+ $E9F7 LD A,$0D      ; #REGa=sprite ID #SPRITEID$0D.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -8942,7 +9224,7 @@ c$EA18 LD A,($D24A)  ; {Decrease *#R$D24A by one.
 ; The animation is in-progress so select the "Oh No" head sprite.
 ; .
 ; The routine at #R$D9BB handles which monster to display.
- $EA21 LD A,$19      ; #REGa=sprite ID #N$19.
+ $EA21 LD A,$19      ; #REGa=sprite ID #SPRITEID$19.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -8956,7 +9238,7 @@ c$EA18 LD A,($D24A)  ; {Decrease *#R$D24A by one.
  $EA2E INC B         ; {Increment the Y position by two to draw the lower
  $EA2F INC B         ; section of the monsters body.}
 ; The routine at #R$D9BB handles which monster to display.
- $EA30 LD A,$23      ; #REGa=sprite ID #N$23.
+ $EA30 LD A,$23      ; #REGa=sprite ID #SPRITEID$23.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -8982,7 +9264,7 @@ c$EA18 LD A,($D24A)  ; {Decrease *#R$D24A by one.
 ; .
 ; The routine at #R$D9BB handles which monster to display.
 @label=Animate_Falling
-c$EA43 LD A,$19      ; #REGa=sprite ID #N$19.
+c$EA43 LD A,$19      ; #REGa=sprite ID #SPRITEID$19.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -8996,7 +9278,7 @@ c$EA43 LD A,$19      ; #REGa=sprite ID #N$19.
  $EA50 INC B         ; {Increment the Y position by two to draw the lower
  $EA51 INC B         ; section of the monsters body.}
 ; The routine at #R$D9BB handles which monster to display.
- $EA52 LD A,$23      ; #REGa=sprite ID #N$23.
+ $EA52 LD A,$23      ; #REGa=sprite ID #SPRITEID$23.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9084,7 +9366,7 @@ c$EA9C LD A,($D24B)  ; {Jump to #R$EAB4 if *#R$D24B is equal to #N$19.
 ; .
 ; The routine at #R$D9BB handles which monster to display.
 @label=Landed_OnAss
-*$EACE LD A,$07      ; #REGa=sprite ID #N$07.
+*$EACE LD A,$07      ; #REGa=sprite ID #SPRITEID$07.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9104,7 +9386,7 @@ c$EA9C LD A,($D24B)  ; {Jump to #R$EAB4 if *#R$D24B is equal to #N$19.
  $EAE3 ADD A,C       ; #REGa+=#REGc.
  $EAE4 LD C,A        ; #REGc=#REGa.
 ; The routine at #R$D9BB handles which monster to display.
- $EAE5 LD A,$1B      ; #REGa=sprite ID #N$1B.
+ $EAE5 LD A,$1B      ; #REGa=sprite ID #SPRITEID$1B.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9279,7 +9561,7 @@ c$EAF6 CALL $E179    ; Call #R$E179.
  $EC37 CP $11        ;
  $EC39 JP NC,$ECE0   ; }
 ; The routine at #R$D9BB handles which monster to display.
- $EC3C LD A,$09      ; #REGa=sprite ID #N$09.
+ $EC3C LD A,$09      ; #REGa=sprite ID #SPRITEID$09.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9295,7 +9577,7 @@ c$EAF6 CALL $E179    ; Call #R$E179.
  $EC4A ADD A,C       ; #REGa+=#REGc.
  $EC4B LD C,A        ; #REGc=#REGa.
 ; The routine at #R$D9BB handles which monster to display.
- $EC4C LD A,$17      ; #REGa=sprite ID #N$17.
+ $EC4C LD A,$17      ; #REGa=sprite ID #SPRITEID$17.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9342,7 +9624,7 @@ c$EC8A LD A,($D24E)  ; {Jump to #R$ECC0 if *#R$D24E is equal to #N$12.
  $EC9F CP $12        ; {Jump to #R$ECC0 if #REGa is equal to #N$12.
  $ECA1 JR Z,$ECC0    ; }
 ; The routine at #R$D9BB handles which monster to display.
-*$ECA3 LD A,$09      ; #REGa=sprite ID #N$09.
+*$ECA3 LD A,$09      ; #REGa=sprite ID #SPRITEID$09.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9360,7 +9642,7 @@ c$EC8A LD A,($D24E)  ; {Jump to #R$ECC0 if *#R$D24E is equal to #N$12.
  $ECB5 ADD A,C       ; #REGa+=#REGc.
  $ECB6 LD C,A        ; #REGc=#REGa.
 ; The routine at #R$D9BB handles which monster to display.
- $ECB7 LD A,$17      ; #REGa=sprite ID #N$17.
+ $ECB7 LD A,$17      ; #REGa=sprite ID #SPRITEID$17.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9385,24 +9667,27 @@ c$EC8A LD A,($D24E)  ; {Jump to #R$ECC0 if *#R$D24E is equal to #N$12.
  $ECDA LD ($D24F),A  ; }
  $ECDD JP $EF86      ; Jump to #R$EF86.
 
-; Routine at ECE0
+; Handler: Punching While Jumping
 ;
 ; Used by the routine at #R$EAF6.
+@label=Handler_JumpPunch
 c$ECE0 LD A,($D217)  ; #REGa=*#R$D217.
  $ECE3 AND %00001111 ; Keep only bits 0-3.
- $ECE5 LD B,A        ; #REGb=#REGa.
+ $ECE5 LD B,A        ; Store the result in #REGb.
  $ECE6 BIT 3,B       ; {Jump to #R$ECEC if bit 3 of #REGb is set.
  $ECE8 JR NZ,$ECEC   ; }
  $ECEA JR $ED0C      ; Jump to #R$ED0C.
-*$ECEC LD HL,$FE00   ; #REGhl=#R$FE00.
+; Handles when the monster is jumping and punches upwards.
+@label=Handler_JumpPunchUp
+*$ECEC LD HL,$FE00   ; #REGhl=#N$FE00.
  $ECEF LD DE,$FE03   ; #REGde=#N$FE03.
  $ECF2 CALL $F352    ; Call #R$F352.
 ; Set the co-ordinates for where to draw.
  $ECF5 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
- $ECF9 DEC B         ; {Decrease #REGb by two.
- $ECFA DEC B         ; }
+ $ECF9 DEC B         ; {Decrease the Y position by two to draw the upper
+ $ECFA DEC B         ; section of the monsters body.}
 ; The routine at #R$D9BB handles which monster to display.
- $ECFB LD A,$25      ; #REGa=sprite ID #N$25.
+ $ECFB LD A,$25      ; #REGa=sprite ID #SPRITEID$25.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9414,7 +9699,7 @@ c$ECE0 LD A,($D217)  ; #REGa=*#R$D217.
  $ED04 INC B         ; {Increment the Y position by two to draw the lower
  $ED05 INC B         ; section of the monsters body.}
 ; The routine at #R$D9BB handles which monster to display.
- $ED06 LD A,$23      ; #REGa=sprite ID #N$23.
+ $ED06 LD A,$23      ; #REGa=sprite ID #SPRITEID$23.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9422,6 +9707,8 @@ c$ECE0 LD A,($D217)  ; #REGa=*#R$D217.
                      ; UDGTABLE#
  $ED08 CALL $D9BB    ; Call #R$D9BB.
  $ED0B RET           ; Return.
+; Handles when the monster is jumping and punches left or right.
+@label=Handler_JumpPunchLeftRight
 *$ED0C LD HL,$0103   ; #REGhl=#N$0103.
  $ED0F LD DE,$0100   ; #REGde=#N$0100.
  $ED12 CALL $F352    ; Call #R$F352.
@@ -9430,7 +9717,7 @@ c$ECE0 LD A,($D217)  ; #REGa=*#R$D217.
  $ED19 INC B         ; {Increment the Y position by two to draw the lower
  $ED1A INC B         ; section of the monsters body.}
 ; The routine at #R$D9BB handles which monster to display.
- $ED1B LD A,$23      ; #REGa=sprite ID #N$23.
+ $ED1B LD A,$23      ; #REGa=sprite ID #SPRITEID$23.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9445,7 +9732,7 @@ c$ECE0 LD A,($D217)  ; #REGa=*#R$D217.
  $ED29 SUB H         ;
  $ED2A LD C,A        ; }
 ; The routine at #R$D9BB handles which monster to display.
- $ED2B LD A,$1D      ; #REGa=sprite ID #N$1D.
+ $ED2B LD A,$1D      ; #REGa=sprite ID #SPRITEID$1D.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9483,7 +9770,7 @@ c$ED31 LD A,($D217)  ; #REGa=*#R$D217.
  $ED66 DEC B         ; {Decrease #REGb by two.
  $ED67 DEC B         ; }
 ; The routine at #R$D9BB handles which monster to display.
- $ED68 LD A,$25      ; #REGa=sprite ID #N$25.
+ $ED68 LD A,$25      ; #REGa=sprite ID #SPRITEID$25.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9495,7 +9782,7 @@ c$ED31 LD A,($D217)  ; #REGa=*#R$D217.
  $ED71 INC B         ; {Increment #REGb by two.
  $ED72 INC B         ; }
 ; The routine at #R$D9BB handles which monster to display.
- $ED73 LD A,$21      ; #REGa=sprite ID #N$21.
+ $ED73 LD A,$21      ; #REGa=sprite ID #SPRITEID$21.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9513,7 +9800,7 @@ c$ED31 LD A,($D217)  ; #REGa=*#R$D217.
  $ED8B INC B         ; {Increment #REGb by two.
  $ED8C INC B         ; }
 ; The routine at #R$D9BB handles which monster to display.
- $ED8D LD A,$21      ; #REGa=sprite ID #N$21.
+ $ED8D LD A,$21      ; #REGa=sprite ID #SPRITEID$21.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9528,7 +9815,7 @@ c$ED31 LD A,($D217)  ; #REGa=*#R$D217.
  $ED9B INC A         ; Increment #REGa by one.
  $ED9C LD C,A        ; #REGc=#REGa.
 ; The routine at #R$D9BB handles which monster to display.
- $ED9D LD A,$1D      ; #REGa=sprite ID #N$1D.
+ $ED9D LD A,$1D      ; #REGa=sprite ID #SPRITEID$1D.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9549,7 +9836,7 @@ c$ED31 LD A,($D217)  ; #REGa=*#R$D217.
  $EDBA INC A         ; Increment #REGa by one.
  $EDBB LD C,A        ; #REGc=#REGa.
 ; The routine at #R$D9BB handles which monster to display.
- $EDBC LD A,$29      ; #REGa=sprite ID #N$29.
+ $EDBC LD A,$29      ; #REGa=sprite ID #SPRITEID$29.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9588,7 +9875,7 @@ c$EDC2 LD A,($D217)  ; #REGa=*#R$D217.
  $EDF8 LD E,$00      ; #REGe=#N$00.
  $EDFA CALL $EF38    ; Call #R$EF38.
 ; The routine at #R$D9BB handles which monster to display.
- $EDFD LD A,$25      ; #REGa=sprite ID #N$25.
+ $EDFD LD A,$25      ; #REGa=sprite ID #SPRITEID$25.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9601,7 +9888,7 @@ c$EDC2 LD A,($D217)  ; #REGa=*#R$D217.
  $EE07 LD E,$00      ; #REGe=#N$00.
  $EE09 CALL $EF38    ; Call #R$EF38.
 ; The routine at #R$D9BB handles which monster to display.
- $EE0C LD A,$1F      ; #REGa=sprite ID #N$1F.
+ $EE0C LD A,$1F      ; #REGa=sprite ID #SPRITEID$1F.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9623,7 +9910,7 @@ c$EDC2 LD A,($D217)  ; #REGa=*#R$D217.
  $EE2B ADD A,C       ; #REGa+=#REGc.
  $EE2C LD C,A        ; #REGc=#REGa.
 ; The routine at #R$D9BB handles which monster to display.
- $EE2D LD A,$1F      ; #REGa=sprite ID #N$1F.
+ $EE2D LD A,$1F      ; #REGa=sprite ID #SPRITEID$1F.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9642,7 +9929,7 @@ c$EDC2 LD A,($D217)  ; #REGa=*#R$D217.
  $EE42 ADD A,C       ; #REGa+=#REGc.
  $EE43 LD C,A        ; #REGc=#REGa.
 ; The routine at #R$D9BB handles which monster to display.
- $EE44 LD A,$1D      ; #REGa=sprite ID #N$1D.
+ $EE44 LD A,$1D      ; #REGa=sprite ID #SPRITEID$1D.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9667,7 +9954,7 @@ c$EDC2 LD A,($D217)  ; #REGa=*#R$D217.
  $EE68 ADD A,C       ; #REGa+=#REGc.
  $EE69 LD C,A        ; #REGc=#REGa.
 ; The routine at #R$D9BB handles which monster to display.
- $EE6A LD A,$0B      ; #REGa=sprite ID #N$0B.
+ $EE6A LD A,$0B      ; #REGa=sprite ID #SPRITEID$0B.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9692,7 +9979,7 @@ c$EE70 LD A,($D24B)  ; {Decrease *#R$D24B by one.
 ; Select the "climbing" monster sprite bottom half.
 ; .
 ; The routine at #R$D9BB handles which monster to display.
- $EE79 LD A,$21      ; #REGa=sprite ID #N$21.
+ $EE79 LD A,$21      ; #REGa=sprite ID #SPRITEID$21.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9708,7 +9995,7 @@ c$EE70 LD A,($D24B)  ; {Decrease *#R$D24B by one.
 ; Select the monster eating head sprite.
 ; .
 ; The routine at #R$D9BB handles which monster to display.
- $EE88 LD A,$03      ; #REGa=sprite ID #N$03.
+ $EE88 LD A,$03      ; #REGa=sprite ID #SPRITEID$03.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9741,7 +10028,7 @@ c$EE9B LD A,($D24B)  ; #REGa=*#R$D24B.
 ; Select the "climbing" monster sprite.
 ; .
 ; The routine at #R$D9BB handles which monster to display.
- $EEA6 LD A,$09      ; #REGa=sprite ID #N$09.
+ $EEA6 LD A,$09      ; #REGa=sprite ID #SPRITEID$09.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9755,7 +10042,7 @@ c$EE9B LD A,($D24B)  ; #REGa=*#R$D24B.
 ; Select the monster head sprite.
 ; .
 ; The routine at #R$D9BB handles which monster to display.
- $EEB3 LD A,$0D      ; #REGa=sprite ID #N$0D.
+ $EEB3 LD A,$0D      ; #REGa=sprite ID #SPRITEID$0D.
                      ; #UDGTABLE(default,centre,centre,centre,centre,centre,centre)
                      ; { =h,c2 George | =h,c2 Lizzy | =h,c2 Ralph }
                      ; { =h ID | =h Sprite | =h ID | =h Sprite | =h ID | =h Sprite }
@@ -9800,10 +10087,10 @@ c$EE9B LD A,($D24B)  ; #REGa=*#R$D24B.
 c$EED6 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $EEDA INC B         ; Increment #REGb by one.
  $EEDB INC C         ; Increment #REGc by one.
- $EEDC LD A,$77      ; #REGa=explosion sprite (#N$77).
+ $EEDC LD A,$77      ; #REGa=explosion sprite (#SPRITEID$77).
                      ; #UDGTABLE(default,centre,centre)
                      ; { =h ID | =h Sprite }
-                     ; { #N$77 | #SPRITE$77 }
+                     ; { #SPRITEID$77 | #SPRITE$77 }
                      ; UDGTABLE#
  $EEDE CALL $D6C9    ; Call #R$D6C9.
  $EEE1 LD A,$22      ; {Write #R$EFDC(#N$22) to *#R$D244.
@@ -9826,10 +10113,10 @@ c$EEEB LD A,($D24E)  ; {Jump to #R$EEFC if *#R$D24E is not equal to #N$14.
  $EEFD LD ($D24E),A  ; Write #REGa to *#R$D24E.
 ; Set the co-ordinates for where to draw.
  $EF00 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
- $EF04 LD A,$35      ; #REGa=sprite ID #N$35.
+ $EF04 LD A,$35      ; #REGa=sprite ID #SPRITEID$35.
                      ; #UDGTABLE(default,centre,centre)
                      ; { =h ID | =h Sprite }
-                     ; { #N$35 | #SPRITE$35 }
+                     ; { #SPRITEID$35 | #SPRITE$35 }
                      ; UDGTABLE#
  $EF06 CALL $D6C9    ; Call #R$D6C9.
  $EF09 RET           ; Return.
@@ -9848,10 +10135,10 @@ c$EF0A LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $EF13 XOR %00000001 ; Flip bit 0.
  $EF15 LD ($D249),A  ; Write #REGa to *#R$D249.
  $EF18 JR NZ,$EF20   ; Jump to #R$EF20 if #REGa is not zero.
- $EF1A LD A,$37      ; #REGa=sprite ID #N$37.
+ $EF1A LD A,$37      ; #REGa=sprite ID #SPRITEID$37.
                      ; #UDGTABLE(default,centre,centre)
                      ; { =h ID | =h Sprite }
-                     ; { #N$37 | #SPRITE$37 }
+                     ; { #SPRITEID$37 | #SPRITE$37 }
                      ; UDGTABLE#
  $EF1C CALL $D6C9    ; Call #R$D6C9.
  $EF1F RET           ; Return.
@@ -9861,10 +10148,10 @@ c$EF0A LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $EF27 CP $28        ; {Jump to #R$EF32 if #REGa is equal to #N$28.
  $EF29 JR Z,$EF32    ; }
  $EF2B INC C         ; Increment #REGc by one.
- $EF2C LD A,$35      ; #REGa=sprite ID #N$35.
+ $EF2C LD A,$35      ; #REGa=sprite ID #SPRITEID$35.
                      ; #UDGTABLE(default,centre,centre)
                      ; { =h ID | =h Sprite }
-                     ; { #N$35 | #SPRITE$35 }
+                     ; { #SPRITEID$35 | #SPRITE$35 }
                      ; UDGTABLE#
  $EF2E CALL $D6C9    ; Call #R$D6C9.
  $EF31 RET           ; Return.
@@ -9872,19 +10159,26 @@ c$EF0A LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $EF34 LD ($D244),A  ; }
  $EF37 RET           ; Return.
 
-; Routine at EF38
+; Calculate Monster Position?
 ;
 ; Used by the routines at #R$EDC2 and #R$F352.
 ;
-; .
+;   DE 16-bit number to add to #REGhl if facing left
+;   HL 16-bit number to add to #REGhl if facing right
+; O:BC The new monster co-ordinates
 ;
+; TODO; this is likely used for punching collision detection.
+; .
 ; Set the co-ordinates for where to draw.
+@label=Monster_CalculatePosition
 c$EF38 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
+; Which number is added is determined by which direction the monster is facing.
  $EF3C LD A,($D247)  ; #REGa=*#R$D247 (will be #N$00 or #N$01).
 ; Moves the orientation flag into the carry flag.
  $EF3F RRCA          ; Rotate #REGa right one position, setting the carry flag
                      ; if bit 0 was set.
  $EF40 JR C,$EF49    ; Jump to #R$EF49 if the carry flag is set.
+; If the monster is facing right; add #REGhl to #REGbc.
  $EF42 LD A,B        ; {#REGb+=#REGh.
  $EF43 ADD A,H       ;
  $EF44 LD B,A        ; }
@@ -9892,6 +10186,8 @@ c$EF38 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $EF46 ADD A,L       ;
  $EF47 LD C,A        ; }
  $EF48 RET           ; Return.
+; If the monster is facing left; add #REGde to #REGbc.
+@label=Monster_CalculatePosition_FacingLeft
 *$EF49 LD A,B        ; {#REGb+=#REGd.
  $EF4A ADD A,D       ;
  $EF4B LD B,A        ; }
@@ -10005,7 +10301,7 @@ c$EFE0 XOR A           ; #REGa=#N$00 (building data offset).
  $EFEA POP IX          ; }
  $EFEC LD A,(IX+$00)   ; #REGa=building state (*#REGix+#N$00).
  $EFEF CP $02          ; {Jump to #R$F005 if #REGa is equal to #N$02
- $EFF1 JR Z,$F005      ; (crashing).}
+ $EFF1 JR Z,$F005      ; (crumbling).}
  $EFF3 CP $03          ; {Jump to #R$F05A if #REGa is equal to #N$03.
  $EFF5 JP Z,$F05A      ; }
  $EFF8 CP $04          ; {Jump to #R$F0AB if #REGa is equal to #N$04
@@ -10018,15 +10314,19 @@ c$EFE0 XOR A           ; #REGa=#N$00 (building data offset).
  $F000 CP $54          ; {Jump to #R$EFE1 until #REGa is equal to #N$54.
  $F002 JR NZ,$EFE1     ; }
  $F004 RET             ; Return.
+; Handle the building crumbling.
+@label=Handler_BuildingCrumbling
 *$F005 DEC (IX+$0D)    ; Decrease *#REGix+#N$0D by one.
  $F008 JP NZ,$F052     ; Jump to #R$F052 until *#REGix+#N$0D is zero.
  $F00B LD (IX+$0D),$02 ; Write #N$02 to *#REGix+#N$0D.
- $F00F DEC (IX+$0A)    ; Decrease *#REGix+#N$0A by one.
- $F012 JR NZ,$F03C     ; Jump to #R$F03C until *#REGix+#N$0A is zero.
- $F014 LD (IX+$00),$03 ; Write #N$03 to building state (*#REGix+#N$00).
+ $F00F DEC (IX+$0A)    ; Decrease "crumbling countdown" (*#REGix+#N$0A) by one.
+ $F012 JR NZ,$F03C     ; Jump to #R$F03C until "crumbling countdown"
+                       ; (*#REGix+#N$0A) is zero.
+ $F014 LD (IX+$00),$03 ; Write "collapsing" (#N$03) to building state
+                       ; (*#REGix+#N$00).
  $F018 LD A,(IX+$05)   ; #REGa=*#REGix+#N$05.
  $F01B INC A           ; Increment #REGa by one.
- $F01C LD (IX+$0B),A   ; Write #REGa to *#REGix+#N$0B.
+ $F01C LD (IX+$0B),A   ; Write #REGa to "collapsing countdown" (*#REGix+#N$0B).
  $F01F LD C,$07        ; #REGc=#N$07.
  $F021 LD A,(IX+$07)   ; #REGa=*#REGix+#N$07.
  $F024 RRCA            ; Rotate #REGa right one position, setting the carry
@@ -10034,7 +10334,7 @@ c$EFE0 XOR A           ; #REGa=#N$00 (building data offset).
  $F025 JR NC,$F029     ; Jump to #R$F029 if the carry flag is not set.
  $F027 LD C,$38        ; #REGc=#N$38.
 *$F029 LD E,(IX+$01)   ; #REGe=*#REGix+#N$01.
- $F02C LD B,(IX+$06)   ; #REGb=*#REGix+#N$06.
+ $F02C LD B,(IX+$06)   ; #REGb=Building width (*#REGix+#N$06).
  $F02F LD HL,$D31F     ; {#REGhl=#R$D31F+#REGde.
  $F032 ADD HL,DE       ; }
 *$F033 LD A,(HL)       ; #REGa=*#REGhl.
@@ -10044,10 +10344,11 @@ c$EFE0 XOR A           ; #REGa=#N$00 (building data offset).
  $F037 DJNZ $F033      ; Decrease counter by one and loop back to #R$F033 until
                        ; counter is zero.
  $F039 JP $F0AB        ; Jump to #R$F0AB.
-*$F03C LD L,(IX+$0A)   ; #REGl=*#REGix+#N$0A.
+@label=Animate_Crumbling
+*$F03C LD L,(IX+$0A)   ; #REGl=Crumbling countdown (*#REGix+#N$0A).
  $F03F CALL $F0EF      ; Call #R$F0EF.
  $F042 LD E,L          ; #REGe=#REGl.
- $F043 LD B,(IX+$06)   ; #REGb=*#REGix+#N$06.
+ $F043 LD B,(IX+$06)   ; #REGb=Building width (*#REGix+#N$06).
  $F046 LD C,$FF        ; #REGc=#N$FF.
 *$F048 LD A,(HL)       ; #REGa=*#REGhl.
  $F049 OR %10000000    ; Set bit 7.
@@ -10066,7 +10367,7 @@ c$EFE0 XOR A           ; #REGa=#N$00 (building data offset).
 *$F052 LD A,$09        ; {Write melody ID #N$09 to *#R$FF8D.
  $F054 LD ($FF8D),A    ; }
  $F057 JP $F0AB        ; Jump to #R$F0AB.
-@label=Sounds_BuildingCollapsing
+@label=Handler_BuildingCollapsing
 *$F05A DEC (IX+$0D)    ; Decrease *#REGix+#N$0D by one.
  $F05D JR NZ,$F0AB     ; Jump to #R$F0AB until *#REGix+#N$0D is zero.
 ; Plays a single building "collapsing" sound, the handler looping will keep it
@@ -10076,16 +10377,19 @@ c$EFE0 XOR A           ; #REGa=#N$00 (building data offset).
  $F05F LD A,$08        ; {Write melody ID #N$08 to *#R$FF8D.
  $F061 LD ($FF8D),A    ; }
  $F064 LD (IX+$0D),$02 ; Write #N$02 to *#REGix+#N$0D.
- $F068 DEC (IX+$0B)    ; Decrease *#REGix+#N$0B by one.
- $F06B JR NZ,$F073     ; Jump to #R$F073 until *#REGix+#N$0B is zero.
- $F06D LD (IX+$00),$04 ; Write #N$04 to building state (*#REGix+#N$00).
+ $F068 DEC (IX+$0B)    ; Decrease "collapsing countdown" (*#REGix+#N$0B) by
+                       ; one.
+ $F06B JR NZ,$F073     ; Jump to #R$F073 until "collapsing countdown"
+                       ; (*#REGix+#N$0B) is zero.
+ $F06D LD (IX+$00),$04 ; Write "rubble" (#N$04) to building state
+                       ; (*#REGix+#N$00).
  $F071 JR $F0AB        ; Jump to #R$F0AB.
 *$F073 LD L,(IX+$05)   ; #REGl=*#REGix+#N$05.
  $F076 DEC L           ; Decrease #REGl by one.
  $F077 CALL $F0EF      ; Call #R$F0EF.
  $F07A ADD A,$20       ; #REGa+=#N$20.
  $F07C LD E,A          ; #REGe=#REGa.
- $F07D LD B,(IX+$0B)   ; #REGb=*#REGix+#N$0B.
+ $F07D LD B,(IX+$0B)   ; #REGb=Collapsing countdown (*#REGix+#N$0B).
 *$F080 PUSH BC         ; {Stash #REGbc, #REGhl and #REGde (twice) on the stack.
  $F081 PUSH HL         ;
  $F082 PUSH DE         ;
@@ -10094,7 +10398,7 @@ c$EFE0 XOR A           ; #REGa=#N$00 (building data offset).
  $F085 LD E,L          ; #REGe=#REGl.
  $F086 LD BC,$0020     ; {#REGhl+=#N($0020,$04,$04).
  $F089 ADD HL,BC       ; }
- $F08A LD B,(IX+$06)   ; #REGb=*#REGix+#N$06.
+ $F08A LD B,(IX+$06)   ; #REGb=Building width (*#REGix+#N$06).
 *$F08D LD A,(DE)       ; #REGa=*#REGde.
  $F08E LD (HL),A       ; Write #REGa to *#REGhl.
  $F08F INC E           ; Increment #REGe by one.
@@ -10102,7 +10406,7 @@ c$EFE0 XOR A           ; #REGa=#N$00 (building data offset).
  $F091 DJNZ $F08D      ; Decrease counter by one and loop back to #R$F08D until
                        ; counter is zero.
  $F093 POP HL          ; Restore #REGhl from the stack.
- $F094 LD B,(IX+$06)   ; #REGb=*#REGix+#N$06.
+ $F094 LD B,(IX+$06)   ; #REGb=Building width (*#REGix+#N$06).
  $F097 LD C,$FF        ; {Write #N$FF to *#REGhl.
 *$F099 LD (HL),C       ; }
  $F09A INC HL          ; Increment #REGhl by one.
@@ -10120,11 +10424,15 @@ c$EFE0 XOR A           ; #REGa=#N$00 (building data offset).
  $F0A9 DJNZ $F080      ; Decrease counter by one and loop back to #R$F080 until
                        ; counter is zero.
 ; Self-modifying code.
+@label=Handler_BuildingRubble
 *$F0AB XOR A           ; {Write #N$00 to *#R$F0DD.
  $F0AC LD ($F0DD),A    ; }
  $F0AF DEC (IX+$0C)    ; Decrease *#REGix+#N$0C by one.
  $F0B2 JR NZ,$F0C4     ; Jump to #R$F0C4 until *#REGix+#N$0C is zero.
- $F0B4 LD (IX+$00),$05 ; Write #N$05 to building state (*#REGix+#N$00).
+; The whole animation is finished so set the state to "gone" and decrease the
+; active buildings count.
+ $F0B4 LD (IX+$00),$05 ; Write "gone" (#N$05) to building state
+                       ; (*#REGix+#N$00).
  $F0B8 LD A,($D3F3)    ; {Decrease *#R$D3F3 by one.
  $F0BB DEC A           ;
  $F0BC LD ($D3F3),A    ; }
@@ -10137,7 +10445,7 @@ c$EFE0 XOR A           ; #REGa=#N$00 (building data offset).
  $F0CB ADD A,$20       ; #REGa+=#N$20.
  $F0CD LD L,A          ; #REGl=#REGa.
  $F0CE LD E,A          ; #REGe=#REGa.
- $F0CF LD B,(IX+$06)   ; #REGb=*#REGix+#N$06.
+ $F0CF LD B,(IX+$06)   ; #REGb=Building width (*#REGix+#N$06).
  $F0D2 EX DE,HL        ; Exchange the #REGde register with the shadow #REGhl
                        ; register.
  $F0D3 LD A,(IX+$0C)   ; #REGa=*#REGix+#N$0C.
@@ -10148,7 +10456,8 @@ c$EFE0 XOR A           ; #REGa=#N$00 (building data offset).
  $F0DB ADD A,$44       ; #REGa+=#N$44.
 ; #HTML(The value here is self-modified at:
 ; #TABLE(default,centre,centre,centre) { =h Location | =h Byte Set | =h Code }
-; { #R$F0AB | #N$00 | <code>NOP</code> } { #R$F0BF | #N$AF | <code>XOR #REGa</code> }
+; { #R$F0AB(#N$F0AB) | #N$00 | <code>NOP</code> }
+; { #R$F0BF | #N$AF | <code>XOR #REGa</code> }
 ; TABLE#)
 *$F0DD NOP             ; No operation OR #REGa=#N$00 depending on the above.
  $F0DE LD (HL),$FF     ; Write #N$FF to *#REGhl.
@@ -10173,15 +10482,15 @@ c$EFE0 XOR A           ; #REGa=#N$00 (building data offset).
  $F0FA LD D,(IX+$04)   ; #REGd=*#REGix+#N$04.
  $F0FD ADD HL,DE       ; #REGhl+=#REGde.
  $F0FE LD A,(IX+$07)   ; #REGa=*#REGix+#N$07.
- $F101 LD B,A          ; #REGb=#REGa.
- $F102 ADD A,A         ; #REGa+=#REGa.
- $F103 ADD A,B         ; #REGa+=#REGb.
- $F104 ADD A,$5F       ; #REGa+=#N$5F.
- $F106 LD B,A          ; #REGb=#REGa.
- $F107 LD A,H          ; #REGa=#REGh.
- $F108 SUB B           ; #REGa-=#REGb.
- $F109 ADD A,$68       ; #REGa+=#N$68.
- $F10B LD D,A          ; #REGd=#REGa.
+ $F101 LD B,A          ; {#REGb=#N$5F+(#REGb*#N$03).
+ $F102 ADD A,A         ;
+ $F103 ADD A,B         ;
+ $F104 ADD A,$5F       ;
+ $F106 LD B,A          ; }
+ $F107 LD A,H          ; {#REGd=#N$68+#REGh-#REGb
+ $F108 SUB B           ;
+ $F109 ADD A,$68       ;
+ $F10B LD D,A          ; }
  $F10C LD A,L          ; #REGa=#REGl.
  $F10D RET             ; Return.
 
@@ -11153,10 +11462,10 @@ c$F69F LD B,$06      ; #REGb=#N$06 (number of possible projectiles).
  $F6FC INC HL        ;
  $F6FD LD (HL),C     ; }
  $F6FE PUSH HL       ; Stash #REGhl on the stack.
- $F6FF LD A,$F6      ; #REGa=sprite ID #N$F6.
+ $F6FF LD A,$F6      ; #REGa=sprite ID #SPRITEID$F6.
                      ; #UDGTABLE(default,centre,centre)
                      ; { =h ID | =h Sprite }
-                     ; { #N$F6 | #SPRITE$F6 }
+                     ; { #SPRITEID$F6 | #SPRITE$F6 }
                      ; UDGTABLE#
  $F701 CALL $D6C9    ; Call #R$D6C9.
  $F704 POP HL        ; Restore #REGhl from the stack.
@@ -11190,10 +11499,10 @@ c$F69F LD B,$06      ; #REGb=#N$06 (number of possible projectiles).
 @label=Audio_Projectiles_Hit
 c$F719 LD A,$05      ; {Write melody ID #N$05 to *#R$FF8D.
  $F71B LD ($FF8D),A  ; }
- $F71E LD A,$75      ; #REGa=sprite ID #N$75.
+ $F71E LD A,$75      ; #REGa=sprite ID #SPRITEID$75.
                      ; #UDGTABLE(default,centre,centre)
                      ; { =h ID | =h Sprite }
-                     ; { #N$75 | #SPRITE$75 }
+                     ; { #SPRITEID$75 | #SPRITE$75 }
                      ; UDGTABLE#
  $F720 CALL $D6C9    ; Call #R$D6C9.
  $F723 POP HL        ; Restore #REGhl from the stack.
@@ -11380,10 +11689,10 @@ c$F795 LD B,$03        ; #REGb=#N$03 (total number of monsters/ players).
  $F81A LD B,A          ; #REGb=#REGa.
  $F81B LD A,($D403)    ; {#REGc=*#R$D403.
  $F81E LD C,A          ; }
- $F81F LD A,$77        ; #REGa=explosion sprite (#N$77).
+ $F81F LD A,$77        ; #REGa=explosion sprite (#SPRITEID$77).
                        ; #UDGTABLE(default,centre,centre)
                        ; { =h ID | =h Sprite }
-                       ; { #N$77 | #SPRITE$77 }
+                       ; { #SPRITEID$77 | #SPRITE$77 }
                        ; UDGTABLE#
  $F821 CALL $D6C9      ; Call #R$D6C9.
 ; #AUDIO(punched.wav)(#INCLUDE(Punched))
@@ -11461,10 +11770,10 @@ c$F795 LD B,$03        ; #REGb=#N$03 (total number of monsters/ players).
  $F8AA LD C,(HL)       ; #REGc=*#REGhl.
 ; Displays an explosion sprite.
 @label=Handler_Helicopter_Explosion
-*$F8AB LD A,$77        ; #REGa=explosion sprite (#N$77).
+*$F8AB LD A,$77        ; #REGa=explosion sprite (#SPRITEID$77).
                        ; #UDGTABLE(default,centre,centre)
                        ; { =h ID | =h Sprite }
-                       ; { #N$77 | #SPRITE$77 }
+                       ; { #SPRITEID$77 | #SPRITE$77 }
                        ; UDGTABLE#
  $F8AD CALL $D6C9      ; Call #R$D6C9.
 ; #AUDIO(punched.wav)(#INCLUDE(Punched))
@@ -12220,10 +12529,10 @@ c$FC1A LD A,($D3FE)  ; {Return if *#R$D3FE is #N$00.
  $FC26 LD C,$16      ; Update the X position to #N$16.
 ; Draw the carpet to the buffer.
 @label=DrawCarpet
-*$FC28 LD A,$7F      ; #REGa=sprite ID #N$7F.
+*$FC28 LD A,$7F      ; #REGa=sprite ID #SPRITEID$7F.
                      ; #UDGTABLE(default,centre,centre)
                      ; { =h ID | =h Sprite }
-                     ; { #N$7F | #SPRITE$7F }
+                     ; { #SPRITEID$7F | #SPRITE$7F }
                      ; UDGTABLE#
  $FC2A PUSH BC       ; Stash co-ordinates on the stack.
  $FC2B CALL $D6C9    ; Call #R$D6C9.
@@ -12231,7 +12540,7 @@ c$FC1A LD A,($D3FE)  ; {Return if *#R$D3FE is #N$00.
  $FC2F LD A,C        ; {Add #N$04 to the X position to draw the next section of
  $FC30 ADD A,$04     ; the carpet.
  $FC32 LD C,A        ; }
- $FC33 LD A,$7F      ; #REGa=sprite ID #N$7F.
+ $FC33 LD A,$7F      ; #REGa=sprite ID #SPRITEID$7F.
                      ; #UDGTABLE(default,centre,centre)
                      ; { =h ID | =h Sprite }
                      ; { #N$7F | #SPRITE$7F,$01 }
@@ -12306,9 +12615,9 @@ c$FC39 LD A,($D401)  ; {Return if vehicle spawning is set to be off (*#R$D401
  $FC8C ADD A,A       ; {#REGa=#N$3B+(#REGa*#N$02).
  $FC8D ADD A,$3B     ; #UDGTABLE(default,centre,centre,centre)
                      ; { =h Vehicle Type | =h Vehicle | =h Sprite ID | =h Sprite }
-                     ; { #N$00 | Tank | #N$3B | #SPRITE$3B }
-                     ; { #N$01 | Car | #N$3D | #SPRITE$3D }
-                     ; { #N$02 | Police car | #N$3F | #SPRITE$3F }
+                     ; { #N$00 | Tank | #SPRITEID$3B | #SPRITE$3B }
+                     ; { #N$01 | Car | #SPRITEID$3D | #SPRITE$3D }
+                     ; { #N$02 | Police car | #SPRITEID$3F | #SPRITE$3F }
                      ; UDGTABLE#}
  $FC8F CALL $D6C9    ; Call #R$D6C9.
  $FC92 XOR A         ; {Write #N$00 to *#R$D247.
@@ -12390,10 +12699,10 @@ c$FCB6 LD A,($D405)  ; {Return if train spawning is set to be off (*#R$D405 is
 @label=DrawTrain
 *$FCFE LD ($D406),A  ; Write #REGa to *#R$D406.
  $FD01 LD C,A        ; #REGc=train X position.
- $FD02 LD A,$79      ; #REGa=sprite ID #N$79.
+ $FD02 LD A,$79      ; #REGa=sprite ID #SPRITEID$79.
                      ; #UDGTABLE(default,centre,centre)
                      ; { =h ID | =h Sprite }
-                     ; { #N$79 | #SPRITE$79 }
+                     ; { #SPRITEID$79 | #SPRITE$79 }
                      ; UDGTABLE#
  $FD04 PUSH BC       ; Stash the train position on the stack.
  $FD05 CALL $D6C9    ; Call #R$D6C9.
@@ -12404,10 +12713,10 @@ c$FCB6 LD A,($D405)  ; {Return if train spawning is set to be off (*#R$D405 is
 *$FD0B PUSH AF       ; Stash the counter on the stack.
  $FD0C INC C         ; {Increment the X position by two to draw the next
  $FD0D INC C         ; section of the train.}
- $FD0E LD A,$7B      ; #REGa=sprite ID #N$7B.
+ $FD0E LD A,$7B      ; #REGa=sprite ID #SPRITEID$7B.
                      ; #UDGTABLE(default,centre,centre)
                      ; { =h ID | =h Sprite }
-                     ; { #N$7B | #SPRITE$7B }
+                     ; { #SPRITEID$7B | #SPRITE$7B }
                      ; UDGTABLE#
  $FD10 PUSH BC       ; Stash the train position on the stack.
  $FD11 CALL $D6C9    ; Call #R$D6C9.
@@ -12419,7 +12728,7 @@ c$FCB6 LD A,($D405)  ; {Return if train spawning is set to be off (*#R$D405 is
 ; Now draw the rear section of the train.
  $FD19 INC C         ; {Increment the X position by two to draw the next
  $FD1A INC C         ; section of the train.}
- $FD1B LD A,$79      ; #REGa=sprite ID #N$79.
+ $FD1B LD A,$79      ; #REGa=sprite ID #SPRITEID$79.
                      ; #UDGTABLE(default,centre,centre)
                      ; { =h ID | =h Sprite }
                      ; { #N$79 | #SPRITE$79,$01 }

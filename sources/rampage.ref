@@ -97,3 +97,6 @@ Sound=sound/sound.html
   #SIM(start=$DEB0,stop=$DEB6)
   #SCR$02,$15,$04,$05,$06(sprite-$id-#IF($facing==$00)(left,right))
   #POPS)
+
+#DEF(#SPRITEID(id)
+  #R($C1A1+($id-$01)*$04)(#N$id))
