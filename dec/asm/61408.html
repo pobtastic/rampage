@@ -108,34 +108,34 @@ This isn't so much a counter; it's more an address offset to select each buildin
 <td class="asm-label"></td>
 <td class="address-1"><span id="61423"></span>61423</td>
 <td class="instruction">CP 2</td>
-<td class="comment-1" rowspan="2">Jump to <a href="61408.html#61445">Handler_Buildings_0</a> if <span class="register">A</span> is equal to 2 (crashing).</td>
+<td class="comment-1" rowspan="2">Jump to <a href="61408.html#61445">Handler_BuildingCrumbling</a> if <span class="register">A</span> is equal to 2 (crumbling).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61425"></span>61425</td>
-<td class="instruction">JR Z,<a href="61408.html#61445">Handler_Buildings_0</a></td>
+<td class="instruction">JR Z,<a href="61408.html#61445">Handler_BuildingCrumbling</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61427"></span>61427</td>
 <td class="instruction">CP 3</td>
-<td class="comment-1" rowspan="2">Jump to <a href="61408.html#61530">Sounds_BuildingCollapsing</a> if <span class="register">A</span> is equal to 3.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="61408.html#61530">Handler_BuildingCollapsing</a> if <span class="register">A</span> is equal to 3.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61429"></span>61429</td>
-<td class="instruction">JP Z,<a href="61408.html#61530">Sounds_BuildingCollapsing</a></td>
+<td class="instruction">JP Z,<a href="61408.html#61530">Handler_BuildingCollapsing</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61432"></span>61432</td>
 <td class="instruction">CP 4</td>
-<td class="comment-1" rowspan="2">Jump to <a href="61408.html#61611">Handler_Buildings_9</a> if <span class="register">A</span> is equal to 4</td>
+<td class="comment-1" rowspan="2">Jump to <a href="61408.html#61611">Handler_BuildingRubble</a> if <span class="register">A</span> is equal to 4</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61434"></span>61434</td>
-<td class="instruction">JP Z,<a href="61408.html#61611">Handler_Buildings_9</a></td>
+<td class="instruction">JP Z,<a href="61408.html#61611">Handler_BuildingRubble</a></td>
 </tr>
 <tr>
 <td class="asm-label">Handler_Buildings_Next</td>
@@ -177,7 +177,17 @@ Have we accounted for all the buildings?
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Buildings_0</td>
+<td class="routine-comment" colspan="5">
+<span id="61445"></span>
+<div class="comments">
+<div class="paragraph">
+Handle the building crumbling.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_BuildingCrumbling</td>
 <td class="address-2"><span id="61445"></span>61445</td>
 <td class="instruction">DEC (IX+13)</td>
 <td class="comment-1" rowspan="1">Decrease *<span class="register">IX</span>+13 by one.</td>
@@ -198,19 +208,19 @@ Have we accounted for all the buildings?
 <td class="asm-label"></td>
 <td class="address-1"><span id="61455"></span>61455</td>
 <td class="instruction">DEC (IX+10)</td>
-<td class="comment-1" rowspan="1">Decrease *<span class="register">IX</span>+10 by one.</td>
+<td class="comment-1" rowspan="1">Decrease "crumbling countdown" (*<span class="register">IX</span>+10) by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61458"></span>61458</td>
-<td class="instruction">JR NZ,<a href="61408.html#61500">Handler_Buildings_3</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="61408.html#61500">Handler_Buildings_3</a> until *<span class="register">IX</span>+10 is zero.</td>
+<td class="instruction">JR NZ,<a href="61408.html#61500">Animate_Crumbling</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="61408.html#61500">Animate_Crumbling</a> until "crumbling countdown" (*<span class="register">IX</span>+10) is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61460"></span>61460</td>
 <td class="instruction">LD (IX+0),3</td>
-<td class="comment-1" rowspan="1">Write 3 to building state (*<span class="register">IX</span>+0).</td>
+<td class="comment-1" rowspan="1">Write "collapsing" (3) to building state (*<span class="register">IX</span>+0).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -228,7 +238,7 @@ Have we accounted for all the buildings?
 <td class="asm-label"></td>
 <td class="address-1"><span id="61468"></span>61468</td>
 <td class="instruction">LD (IX+11),A</td>
-<td class="comment-1" rowspan="1">Write <span class="register">A</span> to *<span class="register">IX</span>+11.</td>
+<td class="comment-1" rowspan="1">Write <span class="register">A</span> to "collapsing countdown" (*<span class="register">IX</span>+11).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -251,8 +261,8 @@ Have we accounted for all the buildings?
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61477"></span>61477</td>
-<td class="instruction">JR NC,<a href="61408.html#61481">Handler_Buildings_1</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="61408.html#61481">Handler_Buildings_1</a> if the carry flag is not set.</td>
+<td class="instruction">JR NC,<a href="61408.html#61481">Handler_Buildings_0</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="61408.html#61481">Handler_Buildings_0</a> if the carry flag is not set.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -261,7 +271,7 @@ Have we accounted for all the buildings?
 <td class="comment-1" rowspan="1"><span class="register">C</span>=56.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Buildings_1</td>
+<td class="asm-label">Handler_Buildings_0</td>
 <td class="address-2"><span id="61481"></span>61481</td>
 <td class="instruction">LD E,(IX+1)</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=*<span class="register">IX</span>+1.</td>
@@ -270,7 +280,7 @@ Have we accounted for all the buildings?
 <td class="asm-label"></td>
 <td class="address-1"><span id="61484"></span>61484</td>
 <td class="instruction">LD B,(IX+6)</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">IX</span>+6.</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=Building width (*<span class="register">IX</span>+6).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -284,7 +294,7 @@ Have we accounted for all the buildings?
 <td class="instruction">ADD HL,DE</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Buildings_2</td>
+<td class="asm-label">Handler_Buildings_1</td>
 <td class="address-2"><span id="61491"></span>61491</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
@@ -310,26 +320,26 @@ Have we accounted for all the buildings?
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61495"></span>61495</td>
-<td class="instruction">DJNZ <a href="61408.html#61491">Handler_Buildings_2</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="61408.html#61491">Handler_Buildings_2</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="61408.html#61491">Handler_Buildings_1</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="61408.html#61491">Handler_Buildings_1</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61497"></span>61497</td>
-<td class="instruction">JP <a href="61408.html#61611">Handler_Buildings_9</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="61408.html#61611">Handler_Buildings_9</a>.</td>
+<td class="instruction">JP <a href="61408.html#61611">Handler_BuildingRubble</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="61408.html#61611">Handler_BuildingRubble</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Buildings_3</td>
+<td class="asm-label">Animate_Crumbling</td>
 <td class="address-2"><span id="61500"></span>61500</td>
 <td class="instruction">LD L,(IX+10)</td>
-<td class="comment-1" rowspan="1"><span class="register">L</span>=*<span class="register">IX</span>+10.</td>
+<td class="comment-1" rowspan="1"><span class="register">L</span>=Crumbling countdown (*<span class="register">IX</span>+10).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61503"></span>61503</td>
-<td class="instruction">CALL <a href="61408.html#61679">Handler_Buildings_13</a></td>
-<td class="comment-1" rowspan="1">Call <a href="61408.html#61679">Handler_Buildings_13</a>.</td>
+<td class="instruction">CALL <a href="61408.html#61679">Handler_Buildings_10</a></td>
+<td class="comment-1" rowspan="1">Call <a href="61408.html#61679">Handler_Buildings_10</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -341,7 +351,7 @@ Have we accounted for all the buildings?
 <td class="asm-label"></td>
 <td class="address-1"><span id="61507"></span>61507</td>
 <td class="instruction">LD B,(IX+6)</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">IX</span>+6.</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=Building width (*<span class="register">IX</span>+6).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -350,7 +360,7 @@ Have we accounted for all the buildings?
 <td class="comment-1" rowspan="1"><span class="register">C</span>=255.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Buildings_4</td>
+<td class="asm-label">Handler_Buildings_2</td>
 <td class="address-2"><span id="61512"></span>61512</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
@@ -394,8 +404,8 @@ Have we accounted for all the buildings?
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61520"></span>61520</td>
-<td class="instruction">DJNZ <a href="61408.html#61512">Handler_Buildings_4</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="61408.html#61512">Handler_Buildings_4</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="61408.html#61512">Handler_Buildings_2</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="61408.html#61512">Handler_Buildings_2</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -426,11 +436,11 @@ Plays a single building "crumbling" sound, the handler looping will keep it goin
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61527"></span>61527</td>
-<td class="instruction">JP <a href="61408.html#61611">Handler_Buildings_9</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="61408.html#61611">Handler_Buildings_9</a>.</td>
+<td class="instruction">JP <a href="61408.html#61611">Handler_BuildingRubble</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="61408.html#61611">Handler_BuildingRubble</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Sounds_BuildingCollapsing</td>
+<td class="asm-label">Handler_BuildingCollapsing</td>
 <td class="address-2"><span id="61530"></span>61530</td>
 <td class="instruction">DEC (IX+13)</td>
 <td class="comment-1" rowspan="1">Decrease *<span class="register">IX</span>+13 by one.</td>
@@ -438,8 +448,8 @@ Plays a single building "crumbling" sound, the handler looping will keep it goin
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61533"></span>61533</td>
-<td class="instruction">JR NZ,<a href="61408.html#61611">Handler_Buildings_9</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="61408.html#61611">Handler_Buildings_9</a> until *<span class="register">IX</span>+13 is zero.</td>
+<td class="instruction">JR NZ,<a href="61408.html#61611">Handler_BuildingRubble</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="61408.html#61611">Handler_BuildingRubble</a> until *<span class="register">IX</span>+13 is zero.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -477,28 +487,28 @@ Plays a single building "collapsing" sound, the handler looping will keep it goi
 <td class="asm-label"></td>
 <td class="address-1"><span id="61544"></span>61544</td>
 <td class="instruction">DEC (IX+11)</td>
-<td class="comment-1" rowspan="1">Decrease *<span class="register">IX</span>+11 by one.</td>
+<td class="comment-1" rowspan="1">Decrease "collapsing countdown" (*<span class="register">IX</span>+11) by one.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61547"></span>61547</td>
-<td class="instruction">JR NZ,<a href="61408.html#61555">Handler_Buildings_5</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="61408.html#61555">Handler_Buildings_5</a> until *<span class="register">IX</span>+11 is zero.</td>
+<td class="instruction">JR NZ,<a href="61408.html#61555">Handler_Buildings_3</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="61408.html#61555">Handler_Buildings_3</a> until "collapsing countdown" (*<span class="register">IX</span>+11) is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61549"></span>61549</td>
 <td class="instruction">LD (IX+0),4</td>
-<td class="comment-1" rowspan="1">Write 4 to building state (*<span class="register">IX</span>+0).</td>
+<td class="comment-1" rowspan="1">Write "rubble" (4) to building state (*<span class="register">IX</span>+0).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61553"></span>61553</td>
-<td class="instruction">JR <a href="61408.html#61611">Handler_Buildings_9</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="61408.html#61611">Handler_Buildings_9</a>.</td>
+<td class="instruction">JR <a href="61408.html#61611">Handler_BuildingRubble</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="61408.html#61611">Handler_BuildingRubble</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Buildings_5</td>
+<td class="asm-label">Handler_Buildings_3</td>
 <td class="address-2"><span id="61555"></span>61555</td>
 <td class="instruction">LD L,(IX+5)</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=*<span class="register">IX</span>+5.</td>
@@ -512,8 +522,8 @@ Plays a single building "collapsing" sound, the handler looping will keep it goi
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61559"></span>61559</td>
-<td class="instruction">CALL <a href="61408.html#61679">Handler_Buildings_13</a></td>
-<td class="comment-1" rowspan="1">Call <a href="61408.html#61679">Handler_Buildings_13</a>.</td>
+<td class="instruction">CALL <a href="61408.html#61679">Handler_Buildings_10</a></td>
+<td class="comment-1" rowspan="1">Call <a href="61408.html#61679">Handler_Buildings_10</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -531,10 +541,10 @@ Plays a single building "collapsing" sound, the handler looping will keep it goi
 <td class="asm-label"></td>
 <td class="address-1"><span id="61565"></span>61565</td>
 <td class="instruction">LD B,(IX+11)</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">IX</span>+11.</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=Collapsing countdown (*<span class="register">IX</span>+11).</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Buildings_6</td>
+<td class="asm-label">Handler_Buildings_4</td>
 <td class="address-2"><span id="61568"></span>61568</td>
 <td class="instruction">PUSH BC</td>
 <td class="comment-1" rowspan="4">Stash <span class="register">BC</span>, <span class="register">HL</span> and <span class="register">DE</span> (twice) on the stack.</td>
@@ -581,10 +591,10 @@ Plays a single building "collapsing" sound, the handler looping will keep it goi
 <td class="asm-label"></td>
 <td class="address-1"><span id="61578"></span>61578</td>
 <td class="instruction">LD B,(IX+6)</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">IX</span>+6.</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=Building width (*<span class="register">IX</span>+6).</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Buildings_7</td>
+<td class="asm-label">Handler_Buildings_5</td>
 <td class="address-2"><span id="61581"></span>61581</td>
 <td class="instruction">LD A,(DE)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">DE</span>.</td>
@@ -610,8 +620,8 @@ Plays a single building "collapsing" sound, the handler looping will keep it goi
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61585"></span>61585</td>
-<td class="instruction">DJNZ <a href="61408.html#61581">Handler_Buildings_7</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="61408.html#61581">Handler_Buildings_7</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="61408.html#61581">Handler_Buildings_5</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="61408.html#61581">Handler_Buildings_5</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -623,7 +633,7 @@ Plays a single building "collapsing" sound, the handler looping will keep it goi
 <td class="asm-label"></td>
 <td class="address-1"><span id="61588"></span>61588</td>
 <td class="instruction">LD B,(IX+6)</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">IX</span>+6.</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=Building width (*<span class="register">IX</span>+6).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -632,7 +642,7 @@ Plays a single building "collapsing" sound, the handler looping will keep it goi
 <td class="comment-1" rowspan="2">Write 255 to *<span class="register">HL</span>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Buildings_8</td>
+<td class="asm-label">Handler_Buildings_6</td>
 <td class="address-2"><span id="61593"></span>61593</td>
 <td class="instruction">LD (HL),C</td>
 </tr>
@@ -645,8 +655,8 @@ Plays a single building "collapsing" sound, the handler looping will keep it goi
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61595"></span>61595</td>
-<td class="instruction">DJNZ <a href="61408.html#61593">Handler_Buildings_8</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="61408.html#61593">Handler_Buildings_8</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="61408.html#61593">Handler_Buildings_6</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="61408.html#61593">Handler_Buildings_6</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -699,8 +709,8 @@ Plays a single building "collapsing" sound, the handler looping will keep it goi
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61609"></span>61609</td>
-<td class="instruction">DJNZ <a href="61408.html#61568">Handler_Buildings_6</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="61408.html#61568">Handler_Buildings_6</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="61408.html#61568">Handler_Buildings_4</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="61408.html#61568">Handler_Buildings_4</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="routine-comment" colspan="5">
@@ -713,10 +723,10 @@ Self-modifying code.
 </td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Buildings_9</td>
+<td class="asm-label">Handler_BuildingRubble</td>
 <td class="address-2"><span id="61611"></span>61611</td>
 <td class="instruction">XOR A</td>
-<td class="comment-1" rowspan="2">Write 0 to *<a href="61408.html#61661">Handler_Buildings_11</a>.</td>
+<td class="comment-1" rowspan="2">Write 0 to *<a href="61408.html#61661">Handler_Buildings_8</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -732,14 +742,24 @@ Self-modifying code.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61618"></span>61618</td>
-<td class="instruction">JR NZ,<a href="61408.html#61636">Handler_Buildings_10</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="61408.html#61636">Handler_Buildings_10</a> until *<span class="register">IX</span>+12 is zero.</td>
+<td class="instruction">JR NZ,<a href="61408.html#61636">Handler_Buildings_7</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="61408.html#61636">Handler_Buildings_7</a> until *<span class="register">IX</span>+12 is zero.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="61620"></span>
+<div class="comments">
+<div class="paragraph">
+The whole animation is finished so set the state to "gone" and decrease the active buildings count.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61620"></span>61620</td>
 <td class="instruction">LD (IX+0),5</td>
-<td class="comment-1" rowspan="1">Write 5 to building state (*<span class="register">IX</span>+0).</td>
+<td class="comment-1" rowspan="1">Write "gone" (5) to building state (*<span class="register">IX</span>+0).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -771,7 +791,7 @@ Self-modifying code.
 <td class="asm-label"></td>
 <td class="address-1"><span id="61631"></span>61631</td>
 <td class="instruction">LD A,175</td>
-<td class="comment-1" rowspan="2">Write 175 (XOR <span class="register">A</span>) to *<a href="61408.html#61661">Handler_Buildings_11</a>.</td>
+<td class="comment-1" rowspan="2">Write 175 (XOR <span class="register">A</span>) to *<a href="61408.html#61661">Handler_Buildings_8</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -779,7 +799,7 @@ Self-modifying code.
 <td class="instruction">LD (61661),A</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Buildings_10</td>
+<td class="asm-label">Handler_Buildings_7</td>
 <td class="address-2"><span id="61636"></span>61636</td>
 <td class="instruction">LD L,(IX+5)</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=*<span class="register">IX</span>+5.</td>
@@ -793,8 +813,8 @@ Self-modifying code.
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61640"></span>61640</td>
-<td class="instruction">CALL <a href="61408.html#61679">Handler_Buildings_13</a></td>
-<td class="comment-1" rowspan="1">Call <a href="61408.html#61679">Handler_Buildings_13</a>.</td>
+<td class="instruction">CALL <a href="61408.html#61679">Handler_Buildings_10</a></td>
+<td class="comment-1" rowspan="1">Call <a href="61408.html#61679">Handler_Buildings_10</a>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -818,7 +838,7 @@ Self-modifying code.
 <td class="asm-label"></td>
 <td class="address-1"><span id="61647"></span>61647</td>
 <td class="instruction">LD B,(IX+6)</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=*<span class="register">IX</span>+6.</td>
+<td class="comment-1" rowspan="1"><span class="register">B</span>=Building width (*<span class="register">IX</span>+6).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -872,7 +892,7 @@ The value here is self-modified at: <table class="default">
 <th colspan="1" rowspan="1">Code</th>
 </tr>
 <tr>
-<td class="centre" colspan="1" rowspan="1"><a href="61408.html#61611">Handler_Buildings_9</a></td>
+<td class="centre" colspan="1" rowspan="1"><a href="61408.html#61611">61611</a></td>
 <td class="centre" colspan="1" rowspan="1">0</td>
 <td class="centre" colspan="1" rowspan="1"><code>NOP</code></td>
 </tr>
@@ -887,7 +907,7 @@ The value here is self-modified at: <table class="default">
 </td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Buildings_11</td>
+<td class="asm-label">Handler_Buildings_8</td>
 <td class="address-2"><span id="61661"></span>61661</td>
 <td class="instruction">NOP</td>
 <td class="comment-1" rowspan="1">No operation OR <span class="register">A</span>=0 depending on the above.</td>
@@ -926,12 +946,12 @@ The value here is self-modified at: <table class="default">
 <td class="asm-label"></td>
 <td class="address-1"><span id="61668"></span>61668</td>
 <td class="instruction">CP 77</td>
-<td class="comment-1" rowspan="2">Jump to <a href="61408.html#61674">Handler_Buildings_12</a> if <span class="register">A</span> is not equal to 77.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="61408.html#61674">Handler_Buildings_9</a> if <span class="register">A</span> is not equal to 77.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61670"></span>61670</td>
-<td class="instruction">JR NZ,<a href="61408.html#61674">Handler_Buildings_12</a></td>
+<td class="instruction">JR NZ,<a href="61408.html#61674">Handler_Buildings_9</a></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -940,10 +960,10 @@ The value here is self-modified at: <table class="default">
 <td class="comment-1" rowspan="1"><span class="register">A</span>=68.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Buildings_12</td>
+<td class="asm-label">Handler_Buildings_9</td>
 <td class="address-2"><span id="61674"></span>61674</td>
-<td class="instruction">DJNZ <a href="61408.html#61661">Handler_Buildings_11</a></td>
-<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="61408.html#61661">Handler_Buildings_11</a> until counter is zero.</td>
+<td class="instruction">DJNZ <a href="61408.html#61661">Handler_Buildings_8</a></td>
+<td class="comment-1" rowspan="1">Decrease counter by one and loop back to <a href="61408.html#61661">Handler_Buildings_8</a> until counter is zero.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -952,7 +972,7 @@ The value here is self-modified at: <table class="default">
 <td class="comment-1" rowspan="1">Jump to <a href="61408.html#61437">Handler_Buildings_Next</a>.</td>
 </tr>
 <tr>
-<td class="asm-label">Handler_Buildings_13</td>
+<td class="asm-label">Handler_Buildings_10</td>
 <td class="address-2"><span id="61679"></span>61679</td>
 <td class="instruction">LD H,0</td>
 <td class="comment-1" rowspan="1"><span class="register">H</span>=0.</td>
@@ -1017,55 +1037,48 @@ The value here is self-modified at: <table class="default">
 <td class="asm-label"></td>
 <td class="address-1"><span id="61697"></span>61697</td>
 <td class="instruction">LD B,A</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
+<td class="comment-1" rowspan="5"><span class="register">B</span>=95+(<span class="register">B</span>*3).</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61698"></span>61698</td>
 <td class="instruction">ADD A,A</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61699"></span>61699</td>
 <td class="instruction">ADD A,B</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=<span class="register">B</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61700"></span>61700</td>
 <td class="instruction">ADD A,95</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=95.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61702"></span>61702</td>
 <td class="instruction">LD B,A</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61703"></span>61703</td>
 <td class="instruction">LD A,H</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">H</span>.</td>
+<td class="comment-1" rowspan="4"><span class="register">D</span>=104+<span class="register">H</span>-<span class="register">B</span></td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61704"></span>61704</td>
 <td class="instruction">SUB B</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>-=<span class="register">B</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61705"></span>61705</td>
 <td class="instruction">ADD A,104</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=104.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="61707"></span>61707</td>
 <td class="instruction">LD D,A</td>
-<td class="comment-1" rowspan="1"><span class="register">D</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
@@ -1094,7 +1107,7 @@ Next: <a href="61710.html">61710</a>
 <footer>
 <div class="release"></div>
 <div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
-<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.1.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="../../asm/EFE0.html">Switch to hexadecimal</a>.</div>
 </footer>

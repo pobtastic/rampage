@@ -42,40 +42,808 @@ Next: <a href="D3F3.html">D3F3</a>
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="d39f"></span>
+<div class="comments">
+<div class="paragraph">
+Building ID: 01.
+</div>
+</div>
+</td>
+</tr>
+<tr>
 <td class="asm-label">Table_Buildings</td>
 <td class="address-1"><span id="d39f"></span>D39F</td>
-<td class="instruction">DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">00: State: <table class="default">
+<tr>
+<th colspan="1" rowspan="1">Byte</th>
+<th colspan="1" rowspan="1">State</th>
+<th colspan="1" rowspan="1">Meaning</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">00</td>
+<td class="centre" colspan="1" rowspan="1">N/A</td>
+<td class="centre" colspan="1" rowspan="1">Not in use</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">01</td>
+<td class="centre" colspan="1" rowspan="1">Normal</td>
+<td class="centre" colspan="1" rowspan="1">I'm just a building</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">02</td>
+<td class="centre" colspan="1" rowspan="1">Crumbling</td>
+<td class="centre" colspan="1" rowspan="1">The cracking animation</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">03</td>
+<td class="centre" colspan="1" rowspan="1">Collapsing</td>
+<td class="centre" colspan="1" rowspan="1">When the building falls down</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">04</td>
+<td class="centre" colspan="1" rowspan="1">Rubble</td>
+<td class="centre" colspan="1" rowspan="1">The one character block rubble animation</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">05</td>
+<td class="centre" colspan="1" rowspan="1">Gone</td>
+<td class="centre" colspan="1" rowspan="1">No Building</td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="d3a0"></span>
+<div class="comments">
+<div class="paragraph">
+X/Y co-ordinates are targeting the top-left corner of the building.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3a0"></span>D3A0</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">01 X co-ordinate.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3a1"></span>D3A1</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">02 Y co-ordinate.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3a2"></span>D3A2</td>
+<td class="instruction">DEFW $0000</td>
+<td class="comment-1" rowspan="1">03 Pointer to building in buffer?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3a4"></span>D3A4</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">05</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3a5"></span>D3A5</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">06 Width (in bytes).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3a6"></span>D3A6</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">07</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3a7"></span>D3A7</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">08</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3a8"></span>D3A8</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">09</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3a9"></span>D3A9</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0A Height countdown for crumbling animation.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3aa"></span>D3AA</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0B Height countdown for collapsing animation.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3ab"></span>D3AB</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0C Entire collapsing sequence countdown.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3ac"></span>D3AC</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0D Sound modifier; either 01 or 02.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="d3ad"></span>
+<div class="comments">
+<div class="paragraph">
+Building ID: 02.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="d3ad"></span>D3AD</td>
-<td class="instruction">DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">00: State: <table class="default">
+<tr>
+<th colspan="1" rowspan="1">Byte</th>
+<th colspan="1" rowspan="1">State</th>
+<th colspan="1" rowspan="1">Meaning</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">00</td>
+<td class="centre" colspan="1" rowspan="1">N/A</td>
+<td class="centre" colspan="1" rowspan="1">Not in use</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">01</td>
+<td class="centre" colspan="1" rowspan="1">Normal</td>
+<td class="centre" colspan="1" rowspan="1">I'm just a building</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">02</td>
+<td class="centre" colspan="1" rowspan="1">Crumbling</td>
+<td class="centre" colspan="1" rowspan="1">The cracking animation</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">03</td>
+<td class="centre" colspan="1" rowspan="1">Collapsing</td>
+<td class="centre" colspan="1" rowspan="1">When the building falls down</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">04</td>
+<td class="centre" colspan="1" rowspan="1">Rubble</td>
+<td class="centre" colspan="1" rowspan="1">The one character block rubble animation</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">05</td>
+<td class="centre" colspan="1" rowspan="1">Gone</td>
+<td class="centre" colspan="1" rowspan="1">No Building</td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="d3ae"></span>
+<div class="comments">
+<div class="paragraph">
+X/Y co-ordinates are targeting the top-left corner of the building.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3ae"></span>D3AE</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">01 X co-ordinate.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3af"></span>D3AF</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">02 Y co-ordinate.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3b0"></span>D3B0</td>
+<td class="instruction">DEFW $0000</td>
+<td class="comment-1" rowspan="1">03 Pointer to building in buffer?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3b2"></span>D3B2</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">05</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3b3"></span>D3B3</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">06 Width (in bytes).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3b4"></span>D3B4</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">07</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3b5"></span>D3B5</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">08</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3b6"></span>D3B6</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">09</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3b7"></span>D3B7</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0A Height countdown for crumbling animation.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3b8"></span>D3B8</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0B Height countdown for collapsing animation.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3b9"></span>D3B9</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0C Entire collapsing sequence countdown.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3ba"></span>D3BA</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0D Sound modifier; either 01 or 02.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="d3bb"></span>
+<div class="comments">
+<div class="paragraph">
+Building ID: 03.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="d3bb"></span>D3BB</td>
-<td class="instruction">DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">00: State: <table class="default">
+<tr>
+<th colspan="1" rowspan="1">Byte</th>
+<th colspan="1" rowspan="1">State</th>
+<th colspan="1" rowspan="1">Meaning</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">00</td>
+<td class="centre" colspan="1" rowspan="1">N/A</td>
+<td class="centre" colspan="1" rowspan="1">Not in use</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">01</td>
+<td class="centre" colspan="1" rowspan="1">Normal</td>
+<td class="centre" colspan="1" rowspan="1">I'm just a building</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">02</td>
+<td class="centre" colspan="1" rowspan="1">Crumbling</td>
+<td class="centre" colspan="1" rowspan="1">The cracking animation</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">03</td>
+<td class="centre" colspan="1" rowspan="1">Collapsing</td>
+<td class="centre" colspan="1" rowspan="1">When the building falls down</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">04</td>
+<td class="centre" colspan="1" rowspan="1">Rubble</td>
+<td class="centre" colspan="1" rowspan="1">The one character block rubble animation</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">05</td>
+<td class="centre" colspan="1" rowspan="1">Gone</td>
+<td class="centre" colspan="1" rowspan="1">No Building</td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="d3bc"></span>
+<div class="comments">
+<div class="paragraph">
+X/Y co-ordinates are targeting the top-left corner of the building.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3bc"></span>D3BC</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">01 X co-ordinate.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3bd"></span>D3BD</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">02 Y co-ordinate.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3be"></span>D3BE</td>
+<td class="instruction">DEFW $0000</td>
+<td class="comment-1" rowspan="1">03 Pointer to building in buffer?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3c0"></span>D3C0</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">05</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3c1"></span>D3C1</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">06 Width (in bytes).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3c2"></span>D3C2</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">07</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3c3"></span>D3C3</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">08</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3c4"></span>D3C4</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">09</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3c5"></span>D3C5</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0A Height countdown for crumbling animation.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3c6"></span>D3C6</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0B Height countdown for collapsing animation.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3c7"></span>D3C7</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0C Entire collapsing sequence countdown.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3c8"></span>D3C8</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0D Sound modifier; either 01 or 02.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="d3c9"></span>
+<div class="comments">
+<div class="paragraph">
+Building ID: 04.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="d3c9"></span>D3C9</td>
-<td class="instruction">DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">00: State: <table class="default">
+<tr>
+<th colspan="1" rowspan="1">Byte</th>
+<th colspan="1" rowspan="1">State</th>
+<th colspan="1" rowspan="1">Meaning</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">00</td>
+<td class="centre" colspan="1" rowspan="1">N/A</td>
+<td class="centre" colspan="1" rowspan="1">Not in use</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">01</td>
+<td class="centre" colspan="1" rowspan="1">Normal</td>
+<td class="centre" colspan="1" rowspan="1">I'm just a building</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">02</td>
+<td class="centre" colspan="1" rowspan="1">Crumbling</td>
+<td class="centre" colspan="1" rowspan="1">The cracking animation</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">03</td>
+<td class="centre" colspan="1" rowspan="1">Collapsing</td>
+<td class="centre" colspan="1" rowspan="1">When the building falls down</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">04</td>
+<td class="centre" colspan="1" rowspan="1">Rubble</td>
+<td class="centre" colspan="1" rowspan="1">The one character block rubble animation</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">05</td>
+<td class="centre" colspan="1" rowspan="1">Gone</td>
+<td class="centre" colspan="1" rowspan="1">No Building</td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="d3ca"></span>
+<div class="comments">
+<div class="paragraph">
+X/Y co-ordinates are targeting the top-left corner of the building.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3ca"></span>D3CA</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">01 X co-ordinate.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3cb"></span>D3CB</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">02 Y co-ordinate.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3cc"></span>D3CC</td>
+<td class="instruction">DEFW $0000</td>
+<td class="comment-1" rowspan="1">03 Pointer to building in buffer?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3ce"></span>D3CE</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">05</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3cf"></span>D3CF</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">06 Width (in bytes).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3d0"></span>D3D0</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">07</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3d1"></span>D3D1</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">08</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3d2"></span>D3D2</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">09</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3d3"></span>D3D3</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0A Height countdown for crumbling animation.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3d4"></span>D3D4</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0B Height countdown for collapsing animation.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3d5"></span>D3D5</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0C Entire collapsing sequence countdown.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3d6"></span>D3D6</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0D Sound modifier; either 01 or 02.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="d3d7"></span>
+<div class="comments">
+<div class="paragraph">
+Building ID: 05.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="d3d7"></span>D3D7</td>
-<td class="instruction">DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">00: State: <table class="default">
+<tr>
+<th colspan="1" rowspan="1">Byte</th>
+<th colspan="1" rowspan="1">State</th>
+<th colspan="1" rowspan="1">Meaning</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">00</td>
+<td class="centre" colspan="1" rowspan="1">N/A</td>
+<td class="centre" colspan="1" rowspan="1">Not in use</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">01</td>
+<td class="centre" colspan="1" rowspan="1">Normal</td>
+<td class="centre" colspan="1" rowspan="1">I'm just a building</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">02</td>
+<td class="centre" colspan="1" rowspan="1">Crumbling</td>
+<td class="centre" colspan="1" rowspan="1">The cracking animation</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">03</td>
+<td class="centre" colspan="1" rowspan="1">Collapsing</td>
+<td class="centre" colspan="1" rowspan="1">When the building falls down</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">04</td>
+<td class="centre" colspan="1" rowspan="1">Rubble</td>
+<td class="centre" colspan="1" rowspan="1">The one character block rubble animation</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">05</td>
+<td class="centre" colspan="1" rowspan="1">Gone</td>
+<td class="centre" colspan="1" rowspan="1">No Building</td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="d3d8"></span>
+<div class="comments">
+<div class="paragraph">
+X/Y co-ordinates are targeting the top-left corner of the building.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3d8"></span>D3D8</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">01 X co-ordinate.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3d9"></span>D3D9</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">02 Y co-ordinate.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3da"></span>D3DA</td>
+<td class="instruction">DEFW $0000</td>
+<td class="comment-1" rowspan="1">03 Pointer to building in buffer?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3dc"></span>D3DC</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">05</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3dd"></span>D3DD</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">06 Width (in bytes).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3de"></span>D3DE</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">07</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3df"></span>D3DF</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">08</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3e0"></span>D3E0</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">09</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3e1"></span>D3E1</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0A Height countdown for crumbling animation.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3e2"></span>D3E2</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0B Height countdown for collapsing animation.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3e3"></span>D3E3</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0C Entire collapsing sequence countdown.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3e4"></span>D3E4</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0D Sound modifier; either 01 or 02.</td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="d3e5"></span>
+<div class="comments">
+<div class="paragraph">
+Building ID: 06.
+</div>
+</div>
+</td>
 </tr>
 <tr>
 <td class="asm-label"></td>
 <td class="address-1"><span id="d3e5"></span>D3E5</td>
-<td class="instruction">DEFB $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00</td>
-<td class="comment-0" rowspan="1"></td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">00: State: <table class="default">
+<tr>
+<th colspan="1" rowspan="1">Byte</th>
+<th colspan="1" rowspan="1">State</th>
+<th colspan="1" rowspan="1">Meaning</th>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">00</td>
+<td class="centre" colspan="1" rowspan="1">N/A</td>
+<td class="centre" colspan="1" rowspan="1">Not in use</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">01</td>
+<td class="centre" colspan="1" rowspan="1">Normal</td>
+<td class="centre" colspan="1" rowspan="1">I'm just a building</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">02</td>
+<td class="centre" colspan="1" rowspan="1">Crumbling</td>
+<td class="centre" colspan="1" rowspan="1">The cracking animation</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">03</td>
+<td class="centre" colspan="1" rowspan="1">Collapsing</td>
+<td class="centre" colspan="1" rowspan="1">When the building falls down</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">04</td>
+<td class="centre" colspan="1" rowspan="1">Rubble</td>
+<td class="centre" colspan="1" rowspan="1">The one character block rubble animation</td>
+</tr>
+<tr>
+<td class="centre" colspan="1" rowspan="1">05</td>
+<td class="centre" colspan="1" rowspan="1">Gone</td>
+<td class="centre" colspan="1" rowspan="1">No Building</td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class="routine-comment" colspan="5">
+<span id="d3e6"></span>
+<div class="comments">
+<div class="paragraph">
+X/Y co-ordinates are targeting the top-left corner of the building.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3e6"></span>D3E6</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">01 X co-ordinate.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3e7"></span>D3E7</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">02 Y co-ordinate.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3e8"></span>D3E8</td>
+<td class="instruction">DEFW $0000</td>
+<td class="comment-1" rowspan="1">03 Pointer to building in buffer?</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3ea"></span>D3EA</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">05</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3eb"></span>D3EB</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">06 Width (in bytes).</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3ec"></span>D3EC</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">07</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3ed"></span>D3ED</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">08</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3ee"></span>D3EE</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">09</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3ef"></span>D3EF</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0A Height countdown for crumbling animation.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3f0"></span>D3F0</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0B Height countdown for collapsing animation.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3f1"></span>D3F1</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0C Entire collapsing sequence countdown.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="d3f2"></span>D3F2</td>
+<td class="instruction">DEFB $00</td>
+<td class="comment-1" rowspan="1">0D Sound modifier; either 01 or 02.</td>
 </tr>
 </table>
 <table class="asm-navigation">
@@ -92,7 +860,7 @@ Next: <a href="D3F3.html">D3F3</a>
 <footer>
 <div class="release"></div>
 <div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
-<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.1.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="../dec/asm/54175.html">Switch to decimal</a>.</div>
 </footer>

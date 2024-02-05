@@ -33,7 +33,7 @@ Next: <a href="60721.html">60721</a>
 </td>
 </tr>
 </table>
-<div class="description">60640: Routine at ECE0</div>
+<div class="description">60640: Handler: Punching While Jumping</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -45,45 +45,64 @@ Used by the routine at <a href="60150.html">60150</a>.
 </td>
 </tr>
 <tr>
+<td class="asm-label">Handler_JumpPunch</td>
 <td class="address-2"><span id="60640"></span>60640</td>
 <td class="instruction">LD A,(53783)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53783.html">53783</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60643"></span>60643</td>
 <td class="instruction">AND %00001111</td>
 <td class="comment-1" rowspan="1">Keep only bits 0-3.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60645"></span>60645</td>
 <td class="instruction">LD B,A</td>
-<td class="comment-1" rowspan="1"><span class="register">B</span>=<span class="register">A</span>.</td>
+<td class="comment-1" rowspan="1">Store the result in <span class="register">B</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60646"></span>60646</td>
 <td class="instruction">BIT 3,B</td>
-<td class="comment-1" rowspan="2">Jump to <a href="60640.html#60652">60652</a> if bit 3 of <span class="register">B</span> is set.</td>
+<td class="comment-1" rowspan="2">Jump to <a href="60640.html#60652">Handler_JumpPunchUp</a> if bit 3 of <span class="register">B</span> is set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60648"></span>60648</td>
-<td class="instruction">JR NZ,<a href="60640.html#60652">60652</a></td>
+<td class="instruction">JR NZ,<a href="60640.html#60652">Handler_JumpPunchUp</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60650"></span>60650</td>
-<td class="instruction">JR <a href="60640.html#60684">60684</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="60640.html#60684">60684</a>.</td>
+<td class="instruction">JR <a href="60640.html#60684">Handler_JumpPunchLeftRight</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="60640.html#60684">Handler_JumpPunchLeftRight</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="60652"></span>
+<div class="comments">
+<div class="paragraph">
+Handles when the monster is jumping and punches upwards.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_JumpPunchUp</td>
 <td class="address-2"><span id="60652"></span>60652</td>
 <td class="instruction">LD HL,65024</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>=<a href="64990.html#65024">Messaging_TickerNews_2</a>.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>=65024.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60655"></span>60655</td>
 <td class="instruction">LD DE,65027</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=65027.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60658"></span>60658</td>
 <td class="instruction">CALL <a href="62290.html">62290</a></td>
 <td class="comment-1" rowspan="1">Call <a href="62290.html">62290</a>.</td>
@@ -99,16 +118,19 @@ Set the co-ordinates for where to draw.
 </td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60661"></span>60661</td>
 <td class="instruction">LD BC,(53837)</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>/<a href="53837.html#53838">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60665"></span>60665</td>
 <td class="instruction">DEC B</td>
-<td class="comment-1" rowspan="2">Decrease <span class="register">B</span> by two.</td>
+<td class="comment-1" rowspan="2">Decrease the Y position by two to draw the upper section of the monsters body.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60666"></span>60666</td>
 <td class="instruction">DEC B</td>
 </tr>
@@ -123,9 +145,10 @@ The routine at <a href="55739.html">DrawMonsterSprite</a> handles which monster 
 </td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60667"></span>60667</td>
 <td class="instruction">LD A,37</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 37. <table class="default">
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID <a href="49569.html#49713">37</a>. <table class="default">
 <tr>
 <th colspan="2" rowspan="1">George</th>
 <th colspan="2" rowspan="1">Lizzy</th>
@@ -150,6 +173,7 @@ The routine at <a href="55739.html">DrawMonsterSprite</a> handles which monster 
 </table></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60669"></span>60669</td>
 <td class="instruction">CALL <a href="55739.html">DrawMonsterSprite</a></td>
 <td class="comment-1" rowspan="1">Call <a href="55739.html">DrawMonsterSprite</a>.</td>
@@ -165,16 +189,19 @@ Again, set the co-ordinates for where to draw.
 </td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60672"></span>60672</td>
 <td class="instruction">LD BC,(53837)</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>/<a href="53837.html#53838">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60676"></span>60676</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="2">Increment the Y position by two to draw the lower section of the monsters body.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60677"></span>60677</td>
 <td class="instruction">INC B</td>
 </tr>
@@ -189,9 +216,10 @@ The routine at <a href="55739.html">DrawMonsterSprite</a> handles which monster 
 </td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60678"></span>60678</td>
 <td class="instruction">LD A,35</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 35. <table class="default">
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID <a href="49569.html#49705">35</a>. <table class="default">
 <tr>
 <th colspan="2" rowspan="1">George</th>
 <th colspan="2" rowspan="1">Lizzy</th>
@@ -216,26 +244,41 @@ The routine at <a href="55739.html">DrawMonsterSprite</a> handles which monster 
 </table></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60680"></span>60680</td>
 <td class="instruction">CALL <a href="55739.html">DrawMonsterSprite</a></td>
 <td class="comment-1" rowspan="1">Call <a href="55739.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60683"></span>60683</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="60684"></span>
+<div class="comments">
+<div class="paragraph">
+Handles when the monster is jumping and punches left or right.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Handler_JumpPunchLeftRight</td>
 <td class="address-2"><span id="60684"></span>60684</td>
 <td class="instruction">LD HL,259</td>
 <td class="comment-1" rowspan="1"><span class="register">HL</span>=259.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60687"></span>60687</td>
 <td class="instruction">LD DE,256</td>
 <td class="comment-1" rowspan="1"><span class="register">DE</span>=256.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60690"></span>60690</td>
 <td class="instruction">CALL <a href="62290.html">62290</a></td>
 <td class="comment-1" rowspan="1">Call <a href="62290.html">62290</a>.</td>
@@ -251,16 +294,19 @@ Set the co-ordinates for where to draw.
 </td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60693"></span>60693</td>
 <td class="instruction">LD BC,(53837)</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>/<a href="53837.html#53838">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60697"></span>60697</td>
 <td class="instruction">INC B</td>
 <td class="comment-1" rowspan="2">Increment the Y position by two to draw the lower section of the monsters body.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60698"></span>60698</td>
 <td class="instruction">INC B</td>
 </tr>
@@ -275,9 +321,10 @@ The routine at <a href="55739.html">DrawMonsterSprite</a> handles which monster 
 </td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60699"></span>60699</td>
 <td class="instruction">LD A,35</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 35. <table class="default">
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID <a href="49569.html#49705">35</a>. <table class="default">
 <tr>
 <th colspan="2" rowspan="1">George</th>
 <th colspan="2" rowspan="1">Lizzy</th>
@@ -302,6 +349,7 @@ The routine at <a href="55739.html">DrawMonsterSprite</a> handles which monster 
 </table></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60701"></span>60701</td>
 <td class="instruction">CALL <a href="55739.html">DrawMonsterSprite</a></td>
 <td class="comment-1" rowspan="1">Call <a href="55739.html">DrawMonsterSprite</a>.</td>
@@ -317,29 +365,35 @@ Again, set the co-ordinates for where to draw.
 </td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60704"></span>60704</td>
 <td class="instruction">LD BC,(53837)</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>/<a href="53837.html#53838">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60708"></span>60708</td>
 <td class="instruction">LD A,(53831)</td>
 <td class="comment-1" rowspan="2"><span class="register">H</span>=*<a href="53831.html">Flag_Orientation</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60711"></span>60711</td>
 <td class="instruction">LD H,A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60712"></span>60712</td>
 <td class="instruction">LD A,C</td>
 <td class="comment-1" rowspan="3"><span class="register">C</span>-=<span class="register">H</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60713"></span>60713</td>
 <td class="instruction">SUB H</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60714"></span>60714</td>
 <td class="instruction">LD C,A</td>
 </tr>
@@ -354,9 +408,10 @@ The routine at <a href="55739.html">DrawMonsterSprite</a> handles which monster 
 </td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60715"></span>60715</td>
 <td class="instruction">LD A,29</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID 29. <table class="default">
+<td class="comment-1" rowspan="1"><span class="register">A</span>=sprite ID <a href="49569.html#49681">29</a>. <table class="default">
 <tr>
 <th colspan="2" rowspan="1">George</th>
 <th colspan="2" rowspan="1">Lizzy</th>
@@ -381,11 +436,13 @@ The routine at <a href="55739.html">DrawMonsterSprite</a> handles which monster 
 </table></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60717"></span>60717</td>
 <td class="instruction">CALL <a href="55739.html">DrawMonsterSprite</a></td>
 <td class="comment-1" rowspan="1">Call <a href="55739.html">DrawMonsterSprite</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="60720"></span>60720</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
@@ -405,7 +462,7 @@ Next: <a href="60721.html">60721</a>
 <footer>
 <div class="release"></div>
 <div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
-<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.1.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="../../asm/ECE0.html">Switch to hexadecimal</a>.</div>
 </footer>

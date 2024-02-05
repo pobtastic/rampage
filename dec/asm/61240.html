@@ -33,7 +33,7 @@ Next: <a href="61264.html">61264</a>
 </td>
 </tr>
 </table>
-<div class="description">61240: Routine at EF38</div>
+<div class="description">61240: Calculate Monster Position?</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,6 +42,28 @@ Next: <a href="61264.html">61264</a>
 Used by the routines at <a href="60866.html">60866</a> and <a href="62290.html">62290</a>.
 </div>
 </div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">DE</td>
+<td class="register-desc">16-bit number to add to <span class="register">HL</span> if facing left</td>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">16-bit number to add to <span class="register">HL</span> if facing right</td>
+</tr>
+</table>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">BC</td>
+<td class="register-desc">The new monster co-ordinates</td>
+</tr>
+</table>
 </td>
 </tr>
 <tr>
@@ -49,17 +71,32 @@ Used by the routines at <a href="60866.html">60866</a> and <a href="62290.html">
 <span id="61240"></span>
 <div class="comments">
 <div class="paragraph">
+TODO; this is likely used for punching collision detection.
+</div>
+<div class="paragraph">
 Set the co-ordinates for where to draw.
 </div>
 </div>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Monster_CalculatePosition</td>
 <td class="address-2"><span id="61240"></span>61240</td>
 <td class="instruction">LD BC,(53837)</td>
 <td class="comment-1" rowspan="1"><span class="register">BC</span>=*<a href="53837.html">Active_MonsterXPosition</a>/<a href="53837.html#53838">Active_MonsterYPosition</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="61244"></span>
+<div class="comments">
+<div class="paragraph">
+Which number is added is determined by which direction the monster is facing.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61244"></span>61244</td>
 <td class="instruction">LD A,(53831)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="53831.html">Flag_Orientation</a> (will be 0 or 1).</td>
@@ -75,73 +112,109 @@ Moves the orientation flag into the carry flag.
 </td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61247"></span>61247</td>
 <td class="instruction">RRCA</td>
 <td class="comment-1" rowspan="1">Rotate <span class="register">A</span> right one position, setting the carry flag if bit 0 was set.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61248"></span>61248</td>
-<td class="instruction">JR C,<a href="61240.html#61257">61257</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="61240.html#61257">61257</a> if the carry flag is set.</td>
+<td class="instruction">JR C,<a href="61240.html#61257">Monster_CalculatePosition_FacingLeft</a></td>
+<td class="comment-1" rowspan="1">Jump to <a href="61240.html#61257">Monster_CalculatePosition_FacingLeft</a> if the carry flag is set.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="61250"></span>
+<div class="comments">
+<div class="paragraph">
+If the monster is facing right; add <span class="register">HL</span> to <span class="register">BC</span>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61250"></span>61250</td>
 <td class="instruction">LD A,B</td>
 <td class="comment-1" rowspan="3"><span class="register">B</span>+=<span class="register">H</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61251"></span>61251</td>
 <td class="instruction">ADD A,H</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61252"></span>61252</td>
 <td class="instruction">LD B,A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61253"></span>61253</td>
 <td class="instruction">LD A,C</td>
 <td class="comment-1" rowspan="3"><span class="register">C</span>+=<span class="register">L</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61254"></span>61254</td>
 <td class="instruction">ADD A,L</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61255"></span>61255</td>
 <td class="instruction">LD C,A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61256"></span>61256</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="61257"></span>
+<div class="comments">
+<div class="paragraph">
+If the monster is facing left; add <span class="register">DE</span> to <span class="register">BC</span>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Monster_CalculatePosition_FacingLeft</td>
 <td class="address-2"><span id="61257"></span>61257</td>
 <td class="instruction">LD A,B</td>
 <td class="comment-1" rowspan="3"><span class="register">B</span>+=<span class="register">D</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61258"></span>61258</td>
 <td class="instruction">ADD A,D</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61259"></span>61259</td>
 <td class="instruction">LD B,A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61260"></span>61260</td>
 <td class="instruction">LD A,C</td>
 <td class="comment-1" rowspan="3"><span class="register">C</span>+=<span class="register">E</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61261"></span>61261</td>
 <td class="instruction">ADD A,E</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61262"></span>61262</td>
 <td class="instruction">LD C,A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="61263"></span>61263</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
@@ -161,7 +234,7 @@ Next: <a href="61264.html">61264</a>
 <footer>
 <div class="release"></div>
 <div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
-<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.1.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="../../asm/EF38.html">Switch to hexadecimal</a>.</div>
 </footer>

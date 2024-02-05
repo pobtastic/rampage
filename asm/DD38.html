@@ -33,7 +33,7 @@ Next: <a href="DD4D.html">DD4D</a>
 </td>
 </tr>
 </table>
-<div class="description">DD38: Routine at DD38</div>
+<div class="description">DD38: Get Sprite ID?</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,88 +42,186 @@ Next: <a href="DD4D.html">DD4D</a>
 Used by the routines at <a href="E576.html">Handler_Bullets</a>, <a href="F352.html">F352</a> and <a href="F69F.html">Handler_Projectiles</a>.
 </div>
 </div>
+<table class="input">
+<tr class="asm-input-header">
+<th colspan="2">Input</th>
+</tr>
+<tr>
+<td class="register">BC</td>
+<td class="register-desc">Screen co-ordinates</td>
+</tr>
+</table>
+<table class="output">
+<tr class="asm-output-header">
+<th colspan="2">Output</th>
+</tr>
+<tr>
+<td class="register">A</td>
+<td class="register-desc">Sprite ID</td>
+</tr>
+<tr>
+<td class="register">HL</td>
+<td class="register-desc">Buffer address of the sprite</td>
+</tr>
+</table>
 </td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="dd38"></span>
+<div class="comments">
+<div class="paragraph">
+Creates an offset in <span class="register">HL</span> using <span class="register">B</span>.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">GetSpriteID</td>
 <td class="address-2"><span id="dd38"></span>DD38</td>
 <td class="instruction">LD H,$00</td>
 <td class="comment-1" rowspan="1"><span class="register">H</span>=00.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd3a"></span>DD3A</td>
 <td class="instruction">LD L,B</td>
 <td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">B</span>.</td>
 </tr>
 <tr>
-<td class="address-1"><span id="dd3b"></span>DD3B</td>
-<td class="instruction">LD D,H</td>
-<td class="comment-1" rowspan="1"><span class="register">D</span>=<span class="register">H</span>.</td>
+<td class="routine-comment" colspan="5">
+<span id="dd3b"></span>
+<div class="comments">
+<div class="paragraph">
+Creates an offset in <span class="register">DE</span> using <span class="register">C</span>.
+</div>
+</div>
+</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
+<td class="address-1"><span id="dd3b"></span>DD3B</td>
+<td class="instruction">LD D,H</td>
+<td class="comment-1" rowspan="1"><span class="register">D</span>=00.</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd3c"></span>DD3C</td>
 <td class="instruction">LD E,C</td>
 <td class="comment-1" rowspan="1"><span class="register">E</span>=<span class="register">C</span>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="dd3d"></span>
+<div class="comments">
+<div class="paragraph">
+Position Y * 20 to find the row + position X to find the column.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd3d"></span>DD3D</td>
 <td class="instruction">ADD HL,HL</td>
 <td class="comment-1" rowspan="6"><span class="register">HL</span>*=20+<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd3e"></span>DD3E</td>
 <td class="instruction">ADD HL,HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd3f"></span>DD3F</td>
 <td class="instruction">ADD HL,HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd40"></span>DD40</td>
 <td class="instruction">ADD HL,HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd41"></span>DD41</td>
 <td class="instruction">ADD HL,HL</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd42"></span>DD42</td>
 <td class="instruction">ADD HL,DE</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="dd43"></span>
+<div class="comments">
+<div class="paragraph">
+The game buffer begins at <a href="6800.html">6800</a>-6AFF which is 0300 screen locations (20x18).
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd43"></span>DD43</td>
 <td class="instruction">LD A,H</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=<span class="register">H</span>.</td>
+<td class="comment-1" rowspan="3"><span class="register">H</span>+=68.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd44"></span>DD44</td>
 <td class="instruction">ADD A,$68</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>+=68.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd46"></span>DD46</td>
 <td class="instruction">LD H,A</td>
-<td class="comment-1" rowspan="1"><span class="register">H</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="dd47"></span>
+<div class="comments">
+<div class="paragraph">
+Fetch the sprite ID from this location.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd47"></span>DD47</td>
 <td class="instruction">LD A,(HL)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="dd48"></span>
+<div class="comments">
+<div class="paragraph">
+Never return with FF instead use 00.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd48"></span>DD48</td>
 <td class="instruction">CP $FF</td>
 <td class="comment-1" rowspan="2">Return if <span class="register">A</span> is not equal to FF.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd4a"></span>DD4A</td>
 <td class="instruction">RET NZ</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd4b"></span>DD4B</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=00.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="dd4c"></span>DD4C</td>
 <td class="instruction">RET</td>
 <td class="comment-1" rowspan="1">Return.</td>
@@ -143,7 +241,7 @@ Next: <a href="DD4D.html">DD4D</a>
 <footer>
 <div class="release"></div>
 <div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
-<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.0.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.1.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="../dec/asm/56632.html">Switch to decimal</a>.</div>
 </footer>
