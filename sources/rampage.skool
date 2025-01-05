@@ -3214,17 +3214,29 @@ g$C1A1 DEFB $05,$05                         ; {#SPRITE({sprite})
  $C691 DEFB $89,$49,$C9,$29,$A9,$69,$E9,$19
  $C699 DEFB $99,$59,$D9,$39,$B9,$79,$F9,$05
  $C6A1 DEFB $85,$45,$C5,$25,$A5,$65,$E5,$15
- $C6A9 DEFB $95,$55,$D5,$35,$B5,$75,$F5,$0D
- $C6B1 DEFB $8D,$4D,$CD,$2D,$AD,$6D,$ED,$1D
- $C6B9 DEFB $9D,$5D,$DD,$3D,$BD,$7D,$FD,$03
- $C6C1 DEFB $83,$43,$C3,$23,$A3,$63,$E3,$13
- $C6C9 DEFB $93,$53,$D3,$33,$B3,$73,$F3,$0B
- $C6D1 DEFB $8B,$4B,$CB,$2B,$AB,$6B,$EB,$1B
- $C6D9 DEFB $9B,$5B,$DB,$3B,$BB,$7B,$FB,$07
- $C6E1 DEFB $87,$47,$C7,$27,$A7,$67,$E7,$17
- $C6E9 DEFB $97,$57,$D7,$37,$B7,$77,$F7,$0F
- $C6F1 DEFB $8F,$4F,$CF,$2F,$AF,$6F,$EF,$1F
- $C6F9 DEFB $9F,$5F,$DF,$3F,$BF,$7F,$FF
+ $C6A9 DEFB $95,$55,$D5,$35,$B5,$75
+
+; Port Mappings
+;
+; TODO; Unclear where this starts and ends. Used by the routine at #R$E1EA.
+@label=PortMappings
+b$C6AF DEFB $F5,$0D
+ $C6B1 DEFB $8D,$4D
+ $C6B3 DEFB $CD,$2D
+ $C6B5 DEFB $AD,$6D
+ $C6B7 DEFB $ED,$1D
+ $C6B9 DEFB $9D,$5D
+ $C6BB DEFB $DD,$3D
+ $C6BD DEFB $BD,$7D
+ $C6BF DEFB $FD,$03,$83,$43,$C3,$23,$A3,$63
+ $C6C7 DEFB $E3,$13,$93,$53,$D3,$33,$B3,$73
+ $C6CF DEFB $F3,$0B,$8B,$4B,$CB,$2B,$AB,$6B
+ $C6D7 DEFB $EB,$1B,$9B,$5B,$DB,$3B,$BB,$7B
+ $C6DF DEFB $FB,$07,$87,$47,$C7,$27,$A7,$67
+ $C6E7 DEFB $E7,$17,$97,$57,$D7,$37,$B7,$77
+ $C6EF DEFB $F7,$0F,$8F,$4F,$CF,$2F,$AF,$6F
+ $C6F7 DEFB $EF,$1F,$9F,$5F,$DF,$3F,$BF,$7F
+ $C6FF DEFB $FF
 
 ; Data block at C700
 b$C700 DEFB $02,$06,$02,$06,$08,$00,$08,$00
@@ -4251,7 +4263,9 @@ b$D198 DEFB $43,$46,$46,$46,$46,$46,$46,$46
 @label=HumanGeneratorLimiter
 g$D210 DEFB $00
 
-; Maximum Number Humans (TODO)
+; Maximum Number Humans
+;
+; Used by the routines at #R$DCA1 and #R$DF90.
 @label=MaxHumansCount
 g$D211 DEFB $00
 
@@ -4275,7 +4289,10 @@ b$D215 DEFB $00
 @label=LevelFinishedCountdown
 g$D216 DEFB $00
 
-; Game status buffer entry at D217
+; Active Monster Control Byte
+;
+; TODO; bit pattern is maybe different to the control pattern.
+@label=Active_MonsterControl
 g$D217 DEFB $00
 
 ; Game status buffer entry at D218
@@ -7687,28 +7704,39 @@ c$E119 LD HL,$CFD2   ; #REGhl=#R$CFD2.
 ; Used by the routines at #R$E68C, #R$E99B, #R$EA9C, #R$EAF6 and #R$EF50.
 ;
 ; O:A Byte representing the intended action
+;
+; First off, check if the active monster is computer controlled.
 @label=Controls
 c$E179 LD A,($D252)  ; {Jump to #R$E1CE if *#R$D252 is not set to "computer
  $E17C AND A         ; controlled".
  $E17D JR NZ,$E1CE   ; }
-*$E17F CALL $DA28    ; {Write a random number between 0-31 to *#R$D217.
- $E182 AND %00011111 ;
+; Handles the monster being computer controlled.
+@label=ComputerControlled
+*$E17F CALL $DA28    ; {Write a random number between #N$00-#N$1F (#EVAL($00,$02,$08)-#EVAL($1F,$02,$08)
+ $E182 AND %00011111 ;           e.g. Up/ Down/ Left/ Right/ Action) to *#R$D217.
  $E184 LD ($D217),A  ; }
+; Check if the currently active monster is jumping.
  $E187 LD A,($D248)  ; #REGa=*#R$D248.
  $E18A RRCA          ; Rotate #REGa right one position, setting the carry flag
                      ; if bit 0 was set.
- $E18B JR NC,$E193   ; Jump to #R$E193 if the carry flag is not set.
- $E18D LD A,$08      ; {Write #N$08 to *#R$D217.
+ $E18B JR NC,$E193   ; Jump to #R$E193 if the monster isn't currently jumping.
+; The active monster is jumping...
+ $E18D LD A,$08      ; {Write #R$E6C5(#EVAL($08,$02,$08)) to *#R$D217.
  $E18F LD ($D217),A  ; }
  $E192 RET           ; Return.
+; Check if the currently active monster is climbing.
+@label=Controls_IsMonsterClimbing
 *$E193 LD A,($D246)  ; #REGa=*#R$D246.
  $E196 RRCA          ; Rotate #REGa right one position, setting the carry flag
                      ; if bit 0 was set.
- $E197 JR NC,$E1A1   ; Jump to #R$E1A1 if the carry flag is not set.
- $E199 LD A,($D217)  ; {Jump to #R$E17F if *#R$D217 is equal to #N$10.
- $E19C CP $10        ;
+ $E197 JR NC,$E1A1   ; Jump to #R$E1A1 if the monster isn't currently climbing.
+; The active monster is climbing...
+ $E199 LD A,($D217)  ; {Jump to #R$E17F if *#R$D217 is equal to #N$10
+ $E19C CP $10        ; (#R$E693(#EVAL($10,$02,$08)) e.g. "jumping/ punching").
  $E19E JR Z,$E17F    ; }
  $E1A0 RET           ; Return.
+; Checks the screen boundaries to ensure the monster can't go off-screen.
+@label=Controls_CheckBoundaries
 *$E1A1 LD A,($D24E)  ; #REGa=*#R$D24E.
  $E1A4 CP $11        ; Compare #REGa with #N$11...
  $E1A6 LD A,($D217)  ; #REGa=*#R$D217.
@@ -7723,43 +7751,69 @@ c$E179 LD A,($D252)  ; {Jump to #R$E1CE if *#R$D252 is not set to "computer
  $E1B9 CP $1B        ; Compare #REGa with #N$1B...
  $E1BB LD A,($D217)  ; #REGa=*#R$D217.
  $E1BE RET C         ; Return if #REGa was lower #N$1B on line #R$E1B9.
+; Unsets the computer controlled monster "right" option.
  $E1BF RES 1,A       ; Reset bit 1 of #REGa.
  $E1C1 JR $E1C8      ; Jump to #R$E1C8.
+; Unsets the computer controlled monster "left" option.
+@label=ComputerUnset_Left
 *$E1C3 LD A,($D217)  ; #REGa=*#R$D217.
  $E1C6 RES 0,A       ; Reset bit 0 of #REGa.
+; Unsets the computer controlled monster "jump/punch" option.
+@label=ComputerUnset_JumpPunch
 *$E1C8 RES 4,A       ; Reset bit 4 of #REGa.
  $E1CA LD ($D217),A  ; Write #REGa to *#R$D217.
  $E1CD RET           ; Return.
-@label=Controls_FetchSet
-*$E1CE ADD A,A       ; #REGa*=#N$02.
- $E1CF LD H,$00      ; {Create an offset using #REGhl.
+; The active monster is player controlled so using #R$D252 fetch the controller
+; routine.
+@label=PlayerControlled
+*$E1CE ADD A,A       ; {Create an offset in #REGhl using #REGa*#N$02.
+ $E1CF LD H,$00      ;
  $E1D1 LD L,A        ; }
  $E1D2 LD DE,$E24F   ; {#REGhl+=#R$E24F.
  $E1D5 ADD HL,DE     ; }
-; Load the address into #REGhl and jump to it.
- $E1D6 LD A,(HL)     ; #REGa=*#REGhl.
- $E1D7 INC HL        ; Increment #REGhl by one.
- $E1D8 LD H,(HL)     ; #REGh=*#REGhl.
- $E1D9 LD L,A        ; #REGl=#REGa.
+; Load the controls address into #REGhl and jump to it.
+ $E1D6 LD A,(HL)     ; Load the low byte of the controls address from the jump
+                     ; table.
+ $E1D7 INC HL        ; Increment the controls jump table pointer by one.
+ $E1D8 LD H,(HL)     ; Set the high byte of the controls address from the jump
+                     ; table.
+ $E1D9 LD L,A        ; Set low byte of the controls address from #REGa.
  $E1DA JP (HL)       ; Jump to the address held by *#REGhl.
+; Given the "not zero" check at #R$E179 the #N$00 option (#R$E24F(#N$E24F))
+; should never be chosen to end up here.
+@label=Controls_ComputerControlled
  $E1DB XOR A         ; #REGa=#N$00.
  $E1DC JP $E243      ; Jump to #R$E243.
- $E1DF LD A,$F7      ; #REGa=#N$F7.
- $E1E1 IN A,($FE)    ;
+; Read the controls from the Sinclair Interface 2 joystick (port 2).
+@label=Controls_ReadSinclair2_P2
+ $E1DF LD A,$F7      ; {Read from the keyboard;
+ $E1E1 IN A,($FE)    ; #TABLE(default,centre,centre,centre,centre,centre,centre)
+                     ; { =h,r2 Port Number | =h,c5 Bit }
+                     ; { =h 0 | =h 1 | =h 2 | =h 3 | =h 4 }
+                     ; { #N$F7 | 1 | 2 | 3 | 4 | 5 }
+                     ; TABLE#}
  $E1E3 XOR %10111111 ; Flip bits 0-5 and 7.
  $E1E5 AND %00011111 ; Keep only bits 0-4.
  $E1E7 JP $E243      ; Jump to #R$E243.
- $E1EA LD A,$EF      ; #REGa=#N$EF.
- $E1EC IN A,($FE)    ;
- $E1EE LD B,$C6      ; #REGb=#N$C6.
- $E1F0 LD C,A        ;
+; Read the controls from the Sinclair Interface 2 joystick (port 1).
+@label=Controls_ReadSinclair2_P1
+ $E1EA LD A,$EF      ; {Read from the keyboard;
+ $E1EC IN A,($FE)    ; #TABLE(default,centre,centre,centre,centre,centre,centre)
+                     ; { =h,r2 Port Number | =h,c5 Bit }
+                     ; { =h 0 | =h 1 | =h 2 | =h 3 | =h 4 }
+                     ; { #N$EF | 0 | 9 | 8 | 7 | 6 }
+                     ; TABLE#}
+; Converts the input into a table address beginning at #R$C6AF.
+ $E1EE LD B,$C6      ; {Create an offset using #REGbc - where #REGb=#N$C6 and
+ $E1F0 LD C,A        ; #REGc=#REGa.}
  $E1F1 LD A,(BC)     ; #REGa=*#REGbc.
- $E1F2 RRCA          ; {RRCA.
- $E1F3 RRCA          ;
+ $E1F2 RRCA          ; {Rotate #REGa right three positions (bits 3 to 7 are now
+ $E1F3 RRCA          ; in positions 0 to 4).
  $E1F4 RRCA          ; }
  $E1F5 XOR %10111111 ; Flip bits 0-5 and 7.
  $E1F7 AND %00011111 ; Keep only bits 0-4.
  $E1F9 JP $E243      ; Jump to #R$E243.
+; Read the controls from the Kempston joystick port.
 @label=Controls_ReadKempston
  $E1FC IN A,($1F)    ; Read Kempston Joystick input.
  $E1FE AND %00011111 ; Keep only bits 0-4.
@@ -7782,41 +7836,57 @@ c$E179 LD A,($D252)  ; {Jump to #R$E1CE if *#R$D252 is not set to "computer
 ; Use user-defined keys set 3.
 @label=Controls_Set3
  $E21A LD HL,$C864   ; #REGhl=#R$C864.
+; Read the keyboard set in #REGhl.
+@label=Controller_ReadKeyboard
 *$E21D LD C,$00      ; #REGc=#N$00.
+; Has "left" been pressed?
  $E21F CALL $E248    ; Call #R$E248.
- $E222 JR NZ,$E226   ; Jump to #R$E226 if {} is not zero.
- $E224 SET 0,C       ; Set bit 0 of #REGc.
+ $E222 JR NZ,$E226   ; Jump to #R$E226 if "left" is not being pressed.
+ $E224 SET 0,C       ; Set bit 0 of #REGc if "left" is being pressed.
+; Has "right" been pressed?
+@label=Controls_ReadKeyboardRight
 *$E226 CALL $E248    ; Call #R$E248.
- $E229 JR NZ,$E22D   ; Jump to #R$E22D if {} is not zero.
- $E22B SET 1,C       ; Set bit 1 of #REGc.
+ $E229 JR NZ,$E22D   ; Jump to #R$E22D if "right" is not being pressed.
+ $E22B SET 1,C       ; Set bit 1 of #REGc if "right" is being pressed.
+; Has "up" been pressed?
+@label=Controls_ReadKeyboardUp
 *$E22D CALL $E248    ; Call #R$E248.
- $E230 JR NZ,$E234   ; Jump to #R$E234 if {} is not zero.
- $E232 SET 3,C       ; Set bit 3 of #REGc.
+ $E230 JR NZ,$E234   ; Jump to #R$E234 if "up" is not being pressed.
+ $E232 SET 3,C       ; Set bit 3 of #REGc if "up" is being pressed.
+; Has "down" been pressed?
+@label=Controls_ReadKeyboardDown
 *$E234 CALL $E248    ; Call #R$E248.
- $E237 JR NZ,$E23B   ; Jump to #R$E23B if {} is not zero.
- $E239 SET 2,C       ; Set bit 2 of #REGc.
+ $E237 JR NZ,$E23B   ; Jump to #R$E23B if "down" is not being pressed.
+ $E239 SET 2,C       ; Set bit 2 of #REGc if "down" is being pressed.
+; Has "jump/punch" been pressed?
+@label=Controls_ReadKeyboardJumpPunch
 *$E23B CALL $E248    ; Call #R$E248.
- $E23E JR NZ,$E242   ; Jump to #R$E242 if {} is not zero.
- $E240 SET 4,C       ; Set bit 4 of #REGc.
+ $E23E JR NZ,$E242   ; Jump to #R$E242 if "jump/punch" is not being pressed.
+ $E240 SET 4,C       ; Set bit 4 of #REGc if "jump/punch" is being pressed.
+@label=Controls_ReadKeyboardSet
 *$E242 LD A,C        ; #REGa=#REGc.
+; Set the "zero" flag if no controls are being pressed.
+@label=Controls_Return
 *$E243 AND A         ; Set flags.
  $E244 LD ($D217),A  ; Write #REGa to *#R$D217.
  $E247 RET           ; Return.
+; Using the keyboard set in #REGhl, read the control from the keyboard.
 @label=Controls_ReadKeyboard
 *$E248 LD A,(HL)     ; #REGa=*#REGhl.
- $E249 IN A,($FE)    ; Read from the keyboard.
+ $E249 IN A,($FE)    ; Read from the entire keyboard.
  $E24B INC HL        ; Increment #REGhl by one.
  $E24C AND (HL)      ; Merge the bits from *#REGhl.
  $E24D INC HL        ; Increment #REGhl by one.
  $E24E RET           ; Return.
+; The monster control type jump table. See #R$D252.
 @label=JumpTable_Controls
- $E24F DEFW $E1DB    ;
- $E251 DEFW $E1DF    ;
- $E253 DEFW $E1EA    ;
- $E255 DEFW $E1FC    ;
- $E257 DEFW $E210    ;
- $E259 DEFW $E215    ;
- $E25B DEFW $E21A    ;
+ $E24F DEFW $E1DB    ; Control type ID: #N((#PC-$E24F)/$02).
+ $E251 DEFW $E1DF    ; Control type ID: #N((#PC-$E24F)/$02).
+ $E253 DEFW $E1EA    ; Control type ID: #N((#PC-$E24F)/$02).
+ $E255 DEFW $E1FC    ; Control type ID: #N((#PC-$E24F)/$02).
+ $E257 DEFW $E210    ; Control type ID: #N((#PC-$E24F)/$02).
+ $E259 DEFW $E215    ; Control type ID: #N((#PC-$E24F)/$02).
+ $E25B DEFW $E21A    ; Control type ID: #N((#PC-$E24F)/$02).
 
 ; Handler: Humans
 ;
@@ -10196,38 +10266,44 @@ c$EF38 LD BC,($D24D) ; #REGbc=*#R$D24D/#R$D24E.
  $EF4E LD C,A        ; }
  $EF4F RET           ; Return.
 
-; Routine at EF50
-c$EF50 CALL $E179    ; Call #R$E179.
- $EF53 AND %00010000 ; Keep only bit 4.
- $EF55 JR NZ,$EF5E   ; Jump to #R$EF5E if the result is not zero.
+; Controller: Jump/ Punch
+@label=Controller_JumpPunch
+c$EF50 CALL $E179    ; {Jump to #R$EF5E if "jump/punch" has been pressed.
+ $EF53 AND %00010000 ;
+ $EF55 JR NZ,$EF5E   ; }
  $EF57 XOR A         ; {Write #R$EF98(#N$00) to *#R$D244.
  $EF58 LD ($D244),A  ; }
  $EF5B JP $E67C      ; Jump to #R$E67C.
+; Action the "jump/punch" animation.
+@label=Controller_JumpPunch_Action
 *$EF5E LD A,($D244)  ; #REGa=*#R$D244.
  $EF61 SUB $0F       ; #REGa-=#N$0F.
- $EF63 LD H,$00      ; #REGh=#N$00.
- $EF65 LD L,A        ; #REGl=#REGa.
- $EF66 ADD HL,HL     ; #REGhl+=#REGhl.
- $EF67 LD DE,$EF70   ; #REGde=#R$EF70.
- $EF6A ADD HL,DE     ; #REGhl+=#REGde.
- $EF6B LD A,(HL)     ; #REGa=*#REGhl.
- $EF6C INC HL        ; Increment #REGhl by one.
- $EF6D LD H,(HL)     ; #REGh=*#REGhl.
- $EF6E LD L,A        ; #REGl=#REGa.
+ $EF63 LD H,$00      ; {Create an offset in #REGhl using #REGa.
+ $EF65 LD L,A        ; }
+ $EF66 ADD HL,HL     ; #REGhl*=#N$02.
+ $EF67 LD DE,$EF70   ; {#REGhl+=#R$EF70.
+ $EF6A ADD HL,DE     ; }
+ $EF6B LD A,(HL)     ; Load the low byte of the jump controller address from
+                     ; the "jump/punch" jump table.
+ $EF6C INC HL        ; Increment the "jump/punch" jump table pointer by one.
+ $EF6D LD H,(HL)     ; Set the high byte of the jump controller address from
+                     ; the "jump/punch" jump table.
+ $EF6E LD L,A        ; Set low byte of the jump controller address from #REGa.
  $EF6F JP (HL)       ; Jump to the address held by *#REGhl.
 
 ; Data block at EF70
-w$EF70 DEFW $ECF5
- $EF72 DEFW $ED15
- $EF74 DEFW $ECF5
- $EF76 DEFW $ED5D
- $EF78 DEFW $ED82
- $EF7A DEFW $ED5D
- $EF7C DEFW $EDAC
- $EF7E DEFW $EDEE
- $EF80 DEFW $EE1B
- $EF82 DEFW $EDEE
- $EF84 DEFW $EE53
+@label=JumpTable_JumpPunch
+w$EF70 DEFW $ECF5    ; ID: #N((#PC-$EF70)/$02).
+ $EF72 DEFW $ED15    ; ID: #N((#PC-$EF70)/$02).
+ $EF74 DEFW $ECF5    ; ID: #N((#PC-$EF70)/$02).
+ $EF76 DEFW $ED5D    ; ID: #N((#PC-$EF70)/$02).
+ $EF78 DEFW $ED82    ; ID: #N((#PC-$EF70)/$02).
+ $EF7A DEFW $ED5D    ; ID: #N((#PC-$EF70)/$02).
+ $EF7C DEFW $EDAC    ; ID: #N((#PC-$EF70)/$02).
+ $EF7E DEFW $EDEE    ; ID: #N((#PC-$EF70)/$02).
+ $EF80 DEFW $EE1B    ; ID: #N((#PC-$EF70)/$02).
+ $EF82 DEFW $EDEE    ; ID: #N((#PC-$EF70)/$02).
+ $EF84 DEFW $EE53    ; ID: #N((#PC-$EF70)/$02).
 
 ; Routine at EF86
 ;

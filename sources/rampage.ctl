@@ -1,4 +1,4 @@
-; Copyright Activision 1986, 2024 ArcadeGeek LTD.
+; Copyright Activision 1986, 2025 ArcadeGeek LTD.
 ; NOTE: Disassembly is Work-In-Progress.
 ; Label naming is loosely based on Action_ActionName_SubAction e.g. Print_HighScore_Loop.
 
@@ -59,6 +59,12 @@ M $C1A5,$04 #SPRITE({sprite}+$01)
 B $C1A5,$02
 W $C1A7,$02
 L $C1A1,$08,$7D
+
+b $C6AF Port Mappings
+@ $C6AF label=PortMappings
+D $C6AF TODO; Unclear where this starts and ends. Used by the routine at #R$E1EA.
+  $C6AF,$02
+L $C6AF,$02,$08
 
 b $C700
 
@@ -824,8 +830,9 @@ D $D210 Defaults to #N$80 (see #R$DEC9) is used for limiting the generation of h
 .       generated random number between #N$00-#N$FF is below the number set here.
 B $D210,$01
 
-g $D211 Maximum Number Humans (TODO)
+g $D211 Maximum Number Humans
 @ $D211 label=MaxHumansCount
+D $D211 Used by the routines at #R$DCA1 and #R$DF90.
 B $D211,$01
 
 g $D212 Maximum Number Helicopters
@@ -844,7 +851,10 @@ D $D216 After all the buildings have collapsed, the game doesn't instantly end t
 .       the level ends only when it reaches zero.
 B $D216,$01
 
-g $D217
+g $D217 Active Monster Control Byte
+@ $D217 label=Active_MonsterControl
+D $D217 TODO; bit pattern is maybe different to the control pattern.
+B $D217,$01
 
 g $D218
   $D218
@@ -3263,21 +3273,32 @@ N $E170 Sets up copying FROM the active flags back to the monsters states.
 c $E179 Controls
 @ $E179 label=Controls
 R $E179 O:A Byte representing the intended action
+N $E179 First off, check if the active monster is computer controlled.
   $E179,$06 Jump to #R$E1CE if *#R$D252 is not set to "computer controlled".
   $E17F,$03 Call #R$DA28.
   $E182,$02,b$01 Keep only bits 0-4.
   $E184,$03 Write #REGa to *#R$D217.
-M $E17F,$08 Write a random number between 0-31 to *#R$D217.
+N $E17F Handles the monster being computer controlled.
+@ $E17F label=ComputerControlled
+M $E17F,$08 Write a random number between #N$00-#N$1F (#EVAL($00,$02,$08)-#EVAL($1F,$02,$08)
+.           e.g. Up/ Down/ Left/ Right/ Action) to *#R$D217.
+N $E187 Check if the currently active monster is jumping.
   $E187,$03 #REGa=*#R$D248.
   $E18A,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
-  $E18B,$02 Jump to #R$E193 if the carry flag is not set.
-  $E18D,$05 Write #N$08 to *#R$D217.
+  $E18B,$02 Jump to #R$E193 if the monster isn't currently jumping.
+N $E18D The active monster is jumping...
+  $E18D,$05 Write #R$E6C5(#EVAL($08,$02,$08)) to *#R$D217.
   $E192,$01 Return.
+N $E193 Check if the currently active monster is climbing.
+@ $E193 label=Controls_IsMonsterClimbing
   $E193,$03 #REGa=*#R$D246.
   $E196,$01 Rotate #REGa right one position, setting the carry flag if bit 0 was set.
-  $E197,$02 Jump to #R$E1A1 if the carry flag is not set.
-  $E199,$07 Jump to #R$E17F if *#R$D217 is equal to #N$10.
+  $E197,$02 Jump to #R$E1A1 if the monster isn't currently climbing.
+N $E199 The active monster is climbing...
+  $E199,$07 Jump to #R$E17F if *#R$D217 is equal to #N$10 (#R$E693(#EVAL($10,$02,$08)) e.g. "jumping/ punching").
   $E1A0,$01 Return.
+N $E1A1 Checks the screen boundaries to ensure the monster can't go off-screen.
+@ $E1A1 label=Controls_CheckBoundaries
   $E1A1,$03 #REGa=*#R$D24E.
   $E1A4,$02 Compare #REGa with #N$11...
   $E1A6,$03 #REGa=*#R$D217.
@@ -3289,38 +3310,59 @@ M $E17F,$08 Write a random number between 0-31 to *#R$D217.
   $E1B9,$02 Compare #REGa with #N$1B...
   $E1BB,$03 #REGa=*#R$D217.
   $E1BE,$01 Return if #REGa was lower #N$1B on line #R$E1B9.
+N $E1BF Unsets the computer controlled monster "right" option.
   $E1BF,$02 Reset bit 1 of #REGa.
   $E1C1,$02 Jump to #R$E1C8.
+N $E1C3 Unsets the computer controlled monster "left" option.
+@ $E1C3 label=ComputerUnset_Left
   $E1C3,$03 #REGa=*#R$D217.
   $E1C6,$02 Reset bit 0 of #REGa.
+N $E1C8 Unsets the computer controlled monster "jump/punch" option.
+@ $E1C8 label=ComputerUnset_JumpPunch
   $E1C8,$02 Reset bit 4 of #REGa.
   $E1CA,$03 Write #REGa to *#R$D217.
   $E1CD,$01 Return.
-@ $E1CE label=Controls_FetchSet
-  $E1CE,$01 #REGa*=#N$02.
-  $E1CF,$03 Create an offset using #REGhl.
+N $E1CE The active monster is player controlled so using #R$D252 fetch the controller routine.
+@ $E1CE label=PlayerControlled
+  $E1CE,$04 Create an offset in #REGhl using #REGa*#N$02.
   $E1D2,$04 #REGhl+=#R$E24F.
-N $E1D6 Load the address into #REGhl and jump to it.
-  $E1D6,$01 #REGa=*#REGhl.
-  $E1D7,$01 Increment #REGhl by one.
-  $E1D8,$01 #REGh=*#REGhl.
-  $E1D9,$01 #REGl=#REGa.
+N $E1D6 Load the controls address into #REGhl and jump to it.
+  $E1D6,$01 Load the low byte of the controls address from the jump table.
+  $E1D7,$01 Increment the controls jump table pointer by one.
+  $E1D8,$01 Set the high byte of the controls address from the jump table.
+  $E1D9,$01 Set low byte of the controls address from #REGa.
   $E1DA,$01 Jump to the address held by *#REGhl.
+N $E1DB Given the "not zero" check at #R$E179 the #N$00 option (#R$E24F(#N$E24F)) should never be chosen to end up here.
+@ $E1DB label=Controls_ComputerControlled
   $E1DB,$01 #REGa=#N$00.
   $E1DC,$03 Jump to #R$E243.
-  $E1DF,$02 #REGa=#N$F7.
-  $E1E1,$02
+N $E1DF Read the controls from the Sinclair Interface 2 joystick (port 2).
+@ $E1DF label=Controls_ReadSinclair2_P2
+  $E1DF,$04 Read from the keyboard;
+. #TABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,r2 Port Number | =h,c5 Bit }
+. { =h 0 | =h 1 | =h 2 | =h 3 | =h 4 }
+. { #N$F7 | 1 | 2 | 3 | 4 | 5 }
+. TABLE#
   $E1E3,$02,b$01 Flip bits 0-5 and 7.
   $E1E5,$02,b$01 Keep only bits 0-4.
   $E1E7,$03 Jump to #R$E243.
-  $E1EA,$02 #REGa=#N$EF.
-  $E1EC,$02
-  $E1EE,$02 #REGb=#N$C6.
+N $E1EA Read the controls from the Sinclair Interface 2 joystick (port 1).
+@ $E1EA label=Controls_ReadSinclair2_P1
+  $E1EA,$04 Read from the keyboard;
+. #TABLE(default,centre,centre,centre,centre,centre,centre)
+. { =h,r2 Port Number | =h,c5 Bit }
+. { =h 0 | =h 1 | =h 2 | =h 3 | =h 4 }
+. { #N$EF | 0 | 9 | 8 | 7 | 6 }
+. TABLE#
+N $E1EE Converts the input into a table address beginning at #R$C6AF.
+  $E1EE,$03 Create an offset using #REGbc - where #REGb=#N$C6 and #REGc=#REGa.
   $E1F1,$01 #REGa=*#REGbc.
-  $E1F2,$03 RRCA.
+  $E1F2,$03 Rotate #REGa right three positions (bits 3 to 7 are now in positions 0 to 4).
   $E1F5,$02,b$01 Flip bits 0-5 and 7.
   $E1F7,$02,b$01 Keep only bits 0-4.
   $E1F9,$03 Jump to #R$E243.
+N $E1FC Read the controls from the Kempston joystick port.
 @ $E1FC label=Controls_ReadKempston
   $E1FC,$02 Read Kempston Joystick input.
   $E1FE,$02,b$01 Keep only bits 0-4.
@@ -3343,35 +3385,52 @@ N $E215 Use user-defined keys set 2.
 N $E21A Use user-defined keys set 3.
 @ $E21A label=Controls_Set3
   $E21A,$03 #REGhl=#R$C864.
+N $E21D Read the keyboard set in #REGhl.
+@ $E21D label=Controller_ReadKeyboard
   $E21D,$02 #REGc=#N$00.
+N $E21F Has "left" been pressed?
   $E21F,$03 Call #R$E248.
-  $E222,$02 Jump to #R$E226 if {} is not zero.
-  $E224,$02 Set bit 0 of #REGc.
+  $E222,$02 Jump to #R$E226 if "left" is not being pressed.
+  $E224,$02 Set bit 0 of #REGc if "left" is being pressed.
+N $E226 Has "right" been pressed?
+@ $E226 label=Controls_ReadKeyboardRight
   $E226,$03 Call #R$E248.
-  $E229,$02 Jump to #R$E22D if {} is not zero.
-  $E22B,$02 Set bit 1 of #REGc.
+  $E229,$02 Jump to #R$E22D if "right" is not being pressed.
+  $E22B,$02 Set bit 1 of #REGc if "right" is being pressed.
+N $E22D Has "up" been pressed?
+@ $E22D label=Controls_ReadKeyboardUp
   $E22D,$03 Call #R$E248.
-  $E230,$02 Jump to #R$E234 if {} is not zero.
-  $E232,$02 Set bit 3 of #REGc.
+  $E230,$02 Jump to #R$E234 if "up" is not being pressed.
+  $E232,$02 Set bit 3 of #REGc if "up" is being pressed.
+N $E234 Has "down" been pressed?
+@ $E234 label=Controls_ReadKeyboardDown
   $E234,$03 Call #R$E248.
-  $E237,$02 Jump to #R$E23B if {} is not zero.
-  $E239,$02 Set bit 2 of #REGc.
+  $E237,$02 Jump to #R$E23B if "down" is not being pressed.
+  $E239,$02 Set bit 2 of #REGc if "down" is being pressed.
+N $E23B Has "jump/punch" been pressed?
+@ $E23B label=Controls_ReadKeyboardJumpPunch
   $E23B,$03 Call #R$E248.
-  $E23E,$02 Jump to #R$E242 if {} is not zero.
-  $E240,$02 Set bit 4 of #REGc.
+  $E23E,$02 Jump to #R$E242 if "jump/punch" is not being pressed.
+  $E240,$02 Set bit 4 of #REGc if "jump/punch" is being pressed.
+@ $E242 label=Controls_ReadKeyboardSet
   $E242,$01 #REGa=#REGc.
+N $E243 Set the "zero" flag if no controls are being pressed.
+@ $E243 label=Controls_Return
   $E243,$01 Set flags.
   $E244,$03 Write #REGa to *#R$D217.
   $E247,$01 Return.
+N $E248 Using the keyboard set in #REGhl, read the control from the keyboard.
 @ $E248 label=Controls_ReadKeyboard
   $E248,$01 #REGa=*#REGhl.
-  $E249,$02 Read from the keyboard.
+  $E249,$02 Read from the entire keyboard.
   $E24B,$01 Increment #REGhl by one.
   $E24C,$01 Merge the bits from *#REGhl.
   $E24D,$01 Increment #REGhl by one.
   $E24E,$01 Return.
+N $E24F The monster control type jump table. See #R$D252.
 @ $E24F label=JumpTable_Controls
-W $E24F
+W $E24F,$02 Control type ID: #N((#PC-$E24F)/$02).
+L $E24F,$02,$07,$02
 
 c $E25D Handler: Humans
 @ $E25D label=Handler_Humans
@@ -5246,25 +5305,31 @@ N $EF49 If the monster is facing left; add #REGde to #REGbc.
   $EF4C,$03 #REGc+=#REGe.
   $EF4F,$01 Return.
 
-c $EF50
+c $EF50 Controller: Jump/ Punch
+@ $EF50 label=Controller_JumpPunch
   $EF50,$03 Call #R$E179.
   $EF53,$02,b$01 Keep only bit 4.
   $EF55,$02 Jump to #R$EF5E if the result is not zero.
+M $EF50,$07 Jump to #R$EF5E if "jump/punch" has been pressed.
   $EF57,$04 Write #R$EF98(#N$00) to *#R$D244.
   $EF5B,$03 Jump to #R$E67C.
+N $EF5E Action the "jump/punch" animation.
+@ $EF5E label=Controller_JumpPunch_Action
   $EF5E,$03 #REGa=*#R$D244.
   $EF61,$02 #REGa-=#N$0F.
-  $EF63,$02 #REGh=#N$00.
-  $EF65,$01 #REGl=#REGa.
-  $EF66,$01 #REGhl+=#REGhl.
-  $EF67,$03 #REGde=#R$EF70.
-  $EF6A,$01 #REGhl+=#REGde.
-  $EF6B,$01 #REGa=*#REGhl.
-  $EF6C,$01 Increment #REGhl by one.
-  $EF6D,$01 #REGh=*#REGhl.
-  $EF6E,$01 #REGl=#REGa.
+  $EF63,$03 Create an offset in #REGhl using #REGa.
+  $EF66,$01 #REGhl*=#N$02.
+  $EF67,$04 #REGhl+=#R$EF70.
+  $EF6B,$01 Load the low byte of the jump controller address from the "jump/punch" jump table.
+  $EF6C,$01 Increment the "jump/punch" jump table pointer by one.
+  $EF6D,$01 Set the high byte of the jump controller address from the "jump/punch" jump table.
+  $EF6E,$01 Set low byte of the jump controller address from #REGa.
   $EF6F,$01 Jump to the address held by *#REGhl.
+
 w $EF70
+@ $EF70 label=JumpTable_JumpPunch
+  $EF70,$02 ID: #N((#PC-$EF70)/$02).
+L $EF70,$02,$0B
 
 c $EF86
   $EF86,$03 Call #R$DB54.
