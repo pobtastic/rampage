@@ -33,7 +33,7 @@ Next: <a href="EF70.html">EF70</a>
 </td>
 </tr>
 </table>
-<div class="description">EF50: Routine at EF50</div>
+<div class="description">EF50: Controller: Jump/ Punch</div>
 <table class="disassembly">
 <tr>
 <td class="routine-comment" colspan="5">
@@ -42,90 +42,114 @@ Next: <a href="EF70.html">EF70</a>
 </td>
 </tr>
 <tr>
+<td class="asm-label">Controller_JumpPunch</td>
 <td class="address-2"><span id="ef50"></span>EF50</td>
 <td class="instruction">CALL <a href="E179.html">Controls</a></td>
-<td class="comment-1" rowspan="1">Call <a href="E179.html">Controls</a>.</td>
+<td class="comment-1" rowspan="3">Jump to <a href="EF50.html#ef5e">Controller_JumpPunch_Action</a> if "jump/punch" has been pressed.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef53"></span>EF53</td>
 <td class="instruction">AND %00010000</td>
-<td class="comment-1" rowspan="1">Keep only bit 4.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef55"></span>EF55</td>
-<td class="instruction">JR NZ,<a href="EF50.html#ef5e">$EF5E</a></td>
-<td class="comment-1" rowspan="1">Jump to <a href="EF50.html#ef5e">EF5E</a> if the result is not zero.</td>
+<td class="instruction">JR NZ,<a href="EF50.html#ef5e">Controller_JumpPunch_Action</a></td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef57"></span>EF57</td>
 <td class="instruction">XOR A</td>
 <td class="comment-1" rowspan="2">Write <a href="EF98.html">00</a> to *<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef58"></span>EF58</td>
 <td class="instruction">LD ($D244),A</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef5b"></span>EF5B</td>
 <td class="instruction">JP <a href="E62D.html#e67c">Action_JumpTable</a></td>
 <td class="comment-1" rowspan="1">Jump to <a href="E62D.html#e67c">Action_JumpTable</a>.</td>
 </tr>
 <tr>
+<td class="routine-comment" colspan="5">
+<span id="ef5e"></span>
+<div class="comments">
+<div class="paragraph">
+Action the "jump/punch" animation.
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="asm-label">Controller_JumpPunch_Action</td>
 <td class="address-2"><span id="ef5e"></span>EF5E</td>
 <td class="instruction">LD A,($D244)</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>=*<a href="D244.html">JumpTable_Pointer</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef61"></span>EF61</td>
 <td class="instruction">SUB $0F</td>
 <td class="comment-1" rowspan="1"><span class="register">A</span>-=0F.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef63"></span>EF63</td>
 <td class="instruction">LD H,$00</td>
-<td class="comment-1" rowspan="1"><span class="register">H</span>=00.</td>
+<td class="comment-1" rowspan="2">Create an offset in <span class="register">HL</span> using <span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef65"></span>EF65</td>
 <td class="instruction">LD L,A</td>
-<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef66"></span>EF66</td>
 <td class="instruction">ADD HL,HL</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1"><span class="register">HL</span>*=02.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef67"></span>EF67</td>
 <td class="instruction">LD DE,$EF70</td>
-<td class="comment-1" rowspan="1"><span class="register">DE</span>=<a href="EF70.html">EF70</a>.</td>
+<td class="comment-1" rowspan="2"><span class="register">HL</span>+=<a href="EF70.html">JumpTable_JumpPunch</a>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef6a"></span>EF6A</td>
 <td class="instruction">ADD HL,DE</td>
-<td class="comment-1" rowspan="1"><span class="register">HL</span>+=<span class="register">DE</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef6b"></span>EF6B</td>
 <td class="instruction">LD A,(HL)</td>
-<td class="comment-1" rowspan="1"><span class="register">A</span>=*<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Load the low byte of the jump controller address from the "jump/punch" jump table.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef6c"></span>EF6C</td>
 <td class="instruction">INC HL</td>
-<td class="comment-1" rowspan="1">Increment <span class="register">HL</span> by one.</td>
+<td class="comment-1" rowspan="1">Increment the "jump/punch" jump table pointer by one.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef6d"></span>EF6D</td>
 <td class="instruction">LD H,(HL)</td>
-<td class="comment-1" rowspan="1"><span class="register">H</span>=*<span class="register">HL</span>.</td>
+<td class="comment-1" rowspan="1">Set the high byte of the jump controller address from the "jump/punch" jump table.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef6e"></span>EF6E</td>
 <td class="instruction">LD L,A</td>
-<td class="comment-1" rowspan="1"><span class="register">L</span>=<span class="register">A</span>.</td>
+<td class="comment-1" rowspan="1">Set low byte of the jump controller address from <span class="register">A</span>.</td>
 </tr>
 <tr>
+<td class="asm-label"></td>
 <td class="address-1"><span id="ef6f"></span>EF6F</td>
 <td class="instruction">JP (HL)</td>
 <td class="comment-1" rowspan="1">Jump to the address held by *<span class="register">HL</span>.</td>
@@ -144,8 +168,8 @@ Next: <a href="EF70.html">EF70</a>
 </table>
 <footer>
 <div class="release"></div>
-<div class="copyright">&copy; 1986 Activision &copy; 2024 ArcadeGeek LTD.</div>
-<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.1.</div>
+<div class="copyright">&copy; 1986 Activision &copy; 2025 ArcadeGeek LTD.</div>
+<div class="created">Created using <a href="https://skoolkit.ca">SkoolKit</a> 9.4.</div>
 <div class="repository">Link to <a href="https://github.com/pobtastic/rampage/">Source code</a>.</div>
 <div><a href="../dec/asm/61264.html">Switch to decimal</a>.</div>
 </footer>
