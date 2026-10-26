@@ -1,3 +1,4 @@
+# Copyright 2026 Paul Maddern (paul@arcadegeek.co.uk)
 GAME=rampage
 SRCFILES=$(echo rampage.skool {analytics,bases,changelog,data,rampage,pokes,sound}.ref)
 SKOOL2BINOPTS="-i -S 56832"

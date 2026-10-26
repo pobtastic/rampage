@@ -1,28 +1,28 @@
-; Copyright 2025 Paul Maddern (paul@arcadegeek.co.uk)
+; Copyright 2026 Paul Maddern (paul@arcadegeek.co.uk)
 
 [Page:Sound]
 SectionPrefix=Audio
 
 [Audio:Telecast]
 
-#AUDIO(telecast.wav)(#INCLUDE(Telecast))
+#AUDIO0(telecast.wav)(#INCLUDE(Telecast))
 
 [Audio:Projectile]
 
-#AUDIO(projectile.wav)(#INCLUDE(Projectile))
+#AUDIO0(projectile.wav)(#INCLUDE(Projectile))
 
 [Audio:Punched]
 
-#AUDIO(punched.wav)(#INCLUDE(Punched))
+#AUDIO0(punched.wav)(#INCLUDE(Punched))
 
 [Audio:Unknown1]
 
-#AUDIO(unknown1.wav)(#INCLUDE(Unknown1))
+#AUDIO0(unknown1.wav)(#INCLUDE(Unknown1))
 
 [Audio:Unknown8]
 
-#AUDIO(unknown8.wav)(#INCLUDE(Unknown8))
+#AUDIO0(unknown8.wav)(#INCLUDE(Unknown8))
 
 [Audio:Unknown9]
 
-#AUDIO(unknown9.wav)(#INCLUDE(Unknown9))
+#AUDIO0(unknown9.wav)(#INCLUDE(Unknown9))

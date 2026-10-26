@@ -8530,7 +8530,7 @@ c$E447 POP HL        ; Restore human table pointer from the stack.
  $E527 LD A,($D3F8)  ; {Increment *#R$D3F8 by one.
  $E52A INC A         ;
  $E52B LD ($D3F8),A  ; }
-; #AUDIO(helicopter.wav)(#INCLUDE(Helicopter))
+; #AUDIO0(helicopter.wav)(#INCLUDE(Helicopter))
  $E52E LD A,$02      ; {Write melody ID #N$02 to *#R$FF8D.
  $E530 LD ($FF8D),A  ; }
  $E533 EX AF,AF'     ; Exchange the #REGaf register with the shadow #REGaf
@@ -9390,7 +9390,7 @@ c$EA43 LD A,$19      ; #REGa=sprite ID #SPRITEID$19.
  $EA93 CALL $DD6C    ; Call #R$DD6C.
 ; Make the splat sound.
 ; .
-; #AUDIO(projectile.wav)(#INCLUDE(Projectile))
+; #AUDIO0(projectile.wav)(#INCLUDE(Projectile))
  $EA96 LD A,$05      ; {Write melody ID #N$05 to *#R$FF8D.
  $EA98 LD ($FF8D),A  ; }
  $EA9B RET           ; Return.
@@ -10438,7 +10438,7 @@ c$EFE0 XOR A           ; #REGa=#N$00 (building data offset).
 ; Plays a single building "crumbling" sound, the handler looping will keep it
 ; going until it's fallen and done.
 ; .
-; #AUDIO(building-crumbling.wav)(#INCLUDE(Crumbling))
+; #AUDIO0(building-crumbling.wav)(#INCLUDE(Crumbling))
 @label=Sounds_BuildingCrumbling
 *$F052 LD A,$09        ; {Write melody ID #N$09 to *#R$FF8D.
  $F054 LD ($FF8D),A    ; }
@@ -10449,7 +10449,7 @@ c$EFE0 XOR A           ; #REGa=#N$00 (building data offset).
 ; Plays a single building "collapsing" sound, the handler looping will keep it
 ; going until it's fallen and done.
 ; .
-; #AUDIO(building-collapsing.wav)(#INCLUDE(Collapsing))
+; #AUDIO0(building-collapsing.wav)(#INCLUDE(Collapsing))
  $F05F LD A,$08        ; {Write melody ID #N$08 to *#R$FF8D.
  $F061 LD ($FF8D),A    ; }
  $F064 LD (IX+$0D),$02 ; Write #N$02 to *#REGix+#N$0D.
@@ -10714,7 +10714,7 @@ c$F10E LD B,$06        ; #REGb=#N$06.
  $F224 DEC C           ; }
 *$F225 DEC E           ; Decrease #REGe by one.
  $F226 JR NZ,$F216     ; Jump to #R$F216 until #REGe is zero.
-; #AUDIO(helicopter.wav)(#INCLUDE(Helicopter))
+; #AUDIO0(helicopter.wav)(#INCLUDE(Helicopter))
  $F228 LD A,$02        ; {Write melody ID #N$02 to *#R$FF8D.
  $F22A LD ($FF8D),A    ; }
  $F22D RET             ; Return.
@@ -11356,7 +11356,7 @@ c$F4E6 LD DE,$013F     ; #REGde=#N$013F.
  $F5DD POP BC          ; {Restore #REGbc and #REGde from the stack.
  $F5DE POP DE          ; }
  $F5DF INC E           ; Increment #REGe by one.
-; #AUDIO(test.wav)(#INCLUDE(Unknown1))
+; #AUDIO0(test.wav)(#INCLUDE(Unknown1))
  $F5E0 LD A,$01        ; {Write melody ID #N$01 to *#R$FF8D.
  $F5E2 LD ($FF8D),A    ; }
  $F5E5 RET             ; Return.
@@ -11409,7 +11409,7 @@ c$F4E6 LD DE,$013F     ; #REGde=#N$013F.
  $F631 LD A,($D218)    ; {#REGd=*#R$D218.
  $F634 LD D,A          ; }
  $F635 CALL $DA3D      ; Call #R$DA3D.
-; #AUDIO(test.wav)(#INCLUDE(Unknown1))
+; #AUDIO0(test.wav)(#INCLUDE(Unknown1))
  $F638 LD A,$01        ; {Write melody ID #N$01 to *#R$FF8D.
  $F63A LD ($FF8D),A    ; }
  $F63D RET             ; Return.
@@ -11571,7 +11571,7 @@ c$F69F LD B,$06      ; #REGb=#N$06 (number of possible projectiles).
 ;
 ; .
 ;
-; #AUDIO(projectile.wav)(#INCLUDE(Projectile))
+; #AUDIO0(projectile.wav)(#INCLUDE(Projectile))
 @label=Audio_Projectiles_Hit
 c$F719 LD A,$05      ; {Write melody ID #N$05 to *#R$FF8D.
  $F71B LD ($FF8D),A  ; }
@@ -11719,7 +11719,7 @@ c$F795 LD B,$03        ; #REGb=#N$03 (total number of monsters/ players).
 ; Take off two hit points from the monsters energy.
  $F7D0 LD A,$02        ; #REGa=#N$02.
  $F7D2 CALL $DD6C      ; Call #R$DD6C.
-; #AUDIO(punched.wav)(#INCLUDE(Punched))
+; #AUDIO0(punched.wav)(#INCLUDE(Punched))
  $F7D5 LD A,$06        ; {Write melody ID #N$06 to *#R$FF8D.
  $F7D7 LD ($FF8D),A    ; }
 @label=Handler_CollisionMonsters_Next
@@ -11771,7 +11771,7 @@ c$F795 LD B,$03        ; #REGb=#N$03 (total number of monsters/ players).
                        ; { #SPRITEID$77 | #SPRITE$77 }
                        ; UDGTABLE#
  $F821 CALL $D6C9      ; Call #R$D6C9.
-; #AUDIO(punched.wav)(#INCLUDE(Punched))
+; #AUDIO0(punched.wav)(#INCLUDE(Punched))
  $F824 LD A,$06        ; {Write melody ID #N$06 to *#R$FF8D.
  $F826 LD ($FF8D),A    ; }
  $F829 JR $F804        ; Jump to #R$F804.
@@ -11788,7 +11788,7 @@ c$F795 LD B,$03        ; #REGb=#N$03 (total number of monsters/ players).
  $F843 LD A,B          ; #REGa=#REGb.
  $F844 LD DE,$0203     ; #REGde=#N$0203.
  $F847 CALL $DD97      ; Call #R$DD97.
-; #AUDIO(punched.wav)(#INCLUDE(Punched))
+; #AUDIO0(punched.wav)(#INCLUDE(Punched))
  $F84A LD A,$06        ; {Write melody ID #N$06 to *#R$FF8D.
  $F84C LD ($FF8D),A    ; }
  $F84F JR $F804        ; Jump to #R$F804.
@@ -11806,7 +11806,7 @@ c$F795 LD B,$03        ; #REGb=#N$03 (total number of monsters/ players).
  $F86A LD D,$01        ; #REGd=#N$01.
  $F86C LD E,$03        ; #REGe=#N$03.
  $F86E CALL $DD97      ; Call #R$DD97.
-; #AUDIO(punched.wav)(#INCLUDE(Punched))
+; #AUDIO0(punched.wav)(#INCLUDE(Punched))
  $F871 LD A,$06        ; {Write melody ID #N$06 to *#R$FF8D.
  $F873 LD ($FF8D),A    ; }
  $F876 JR $F804        ; Jump to #R$F804.
@@ -11852,7 +11852,7 @@ c$F795 LD B,$03        ; #REGb=#N$03 (total number of monsters/ players).
                        ; { #SPRITEID$77 | #SPRITE$77 }
                        ; UDGTABLE#
  $F8AD CALL $D6C9      ; Call #R$D6C9.
-; #AUDIO(punched.wav)(#INCLUDE(Punched))
+; #AUDIO0(punched.wav)(#INCLUDE(Punched))
  $F8B0 LD A,$06        ; {Write melody ID #N$06 to *#R$FF8D.
  $F8B2 LD ($FF8D),A    ; }
  $F8B5 JP $F804        ; Jump to #R$F804.
@@ -12937,7 +12937,7 @@ c$FD9E CALL $DA28    ; {Get a random number between 0-7.
 ;
 ; .
 ;
-; #AUDIO(telecast.wav)(#INCLUDE(Telecast))
+; #AUDIO0(telecast.wav)(#INCLUDE(Telecast))
 @label=Sounds_Telecast
 c$FDC4 LD B,$0A      ; #REGb=#N$0A (counter).
 @label=Sounds_Telecast_Loop

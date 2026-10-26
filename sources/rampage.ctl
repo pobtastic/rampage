@@ -1,4 +1,4 @@
-; Copyright Activision 1986, 2025 ArcadeGeek LTD.
+; Copyright Activision 1987, Bally Midway, 2026 ArcadeGeek LTD.
 ; NOTE: Disassembly is Work-In-Progress.
 ; Label naming is loosely based on Action_ActionName_SubAction e.g. Print_HighScore_Loop.
 
@@ -3953,7 +3953,7 @@ N $E4D6 The countdown between #N$CE-#N$C9 handles the delay before #N$C8 will hi
   $E523,$02 Write #REGb to *#REGde.
   $E525,$02 Decrease #REGhl by two.
   $E527,$07 Increment *#R$D3F8 by one.
-N $E52E #AUDIO(helicopter.wav)(#INCLUDE(Helicopter))
+N $E52E #AUDIO0(helicopter.wav)(#INCLUDE(Helicopter))
   $E52E,$05 Write melody ID #N$02 to *#R$FF8D.
   $E533,$01 Exchange the #REGaf register with the shadow #REGaf register.
   $E534,$01 Return.
@@ -4610,7 +4610,7 @@ N $EA91 Take off four hit points from the monsters energy.
   $EA91,$02 #REGa=#N$04.
   $EA93,$03 Call #R$DD6C.
 N $EA96 Make the splat sound.
-N $EA96 #AUDIO(projectile.wav)(#INCLUDE(Projectile))
+N $EA96 #AUDIO0(projectile.wav)(#INCLUDE(Projectile))
   $EA96,$05 Write melody ID #N$05 to *#R$FF8D.
   $EA9B,$01 Return.
 
@@ -5403,7 +5403,7 @@ N $F005 Handle the building crumbling.
   $F04F,$01 Increment #REGde by one.
   $F050,$02 Decrease counter by one and loop back to #R$F048 until counter is zero.
 N $F052 Plays a single building "crumbling" sound, the handler looping will keep it going until it's fallen and done.
-N $F052 #AUDIO(building-crumbling.wav)(#INCLUDE(Crumbling))
+N $F052 #AUDIO0(building-crumbling.wav)(#INCLUDE(Crumbling))
 @ $F052 label=Sounds_BuildingCrumbling
   $F052,$05 Write melody ID #N$09 to *#R$FF8D.
   $F057,$03 Jump to #R$F0AB.
@@ -5411,7 +5411,7 @@ N $F052 #AUDIO(building-crumbling.wav)(#INCLUDE(Crumbling))
   $F05A,$03 Decrease *#REGix+#N$0D by one.
   $F05D,$02 Jump to #R$F0AB until *#REGix+#N$0D is zero.
 N $F05F Plays a single building "collapsing" sound, the handler looping will keep it going until it's fallen and done.
-N $F05F #AUDIO(building-collapsing.wav)(#INCLUDE(Collapsing))
+N $F05F #AUDIO0(building-collapsing.wav)(#INCLUDE(Collapsing))
   $F05F,$05 Write melody ID #N$08 to *#R$FF8D.
   $F064,$04 Write #N$02 to *#REGix+#N$0D.
   $F068,$03 Decrease "collapsing countdown" (*#REGix+#N$0B) by one.
@@ -5606,7 +5606,7 @@ c $F10E Helicopter Something
   $F223,$02 Decrease #REGc by two.
   $F225,$01 Decrease #REGe by one.
   $F226,$02 Jump to #R$F216 until #REGe is zero.
-N $F228 #AUDIO(helicopter.wav)(#INCLUDE(Helicopter))
+N $F228 #AUDIO0(helicopter.wav)(#INCLUDE(Helicopter))
   $F228,$05 Write melody ID #N$02 to *#R$FF8D.
   $F22D,$01 Return.
   $F22E,$05 Write #N$01 to *#R$D247.
@@ -6092,7 +6092,7 @@ M $F5B0,$05 Get a random number between 0-3.
   $F5DA,$03 Call #R$DA3D.
   $F5DD,$02 Restore #REGbc and #REGde from the stack.
   $F5DF,$01 Increment #REGe by one.
-N $F5E0 #AUDIO(test.wav)(#INCLUDE(Unknown1))
+N $F5E0 #AUDIO0(test.wav)(#INCLUDE(Unknown1))
   $F5E0,$05 Write melody ID #N$01 to *#R$FF8D.
   $F5E5,$01 Return.
   $F5E6,$04 Jump to #R$F5F4 if #REGa is not equal to #N$11.
@@ -6129,7 +6129,7 @@ N $F5E0 #AUDIO(test.wav)(#INCLUDE(Unknown1))
   $F630,$01 #REGc=#REGl.
   $F631,$04 #REGd=*#R$D218.
   $F635,$03 Call #R$DA3D.
-N $F638 #AUDIO(test.wav)(#INCLUDE(Unknown1))
+N $F638 #AUDIO0(test.wav)(#INCLUDE(Unknown1))
   $F638,$05 Write melody ID #N$01 to *#R$FF8D.
   $F63D,$01 Return.
   $F63E,$03 #REGhl=#R$D31F.
@@ -6256,7 +6256,7 @@ N $F707 The projectile has either made a hit, or not, either way the journey is 
   $F718,$01 Return.
 
 c $F719 Sounds: Projectile "Hit"
-N $F719 #AUDIO(projectile.wav)(#INCLUDE(Projectile))
+N $F719 #AUDIO0(projectile.wav)(#INCLUDE(Projectile))
 @ $F719 label=Audio_Projectiles_Hit
   $F719,$05 Write melody ID #N$05 to *#R$FF8D.
   $F71E,$02 #REGa=sprite ID #SPRITEID$75.
@@ -6371,7 +6371,7 @@ N $F7B1 Is the action targeting the currently processed monster?
 N $F7D0 Take off two hit points from the monsters energy.
   $F7D0,$02 #REGa=#N$02.
   $F7D2,$03 Call #R$DD6C.
-N $F7D5 #AUDIO(punched.wav)(#INCLUDE(Punched))
+N $F7D5 #AUDIO0(punched.wav)(#INCLUDE(Punched))
   $F7D5,$05 Write melody ID #N$06 to *#R$FF8D.
 @ $F7DA label=Handler_CollisionMonsters_Next
   $F7DA,$01 Decrease #REGhl by one.
@@ -6409,7 +6409,7 @@ N $F808 Handles when a vehicle has been punched.
 . { #SPRITEID$77 | #SPRITE$77 }
 . UDGTABLE#
   $F821,$03 Call #R$D6C9.
-N $F824 #AUDIO(punched.wav)(#INCLUDE(Punched))
+N $F824 #AUDIO0(punched.wav)(#INCLUDE(Punched))
   $F824,$05 Write melody ID #N$06 to *#R$FF8D.
   $F829,$02 Jump to #R$F804.
   $F82B,$01 #REGa=#REGb.
@@ -6425,7 +6425,7 @@ N $F824 #AUDIO(punched.wav)(#INCLUDE(Punched))
   $F843,$01 #REGa=#REGb.
   $F844,$03 #REGde=#N$0203.
   $F847,$03 Call #R$DD97.
-N $F84A #AUDIO(punched.wav)(#INCLUDE(Punched))
+N $F84A #AUDIO0(punched.wav)(#INCLUDE(Punched))
   $F84A,$05 Write melody ID #N$06 to *#R$FF8D.
   $F84F,$02 Jump to #R$F804.
   $F851,$01 #REGa=#REGb.
@@ -6438,7 +6438,7 @@ N $F84A #AUDIO(punched.wav)(#INCLUDE(Punched))
   $F86A,$02 #REGd=#N$01.
   $F86C,$02 #REGe=#N$03.
   $F86E,$03 Call #R$DD97.
-N $F871 #AUDIO(punched.wav)(#INCLUDE(Punched))
+N $F871 #AUDIO0(punched.wav)(#INCLUDE(Punched))
   $F871,$05 Write melody ID #N$06 to *#R$FF8D.
   $F876,$02 Jump to #R$F804.
 N $F878 Handles when a helicopter has been punched.
@@ -6475,7 +6475,7 @@ N $F8AB Displays an explosion sprite.
 . { #SPRITEID$77 | #SPRITE$77 }
 . UDGTABLE#
   $F8AD,$03 Call #R$D6C9.
-N $F8B0 #AUDIO(punched.wav)(#INCLUDE(Punched))
+N $F8B0 #AUDIO0(punched.wav)(#INCLUDE(Punched))
   $F8B0,$05 Write melody ID #N$06 to *#R$FF8D.
   $F8B5,$03 Jump to #R$F804.
 N $F8B8 Set #REGbc to the screen co-ordinates for the explosion.
@@ -7302,7 +7302,7 @@ N $FDAF Print the three lines of the ticker news data to the screen.
 
 c $FDC4 Sounds: Annoying Telecast Beeping
 @ $FDC4 label=Sounds_Telecast
-N $FDC4 #AUDIO(telecast.wav)(#INCLUDE(Telecast))
+N $FDC4 #AUDIO0(telecast.wav)(#INCLUDE(Telecast))
   $FDC4,$02 #REGb=#N$0A (counter).
 @ $FDC6 label=Sounds_Telecast_Loop
 M $FDC6,$05 Get a random number which is either #N$00 or #N$01.
