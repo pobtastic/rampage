@@ -6,7 +6,7 @@
 ; To build the HTML disassembly, run these commands:
 ;   tap2sna.py @rampage.t2s
 ;   sna2skool.py -H -c sources/rampage.ctl Rampage.z80 > sources/rampage.skool
-;   skool2html.py -H sources/rampage.skool -T dark
+;   skool2html.py -H sources/rampage.skool -T dark -T wide -toOa
 
 [Config]
 Expand=#INCLUDE(Expand)
@@ -18,6 +18,9 @@ Game=Rampage
 Logo=#SCR$01,$00,$00,$20,$0E,$4000,$5800(/images/logo)
 Copyright=&copy; 1987 Activision, Bally Midway<br />&copy; 2026 ArcadeGeek LTD.
 Repository=https://github.com/pobtastic/rampage/
+Canonical=https://skoolkit.arcadegeek.co.uk/rampage/
+GameIndexUrl=https://skoolkit.arcadegeek.co.uk/rampage/
+OgImage=https://skoolkit.arcadegeek.co.uk/rampage/images/logo.png
 LinkInternalOperands=1
 AddressAnchor={address#IF({base}==16)(:04x)}
 
